@@ -1,4 +1,6 @@
-﻿Public Class BaseConnection
+﻿'Author : Uti
+'Date : 2015-04-27
+Public Class BaseConnection
     Private Shared CONN As New MySql.Data.MySqlClient.MySqlConnection
     Private Shared ObjConnection As BaseConnection
 
