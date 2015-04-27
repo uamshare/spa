@@ -3,11 +3,13 @@
     Dim DGVColumnCheckIndex As Integer
 
     Private Model As New MUserGroup
+    Private userid As String
 
     Public Sub init()
         ToolAdd.Enabled = True
         ToolEdit.Enabled = False
         ToolDelete.Enabled = False
+        ToolMenuAkses.Enabled = False
         Model.limitrecord = 25
         RetrieveData()
         '-------------
@@ -220,14 +222,17 @@
         If getCountSelectedData() = 1 Then
             ToolAdd.Enabled = False
             ToolEdit.Enabled = True
+            ToolMenuAkses.Enabled = True
             ToolDelete.Enabled = True
         ElseIf getCountSelectedData() > 1 Then
             ToolAdd.Enabled = False
             ToolEdit.Enabled = False
+            ToolMenuAkses.Enabled = False
             ToolDelete.Enabled = True
         Else
             ToolAdd.Enabled = True
             ToolEdit.Enabled = False
+            ToolMenuAkses.Enabled = False
             ToolDelete.Enabled = False
         End If
     End Sub
@@ -281,6 +286,15 @@
                 Application.ShowStatus("No data is selected", Color.Yellow)
             End If
 
+        End If
+    End Sub
+    Private Sub ToolMenuAkses_Click(sender As Object, e As EventArgs) Handles ToolMenuAkses.Click
+       
+        If getCountSelectedData() > 0 Then
+            Me.userid = CStr(DataGridView1.Rows(getRowIndexSelected()).Cells("groupid").Value)
+            MsgBox(Me.userid)
+        Else
+            Application.ShowStatus("No data is selected", Color.Yellow)
         End If
     End Sub
 
@@ -350,23 +364,6 @@
 
         Dim result As List(Of Dictionary(Of String, Object)) = ModelMenuList.GetListMenu()
         RetrieveTreeNode(result)
-        'Dim node, node1, node11, node12 As TreeNode
-        'For Each dat In result
-        '    For Each keydat As KeyValuePair(Of String, Object) In dat
-        '        node = TreeView1.Nodes.Add("Key = {0}", keydat.Key, keydat.Value.ToString)
-        '        For Each datnode In keydat.Value
-        '            For Each keynode As KeyValuePair(Of String, Object) In datnode
-        '                node1 = node.Nodes.Add("Key = {0}", keynode.Key)
-        '                For Each datnode1 In keynode.Value
-        '                    For Each keynode1 As KeyValuePair(Of String, Object) In datnode1
-        '                        node1.Nodes.Add("Key = {0}", keynode1.Key)
-        '                    Next keynode1
-        '                    'TreeView1.Nodes.Add("Key = {0}", dat)
-        '                Next
-        '            Next keynode
-        '        Next
-        '    Next keydat
-        'Next
     End Sub
 
     Private Sub RetrieveTreeNode(result As List(Of Dictionary(Of String, Object)), Optional _TreeNode As TreeNode = Nothing)
@@ -469,9 +466,14 @@
 
     Private Sub ToolStripButton2_Click(sender As Object, e As EventArgs) Handles ToolStripButton2.Click
         'TreeView1.Nodes.
+        Dim menulist As New ArrayList
+
         MsgBox(TreeView1.Nodes(1).Checked)
+
     End Sub
 #End Region
 
+    
+    
     
 End Class

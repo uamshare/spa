@@ -2,7 +2,8 @@
     Inherits CDataAcces
 
     Public menuid As String
-    Public order, menuname, menuparent, keymenu, controller, menuicon, menuactive As String
+    Public order, menuname, menuparent, keymenu, controller, menuicon, menuactive As String
+
     Sub New()
         MyBase.New()
         BaseQuery = "SELECT * FROM muserl"
@@ -25,6 +26,24 @@
         ListMenu.Add(dict)
         Return ListMenu
     End Function
+    Public Function GetListMenuPrivileges(Optional parent As Integer = 0) As List(Of Dictionary(Of String, Object))
+        Dim result As New List(Of Dictionary(Of String, Object))
+        Dim ListMenu As New List(Of Dictionary(Of String, Object))
+        Me.StringSQL = "SELECT * FROM muserl WHERE menuparent ='" & parent & "' ORDER BY menuparent,menuid"
+        Dim dict As New Dictionary(Of String, Object)
+        result = MyBase.GetDataList()
+        'If (result.Count > 0) Then
+        For Each dat In result
+            dict.Add(dat("menuid") & "-" & dat("menuname").ToString, GetListMenu(dat("menuid")))
+        Next
+        'End If
+        ListMenu.Add(dict)
+        Return ListMenu
+    End Function
+    Public Overloads Function InsertMenuPrivileges(menulist As ArrayList) As Integer
+        Me.StringSQL = "INSERT INTO " & TableName + "(menuid,userid,pcreate,pupdate,pdelete,pview) VALUES('" & menuname & "')"
+        Return MyBase.InsertData()
+    End Function
     Function FindData(sSearch As String) As DataTable
         If Not String.IsNullOrEmpty(sSearch) Then
             Me.WHERE = "WHERE menuname like '%" & sSearch & "%'"
@@ -37,7 +56,6 @@
         Me.StringSQL = "INSERT INTO " & TableName + "(menuname) VALUES('" & menuname & "')"
         Return MyBase.InsertData()
     End Function
-
     Public Overloads Function UpdateData() As Integer
         Me.StringSQL = "UPDATE " & TableName + " SET menuname ='" & menuname & "' WHERE " & PrimaryKey & "=" & menuid
         Return MyBase.UpdateData()
