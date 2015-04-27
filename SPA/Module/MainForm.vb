@@ -5,12 +5,6 @@ Public Class MainForm
         Me.Close()
     End Sub
 
-    Private Sub GrupAksesToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles GrupAksesToolStripMenuItem.Click
-        FUserGroup.WindowState = FormWindowState.Maximized
-        FUserGroup.MdiParent = Me
-        FUserGroup.Show()
-    End Sub
-
     Private Sub MainForm_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         Main() ' Call Sub Main Application
     End Sub
@@ -22,5 +16,12 @@ Public Class MainForm
         StatusStrip.BackColor = Color.DodgerBlue
         StatusMessage.Text = "Application Ready"
 
+    End Sub
+
+
+    Private Sub menu501_Click(sender As Object, e As EventArgs) Handles menu501.Click
+        FUserGroup.WindowState = FormWindowState.Maximized
+        FUserGroup.MdiParent = Me
+        FUserGroup.Show()
     End Sub
 End Class
