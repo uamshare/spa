@@ -54,7 +54,7 @@ Partial Class FUserGroup
         Me.ToolStrip2 = New System.Windows.Forms.ToolStrip()
         Me.ToolStripLabel3 = New System.Windows.Forms.ToolStripLabel()
         Me.ToolStripButton1 = New System.Windows.Forms.ToolStripButton()
-        Me.ToolStripButton2 = New System.Windows.Forms.ToolStripButton()
+        Me.ToolSaveMenuAkses = New System.Windows.Forms.ToolStripButton()
         Me.Panel1.SuspendLayout()
         CType(Me.DataGridView1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.ToolStrip1.SuspendLayout()
@@ -300,7 +300,7 @@ Partial Class FUserGroup
         Me.ToolStrip2.BackColor = System.Drawing.SystemColors.ActiveCaption
         Me.ToolStrip2.GripStyle = System.Windows.Forms.ToolStripGripStyle.Hidden
         Me.ToolStrip2.ImageScalingSize = New System.Drawing.Size(32, 32)
-        Me.ToolStrip2.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.ToolStripLabel3, Me.ToolStripButton1, Me.ToolStripButton2})
+        Me.ToolStrip2.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.ToolStripLabel3, Me.ToolStripButton1, Me.ToolSaveMenuAkses})
         Me.ToolStrip2.Location = New System.Drawing.Point(0, 0)
         Me.ToolStrip2.Name = "ToolStrip2"
         Me.ToolStrip2.RenderMode = System.Windows.Forms.ToolStripRenderMode.System
@@ -324,21 +324,22 @@ Partial Class FUserGroup
         Me.ToolStripButton1.Size = New System.Drawing.Size(36, 36)
         Me.ToolStripButton1.Text = "ToolStripButton1"
         '
-        'ToolStripButton2
+        'ToolSaveMenuAkses
         '
-        Me.ToolStripButton2.Alignment = System.Windows.Forms.ToolStripItemAlignment.Right
-        Me.ToolStripButton2.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image
-        Me.ToolStripButton2.Image = Global.SPA.My.Resources.Resources.save
-        Me.ToolStripButton2.ImageTransparentColor = System.Drawing.Color.Magenta
-        Me.ToolStripButton2.Name = "ToolStripButton2"
-        Me.ToolStripButton2.Size = New System.Drawing.Size(36, 36)
-        Me.ToolStripButton2.Text = "ToolStripButton2"
+        Me.ToolSaveMenuAkses.Alignment = System.Windows.Forms.ToolStripItemAlignment.Right
+        Me.ToolSaveMenuAkses.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image
+        Me.ToolSaveMenuAkses.Image = Global.SPA.My.Resources.Resources.save
+        Me.ToolSaveMenuAkses.ImageTransparentColor = System.Drawing.Color.Magenta
+        Me.ToolSaveMenuAkses.Name = "ToolSaveMenuAkses"
+        Me.ToolSaveMenuAkses.Size = New System.Drawing.Size(36, 36)
+        Me.ToolSaveMenuAkses.Text = "ToolSaveMenuAkses"
+        Me.ToolSaveMenuAkses.ToolTipText = "Simpan Akses Menu"
         '
         'FUserGroup
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(1031, 447)
+        Me.ClientSize = New System.Drawing.Size(1104, 447)
         Me.Controls.Add(Me.Panel3)
         Me.Controls.Add(Me.Panel2)
         Me.Controls.Add(Me.Panel1)
@@ -389,7 +390,7 @@ Partial Class FUserGroup
     Friend WithEvents ToolStrip2 As System.Windows.Forms.ToolStrip
     Friend WithEvents ToolStripLabel3 As System.Windows.Forms.ToolStripLabel
     Friend WithEvents ToolStripButton1 As System.Windows.Forms.ToolStripButton
-    Friend WithEvents ToolStripButton2 As System.Windows.Forms.ToolStripButton
+    Friend WithEvents ToolSaveMenuAkses As System.Windows.Forms.ToolStripButton
     Friend WithEvents ToolMenuAkses As System.Windows.Forms.ToolStripButton
 
 End Class

@@ -229,11 +229,15 @@
             ToolEdit.Enabled = False
             ToolMenuAkses.Enabled = False
             ToolDelete.Enabled = True
+            TreeViewCheckUncheckAll(False)
+            TreeView1.CollapseAll()
         Else
             ToolAdd.Enabled = True
             ToolEdit.Enabled = False
             ToolMenuAkses.Enabled = False
             ToolDelete.Enabled = False
+            TreeViewCheckUncheckAll(False)
+            TreeView1.CollapseAll()
         End If
     End Sub
     Private Sub DataGridView1_Sorted(sender As Object, e As EventArgs) Handles DataGridView1.Sorted
@@ -289,10 +293,16 @@
         End If
     End Sub
     Private Sub ToolMenuAkses_Click(sender As Object, e As EventArgs) Handles ToolMenuAkses.Click
-       
+        Dim ModelMenuList As New MUserListMenu
         If getCountSelectedData() > 0 Then
             Me.userid = CStr(DataGridView1.Rows(getRowIndexSelected()).Cells("groupid").Value)
-            MsgBox(Me.userid)
+            RemoveHandler TreeView1.AfterCheck, AddressOf TreeView1_AfterCheck
+            Dim result As List(Of Dictionary(Of Object, Object)) = ModelMenuList.GetListMenuPrivileges(Me.userid)
+            RetrieveTreeNodeActive(result)
+            For Each FirstLevelNode As TreeNode In TreeView1.Nodes
+                FirstLevelNode.Expand()
+            Next
+            AddHandler TreeView1.AfterCheck, AddressOf TreeView1_AfterCheck
         Else
             Application.ShowStatus("No data is selected", Color.Yellow)
         End If
@@ -377,16 +387,46 @@
                 Else
                     node = _TreeNode.Nodes.Add(strArr(0), strArr(1))
                 End If
+                If strArr(2) = "1" Then
+                    node.Nodes.Add(strArr(0) & "-pview", "Lihat")
+                    node.Nodes.Add(strArr(0) & "-pcreate", "Tambah")
+                    node.Nodes.Add(strArr(0) & "-pupdate", "Perbaiki")
+                    node.Nodes.Add(strArr(0) & "-pdelete", "Hapus")
+                End If
                 'MsgBox(keyDict.Value.ToString)
                 RetrieveTreeNode(keyDict.Value, node)
+            Next keyDict
+        Next
+    End Sub
+
+    Private Sub RetrieveTreeNodeActive(result As List(Of Dictionary(Of Object, Object)), Optional _TreeNode As TreeNode = Nothing)
+        Dim node As TreeNode
+        For Each Dict In result
+            For Each keyDict As KeyValuePair(Of Object, Object) In Dict
+                Dim strArr As Object
+                strArr = keyDict.Key
+                If _TreeNode Is Nothing Then
+                    node = TreeView1.Nodes(strArr("menuid").ToString)
+                Else
+                    node = _TreeNode.Nodes(strArr("menuid").ToString)
+                End If
+                node.Checked = CBool(strArr("checked"))
+                RetrieveTreeNodeActive(keyDict.Value, node)
+                If strArr("isform") = "1" Then
+                    node.Nodes(strArr("menuid").ToString & "-pview").Checked = CBool(strArr("pview"))
+                    node.Nodes(strArr("menuid").ToString & "-pcreate").Checked = CBool(strArr("pcreate"))
+                    node.Nodes(strArr("menuid").ToString & "-pupdate").Checked = CBool(strArr("pupdate"))
+                    node.Nodes(strArr("menuid").ToString & "-pdelete").Checked = CBool(strArr("pdelete"))
+                End If
+                
             Next keyDict
         Next
     End Sub
     Private Sub TreeView1_AfterCheck(sender As Object, e As TreeViewEventArgs) Handles TreeView1.AfterCheck
         RemoveHandler TreeView1.AfterCheck, AddressOf TreeView1_AfterCheck
 
+        'MsgBox(e.Node.Name)
         Call CheckAllChildNodes(e.Node)
-
         If e.Node.Checked Then
             If e.Node.Parent Is Nothing = False Then
                 'Dim allChecked As Boolean = True
@@ -411,12 +451,58 @@
 
         AddHandler TreeView1.AfterCheck, AddressOf TreeView1_AfterCheck
     End Sub
+    Private Sub TreeViewCheckUncheckAll(Optional ByVal CheckAll_YesNo As Boolean = True, Optional ByVal _TreeNode As TreeNode = Nothing)
+        Dim mTN As TreeNode
+        If _TreeNode Is Nothing Then
+            For Each mTN In TreeView1.Nodes
+                TreeViewCheckUncheckAll(CheckAll_YesNo, mTN)
+                mTN.Checked = CheckAll_YesNo
+            Next
+        Else
+            For Each mTN In _TreeNode.Nodes
+                TreeViewCheckUncheckAll(CheckAll_YesNo, mTN)
+                mTN.Checked = CheckAll_YesNo
+            Next
+        End If
 
+    End Sub
     Private Sub CheckAllChildNodes(ByVal parentNode As TreeNode)
         For Each childNode As TreeNode In parentNode.Nodes
             childNode.Checked = parentNode.Checked
             CheckAllChildNodes(childNode)
         Next
+    End Sub
+
+    Private Function NodesToArrayNodes() As List(Of Dictionary(Of String, Object))
+        Dim arrNodes As New List(Of Dictionary(Of String, Object))
+        Dim dict As New Dictionary(Of String, Object)
+        GetAllNodes(dict)
+        arrNodes.Add(dict)
+        Return arrNodes
+    End Function
+    Private Sub GetAllNodes(ByRef dict As Dictionary(Of String, Object), Optional ByVal _TreeNode As TreeNode = Nothing)
+        Dim dat As New Dictionary(Of String, Boolean)
+        If _TreeNode Is Nothing Then
+            For Each childNode As TreeNode In TreeView1.Nodes
+                If childNode.Checked = True And Not childNode.Name.Contains("-") Then
+                    For Each childActionNode As TreeNode In childNode.Nodes
+                        dat.Add(childActionNode.Name, childActionNode.Checked)
+                    Next
+                    dict.Add(childNode.Name, dat)
+                    GetAllNodes(dict, childNode)
+                End If
+            Next
+        Else
+            For Each childNode As TreeNode In _TreeNode.Nodes
+                If childNode.Checked = True And Not childNode.Name.Contains("-") Then
+                    For Each childActionNode As TreeNode In childNode.Nodes
+                        dat.Add(childActionNode.Name, childActionNode.Checked)
+                    Next
+                    dict.Add(childNode.Name, dat)
+                    GetAllNodes(dict, childNode)
+                End If
+            Next
+        End If
     End Sub
 
     Private Sub IsEveryChildChecked(ByVal parentNode As TreeNode, ByRef checkValue As Boolean)
@@ -464,12 +550,9 @@
         End If
     End Sub
 
-    Private Sub ToolStripButton2_Click(sender As Object, e As EventArgs) Handles ToolStripButton2.Click
-        'TreeView1.Nodes.
-        Dim menulist As New ArrayList
-
-        MsgBox(TreeView1.Nodes(1).Checked)
-
+    Private Sub ToolStripButton2_Click(sender As Object, e As EventArgs) Handles ToolSaveMenuAkses.Click
+        Dim ModelMenuList As New MUserListMenu
+        ModelMenuList.InsertMenuPrivileges(NodesToArrayNodes(), Me.userid)
     End Sub
 #End Region
 

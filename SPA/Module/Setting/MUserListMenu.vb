@@ -15,34 +15,59 @@
     Public Function GetListMenu(Optional parent As Integer = 0) As List(Of Dictionary(Of String, Object))
         Dim result As New List(Of Dictionary(Of String, Object))
         Dim ListMenu As New List(Of Dictionary(Of String, Object))
-        Me.StringSQL = "SELECT * FROM muserl WHERE menuparent ='" & parent & "' ORDER BY menuparent,menuid"
+        Me.StringSQL = "SELECT * FROM muserl WHERE menuparent ='" & parent & "' ORDER BY menuparent,`order`"
         Dim dict As New Dictionary(Of String, Object)
         result = MyBase.GetDataList()
         'If (result.Count > 0) Then
         For Each dat In result
-            dict.Add(dat("menuid") & "-" & dat("menuname").ToString, GetListMenu(dat("menuid")))
+            dict.Add(dat("menuid") & "-" & dat("menuname").ToString & "-" & dat("isform").ToString, GetListMenu(dat("menuid")))
         Next
         'End If
         ListMenu.Add(dict)
         Return ListMenu
     End Function
-    Public Function GetListMenuPrivileges(Optional parent As Integer = 0) As List(Of Dictionary(Of String, Object))
+    Public Function GetListMenuPrivileges(userid As String, Optional parent As Integer = 0) As List(Of Dictionary(Of Object, Object))
         Dim result As New List(Of Dictionary(Of String, Object))
-        Dim ListMenu As New List(Of Dictionary(Of String, Object))
-        Me.StringSQL = "SELECT * FROM muserl WHERE menuparent ='" & parent & "' ORDER BY menuparent,menuid"
-        Dim dict As New Dictionary(Of String, Object)
+        Dim ListMenu As New List(Of Dictionary(Of Object, Object))
+        Me.StringSQL = "SELECT T1.`menuid`,T1.`isform`,IF(ISNULL(T2.`menuid`),0,1) AS checked,IF(ISNULL(T2.`pcreate`),0,T2.`pcreate`) AS pcreate,IF(ISNULL(T2.`pcreate`),0,T2.`pupdate`) AS pupdate,IF(ISNULL(T2.`pcreate`),0,T2.`pdelete`) AS pdelete,IF(ISNULL(T2.`pcreate`),0,T2.`pview`) AS pview " & _
+                       "FROM muserl T1 LEFT JOIN (SELECT * FROM muserp WHERE `userid`='" & userid & "') T2 ON T1.`menuid` = T2.`menuid` WHERE menuparent ='" & parent & "' ORDER BY menuparent,`order`"
+        Dim dict As New Dictionary(Of Object, Object)
         result = MyBase.GetDataList()
         'If (result.Count > 0) Then
         For Each dat In result
-            dict.Add(dat("menuid") & "-" & dat("menuname").ToString, GetListMenu(dat("menuid")))
+            'dict.Add(dat("menuid") & "-" & dat("checked").ToString, GetListMenuPrivileges(userid, dat("menuid")))
+            dict.Add(dat, GetListMenuPrivileges(userid, dat("menuid")))
         Next
         'End If
         ListMenu.Add(dict)
         Return ListMenu
     End Function
-    Public Overloads Function InsertMenuPrivileges(menulist As ArrayList) As Integer
-        Me.StringSQL = "INSERT INTO " & TableName + "(menuid,userid,pcreate,pupdate,pdelete,pview) VALUES('" & menuname & "')"
-        Return MyBase.InsertData()
+    Public Overloads Function InsertMenuPrivileges(menulist As List(Of Dictionary(Of String, Object)), userid As String) As Integer
+        Dim values As String = ""
+        Dim pcreate As String = "1"
+        Dim pupdate As String = "1"
+        Dim pdelete As String = "1"
+        Dim pview As String = "1"
+        For Each dat In menulist
+            For Each keyDict As KeyValuePair(Of String, Object) In dat
+                'MsgBox(keyDict.Value.ToString())
+                For Each datAction In keyDict.Value
+                    If datAction.key = keyDict.Key.ToString & "-pcreate" Then pcreate = IIf(datAction.Value, "1", "0")
+                    If datAction.key = keyDict.Key.ToString & "-pupdate" Then pupdate = IIf(datAction.Value, "1", "0")
+                    If datAction.key = keyDict.Key.ToString & "-pdelete" Then pdelete = IIf(datAction.Value, "1", "0")
+                    If datAction.key = keyDict.Key.ToString & "-pview" Then pview = IIf(datAction.Value, "1", "0")
+                Next
+                values = values & "('" & keyDict.Key.ToString & "','" & userid & "','" & pcreate & "','" & pupdate & "','" & pdelete & "','" & pview & "'),"
+            Next keyDict
+        Next
+        values = values.Substring(0, values.Length - 1)
+        'MsgBox(values)
+        Me.StringSQL = "DELETE FROM muserp WHERE userid='" & userid & "'"
+        If MyBase.DeleteData() > 0 Then
+            Me.StringSQL = "INSERT INTO muserp (menuid,userid,pcreate,pupdate,pdelete,pview) VALUES " & values
+            Return MyBase.InsertData()
+        End If
+        Return 0
     End Function
     Function FindData(sSearch As String) As DataTable
         If Not String.IsNullOrEmpty(sSearch) Then
