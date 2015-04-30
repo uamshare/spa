@@ -94,9 +94,9 @@
             End With
             setButtonPager()
         Catch ex As Exception
-            Application.ShowStatus("Failed to RetrieveData = " & ex.Message, Color.Red)
+            MyApplication.ShowStatus("Failed to RetrieveData = " & ex.Message, WARNING_STAT)
         End Try
-        
+
     End Sub
     Private Function getCountSelectedData() As Integer
         Dim CountSelected As Integer = 0
@@ -167,7 +167,7 @@
             Me.lCountPage.Text = "of " & endofpage
             txtPageCurrent.Text = page
         Catch ex As Exception
-            Application.ShowStatus(ex.Message, Color.Red)
+            MyApplication.ShowStatus(ex.Message, WARNING_STAT)
         End Try
     End Sub
     Public Sub RetrieveFirst()
@@ -198,7 +198,7 @@
 #End Region
     Private Sub Form1_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         'MessageBox.Show("Form Load")
-        Application.ShowStatus(Me.Text & " Loaded")
+        MyApplication.ShowStatus(Me.Text & " Loaded")
         InitializeDataGridView()
         init()
         InitializeTreeView()
@@ -260,7 +260,7 @@
             FUserGroupAdd.TextBox1.Text = DataGridView1.Rows(getRowIndexSelected()).Cells("groupname").Value
             FUserGroupAdd.Show()
         Else
-            Application.ShowStatus("No data is selected", Color.Yellow)
+            MyApplication.ShowStatus("No data is selected", NOTICE_STAT)
         End If
 
     End Sub
@@ -287,12 +287,13 @@
                 'Application.ShowStatus("Deleted " & getCountSelectedData() & " data")
                 init()
             Else
-                Application.ShowStatus("No data is selected", Color.Yellow)
+                MyApplication.ShowStatus("No data is selected", NOTICE_STAT)
             End If
 
         End If
     End Sub
     Private Sub ToolMenuAkses_Click(sender As Object, e As EventArgs) Handles ToolMenuAkses.Click
+        'Cursor.Current = Cursors.WaitCursor
         Dim ModelMenuList As New MUserListMenu
         If getCountSelectedData() > 0 Then
             Me.userid = CStr(DataGridView1.Rows(getRowIndexSelected()).Cells("groupid").Value)
@@ -304,8 +305,9 @@
             Next
             AddHandler TreeView1.AfterCheck, AddressOf TreeView1_AfterCheck
         Else
-            Application.ShowStatus("No data is selected", Color.Yellow)
+            MyApplication.ShowStatus("No data is selected", NOTICE_STAT)
         End If
+        'Cursor.Current = Cursors.Default
     End Sub
 
     Private Sub ToolFind_Click(sender As Object, e As EventArgs) Handles ToolFind.Click
@@ -368,16 +370,19 @@
 #Region "TreeView"
 
     Private Sub InitializeTreeView()
+        Cursor.Current = Cursors.WaitCursor
         Dim ModelMenuList As New MUserListMenu
         TreeView1.Nodes.Clear()
         TreeView1.CheckBoxes = True
 
         Dim result As List(Of Dictionary(Of String, Object)) = ModelMenuList.GetListMenu()
         RetrieveTreeNode(result)
+        Cursor.Current = Cursors.Default
     End Sub
 
     Private Sub RetrieveTreeNode(result As List(Of Dictionary(Of String, Object)), Optional _TreeNode As TreeNode = Nothing)
         Dim node As TreeNode
+        'Cursor.Current = Cursors.WaitCursor
         For Each Dict In result
             For Each keyDict As KeyValuePair(Of String, Object) In Dict
                 Dim strArr() As String
@@ -397,10 +402,12 @@
                 RetrieveTreeNode(keyDict.Value, node)
             Next keyDict
         Next
+        'Cursor.Current = Cursors.Default
     End Sub
 
     Private Sub RetrieveTreeNodeActive(result As List(Of Dictionary(Of Object, Object)), Optional _TreeNode As TreeNode = Nothing)
         Dim node As TreeNode
+        'Cursor.Current = Cursors.WaitCursor
         For Each Dict In result
             For Each keyDict As KeyValuePair(Of Object, Object) In Dict
                 Dim strArr As Object
@@ -421,6 +428,7 @@
                 
             Next keyDict
         Next
+        'Cursor.Current = Cursors.Default
     End Sub
     Private Sub TreeView1_AfterCheck(sender As Object, e As TreeViewEventArgs) Handles TreeView1.AfterCheck
         RemoveHandler TreeView1.AfterCheck, AddressOf TreeView1_AfterCheck
@@ -550,7 +558,7 @@
         End If
     End Sub
 
-    Private Sub ToolStripButton2_Click(sender As Object, e As EventArgs) Handles ToolSaveMenuAkses.Click
+    Private Sub ToolSaveMenuAkses_Click(sender As Object, e As EventArgs) Handles ToolSaveMenuAkses.Click
         Dim ModelMenuList As New MUserListMenu
         ModelMenuList.InsertMenuPrivileges(NodesToArrayNodes(), Me.userid)
     End Sub

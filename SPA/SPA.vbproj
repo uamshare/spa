@@ -108,9 +108,18 @@
     <Import Include="System.Threading.Tasks" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Libraries\Application.vb" />
+    <Compile Include="ApplicationEvents.vb" />
+    <Compile Include="Libraries\MyApplication.vb" />
     <Compile Include="Libraries\BaseConnection.vb" />
     <Compile Include="Libraries\CdataAccess.vb" />
+    <Compile Include="Libraries\ErrorLogger.vb" />
+    <Compile Include="Libraries\EventLogger.vb" />
+    <Compile Include="Module\Inventory\FTanamanMasuk.Designer.vb">
+      <DependentUpon>FTanamanMasuk.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Module\Inventory\FTanamanMasuk.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="Module\MainForm.Designer.vb">
       <DependentUpon>MainForm.vb</DependentUpon>
     </Compile>
@@ -142,6 +151,11 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
+    <Compile Include="My Project\Resources1.Designer.vb">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
     <Compile Include="My Project\Settings.Designer.vb">
       <AutoGen>True</AutoGen>
       <DependentUpon>Settings.settings</DependentUpon>
@@ -160,9 +174,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="My Project\Resources.resx">
       <Generator>VbMyResourcesResXFileCodeGenerator</Generator>
-      <LastGenOutput>Resources.Designer.vb</LastGenOutput>
       <CustomToolNamespace>My.Resources</CustomToolNamespace>
       <SubType>Designer</SubType>
+      <LastGenOutput>Resources1.Designer.vb</LastGenOutput>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
@@ -181,7 +195,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Module\Accounting\" />
-    <Folder Include="Module\Inventory\" />
     <Folder Include="Module\Sales\" />
     <Folder Include="Report\" />
   </ItemGroup>
@@ -219,9 +232,6 @@
     <None Include="Resource\16x16\icon-info.png" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\icon_find.bmp" />
-  </ItemGroup>
-  <ItemGroup>
     <None Include="Resource\76x76\feature.search.png" />
   </ItemGroup>
   <ItemGroup>
@@ -235,9 +245,6 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resource\16x16\resultset_last.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\icon_error.png" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Resource\16x16\icon-warning.png" />
@@ -270,6 +277,63 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resource\76x76\feature.calendar.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resource\72x72\add2.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resource\72x72\add1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resource\72x72\edit.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resource\72x72\trush.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resource\72x72\database.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resource\72x72\find.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resource\72x72\print2.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resource\72x72\help1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resource\72x72\help72.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resource\72x72\refresh.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resource\72x72\saveall.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resource\72x72\save.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resource\72x72\save--.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resource\72x72\inventory2.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resource\72x72\production.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resource\72x72\sales2.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resource\72x72\accounting3.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resource\72x72\setting3.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resource\72x72\accounting2.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.VisualBasic.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

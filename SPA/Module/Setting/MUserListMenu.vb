@@ -30,12 +30,10 @@
         Dim result As New List(Of Dictionary(Of String, Object))
         Dim ListMenu As New List(Of Dictionary(Of Object, Object))
         Me.StringSQL = "SELECT T1.`menuid`,T1.`isform`,IF(ISNULL(T2.`menuid`),0,1) AS checked,IF(ISNULL(T2.`pcreate`),0,T2.`pcreate`) AS pcreate,IF(ISNULL(T2.`pcreate`),0,T2.`pupdate`) AS pupdate,IF(ISNULL(T2.`pcreate`),0,T2.`pdelete`) AS pdelete,IF(ISNULL(T2.`pcreate`),0,T2.`pview`) AS pview " & _
-                       "FROM muserl T1 LEFT JOIN (SELECT * FROM muserp WHERE `userid`='" & userid & "') T2 ON T1.`menuid` = T2.`menuid` WHERE menuparent ='" & parent & "' ORDER BY menuparent,`order`"
+                       "FROM muserl T1 LEFT JOIN (SELECT * FROM muserp WHERE `groupid`='" & userid & "') T2 ON T1.`menuid` = T2.`menuid` WHERE menuparent ='" & parent & "' ORDER BY menuparent,`order`"
         Dim dict As New Dictionary(Of Object, Object)
         result = MyBase.GetDataList()
-        'If (result.Count > 0) Then
         For Each dat In result
-            'dict.Add(dat("menuid") & "-" & dat("checked").ToString, GetListMenuPrivileges(userid, dat("menuid")))
             dict.Add(dat, GetListMenuPrivileges(userid, dat("menuid")))
         Next
         'End If
@@ -61,10 +59,10 @@
             Next keyDict
         Next
         values = values.Substring(0, values.Length - 1)
-        'MsgBox(values)
-        Me.StringSQL = "DELETE FROM muserp WHERE userid='" & userid & "'"
-        If MyBase.DeleteData() > 0 Then
-            Me.StringSQL = "INSERT INTO muserp (menuid,userid,pcreate,pupdate,pdelete,pview) VALUES " & values
+
+        Me.StringSQL = "DELETE FROM muserp WHERE groupid='" & userid & "'"
+        If MyBase.DeleteData() > -1 Then
+            Me.StringSQL = "INSERT INTO muserp (menuid,groupid,pcreate,pupdate,pdelete,pview) VALUES " & values
             Return MyBase.InsertData()
         End If
         Return 0
@@ -101,10 +99,9 @@
                 Next
             End If
         Catch ex As MySql.Data.MySqlClient.MySqlException
-            Application.ShowStatus("Error " & ex.Number & " has occurred: " & ex.Message, Color.Red,
-                                   Global.SPA.My.Resources.icon_warning, True, 10000)
+            MyApplication.ShowStatus("Error " & ex.Number & " has occurred: " & ex.Message, NOTICE_STAT, True, 10000)
         End Try
-        CommitTrans(" data have been deleted ") 'Commit All Transaction
+        CommitTrans(" data have been deleted ", "delete") 'Commit All Transaction
         Return rowCountAffected
     End Function
 End Class

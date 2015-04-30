@@ -30,23 +30,12 @@ Partial Class FUserGroup
         Me.cmbperpage = New System.Windows.Forms.ToolStripComboBox()
         Me.ToolStripLabel1 = New System.Windows.Forms.ToolStripLabel()
         Me.ToolStripSeparator3 = New System.Windows.Forms.ToolStripSeparator()
-        Me.ToolFisrt = New System.Windows.Forms.ToolStripButton()
-        Me.ToolPrev = New System.Windows.Forms.ToolStripButton()
         Me.ToolStripSeparator1 = New System.Windows.Forms.ToolStripSeparator()
         Me.txtPageCurrent = New System.Windows.Forms.ToolStripTextBox()
         Me.lCountPage = New System.Windows.Forms.ToolStripLabel()
         Me.ToolStripSeparator2 = New System.Windows.Forms.ToolStripSeparator()
-        Me.ToolNext = New System.Windows.Forms.ToolStripButton()
-        Me.ToolLast = New System.Windows.Forms.ToolStripButton()
         Me.lpageinfo = New System.Windows.Forms.ToolStripLabel()
         Me.Tool1 = New System.Windows.Forms.ToolStrip()
-        Me.ToolAdd = New System.Windows.Forms.ToolStripButton()
-        Me.ToolEdit = New System.Windows.Forms.ToolStripButton()
-        Me.ToolDelete = New System.Windows.Forms.ToolStripButton()
-        Me.ToolMenuAkses = New System.Windows.Forms.ToolStripButton()
-        Me.ToolHelp = New System.Windows.Forms.ToolStripButton()
-        Me.ToolRefresh = New System.Windows.Forms.ToolStripButton()
-        Me.ToolFind = New System.Windows.Forms.ToolStripButton()
         Me.ToolTextFind = New System.Windows.Forms.ToolStripTextBox()
         Me.Panel2 = New System.Windows.Forms.Panel()
         Me.Panel3 = New System.Windows.Forms.Panel()
@@ -55,6 +44,20 @@ Partial Class FUserGroup
         Me.ToolStripLabel3 = New System.Windows.Forms.ToolStripLabel()
         Me.ToolStripButton1 = New System.Windows.Forms.ToolStripButton()
         Me.ToolSaveMenuAkses = New System.Windows.Forms.ToolStripButton()
+        Me.ToolFisrt = New System.Windows.Forms.ToolStripButton()
+        Me.ToolPrev = New System.Windows.Forms.ToolStripButton()
+        Me.ToolNext = New System.Windows.Forms.ToolStripButton()
+        Me.ToolLast = New System.Windows.Forms.ToolStripButton()
+        Me.ToolAdd = New System.Windows.Forms.ToolStripButton()
+        Me.ToolEdit = New System.Windows.Forms.ToolStripButton()
+        Me.ToolDelete = New System.Windows.Forms.ToolStripButton()
+        Me.ToolMenuAkses = New System.Windows.Forms.ToolStripButton()
+        Me.ToolPrint = New System.Windows.Forms.ToolStripButton()
+        Me.ToolHelp = New System.Windows.Forms.ToolStripButton()
+        Me.ToolRefresh = New System.Windows.Forms.ToolStripButton()
+        Me.ToolFind = New System.Windows.Forms.ToolStripButton()
+        Me.ToolStripSeparator4 = New System.Windows.Forms.ToolStripSeparator()
+        Me.ToolStripSeparator5 = New System.Windows.Forms.ToolStripSeparator()
         Me.Panel1.SuspendLayout()
         CType(Me.DataGridView1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.ToolStrip1.SuspendLayout()
@@ -72,7 +75,7 @@ Partial Class FUserGroup
         Me.Panel1.Dock = System.Windows.Forms.DockStyle.Left
         Me.Panel1.Location = New System.Drawing.Point(0, 0)
         Me.Panel1.Name = "Panel1"
-        Me.Panel1.Size = New System.Drawing.Size(693, 447)
+        Me.Panel1.Size = New System.Drawing.Size(693, 529)
         Me.Panel1.TabIndex = 7
         '
         'DataGridView1
@@ -89,7 +92,7 @@ Partial Class FUserGroup
         Me.ToolStrip1.Dock = System.Windows.Forms.DockStyle.Bottom
         Me.ToolStrip1.GripStyle = System.Windows.Forms.ToolStripGripStyle.Hidden
         Me.ToolStrip1.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.ToolStripLabel2, Me.cmbperpage, Me.ToolStripLabel1, Me.ToolStripSeparator3, Me.ToolFisrt, Me.ToolPrev, Me.ToolStripSeparator1, Me.txtPageCurrent, Me.lCountPage, Me.ToolStripSeparator2, Me.ToolNext, Me.ToolLast, Me.lpageinfo})
-        Me.ToolStrip1.Location = New System.Drawing.Point(0, 422)
+        Me.ToolStrip1.Location = New System.Drawing.Point(0, 504)
         Me.ToolStrip1.Name = "ToolStrip1"
         Me.ToolStrip1.RenderMode = System.Windows.Forms.ToolStripRenderMode.System
         Me.ToolStrip1.Size = New System.Drawing.Size(693, 25)
@@ -119,24 +122,6 @@ Partial Class FUserGroup
         Me.ToolStripSeparator3.Name = "ToolStripSeparator3"
         Me.ToolStripSeparator3.Size = New System.Drawing.Size(6, 25)
         '
-        'ToolFisrt
-        '
-        Me.ToolFisrt.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image
-        Me.ToolFisrt.Image = Global.SPA.My.Resources.Resources.resultset_first
-        Me.ToolFisrt.ImageTransparentColor = System.Drawing.Color.Magenta
-        Me.ToolFisrt.Name = "ToolFisrt"
-        Me.ToolFisrt.Size = New System.Drawing.Size(23, 22)
-        Me.ToolFisrt.Text = "First"
-        '
-        'ToolPrev
-        '
-        Me.ToolPrev.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image
-        Me.ToolPrev.Image = Global.SPA.My.Resources.Resources.resultset_previous
-        Me.ToolPrev.ImageTransparentColor = System.Drawing.Color.Magenta
-        Me.ToolPrev.Name = "ToolPrev"
-        Me.ToolPrev.Size = New System.Drawing.Size(23, 22)
-        Me.ToolPrev.Text = "Previous"
-        '
         'ToolStripSeparator1
         '
         Me.ToolStripSeparator1.Name = "ToolStripSeparator1"
@@ -159,6 +144,117 @@ Partial Class FUserGroup
         Me.ToolStripSeparator2.Name = "ToolStripSeparator2"
         Me.ToolStripSeparator2.Size = New System.Drawing.Size(6, 25)
         '
+        'lpageinfo
+        '
+        Me.lpageinfo.Alignment = System.Windows.Forms.ToolStripItemAlignment.Right
+        Me.lpageinfo.Name = "lpageinfo"
+        Me.lpageinfo.Size = New System.Drawing.Size(102, 22)
+        Me.lpageinfo.Text = "1 - 20 as 100 Rows"
+        '
+        'Tool1
+        '
+        Me.Tool1.BackColor = System.Drawing.SystemColors.ActiveCaption
+        Me.Tool1.GripStyle = System.Windows.Forms.ToolStripGripStyle.Hidden
+        Me.Tool1.ImageScalingSize = New System.Drawing.Size(32, 32)
+        Me.Tool1.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.ToolAdd, Me.ToolEdit, Me.ToolDelete, Me.ToolPrint, Me.ToolStripSeparator4, Me.ToolMenuAkses, Me.ToolStripSeparator5, Me.ToolHelp, Me.ToolRefresh, Me.ToolFind, Me.ToolTextFind})
+        Me.Tool1.Location = New System.Drawing.Point(0, 0)
+        Me.Tool1.Name = "Tool1"
+        Me.Tool1.RenderMode = System.Windows.Forms.ToolStripRenderMode.System
+        Me.Tool1.Size = New System.Drawing.Size(693, 39)
+        Me.Tool1.TabIndex = 9
+        Me.Tool1.Text = "Tool1"
+        '
+        'ToolTextFind
+        '
+        Me.ToolTextFind.Alignment = System.Windows.Forms.ToolStripItemAlignment.Right
+        Me.ToolTextFind.Name = "ToolTextFind"
+        Me.ToolTextFind.Size = New System.Drawing.Size(250, 39)
+        '
+        'Panel2
+        '
+        Me.Panel2.Dock = System.Windows.Forms.DockStyle.Left
+        Me.Panel2.Location = New System.Drawing.Point(693, 0)
+        Me.Panel2.Name = "Panel2"
+        Me.Panel2.Size = New System.Drawing.Size(35, 529)
+        Me.Panel2.TabIndex = 9
+        '
+        'Panel3
+        '
+        Me.Panel3.Controls.Add(Me.TreeView1)
+        Me.Panel3.Controls.Add(Me.ToolStrip2)
+        Me.Panel3.Dock = System.Windows.Forms.DockStyle.Fill
+        Me.Panel3.Location = New System.Drawing.Point(728, 0)
+        Me.Panel3.Name = "Panel3"
+        Me.Panel3.Size = New System.Drawing.Size(469, 529)
+        Me.Panel3.TabIndex = 10
+        '
+        'TreeView1
+        '
+        Me.TreeView1.BackColor = System.Drawing.SystemColors.AppWorkspace
+        Me.TreeView1.Dock = System.Windows.Forms.DockStyle.Fill
+        Me.TreeView1.Location = New System.Drawing.Point(0, 39)
+        Me.TreeView1.Name = "TreeView1"
+        Me.TreeView1.Size = New System.Drawing.Size(469, 490)
+        Me.TreeView1.TabIndex = 12
+        '
+        'ToolStrip2
+        '
+        Me.ToolStrip2.BackColor = System.Drawing.SystemColors.ActiveCaption
+        Me.ToolStrip2.GripStyle = System.Windows.Forms.ToolStripGripStyle.Hidden
+        Me.ToolStrip2.ImageScalingSize = New System.Drawing.Size(32, 32)
+        Me.ToolStrip2.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.ToolStripLabel3, Me.ToolStripButton1, Me.ToolSaveMenuAkses})
+        Me.ToolStrip2.Location = New System.Drawing.Point(0, 0)
+        Me.ToolStrip2.Name = "ToolStrip2"
+        Me.ToolStrip2.RenderMode = System.Windows.Forms.ToolStripRenderMode.System
+        Me.ToolStrip2.Size = New System.Drawing.Size(469, 39)
+        Me.ToolStrip2.TabIndex = 11
+        Me.ToolStrip2.Text = "ToolStrip2"
+        '
+        'ToolStripLabel3
+        '
+        Me.ToolStripLabel3.Name = "ToolStripLabel3"
+        Me.ToolStripLabel3.Size = New System.Drawing.Size(71, 36)
+        Me.ToolStripLabel3.Text = "Menu Akses"
+        '
+        'ToolStripButton1
+        '
+        Me.ToolStripButton1.Alignment = System.Windows.Forms.ToolStripItemAlignment.Right
+        Me.ToolStripButton1.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image
+        Me.ToolStripButton1.Image = Global.SPA.My.Resources.Resources.refresh1
+        Me.ToolStripButton1.ImageTransparentColor = System.Drawing.Color.Magenta
+        Me.ToolStripButton1.Name = "ToolStripButton1"
+        Me.ToolStripButton1.Size = New System.Drawing.Size(36, 36)
+        Me.ToolStripButton1.Text = "ToolStripButton1"
+        '
+        'ToolSaveMenuAkses
+        '
+        Me.ToolSaveMenuAkses.Alignment = System.Windows.Forms.ToolStripItemAlignment.Right
+        Me.ToolSaveMenuAkses.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image
+        Me.ToolSaveMenuAkses.Image = Global.SPA.My.Resources.Resources.saveall
+        Me.ToolSaveMenuAkses.ImageTransparentColor = System.Drawing.Color.Magenta
+        Me.ToolSaveMenuAkses.Name = "ToolSaveMenuAkses"
+        Me.ToolSaveMenuAkses.Size = New System.Drawing.Size(36, 36)
+        Me.ToolSaveMenuAkses.Text = "ToolSaveMenuAkses"
+        Me.ToolSaveMenuAkses.ToolTipText = "Simpan Akses Menu"
+        '
+        'ToolFisrt
+        '
+        Me.ToolFisrt.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image
+        Me.ToolFisrt.Image = Global.SPA.My.Resources.Resources.resultset_first
+        Me.ToolFisrt.ImageTransparentColor = System.Drawing.Color.Magenta
+        Me.ToolFisrt.Name = "ToolFisrt"
+        Me.ToolFisrt.Size = New System.Drawing.Size(23, 22)
+        Me.ToolFisrt.Text = "First"
+        '
+        'ToolPrev
+        '
+        Me.ToolPrev.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image
+        Me.ToolPrev.Image = Global.SPA.My.Resources.Resources.resultset_previous
+        Me.ToolPrev.ImageTransparentColor = System.Drawing.Color.Magenta
+        Me.ToolPrev.Name = "ToolPrev"
+        Me.ToolPrev.Size = New System.Drawing.Size(23, 22)
+        Me.ToolPrev.Text = "Previous"
+        '
         'ToolNext
         '
         Me.ToolNext.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image
@@ -177,30 +273,10 @@ Partial Class FUserGroup
         Me.ToolLast.Size = New System.Drawing.Size(23, 22)
         Me.ToolLast.Text = "Last"
         '
-        'lpageinfo
-        '
-        Me.lpageinfo.Alignment = System.Windows.Forms.ToolStripItemAlignment.Right
-        Me.lpageinfo.Name = "lpageinfo"
-        Me.lpageinfo.Size = New System.Drawing.Size(102, 22)
-        Me.lpageinfo.Text = "1 - 20 as 100 Rows"
-        '
-        'Tool1
-        '
-        Me.Tool1.BackColor = System.Drawing.SystemColors.ActiveCaption
-        Me.Tool1.GripStyle = System.Windows.Forms.ToolStripGripStyle.Hidden
-        Me.Tool1.ImageScalingSize = New System.Drawing.Size(32, 32)
-        Me.Tool1.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.ToolAdd, Me.ToolEdit, Me.ToolDelete, Me.ToolMenuAkses, Me.ToolHelp, Me.ToolRefresh, Me.ToolFind, Me.ToolTextFind})
-        Me.Tool1.Location = New System.Drawing.Point(0, 0)
-        Me.Tool1.Name = "Tool1"
-        Me.Tool1.RenderMode = System.Windows.Forms.ToolStripRenderMode.System
-        Me.Tool1.Size = New System.Drawing.Size(693, 39)
-        Me.Tool1.TabIndex = 9
-        Me.Tool1.Text = "Tool1"
-        '
         'ToolAdd
         '
         Me.ToolAdd.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image
-        Me.ToolAdd.Image = Global.SPA.My.Resources.Resources.add
+        Me.ToolAdd.Image = Global.SPA.My.Resources.Resources.add1
         Me.ToolAdd.ImageTransparentColor = System.Drawing.Color.Magenta
         Me.ToolAdd.Name = "ToolAdd"
         Me.ToolAdd.Size = New System.Drawing.Size(36, 36)
@@ -209,7 +285,7 @@ Partial Class FUserGroup
         'ToolEdit
         '
         Me.ToolEdit.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image
-        Me.ToolEdit.Image = Global.SPA.My.Resources.Resources.edit
+        Me.ToolEdit.Image = Global.SPA.My.Resources.Resources.edit1
         Me.ToolEdit.ImageTransparentColor = System.Drawing.Color.Magenta
         Me.ToolEdit.Name = "ToolEdit"
         Me.ToolEdit.Size = New System.Drawing.Size(36, 36)
@@ -218,7 +294,7 @@ Partial Class FUserGroup
         'ToolDelete
         '
         Me.ToolDelete.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image
-        Me.ToolDelete.Image = Global.SPA.My.Resources.Resources.delete
+        Me.ToolDelete.Image = Global.SPA.My.Resources.Resources.trush
         Me.ToolDelete.ImageTransparentColor = System.Drawing.Color.Magenta
         Me.ToolDelete.Name = "ToolDelete"
         Me.ToolDelete.Size = New System.Drawing.Size(36, 36)
@@ -227,17 +303,26 @@ Partial Class FUserGroup
         'ToolMenuAkses
         '
         Me.ToolMenuAkses.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image
-        Me.ToolMenuAkses.Image = Global.SPA.My.Resources.Resources.feature_calendar
+        Me.ToolMenuAkses.Image = Global.SPA.My.Resources.Resources.database
         Me.ToolMenuAkses.ImageTransparentColor = System.Drawing.Color.Magenta
         Me.ToolMenuAkses.Name = "ToolMenuAkses"
         Me.ToolMenuAkses.Size = New System.Drawing.Size(36, 36)
         Me.ToolMenuAkses.Text = "ToolStripButton3"
         Me.ToolMenuAkses.ToolTipText = "Menu Akses"
         '
+        'ToolPrint
+        '
+        Me.ToolPrint.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image
+        Me.ToolPrint.Image = Global.SPA.My.Resources.Resources.print2
+        Me.ToolPrint.ImageTransparentColor = System.Drawing.Color.Magenta
+        Me.ToolPrint.Name = "ToolPrint"
+        Me.ToolPrint.Size = New System.Drawing.Size(36, 36)
+        Me.ToolPrint.Text = "Print"
+        '
         'ToolHelp
         '
         Me.ToolHelp.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image
-        Me.ToolHelp.Image = Global.SPA.My.Resources.Resources.questionmark
+        Me.ToolHelp.Image = Global.SPA.My.Resources.Resources.help72
         Me.ToolHelp.ImageTransparentColor = System.Drawing.Color.Magenta
         Me.ToolHelp.Name = "ToolHelp"
         Me.ToolHelp.Size = New System.Drawing.Size(36, 36)
@@ -247,7 +332,7 @@ Partial Class FUserGroup
         '
         Me.ToolRefresh.Alignment = System.Windows.Forms.ToolStripItemAlignment.Right
         Me.ToolRefresh.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image
-        Me.ToolRefresh.Image = Global.SPA.My.Resources.Resources.refresh
+        Me.ToolRefresh.Image = Global.SPA.My.Resources.Resources.refresh1
         Me.ToolRefresh.ImageTransparentColor = System.Drawing.Color.Magenta
         Me.ToolRefresh.Name = "ToolRefresh"
         Me.ToolRefresh.Size = New System.Drawing.Size(36, 36)
@@ -263,83 +348,21 @@ Partial Class FUserGroup
         Me.ToolFind.Size = New System.Drawing.Size(36, 36)
         Me.ToolFind.Text = "Find"
         '
-        'ToolTextFind
+        'ToolStripSeparator4
         '
-        Me.ToolTextFind.Alignment = System.Windows.Forms.ToolStripItemAlignment.Right
-        Me.ToolTextFind.Name = "ToolTextFind"
-        Me.ToolTextFind.Size = New System.Drawing.Size(250, 39)
+        Me.ToolStripSeparator4.Name = "ToolStripSeparator4"
+        Me.ToolStripSeparator4.Size = New System.Drawing.Size(6, 39)
         '
-        'Panel2
+        'ToolStripSeparator5
         '
-        Me.Panel2.Dock = System.Windows.Forms.DockStyle.Left
-        Me.Panel2.Location = New System.Drawing.Point(693, 0)
-        Me.Panel2.Name = "Panel2"
-        Me.Panel2.Size = New System.Drawing.Size(35, 447)
-        Me.Panel2.TabIndex = 9
-        '
-        'Panel3
-        '
-        Me.Panel3.Controls.Add(Me.TreeView1)
-        Me.Panel3.Controls.Add(Me.ToolStrip2)
-        Me.Panel3.Dock = System.Windows.Forms.DockStyle.Left
-        Me.Panel3.Location = New System.Drawing.Point(728, 0)
-        Me.Panel3.Name = "Panel3"
-        Me.Panel3.Size = New System.Drawing.Size(372, 447)
-        Me.Panel3.TabIndex = 10
-        '
-        'TreeView1
-        '
-        Me.TreeView1.Dock = System.Windows.Forms.DockStyle.Fill
-        Me.TreeView1.Location = New System.Drawing.Point(0, 39)
-        Me.TreeView1.Name = "TreeView1"
-        Me.TreeView1.Size = New System.Drawing.Size(372, 408)
-        Me.TreeView1.TabIndex = 12
-        '
-        'ToolStrip2
-        '
-        Me.ToolStrip2.BackColor = System.Drawing.SystemColors.ActiveCaption
-        Me.ToolStrip2.GripStyle = System.Windows.Forms.ToolStripGripStyle.Hidden
-        Me.ToolStrip2.ImageScalingSize = New System.Drawing.Size(32, 32)
-        Me.ToolStrip2.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.ToolStripLabel3, Me.ToolStripButton1, Me.ToolSaveMenuAkses})
-        Me.ToolStrip2.Location = New System.Drawing.Point(0, 0)
-        Me.ToolStrip2.Name = "ToolStrip2"
-        Me.ToolStrip2.RenderMode = System.Windows.Forms.ToolStripRenderMode.System
-        Me.ToolStrip2.Size = New System.Drawing.Size(372, 39)
-        Me.ToolStrip2.TabIndex = 11
-        Me.ToolStrip2.Text = "ToolStrip2"
-        '
-        'ToolStripLabel3
-        '
-        Me.ToolStripLabel3.Name = "ToolStripLabel3"
-        Me.ToolStripLabel3.Size = New System.Drawing.Size(71, 36)
-        Me.ToolStripLabel3.Text = "Menu Akses"
-        '
-        'ToolStripButton1
-        '
-        Me.ToolStripButton1.Alignment = System.Windows.Forms.ToolStripItemAlignment.Right
-        Me.ToolStripButton1.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image
-        Me.ToolStripButton1.Image = Global.SPA.My.Resources.Resources.refresh
-        Me.ToolStripButton1.ImageTransparentColor = System.Drawing.Color.Magenta
-        Me.ToolStripButton1.Name = "ToolStripButton1"
-        Me.ToolStripButton1.Size = New System.Drawing.Size(36, 36)
-        Me.ToolStripButton1.Text = "ToolStripButton1"
-        '
-        'ToolSaveMenuAkses
-        '
-        Me.ToolSaveMenuAkses.Alignment = System.Windows.Forms.ToolStripItemAlignment.Right
-        Me.ToolSaveMenuAkses.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image
-        Me.ToolSaveMenuAkses.Image = Global.SPA.My.Resources.Resources.save
-        Me.ToolSaveMenuAkses.ImageTransparentColor = System.Drawing.Color.Magenta
-        Me.ToolSaveMenuAkses.Name = "ToolSaveMenuAkses"
-        Me.ToolSaveMenuAkses.Size = New System.Drawing.Size(36, 36)
-        Me.ToolSaveMenuAkses.Text = "ToolSaveMenuAkses"
-        Me.ToolSaveMenuAkses.ToolTipText = "Simpan Akses Menu"
+        Me.ToolStripSeparator5.Name = "ToolStripSeparator5"
+        Me.ToolStripSeparator5.Size = New System.Drawing.Size(6, 39)
         '
         'FUserGroup
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(1104, 447)
+        Me.ClientSize = New System.Drawing.Size(1197, 529)
         Me.Controls.Add(Me.Panel3)
         Me.Controls.Add(Me.Panel2)
         Me.Controls.Add(Me.Panel1)
@@ -392,5 +415,8 @@ Partial Class FUserGroup
     Friend WithEvents ToolStripButton1 As System.Windows.Forms.ToolStripButton
     Friend WithEvents ToolSaveMenuAkses As System.Windows.Forms.ToolStripButton
     Friend WithEvents ToolMenuAkses As System.Windows.Forms.ToolStripButton
+    Friend WithEvents ToolPrint As System.Windows.Forms.ToolStripButton
+    Friend WithEvents ToolStripSeparator4 As System.Windows.Forms.ToolStripSeparator
+    Friend WithEvents ToolStripSeparator5 As System.Windows.Forms.ToolStripSeparator
 
 End Class

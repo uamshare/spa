@@ -45,10 +45,9 @@
                 Next
             End If
         Catch ex As MySql.Data.MySqlClient.MySqlException
-            Application.ShowStatus("Error " & ex.Number & " has occurred: " & ex.Message, Color.Red,
-                                   Global.SPA.My.Resources.icon_warning, True, 10000)
+            MyApplication.ShowStatus("Error " & ex.Number & " has occurred: " & NOTICE_STAT, True, 10000)
         End Try
-        CommitTrans(" data have been deleted ") 'Commit All Transaction
+        CommitTrans(" data have been deleted ", "delete") 'Commit All Transaction
         Return rowCountAffected
     End Function
 
