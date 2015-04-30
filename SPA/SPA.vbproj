@@ -141,6 +141,13 @@
     </Compile>
     <Compile Include="Module\Setting\MUserGroup.vb" />
     <Compile Include="Module\Setting\MUserListMenu.vb" />
+    <Compile Include="Module\Setting\MUsers.vb" />
+    <Compile Include="Module\SplashScreen1.Designer.vb">
+      <DependentUpon>SplashScreen1.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Module\SplashScreen1.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="My Project\AssemblyInfo.vb" />
     <Compile Include="My Project\Application.Designer.vb">
       <AutoGen>True</AutoGen>
@@ -171,6 +178,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Module\Setting\FUserGroup.resx">
       <DependentUpon>FUserGroup.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Module\SplashScreen1.resx">
+      <DependentUpon>SplashScreen1.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="My Project\Resources.resx">
       <Generator>VbMyResourcesResXFileCodeGenerator</Generator>
@@ -334,6 +344,12 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resource\72x72\accounting2.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resource\72x72\accounting77.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resource\72x72\settings77.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.VisualBasic.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

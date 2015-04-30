@@ -78,7 +78,7 @@ Public Class ErrorLogger
             values = "('" & title & "','" & _
                         stkTrace & "','" & _
                         My.Settings.server & "','" & _
-                        MyApplication.PUSERID & "','" & _
+                        MUsers.UserInfo()("userid") & "','" & _
                         msg & "','" & _
                         logaction & "','" & _
                         logtype & "')"

@@ -10,6 +10,13 @@
         ToolEdit.Enabled = False
         ToolDelete.Enabled = False
         ToolMenuAkses.Enabled = False
+
+        'Set Akses Menu User
+        ToolAdd.Visible = MUsers.UserListMenuPrivileges()(Me.Name)("pcreate")
+        ToolEdit.Visible = MUsers.UserListMenuPrivileges()(Me.Name)("pupdate")
+        ToolMenuAkses.Visible = MUsers.UserListMenuPrivileges()(Me.Name)("pupdate")
+        ToolDelete.Visible = MUsers.UserListMenuPrivileges()(Me.Name)("pdelete")
+
         Model.limitrecord = 25
         RetrieveData()
         '-------------
@@ -393,7 +400,7 @@
                     node = _TreeNode.Nodes.Add(strArr(0), strArr(1))
                 End If
                 If strArr(2) = "1" Then
-                    node.Nodes.Add(strArr(0) & "-pview", "Lihat")
+                    'node.Nodes.Add(strArr(0) & "-pview", "Lihat")
                     node.Nodes.Add(strArr(0) & "-pcreate", "Tambah")
                     node.Nodes.Add(strArr(0) & "-pupdate", "Perbaiki")
                     node.Nodes.Add(strArr(0) & "-pdelete", "Hapus")
@@ -407,28 +414,33 @@
 
     Private Sub RetrieveTreeNodeActive(result As List(Of Dictionary(Of Object, Object)), Optional _TreeNode As TreeNode = Nothing)
         Dim node As TreeNode
-        'Cursor.Current = Cursors.WaitCursor
-        For Each Dict In result
-            For Each keyDict As KeyValuePair(Of Object, Object) In Dict
-                Dim strArr As Object
-                strArr = keyDict.Key
-                If _TreeNode Is Nothing Then
-                    node = TreeView1.Nodes(strArr("menuid").ToString)
-                Else
-                    node = _TreeNode.Nodes(strArr("menuid").ToString)
-                End If
-                node.Checked = CBool(strArr("checked"))
-                RetrieveTreeNodeActive(keyDict.Value, node)
-                If strArr("isform") = "1" Then
-                    node.Nodes(strArr("menuid").ToString & "-pview").Checked = CBool(strArr("pview"))
-                    node.Nodes(strArr("menuid").ToString & "-pcreate").Checked = CBool(strArr("pcreate"))
-                    node.Nodes(strArr("menuid").ToString & "-pupdate").Checked = CBool(strArr("pupdate"))
-                    node.Nodes(strArr("menuid").ToString & "-pdelete").Checked = CBool(strArr("pdelete"))
-                End If
-                
-            Next keyDict
-        Next
-        'Cursor.Current = Cursors.Default
+        Cursor.Current = Cursors.WaitCursor
+        Try
+            For Each Dict In result
+                For Each keyDict As KeyValuePair(Of Object, Object) In Dict
+                    Dim strArr As Object
+                    strArr = keyDict.Key
+                    If _TreeNode Is Nothing Then
+                        node = TreeView1.Nodes(strArr("menuid").ToString)
+                    Else
+                        node = _TreeNode.Nodes(strArr("menuid").ToString)
+                    End If
+                    node.Checked = CBool(strArr("checked"))
+                    RetrieveTreeNodeActive(keyDict.Value, node)
+                    If strArr("isform") = "1" Then
+                        'node.Nodes(strArr("menuid").ToString & "-pview").Checked = CBool(strArr("pview"))
+                        node.Nodes(strArr("menuid").ToString & "-pcreate").Checked = CBool(strArr("pcreate"))
+                        node.Nodes(strArr("menuid").ToString & "-pupdate").Checked = CBool(strArr("pupdate"))
+                        node.Nodes(strArr("menuid").ToString & "-pdelete").Checked = CBool(strArr("pdelete"))
+                    End If
+
+                Next keyDict
+            Next
+        Catch ex As Exception
+            ErrorLogger.WriteToErrorLog("Error has occurred : " & ex.Message, ex.StackTrace, ERROR_STAT, "select", "2")
+            MyApplication.ShowStatus("Error has occurred : " & ex.Message, ERROR_STAT, True, 10000)
+        End Try
+        Cursor.Current = Cursors.Default
     End Sub
     Private Sub TreeView1_AfterCheck(sender As Object, e As TreeViewEventArgs) Handles TreeView1.AfterCheck
         RemoveHandler TreeView1.AfterCheck, AddressOf TreeView1_AfterCheck

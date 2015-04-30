@@ -10,7 +10,7 @@ Imports System.Runtime.InteropServices
 
 ' Review the values of the assembly attributes
 
-<Assembly: AssemblyTitle("SPA")> 
+<Assembly: AssemblyTitle("SPA Application")> 
 <Assembly: AssemblyDescription("Sistem Penjualan Argotama")> 
 <Assembly: AssemblyCompany("UAM")> 
 <Assembly: AssemblyProduct("SPA")> 

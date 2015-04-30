@@ -26,7 +26,7 @@ Namespace My.Resources
      Global.System.Diagnostics.DebuggerNonUserCodeAttribute(), _
      Global.System.Runtime.CompilerServices.CompilerGeneratedAttribute(), _
      Global.Microsoft.VisualBasic.HideModuleNameAttribute()> _
-    Friend Module Resourcesss
+    Friend Module Resources1
 
         Private resourceMan As Global.System.Resources.ResourceManager
 
@@ -63,19 +63,9 @@ Namespace My.Resources
         '''<summary>
         '''  Looks up a localized resource of type System.Drawing.Bitmap.
         '''</summary>
-        Friend ReadOnly Property accounting2() As System.Drawing.Bitmap
+        Friend ReadOnly Property accounting77() As System.Drawing.Bitmap
             Get
-                Dim obj As Object = ResourceManager.GetObject("accounting2", resourceCulture)
-                Return CType(obj, System.Drawing.Bitmap)
-            End Get
-        End Property
-
-        '''<summary>
-        '''  Looks up a localized resource of type System.Drawing.Bitmap.
-        '''</summary>
-        Friend ReadOnly Property accounting3() As System.Drawing.Bitmap
-            Get
-                Dim obj As Object = ResourceManager.GetObject("accounting3", resourceCulture)
+                Dim obj As Object = ResourceManager.GetObject("accounting77", resourceCulture)
                 Return CType(obj, System.Drawing.Bitmap)
             End Get
         End Property
@@ -373,9 +363,9 @@ Namespace My.Resources
         '''<summary>
         '''  Looks up a localized resource of type System.Drawing.Bitmap.
         '''</summary>
-        Friend ReadOnly Property setting3() As System.Drawing.Bitmap
+        Friend ReadOnly Property settings77() As System.Drawing.Bitmap
             Get
-                Dim obj As Object = ResourceManager.GetObject("setting3", resourceCulture)
+                Dim obj As Object = ResourceManager.GetObject("settings77", resourceCulture)
                 Return CType(obj, System.Drawing.Bitmap)
             End Get
         End Property

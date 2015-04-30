@@ -15,9 +15,10 @@ Public Class BaseConnection
         '        & "uid=tjeloacl;" _
         '        & "pwd=tjelocal123;" _
         '        & "database=simagro;"
-        CONN.ConnectionString = myConnectionString
+
         'MsgBox(myConnectionString)
         Try
+            CONN.ConnectionString = myConnectionString
             CONN.Open()
             'MessageBox.Show("Connection Success")
         Catch ex As MySql.Data.MySqlClient.MySqlException

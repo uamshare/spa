@@ -25,23 +25,49 @@ Partial Class MainForm
     Private Sub InitializeComponent()
         Me.components = New System.ComponentModel.Container()
         Me.MenuStrip = New System.Windows.Forms.MenuStrip()
-        Me.ToolStrip = New System.Windows.Forms.ToolStrip()
-        Me.StatusStrip = New System.Windows.Forms.StatusStrip()
-        Me.ToolProgressBar1 = New System.Windows.Forms.ToolStripProgressBar()
-        Me.StatusMessage = New System.Windows.Forms.ToolStripStatusLabel()
-        Me.ToolTip = New System.Windows.Forms.ToolTip(Me.components)
-        Me.TimeStat = New System.Windows.Forms.Timer(Me.components)
         Me.menu100 = New System.Windows.Forms.ToolStripMenuItem()
-        Me.DataTanamanMasukToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.menu101 = New System.Windows.Forms.ToolStripMenuItem()
+        Me.menu102 = New System.Windows.Forms.ToolStripMenuItem()
+        Me.menu103 = New System.Windows.Forms.ToolStripMenuItem()
+        Me.menu104 = New System.Windows.Forms.ToolStripMenuItem()
+        Me.menu105 = New System.Windows.Forms.ToolStripMenuItem()
+        Me.menu106 = New System.Windows.Forms.ToolStripMenuItem()
         Me.menu200 = New System.Windows.Forms.ToolStripMenuItem()
+        Me.menu201 = New System.Windows.Forms.ToolStripMenuItem()
+        Me.menu202 = New System.Windows.Forms.ToolStripMenuItem()
+        Me.menu203 = New System.Windows.Forms.ToolStripMenuItem()
+        Me.menu204 = New System.Windows.Forms.ToolStripMenuItem()
+        Me.menu205 = New System.Windows.Forms.ToolStripMenuItem()
+        Me.menu206 = New System.Windows.Forms.ToolStripMenuItem()
         Me.menu300 = New System.Windows.Forms.ToolStripMenuItem()
+        Me.menu301 = New System.Windows.Forms.ToolStripMenuItem()
+        Me.menu302 = New System.Windows.Forms.ToolStripMenuItem()
+        Me.menu303 = New System.Windows.Forms.ToolStripMenuItem()
+        Me.menu304 = New System.Windows.Forms.ToolStripMenuItem()
+        Me.menu305 = New System.Windows.Forms.ToolStripMenuItem()
         Me.menu400 = New System.Windows.Forms.ToolStripMenuItem()
+        Me.menu401 = New System.Windows.Forms.ToolStripMenuItem()
+        Me.menu402 = New System.Windows.Forms.ToolStripMenuItem()
+        Me.menu403 = New System.Windows.Forms.ToolStripMenuItem()
+        Me.menu404 = New System.Windows.Forms.ToolStripMenuItem()
+        Me.menu405 = New System.Windows.Forms.ToolStripMenuItem()
+        Me.menu406 = New System.Windows.Forms.ToolStripMenuItem()
+        Me.menu407 = New System.Windows.Forms.ToolStripMenuItem()
+        Me.menu408 = New System.Windows.Forms.ToolStripMenuItem()
+        Me.menu409 = New System.Windows.Forms.ToolStripMenuItem()
+        Me.menu410 = New System.Windows.Forms.ToolStripMenuItem()
         Me.menu500 = New System.Windows.Forms.ToolStripMenuItem()
         Me.menu501 = New System.Windows.Forms.ToolStripMenuItem()
         Me.menu502 = New System.Windows.Forms.ToolStripMenuItem()
         Me.menu503 = New System.Windows.Forms.ToolStripMenuItem()
         Me.ExitMenu = New System.Windows.Forms.ToolStripMenuItem()
+        Me.ToolStrip = New System.Windows.Forms.ToolStrip()
+        Me.StatusStrip = New System.Windows.Forms.StatusStrip()
         Me.statusmessageicon = New System.Windows.Forms.ToolStripStatusLabel()
+        Me.ToolProgressBar1 = New System.Windows.Forms.ToolStripProgressBar()
+        Me.StatusMessage = New System.Windows.Forms.ToolStripStatusLabel()
+        Me.ToolTip = New System.Windows.Forms.ToolTip(Me.components)
+        Me.TimeStat = New System.Windows.Forms.Timer(Me.components)
         Me.MenuStrip.SuspendLayout()
         Me.StatusStrip.SuspendLayout()
         Me.SuspendLayout()
@@ -55,88 +81,207 @@ Partial Class MainForm
         Me.MenuStrip.Size = New System.Drawing.Size(779, 24)
         Me.MenuStrip.TabIndex = 5
         Me.MenuStrip.Text = "MenuStrip"
-        '
-        'ToolStrip
-        '
-        Me.ToolStrip.BackColor = System.Drawing.Color.Gainsboro
-        Me.ToolStrip.Dock = System.Windows.Forms.DockStyle.Left
-        Me.ToolStrip.GripStyle = System.Windows.Forms.ToolStripGripStyle.Hidden
-        Me.ToolStrip.Location = New System.Drawing.Point(0, 24)
-        Me.ToolStrip.Name = "ToolStrip"
-        Me.ToolStrip.Size = New System.Drawing.Size(26, 353)
-        Me.ToolStrip.TabIndex = 6
-        Me.ToolStrip.Text = "ToolStrip"
-        '
-        'StatusStrip
-        '
-        Me.StatusStrip.BackColor = System.Drawing.Color.DodgerBlue
-        Me.StatusStrip.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.statusmessageicon, Me.ToolProgressBar1, Me.StatusMessage})
-        Me.StatusStrip.Location = New System.Drawing.Point(0, 377)
-        Me.StatusStrip.Name = "StatusStrip"
-        Me.StatusStrip.Size = New System.Drawing.Size(779, 22)
-        Me.StatusStrip.TabIndex = 7
-        Me.StatusStrip.Text = "StatusStrip"
-        '
-        'ToolProgressBar1
-        '
-        Me.ToolProgressBar1.Margin = New System.Windows.Forms.Padding(10, 3, 1, 3)
-        Me.ToolProgressBar1.Name = "ToolProgressBar1"
-        Me.ToolProgressBar1.Size = New System.Drawing.Size(100, 16)
-        Me.ToolProgressBar1.Step = 5
-        Me.ToolProgressBar1.Style = System.Windows.Forms.ProgressBarStyle.Marquee
-        Me.ToolProgressBar1.Value = 10
-        Me.ToolProgressBar1.Visible = False
-        '
-        'StatusMessage
-        '
-        Me.StatusMessage.Margin = New System.Windows.Forms.Padding(5, 3, 0, 2)
-        Me.StatusMessage.Name = "StatusMessage"
-        Me.StatusMessage.Size = New System.Drawing.Size(79, 17)
-        Me.StatusMessage.Text = "Please Wait ..."
-        '
-        'TimeStat
-        '
+        Me.MenuStrip.Visible = False
         '
         'menu100
         '
-        Me.menu100.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.DataTanamanMasukToolStripMenuItem})
+        Me.menu100.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.menu101, Me.menu102, Me.menu103, Me.menu104, Me.menu105, Me.menu106})
         Me.menu100.Image = Global.SPA.My.Resources.Resources.inventory2
         Me.menu100.ImageTransparentColor = System.Drawing.SystemColors.ActiveBorder
         Me.menu100.Name = "menu100"
         Me.menu100.Size = New System.Drawing.Size(144, 20)
         Me.menu100.Text = "Persediaan Tanaman"
         '
-        'DataTanamanMasukToolStripMenuItem
+        'menu101
         '
-        Me.DataTanamanMasukToolStripMenuItem.Name = "DataTanamanMasukToolStripMenuItem"
-        Me.DataTanamanMasukToolStripMenuItem.Size = New System.Drawing.Size(188, 22)
-        Me.DataTanamanMasukToolStripMenuItem.Text = "Data Tanaman Masuk"
+        Me.menu101.Name = "menu101"
+        Me.menu101.Size = New System.Drawing.Size(194, 22)
+        Me.menu101.Text = "Data Tanaman"
+        '
+        'menu102
+        '
+        Me.menu102.Name = "menu102"
+        Me.menu102.Size = New System.Drawing.Size(194, 22)
+        Me.menu102.Text = "Data Tanaman Masuk"
+        '
+        'menu103
+        '
+        Me.menu103.Name = "menu103"
+        Me.menu103.Size = New System.Drawing.Size(194, 22)
+        Me.menu103.Text = "Transfer Stok Tanaman"
+        '
+        'menu104
+        '
+        Me.menu104.Name = "menu104"
+        Me.menu104.Size = New System.Drawing.Size(194, 22)
+        Me.menu104.Text = "Penyesuaian Stok"
+        '
+        'menu105
+        '
+        Me.menu105.Name = "menu105"
+        Me.menu105.Size = New System.Drawing.Size(194, 22)
+        Me.menu105.Text = "Stok Tanaman"
+        '
+        'menu106
+        '
+        Me.menu106.Name = "menu106"
+        Me.menu106.Size = New System.Drawing.Size(194, 22)
+        Me.menu106.Text = "Kartu Stok Tanaman"
         '
         'menu200
         '
+        Me.menu200.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.menu201, Me.menu202, Me.menu203, Me.menu204, Me.menu205, Me.menu206})
         Me.menu200.Image = Global.SPA.My.Resources.Resources.production
         Me.menu200.Name = "menu200"
         Me.menu200.Size = New System.Drawing.Size(183, 20)
         Me.menu200.Text = "Penangkaran Bibit Tanaman"
         '
+        'menu201
+        '
+        Me.menu201.Name = "menu201"
+        Me.menu201.Size = New System.Drawing.Size(319, 22)
+        Me.menu201.Text = "Data Bibit Tanaman"
+        '
+        'menu202
+        '
+        Me.menu202.Name = "menu202"
+        Me.menu202.Size = New System.Drawing.Size(319, 22)
+        Me.menu202.Text = "Data Bibit Tanaman Masuk"
+        '
+        'menu203
+        '
+        Me.menu203.Name = "menu203"
+        Me.menu203.Size = New System.Drawing.Size(319, 22)
+        Me.menu203.Text = "Proses Penangkaran"
+        '
+        'menu204
+        '
+        Me.menu204.Name = "menu204"
+        Me.menu204.Size = New System.Drawing.Size(319, 22)
+        Me.menu204.Text = "Proses Bibit Tanaman Siap Jual"
+        '
+        'menu205
+        '
+        Me.menu205.Name = "menu205"
+        Me.menu205.Size = New System.Drawing.Size(319, 22)
+        Me.menu205.Text = "Stok Bibit Tanaman & Proses Penangkaran"
+        '
+        'menu206
+        '
+        Me.menu206.Name = "menu206"
+        Me.menu206.Size = New System.Drawing.Size(319, 22)
+        Me.menu206.Text = "Kartu Stok Bibit Tanaman & Proses Penangkaran"
+        '
         'menu300
         '
+        Me.menu300.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.menu301, Me.menu302, Me.menu303, Me.menu304, Me.menu305})
         Me.menu300.Image = Global.SPA.My.Resources.Resources.sales2
         Me.menu300.Name = "menu300"
         Me.menu300.Size = New System.Drawing.Size(139, 20)
         Me.menu300.Text = "Penjualan Tanaman"
         '
+        'menu301
+        '
+        Me.menu301.Name = "menu301"
+        Me.menu301.Size = New System.Drawing.Size(204, 22)
+        Me.menu301.Text = "Data Pelanggan"
+        '
+        'menu302
+        '
+        Me.menu302.Name = "menu302"
+        Me.menu302.Size = New System.Drawing.Size(204, 22)
+        Me.menu302.Text = "Nota Penjualan / Invoice"
+        '
+        'menu303
+        '
+        Me.menu303.Name = "menu303"
+        Me.menu303.Size = New System.Drawing.Size(204, 22)
+        Me.menu303.Text = "Retur Penjualan"
+        '
+        'menu304
+        '
+        Me.menu304.Name = "menu304"
+        Me.menu304.Size = New System.Drawing.Size(204, 22)
+        Me.menu304.Text = "Rekap Penjualan"
+        '
+        'menu305
+        '
+        Me.menu305.Name = "menu305"
+        Me.menu305.Size = New System.Drawing.Size(204, 22)
+        Me.menu305.Text = "Rinician Penjualan"
+        '
         'menu400
         '
-        Me.menu400.Image = Global.SPA.My.Resources.Resources.production
+        Me.menu400.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.menu401, Me.menu402, Me.menu403, Me.menu404, Me.menu405, Me.menu406, Me.menu407, Me.menu408, Me.menu409, Me.menu410})
+        Me.menu400.Image = Global.SPA.My.Resources.Resources.accounting77
         Me.menu400.Name = "menu400"
         Me.menu400.Size = New System.Drawing.Size(88, 20)
         Me.menu400.Text = "Akuntansi"
         '
+        'menu401
+        '
+        Me.menu401.Name = "menu401"
+        Me.menu401.Size = New System.Drawing.Size(239, 22)
+        Me.menu401.Text = "COA Header"
+        '
+        'menu402
+        '
+        Me.menu402.Name = "menu402"
+        Me.menu402.Size = New System.Drawing.Size(239, 22)
+        Me.menu402.Text = "COA Detail"
+        '
+        'menu403
+        '
+        Me.menu403.Name = "menu403"
+        Me.menu403.Size = New System.Drawing.Size(239, 22)
+        Me.menu403.Text = "Akun Posting Otomatis"
+        '
+        'menu404
+        '
+        Me.menu404.Name = "menu404"
+        Me.menu404.Size = New System.Drawing.Size(239, 22)
+        Me.menu404.Text = "Jurnal Memorial"
+        '
+        'menu405
+        '
+        Me.menu405.Name = "menu405"
+        Me.menu405.Size = New System.Drawing.Size(239, 22)
+        Me.menu405.Text = "Buku Besar"
+        '
+        'menu406
+        '
+        Me.menu406.Name = "menu406"
+        Me.menu406.Size = New System.Drawing.Size(239, 22)
+        Me.menu406.Text = "Neraca"
+        '
+        'menu407
+        '
+        Me.menu407.Name = "menu407"
+        Me.menu407.Size = New System.Drawing.Size(239, 22)
+        Me.menu407.Text = "Lampiran Neraca"
+        '
+        'menu408
+        '
+        Me.menu408.Name = "menu408"
+        Me.menu408.Size = New System.Drawing.Size(239, 22)
+        Me.menu408.Text = "Rugi Laba"
+        '
+        'menu409
+        '
+        Me.menu409.Name = "menu409"
+        Me.menu409.Size = New System.Drawing.Size(239, 22)
+        Me.menu409.Text = "Arus Kas dan Bank"
+        '
+        'menu410
+        '
+        Me.menu410.Name = "menu410"
+        Me.menu410.Size = New System.Drawing.Size(239, 22)
+        Me.menu410.Text = "Persedian Akhir Barang/Produk"
+        '
         'menu500
         '
         Me.menu500.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.menu501, Me.menu502, Me.menu503})
-        Me.menu500.Image = Global.SPA.My.Resources.Resources.production
+        Me.menu500.Image = Global.SPA.My.Resources.Resources.settings77
         Me.menu500.Name = "menu500"
         Me.menu500.Size = New System.Drawing.Size(96, 20)
         Me.menu500.Text = "Pengaturan"
@@ -166,13 +311,54 @@ Partial Class MainForm
         Me.ExitMenu.Size = New System.Drawing.Size(68, 20)
         Me.ExitMenu.Text = "Keluar"
         '
+        'ToolStrip
+        '
+        Me.ToolStrip.BackColor = System.Drawing.Color.Gainsboro
+        Me.ToolStrip.Dock = System.Windows.Forms.DockStyle.Left
+        Me.ToolStrip.GripStyle = System.Windows.Forms.ToolStripGripStyle.Hidden
+        Me.ToolStrip.Location = New System.Drawing.Point(0, 24)
+        Me.ToolStrip.Name = "ToolStrip"
+        Me.ToolStrip.Size = New System.Drawing.Size(26, 353)
+        Me.ToolStrip.TabIndex = 6
+        Me.ToolStrip.Text = "ToolStrip"
+        '
+        'StatusStrip
+        '
+        Me.StatusStrip.BackColor = System.Drawing.Color.DodgerBlue
+        Me.StatusStrip.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.statusmessageicon, Me.ToolProgressBar1, Me.StatusMessage})
+        Me.StatusStrip.Location = New System.Drawing.Point(0, 377)
+        Me.StatusStrip.Name = "StatusStrip"
+        Me.StatusStrip.Size = New System.Drawing.Size(779, 22)
+        Me.StatusStrip.TabIndex = 7
+        Me.StatusStrip.Text = "StatusStrip"
+        '
         'statusmessageicon
         '
         Me.statusmessageicon.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image
         Me.statusmessageicon.Image = Global.SPA.My.Resources.Resources.icon_info
         Me.statusmessageicon.Name = "statusmessageicon"
-        Me.statusmessageicon.Size = New System.Drawing.Size(16, 16)
+        Me.statusmessageicon.Size = New System.Drawing.Size(16, 17)
         Me.statusmessageicon.Text = "::"
+        '
+        'ToolProgressBar1
+        '
+        Me.ToolProgressBar1.Margin = New System.Windows.Forms.Padding(10, 3, 1, 3)
+        Me.ToolProgressBar1.Name = "ToolProgressBar1"
+        Me.ToolProgressBar1.Size = New System.Drawing.Size(100, 16)
+        Me.ToolProgressBar1.Step = 5
+        Me.ToolProgressBar1.Style = System.Windows.Forms.ProgressBarStyle.Marquee
+        Me.ToolProgressBar1.Value = 10
+        Me.ToolProgressBar1.Visible = False
+        '
+        'StatusMessage
+        '
+        Me.StatusMessage.Margin = New System.Windows.Forms.Padding(5, 3, 0, 2)
+        Me.StatusMessage.Name = "StatusMessage"
+        Me.StatusMessage.Size = New System.Drawing.Size(79, 17)
+        Me.StatusMessage.Text = "Please Wait ..."
+        '
+        'TimeStat
+        '
         '
         'MainForm
         '
@@ -213,6 +399,32 @@ Partial Class MainForm
     Friend WithEvents menu502 As System.Windows.Forms.ToolStripMenuItem
     Friend WithEvents menu503 As System.Windows.Forms.ToolStripMenuItem
     Friend WithEvents menu501 As System.Windows.Forms.ToolStripMenuItem
-    Friend WithEvents DataTanamanMasukToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
+    Friend WithEvents menu102 As System.Windows.Forms.ToolStripMenuItem
+    Friend WithEvents menu101 As System.Windows.Forms.ToolStripMenuItem
+    Friend WithEvents menu103 As System.Windows.Forms.ToolStripMenuItem
+    Friend WithEvents menu104 As System.Windows.Forms.ToolStripMenuItem
+    Friend WithEvents menu105 As System.Windows.Forms.ToolStripMenuItem
+    Friend WithEvents menu106 As System.Windows.Forms.ToolStripMenuItem
+    Friend WithEvents menu201 As System.Windows.Forms.ToolStripMenuItem
+    Friend WithEvents menu202 As System.Windows.Forms.ToolStripMenuItem
+    Friend WithEvents menu203 As System.Windows.Forms.ToolStripMenuItem
+    Friend WithEvents menu204 As System.Windows.Forms.ToolStripMenuItem
+    Friend WithEvents menu205 As System.Windows.Forms.ToolStripMenuItem
+    Friend WithEvents menu206 As System.Windows.Forms.ToolStripMenuItem
+    Friend WithEvents menu301 As System.Windows.Forms.ToolStripMenuItem
+    Friend WithEvents menu302 As System.Windows.Forms.ToolStripMenuItem
+    Friend WithEvents menu303 As System.Windows.Forms.ToolStripMenuItem
+    Friend WithEvents menu304 As System.Windows.Forms.ToolStripMenuItem
+    Friend WithEvents menu305 As System.Windows.Forms.ToolStripMenuItem
+    Friend WithEvents menu401 As System.Windows.Forms.ToolStripMenuItem
+    Friend WithEvents menu402 As System.Windows.Forms.ToolStripMenuItem
+    Friend WithEvents menu403 As System.Windows.Forms.ToolStripMenuItem
+    Friend WithEvents menu404 As System.Windows.Forms.ToolStripMenuItem
+    Friend WithEvents menu405 As System.Windows.Forms.ToolStripMenuItem
+    Friend WithEvents menu406 As System.Windows.Forms.ToolStripMenuItem
+    Friend WithEvents menu407 As System.Windows.Forms.ToolStripMenuItem
+    Friend WithEvents menu408 As System.Windows.Forms.ToolStripMenuItem
+    Friend WithEvents menu409 As System.Windows.Forms.ToolStripMenuItem
+    Friend WithEvents menu410 As System.Windows.Forms.ToolStripMenuItem
 
 End Class

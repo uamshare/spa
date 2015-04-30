@@ -29,7 +29,6 @@ Public Class CDataAcces 'Name dari Class yang dibuat.
     Protected Trans As MySqlTransaction
     Protected rowCountAffected As Integer
 
-    
     Sub New()
         mCONN = BaseConnection.GetInstance
     End Sub
@@ -47,7 +46,6 @@ Public Class CDataAcces 'Name dari Class yang dibuat.
             mstartRecord = value
         End Set
     End Property
-
     Public Property limitrecord As Integer
         Get
             Return mlimitrecord
@@ -56,7 +54,6 @@ Public Class CDataAcces 'Name dari Class yang dibuat.
             mlimitrecord = value
         End Set
     End Property
-
     Public Property LIMIT As String
         Get
             Return mLIMIT
@@ -65,7 +62,6 @@ Public Class CDataAcces 'Name dari Class yang dibuat.
             mLIMIT = value
         End Set
     End Property
-
     Public Property WHERE As String
         Get
             Return mWHERE
@@ -90,8 +86,6 @@ Public Class CDataAcces 'Name dari Class yang dibuat.
     Protected Sub CommitTrans(Optional message As String = " process have been completed", Optional actlog As String = "")
         Trans.Commit()
         mCONN.Close()
-        'StopProgress()
-
         'MainForm.ToolProgressBar1.Visible = True
         MainForm.ToolProgressBar1.Value = 100
         If rowCountAffected > 0 Then
@@ -115,7 +109,6 @@ Public Class CDataAcces 'Name dari Class yang dibuat.
         MyApplication.ShowStatus(LogMsg, WARNING_STAT, True, 10000)
         Cursor.Current = Cursors.Default
     End Sub
-
     Function GetData() As DataTable Implements IDataAccess.GetData
         Dim SelectQuery As String
         Dim dt As New DataTable
@@ -135,15 +128,18 @@ Public Class CDataAcces 'Name dari Class yang dibuat.
             mLIMIT = ""
             mWHERE = ""
             Me.mCONN.Close()
+        Catch ex As MySqlException
+            Dim errMsg As String = "Failed to populate database list: " + ex.Message
+            ErrorLogger.WriteToErrorLog(errMsg, ex.StackTrace, ERROR_STAT, "select", "2")
+            MyApplication.ShowStatus(errMsg, ERROR_STAT, True, 10000)
         Catch ex As Exception
-            Me.mCONN.Close()
+            'Me.mCONN.Close()
+            ErrorLogger.WriteToErrorLog("Error has occurred : " & ex.Message, ex.StackTrace, ERROR_STAT, "select", "2")
             MyApplication.ShowStatus("Error has occurred : " & ex.Message, ERROR_STAT, True, 10000)
-            'MessageBox.Show("Error has occurred : " & ex.Message)
         End Try
         Cursor.Current = Cursors.Default
         Return dt
     End Function
-
     Public Function GetDataReader() As MySqlDataReader
         If Me.mCONN.State <> ConnectionState.Closed Then Me.mCONN.Close()
         Me.mCONN.Open()
@@ -160,6 +156,34 @@ Public Class CDataAcces 'Name dari Class yang dibuat.
             'End While
         Catch ex As MySqlException
             Dim errMsg As String = "Failed to populate database list: " + ex.Message
+            ErrorLogger.WriteToErrorLog(errMsg, ex.StackTrace, ERROR_STAT, "select", "2")
+            MyApplication.ShowStatus(errMsg, ERROR_STAT, True, 10000)
+        Catch ex As Exception
+            Dim errMsg As String = ex.Message
+            ErrorLogger.WriteToErrorLog(errMsg, ex.StackTrace, ERROR_STAT, "select", "2")
+            MyApplication.ShowStatus(errMsg, ERROR_STAT, True, 10000)
+        End Try
+        Return reader
+    End Function
+    Protected Shared Function GetDataReader(StringSQL As String) As MySqlDataReader
+        Dim reader As MySql.Data.MySqlClient.MySqlDataReader = Nothing 'for reader data
+        Dim cmd As New MySql.Data.MySqlClient.MySqlCommand 'for command sql
+        'Dim StringSQL As String
+
+        If BaseConnection.GetInstance.State = ConnectionState.Closed Then BaseConnection.GetInstance.Open()
+        Try
+            cmd.Connection = BaseConnection.GetInstance
+            cmd.CommandText = StringSQL
+            reader = cmd.ExecuteReader()
+            'While (reader.Read())
+            '    'ComboBox1.Items.Add(reader.GetString(1) + " (" + reader.GetString(0) + ")")
+            'End While
+        Catch ex As MySqlException
+            Dim errMsg As String = "Failed to populate database list: " + ex.Message
+            ErrorLogger.WriteToErrorLog(errMsg, ex.StackTrace, ERROR_STAT, "select", "2")
+            MyApplication.ShowStatus(errMsg, ERROR_STAT, True, 10000)
+        Catch ex As Exception
+            Dim errMsg As String = ex.Message
             ErrorLogger.WriteToErrorLog(errMsg, ex.StackTrace, ERROR_STAT, "select", "2")
             MyApplication.ShowStatus(errMsg, ERROR_STAT, True, 10000)
         End Try
@@ -183,6 +207,10 @@ Public Class CDataAcces 'Name dari Class yang dibuat.
             End While
         Catch ex As MySqlException
             Dim errMsg As String = "Failed to populate database list: " + ex.Message
+            ErrorLogger.WriteToErrorLog(errMsg, ex.StackTrace, ERROR_STAT, "select", "2")
+            MyApplication.ShowStatus(errMsg, ERROR_STAT, True, 10000)
+        Catch ex As Exception
+            Dim errMsg As String = ex.Message
             ErrorLogger.WriteToErrorLog(errMsg, ex.StackTrace, ERROR_STAT, "select", "2")
             MyApplication.ShowStatus(errMsg, ERROR_STAT, True, 10000)
         Finally
@@ -216,23 +244,21 @@ Public Class CDataAcces 'Name dari Class yang dibuat.
 
         Return rowCountAffected
     End Function
-
-
     Function InsertData() As Integer Implements IDataAccess.InsertData
-        'StartProgress()
-        BeginTrans("attempting insert data, please wait ... ") 'begin transaction
         Try
+            BeginTrans("attempting insert data, please wait ... ") 'begin transaction
             cmd.Connection = mCONN
             cmd.CommandText = Me.StringSQL
             rowCountAffected = cmd.ExecuteNonQuery() 'returns the number of rows affected. 
+            CommitTrans(" data have been saved ", "insert") 'Commit All Transaction
         Catch ex As MySqlException
             RollbackTrans("Error " & ex.Number & " has occurred: " & ex.Message, "insert")
             Return Nothing
+        Catch ex As Exception
+            RollbackTrans("Error has occurred: " & ex.Message, "insert")
+            Return Nothing
         End Try
-        CommitTrans(" data have been saved ", "insert") 'Commit All Transaction
         Return rowCountAffected
-
-
     End Function
     Function UpdateData() As Integer Implements IDataAccess.UpdateData
         Try
@@ -250,25 +276,25 @@ Public Class CDataAcces 'Name dari Class yang dibuat.
         End Try
         Return rowCountAffected
     End Function
-
     Function DeleteData(Optional ByVal id = -1) As Integer Implements IDataAccess.DeleteData
         Try
             BeginTrans("attempting delete data, please wait ... ") 'begin transaction
             cmd.Connection = mCONN
-            'cmd.Prepare()
             If String.IsNullOrEmpty(Me.StringSQL) Then
                 Me.StringSQL = "DELETE FROM " & TableName + " WHERE " & PrimaryKey & " = '" & id & "'"
             End If
             cmd.CommandText = Me.StringSQL
             rowCountAffected = cmd.ExecuteNonQuery()
             CommitTrans(" data have been deleted ", "delete") 'Commit All Transaction
+        Catch ex As MySqlException
+            RollbackTrans("Error " & ex.Number & " has occurred: " & ex.Message, "delete")
+            Return Nothing
         Catch ex As Exception
             RollbackTrans("Error has occurred: " & ex.Message, "delete")
             Return Nothing
         End Try
         Return rowCountAffected
     End Function
-
     Function EscapeString(ByVal Input As String) As String
         Dim ReplaceString As String
         Dim FindChars = {"'", "#", """"}

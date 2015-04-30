@@ -15,7 +15,7 @@
       <Value Profile="(Default)" />
     </Setting>
     <Setting Name="database" Type="System.String" Scope="User">
-      <Value Profile="(Default)">simargo</Value>
+      <Value Profile="(Default)">simagro</Value>
     </Setting>
   </Settings>
 </SettingsFile>
