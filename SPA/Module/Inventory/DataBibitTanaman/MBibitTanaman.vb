@@ -20,8 +20,8 @@ Public Class MBibitTanaman
     Sub New()
         MyBase.New()
 
-        BaseQuery = "SELECT mmtrhid,mmtrid,mmtrname,polybag,mmtrunit,mmtrprice,mmtrg, CONCAT(mmtrid, CONVERT(mmtrg, CHAR)) AS PrimaryKey FROM material_fig"
-        SelectQuery = "SELECT mmtrhid,mmtrid,mmtrname,polybag,mmtrunit,mmtrprice,mmtrg, CONCAT(mmtrid, CONVERT(mmtrg, CHAR)) AS PrimaryKey FROM material_fig"
+        BaseQuery = "SELECT mmtrhid,mmtrid,mmtrname,polybag,mmtrunit,mmtrprice,mmtrg, CONCAT(mmtrid, CONVERT(mmtrg, CHAR)) AS PrimaryKey FROM material_raw"
+        SelectQuery = "SELECT mmtrhid,mmtrid,mmtrname,polybag,mmtrunit,mmtrprice,mmtrg, CONCAT(mmtrid, CONVERT(mmtrg, CHAR)) AS PrimaryKey FROM material_raw"
         TableName = "mmtr"
 
         PrimaryKey = "mmtrid"
