@@ -27,7 +27,7 @@ Public Class CDataAcces 'Name dari Class yang dibuat.
     Protected mWHERE As String = ""
     Protected cmd As New MySqlCommand
     Protected Trans As MySqlTransaction
-    Protected rowCountAffected As Integer
+    Protected rowCountAffected As Integer = -1
 
     Sub New()
         mCONN = BaseConnection.GetInstance
@@ -75,6 +75,7 @@ Public Class CDataAcces 'Name dari Class yang dibuat.
         'StartProgress()
         MainForm.ToolProgressBar1.Visible = True
         MainForm.ToolProgressBar1.Value = 0
+        MainForm.ToolProgressBar1.Style = ProgressBarStyle.Marquee
         MyApplication.ShowStatus(message, INFO_STAT, False)
         Cursor.Current = Cursors.WaitCursor
         If mCONN.State <> ConnectionState.Closed Then mCONN.Close()
@@ -88,7 +89,13 @@ Public Class CDataAcces 'Name dari Class yang dibuat.
         mCONN.Close()
         'MainForm.ToolProgressBar1.Visible = True
         MainForm.ToolProgressBar1.Value = 100
-        If rowCountAffected > 0 Then
+        MainForm.ToolProgressBar1.Style = ProgressBarStyle.Blocks
+
+        If rowCountAffected > 0 And actlog <> "delete" Then
+            Dim LogMsg As String = "Done. " & rowCountAffected & message
+            ErrorLogger.WriteToErrorLog(LogMsg, actlog, INFO_STAT, actlog, "2")
+            MyApplication.ShowStatus(LogMsg, INFO_STAT)
+        ElseIf rowCountAffected > -1 And actlog = "delete" Then
             Dim LogMsg As String = "Done. " & rowCountAffected & message
             ErrorLogger.WriteToErrorLog(LogMsg, actlog, INFO_STAT, actlog, "2")
             MyApplication.ShowStatus(LogMsg, INFO_STAT)
@@ -98,6 +105,7 @@ Public Class CDataAcces 'Name dari Class yang dibuat.
     End Sub
     Protected Sub RollbackTrans(Optional message As String = " process fails", Optional actlog As String = "")
         MainForm.ToolProgressBar1.Value = 100
+        MainForm.ToolProgressBar1.Style = ProgressBarStyle.Blocks
         If Trans.Connection.State <> ConnectionState.Closed Then
             Trans.Rollback() 'Rollback All Transaction
             mCONN.Close()

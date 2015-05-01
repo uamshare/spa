@@ -170,6 +170,9 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
+    <EmbeddedResource Include="Module\Inventory\FTanamanMasuk.resx">
+      <DependentUpon>FTanamanMasuk.vb</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Module\MainForm.resx">
       <DependentUpon>MainForm.vb</DependentUpon>
     </EmbeddedResource>

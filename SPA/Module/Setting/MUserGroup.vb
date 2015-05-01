@@ -31,8 +31,9 @@
     End Function
 
     Function MultipleDeleteData(ByVal ids() As String) As Integer
-        BeginTrans("attempting delete data, please wait ... ") 'begin transaction
+
         Try
+            BeginTrans("attempting delete data, please wait ... ") 'begin transaction
             cmd.Connection = PCONN
             'cmd.Prepare()
             If IsArray(ids) And ids.Length > 0 Then
@@ -44,10 +45,18 @@
                     End If
                 Next
             End If
+
+            CommitTrans(" data have been deleted ", "delete") 'Commit All Transaction
+            'Catch ex As MySql.Data.MySqlClient.MySqlException
+            '    MyApplication.ShowStatus("Error " & ex.Number & " has occurred: " & NOTICE_STAT, True, 10000)
         Catch ex As MySql.Data.MySqlClient.MySqlException
-            MyApplication.ShowStatus("Error " & ex.Number & " has occurred: " & NOTICE_STAT, True, 10000)
+            RollbackTrans("Error " & ex.Number & " has occurred: " & ex.Message, "delete")
+            Return Nothing
+        Catch ex As Exception
+            RollbackTrans("Error has occurred: " & ex.Message, "delete")
+            Return Nothing
         End Try
-        CommitTrans(" data have been deleted ", "delete") 'Commit All Transaction
+
         Return rowCountAffected
     End Function
 

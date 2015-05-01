@@ -5,18 +5,24 @@
     Private Model As New MUserGroup
     Private userid As String
 
+    Public Sub SetPrivileges()
+        Try
+            ToolAdd.Visible = MUsers.UserListMenuPrivileges()(MainForm.MenuActive)("pcreate")
+            ToolEdit.Visible = MUsers.UserListMenuPrivileges()(MainForm.MenuActive)("pupdate")
+            ToolSaveMenuAkses.Visible = MUsers.UserListMenuPrivileges()(MainForm.MenuActive)("pupdate")
+            ToolDelete.Visible = MUsers.UserListMenuPrivileges()(MainForm.MenuActive)("pdelete")
+        Catch ex As Exception
+            MsgBox(ex.Message)
+        End Try
+    End Sub
     Public Sub init()
+        SetPrivileges()
         ToolAdd.Enabled = True
         ToolEdit.Enabled = False
         ToolDelete.Enabled = False
         ToolMenuAkses.Enabled = False
-
-        'Set Akses Menu User
-        ToolAdd.Visible = MUsers.UserListMenuPrivileges()(Me.Name)("pcreate")
-        ToolEdit.Visible = MUsers.UserListMenuPrivileges()(Me.Name)("pupdate")
-        ToolMenuAkses.Visible = MUsers.UserListMenuPrivileges()(Me.Name)("pupdate")
-        ToolDelete.Visible = MUsers.UserListMenuPrivileges()(Me.Name)("pdelete")
-
+        ToolSaveMenuAkses.Enabled = False
+        TreeView1.Enabled = False
         Model.limitrecord = 25
         RetrieveData()
         '-------------
@@ -66,12 +72,14 @@
     End Sub
     Private Sub RetrieveData(Optional ByVal sSearch As String = "")
         Dim dt As DataTable
+
         Try
             If Not String.IsNullOrEmpty(sSearch) Then
                 dt = Model.FindData(sSearch)
             Else
                 dt = Model.GetData()
             End If
+
             With DataGridView1
                 .Columns.Clear()
                 DGVColumnCheckIndex = .Columns.Add(New DataGridViewCheckBoxColumn)
@@ -235,6 +243,8 @@
             ToolAdd.Enabled = False
             ToolEdit.Enabled = False
             ToolMenuAkses.Enabled = False
+            ToolSaveMenuAkses.Enabled = False
+            TreeView1.Enabled = False
             ToolDelete.Enabled = True
             TreeViewCheckUncheckAll(False)
             TreeView1.CollapseAll()
@@ -242,6 +252,8 @@
             ToolAdd.Enabled = True
             ToolEdit.Enabled = False
             ToolMenuAkses.Enabled = False
+            ToolSaveMenuAkses.Enabled = False
+            TreeView1.Enabled = False
             ToolDelete.Enabled = False
             TreeViewCheckUncheckAll(False)
             TreeView1.CollapseAll()
@@ -291,7 +303,7 @@
                     'Next
                     Model.MultipleDeleteData(groupids)
                 End If
-                'Application.ShowStatus("Deleted " & getCountSelectedData() & " data")
+                MyApplication.ShowStatus("Deleted " & getCountSelectedData() & " data", INFO_STAT)
                 init()
             Else
                 MyApplication.ShowStatus("No data is selected", NOTICE_STAT)
@@ -310,6 +322,8 @@
             For Each FirstLevelNode As TreeNode In TreeView1.Nodes
                 FirstLevelNode.Expand()
             Next
+            ToolSaveMenuAkses.Enabled = True
+            TreeView1.Enabled = True
             AddHandler TreeView1.AfterCheck, AddressOf TreeView1_AfterCheck
         Else
             MyApplication.ShowStatus("No data is selected", NOTICE_STAT)
@@ -326,7 +340,7 @@
         'End If
     End Sub
     Private Sub ToolRefresh_Click(sender As Object, e As EventArgs) Handles ToolRefresh.Click
-        RetrieveData()
+        init()
         ToolTextFind.Text = ""
     End Sub
     Private Sub ToolFisrt_Click(sender As Object, e As EventArgs) Handles ToolFisrt.Click
@@ -572,7 +586,9 @@
 
     Private Sub ToolSaveMenuAkses_Click(sender As Object, e As EventArgs) Handles ToolSaveMenuAkses.Click
         Dim ModelMenuList As New MUserListMenu
-        ModelMenuList.InsertMenuPrivileges(NodesToArrayNodes(), Me.userid)
+        If ModelMenuList.InsertMenuPrivileges(NodesToArrayNodes(), Me.userid) > 0 Then
+            MyApplication.ShowStatus("Menu akses tersimpan", INFO_STAT)
+        End If
     End Sub
 #End Region
 

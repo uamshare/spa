@@ -1,7 +1,8 @@
 ﻿Imports System.Windows.Forms
 
 Public Class MainForm
-    Private ChildForm As Form = Nothing
+    Public ChildForm As Form = Nothing
+    Public MenuActive As String
     Private Sub ExitMenu_Click(sender As Object, e As EventArgs) Handles ExitMenu.Click
         Me.Close()
     End Sub
@@ -27,13 +28,13 @@ Public Class MainForm
         'FUserGroup.MdiParent = Me
         'FUserGroup.Show()
         'ChildForm.Close()
-        LoadMdiChildForm(New FUserGroup, "menu501")
+        LoadMdiChildForm(FUserGroup, "menu501")
     End Sub
 
     Sub LoadMdiChildForm(CForm As Form, menuname As String)
         If Not ChildForm Is Nothing Then ChildForm.Close()
         ChildForm = CForm
-        ChildForm.Name = menuname
+        MenuActive = menuname
         ChildForm.WindowState = FormWindowState.Maximized
         ChildForm.MdiParent = Me
         ChildForm.Show()
@@ -64,7 +65,7 @@ Public Class MainForm
     End Sub
 
     Private Sub DataTanamanMasukToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles menu102.Click
-        LoadMdiChildForm(New FTanamanMasuk, "menu102")
+        LoadMdiChildForm(FTanamanMasuk, "menu102")
     End Sub
 
 End Class
