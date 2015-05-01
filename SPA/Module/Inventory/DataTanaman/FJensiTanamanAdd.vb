@@ -20,7 +20,7 @@
                 res = Model.InsertData()
                 'MyApplication.ShowStatus("Data has been saved")
             End If
-            FjenisTanaman.init()
+            FjensiTanaman.init()
             'FUserGroup.RetrieveLast()
             Me.Close()
         End If

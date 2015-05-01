@@ -1,4 +1,4 @@
-﻿Public Class FjenisTanaman
+﻿Public Class FjensiTanaman
     Dim dt As New DataTable
     Dim DGVColumnCheckIndex As Integer
 

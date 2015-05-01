@@ -244,7 +244,6 @@ Partial Class FDataTanamanAdd
         Me.txtMmtrg.Name = "txtMmtrg"
         Me.txtMmtrg.Size = New System.Drawing.Size(132, 22)
         Me.txtMmtrg.TabIndex = 17
-        Me.txtMmtrg.Visible = False
         '
         'txtMmtrhid
         '

@@ -121,34 +121,47 @@
     <Compile Include="Libraries\CdataAccess.vb" />
     <Compile Include="Libraries\ErrorLogger.vb" />
     <Compile Include="Libraries\EventLogger.vb" />
+    <Compile Include="Module\Inventory\DataPelanggan\FDataPelanggan.Designer.vb">
+      <DependentUpon>FDataPelanggan.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Module\Inventory\DataPelanggan\FDataPelanggan.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Module\Inventory\DataPelanggan\Form1.Designer.vb">
+      <DependentUpon>FDataPelangganAdd.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Module\Inventory\DataPelanggan\FDataPelangganAdd.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Module\Inventory\DataPelanggan\MDataPelanggan.vb" />
     <Compile Include="Module\Inventory\FTanamanMasuk.Designer.vb">
       <DependentUpon>FTanamanMasuk.vb</DependentUpon>
     </Compile>
     <Compile Include="Module\Inventory\FTanamanMasuk.vb">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Module\Inventory\DataBibitTanaman\FDataBibitTanaman.Designer.vb">
+    <Compile Include="Module\Inventory\DataTanamanMasuk\FDataBibitTanaman.Designer.vb">
       <DependentUpon>FDataBibitTanaman.vb</DependentUpon>
     </Compile>
-    <Compile Include="Module\Inventory\DataBibitTanaman\FDataBibitTanaman.vb">
+    <Compile Include="Module\Inventory\DataTanamanMasuk\FDataBibitTanaman.vb">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Module\Inventory\DataBibitTanaman\FDataBibitTanamanAdd.Designer.vb">
+    <Compile Include="Module\Inventory\DataTanamanMasuk\FDataBibitTanamanAdd.Designer.vb">
       <DependentUpon>FDataBibitTanamanAdd.vb</DependentUpon>
     </Compile>
-    <Compile Include="Module\Inventory\DataBibitTanaman\FDataBibitTanamanAdd.vb">
+    <Compile Include="Module\Inventory\DataTanamanMasuk\FDataBibitTanamanAdd.vb">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Module\Inventory\DataBibitTanaman\FjenisBibitTanaman.Designer.vb">
+    <Compile Include="Module\Inventory\DataTanamanMasuk\FjenisBibitTanaman.Designer.vb">
       <DependentUpon>FjenisBibitTanaman.vb</DependentUpon>
     </Compile>
-    <Compile Include="Module\Inventory\DataBibitTanaman\FjenisBibitTanaman.vb">
+    <Compile Include="Module\Inventory\DataTanamanMasuk\FjenisBibitTanaman.vb">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Module\Inventory\DataBibitTanaman\FJensiBibitTanamanAdd.Designer.vb">
+    <Compile Include="Module\Inventory\DataTanamanMasuk\FJensiBibitTanamanAdd.Designer.vb">
       <DependentUpon>FJensiBibitTanamanAdd.vb</DependentUpon>
     </Compile>
-    <Compile Include="Module\Inventory\DataBibitTanaman\FJensiBibitTanamanAdd.vb">
+    <Compile Include="Module\Inventory\DataTanamanMasuk\FJensiBibitTanamanAdd.vb">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Module\Inventory\DataTanaman\FJensiTanamanAdd.Designer.vb">
@@ -157,7 +170,7 @@
     <Compile Include="Module\Inventory\DataTanaman\FJensiTanamanAdd.vb">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Module\Inventory\DataBibitTanaman\MJenisBibitTanaman.vb" />
+    <Compile Include="Module\Inventory\DataTanamanMasuk\MJenisBibitTanaman.vb" />
     <Compile Include="Module\Inventory\DataTanaman\MJenisTanaman.vb" />
     <Compile Include="Module\Inventory\DataTanaman\FDataTanaman.Designer.vb">
       <DependentUpon>FDataTanaman.vb</DependentUpon>
@@ -177,7 +190,7 @@
     <Compile Include="Module\Inventory\DataTanaman\FjenisTanaman.vb">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Module\Inventory\DataBibitTanaman\MBibitTanaman.vb" />
+    <Compile Include="Module\Inventory\DataTanamanMasuk\MBibitTanaman.vb" />
     <Compile Include="Module\Inventory\DataTanaman\MTanaman.vb" />
     <Compile Include="Module\MainForm.Designer.vb">
       <DependentUpon>MainForm.vb</DependentUpon>
@@ -229,28 +242,37 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
+    <EmbeddedResource Include="Module\Inventory\DataPelanggan\FDataPelanggan.resx">
+      <DependentUpon>FDataPelanggan.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Module\Inventory\DataPelanggan\FDataPelangganAdd.resx">
+      <DependentUpon>FDataPelangganAdd.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Module\Inventory\DataPelanggan\Form1.resx">
+      <DependentUpon>FDataPelangganAdd.vb</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Module\Inventory\FTanamanMasuk.resx">
       <DependentUpon>FTanamanMasuk.vb</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Module\Inventory\DataBibitTanaman\FDataBibitTanaman.resx">
+    <EmbeddedResource Include="Module\Inventory\DataTanamanMasuk\FDataBibitTanaman.resx">
       <DependentUpon>FDataBibitTanaman.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Module\Inventory\DataTanaman\FDataTanaman.resx">
       <DependentUpon>FDataTanaman.vb</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Module\Inventory\DataBibitTanaman\FDataBibitTanamanAdd.resx">
+    <EmbeddedResource Include="Module\Inventory\DataTanamanMasuk\FDataBibitTanamanAdd.resx">
       <DependentUpon>FDataBibitTanamanAdd.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Module\Inventory\DataTanaman\FDataTanamanAdd.resx">
       <DependentUpon>FDataTanamanAdd.vb</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Module\Inventory\DataBibitTanaman\FjenisBibitTanaman.resx">
+    <EmbeddedResource Include="Module\Inventory\DataTanamanMasuk\FjenisBibitTanaman.resx">
       <DependentUpon>FjenisBibitTanaman.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Module\Inventory\DataTanaman\FjenisTanaman.resx">
       <DependentUpon>FjenisTanaman.vb</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Module\Inventory\DataBibitTanaman\FJensiBibitTanamanAdd.resx">
+    <EmbeddedResource Include="Module\Inventory\DataTanamanMasuk\FJensiBibitTanamanAdd.resx">
       <DependentUpon>FJensiBibitTanamanAdd.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Module\Inventory\DataTanaman\FJensiTanamanAdd.resx">

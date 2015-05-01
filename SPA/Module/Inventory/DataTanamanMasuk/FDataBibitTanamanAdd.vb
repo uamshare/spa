@@ -1,75 +1,43 @@
 ﻿Public Class FDataBibitTanamanAdd
     Private Model As New MBibitTanaman
 
+    Shared Property txtMmtrg2 As Object
+
     Private Sub btnSimpan_Click(sender As Object, e As EventArgs) Handles btnSimpan.Click
         'MessageBox.Show(Model.EscapeString(TextBox1.Text))
         'Exit Sub
-
-        If txtJnsTanaman.Text = "" Then
-            'MessageBox.Show("User group cannot be empty")
-            statmsg.Text = "Jenis Tananan tidak boleh kosong !"
-            statmsg.ForeColor = Color.DarkRed
-            txtJnsTanaman.Focus()
-        ElseIf UBound(Split(txtKode.Text, " ")) > 0 Then
-            statmsg.Text = "Kode tidak menggunakan spasi !"
-            statmsg.ForeColor = Color.DarkRed
-            txtKode.Focus()
-        ElseIf Not txtKode.Text = "" Then
-            If Len(txtKode.Text) < 5 Then
-                'MessageBox.Show("User group cannot be empty")
-                statmsg.Text = "Kode tidak boleh kurang dari 5 digit !"
-                statmsg.ForeColor = Color.DarkRed
-                txtKode.Focus()
-            End If
-        ElseIf txtKode.Text = "" Then
-            'MessageBox.Show("User group cannot be empty")
-            statmsg.Text = "Kode tidak boleh kosong !"
-            statmsg.ForeColor = Color.DarkRed
-            txtKode.Focus()
-        ElseIf txtKode.Text = "" Then
-            'MessageBox.Show("User group cannot be empty")
-            statmsg.Text = "Kode tidak boleh kosong !"
-            statmsg.ForeColor = Color.DarkRed
-            txtKode.Focus()
-        ElseIf txtKode2.Text = "" Then
-            'MessageBox.Show("User group cannot be empty")
-            statmsg.Text = "Kode tidak boleh kosong !"
-            statmsg.ForeColor = Color.DarkRed
-            txtKode2.Focus()
-        ElseIf txtKode3.Text = "" Then
-            'MessageBox.Show("User group cannot be empty")
-            statmsg.Text = "Kode tidak boleh kosong !"
-            statmsg.ForeColor = Color.DarkRed
-            txtKode3.Focus()
-        Else
+        If DataIsValid() Then
             Dim res As Integer
 
-            Model.GetKey = Model.EscapeString(txtKeyID.Text)
+            Model.GetKey1 = Model.EscapeString(txtKeyID1.Text)
+            Model.GetKey2 = Model.EscapeString(txtKeyID2.Text)
+            Model.mmtrg2 = "2"
             Model.mmtrhid = Model.EscapeString(txtMmtrhid.Text)
-            Model.mmtrg = Model.EscapeString(txtMmtrg.Text)
+            Model.mmtrg1 = Model.EscapeString(txtKode2.Text)
             Model.mmtrname = Model.EscapeString(txtJnsTanaman.Text)
             Model.polybag = cmbPolybag.Text
             Model.mmtrunit = txtSatuan.Text
             Model.mmtrprice = Convert.ToDouble(txtHarga.Text)
             Model.mmtrid1 = txtKode.Text + txtKode2.Text + txtKode3.Text
             Model.mmtrid2 = txtKode.Text + "2" + txtKode3.Text
-            If Not Model.IfKeyExist(Model.mmtrid1) Then
-                If txtMmtrg.Text <> "" Then
-                    res = Model.UpdateData()
-                    'MyApplication.ShowStatus("Data has been updated")
+            If txtKode.Text + txtKode2.Text + txtKode3.Text <> txtKeyID1.Text Then
+                If Not Model.IfKeyExist(Model.mmtrid1) Then
+                    If txtKeyID1.Text <> "" And txtKeyID2.Text <> "" Then
+                        res = Model.UpdateData() And Model.UpdateData1()
+                        'MyApplication.ShowStatus("Data has been updated")
+                    Else
+                        res = Model.InsertData() And Model.InsertData1()
+                        'MyApplication.ShowStatus("Data has been saved")
+                    End If
+                    FDataBibitTanaman.init()
+                    Me.Close()
                 Else
-                    res = Model.InsertData()
-                    'MyApplication.ShowStatus("Data has been saved")
+                    statmsg.Text = "Kode sudah ada, silahkan masukan kode yang lain."
+                    statmsg.ForeColor = Color.DarkRed
+                    txtKode.Focus()
                 End If
-                FDataTanaman.init()
-            Else
-                statmsg.Text = "Kode sudah ada, silahkan masukan kode yang lain."
-                statmsg.ForeColor = Color.DarkRed
-                txtKode.Focus()
-            End If
 
-            'FUserGroup.RetrieveLast()
-            Me.Close()
+            End If
         End If
     End Sub
 
@@ -79,6 +47,7 @@
     End Sub
 
     Private Sub FDataBibitTanamanAdd_Load(sender As Object, e As EventArgs) Handles MyBase.Load
+
         txtKode2.Text = "1"
         statmsg.Text = ""
 
@@ -130,7 +99,7 @@
     Private Sub txtKode_Leave(sender As Object, e As EventArgs) Handles txtKode.Leave
         Dim mmtrid As String = txtKode.Text + txtKode2.Text + txtKode3.Text
 
-        If txtMmtrg.Text = "" Then
+        If txtMmtrg1.Text = "" Then
             If Not Model.IfKeyExist(mmtrid) Then
                 statmsg.Text = "Kode Valid"
                 statmsg.ForeColor = Color.Green
@@ -156,4 +125,40 @@
     Private Sub txtSatuan_KeyPress(sender As Object, e As KeyPressEventArgs) Handles txtSatuan.KeyPress
         e.KeyChar = UCase(e.KeyChar)
     End Sub
+    Private Function DataIsValid() As Boolean
+        DataIsValid = True
+        If txtJnsTanaman.Text = "" Then
+            'MessageBox.Show("User group cannot be empty")
+            statmsg.Text = "Jenis Tanaman tidak boleh kosong !"
+            statmsg.ForeColor = Color.DarkRed
+            txtJnsTanaman.Focus()
+            DataIsValid = False
+        ElseIf txtKode.Text = "" Then
+            'MessageBox.Show("User group cannot be empty")
+            statmsg.Text = "Kode tidak boleh kosong !"
+            statmsg.ForeColor = Color.DarkRed
+            txtKode.Focus()
+            DataIsValid = False
+        ElseIf txtKode3.Text = "" Then
+            'MessageBox.Show("User group cannot be empty")
+            statmsg.Text = "Kode tidak boleh kosong !"
+            statmsg.ForeColor = Color.DarkRed
+            txtKode3.Focus()
+            DataIsValid = False
+        ElseIf txtKode.Text <> "" Then
+            If Len(txtKode.Text) < 5 Then
+                'MessageBox.Show("User group cannot be empty")
+                statmsg.Text = "Kode tidak boleh kurang dari 5 digit !"
+                statmsg.ForeColor = Color.DarkRed
+                txtKode.Focus()
+                DataIsValid = False
+            ElseIf UBound(Split(txtKode.Text, " ")) > 0 Then
+                statmsg.Text = "Kode tidak menggunakan spasi !"
+                statmsg.ForeColor = Color.DarkRed
+                txtKode.Focus()
+                DataIsValid = False
+            End If
+        End If
+        Return DataIsValid
+    End Function
 End Class

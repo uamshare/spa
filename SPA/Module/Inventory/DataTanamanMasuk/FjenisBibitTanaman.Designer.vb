@@ -50,6 +50,7 @@ Partial Class FjenisBibitTanaman
         Me.Panelbarang = New System.Windows.Forms.Panel()
         Me.DataGridView1 = New System.Windows.Forms.DataGridView()
         Me.PrintDialog1 = New System.Windows.Forms.PrintDialog()
+        Me.ToolPrint = New System.Windows.Forms.ToolStripButton()
         Me.Toolbarang.SuspendLayout()
         Me.ToolStrip1.SuspendLayout()
         Me.Panelbarang.SuspendLayout()
@@ -88,7 +89,7 @@ Partial Class FjenisBibitTanaman
         'ToolDelete
         '
         Me.ToolDelete.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image
-        Me.ToolDelete.Image = Global.SPA.My.Resources.Resources.delete
+        Me.ToolDelete.Image = Global.SPA.My.Resources.Resources.trush
         Me.ToolDelete.ImageTransparentColor = System.Drawing.Color.Magenta
         Me.ToolDelete.Name = "ToolDelete"
         Me.ToolDelete.Size = New System.Drawing.Size(36, 36)
@@ -97,7 +98,7 @@ Partial Class FjenisBibitTanaman
         'ToolEdit
         '
         Me.ToolEdit.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image
-        Me.ToolEdit.Image = Global.SPA.My.Resources.Resources.edit
+        Me.ToolEdit.Image = Global.SPA.My.Resources.Resources.edit1
         Me.ToolEdit.ImageTransparentColor = System.Drawing.Color.Magenta
         Me.ToolEdit.Name = "ToolEdit"
         Me.ToolEdit.Size = New System.Drawing.Size(36, 36)
@@ -106,7 +107,7 @@ Partial Class FjenisBibitTanaman
         'ToolAdd
         '
         Me.ToolAdd.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image
-        Me.ToolAdd.Image = Global.SPA.My.Resources.Resources.add
+        Me.ToolAdd.Image = Global.SPA.My.Resources.Resources.add1
         Me.ToolAdd.ImageTransparentColor = System.Drawing.Color.Magenta
         Me.ToolAdd.Name = "ToolAdd"
         Me.ToolAdd.Size = New System.Drawing.Size(36, 36)
@@ -117,11 +118,11 @@ Partial Class FjenisBibitTanaman
         Me.Toolbarang.BackColor = System.Drawing.SystemColors.ActiveCaption
         Me.Toolbarang.GripStyle = System.Windows.Forms.ToolStripGripStyle.Hidden
         Me.Toolbarang.ImageScalingSize = New System.Drawing.Size(32, 32)
-        Me.Toolbarang.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.ToolAdd, Me.ToolEdit, Me.ToolDelete, Me.ToolHelp, Me.ToolRefresh, Me.ToolFind, Me.ToolTextFind})
+        Me.Toolbarang.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.ToolAdd, Me.ToolEdit, Me.ToolDelete, Me.ToolRefresh, Me.ToolFind, Me.ToolTextFind, Me.ToolPrint, Me.ToolHelp})
         Me.Toolbarang.Location = New System.Drawing.Point(0, 0)
         Me.Toolbarang.Name = "Toolbarang"
         Me.Toolbarang.RenderMode = System.Windows.Forms.ToolStripRenderMode.System
-        Me.Toolbarang.Size = New System.Drawing.Size(489, 39)
+        Me.Toolbarang.Size = New System.Drawing.Size(467, 39)
         Me.Toolbarang.TabIndex = 9
         Me.Toolbarang.Text = "Tool1"
         '
@@ -228,10 +229,10 @@ Partial Class FjenisBibitTanaman
         Me.ToolStrip1.Dock = System.Windows.Forms.DockStyle.Bottom
         Me.ToolStrip1.GripStyle = System.Windows.Forms.ToolStripGripStyle.Hidden
         Me.ToolStrip1.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.ToolStripLabelbarang, Me.cmbperPage, Me.ToolStripLabel1, Me.ToolStripSeparator3, Me.ToolFisrt, Me.ToolPrev, Me.ToolStripSeparator1, Me.txtPageCurrent, Me.lCountPage, Me.ToolStripSeparator2, Me.ToolNext, Me.ToolLast, Me.lpageInfo, Me.ToolStripButton1})
-        Me.ToolStrip1.Location = New System.Drawing.Point(0, 478)
+        Me.ToolStrip1.Location = New System.Drawing.Point(0, 566)
         Me.ToolStrip1.Name = "ToolStrip1"
         Me.ToolStrip1.RenderMode = System.Windows.Forms.ToolStripRenderMode.System
-        Me.ToolStrip1.Size = New System.Drawing.Size(489, 25)
+        Me.ToolStrip1.Size = New System.Drawing.Size(467, 25)
         Me.ToolStrip1.TabIndex = 19
         Me.ToolStrip1.Text = "ToolStrip1"
         '
@@ -250,7 +251,7 @@ Partial Class FjenisBibitTanaman
         Me.Panelbarang.Dock = System.Windows.Forms.DockStyle.Left
         Me.Panelbarang.Location = New System.Drawing.Point(0, 0)
         Me.Panelbarang.Name = "Panelbarang"
-        Me.Panelbarang.Size = New System.Drawing.Size(489, 503)
+        Me.Panelbarang.Size = New System.Drawing.Size(467, 591)
         Me.Panelbarang.TabIndex = 10
         '
         'DataGridView1
@@ -258,20 +259,29 @@ Partial Class FjenisBibitTanaman
         Me.DataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
         Me.DataGridView1.Location = New System.Drawing.Point(3, 39)
         Me.DataGridView1.Name = "DataGridView1"
-        Me.DataGridView1.Size = New System.Drawing.Size(483, 436)
+        Me.DataGridView1.Size = New System.Drawing.Size(464, 524)
         Me.DataGridView1.TabIndex = 20
         '
         'PrintDialog1
         '
         Me.PrintDialog1.UseEXDialog = True
         '
-        'FjenisTanaman
+        'ToolPrint
+        '
+        Me.ToolPrint.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image
+        Me.ToolPrint.Image = Global.SPA.My.Resources.Resources.print2
+        Me.ToolPrint.ImageTransparentColor = System.Drawing.Color.Magenta
+        Me.ToolPrint.Name = "ToolPrint"
+        Me.ToolPrint.Size = New System.Drawing.Size(36, 36)
+        Me.ToolPrint.Text = "ToolStripButton2"
+        '
+        'FjenisBibitTanaman
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(491, 503)
+        Me.ClientSize = New System.Drawing.Size(468, 591)
         Me.Controls.Add(Me.Panelbarang)
-        Me.Name = "FjenisTanaman"
+        Me.Name = "FjenisBibitTanaman"
         Me.Text = "Jenis Tanaman"
         Me.Toolbarang.ResumeLayout(False)
         Me.Toolbarang.PerformLayout()
@@ -310,4 +320,5 @@ Partial Class FjenisBibitTanaman
     Friend WithEvents Panelbarang As System.Windows.Forms.Panel
     Friend WithEvents DataGridView1 As System.Windows.Forms.DataGridView
     Friend WithEvents PrintDialog1 As System.Windows.Forms.PrintDialog
+    Friend WithEvents ToolPrint As System.Windows.Forms.ToolStripButton
 End Class

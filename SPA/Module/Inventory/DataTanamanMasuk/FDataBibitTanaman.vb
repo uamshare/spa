@@ -217,14 +217,15 @@ Public Class FDataBibitTanaman
         If getCountSelectedData() > 0 Then
             FDataBibitTanamanAdd.txtMmtrhid.Text = CStr(DataGridViewTanaman.Rows(getRowIndexSelected()).Cells("mmtrhid").Value)
             FDataBibitTanamanAdd.txtJnsTanaman.Text = CStr(DataGridViewTanaman.Rows(getRowIndexSelected()).Cells("mmtrname").Value)
-            FDataBibitTanamanAdd.txtKeyID.Text = CStr(DataGridViewTanaman.Rows(getRowIndexSelected()).Cells("PrimaryKey").Value)
-            FDataBibitTanamanAdd.txtMmtrg.Text = CStr(DataGridViewTanaman.Rows(getRowIndexSelected()).Cells("mmtrg").Value)
+            FDataBibitTanamanAdd.txtKeyID1.Text = CStr(DataGridViewTanaman.Rows(getRowIndexSelected()).Cells("PrimaryKey").Value)
+            FDataBibitTanamanAdd.txtMmtrg1.Text = CStr(DataGridViewTanaman.Rows(getRowIndexSelected()).Cells("mmtrg").Value)
             FDataBibitTanamanAdd.cmbPolybag.Text = CStr(DataGridViewTanaman.Rows(getRowIndexSelected()).Cells("polybag").Value)
             FDataBibitTanamanAdd.txtKode.Text = Strings.Left(CStr(DataGridViewTanaman.Rows(getRowIndexSelected()).Cells("mmtrid").Value), 5)
             FDataBibitTanamanAdd.txtKode2.Text = Strings.Left(CStr(DataGridViewTanaman.Rows(getRowIndexSelected()).Cells("mmtrid").Value), 1)
             FDataBibitTanamanAdd.txtKode3.Text = Strings.Right(CStr(DataGridViewTanaman.Rows(getRowIndexSelected()).Cells("mmtrid").Value), 3)
-            FDataBibitTanamanAdd.txtSatuan.Text = CStr(DataGridViewTanaman.Rows(getRowIndexSelected()).Cells("mmtrunit").Value)
             FDataBibitTanamanAdd.txtHarga.Text = Convert.ToString(DataGridViewTanaman.Rows(getRowIndexSelected()).Cells("mmtrprice").Value)
+            FDataBibitTanamanAdd.txtSatuan.Text = CStr(DataGridViewTanaman.Rows(getRowIndexSelected()).Cells("mmtrunit").Value)
+            FDataBibitTanamanAdd.txtKeyID2.Text = Strings.Left(CStr(DataGridViewTanaman.Rows(getRowIndexSelected()).Cells("mmtrid").Value), 5) + "2" + Strings.Right(CStr(DataGridViewTanaman.Rows(getRowIndexSelected()).Cells("mmtrid").Value), 3) + "2"
             FDataBibitTanamanAdd.Show()
         Else
             MyApplication.ShowStatus("No data is selected", NOTICE_STAT)
@@ -235,7 +236,6 @@ Public Class FDataBibitTanaman
         FDataBibitTanamanAdd.txtJnsTanaman.Text = ""
         FDataBibitTanamanAdd.cmbPolybag.Text = ""
         FDataBibitTanamanAdd.txtKode.Text = ""
-        FDataBibitTanamanAdd.txtKode2.Text = ""
         FDataBibitTanamanAdd.txtKode3.Text = ""
         FDataBibitTanamanAdd.txtSatuan.Text = ""
         FDataBibitTanamanAdd.txtHarga.Text = ""
@@ -245,11 +245,13 @@ Public Class FDataBibitTanaman
 
     Private Sub ToolDelete_Click(sender As Object, e As EventArgs) Handles ToolDelete.Click
         If DataGridViewTanaman.RowCount > 0 Then
-            Dim GetKey(DataGridViewTanaman.Rows.Count) As String
+            Dim GetKey1(DataGridViewTanaman.Rows.Count) As String
+            Dim GetKey2(DataGridViewTanaman.Rows.Count) As String
             For i As Integer = 0 To DataGridViewTanaman.Rows.Count - 1
                 'delete data
                 If DataGridViewTanaman.Rows(i).Cells(DGVColumnCheckIndex).FormattedValue = True Then
-                    GetKey(i) = DataGridViewTanaman.Rows(i).Cells("PrimaryKey").Value
+                    GetKey1(i) = DataGridViewTanaman.Rows(i).Cells("PrimaryKey").Value
+                    GetKey2(i) = Strings.Left(CStr(DataGridViewTanaman.Rows(getRowIndexSelected()).Cells("mmtrid").Value), 5) + "2" + Strings.Right(CStr(DataGridViewTanaman.Rows(getRowIndexSelected()).Cells("mmtrid").Value), 3) + "2"
                 End If
 
             Next
@@ -261,7 +263,8 @@ Public Class FDataBibitTanaman
                     '        Model.DeleteData(groupid)
                     '    End If
                     'Next
-                    Model.MultipleDeleteData(GetKey)
+                    Model.MultipleDeleteData1(GetKey1)
+                    Model.MultipleDeleteData2(GetKey2)
                 End If
                 'MyApplication.ShowStatus("Deleted " & getCountSelectedData() & " data")
                 init()

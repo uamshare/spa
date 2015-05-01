@@ -375,7 +375,7 @@ Public Class FDataTanaman
         ToolTextFind.Text = ""
     End Sub
 
-    Private Sub toolImport_Click(sender As Object, e As EventArgs) Handles toolImport.Click
+    Private Sub toolImport_Click(sender As Object, e As EventArgs) Handles toolPrint.Click
 
 
         Try

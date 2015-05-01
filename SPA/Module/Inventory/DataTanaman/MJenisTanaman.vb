@@ -58,40 +58,4 @@
         Return rowCountAffected
     End Function
 
-    'Function InsertAll()
-    '    Try
-    '        BeginTrans() 'begin transaction
-    '        cmd.Connection = PCONN
-    '        Dim todata As Integer = 100000
-    '        For i As Integer = 1 To todata
-    '            Me.StringSQL = "INSERT INTO " & TableName + "(groupname) VALUES('Group-" & i & "')"
-    '            cmd.CommandText = Me.StringSQL
-    '            rowCountAffected += cmd.ExecuteNonQuery() 'returns the number of rows affected. 
-    '            MainForm.ToolProgressBar1.Value += 100 / todata
-    '        Next
-    '        CommitTrans(" data have been saved ") 'Commit All Transaction
-    '    Catch ex As MySql.Data.MySqlClient.MySqlException
-    '        RollbackTrans("Error " & ex.Number & " has occurred: " & ex.Message)
-    '        Return Nothing
-    '    End Try
-
-    '    Return rowCountAffected
-    'End Function
-
-    'Function trunctaedata()
-    '    BeginTrans() 'begin transaction
-    '    Try
-    '        cmd.Connection = PCONN
-    '        Me.StringSQL = "TRUNCATE TABLE " & TableName
-    '        cmd.CommandText = Me.StringSQL
-    '        rowCountAffected += cmd.ExecuteNonQuery() 'returns the number of rows affected. 
-    '        MyApplication.ShowStatus("Done. Process have been completed")
-    '    Catch ex As MySql.Data.MySqlClient.MySqlException
-    '        RollbackTrans("Error " & ex.Number & " has occurred: " & ex.Message)
-    '        Return Nothing
-    '    End Try
-    '    CommitTrans(" data have been saved ") 'Commit All Transaction
-    '    Return rowCountAffected
-    'End Function
-
 End Class
