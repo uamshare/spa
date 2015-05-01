@@ -30,6 +30,7 @@ Partial Class MainForm
         Me.menu300 = New System.Windows.Forms.ToolStripMenuItem()
         Me.menu400 = New System.Windows.Forms.ToolStripMenuItem()
         Me.menu500 = New System.Windows.Forms.ToolStripMenuItem()
+        Me.menu501 = New System.Windows.Forms.ToolStripMenuItem()
         Me.menu502 = New System.Windows.Forms.ToolStripMenuItem()
         Me.menu503 = New System.Windows.Forms.ToolStripMenuItem()
         Me.ExitMenu = New System.Windows.Forms.ToolStripMenuItem()
@@ -40,7 +41,7 @@ Partial Class MainForm
         Me.StatusMessage = New System.Windows.Forms.ToolStripStatusLabel()
         Me.ToolTip = New System.Windows.Forms.ToolTip(Me.components)
         Me.TimeStat = New System.Windows.Forms.Timer(Me.components)
-        Me.menu501 = New System.Windows.Forms.ToolStripMenuItem()
+        Me.menu101 = New System.Windows.Forms.ToolStripMenuItem()
         Me.MenuStrip.SuspendLayout()
         Me.StatusStrip.SuspendLayout()
         Me.SuspendLayout()
@@ -57,21 +58,22 @@ Partial Class MainForm
         '
         'menu100
         '
+        Me.menu100.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.menu101})
         Me.menu100.ImageTransparentColor = System.Drawing.SystemColors.ActiveBorder
         Me.menu100.Name = "menu100"
-        Me.menu100.Size = New System.Drawing.Size(128, 20)
+        Me.menu100.Size = New System.Drawing.Size(129, 20)
         Me.menu100.Text = "Persediaan Tanaman"
         '
         'menu200
         '
         Me.menu200.Name = "menu200"
-        Me.menu200.Size = New System.Drawing.Size(167, 20)
+        Me.menu200.Size = New System.Drawing.Size(168, 20)
         Me.menu200.Text = "Penangkaran Bibit Tanaman"
         '
         'menu300
         '
         Me.menu300.Name = "menu300"
-        Me.menu300.Size = New System.Drawing.Size(123, 20)
+        Me.menu300.Size = New System.Drawing.Size(124, 20)
         Me.menu300.Text = "Penjualan Tanaman"
         '
         'menu400
@@ -87,16 +89,22 @@ Partial Class MainForm
         Me.menu500.Size = New System.Drawing.Size(80, 20)
         Me.menu500.Text = "Pengaturan"
         '
+        'menu501
+        '
+        Me.menu501.Name = "menu501"
+        Me.menu501.Size = New System.Drawing.Size(166, 22)
+        Me.menu501.Text = "Grup Akses"
+        '
         'menu502
         '
         Me.menu502.Name = "menu502"
-        Me.menu502.Size = New System.Drawing.Size(226, 22)
+        Me.menu502.Size = New System.Drawing.Size(166, 22)
         Me.menu502.Text = "Pengguna"
         '
         'menu503
         '
         Me.menu503.Name = "menu503"
-        Me.menu503.Size = New System.Drawing.Size(226, 22)
+        Me.menu503.Size = New System.Drawing.Size(166, 22)
         Me.menu503.Text = "Profil Perusahaan"
         '
         'ExitMenu
@@ -154,11 +162,11 @@ Partial Class MainForm
         'TimeStat
         '
         '
-        'menu501
+        'menu101
         '
-        Me.menu501.Name = "menu501"
-        Me.menu501.Size = New System.Drawing.Size(166, 22)
-        Me.menu501.Text = "Grup Akses"
+        Me.menu101.Name = "menu101"
+        Me.menu101.Size = New System.Drawing.Size(152, 22)
+        Me.menu101.Text = "Data Tanaman"
         '
         'MainForm
         '
@@ -199,5 +207,6 @@ Partial Class MainForm
     Friend WithEvents menu502 As System.Windows.Forms.ToolStripMenuItem
     Friend WithEvents menu503 As System.Windows.Forms.ToolStripMenuItem
     Friend WithEvents menu501 As System.Windows.Forms.ToolStripMenuItem
+    Friend WithEvents menu101 As System.Windows.Forms.ToolStripMenuItem
 
 End Class

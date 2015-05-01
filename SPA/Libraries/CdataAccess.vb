@@ -284,6 +284,28 @@ Public Class CDataAcces 'Name dari Class yang dibuat.
         Return rowCountAffected
     End Function
 
+    Public Function IfKeyExist(Optional keyvalue As String = "") As Boolean
+        'BeginTrans("attempting fetch data, please wait ... ") 'begin transaction
+        Try
+            If Me.mCONN.State = ConnectionState.Closed Then Me.mCONN.Open()
+            cmd.Connection = mCONN
+            cmd.CommandText = IIf(String.IsNullOrEmpty(StringSQL), "SELECT COUNT(*) FROM " & TableName & " WHERE " & PrimaryKey & "='" & keyvalue & "'", StringSQL)
+            rowCountAffected = cmd.ExecuteScalar() 'returns the number of rows affected. 
+            'Me.mCONN.Close()
+
+        Catch ex As MySqlException
+            Application.ShowStatus("Error " & ex.Number & " has occurred: " & ex.Message, Color.Red, Global.SPA.My.Resources.icon_warning, True, 10000)
+            'Me.mCONN.Close()
+            Return Nothing
+        Catch ex As Exception
+            Application.ShowStatus("Error has occurred: " & ex.Message, Color.Red, Global.SPA.My.Resources.icon_warning, True, 10000)
+            'Me.mCONN.Close()
+            Return Nothing
+        End Try
+        'CommitTrans(" fetch data have been completed ") 'Commit All Transaction
+        Return IIf(rowCountAffected <= 0, False, True)
+    End Function
+
 
     Function InsertData() As Integer Implements IDataAccess.InsertData
         'StartProgress()

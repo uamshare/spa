@@ -16,7 +16,7 @@ Public Class BaseConnection
     Protected Sub New(ByVal id As Integer)
         Dim myConnectionString As String = "server=localhost;" _
                 & "uid=root;" _
-                & "pwd=;" _
+                & "pwd=123456;" _
                 & "database=simagro;"
         CONN.ConnectionString = myConnectionString
         Try

@@ -11,7 +11,7 @@
     <AssemblyName>SPA</AssemblyName>
     <FileAlignment>512</FileAlignment>
     <MyType>WindowsForms</MyType>
-    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
     <IsWebBootstrapper>false</IsWebBootstrapper>
     <PublishUrl>publish\</PublishUrl>
     <Install>true</Install>
@@ -28,6 +28,8 @@
     <UseApplicationTrust>false</UseApplicationTrust>
     <PublishWizardCompleted>true</PublishWizardCompleted>
     <BootstrapperEnabled>true</BootstrapperEnabled>
+    <TargetFrameworkProfile>
+    </TargetFrameworkProfile>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <PlatformTarget>AnyCPU</PlatformTarget>
@@ -38,6 +40,7 @@
     <OutputPath>bin\Debug\</OutputPath>
     <DocumentationFile>SPA.xml</DocumentationFile>
     <NoWarn>42016,41999,42017,42018,42019,42032,42036,42020,42021,42022</NoWarn>
+    <Prefer32Bit>false</Prefer32Bit>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <PlatformTarget>AnyCPU</PlatformTarget>
@@ -48,6 +51,7 @@
     <OutputPath>bin\Release\</OutputPath>
     <DocumentationFile>SPA.xml</DocumentationFile>
     <NoWarn>42016,41999,42017,42018,42019,42032,42036,42020,42021,42022</NoWarn>
+    <Prefer32Bit>false</Prefer32Bit>
   </PropertyGroup>
   <PropertyGroup>
     <OptionExplicit>On</OptionExplicit>
@@ -80,6 +84,9 @@
     <SignManifests>true</SignManifests>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Microsoft.Office.Interop.Excel, Version=15.0.0.0, Culture=neutral, PublicKeyToken=71e9bce111e9429c, processorArchitecture=MSIL">
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+    </Reference>
     <Reference Include="MySql.Data, Version=6.9.6.0, Culture=neutral, PublicKeyToken=c5687fc88969c44d, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>C:\Program Files\MySQL\MySQL Connector Net 6.9.6\Assemblies\v4.0\MySql.Data.dll</HintPath>
@@ -111,6 +118,58 @@
     <Compile Include="Libraries\Application.vb" />
     <Compile Include="Libraries\BaseConnection.vb" />
     <Compile Include="Libraries\CdataAccess.vb" />
+    <Compile Include="Module\Inventory\DataBibitTanaman\FDataBibitTanaman.Designer.vb">
+      <DependentUpon>FDataBibitTanaman.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Module\Inventory\DataBibitTanaman\FDataBibitTanaman.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Module\Inventory\DataBibitTanaman\FDataBibitTanamanAdd.Designer.vb">
+      <DependentUpon>FDataBibitTanamanAdd.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Module\Inventory\DataBibitTanaman\FDataBibitTanamanAdd.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Module\Inventory\DataBibitTanaman\FjenisBibitTanaman.Designer.vb">
+      <DependentUpon>FjenisBibitTanaman.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Module\Inventory\DataBibitTanaman\FjenisBibitTanaman.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Module\Inventory\DataBibitTanaman\FJensiBibitTanamanAdd.Designer.vb">
+      <DependentUpon>FJensiBibitTanamanAdd.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Module\Inventory\DataBibitTanaman\FJensiBibitTanamanAdd.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Module\Inventory\DataTanaman\FJensiTanamanAdd.Designer.vb">
+      <DependentUpon>FJensiTanamanAdd.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Module\Inventory\DataTanaman\FJensiTanamanAdd.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Module\Inventory\DataBibitTanaman\MJenisBibitTanaman.vb" />
+    <Compile Include="Module\Inventory\DataTanaman\MJenisTanaman.vb" />
+    <Compile Include="Module\Inventory\DataTanaman\FDataTanaman.Designer.vb">
+      <DependentUpon>FDataTanaman.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Module\Inventory\DataTanaman\FDataTanaman.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Module\Inventory\DataTanaman\FDataTanamanAdd.Designer.vb">
+      <DependentUpon>FDataTanamanAdd.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Module\Inventory\DataTanaman\FDataTanamanAdd.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Module\Inventory\DataTanaman\FjenisTanaman.Designer.vb">
+      <DependentUpon>FjenisTanaman.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Module\Inventory\DataTanaman\FjenisTanaman.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Module\Inventory\DataBibitTanaman\MBibitTanaman.vb" />
+    <Compile Include="Module\Inventory\DataTanaman\MTanaman.vb" />
     <Compile Include="Module\MainForm.Designer.vb">
       <DependentUpon>MainForm.vb</DependentUpon>
     </Compile>
@@ -149,6 +208,30 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
+    <EmbeddedResource Include="Module\Inventory\DataBibitTanaman\FDataBibitTanaman.resx">
+      <DependentUpon>FDataBibitTanaman.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Module\Inventory\DataTanaman\FDataTanaman.resx">
+      <DependentUpon>FDataTanaman.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Module\Inventory\DataBibitTanaman\FDataBibitTanamanAdd.resx">
+      <DependentUpon>FDataBibitTanamanAdd.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Module\Inventory\DataTanaman\FDataTanamanAdd.resx">
+      <DependentUpon>FDataTanamanAdd.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Module\Inventory\DataBibitTanaman\FjenisBibitTanaman.resx">
+      <DependentUpon>FjenisBibitTanaman.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Module\Inventory\DataTanaman\FjenisTanaman.resx">
+      <DependentUpon>FjenisTanaman.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Module\Inventory\DataBibitTanaman\FJensiBibitTanamanAdd.resx">
+      <DependentUpon>FJensiBibitTanamanAdd.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Module\Inventory\DataTanaman\FJensiTanamanAdd.resx">
+      <DependentUpon>FJensiTanamanAdd.vb</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Module\MainForm.resx">
       <DependentUpon>MainForm.vb</DependentUpon>
     </EmbeddedResource>
@@ -181,8 +264,8 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Module\Accounting\" />
-    <Folder Include="Module\Inventory\" />
     <Folder Include="Module\Sales\" />
+    <Folder Include="Module\ViewReport\" />
     <Folder Include="Report\" />
   </ItemGroup>
   <ItemGroup>
@@ -267,6 +350,54 @@
       <ProductName>.NET Framework 3.5 SP1</ProductName>
       <Install>false</Install>
     </BootstrapperPackage>
+  </ItemGroup>
+  <ItemGroup>
+    <COMReference Include="AxCRVIEWERLib">
+      <Guid>{C4847593-972C-11D0-9567-00A0C9273C2A}</Guid>
+      <VersionMajor>8</VersionMajor>
+      <VersionMinor>0</VersionMinor>
+      <Lcid>0</Lcid>
+      <WrapperTool>aximp</WrapperTool>
+      <Isolated>False</Isolated>
+    </COMReference>
+    <COMReference Include="AxCrystal">
+      <Guid>{00025600-0000-0000-C000-000000000046}</Guid>
+      <VersionMajor>5</VersionMajor>
+      <VersionMinor>2</VersionMinor>
+      <Lcid>0</Lcid>
+      <WrapperTool>aximp</WrapperTool>
+      <Isolated>False</Isolated>
+    </COMReference>
+    <COMReference Include="CRVIEWERLib">
+      <Guid>{C4847593-972C-11D0-9567-00A0C9273C2A}</Guid>
+      <VersionMajor>8</VersionMajor>
+      <VersionMinor>0</VersionMinor>
+      <Lcid>0</Lcid>
+      <WrapperTool>tlbimp</WrapperTool>
+      <Isolated>False</Isolated>
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+    </COMReference>
+    <COMReference Include="Crystal">
+      <Guid>{00025600-0000-0000-C000-000000000046}</Guid>
+      <VersionMajor>5</VersionMajor>
+      <VersionMinor>2</VersionMinor>
+      <Lcid>0</Lcid>
+      <WrapperTool>tlbimp</WrapperTool>
+      <Isolated>False</Isolated>
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+    </COMReference>
+    <COMReference Include="Microsoft.Office.Core">
+      <Guid>{2DF8D04C-5BFA-101B-BDE5-00AA0044DE52}</Guid>
+      <VersionMajor>2</VersionMajor>
+      <VersionMinor>4</VersionMinor>
+      <Lcid>0</Lcid>
+      <WrapperTool>primary</WrapperTool>
+      <Isolated>False</Isolated>
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+    </COMReference>
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadata Include="Service References\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.VisualBasic.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
