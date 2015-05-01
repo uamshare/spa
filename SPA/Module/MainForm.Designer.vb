@@ -360,6 +360,12 @@ Partial Class MainForm
         'TimeStat
         '
         '
+        'menu501
+        '
+        Me.menu501.Name = "menu501"
+        Me.menu501.Size = New System.Drawing.Size(166, 22)
+        Me.menu501.Text = "Grup Akses"
+        '
         'MainForm
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)

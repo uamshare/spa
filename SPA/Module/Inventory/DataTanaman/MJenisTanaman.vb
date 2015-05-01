@@ -1,62 +1,60 @@
-﻿Public Class MUserGroup
+﻿Public Class MJenisTanaman
     Inherits CDataAcces
 
-    Public groupid As String
-    Public groupname As String ' Field groupname
+    Public mmtrhid As String
+    Public mmtrhname As String ' Field groupname
+    Public dtcreated As Date
+    Public dtupdated As Date
 
     Sub New()
         MyBase.New()
-        BaseQuery = "SELECT groupid,groupname,groupaktive FROM muserg"
-        SelectQuery = "SELECT groupid,groupname,groupaktive FROM muserg"
-        TableName = "muserg"
-        PrimaryKey = "groupid"
+        BaseQuery = "SELECT mmtrhid,mmtrhname FROM mmtrh"
+        SelectQuery = "SELECT mmtrhid,mmtrhname FROM mmtrh"
+        TableName = "mmtrh"
+        PrimaryKey = "mmtrhid"
     End Sub
 
     Function FindData(sSearch As String) As DataTable
         If Not String.IsNullOrEmpty(sSearch) Then
-            Me.WHERE = "WHERE groupname like '%" & sSearch & "%'"
+            Me.WHERE = "WHERE mmtrhname like '%" & sSearch & "%'"
         Else
             Me.WHERE = ""
         End If
         Return MyBase.GetData
     End Function
     Public Overloads Function InsertData() As Integer
-        Me.StringSQL = "INSERT INTO " & TableName + "(groupname) VALUES('" & groupname & "')"
+        dtcreated = Format(Date.Now, "yyyy/MM/dd")
+        dtupdated = Format(Date.Now, "yyyy/MM/dd")
+
+        Me.StringSQL = "INSERT INTO " & TableName + "(mmtrhname,dtcreated,dtupdated) VALUES('" & mmtrhname & "','" & dtcreated & "','" & dtupdated & "')"
         Return MyBase.InsertData()
     End Function
 
     Public Overloads Function UpdateData() As Integer
-        Me.StringSQL = "UPDATE " & TableName + " SET groupname ='" & groupname & "' WHERE " & PrimaryKey & "=" & groupid
+        dtupdated = Format(Date.Now, "yyyy/MM/dd")
+
+        Me.StringSQL = "UPDATE " & TableName + " SET mmtrhname ='" & mmtrhname & "',dtcreated ='" & dtcreated & "',dtupdated ='" & dtupdated & "' WHERE " & PrimaryKey & "=" & mmtrhid
         Return MyBase.UpdateData()
     End Function
 
     Function MultipleDeleteData(ByVal ids() As String) As Integer
-
+        BeginTrans("attempting delete data, please wait ... ") 'begin transaction
         Try
-            BeginTrans("attempting delete data, please wait ... ") 'begin transaction
             cmd.Connection = PCONN
             'cmd.Prepare()
             If IsArray(ids) And ids.Length > 0 Then
-                For Each groupid As String In ids
-                    If Not String.IsNullOrEmpty(groupid) Then
-                        Me.StringSQL = "DELETE FROM " & TableName + " WHERE " & PrimaryKey & " = '" & groupid & "'"
+                For Each mmtrhid As String In ids
+                    If Not String.IsNullOrEmpty(mmtrhid) Then
+                        Me.StringSQL = "DELETE FROM " & TableName + " WHERE " & PrimaryKey & " = '" & mmtrhid & "'"
                         cmd.CommandText = Me.StringSQL
                         rowCountAffected += cmd.ExecuteNonQuery()
                     End If
                 Next
             End If
-
-            CommitTrans(" data have been deleted ", "delete") 'Commit All Transaction
-            'Catch ex As MySql.Data.MySqlClient.MySqlException
-            '    MyApplication.ShowStatus("Error " & ex.Number & " has occurred: " & NOTICE_STAT, True, 10000)
         Catch ex As MySql.Data.MySqlClient.MySqlException
-            RollbackTrans("Error " & ex.Number & " has occurred: " & ex.Message, "delete")
-            Return Nothing
-        Catch ex As Exception
-            RollbackTrans("Error has occurred: " & ex.Message, "delete")
-            Return Nothing
+            MyApplication.ShowStatus("Error " & ex.Number & " has occurred: " & ex.Message, ERROR_STAT, True, 10000)
         End Try
-
+        CommitTrans(" data have been deleted ") 'Commit All Transaction
         Return rowCountAffected
     End Function
 

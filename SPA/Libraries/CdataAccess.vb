@@ -252,6 +252,34 @@ Public Class CDataAcces 'Name dari Class yang dibuat.
 
         Return rowCountAffected
     End Function
+
+    Public Function IfKeyExist(Optional keyvalue As String = "") As Boolean
+        'BeginTrans("attempting fetch data, please wait ... ") 'begin transaction
+        Try
+            If Me.mCONN.State = ConnectionState.Closed Then Me.mCONN.Open()
+            cmd.Connection = mCONN
+            cmd.CommandText = IIf(String.IsNullOrEmpty(StringSQL), "SELECT COUNT(*) FROM " & TableName & " WHERE " & PrimaryKey & "='" & keyvalue & "'", StringSQL)
+            rowCountAffected = cmd.ExecuteScalar() 'returns the number of rows affected. 
+            'Me.mCONN.Close()
+
+        Catch ex As MySqlException
+            Dim errMsg As String = "Kesalahan " & ex.Number & " Pesan kesalahan : " & ex.Message
+            ErrorLogger.WriteToErrorLog(errMsg, ex.StackTrace, ERROR_STAT, "select", "2")
+            MyApplication.ShowStatus(errMsg, ERROR_STAT, True, 10000)
+            Me.mCONN.Close()
+            Return Nothing
+        Catch ex As Exception
+            Dim errMsg As String = "Terjadi kesalahan : " & ex.Message
+            ErrorLogger.WriteToErrorLog(errMsg, ex.StackTrace, ERROR_STAT, "select", "2")
+            MyApplication.ShowStatus(errMsg, ERROR_STAT, True, 10000)
+            Me.mCONN.Close()
+            Return Nothing
+        End Try
+        'CommitTrans(" fetch data have been completed ") 'Commit All Transaction
+        Return IIf(rowCountAffected <= 0, False, True)
+    End Function
+
+
     Function InsertData() As Integer Implements IDataAccess.InsertData
         Try
             BeginTrans("Persiapan untuk perbaikan data, silahkan tunggu sebentar ... ") 'begin transaction

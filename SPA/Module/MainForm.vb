@@ -68,4 +68,9 @@ Public Class MainForm
         LoadMdiChildForm(FTanamanMasuk, "menu102")
     End Sub
 
+    Private Sub menu101_Click(sender As Object, e As EventArgs) Handles menu101.Click
+        FDataTanaman.WindowState = FormWindowState.Maximized
+        FDataTanaman.MdiParent = Me
+        FDataTanaman.Show()
+    End Sub
 End Class
