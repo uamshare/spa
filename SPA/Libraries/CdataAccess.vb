@@ -187,11 +187,11 @@ Public Class CDataAcces 'Name dari Class yang dibuat.
             '    'ComboBox1.Items.Add(reader.GetString(1) + " (" + reader.GetString(0) + ")")
             'End While
         Catch ex As MySqlException
-            Dim errMsg As String = "Failed to populate database list: " + ex.Message
+            Dim errMsg As String = "Kesalahan " & ex.Number & " Pesan kesalahan : " & ex.Message
             ErrorLogger.WriteToErrorLog(errMsg, ex.StackTrace, ERROR_STAT, "select", "2")
             MyApplication.ShowStatus(errMsg, ERROR_STAT, True, 10000)
         Catch ex As Exception
-            Dim errMsg As String = ex.Message
+            Dim errMsg As String = "Terjadi kesalahan : " & ex.Message
             ErrorLogger.WriteToErrorLog(errMsg, ex.StackTrace, ERROR_STAT, "select", "2")
             MyApplication.ShowStatus(errMsg, ERROR_STAT, True, 10000)
         End Try
@@ -214,11 +214,11 @@ Public Class CDataAcces 'Name dari Class yang dibuat.
                 result.Add(dict)
             End While
         Catch ex As MySqlException
-            Dim errMsg As String = "Failed to populate database list: " + ex.Message
+            Dim errMsg As String = "Kesalahan " & ex.Number & " Pesan kesalahan : " & ex.Message
             ErrorLogger.WriteToErrorLog(errMsg, ex.StackTrace, ERROR_STAT, "select", "2")
             MyApplication.ShowStatus(errMsg, ERROR_STAT, True, 10000)
         Catch ex As Exception
-            Dim errMsg As String = ex.Message
+            Dim errMsg As String = "Terjadi kesalahan : " & ex.Message
             ErrorLogger.WriteToErrorLog(errMsg, ex.StackTrace, ERROR_STAT, "select", "2")
             MyApplication.ShowStatus(errMsg, ERROR_STAT, True, 10000)
         Finally
@@ -236,13 +236,13 @@ Public Class CDataAcces 'Name dari Class yang dibuat.
             rowCountAffected = cmd.ExecuteScalar() 'returns the number of rows affected. 
             Me.mCONN.Close()
         Catch ex As MySqlException
-            Dim errMsg As String = "Error " & ex.Number & " has occurred: " & ex.Message
+            Dim errMsg As String = "Kesalahan " & ex.Number & " Pesan kesalahan : " & ex.Message
             ErrorLogger.WriteToErrorLog(errMsg, ex.StackTrace, ERROR_STAT, "select", "2")
             MyApplication.ShowStatus(errMsg, ERROR_STAT, True, 10000)
             Me.mCONN.Close()
             Return Nothing
         Catch ex As Exception
-            Dim errMsg As String = "Error has occurred: " & ex.Message
+            Dim errMsg As String = "Terjadi kesalahan : " & ex.Message
             ErrorLogger.WriteToErrorLog(errMsg, ex.StackTrace, ERROR_STAT, "select", "2")
             MyApplication.ShowStatus(errMsg, ERROR_STAT, True, 10000)
             Me.mCONN.Close()
@@ -254,51 +254,51 @@ Public Class CDataAcces 'Name dari Class yang dibuat.
     End Function
     Function InsertData() As Integer Implements IDataAccess.InsertData
         Try
-            BeginTrans("attempting insert data, please wait ... ") 'begin transaction
+            BeginTrans("Persiapan untuk perbaikan data, silahkan tunggu sebentar ... ") 'begin transaction
             cmd.Connection = mCONN
             cmd.CommandText = Me.StringSQL
             rowCountAffected = cmd.ExecuteNonQuery() 'returns the number of rows affected. 
-            CommitTrans(" data have been saved ", "insert") 'Commit All Transaction
+            CommitTrans(" Data telah tersimpan ", "insert") 'Commit All Transaction
         Catch ex As MySqlException
-            RollbackTrans("Error " & ex.Number & " has occurred: " & ex.Message, "insert")
+            RollbackTrans("Terjadi kesalahan saat penyimpanan data. No : " & ex.Number & " Pesan Kesalahan : " & ex.Message, "insert")
             Return Nothing
         Catch ex As Exception
-            RollbackTrans("Error has occurred: " & ex.Message, "insert")
+            RollbackTrans("Terjadi kesalahan saat penyimpanan data : " & ex.Message, "insert")
             Return Nothing
         End Try
         Return rowCountAffected
     End Function
     Function UpdateData() As Integer Implements IDataAccess.UpdateData
         Try
-            BeginTrans("attempting update data, please wait ... ") 'begin transaction
+            BeginTrans("Persiapan untuk perbaikan data, silahkan tunggu sebentar ... ") 'begin transaction
             cmd.Connection = mCONN
             cmd.CommandText = Me.StringSQL
             rowCountAffected = cmd.ExecuteNonQuery() 'returns the number of rows affected. 
-            CommitTrans(" data have been updated ", "update") 'Commit All Transaction
+            CommitTrans(" Data telah diperbaiki ", "update") 'Commit All Transaction
         Catch ex As MySqlException
-            RollbackTrans("Error " & ex.Number & " has occurred: " & ex.Message, "update")
+            RollbackTrans("Terjadi kesalahan saat perbaikan data. No : " & ex.Number & " Pesan Kesalahan : " & ex.Message, "update")
             Return Nothing
         Catch ex As Exception
-            RollbackTrans("Error has occurred: " & ex.Message, "update")
+            RollbackTrans("Terjadi kesalahan saat perbaikan data: " & ex.Message, "update")
             Return Nothing
         End Try
         Return rowCountAffected
     End Function
     Function DeleteData(Optional ByVal id = -1) As Integer Implements IDataAccess.DeleteData
         Try
-            BeginTrans("attempting delete data, please wait ... ") 'begin transaction
+            BeginTrans("Persiapan untuk menghapus data, silahkan tunggu sebentar ... ") 'begin transaction
             cmd.Connection = mCONN
             If String.IsNullOrEmpty(Me.StringSQL) Then
                 Me.StringSQL = "DELETE FROM " & TableName + " WHERE " & PrimaryKey & " = '" & id & "'"
             End If
             cmd.CommandText = Me.StringSQL
             rowCountAffected = cmd.ExecuteNonQuery()
-            CommitTrans(" data have been deleted ", "delete") 'Commit All Transaction
+            CommitTrans("Data telah terhapus ", "delete") 'Commit All Transaction
         Catch ex As MySqlException
-            RollbackTrans("Error " & ex.Number & " has occurred: " & ex.Message, "delete")
+            RollbackTrans("Terjadi kesalahan saat menghapus data. No : " & ex.Number & " Pesan Kesalahan : " & ex.Message, "delete")
             Return Nothing
         Catch ex As Exception
-            RollbackTrans("Error has occurred: " & ex.Message, "delete")
+            RollbackTrans("Terjadi kesalahan saat menghapus data : " & ex.Message, "delete")
             Return Nothing
         End Try
         Return rowCountAffected
