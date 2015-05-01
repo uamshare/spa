@@ -62,6 +62,54 @@ Namespace My
                 Return CType(Me("ENVIRONTMENT"),String)
             End Get
         End Property
+        
+        <Global.System.Configuration.UserScopedSettingAttribute(),  _
+         Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.Configuration.DefaultSettingValueAttribute("localhost")>  _
+        Public Property server() As String
+            Get
+                Return CType(Me("server"),String)
+            End Get
+            Set
+                Me("server") = value
+            End Set
+        End Property
+        
+        <Global.System.Configuration.UserScopedSettingAttribute(),  _
+         Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.Configuration.DefaultSettingValueAttribute("root")>  _
+        Public Property uid() As String
+            Get
+                Return CType(Me("uid"),String)
+            End Get
+            Set
+                Me("uid") = value
+            End Set
+        End Property
+        
+        <Global.System.Configuration.UserScopedSettingAttribute(),  _
+         Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.Configuration.DefaultSettingValueAttribute("")>  _
+        Public Property pwd() As String
+            Get
+                Return CType(Me("pwd"),String)
+            End Get
+            Set
+                Me("pwd") = value
+            End Set
+        End Property
+        
+        <Global.System.Configuration.UserScopedSettingAttribute(),  _
+         Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.Configuration.DefaultSettingValueAttribute("simagro")>  _
+        Public Property database() As String
+            Get
+                Return CType(Me("database"),String)
+            End Get
+            Set
+                Me("database") = value
+            End Set
+        End Property
     End Class
 End Namespace
 

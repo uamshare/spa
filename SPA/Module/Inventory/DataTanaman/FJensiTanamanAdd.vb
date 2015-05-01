@@ -15,10 +15,10 @@
             Model.mmtrhid = txtid.Text
             If txtid.Text <> "" Then
                 res = Model.UpdateData()
-                'Application.ShowStatus("Data has been updated")
+                'MyApplication.ShowStatus("Data has been updated")
             Else
                 res = Model.InsertData()
-                'Application.ShowStatus("Data has been saved")
+                'MyApplication.ShowStatus("Data has been saved")
             End If
             FjenisTanaman.init()
             'FUserGroup.RetrieveLast()

@@ -3,11 +3,26 @@
     Dim DGVColumnCheckIndex As Integer
 
     Private Model As New MUserGroup
+    Private userid As String
 
+    Public Sub SetPrivileges()
+        Try
+            ToolAdd.Visible = MUsers.UserListMenuPrivileges()(MainForm.MenuActive)("pcreate")
+            ToolEdit.Visible = MUsers.UserListMenuPrivileges()(MainForm.MenuActive)("pupdate")
+            ToolSaveMenuAkses.Visible = MUsers.UserListMenuPrivileges()(MainForm.MenuActive)("pupdate")
+            ToolDelete.Visible = MUsers.UserListMenuPrivileges()(MainForm.MenuActive)("pdelete")
+        Catch ex As Exception
+            MsgBox(ex.Message)
+        End Try
+    End Sub
     Public Sub init()
+        SetPrivileges()
         ToolAdd.Enabled = True
         ToolEdit.Enabled = False
         ToolDelete.Enabled = False
+        ToolMenuAkses.Enabled = False
+        ToolSaveMenuAkses.Enabled = False
+        TreeView1.Enabled = False
         Model.limitrecord = 25
         RetrieveData()
         '-------------
@@ -57,12 +72,14 @@
     End Sub
     Private Sub RetrieveData(Optional ByVal sSearch As String = "")
         Dim dt As DataTable
+
         Try
             If Not String.IsNullOrEmpty(sSearch) Then
                 dt = Model.FindData(sSearch)
             Else
                 dt = Model.GetData()
             End If
+
             With DataGridView1
                 .Columns.Clear()
                 DGVColumnCheckIndex = .Columns.Add(New DataGridViewCheckBoxColumn)
@@ -92,9 +109,9 @@
             End With
             setButtonPager()
         Catch ex As Exception
-            Application.ShowStatus("Failed to RetrieveData = " & ex.Message, Color.Red)
+            MyApplication.ShowStatus("Failed to RetrieveData = " & ex.Message, WARNING_STAT)
         End Try
-        
+
     End Sub
     Private Function getCountSelectedData() As Integer
         Dim CountSelected As Integer = 0
@@ -165,7 +182,7 @@
             Me.lCountPage.Text = "of " & endofpage
             txtPageCurrent.Text = page
         Catch ex As Exception
-            Application.ShowStatus(ex.Message, Color.Red)
+            MyApplication.ShowStatus(ex.Message, WARNING_STAT)
         End Try
     End Sub
     Public Sub RetrieveFirst()
@@ -196,7 +213,7 @@
 #End Region
     Private Sub Form1_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         'MessageBox.Show("Form Load")
-        Application.ShowStatus(Me.Text & " Loaded")
+        MyApplication.ShowStatus(Me.Text & " Loaded")
         InitializeDataGridView()
         init()
         InitializeTreeView()
@@ -220,15 +237,26 @@
         If getCountSelectedData() = 1 Then
             ToolAdd.Enabled = False
             ToolEdit.Enabled = True
+            ToolMenuAkses.Enabled = True
             ToolDelete.Enabled = True
         ElseIf getCountSelectedData() > 1 Then
             ToolAdd.Enabled = False
             ToolEdit.Enabled = False
+            ToolMenuAkses.Enabled = False
+            ToolSaveMenuAkses.Enabled = False
+            TreeView1.Enabled = False
             ToolDelete.Enabled = True
+            TreeViewCheckUncheckAll(False)
+            TreeView1.CollapseAll()
         Else
             ToolAdd.Enabled = True
             ToolEdit.Enabled = False
+            ToolMenuAkses.Enabled = False
+            ToolSaveMenuAkses.Enabled = False
+            TreeView1.Enabled = False
             ToolDelete.Enabled = False
+            TreeViewCheckUncheckAll(False)
+            TreeView1.CollapseAll()
         End If
     End Sub
     Private Sub DataGridView1_Sorted(sender As Object, e As EventArgs) Handles DataGridView1.Sorted
@@ -251,7 +279,7 @@
             FUserGroupAdd.TextBox1.Text = DataGridView1.Rows(getRowIndexSelected()).Cells("groupname").Value
             FUserGroupAdd.Show()
         Else
-            Application.ShowStatus("No data is selected", Color.Yellow)
+            MyApplication.ShowStatus("No data is selected", NOTICE_STAT)
         End If
 
     End Sub
@@ -275,13 +303,32 @@
                     'Next
                     Model.MultipleDeleteData(groupids)
                 End If
-                'Application.ShowStatus("Deleted " & getCountSelectedData() & " data")
+                MyApplication.ShowStatus("Deleted " & getCountSelectedData() & " data", INFO_STAT)
                 init()
             Else
-                Application.ShowStatus("No data is selected", Color.Yellow)
+                MyApplication.ShowStatus("No data is selected", NOTICE_STAT)
             End If
 
         End If
+    End Sub
+    Private Sub ToolMenuAkses_Click(sender As Object, e As EventArgs) Handles ToolMenuAkses.Click
+        'Cursor.Current = Cursors.WaitCursor
+        Dim ModelMenuList As New MUserListMenu
+        If getCountSelectedData() > 0 Then
+            Me.userid = CStr(DataGridView1.Rows(getRowIndexSelected()).Cells("groupid").Value)
+            RemoveHandler TreeView1.AfterCheck, AddressOf TreeView1_AfterCheck
+            Dim result As List(Of Dictionary(Of Object, Object)) = ModelMenuList.GetListMenuPrivileges(Me.userid)
+            RetrieveTreeNodeActive(result)
+            For Each FirstLevelNode As TreeNode In TreeView1.Nodes
+                FirstLevelNode.Expand()
+            Next
+            ToolSaveMenuAkses.Enabled = True
+            TreeView1.Enabled = True
+            AddHandler TreeView1.AfterCheck, AddressOf TreeView1_AfterCheck
+        Else
+            MyApplication.ShowStatus("No data is selected", NOTICE_STAT)
+        End If
+        'Cursor.Current = Cursors.Default
     End Sub
 
     Private Sub ToolFind_Click(sender As Object, e As EventArgs) Handles ToolFind.Click
@@ -293,7 +340,7 @@
         'End If
     End Sub
     Private Sub ToolRefresh_Click(sender As Object, e As EventArgs) Handles ToolRefresh.Click
-        RetrieveData()
+        init()
         ToolTextFind.Text = ""
     End Sub
     Private Sub ToolFisrt_Click(sender As Object, e As EventArgs) Handles ToolFisrt.Click
@@ -344,33 +391,19 @@
 #Region "TreeView"
 
     Private Sub InitializeTreeView()
+        Cursor.Current = Cursors.WaitCursor
         Dim ModelMenuList As New MUserListMenu
         TreeView1.Nodes.Clear()
         TreeView1.CheckBoxes = True
 
         Dim result As List(Of Dictionary(Of String, Object)) = ModelMenuList.GetListMenu()
         RetrieveTreeNode(result)
-        'Dim node, node1, node11, node12 As TreeNode
-        'For Each dat In result
-        '    For Each keydat As KeyValuePair(Of String, Object) In dat
-        '        node = TreeView1.Nodes.Add("Key = {0}", keydat.Key, keydat.Value.ToString)
-        '        For Each datnode In keydat.Value
-        '            For Each keynode As KeyValuePair(Of String, Object) In datnode
-        '                node1 = node.Nodes.Add("Key = {0}", keynode.Key)
-        '                For Each datnode1 In keynode.Value
-        '                    For Each keynode1 As KeyValuePair(Of String, Object) In datnode1
-        '                        node1.Nodes.Add("Key = {0}", keynode1.Key)
-        '                    Next keynode1
-        '                    'TreeView1.Nodes.Add("Key = {0}", dat)
-        '                Next
-        '            Next keynode
-        '        Next
-        '    Next keydat
-        'Next
+        Cursor.Current = Cursors.Default
     End Sub
 
     Private Sub RetrieveTreeNode(result As List(Of Dictionary(Of String, Object)), Optional _TreeNode As TreeNode = Nothing)
         Dim node As TreeNode
+        'Cursor.Current = Cursors.WaitCursor
         For Each Dict In result
             For Each keyDict As KeyValuePair(Of String, Object) In Dict
                 Dim strArr() As String
@@ -380,16 +413,54 @@
                 Else
                     node = _TreeNode.Nodes.Add(strArr(0), strArr(1))
                 End If
+                If strArr(2) = "1" Then
+                    'node.Nodes.Add(strArr(0) & "-pview", "Lihat")
+                    node.Nodes.Add(strArr(0) & "-pcreate", "Tambah")
+                    node.Nodes.Add(strArr(0) & "-pupdate", "Perbaiki")
+                    node.Nodes.Add(strArr(0) & "-pdelete", "Hapus")
+                End If
                 'MsgBox(keyDict.Value.ToString)
                 RetrieveTreeNode(keyDict.Value, node)
             Next keyDict
         Next
+        'Cursor.Current = Cursors.Default
+    End Sub
+
+    Private Sub RetrieveTreeNodeActive(result As List(Of Dictionary(Of Object, Object)), Optional _TreeNode As TreeNode = Nothing)
+        Dim node As TreeNode
+        Cursor.Current = Cursors.WaitCursor
+        Try
+            For Each Dict In result
+                For Each keyDict As KeyValuePair(Of Object, Object) In Dict
+                    Dim strArr As Object
+                    strArr = keyDict.Key
+                    If _TreeNode Is Nothing Then
+                        node = TreeView1.Nodes(strArr("menuid").ToString)
+                    Else
+                        node = _TreeNode.Nodes(strArr("menuid").ToString)
+                    End If
+                    node.Checked = CBool(strArr("checked"))
+                    RetrieveTreeNodeActive(keyDict.Value, node)
+                    If strArr("isform") = "1" Then
+                        'node.Nodes(strArr("menuid").ToString & "-pview").Checked = CBool(strArr("pview"))
+                        node.Nodes(strArr("menuid").ToString & "-pcreate").Checked = CBool(strArr("pcreate"))
+                        node.Nodes(strArr("menuid").ToString & "-pupdate").Checked = CBool(strArr("pupdate"))
+                        node.Nodes(strArr("menuid").ToString & "-pdelete").Checked = CBool(strArr("pdelete"))
+                    End If
+
+                Next keyDict
+            Next
+        Catch ex As Exception
+            ErrorLogger.WriteToErrorLog("Error has occurred : " & ex.Message, ex.StackTrace, ERROR_STAT, "select", "2")
+            MyApplication.ShowStatus("Error has occurred : " & ex.Message, ERROR_STAT, True, 10000)
+        End Try
+        Cursor.Current = Cursors.Default
     End Sub
     Private Sub TreeView1_AfterCheck(sender As Object, e As TreeViewEventArgs) Handles TreeView1.AfterCheck
         RemoveHandler TreeView1.AfterCheck, AddressOf TreeView1_AfterCheck
 
+        'MsgBox(e.Node.Name)
         Call CheckAllChildNodes(e.Node)
-
         If e.Node.Checked Then
             If e.Node.Parent Is Nothing = False Then
                 'Dim allChecked As Boolean = True
@@ -414,12 +485,58 @@
 
         AddHandler TreeView1.AfterCheck, AddressOf TreeView1_AfterCheck
     End Sub
+    Private Sub TreeViewCheckUncheckAll(Optional ByVal CheckAll_YesNo As Boolean = True, Optional ByVal _TreeNode As TreeNode = Nothing)
+        Dim mTN As TreeNode
+        If _TreeNode Is Nothing Then
+            For Each mTN In TreeView1.Nodes
+                TreeViewCheckUncheckAll(CheckAll_YesNo, mTN)
+                mTN.Checked = CheckAll_YesNo
+            Next
+        Else
+            For Each mTN In _TreeNode.Nodes
+                TreeViewCheckUncheckAll(CheckAll_YesNo, mTN)
+                mTN.Checked = CheckAll_YesNo
+            Next
+        End If
 
+    End Sub
     Private Sub CheckAllChildNodes(ByVal parentNode As TreeNode)
         For Each childNode As TreeNode In parentNode.Nodes
             childNode.Checked = parentNode.Checked
             CheckAllChildNodes(childNode)
         Next
+    End Sub
+
+    Private Function NodesToArrayNodes() As List(Of Dictionary(Of String, Object))
+        Dim arrNodes As New List(Of Dictionary(Of String, Object))
+        Dim dict As New Dictionary(Of String, Object)
+        GetAllNodes(dict)
+        arrNodes.Add(dict)
+        Return arrNodes
+    End Function
+    Private Sub GetAllNodes(ByRef dict As Dictionary(Of String, Object), Optional ByVal _TreeNode As TreeNode = Nothing)
+        Dim dat As New Dictionary(Of String, Boolean)
+        If _TreeNode Is Nothing Then
+            For Each childNode As TreeNode In TreeView1.Nodes
+                If childNode.Checked = True And Not childNode.Name.Contains("-") Then
+                    For Each childActionNode As TreeNode In childNode.Nodes
+                        dat.Add(childActionNode.Name, childActionNode.Checked)
+                    Next
+                    dict.Add(childNode.Name, dat)
+                    GetAllNodes(dict, childNode)
+                End If
+            Next
+        Else
+            For Each childNode As TreeNode In _TreeNode.Nodes
+                If childNode.Checked = True And Not childNode.Name.Contains("-") Then
+                    For Each childActionNode As TreeNode In childNode.Nodes
+                        dat.Add(childActionNode.Name, childActionNode.Checked)
+                    Next
+                    dict.Add(childNode.Name, dat)
+                    GetAllNodes(dict, childNode)
+                End If
+            Next
+        End If
     End Sub
 
     Private Sub IsEveryChildChecked(ByVal parentNode As TreeNode, ByRef checkValue As Boolean)
@@ -467,11 +584,15 @@
         End If
     End Sub
 
-    Private Sub ToolStripButton2_Click(sender As Object, e As EventArgs) Handles ToolStripButton2.Click
-        'TreeView1.Nodes.
-        MsgBox(TreeView1.Nodes(1).Checked)
+    Private Sub ToolSaveMenuAkses_Click(sender As Object, e As EventArgs) Handles ToolSaveMenuAkses.Click
+        Dim ModelMenuList As New MUserListMenu
+        If ModelMenuList.InsertMenuPrivileges(NodesToArrayNodes(), Me.userid) > 0 Then
+            MyApplication.ShowStatus("Menu akses tersimpan", INFO_STAT)
+        End If
     End Sub
 #End Region
 
+    
+    
     
 End Class

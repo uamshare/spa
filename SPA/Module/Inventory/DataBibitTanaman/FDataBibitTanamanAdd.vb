@@ -56,10 +56,10 @@
             If Not Model.IfKeyExist(Model.mmtrid1) Then
                 If txtMmtrg.Text <> "" Then
                     res = Model.UpdateData()
-                    'Application.ShowStatus("Data has been updated")
+                    'MyApplication.ShowStatus("Data has been updated")
                 Else
                     res = Model.InsertData()
-                    'Application.ShowStatus("Data has been saved")
+                    'MyApplication.ShowStatus("Data has been saved")
                 End If
                 FDataTanaman.init()
             Else

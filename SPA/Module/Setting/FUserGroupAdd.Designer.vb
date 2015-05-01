@@ -25,9 +25,9 @@ Partial Class FUserGroupAdd
         Me.StatusStrip1 = New System.Windows.Forms.StatusStrip()
         Me.statmsg = New System.Windows.Forms.ToolStripStatusLabel()
         Me.txtid = New System.Windows.Forms.TextBox()
-        Me.Button1 = New System.Windows.Forms.Button()
         Me.TextBox1 = New System.Windows.Forms.TextBox()
         Me.Label1 = New System.Windows.Forms.Label()
+        Me.Button1 = New System.Windows.Forms.Button()
         Me.StatusStrip1.SuspendLayout()
         Me.SuspendLayout()
         '
@@ -55,15 +55,6 @@ Partial Class FUserGroupAdd
         Me.txtid.TabIndex = 12
         Me.txtid.Visible = False
         '
-        'Button1
-        '
-        Me.Button1.Location = New System.Drawing.Point(287, 32)
-        Me.Button1.Name = "Button1"
-        Me.Button1.Size = New System.Drawing.Size(75, 23)
-        Me.Button1.TabIndex = 11
-        Me.Button1.Text = "Save"
-        Me.Button1.UseVisualStyleBackColor = True
-        '
         'TextBox1
         '
         Me.TextBox1.Location = New System.Drawing.Point(81, 6)
@@ -80,6 +71,15 @@ Partial Class FUserGroupAdd
         Me.Label1.Size = New System.Drawing.Size(67, 13)
         Me.Label1.TabIndex = 9
         Me.Label1.Text = "Group Name"
+        '
+        'Button1
+        '
+        Me.Button1.Location = New System.Drawing.Point(287, 32)
+        Me.Button1.Name = "Button1"
+        Me.Button1.Size = New System.Drawing.Size(75, 23)
+        Me.Button1.TabIndex = 11
+        Me.Button1.Text = "Simpan"
+        Me.Button1.UseVisualStyleBackColor = True
         '
         'FUserGroupAdd
         '

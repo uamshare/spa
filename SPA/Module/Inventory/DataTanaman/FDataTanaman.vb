@@ -1,5 +1,5 @@
-﻿Imports Excel = Microsoft.Office.Interop.Excel
-Imports Microsoft.Office.Core
+﻿'Imports Excel = Microsoft.Office.Interop.Excel
+'Imports Microsoft.Office.Core
 Public Class FDataTanaman
     Dim dt As New DataTable
     Dim DGVColumnCheckIndex As Integer
@@ -103,7 +103,7 @@ Public Class FDataTanaman
             End With
             setButtonPager()
         Catch ex As Exception
-            Application.ShowStatus(ex.Message, Color.Red)
+            MyApplication.ShowStatus(ex.Message, ERROR_STAT)
         End Try
 
     End Sub
@@ -176,7 +176,7 @@ Public Class FDataTanaman
             Me.lCountPage.Text = "of " & endofpage
             txtPageCurrent.Text = page
         Catch ex As Exception
-            Application.ShowStatus(ex.Message, Color.Red)
+            MyApplication.ShowStatus(ex.Message, ERROR_STAT)
         End Try
     End Sub
     Public Sub RetrieveFirst()
@@ -208,7 +208,7 @@ Public Class FDataTanaman
 
     Private Sub FDataTanaman_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         'MessageBox.Show("Form Load")
-        Application.ShowStatus(Me.Text & " Loaded")
+        MyApplication.ShowStatus(Me.Text & " Loaded")
         InitializeDataGridView()
         init()
     End Sub
@@ -227,7 +227,7 @@ Public Class FDataTanaman
             FDataTanamanAdd.txtHarga.Text = Convert.ToString(DataGridViewTanaman.Rows(getRowIndexSelected()).Cells("mmtrprice").Value)
             FDataTanamanAdd.Show()
         Else
-            Application.ShowStatus("No data is selected", Color.Yellow)
+            MyApplication.ShowStatus("No data is selected", NOTICE_STAT)
         End If
     End Sub
 
@@ -263,10 +263,10 @@ Public Class FDataTanaman
                     'Next
                     Model.MultipleDeleteData(GetKey)
                 End If
-                'Application.ShowStatus("Deleted " & getCountSelectedData() & " data")
+                'MyApplication.ShowStatus("Deleted " & getCountSelectedData() & " data")
                 init()
             Else
-                Application.ShowStatus("No data is selected", Color.Yellow)
+                MyApplication.ShowStatus("No data is selected", NOTICE_STAT)
             End If
 
         End If

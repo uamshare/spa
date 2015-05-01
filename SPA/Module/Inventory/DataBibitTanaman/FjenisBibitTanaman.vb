@@ -85,7 +85,7 @@
             End With
             setButtonPager()
         Catch ex As Exception
-            Application.ShowStatus(ex.Message, Color.Red)
+            MyApplication.ShowStatus(ex.Message, ERROR_STAT)
         End Try
 
     End Sub
@@ -158,7 +158,7 @@
             Me.lCountPage.Text = "of " & endofpage
             txtPageCurrent.Text = page
         Catch ex As Exception
-            Application.ShowStatus(ex.Message, Color.Red)
+            MyApplication.ShowStatus(ex.Message, ERROR_STAT)
         End Try
     End Sub
     Public Sub RetrieveFirst()
@@ -189,7 +189,7 @@
 #End Region
     Private Sub Form1_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         'MessageBox.Show("Form Load")
-        Application.ShowStatus(Me.Text & " Loaded")
+        MyApplication.ShowStatus(Me.Text & " Loaded")
         InitializeDataGridView()
         init()
     End Sub
@@ -239,7 +239,7 @@
             FJensiTanamanAdd.TextBox1.Text = CStr(DataGridView1.Rows(getRowIndexSelected()).Cells("mmtrhname").Value)
             FJensiTanamanAdd.Show()
         Else
-            Application.ShowStatus("No data is selected", Color.Yellow)
+            MyApplication.ShowStatus("No data is selected", NOTICE_STAT)
         End If
 
     End Sub
@@ -263,10 +263,10 @@
                     'Next
                     Model.MultipleDeleteData(mmtrhid)
                 End If
-                'Application.ShowStatus("Deleted " & getCountSelectedData() & " data")
+                'MyApplication.ShowStatus("Deleted " & getCountSelectedData() & " data")
                 init()
             Else
-                Application.ShowStatus("No data is selected", Color.Yellow)
+                MyApplication.ShowStatus("No data is selected", NOTICE_STAT)
             End If
 
         End If
