@@ -45,7 +45,7 @@ Partial Class FJensiBibitTanamanAdd
         'statmsg
         '
         Me.statmsg.Name = "statmsg"
-        Me.statmsg.Size = New System.Drawing.Size(88, 17)
+        Me.statmsg.Size = New System.Drawing.Size(100, 17)
         Me.statmsg.Text = "Status Message"
         '
         'txtid
@@ -97,7 +97,7 @@ Partial Class FJensiBibitTanamanAdd
         Me.Button2.Text = "Batal"
         Me.Button2.UseVisualStyleBackColor = True
         '
-        'FJensiTanamanAdd
+        'FJensiBibitTanamanAdd
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
@@ -110,7 +110,7 @@ Partial Class FJensiBibitTanamanAdd
         Me.Controls.Add(Me.Label1)
         Me.MaximizeBox = False
         Me.MinimizeBox = False
-        Me.Name = "FJensiTanamanAdd"
+        Me.Name = "FJensiBibitTanamanAdd"
         Me.Text = "FJensiTanamanAdd"
         Me.StatusStrip1.ResumeLayout(False)
         Me.StatusStrip1.PerformLayout()

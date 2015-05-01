@@ -1,11 +1,9 @@
 ﻿Imports System.Data.SqlClient
-Imports System.Data
-Imports MySql.Data.MySqlClient
-Imports System.ComponentModel
 Public Class MBibitTanaman
     Inherits CDataAcces
 
-    Public mmtrid As String
+    Public mmtrid1 As String
+    Public mmtrid2 As String
     Public mmtrhid As String
     Public mmtrname As String
     Public polybag As String
@@ -39,15 +37,20 @@ Public Class MBibitTanaman
         Dim dtcreated As Date = Date.Now
         Dim dtupdated As Date = Date.Now
 
-        Me.StringSQL = "INSERT INTO " & TableName + "(mmtrhid,mmtrid,mmtrname,polybag,mmtrunit,mmtrprice,dtcreated,dtupdated) VALUES('" & mmtrhid & "','" & mmtrid & "','" & mmtrname & "','" & polybag & "','" & mmtrunit & "','" & mmtrprice & "','" & dtcreated & "','" & dtupdated & "')"
+        Me.StringSQL = "INSERT INTO " & TableName + "(mmtrhid,mmtrid,mmtrname,polybag,mmtrunit,mmtrprice,dtcreated,dtupdated) VALUES('" & mmtrhid & "','" & mmtrid1 & "','" & mmtrname & "','" & polybag & "','" & mmtrunit & "','" & mmtrprice & "','" & dtcreated & "','" & dtupdated & "')"
         Return MyBase.InsertData()
 
+        Me.StringSQL = "INSERT INTO " & TableName + "(mmtrhid,mmtrid,mmtrname,polybag,mmtrunit,mmtrprice,dtcreated,dtupdated) VALUES('" & mmtrhid & "','" & mmtrid2 & "','" & mmtrname & "','" & polybag & "','" & mmtrunit & "','" & mmtrprice & "','" & dtcreated & "','" & dtupdated & "')"
+        Return MyBase.InsertData()
     End Function
 
     Public Overloads Function UpdateData() As Integer
         Dim dtupdated As Date = Date.Now
 
-        Me.StringSQL = "UPDATE " & TableName + " SET mmtrid ='" & mmtrid & "', mmtrname ='" & mmtrname & "',polybag='" & polybag & "',mmtrunit='" & mmtrunit & "',mmtrprice='" & mmtrprice & "',mmtrg='" & mmtrg & "',dtupdated ='" & dtupdated & "' WHERE  CONCAT(mmtrid, CONVERT(mmtrg, CHAR)) = '" & GetKey & "'"
+        Me.StringSQL = "UPDATE " & TableName + " SET mmtrid ='" & mmtrid1 & "', mmtrname ='" & mmtrname & "',polybag='" & polybag & "',mmtrunit='" & mmtrunit & "',mmtrprice='" & mmtrprice & "',mmtrg='" & mmtrg & "',dtupdated ='" & dtupdated & "' WHERE  CONCAT(mmtrid, CONVERT(mmtrg, CHAR)) = '" & GetKey & "'"
+        Return MyBase.UpdateData()
+
+        Me.StringSQL = "UPDATE " & TableName + " SET mmtrid ='" & mmtrid2 & "', mmtrname ='" & mmtrname & "',polybag='" & polybag & "',mmtrunit='" & mmtrunit & "',mmtrprice='" & mmtrprice & "',mmtrg='" & mmtrg & "',dtupdated ='" & dtupdated & "' WHERE  CONCAT(mmtrid, CONVERT(mmtrg, CHAR)) = '" & GetKey & "'"
         Return MyBase.UpdateData()
     End Function
 

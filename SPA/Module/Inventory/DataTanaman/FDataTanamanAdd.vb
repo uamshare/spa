@@ -49,7 +49,7 @@
             Model.polybag = cmbPolybag.Text
             Model.mmtrunit = txtSatuan.Text
             Model.mmtrprice = Convert.ToDouble(txtHarga.Text)
-            Model.mmtrid = txtKode.Text + Model.mmtrhid + txtKode3.Text
+            Model.mmtrid = txtKode.Text + txtKode2.Text + txtKode3.Text
             If Not Model.IfKeyExist(Model.mmtrid) Then
                 If txtMmtrg.Text <> "" Then
                     res = Model.UpdateData()
@@ -145,4 +145,7 @@
         e.KeyChar = UCase(e.KeyChar)
     End Sub
 
+    Private Sub txtSatuan_KeyPress(sender As Object, e As KeyPressEventArgs) Handles txtSatuan.KeyPress
+        e.KeyChar = UCase(e.KeyChar)
+    End Sub
 End Class

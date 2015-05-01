@@ -30,16 +30,16 @@
         e.KeyChar = UCase(e.KeyChar)
     End Sub
 
-    Private Sub FUserGroupAdd_Load(sender As Object, e As EventArgs) Handles MyBase.Load
-        statmsg.Text = ""
-        TextBox1.Focus()
-    End Sub
-
     Private Sub TextBox1_TextChanged(sender As Object, e As EventArgs) Handles TextBox1.TextChanged
 
     End Sub
 
     Private Sub Button2_Click(sender As Object, e As EventArgs) Handles Button2.Click
         Me.Close()
+    End Sub
+
+    Private Sub FJensiTanamanAdd_Load(sender As Object, e As EventArgs) Handles MyBase.Load
+        statmsg.Text = ""
+        TextBox1.Focus()
     End Sub
 End Class

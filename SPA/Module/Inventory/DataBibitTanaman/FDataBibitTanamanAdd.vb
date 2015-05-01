@@ -14,11 +14,13 @@
             statmsg.Text = "Kode tidak menggunakan spasi !"
             statmsg.ForeColor = Color.DarkRed
             txtKode.Focus()
-        ElseIf Len(txtKode.Text) < 5 Then
-            'MessageBox.Show("User group cannot be empty")
-            statmsg.Text = "Kode tidak boleh kurang dari 5 digit !"
-            statmsg.ForeColor = Color.DarkRed
-            txtKode.Focus()
+        ElseIf Not txtKode.Text = "" Then
+            If Len(txtKode.Text) < 5 Then
+                'MessageBox.Show("User group cannot be empty")
+                statmsg.Text = "Kode tidak boleh kurang dari 5 digit !"
+                statmsg.ForeColor = Color.DarkRed
+                txtKode.Focus()
+            End If
         ElseIf txtKode.Text = "" Then
             'MessageBox.Show("User group cannot be empty")
             statmsg.Text = "Kode tidak boleh kosong !"
@@ -49,8 +51,9 @@
             Model.polybag = cmbPolybag.Text
             Model.mmtrunit = txtSatuan.Text
             Model.mmtrprice = Convert.ToDouble(txtHarga.Text)
-            Model.mmtrid = txtKode.Text + Model.mmtrhid + txtKode3.Text
-            If Not Model.IfKeyExist(Model.mmtrid) Then
+            Model.mmtrid1 = txtKode.Text + txtKode2.Text + txtKode3.Text
+            Model.mmtrid2 = txtKode.Text + "2" + txtKode3.Text
+            If Not Model.IfKeyExist(Model.mmtrid1) Then
                 If txtMmtrg.Text <> "" Then
                     res = Model.UpdateData()
                     'Application.ShowStatus("Data has been updated")
@@ -75,19 +78,19 @@
         txtJnsTanaman.BackColor = Color.White
     End Sub
 
-    Private Sub FDataTanamanAdd_Load(sender As Object, e As EventArgs) Handles MyBase.Load
-        txtKode2.Text = "3"
+    Private Sub FDataBibitTanamanAdd_Load(sender As Object, e As EventArgs) Handles MyBase.Load
+        txtKode2.Text = "1"
         statmsg.Text = ""
 
         txtJnsTanaman.Focus()
     End Sub
 
     Private Sub Prompt_Click(sender As Object, e As EventArgs) Handles Prompt.Click
-        FjenisTanaman.ShowDialog()
+        FjenisBibitTanaman.ShowDialog()
     End Sub
 
     Private Sub btnBatal_Click(sender As Object, e As EventArgs) Handles btnBatal.Click
-        FDataTanaman.Refresh()
+        FjenisBibitTanaman.Refresh()
         Me.Close()
     End Sub
 
@@ -145,4 +148,12 @@
         e.KeyChar = UCase(e.KeyChar)
     End Sub
 
+    Private Sub txtKode2_KeyPress(sender As Object, e As KeyPressEventArgs) Handles txtKode2.KeyPress
+        txtKode2.ReadOnly = True
+        txtKode2.BackColor = Color.White
+    End Sub
+
+    Private Sub txtSatuan_KeyPress(sender As Object, e As KeyPressEventArgs) Handles txtSatuan.KeyPress
+        e.KeyChar = UCase(e.KeyChar)
+    End Sub
 End Class

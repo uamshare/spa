@@ -206,7 +206,7 @@ Public Class FDataBibitTanaman
     End Sub
 #End Region
 
-    Private Sub FDataTanaman_Load(sender As Object, e As EventArgs) Handles MyBase.Load
+    Private Sub FDataBibitTanaman_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         'MessageBox.Show("Form Load")
         Application.ShowStatus(Me.Text & " Loaded")
         InitializeDataGridView()
@@ -215,32 +215,32 @@ Public Class FDataBibitTanaman
 
     Private Sub ToolEdit_Click(sender As Object, e As EventArgs) Handles ToolEdit.Click
         If getCountSelectedData() > 0 Then
-            FDataTanamanAdd.txtMmtrhid.Text = CStr(DataGridViewTanaman.Rows(getRowIndexSelected()).Cells("mmtrhid").Value)
-            FDataTanamanAdd.txtJnsTanaman.Text = CStr(DataGridViewTanaman.Rows(getRowIndexSelected()).Cells("mmtrname").Value)
-            FDataTanamanAdd.txtKeyID.Text = CStr(DataGridViewTanaman.Rows(getRowIndexSelected()).Cells("PrimaryKey").Value)
-            FDataTanamanAdd.txtMmtrg.Text = CStr(DataGridViewTanaman.Rows(getRowIndexSelected()).Cells("mmtrg").Value)
-            FDataTanamanAdd.cmbPolybag.Text = CStr(DataGridViewTanaman.Rows(getRowIndexSelected()).Cells("polybag").Value)
-            FDataTanamanAdd.txtKode.Text = Strings.Left(CStr(DataGridViewTanaman.Rows(getRowIndexSelected()).Cells("mmtrid").Value), 5)
-            FDataTanamanAdd.txtKode2.Text = Strings.Left(CStr(DataGridViewTanaman.Rows(getRowIndexSelected()).Cells("mmtrid").Value), 1)
-            FDataTanamanAdd.txtKode3.Text = Strings.Right(CStr(DataGridViewTanaman.Rows(getRowIndexSelected()).Cells("mmtrid").Value), 3)
-            FDataTanamanAdd.txtSatuan.Text = CStr(DataGridViewTanaman.Rows(getRowIndexSelected()).Cells("mmtrunit").Value)
-            FDataTanamanAdd.txtHarga.Text = Convert.ToString(DataGridViewTanaman.Rows(getRowIndexSelected()).Cells("mmtrprice").Value)
-            FDataTanamanAdd.Show()
+            FDataBibitTanamanAdd.txtMmtrhid.Text = CStr(DataGridViewTanaman.Rows(getRowIndexSelected()).Cells("mmtrhid").Value)
+            FDataBibitTanamanAdd.txtJnsTanaman.Text = CStr(DataGridViewTanaman.Rows(getRowIndexSelected()).Cells("mmtrname").Value)
+            FDataBibitTanamanAdd.txtKeyID.Text = CStr(DataGridViewTanaman.Rows(getRowIndexSelected()).Cells("PrimaryKey").Value)
+            FDataBibitTanamanAdd.txtMmtrg.Text = CStr(DataGridViewTanaman.Rows(getRowIndexSelected()).Cells("mmtrg").Value)
+            FDataBibitTanamanAdd.cmbPolybag.Text = CStr(DataGridViewTanaman.Rows(getRowIndexSelected()).Cells("polybag").Value)
+            FDataBibitTanamanAdd.txtKode.Text = Strings.Left(CStr(DataGridViewTanaman.Rows(getRowIndexSelected()).Cells("mmtrid").Value), 5)
+            FDataBibitTanamanAdd.txtKode2.Text = Strings.Left(CStr(DataGridViewTanaman.Rows(getRowIndexSelected()).Cells("mmtrid").Value), 1)
+            FDataBibitTanamanAdd.txtKode3.Text = Strings.Right(CStr(DataGridViewTanaman.Rows(getRowIndexSelected()).Cells("mmtrid").Value), 3)
+            FDataBibitTanamanAdd.txtSatuan.Text = CStr(DataGridViewTanaman.Rows(getRowIndexSelected()).Cells("mmtrunit").Value)
+            FDataBibitTanamanAdd.txtHarga.Text = Convert.ToString(DataGridViewTanaman.Rows(getRowIndexSelected()).Cells("mmtrprice").Value)
+            FDataBibitTanamanAdd.Show()
         Else
             Application.ShowStatus("No data is selected", Color.Yellow)
         End If
     End Sub
 
     Private Sub ToolAdd_Click(sender As Object, e As EventArgs) Handles ToolAdd.Click
-        FDataTanamanAdd.txtJnsTanaman.Text = ""
-        FDataTanamanAdd.cmbPolybag.Text = ""
-        FDataTanamanAdd.txtKode.Text = ""
-        FDataTanamanAdd.txtKode2.Text = ""
-        FDataTanamanAdd.txtKode3.Text = ""
-        FDataTanamanAdd.txtSatuan.Text = ""
-        FDataTanamanAdd.txtHarga.Text = ""
-        FDataTanamanAdd.txtHarga.Text = 0
-        FDataTanamanAdd.ShowDialog()
+        FDataBibitTanamanAdd.txtJnsTanaman.Text = ""
+        FDataBibitTanamanAdd.cmbPolybag.Text = ""
+        FDataBibitTanamanAdd.txtKode.Text = ""
+        FDataBibitTanamanAdd.txtKode2.Text = ""
+        FDataBibitTanamanAdd.txtKode3.Text = ""
+        FDataBibitTanamanAdd.txtSatuan.Text = ""
+        FDataBibitTanamanAdd.txtHarga.Text = ""
+        FDataBibitTanamanAdd.txtHarga.Text = 0
+        FDataBibitTanamanAdd.ShowDialog()
     End Sub
 
     Private Sub ToolDelete_Click(sender As Object, e As EventArgs) Handles ToolDelete.Click
@@ -365,9 +365,9 @@ Public Class FDataBibitTanaman
         RetrieveData()
     End Sub
 
-    Private Sub FDataTanaman_Shown(sender As Object, e As EventArgs) Handles MyBase.Shown
+    Private Sub FDataBibitTanaman_Shown(sender As Object, e As EventArgs) Handles MyBase.Shown
         'MessageBox.Show("Event Show")
-        FDataTanaman_Load(Nothing, Nothing)
+        FDataBibitTanaman_Load(Nothing, Nothing)
     End Sub
 
     Private Sub ToolRefresh_Click(sender As Object, e As EventArgs) Handles ToolRefresh.Click

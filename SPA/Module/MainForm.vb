@@ -30,4 +30,10 @@ Public Class MainForm
         FDataTanaman.MdiParent = Me
         FDataTanaman.Show()
     End Sub
+
+    Private Sub menu102_Click(sender As Object, e As EventArgs) Handles menu102.Click
+        FDataBibitTanaman.WindowState = FormWindowState.Maximized
+        FDataBibitTanaman.MdiParent = Me
+        FDataBibitTanaman.Show()
+    End Sub
 End Class

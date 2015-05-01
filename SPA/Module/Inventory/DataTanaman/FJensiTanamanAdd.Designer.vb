@@ -45,7 +45,7 @@ Partial Class FJensiTanamanAdd
         'statmsg
         '
         Me.statmsg.Name = "statmsg"
-        Me.statmsg.Size = New System.Drawing.Size(88, 17)
+        Me.statmsg.Size = New System.Drawing.Size(100, 17)
         Me.statmsg.Text = "Status Message"
         '
         'txtid

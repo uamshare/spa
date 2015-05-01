@@ -254,7 +254,7 @@ Partial Class FDataBibitTanamanAdd
         Me.txtMmtrhid.TabIndex = 18
         Me.txtMmtrhid.Visible = False
         '
-        'FDataTanamanAdd
+        'FDataBibitTanamanAdd
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(8.0!, 16.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
@@ -283,7 +283,7 @@ Partial Class FDataBibitTanamanAdd
         Me.Margin = New System.Windows.Forms.Padding(4)
         Me.MaximizeBox = False
         Me.MinimizeBox = False
-        Me.Name = "FDataTanamanAdd"
+        Me.Name = "FDataBibitTanamanAdd"
         Me.Text = "Data Tanaman"
         Me.StatusStrip1.ResumeLayout(False)
         Me.StatusStrip1.PerformLayout()

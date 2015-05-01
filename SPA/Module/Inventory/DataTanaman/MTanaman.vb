@@ -1,7 +1,4 @@
 ﻿Imports System.Data.SqlClient
-Imports System.Data
-Imports MySql.Data.MySqlClient
-Imports System.ComponentModel
 Public Class MTanaman
     Inherits CDataAcces
 

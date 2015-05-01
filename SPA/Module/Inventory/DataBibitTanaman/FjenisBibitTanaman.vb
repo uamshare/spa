@@ -333,14 +333,14 @@
         'FDataTanamanAdd.txtJnsTanaman.Text = Convert.ToString(DataGridView1.SelectedCells())
         'FDataTanamanAdd.txtMmtrhid.Text = Convert.ToString(DataGridView1.SelectedColumns("mmtrid"))
         'FDataTanamanAdd.statmsg.Text = "Jensi Tanaman yang di pilih " & Convert.ToString(DataGridView1.SelectedColumns("mmtrname"))
-        FDataTanamanAdd.txtJnsTanaman.Text = CStr(DataGridView1.Rows(e.RowIndex).Cells("mmtrhname").Value())
-        FDataTanamanAdd.txtMmtrhid.Text = CStr(DataGridView1.Rows(e.RowIndex).Cells("mmtrhid").Value())
-        FDataTanamanAdd.statmsg.Text = CStr(DataGridView1.Rows(e.RowIndex).Cells("mmtrhname").Value())
+        FDataBibitTanamanAdd.txtJnsTanaman.Text = CStr(DataGridView1.Rows(e.RowIndex).Cells("mmtrhname").Value())
+        FDataBibitTanamanAdd.txtMmtrhid.Text = CStr(DataGridView1.Rows(e.RowIndex).Cells("mmtrhid").Value())
+        FDataBibitTanamanAdd.statmsg.Text = CStr(DataGridView1.Rows(e.RowIndex).Cells("mmtrhname").Value())
 
         Me.Close()
     End Sub
 
-    Private Sub FjenisTanaman_Shown(sender As Object, e As EventArgs) Handles MyBase.Shown
+    Private Sub FjenisBibitTanaman_Shown(sender As Object, e As EventArgs) Handles MyBase.Shown
         'MessageBox.Show("Event Show")
         Form1_Load(Nothing, Nothing)
     End Sub
