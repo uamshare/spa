@@ -116,7 +116,9 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="ApplicationEvents.vb" />
-    <Compile Include="Libraries\MyApplication.vb" />
+    <Compile Include="Libraries\MyApplication.vb">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Compile>
     <Compile Include="Libraries\BaseConnection.vb" />
     <Compile Include="Libraries\CdataAccess.vb" />
     <Compile Include="Libraries\ErrorLogger.vb" />
