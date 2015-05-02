@@ -32,12 +32,17 @@ Public Class MainForm
     End Sub
 
     Sub LoadMdiChildForm(CForm As Form, menuname As String)
-        If Not ChildForm Is Nothing Then ChildForm.Close()
-        ChildForm = CForm
-        MenuActive = menuname
-        ChildForm.WindowState = FormWindowState.Maximized
-        ChildForm.MdiParent = Me
-        ChildForm.Show()
+        Try
+            If Not ChildForm Is Nothing Then ChildForm.Close()
+            ChildForm = CForm
+            MenuActive = menuname
+            ChildForm.WindowState = FormWindowState.Maximized
+            ChildForm.MdiParent = Me
+            ChildForm.Show()
+        Catch ex As Exception
+            MsgBox(ex.Message)
+        End Try
+        
     End Sub
 
     Public Sub RestrictUserMenu(Optional MenuItems As ToolStripMenuItem = Nothing)
@@ -69,14 +74,27 @@ Public Class MainForm
     End Sub
 
     Private Sub menu101_Click(sender As Object, e As EventArgs) Handles menu101.Click
-        FDataTanaman.WindowState = FormWindowState.Maximized
-        FDataTanaman.MdiParent = Me
-        FDataTanaman.Show()
+        'FDataTanaman.WindowState = FormWindowState.Maximized
+        'FDataTanaman.MdiParent = Me
+        'FDataTanaman.Show()
+        LoadMdiChildForm(FDataTanaman, "menu101")
     End Sub
 
     Private Sub menu102_Click(sender As Object, e As EventArgs) Handles menu102.Click
-        FDataBibitTanaman.WindowState = FormWindowState.Maximized
-        FDataBibitTanaman.MdiParent = Me
-        FDataBibitTanaman.Show()
+        'FDataBibitTanaman.WindowState = FormWindowState.Maximized
+        'FDataBibitTanaman.MdiParent = Me
+        'FDataBibitTanaman.Show()
+    End Sub
+
+    Private Sub menu201_Click(sender As Object, e As EventArgs) Handles menu201.Click
+        LoadMdiChildForm(FDataBibitTanaman, "menu201")
+    End Sub
+
+    Private Sub menu301_Click(sender As Object, e As EventArgs) Handles menu301.Click
+        LoadMdiChildForm(FDataPelanggan, "menu301")
+    End Sub
+
+    Private Sub menu401_Click(sender As Object, e As EventArgs) Handles menu401.Click
+        LoadMdiChildForm(FCOAheader, "menu401")
     End Sub
 End Class

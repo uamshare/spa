@@ -121,16 +121,55 @@
     <Compile Include="Libraries\CdataAccess.vb" />
     <Compile Include="Libraries\ErrorLogger.vb" />
     <Compile Include="Libraries\EventLogger.vb" />
+    <Compile Include="Module\Accounting\FGroupCOA.Designer.vb">
+      <DependentUpon>FGroupCOA.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Module\Accounting\FGroupCOA.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Module\Accounting\FGroupCoaAdd.Designer.vb">
+      <DependentUpon>FGroupCoaAdd.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Module\Accounting\FGroupCoaAdd.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Module\Accounting\FKlasifikasiAdd.Designer.vb">
+      <DependentUpon>FKlasifikasiAdd.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Module\Accounting\FKlasifikasiAdd.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Module\Accounting\MGroupCOA.vb" />
+    <Compile Include="Module\Accounting\MKlasifikasiCOA.vb" />
+    <Compile Include="Module\Accounting\FCOAheaderAdd.Designer.vb">
+      <DependentUpon>FCOAheaderAdd.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Module\Accounting\FCOAheaderAdd.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Module\Accounting\FKlasifikasiCOA.Designer.vb">
+      <DependentUpon>FKlasifikasiCOA.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Module\Accounting\FKlasifikasiCOA.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Module\Accounting\MCOAheader.vb" />
+    <Compile Include="Module\Accounting\FCOAheader.Designer.vb">
+      <DependentUpon>FCOAheader.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Module\Accounting\FCOAheader.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="Module\Inventory\DataPelanggan\FDataPelanggan.Designer.vb">
       <DependentUpon>FDataPelanggan.vb</DependentUpon>
     </Compile>
     <Compile Include="Module\Inventory\DataPelanggan\FDataPelanggan.vb">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Module\Inventory\DataPelanggan\Form1.Designer.vb">
-      <DependentUpon>FDataPelangganAdd.vb</DependentUpon>
+    <Compile Include="Module\Inventory\DataPelanggan\FPelangganAdd.Designer.vb">
+      <DependentUpon>FPelangganAdd.vb</DependentUpon>
     </Compile>
-    <Compile Include="Module\Inventory\DataPelanggan\FDataPelangganAdd.vb">
+    <Compile Include="Module\Inventory\DataPelanggan\FPelangganAdd.vb">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Module\Inventory\DataPelanggan\MDataPelanggan.vb" />
@@ -156,12 +195,6 @@
       <DependentUpon>FjenisBibitTanaman.vb</DependentUpon>
     </Compile>
     <Compile Include="Module\Inventory\DataTanamanMasuk\FjenisBibitTanaman.vb">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Module\Inventory\DataTanamanMasuk\FJensiBibitTanamanAdd.Designer.vb">
-      <DependentUpon>FJensiBibitTanamanAdd.vb</DependentUpon>
-    </Compile>
-    <Compile Include="Module\Inventory\DataTanamanMasuk\FJensiBibitTanamanAdd.vb">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Module\Inventory\DataTanaman\FJensiTanamanAdd.Designer.vb">
@@ -242,14 +275,30 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
+    <EmbeddedResource Include="Module\Accounting\FCOAheader.resx">
+      <DependentUpon>FCOAheader.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Module\Accounting\FCOAheaderAdd.resx">
+      <DependentUpon>FCOAheaderAdd.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Module\Accounting\FGroupCOA.resx">
+      <DependentUpon>FGroupCOA.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Module\Accounting\FGroupCoaAdd.resx">
+      <DependentUpon>FGroupCoaAdd.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Module\Accounting\FKlasifikasiAdd.resx">
+      <DependentUpon>FKlasifikasiAdd.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Module\Accounting\FKlasifikasiCOA.resx">
+      <DependentUpon>FKlasifikasiCOA.vb</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Module\Inventory\DataPelanggan\FDataPelanggan.resx">
       <DependentUpon>FDataPelanggan.vb</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Module\Inventory\DataPelanggan\FDataPelangganAdd.resx">
-      <DependentUpon>FDataPelangganAdd.vb</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Module\Inventory\DataPelanggan\Form1.resx">
-      <DependentUpon>FDataPelangganAdd.vb</DependentUpon>
+    <EmbeddedResource Include="Module\Inventory\DataPelanggan\FDataPelangganAdd.resx" />
+    <EmbeddedResource Include="Module\Inventory\DataPelanggan\FPelangganAdd.resx">
+      <DependentUpon>FPelangganAdd.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Module\Inventory\FTanamanMasuk.resx">
       <DependentUpon>FTanamanMasuk.vb</DependentUpon>
@@ -271,9 +320,6 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Module\Inventory\DataTanaman\FjenisTanaman.resx">
       <DependentUpon>FjenisTanaman.vb</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Module\Inventory\DataTanamanMasuk\FJensiBibitTanamanAdd.resx">
-      <DependentUpon>FJensiBibitTanamanAdd.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Module\Inventory\DataTanaman\FJensiTanamanAdd.resx">
       <DependentUpon>FJensiTanamanAdd.vb</DependentUpon>
@@ -312,7 +358,6 @@
     <None Include="SPA_TemporaryKey.pfx" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Module\Accounting\" />
     <Folder Include="Module\Sales\" />
     <Folder Include="Module\ViewReport\" />
     <Folder Include="Report\" />

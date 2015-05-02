@@ -20,24 +20,15 @@
             Model.mmtrprice = Convert.ToDouble(txtHarga.Text)
             Model.mmtrid1 = txtKode.Text + txtKode2.Text + txtKode3.Text
             Model.mmtrid2 = txtKode.Text + "2" + txtKode3.Text
-            If txtKode.Text + txtKode2.Text + txtKode3.Text <> txtKeyID1.Text Then
-                If Not Model.IfKeyExist(Model.mmtrid1) Then
-                    If txtKeyID1.Text <> "" And txtKeyID2.Text <> "" Then
-                        res = Model.UpdateData() And Model.UpdateData1()
-                        'MyApplication.ShowStatus("Data has been updated")
-                    Else
-                        res = Model.InsertData() And Model.InsertData1()
-                        'MyApplication.ShowStatus("Data has been saved")
-                    End If
-                    FDataBibitTanaman.init()
-                    Me.Close()
-                Else
-                    statmsg.Text = "Kode sudah ada, silahkan masukan kode yang lain."
-                    statmsg.ForeColor = Color.DarkRed
-                    txtKode.Focus()
-                End If
-
+            If txtKeyID1.Text <> "" And txtKeyID2.Text <> "" Then
+                res = Model.UpdateData() And Model.UpdateData1()
+                'MyApplication.ShowStatus("Data has been updated")
+            Else
+                res = Model.InsertData() And Model.InsertData1()
+                'MyApplication.ShowStatus("Data has been saved")
             End If
+            FDataBibitTanaman.init()
+            Me.Close()
         End If
     End Sub
 
@@ -127,6 +118,33 @@
     End Sub
     Private Function DataIsValid() As Boolean
         DataIsValid = True
+        Dim mmtrid As String = txtKode.Text + txtKode2.Text + txtKode3.Text
+
+        If txtKeyID1.Text <> "" Then
+            If txtKeyID1.Text <> txtKode.Text + txtKode2.Text + txtKode3.Text + txtMmtrg1.Text Then
+                If Model.IfKeyExist(mmtrid) Then
+                    statmsg.Text = "Kode sudah ada, silahkan masukan Kode yang lain."
+                    statmsg.ForeColor = Color.DarkRed
+                    txtKode.Focus()
+                    DataIsValid = False
+                Else
+                    statmsg.Text = "Kode Valid"
+                    statmsg.ForeColor = Color.Green
+                    DataIsValid = True
+                End If
+            End If
+        Else
+            If Model.IfKeyExist(mmtrid) Then
+                statmsg.Text = "Kode sudah ada, silahkan masukan Kode yang lain."
+                statmsg.ForeColor = Color.DarkRed
+                txtKode.Focus()
+                DataIsValid = False
+            Else
+                statmsg.Text = "Kode Valid"
+                statmsg.ForeColor = Color.Green
+                DataIsValid = True
+            End If
+        End If
         If txtJnsTanaman.Text = "" Then
             'MessageBox.Show("User group cannot be empty")
             statmsg.Text = "Jenis Tanaman tidak boleh kosong !"

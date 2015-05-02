@@ -32,6 +32,7 @@ Partial Class FjenisBibitTanaman
         Me.ToolAdd = New System.Windows.Forms.ToolStripButton()
         Me.Toolbarang = New System.Windows.Forms.ToolStrip()
         Me.ToolTextFind = New System.Windows.Forms.ToolStripTextBox()
+        Me.ToolPrint = New System.Windows.Forms.ToolStripButton()
         Me.ToolStripButton1 = New System.Windows.Forms.ToolStripButton()
         Me.lpageInfo = New System.Windows.Forms.ToolStripLabel()
         Me.ToolLast = New System.Windows.Forms.ToolStripButton()
@@ -50,7 +51,6 @@ Partial Class FjenisBibitTanaman
         Me.Panelbarang = New System.Windows.Forms.Panel()
         Me.DataGridView1 = New System.Windows.Forms.DataGridView()
         Me.PrintDialog1 = New System.Windows.Forms.PrintDialog()
-        Me.ToolPrint = New System.Windows.Forms.ToolStripButton()
         Me.Toolbarang.SuspendLayout()
         Me.ToolStrip1.SuspendLayout()
         Me.Panelbarang.SuspendLayout()
@@ -132,20 +132,29 @@ Partial Class FjenisBibitTanaman
         Me.ToolTextFind.Name = "ToolTextFind"
         Me.ToolTextFind.Size = New System.Drawing.Size(250, 39)
         '
+        'ToolPrint
+        '
+        Me.ToolPrint.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image
+        Me.ToolPrint.Image = Global.SPA.My.Resources.Resources.print2
+        Me.ToolPrint.ImageTransparentColor = System.Drawing.Color.Magenta
+        Me.ToolPrint.Name = "ToolPrint"
+        Me.ToolPrint.Size = New System.Drawing.Size(36, 36)
+        Me.ToolPrint.Text = "ToolStripButton2"
+        '
         'ToolStripButton1
         '
         Me.ToolStripButton1.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image
         Me.ToolStripButton1.ImageAlign = System.Drawing.ContentAlignment.TopCenter
         Me.ToolStripButton1.ImageTransparentColor = System.Drawing.Color.Magenta
         Me.ToolStripButton1.Name = "ToolStripButton1"
-        Me.ToolStripButton1.Size = New System.Drawing.Size(23, 22)
+        Me.ToolStripButton1.Size = New System.Drawing.Size(23, 4)
         Me.ToolStripButton1.Text = "ToolStripButton1"
         '
         'lpageInfo
         '
         Me.lpageInfo.Alignment = System.Windows.Forms.ToolStripItemAlignment.Right
         Me.lpageInfo.Name = "lpageInfo"
-        Me.lpageInfo.Size = New System.Drawing.Size(102, 22)
+        Me.lpageInfo.Size = New System.Drawing.Size(102, 15)
         Me.lpageInfo.Text = "1 - 20 as 100 Rows"
         '
         'ToolLast
@@ -266,15 +275,6 @@ Partial Class FjenisBibitTanaman
         '
         Me.PrintDialog1.UseEXDialog = True
         '
-        'ToolPrint
-        '
-        Me.ToolPrint.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image
-        Me.ToolPrint.Image = Global.SPA.My.Resources.Resources.print2
-        Me.ToolPrint.ImageTransparentColor = System.Drawing.Color.Magenta
-        Me.ToolPrint.Name = "ToolPrint"
-        Me.ToolPrint.Size = New System.Drawing.Size(36, 36)
-        Me.ToolPrint.Text = "ToolStripButton2"
-        '
         'FjenisBibitTanaman
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
@@ -282,7 +282,7 @@ Partial Class FjenisBibitTanaman
         Me.ClientSize = New System.Drawing.Size(468, 591)
         Me.Controls.Add(Me.Panelbarang)
         Me.Name = "FjenisBibitTanaman"
-        Me.Text = "Jenis Tanaman"
+        Me.Text = "Jenis Biit Tanaman"
         Me.Toolbarang.ResumeLayout(False)
         Me.Toolbarang.PerformLayout()
         Me.ToolStrip1.ResumeLayout(False)

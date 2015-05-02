@@ -21,6 +21,7 @@
                 'MyApplication.ShowStatus("Data has been saved")
             End If
             FjensiTanaman.init()
+            FjenisBibitTanaman.init()
             'FUserGroup.RetrieveLast()
             Me.Close()
         End If

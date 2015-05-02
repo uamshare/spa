@@ -33,8 +33,10 @@ Public Class MTanaman
         Return MyBase.GetData
     End Function
     Public Overloads Function InsertData() As Integer
-        Dim dtcreated As Date = Date.Now
-        Dim dtupdated As Date = Date.Now
+        Dim dtcreated As String
+        Dim dtupdated As String
+        dtcreated = Format(Date.Now, "yyyy/MM/dd hh:m:s")
+        dtupdated = Format(Date.Now, "yyyy/MM/dd hh:m:s")
 
         Me.StringSQL = "INSERT INTO " & TableName + "(mmtrhid,mmtrid,mmtrname,polybag,mmtrunit,mmtrprice,dtcreated,dtupdated) VALUES('" & mmtrhid & "','" & mmtrid & "','" & mmtrname & "','" & polybag & "','" & mmtrunit & "','" & mmtrprice & "','" & dtcreated & "','" & dtupdated & "')"
             Return MyBase.InsertData()
@@ -42,7 +44,8 @@ Public Class MTanaman
     End Function
 
     Public Overloads Function UpdateData() As Integer
-        Dim dtupdated As Date = Date.Now
+        Dim dtupdated As String
+        dtupdated = Format(Date.Now, "yyyy/MM/dd hh:m:s")
 
         Me.StringSQL = "UPDATE " & TableName + " SET mmtrid ='" & mmtrid & "', mmtrname ='" & mmtrname & "',polybag='" & polybag & "',mmtrunit='" & mmtrunit & "',mmtrprice='" & mmtrprice & "',mmtrg='" & mmtrg & "',dtupdated ='" & dtupdated & "' WHERE  CONCAT(mmtrid, CONVERT(mmtrg, CHAR)) = '" & GetKey & "'"
         Return MyBase.UpdateData()

@@ -111,7 +111,7 @@ Partial Class FJensiTanamanAdd
         Me.MaximizeBox = False
         Me.MinimizeBox = False
         Me.Name = "FJensiTanamanAdd"
-        Me.Text = "FJensiTanamanAdd"
+        Me.Text = "Jenis Tanaman"
         Me.StatusStrip1.ResumeLayout(False)
         Me.StatusStrip1.PerformLayout()
         Me.ResumeLayout(False)

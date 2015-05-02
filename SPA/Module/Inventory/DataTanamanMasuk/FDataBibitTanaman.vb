@@ -221,7 +221,7 @@ Public Class FDataBibitTanaman
             FDataBibitTanamanAdd.txtMmtrg1.Text = CStr(DataGridViewTanaman.Rows(getRowIndexSelected()).Cells("mmtrg").Value)
             FDataBibitTanamanAdd.cmbPolybag.Text = CStr(DataGridViewTanaman.Rows(getRowIndexSelected()).Cells("polybag").Value)
             FDataBibitTanamanAdd.txtKode.Text = Strings.Left(CStr(DataGridViewTanaman.Rows(getRowIndexSelected()).Cells("mmtrid").Value), 5)
-            FDataBibitTanamanAdd.txtKode2.Text = Strings.Left(CStr(DataGridViewTanaman.Rows(getRowIndexSelected()).Cells("mmtrid").Value), 1)
+            FDataBibitTanamanAdd.txtKode2.Text = "1"
             FDataBibitTanamanAdd.txtKode3.Text = Strings.Right(CStr(DataGridViewTanaman.Rows(getRowIndexSelected()).Cells("mmtrid").Value), 3)
             FDataBibitTanamanAdd.txtHarga.Text = Convert.ToString(DataGridViewTanaman.Rows(getRowIndexSelected()).Cells("mmtrprice").Value)
             FDataBibitTanamanAdd.txtSatuan.Text = CStr(DataGridViewTanaman.Rows(getRowIndexSelected()).Cells("mmtrunit").Value)
@@ -233,12 +233,13 @@ Public Class FDataBibitTanaman
     End Sub
 
     Private Sub ToolAdd_Click(sender As Object, e As EventArgs) Handles ToolAdd.Click
-        FDataBibitTanamanAdd.txtJnsTanaman.Text = ""
+        FDataBibitTanamanAdd.txtJnsTanaman.Clear()
         FDataBibitTanamanAdd.cmbPolybag.Text = ""
-        FDataBibitTanamanAdd.txtKode.Text = ""
-        FDataBibitTanamanAdd.txtKode3.Text = ""
-        FDataBibitTanamanAdd.txtSatuan.Text = ""
-        FDataBibitTanamanAdd.txtHarga.Text = ""
+        FDataBibitTanamanAdd.txtKode.Clear()
+        FDataBibitTanamanAdd.txtKode3.Clear()
+        FDataBibitTanamanAdd.txtSatuan.Clear()
+        FDataBibitTanamanAdd.txtHarga.Clear()
+        FDataBibitTanamanAdd.txtKeyID1.Clear()
         FDataBibitTanamanAdd.txtHarga.Text = 0
         FDataBibitTanamanAdd.ShowDialog()
     End Sub

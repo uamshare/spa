@@ -73,10 +73,10 @@ Partial Class FDataPelanggan
         Me.ToolStrip1.Dock = System.Windows.Forms.DockStyle.Bottom
         Me.ToolStrip1.GripStyle = System.Windows.Forms.ToolStripGripStyle.Hidden
         Me.ToolStrip1.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.ToolStripLabelbarang, Me.cmbperPage, Me.ToolStripLabel1, Me.ToolStripSeparator3, Me.ToolFisrt, Me.ToolPrev, Me.ToolStripSeparator1, Me.txtPageCurrent, Me.lCountPage, Me.ToolStripSeparator2, Me.ToolNext, Me.ToolLast, Me.lpageInfo, Me.ToolStripButton1})
-        Me.ToolStrip1.Location = New System.Drawing.Point(0, 531)
+        Me.ToolStrip1.Location = New System.Drawing.Point(0, 554)
         Me.ToolStrip1.Name = "ToolStrip1"
         Me.ToolStrip1.RenderMode = System.Windows.Forms.ToolStripRenderMode.System
-        Me.ToolStrip1.Size = New System.Drawing.Size(1011, 25)
+        Me.ToolStrip1.Size = New System.Drawing.Size(1325, 25)
         Me.ToolStrip1.TabIndex = 19
         Me.ToolStrip1.Text = "ToolStrip1"
         '
@@ -195,7 +195,7 @@ Partial Class FDataPelanggan
         Me.Toolbarang.Location = New System.Drawing.Point(0, 0)
         Me.Toolbarang.Name = "Toolbarang"
         Me.Toolbarang.RenderMode = System.Windows.Forms.ToolStripRenderMode.System
-        Me.Toolbarang.Size = New System.Drawing.Size(1011, 39)
+        Me.Toolbarang.Size = New System.Drawing.Size(1325, 39)
         Me.Toolbarang.TabIndex = 9
         Me.Toolbarang.Text = "Tool1"
         '
@@ -264,7 +264,7 @@ Partial Class FDataPelanggan
         Me.Panelbarang.Dock = System.Windows.Forms.DockStyle.Left
         Me.Panelbarang.Location = New System.Drawing.Point(0, 0)
         Me.Panelbarang.Name = "Panelbarang"
-        Me.Panelbarang.Size = New System.Drawing.Size(1011, 556)
+        Me.Panelbarang.Size = New System.Drawing.Size(1325, 579)
         Me.Panelbarang.TabIndex = 11
         '
         'DataGridView1
@@ -272,14 +272,14 @@ Partial Class FDataPelanggan
         Me.DataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
         Me.DataGridView1.Location = New System.Drawing.Point(3, 39)
         Me.DataGridView1.Name = "DataGridView1"
-        Me.DataGridView1.Size = New System.Drawing.Size(1008, 490)
+        Me.DataGridView1.Size = New System.Drawing.Size(1322, 512)
         Me.DataGridView1.TabIndex = 20
         '
         'FDataPelanggan
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(1012, 556)
+        Me.ClientSize = New System.Drawing.Size(1325, 579)
         Me.Controls.Add(Me.Panelbarang)
         Me.Name = "FDataPelanggan"
         Me.Text = "Data Pelanggan"
