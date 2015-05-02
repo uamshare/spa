@@ -97,4 +97,8 @@ Public Class MainForm
     Private Sub menu401_Click(sender As Object, e As EventArgs) Handles menu401.Click
         LoadMdiChildForm(FCOAheader, "menu401")
     End Sub
+
+    Private Sub menu402_Click(sender As Object, e As EventArgs) Handles menu402.Click
+        LoadMdiChildForm(FCOADetail, "menu402")
+    End Sub
 End Class

@@ -121,43 +121,62 @@
     <Compile Include="Libraries\CdataAccess.vb" />
     <Compile Include="Libraries\ErrorLogger.vb" />
     <Compile Include="Libraries\EventLogger.vb" />
-    <Compile Include="Module\Accounting\FGroupCOA.Designer.vb">
+    <Compile Include="Module\Accounting\COADetail\FCOADetail.Designer.vb">
+      <DependentUpon>FCOADetail.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Module\Accounting\COADetail\FCOADetail.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Module\Accounting\COADetail\FCOADetailAdd.Designer.vb">
+      <DependentUpon>FCOADetailAdd.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Module\Accounting\COADetail\FCOADetailAdd.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Module\Accounting\COADetail\FHeader.Designer.vb">
+      <DependentUpon>FHeader.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Module\Accounting\COADetail\FHeader.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Module\Accounting\COADetail\MCOADetail.vb" />
+    <Compile Include="Module\Accounting\COAHeader\FGroupCOA.Designer.vb">
       <DependentUpon>FGroupCOA.vb</DependentUpon>
     </Compile>
-    <Compile Include="Module\Accounting\FGroupCOA.vb">
+    <Compile Include="Module\Accounting\COAHeader\FGroupCOA.vb">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Module\Accounting\FGroupCoaAdd.Designer.vb">
+    <Compile Include="Module\Accounting\COAHeader\FGroupCoaAdd.Designer.vb">
       <DependentUpon>FGroupCoaAdd.vb</DependentUpon>
     </Compile>
-    <Compile Include="Module\Accounting\FGroupCoaAdd.vb">
+    <Compile Include="Module\Accounting\COAHeader\FGroupCoaAdd.vb">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Module\Accounting\FKlasifikasiAdd.Designer.vb">
+    <Compile Include="Module\Accounting\COAHeader\FKlasifikasiAdd.Designer.vb">
       <DependentUpon>FKlasifikasiAdd.vb</DependentUpon>
     </Compile>
-    <Compile Include="Module\Accounting\FKlasifikasiAdd.vb">
+    <Compile Include="Module\Accounting\COAHeader\FKlasifikasiAdd.vb">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Module\Accounting\MGroupCOA.vb" />
-    <Compile Include="Module\Accounting\MKlasifikasiCOA.vb" />
-    <Compile Include="Module\Accounting\FCOAheaderAdd.Designer.vb">
+    <Compile Include="Module\Accounting\COAHeader\MGroupCOA.vb" />
+    <Compile Include="Module\Accounting\COAHeader\MKlasifikasiCOA.vb" />
+    <Compile Include="Module\Accounting\COAHeader\FCOAheaderAdd.Designer.vb">
       <DependentUpon>FCOAheaderAdd.vb</DependentUpon>
     </Compile>
-    <Compile Include="Module\Accounting\FCOAheaderAdd.vb">
+    <Compile Include="Module\Accounting\COAHeader\FCOAheaderAdd.vb">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Module\Accounting\FKlasifikasiCOA.Designer.vb">
+    <Compile Include="Module\Accounting\COAHeader\FKlasifikasiCOA.Designer.vb">
       <DependentUpon>FKlasifikasiCOA.vb</DependentUpon>
     </Compile>
-    <Compile Include="Module\Accounting\FKlasifikasiCOA.vb">
+    <Compile Include="Module\Accounting\COAHeader\FKlasifikasiCOA.vb">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Module\Accounting\MCOAheader.vb" />
-    <Compile Include="Module\Accounting\FCOAheader.Designer.vb">
+    <Compile Include="Module\Accounting\COAHeader\MCOAheader.vb" />
+    <Compile Include="Module\Accounting\COAHeader\FCOAheader.Designer.vb">
       <DependentUpon>FCOAheader.vb</DependentUpon>
     </Compile>
-    <Compile Include="Module\Accounting\FCOAheader.vb">
+    <Compile Include="Module\Accounting\COAHeader\FCOAheader.vb">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Module\Inventory\DataPelanggan\FDataPelanggan.Designer.vb">
@@ -275,22 +294,31 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Module\Accounting\FCOAheader.resx">
+    <EmbeddedResource Include="Module\Accounting\COADetail\FCOADetail.resx">
+      <DependentUpon>FCOADetail.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Module\Accounting\COADetail\FCOADetailAdd.resx">
+      <DependentUpon>FCOADetailAdd.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Module\Accounting\COADetail\FHeader.resx">
+      <DependentUpon>FHeader.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Module\Accounting\COAHeader\FCOAheader.resx">
       <DependentUpon>FCOAheader.vb</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Module\Accounting\FCOAheaderAdd.resx">
+    <EmbeddedResource Include="Module\Accounting\COAHeader\FCOAheaderAdd.resx">
       <DependentUpon>FCOAheaderAdd.vb</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Module\Accounting\FGroupCOA.resx">
+    <EmbeddedResource Include="Module\Accounting\COAHeader\FGroupCOA.resx">
       <DependentUpon>FGroupCOA.vb</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Module\Accounting\FGroupCoaAdd.resx">
+    <EmbeddedResource Include="Module\Accounting\COAHeader\FGroupCoaAdd.resx">
       <DependentUpon>FGroupCoaAdd.vb</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Module\Accounting\FKlasifikasiAdd.resx">
+    <EmbeddedResource Include="Module\Accounting\COAHeader\FKlasifikasiAdd.resx">
       <DependentUpon>FKlasifikasiAdd.vb</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Module\Accounting\FKlasifikasiCOA.resx">
+    <EmbeddedResource Include="Module\Accounting\COAHeader\FKlasifikasiCOA.resx">
       <DependentUpon>FKlasifikasiCOA.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Module\Inventory\DataPelanggan\FDataPelanggan.resx">

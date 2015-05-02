@@ -23,7 +23,7 @@
         DataIsValid = True
         If KeyID.Text <> "" Then
             If txtNo.Text <> KeyID.Text Then
-                If Model.IfKeyExist(txtNama.Text) Then
+                If Model.IfKeyExist(txtNo.Text) Then
                     statmsg.Text = "No Akun sudah ada, silahkan masukan No Akun yang lain."
                     statmsg.ForeColor = Color.DarkRed
                     txtNo.Focus()
