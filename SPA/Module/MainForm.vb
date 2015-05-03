@@ -32,12 +32,23 @@ Public Class MainForm
     End Sub
 
     Sub LoadMdiChildForm(CForm As Form, menuname As String)
-        If Not ChildForm Is Nothing Then ChildForm.Close()
-        ChildForm = CForm
-        MenuActive = menuname
-        ChildForm.WindowState = FormWindowState.Maximized
-        ChildForm.MdiParent = Me
-        ChildForm.Show()
+        Try
+            If Not ChildForm Is Nothing Then
+                If ChildForm.Name <> CForm.Name Then
+                    ChildForm.Close()
+                End If
+            End If
+            ChildForm = CForm
+            MenuActive = menuname
+            ChildForm.WindowState = FormWindowState.Maximized
+            ChildForm.MdiParent = Me
+            ChildForm.Show()
+        Catch ex As ObjectDisposedException
+            MsgBox(ex.Message)
+        Catch ex As Exception
+            MsgBox(ex.Message)
+        End Try
+        
     End Sub
 
     Public Sub RestrictUserMenu(Optional MenuItems As ToolStripMenuItem = Nothing)
@@ -69,8 +80,9 @@ Public Class MainForm
     End Sub
 
     Private Sub menu101_Click(sender As Object, e As EventArgs) Handles menu101.Click
-        FDataTanaman.WindowState = FormWindowState.Maximized
-        FDataTanaman.MdiParent = Me
-        FDataTanaman.Show()
+        'FDataTanaman.WindowState = FormWindowState.Maximized
+        'FDataTanaman.MdiParent = Me
+        'FDataTanaman.Show()
+        LoadMdiChildForm(FDataTanaman, "menu101")
     End Sub
 End Class
