@@ -232,7 +232,7 @@ Public Class FDataTanaman
 
     Private Sub ToolAdd_Click(sender As Object, e As EventArgs) Handles ToolAdd.Click
         FDataTanamanAdd.txtJnsTanaman.Clear()
-        FDataTanamanAdd.cmbPolybag.Text = ""
+        FDataTanamanAdd.cmbPolybag.SelectedIndex = -1
         FDataTanamanAdd.txtKode.Clear()
         FDataTanamanAdd.txtKode3.Clear()
         FDataTanamanAdd.txtSatuan.Clear()

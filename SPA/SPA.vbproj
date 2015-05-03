@@ -121,6 +121,19 @@
     <Compile Include="Libraries\CdataAccess.vb" />
     <Compile Include="Libraries\ErrorLogger.vb" />
     <Compile Include="Libraries\EventLogger.vb" />
+    <Compile Include="Module\Accounting\AkunPostingOtomatis\FAkunPosting.Designer.vb">
+      <DependentUpon>FAkunPosting.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Module\Accounting\AkunPostingOtomatis\FAkunPosting.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Module\Accounting\AkunPostingOtomatis\FAkunPostingAdd.Designer.vb">
+      <DependentUpon>FAkunPostingAdd.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Module\Accounting\AkunPostingOtomatis\FAkunPostingAdd.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Module\Accounting\AkunPostingOtomatis\MAkunPosting.vb" />
     <Compile Include="Module\Accounting\COADetail\FCOADetail.Designer.vb">
       <DependentUpon>FCOADetail.vb</DependentUpon>
     </Compile>
@@ -301,6 +314,12 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
+    <EmbeddedResource Include="Module\Accounting\AkunPostingOtomatis\FAkunPosting.resx">
+      <DependentUpon>FAkunPosting.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Module\Accounting\AkunPostingOtomatis\FAkunPostingAdd.resx">
+      <DependentUpon>FAkunPostingAdd.vb</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Module\Accounting\COADetail\FCOADetail.resx">
       <DependentUpon>FCOADetail.vb</DependentUpon>
     </EmbeddedResource>

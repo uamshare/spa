@@ -9,7 +9,7 @@ Public Class BaseConnection
         Dim msgerror As String = ""
         Dim myConnectionString As String = "server=" & My.Settings.server & ";" _
                 & "uid=" & My.Settings.uid & ";" _
-                & "pwd=" & My.Settings.pwd & ";" _
+                & "pwd=123456" & My.Settings.pwd & ";" _
                 & "database=" & My.Settings.database & ";"
         'Dim myConnectionString As String = "server=103.8.79.229;" _
         '        & "uid=tjeloacl;" _

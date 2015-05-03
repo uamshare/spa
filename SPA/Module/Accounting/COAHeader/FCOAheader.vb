@@ -239,8 +239,8 @@
         FCOAheaderAdd.txtNama.Clear()
         FCOAheaderAdd.txtCoaId.Clear()
         FCOAheaderAdd.txtKlasifikasi.Clear()
-        FCOAheaderAdd.cmbSaldo.Text = ""
-        FCOAheaderAdd.cmbLaporan.Text = ""
+        FCOAheaderAdd.cmbSaldo.SelectedIndex = -1
+        FCOAheaderAdd.cmbLaporan.SelectedIndex = -1
         FCOAheaderAdd.statmsg.Text = ""
         FCOAheaderAdd.ShowDialog()
     End Sub

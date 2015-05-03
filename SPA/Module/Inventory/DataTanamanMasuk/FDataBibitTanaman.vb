@@ -234,7 +234,7 @@ Public Class FDataBibitTanaman
 
     Private Sub ToolAdd_Click(sender As Object, e As EventArgs) Handles ToolAdd.Click
         FDataBibitTanamanAdd.txtJnsTanaman.Clear()
-        FDataBibitTanamanAdd.cmbPolybag.Text = ""
+        FDataBibitTanamanAdd.cmbPolybag.SelectedIndex = -1
         FDataBibitTanamanAdd.txtKode.Clear()
         FDataBibitTanamanAdd.txtKode3.Clear()
         FDataBibitTanamanAdd.txtSatuan.Clear()

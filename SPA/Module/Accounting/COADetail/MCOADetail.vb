@@ -6,8 +6,8 @@
 
     Sub New()
         MyBase.New()
-        BaseQuery = "SELECT d.mcoadno, d.mcoadname, d.mcoahno, c.mcoaclassification, g.mcoagroup, h.postbalance, h.postgl FROM mcoad AS d INNER JOIN mcoah AS h ON d.mcoahno=h.mcoahno INNER JOIN mcoac AS c ON h.mcoacid=c.mcoacid INNER JOIN mcoag AS g ON c.mcoagid=g.mcoagid"
-        SelectQuery = "SELECT d.mcoadno, d.mcoadname, d.mcoahno, c.mcoaclassification, g.mcoagroup, h.postbalance, h.postgl FROM mcoad AS d INNER JOIN mcoah AS h ON d.mcoahno=h.mcoahno INNER JOIN mcoac AS c ON h.mcoacid=c.mcoacid INNER JOIN mcoag AS g ON c.mcoagid=g.mcoagid"
+        BaseQuery = "SELECT * FROM coa"
+        SelectQuery = "SELECT * FROM coa"
         TableName = "mcoad"
         PrimaryKey = "mcoadno"
     End Sub
