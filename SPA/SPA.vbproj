@@ -207,6 +207,13 @@
     <Compile Include="Module\SplashScreen1.vb">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="Module\version\Dialog1.designer.vb">
+      <DependentUpon>Dialog1.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Module\version\Dialog1.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Module\version\version.vb" />
     <Compile Include="My Project\AssemblyInfo.vb" />
     <Compile Include="My Project\Application.Designer.vb">
       <AutoGen>True</AutoGen>
@@ -267,6 +274,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Module\SplashScreen1.resx">
       <DependentUpon>SplashScreen1.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Module\version\Dialog1.resx">
+      <DependentUpon>Dialog1.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="My Project\Resources.resx">
       <Generator>VbMyResourcesResXFileCodeGenerator</Generator>

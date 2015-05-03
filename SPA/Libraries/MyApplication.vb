@@ -1,10 +1,5 @@
 ﻿
 'author : uam
-'
-'
-'name
-'
-'
 Module MyApplication
     'Public Const DONECOLOR As Object = Color.MediumSpringGreen
     Public Const ERROR_STAT As String = "Error"
@@ -15,6 +10,8 @@ Module MyApplication
 
     'Public PUSERID As Integer = 1
     Sub Main()
+        'MsgBox(CInt(Application.ProductVersion.Replace(".", "")))
+        'Web_update.Main()
         If IsNothing(BaseConnection.GetInstance()) Or BaseConnection.GetInstance().State <= 0 Then
             ShowStatus("Database is not Connected", ERROR_STAT, False)
             MainForm.MenuStrip.Enabled = False
