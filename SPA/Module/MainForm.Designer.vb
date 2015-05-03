@@ -89,43 +89,43 @@ Partial Class MainForm
         Me.menu100.Image = Global.SPA.My.Resources.Resources.inventory2
         Me.menu100.ImageTransparentColor = System.Drawing.SystemColors.ActiveBorder
         Me.menu100.Name = "menu100"
-        Me.menu100.Size = New System.Drawing.Size(144, 20)
+        Me.menu100.Size = New System.Drawing.Size(145, 20)
         Me.menu100.Text = "Persediaan Tanaman"
         '
         'menu101
         '
         Me.menu101.Name = "menu101"
-        Me.menu101.Size = New System.Drawing.Size(194, 22)
+        Me.menu101.Size = New System.Drawing.Size(196, 22)
         Me.menu101.Text = "Data Tanaman"
         '
         'menu102
         '
         Me.menu102.Name = "menu102"
-        Me.menu102.Size = New System.Drawing.Size(194, 22)
+        Me.menu102.Size = New System.Drawing.Size(196, 22)
         Me.menu102.Text = "Data Tanaman Masuk"
         '
         'menu103
         '
         Me.menu103.Name = "menu103"
-        Me.menu103.Size = New System.Drawing.Size(194, 22)
+        Me.menu103.Size = New System.Drawing.Size(196, 22)
         Me.menu103.Text = "Transfer Stok Tanaman"
         '
         'menu104
         '
         Me.menu104.Name = "menu104"
-        Me.menu104.Size = New System.Drawing.Size(194, 22)
+        Me.menu104.Size = New System.Drawing.Size(196, 22)
         Me.menu104.Text = "Penyesuaian Stok"
         '
         'menu105
         '
         Me.menu105.Name = "menu105"
-        Me.menu105.Size = New System.Drawing.Size(194, 22)
+        Me.menu105.Size = New System.Drawing.Size(196, 22)
         Me.menu105.Text = "Stok Tanaman"
         '
         'menu106
         '
         Me.menu106.Name = "menu106"
-        Me.menu106.Size = New System.Drawing.Size(194, 22)
+        Me.menu106.Size = New System.Drawing.Size(196, 22)
         Me.menu106.Text = "Kartu Stok Tanaman"
         '
         'menu200
@@ -133,43 +133,43 @@ Partial Class MainForm
         Me.menu200.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.menu201, Me.menu202, Me.menu203, Me.menu204, Me.menu205, Me.menu206})
         Me.menu200.Image = Global.SPA.My.Resources.Resources.production
         Me.menu200.Name = "menu200"
-        Me.menu200.Size = New System.Drawing.Size(183, 20)
+        Me.menu200.Size = New System.Drawing.Size(184, 20)
         Me.menu200.Text = "Penangkaran Bibit Tanaman"
         '
         'menu201
         '
         Me.menu201.Name = "menu201"
-        Me.menu201.Size = New System.Drawing.Size(319, 22)
+        Me.menu201.Size = New System.Drawing.Size(320, 22)
         Me.menu201.Text = "Data Bibit Tanaman"
         '
         'menu202
         '
         Me.menu202.Name = "menu202"
-        Me.menu202.Size = New System.Drawing.Size(319, 22)
+        Me.menu202.Size = New System.Drawing.Size(320, 22)
         Me.menu202.Text = "Data Bibit Tanaman Masuk"
         '
         'menu203
         '
         Me.menu203.Name = "menu203"
-        Me.menu203.Size = New System.Drawing.Size(319, 22)
+        Me.menu203.Size = New System.Drawing.Size(320, 22)
         Me.menu203.Text = "Proses Penangkaran"
         '
         'menu204
         '
         Me.menu204.Name = "menu204"
-        Me.menu204.Size = New System.Drawing.Size(319, 22)
+        Me.menu204.Size = New System.Drawing.Size(320, 22)
         Me.menu204.Text = "Proses Bibit Tanaman Siap Jual"
         '
         'menu205
         '
         Me.menu205.Name = "menu205"
-        Me.menu205.Size = New System.Drawing.Size(319, 22)
+        Me.menu205.Size = New System.Drawing.Size(320, 22)
         Me.menu205.Text = "Stok Bibit Tanaman & Proses Penangkaran"
         '
         'menu206
         '
         Me.menu206.Name = "menu206"
-        Me.menu206.Size = New System.Drawing.Size(319, 22)
+        Me.menu206.Size = New System.Drawing.Size(320, 22)
         Me.menu206.Text = "Kartu Stok Bibit Tanaman & Proses Penangkaran"
         '
         'menu300
@@ -177,7 +177,7 @@ Partial Class MainForm
         Me.menu300.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.menu301, Me.menu302, Me.menu303, Me.menu304, Me.menu305})
         Me.menu300.Image = Global.SPA.My.Resources.Resources.sales2
         Me.menu300.Name = "menu300"
-        Me.menu300.Size = New System.Drawing.Size(139, 20)
+        Me.menu300.Size = New System.Drawing.Size(140, 20)
         Me.menu300.Text = "Penjualan Tanaman"
         '
         'menu301
@@ -359,12 +359,6 @@ Partial Class MainForm
         '
         'TimeStat
         '
-        '
-        'menu501
-        '
-        Me.menu501.Name = "menu501"
-        Me.menu501.Size = New System.Drawing.Size(166, 22)
-        Me.menu501.Text = "Grup Akses"
         '
         'MainForm
         '

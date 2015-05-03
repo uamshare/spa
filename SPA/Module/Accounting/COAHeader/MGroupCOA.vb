@@ -1,39 +1,34 @@
-﻿Public Class MJenisTanaman
+﻿Public Class MGroupCOA
     Inherits CDataAcces
 
-    Public mmtrhid As String
-    Public mmtrhname As String ' Field groupname
-    Public dtcreated As Date
-    Public dtupdated As Date
+    Public mcoagroup As String ' Field groupname
+    Public mcoagid As String
 
     Sub New()
         MyBase.New()
-        BaseQuery = "SELECT mmtrhid,mmtrhname FROM mmtrh"
-        SelectQuery = "SELECT mmtrhid,mmtrhname FROM mmtrh"
-        TableName = "mmtrh"
-        PrimaryKey = "mmtrhid"
+        BaseQuery = "SELECT mcoagid, mcoagroup FROM mcoag"
+        SelectQuery = "SELECT mcoagid, mcoagroup FROM mcoag"
+        TableName = "mcoag"
+        PrimaryKey = "mcoagid"
     End Sub
 
     Function FindData(sSearch As String) As DataTable
         If Not String.IsNullOrEmpty(sSearch) Then
-            Me.WHERE = "WHERE mmtrhname like '%" & sSearch & "%'"
+            Me.WHERE = "WHERE mcoaclassification like '%" & sSearch & "%'"
         Else
             Me.WHERE = ""
         End If
         Return MyBase.GetData
     End Function
     Public Overloads Function InsertData() As Integer
-        dtcreated = Format(Date.Now, "yyyy/MM/dd")
-        dtupdated = Format(Date.Now, "yyyy/MM/dd")
 
-        Me.StringSQL = "INSERT INTO " & TableName + "(mmtrhname,dtcreated,dtupdated) VALUES('" & mmtrhname & "','" & dtcreated & "','" & dtupdated & "')"
+        Me.StringSQL = "INSERT INTO " & TableName + "(mcoagroup) VALUES('" & mcoagroup & "')"
         Return MyBase.InsertData()
     End Function
 
     Public Overloads Function UpdateData() As Integer
-        dtupdated = Format(Date.Now, "yyyy/MM/dd")
 
-        Me.StringSQL = "UPDATE " & TableName + " SET mmtrhname ='" & mmtrhname & "',dtcreated ='" & dtcreated & "',dtupdated ='" & dtupdated & "' WHERE " & PrimaryKey & "=" & mmtrhid
+        Me.StringSQL = "UPDATE " & TableName + " SET mcoagroup ='" & mcoagroup & "' WHERE " & PrimaryKey & "=" & mcoagid
         Return MyBase.UpdateData()
     End Function
 
@@ -43,9 +38,9 @@
             cmd.Connection = PCONN
             'cmd.Prepare()
             If IsArray(ids) And ids.Length > 0 Then
-                For Each mmtrhid As String In ids
-                    If Not String.IsNullOrEmpty(mmtrhid) Then
-                        Me.StringSQL = "DELETE FROM " & TableName + " WHERE " & PrimaryKey & " = '" & mmtrhid & "'"
+                For Each mcoagid As String In ids
+                    If Not String.IsNullOrEmpty(mcoagid) Then
+                        Me.StringSQL = "DELETE FROM " & TableName + " WHERE " & PrimaryKey & " = '" & mcoagid & "'"
                         cmd.CommandText = Me.StringSQL
                         rowCountAffected += cmd.ExecuteNonQuery()
                     End If
@@ -57,5 +52,4 @@
         CommitTrans(" data have been deleted ") 'Commit All Transaction
         Return rowCountAffected
     End Function
-
 End Class

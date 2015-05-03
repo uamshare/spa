@@ -45,7 +45,7 @@ Partial Class FJensiTanamanAdd
         'statmsg
         '
         Me.statmsg.Name = "statmsg"
-        Me.statmsg.Size = New System.Drawing.Size(88, 17)
+        Me.statmsg.Size = New System.Drawing.Size(100, 17)
         Me.statmsg.Text = "Status Message"
         '
         'txtid
@@ -111,7 +111,7 @@ Partial Class FJensiTanamanAdd
         Me.MaximizeBox = False
         Me.MinimizeBox = False
         Me.Name = "FJensiTanamanAdd"
-        Me.Text = "FJensiTanamanAdd"
+        Me.Text = "Jenis Tanaman"
         Me.StatusStrip1.ResumeLayout(False)
         Me.StatusStrip1.PerformLayout()
         Me.ResumeLayout(False)

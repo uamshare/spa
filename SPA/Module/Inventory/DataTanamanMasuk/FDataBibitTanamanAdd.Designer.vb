@@ -39,9 +39,10 @@ Partial Class FDataBibitTanamanAdd
         Me.btnBatal = New System.Windows.Forms.Button()
         Me.statmsg = New System.Windows.Forms.ToolStripStatusLabel()
         Me.StatusStrip1 = New System.Windows.Forms.StatusStrip()
-        Me.txtKeyID = New System.Windows.Forms.TextBox()
-        Me.txtMmtrg = New System.Windows.Forms.TextBox()
+        Me.txtKeyID1 = New System.Windows.Forms.TextBox()
+        Me.txtMmtrg1 = New System.Windows.Forms.TextBox()
         Me.txtMmtrhid = New System.Windows.Forms.TextBox()
+        Me.txtKeyID2 = New System.Windows.Forms.TextBox()
         Me.StatusStrip1.SuspendLayout()
         Me.SuspendLayout()
         '
@@ -226,25 +227,25 @@ Partial Class FDataBibitTanamanAdd
         Me.StatusStrip1.TabIndex = 15
         Me.StatusStrip1.Text = "StatusStrip1"
         '
-        'txtKeyID
+        'txtKeyID1
         '
-        Me.txtKeyID.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.txtKeyID.Location = New System.Drawing.Point(48, 156)
-        Me.txtKeyID.Margin = New System.Windows.Forms.Padding(4)
-        Me.txtKeyID.Name = "txtKeyID"
-        Me.txtKeyID.Size = New System.Drawing.Size(132, 22)
-        Me.txtKeyID.TabIndex = 16
-        Me.txtKeyID.Visible = False
+        Me.txtKeyID1.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.txtKeyID1.Location = New System.Drawing.Point(48, 156)
+        Me.txtKeyID1.Margin = New System.Windows.Forms.Padding(4)
+        Me.txtKeyID1.Name = "txtKeyID1"
+        Me.txtKeyID1.Size = New System.Drawing.Size(132, 22)
+        Me.txtKeyID1.TabIndex = 16
+        Me.txtKeyID1.Visible = False
         '
-        'txtMmtrg
+        'txtMmtrg1
         '
-        Me.txtMmtrg.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.txtMmtrg.Location = New System.Drawing.Point(48, 180)
-        Me.txtMmtrg.Margin = New System.Windows.Forms.Padding(4)
-        Me.txtMmtrg.Name = "txtMmtrg"
-        Me.txtMmtrg.Size = New System.Drawing.Size(132, 22)
-        Me.txtMmtrg.TabIndex = 17
-        Me.txtMmtrg.Visible = False
+        Me.txtMmtrg1.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.txtMmtrg1.Location = New System.Drawing.Point(48, 180)
+        Me.txtMmtrg1.Margin = New System.Windows.Forms.Padding(4)
+        Me.txtMmtrg1.Name = "txtMmtrg1"
+        Me.txtMmtrg1.Size = New System.Drawing.Size(132, 22)
+        Me.txtMmtrg1.TabIndex = 17
+        Me.txtMmtrg1.Visible = False
         '
         'txtMmtrhid
         '
@@ -254,15 +255,24 @@ Partial Class FDataBibitTanamanAdd
         Me.txtMmtrhid.TabIndex = 18
         Me.txtMmtrhid.Visible = False
         '
-        'FDataTanamanAdd
+        'txtKeyID2
+        '
+        Me.txtKeyID2.Location = New System.Drawing.Point(187, 185)
+        Me.txtKeyID2.Name = "txtKeyID2"
+        Me.txtKeyID2.Size = New System.Drawing.Size(100, 23)
+        Me.txtKeyID2.TabIndex = 19
+        Me.txtKeyID2.Visible = False
+        '
+        'FDataBibitTanamanAdd
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(8.0!, 16.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.CancelButton = Me.btnBatal
         Me.ClientSize = New System.Drawing.Size(541, 249)
+        Me.Controls.Add(Me.txtKeyID2)
         Me.Controls.Add(Me.txtMmtrhid)
-        Me.Controls.Add(Me.txtMmtrg)
-        Me.Controls.Add(Me.txtKeyID)
+        Me.Controls.Add(Me.txtMmtrg1)
+        Me.Controls.Add(Me.txtKeyID1)
         Me.Controls.Add(Me.StatusStrip1)
         Me.Controls.Add(Me.btnBatal)
         Me.Controls.Add(Me.btnSimpan)
@@ -283,8 +293,8 @@ Partial Class FDataBibitTanamanAdd
         Me.Margin = New System.Windows.Forms.Padding(4)
         Me.MaximizeBox = False
         Me.MinimizeBox = False
-        Me.Name = "FDataTanamanAdd"
-        Me.Text = "Data Tanaman"
+        Me.Name = "FDataBibitTanamanAdd"
+        Me.Text = "Data Tanaman Masuk"
         Me.StatusStrip1.ResumeLayout(False)
         Me.StatusStrip1.PerformLayout()
         Me.ResumeLayout(False)
@@ -308,7 +318,8 @@ Partial Class FDataBibitTanamanAdd
     Friend WithEvents btnBatal As System.Windows.Forms.Button
     Friend WithEvents statmsg As System.Windows.Forms.ToolStripStatusLabel
     Friend WithEvents StatusStrip1 As System.Windows.Forms.StatusStrip
-    Friend WithEvents txtKeyID As System.Windows.Forms.TextBox
-    Friend WithEvents txtMmtrg As System.Windows.Forms.TextBox
+    Friend WithEvents txtKeyID1 As System.Windows.Forms.TextBox
+    Friend WithEvents txtMmtrg1 As System.Windows.Forms.TextBox
     Friend WithEvents txtMmtrhid As System.Windows.Forms.TextBox
+    Friend WithEvents txtKeyID2 As System.Windows.Forms.TextBox
 End Class

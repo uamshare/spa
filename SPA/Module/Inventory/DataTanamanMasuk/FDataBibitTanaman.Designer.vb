@@ -1,5 +1,5 @@
 ﻿<Global.Microsoft.VisualBasic.CompilerServices.DesignerGenerated()> _
-Partial Class FDataTanaman
+Partial Class FDataBibitTanaman
     Inherits System.Windows.Forms.Form
 
     'Form overrides dispose to clean up the component list.
@@ -22,7 +22,7 @@ Partial Class FDataTanaman
     'Do not modify it using the code editor.
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
-        Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(FDataTanaman))
+        Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(FDataBibitTanaman))
         Me.PrintDialog1 = New System.Windows.Forms.PrintDialog()
         Me.Panelbarang = New System.Windows.Forms.Panel()
         Me.DataGridViewTanaman = New System.Windows.Forms.DataGridView()
@@ -49,7 +49,7 @@ Partial Class FDataTanaman
         Me.ToolRefresh = New System.Windows.Forms.ToolStripButton()
         Me.ToolFind = New System.Windows.Forms.ToolStripButton()
         Me.ToolTextFind = New System.Windows.Forms.ToolStripTextBox()
-        Me.toolPrint = New System.Windows.Forms.ToolStripButton()
+        Me.toolImport = New System.Windows.Forms.ToolStripButton()
         Me.PrintDocument1 = New System.Drawing.Printing.PrintDocument()
         Me.Panelbarang.SuspendLayout()
         CType(Me.DataGridViewTanaman, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -78,7 +78,7 @@ Partial Class FDataTanaman
         Me.DataGridViewTanaman.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
         Me.DataGridViewTanaman.Location = New System.Drawing.Point(3, 41)
         Me.DataGridViewTanaman.Name = "DataGridViewTanaman"
-        Me.DataGridViewTanaman.Size = New System.Drawing.Size(707, 458)
+        Me.DataGridViewTanaman.Size = New System.Drawing.Size(707, 324)
         Me.DataGridViewTanaman.TabIndex = 20
         '
         'ToolStrip1
@@ -196,7 +196,7 @@ Partial Class FDataTanaman
         Me.Toolbarang.BackColor = System.Drawing.SystemColors.ActiveCaption
         Me.Toolbarang.GripStyle = System.Windows.Forms.ToolStripGripStyle.Hidden
         Me.Toolbarang.ImageScalingSize = New System.Drawing.Size(32, 32)
-        Me.Toolbarang.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.ToolAdd, Me.ToolEdit, Me.ToolDelete, Me.toolPrint, Me.ToolHelp, Me.ToolRefresh, Me.ToolFind, Me.ToolTextFind})
+        Me.Toolbarang.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.ToolAdd, Me.ToolEdit, Me.ToolDelete, Me.ToolRefresh, Me.ToolFind, Me.ToolTextFind, Me.toolImport, Me.ToolHelp})
         Me.Toolbarang.Location = New System.Drawing.Point(0, 0)
         Me.Toolbarang.Name = "Toolbarang"
         Me.Toolbarang.RenderMode = System.Windows.Forms.ToolStripRenderMode.System
@@ -266,22 +266,22 @@ Partial Class FDataTanaman
         Me.ToolTextFind.Name = "ToolTextFind"
         Me.ToolTextFind.Size = New System.Drawing.Size(250, 39)
         '
-        'toolPrint
+        'toolImport
         '
-        Me.toolPrint.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image
-        Me.toolPrint.Image = Global.SPA.My.Resources.Resources.print2
-        Me.toolPrint.ImageTransparentColor = System.Drawing.Color.Magenta
-        Me.toolPrint.Name = "toolPrint"
-        Me.toolPrint.Size = New System.Drawing.Size(36, 36)
-        Me.toolPrint.ToolTipText = "Import to Excel"
+        Me.toolImport.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image
+        Me.toolImport.Image = Global.SPA.My.Resources.Resources.print2
+        Me.toolImport.ImageTransparentColor = System.Drawing.Color.Magenta
+        Me.toolImport.Name = "toolImport"
+        Me.toolImport.Size = New System.Drawing.Size(36, 36)
+        Me.toolImport.ToolTipText = "Import to Excel"
         '
-        'FDataTanaman
+        'FDataBibitTanaman
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(825, 527)
         Me.Controls.Add(Me.Panelbarang)
-        Me.Name = "FDataTanaman"
+        Me.Name = "FDataBibitTanaman"
         Me.Text = "Data Tanaman"
         Me.Panelbarang.ResumeLayout(False)
         Me.Panelbarang.PerformLayout()
@@ -320,5 +320,5 @@ Partial Class FDataTanaman
     Friend WithEvents ToolFind As System.Windows.Forms.ToolStripButton
     Friend WithEvents ToolTextFind As System.Windows.Forms.ToolStripTextBox
     Friend WithEvents PrintDocument1 As System.Drawing.Printing.PrintDocument
-    Friend WithEvents toolPrint As System.Windows.Forms.ToolStripButton
+    Friend WithEvents toolImport As System.Windows.Forms.ToolStripButton
 End Class

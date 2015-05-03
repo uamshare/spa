@@ -1,12 +1,10 @@
-﻿'Imports Excel = Microsoft.Office.Interop.Excel
-'Imports Microsoft.Office.Core
-Public Class FDataTanaman
+﻿Public Class FDataPelanggan
+
     Dim dt As New DataTable
     Dim DGVColumnCheckIndex As Integer
-    Dim tinggi As Double = 0
 
-    Private Model As New MTanaman
-    Public KeyID As String
+    Private Model As New MDataPelanggan
+
     Public Sub init()
         ToolAdd.Enabled = True
         ToolEdit.Enabled = False
@@ -18,43 +16,43 @@ Public Class FDataTanaman
     Private Sub InitializeDataGridView()
 
         ' Initialize basic DataGridView properties.
-        DataGridViewTanaman.Dock = DockStyle.Fill
-        DataGridViewTanaman.BackgroundColor = Color.LightGray
-        DataGridViewTanaman.BorderStyle = BorderStyle.Fixed3D
+        DataGridView1.Dock = DockStyle.Fill
+        DataGridView1.BackgroundColor = Color.LightGray
+        DataGridView1.BorderStyle = BorderStyle.Fixed3D
 
         ' Set property values appropriate for read-only display and  
         ' limited interactivity. 
-        DataGridViewTanaman.AllowUserToAddRows = False
-        DataGridViewTanaman.AllowUserToDeleteRows = False
-        DataGridViewTanaman.AllowUserToOrderColumns = True
-        DataGridViewTanaman.ReadOnly = True
-        DataGridViewTanaman.SelectionMode = DataGridViewSelectionMode.CellSelect
-        DataGridViewTanaman.MultiSelect = False
-        DataGridViewTanaman.AutoSizeRowsMode = DataGridViewAutoSizeRowsMode.None
-        DataGridViewTanaman.AllowUserToResizeColumns = False
-        DataGridViewTanaman.ColumnHeadersHeightSizeMode = _
+        DataGridView1.AllowUserToAddRows = False
+        DataGridView1.AllowUserToDeleteRows = False
+        DataGridView1.AllowUserToOrderColumns = True
+        DataGridView1.ReadOnly = True
+        DataGridView1.SelectionMode = DataGridViewSelectionMode.CellSelect
+        DataGridView1.MultiSelect = False
+        DataGridView1.AutoSizeRowsMode = DataGridViewAutoSizeRowsMode.None
+        DataGridView1.AllowUserToResizeColumns = False
+        DataGridView1.ColumnHeadersHeightSizeMode = _
             DataGridViewColumnHeadersHeightSizeMode.DisableResizing
-        DataGridViewTanaman.AllowUserToResizeRows = False
-        DataGridViewTanaman.RowHeadersWidthSizeMode = _
+        DataGridView1.AllowUserToResizeRows = False
+        DataGridView1.RowHeadersWidthSizeMode = _
             DataGridViewRowHeadersWidthSizeMode.DisableResizing
 
         ' Set the selection background color for all the cells.
-        DataGridViewTanaman.DefaultCellStyle.SelectionBackColor = Color.White
-        DataGridViewTanaman.DefaultCellStyle.SelectionForeColor = Color.Black
+        DataGridView1.DefaultCellStyle.SelectionBackColor = Color.White
+        DataGridView1.DefaultCellStyle.SelectionForeColor = Color.Black
 
         ' Set RowHeadersDefaultCellStyle.SelectionBackColor so that its default 
         ' value won't override DataGridView.DefaultCellStyle.SelectionBackColor.
-        DataGridViewTanaman.RowHeadersDefaultCellStyle.SelectionBackColor = Color.Empty
+        DataGridView1.RowHeadersDefaultCellStyle.SelectionBackColor = Color.Empty
 
         ' Set the background color for all rows and for alternating rows.  
         ' The value for alternating rows overrides the value for all rows. 
-        DataGridViewTanaman.RowsDefaultCellStyle.BackColor = Color.LightGray
-        DataGridViewTanaman.AlternatingRowsDefaultCellStyle.BackColor = Color.DarkGray
+        DataGridView1.RowsDefaultCellStyle.BackColor = Color.LightGray
+        DataGridView1.AlternatingRowsDefaultCellStyle.BackColor = Color.DarkGray
 
         ' Set the row and column header styles.
-        DataGridViewTanaman.ColumnHeadersDefaultCellStyle.ForeColor = Color.White
-        DataGridViewTanaman.ColumnHeadersDefaultCellStyle.BackColor = Color.Black
-        DataGridViewTanaman.RowHeadersDefaultCellStyle.BackColor = Color.Black
+        DataGridView1.ColumnHeadersDefaultCellStyle.ForeColor = Color.White
+        DataGridView1.ColumnHeadersDefaultCellStyle.BackColor = Color.Black
+        DataGridView1.RowHeadersDefaultCellStyle.BackColor = Color.Black
 
     End Sub
     Private Sub RetrieveData(Optional ByVal sSearch As String = "")
@@ -65,7 +63,7 @@ Public Class FDataTanaman
             Else
                 dt = Model.GetData()
             End If
-            With DataGridViewTanaman
+            With DataGridView1
                 .Columns.Clear()
                 DGVColumnCheckIndex = .Columns.Add(New DataGridViewCheckBoxColumn)
                 .Columns(DGVColumnCheckIndex).Name = "rowchecked"
@@ -73,26 +71,26 @@ Public Class FDataTanaman
                 .Columns(DGVColumnCheckIndex).Width = 35
 
                 .DataSource = dt
-                .Columns("mmtrhid").Visible = False
-                .Columns("mmtrid").HeaderText = "Kode"
-                .Columns("mmtrname").HeaderText = "Jenis Tanaman"
-                .Columns("polybag").HeaderText = "Polybag"
-                .Columns("mmtrunit").HeaderText = "Satuan"
-                .Columns("mmtrprice").HeaderText = "Harga"
-                .Columns("PrimaryKey").Visible = False
-                .Columns("mmtrg").Visible = False
-
-                '.Columns("groupid").Visible = False
-                '.Columns("groupname").HeaderText = "Group Name"
-                '.Columns("groupaktive").HeaderText = "Status"
+                .Columns("mcusid").Visible = False
+                .Columns("mcusname").HeaderText = "Nama Pelanggan"
+                .Columns("mcusphone2").Visible = False
+                .Columns("mcusphone1").HeaderText = "Telepon"
+                .Columns("mcusfax").HeaderText = "Fax"
+                .Columns("mcusemail").HeaderText = "Email"
+                .Columns("mcusaddr1").Visible = False
+                .Columns("mcusaddr2").Visible = False
+                .Columns("mcusaddr3").Visible = False
+                .Columns("mcustaxcode").HeaderText = "NPWP"
+                .Columns("mcusaddr4").HeaderText = "Kota / Kabupaten"
+                .Columns("mcusaddr5").Visible = False
 
                 .RowHeadersWidth = 75
-                .Columns("mmtrid").Width = 100
-                .Columns("mmtrname").Width = 200
-                .Columns("polybag").Width = 75
-                .Columns("mmtrunit").Width = 100
-                .Columns("mmtrprice").Width = 100
-
+                .Columns("mcusname").Width = 200
+                .Columns("mcusphone1").Width = 150
+                .Columns("mcusfax").Width = 150
+                .Columns("mcusemail").Width = 200
+                .Columns("mcustaxcode").Width = 150
+                .Columns("mcusaddr4").Width = 360
                 .Refresh()
                 If .RowCount > 0 Then
                     For i As Integer = 0 To .Rows.Count - 1
@@ -109,9 +107,9 @@ Public Class FDataTanaman
     End Sub
     Private Function getCountSelectedData() As Integer
         Dim CountSelected As Integer = 0
-        For i As Integer = 0 To DataGridViewTanaman.Rows.Count - 1
+        For i As Integer = 0 To DataGridView1.Rows.Count - 1
             'delete data
-            If DataGridViewTanaman.Rows(i).Cells(DGVColumnCheckIndex).FormattedValue = True Then
+            If DataGridView1.Rows(i).Cells(DGVColumnCheckIndex).FormattedValue = True Then
                 CountSelected = CountSelected + 1
             End If
         Next
@@ -119,10 +117,10 @@ Public Class FDataTanaman
     End Function
     Private Function getRowIndexSelected() As Integer
         Dim index As Integer = -1
-        If DataGridViewTanaman.RowCount > 0 Then
-            For i As Integer = 0 To DataGridViewTanaman.Rows.Count - 1
+        If DataGridView1.RowCount > 0 Then
+            For i As Integer = 0 To DataGridView1.Rows.Count - 1
                 'delete data
-                If DataGridViewTanaman.Rows(i).Cells(DGVColumnCheckIndex).FormattedValue = True Then
+                If DataGridView1.Rows(i).Cells(DGVColumnCheckIndex).FormattedValue = True Then
                     index = i
                 End If
             Next
@@ -206,48 +204,89 @@ Public Class FDataTanaman
     End Sub
 #End Region
 
-    Private Sub FDataTanaman_Load(sender As Object, e As EventArgs) Handles MyBase.Load
-        'MessageBox.Show("Form Load")
-        MyApplication.ShowStatus(Me.Text & " Loaded")
-        InitializeDataGridView()
-        init()
-    End Sub
+    'Private Sub DataGridView1_CellContentClick(sender As Object, e As DataGridViewCellEventArgs) Handles DataGridView1.CellContentClick
+    Private Sub DataGridView1_CellContentClick(sender As Object, e As DataGridViewCellEventArgs) Handles DataGridView1.CellContentClick
 
-    Private Sub ToolEdit_Click(sender As Object, e As EventArgs) Handles ToolEdit.Click
-        If getCountSelectedData() > 0 Then
-            FDataTanamanAdd.txtMmtrhid.Text = CStr(DataGridViewTanaman.Rows(getRowIndexSelected()).Cells("mmtrhid").Value)
-            FDataTanamanAdd.txtJnsTanaman.Text = CStr(DataGridViewTanaman.Rows(getRowIndexSelected()).Cells("mmtrname").Value)
-            FDataTanamanAdd.txtKeyID.Text = CStr(DataGridViewTanaman.Rows(getRowIndexSelected()).Cells("PrimaryKey").Value)
-            FDataTanamanAdd.txtMmtrg.Text = CStr(DataGridViewTanaman.Rows(getRowIndexSelected()).Cells("mmtrg").Value)
-            FDataTanamanAdd.cmbPolybag.Text = CStr(DataGridViewTanaman.Rows(getRowIndexSelected()).Cells("polybag").Value)
-            FDataTanamanAdd.txtKode.Text = Strings.Left(CStr(DataGridViewTanaman.Rows(getRowIndexSelected()).Cells("mmtrid").Value), 5)
-            FDataTanamanAdd.txtKode3.Text = Strings.Right(CStr(DataGridViewTanaman.Rows(getRowIndexSelected()).Cells("mmtrid").Value), 3)
-            FDataTanamanAdd.txtSatuan.Text = CStr(DataGridViewTanaman.Rows(getRowIndexSelected()).Cells("mmtrunit").Value)
-            FDataTanamanAdd.txtHarga.Text = Convert.ToString(DataGridViewTanaman.Rows(getRowIndexSelected()).Cells("mmtrprice").Value)
-            FDataTanamanAdd.Show()
-        Else
-            MyApplication.ShowStatus("No data is selected", NOTICE_STAT)
+        If DGVColumnCheckIndex = e.ColumnIndex Then
+            If e.RowIndex > -1 Then
+                DataGridView1.Rows(e.RowIndex).Cells(DGVColumnCheckIndex).Value = Not DataGridView1.Rows(e.RowIndex).Cells(DGVColumnCheckIndex).FormattedValue
+            Else
+                DataGridView1.ClearSelection()
+                'DataGridView1.Columns
+            End If
         End If
+        If getCountSelectedData() = 1 Then
+            ToolAdd.Enabled = False
+            ToolEdit.Enabled = True
+            ToolDelete.Enabled = True
+        ElseIf getCountSelectedData() > 1 Then
+            ToolAdd.Enabled = False
+            ToolEdit.Enabled = False
+            ToolDelete.Enabled = True
+        Else
+            ToolAdd.Enabled = True
+            ToolEdit.Enabled = False
+            ToolDelete.Enabled = False
+        End If
+    End Sub
+    Private Sub DataGridView1_Sorted(sender As Object, e As EventArgs) Handles DataGridView1.Sorted
+        With DataGridView1
+            If .RowCount > 0 Then
+                For i As Integer = 0 To .Rows.Count - 1
+                    Dim count As Integer = Model.startRecord
+                    .Rows(i).HeaderCell.Value = (i + Model.startRecord + 1).ToString
+                Next
+            End If
+        End With
     End Sub
 
     Private Sub ToolAdd_Click(sender As Object, e As EventArgs) Handles ToolAdd.Click
-        FDataTanamanAdd.txtJnsTanaman.Clear()
-        FDataTanamanAdd.cmbPolybag.Text = ""
-        FDataTanamanAdd.txtKode.Clear()
-        FDataTanamanAdd.txtKode3.Clear()
-        FDataTanamanAdd.txtSatuan.Clear()
-        FDataTanamanAdd.txtMmtrg.Clear()
-        FDataTanamanAdd.txtHarga.Text = 0
-        FDataTanamanAdd.ShowDialog()
+        FPelangganAdd.txtNPWP.Clear()
+        FPelangganAdd.txtAddr2.Clear()
+        FPelangganAdd.txtAddr3.Clear()
+        FPelangganAdd.txtAddr4.Clear()
+        FPelangganAdd.txtAddr5.Clear()
+        FPelangganAdd.txtAddr1.Clear()
+        FPelangganAdd.txtFax.Clear()
+        FPelangganAdd.txtNama.Clear()
+        FPelangganAdd.txtPhone1.Clear()
+        FPelangganAdd.txtPhone2.Clear()
+        FPelangganAdd.txtMcusID.Clear()
+        FPelangganAdd.txtEmail.Clear()
+        FPelangganAdd.nama.Clear()
+        FPelangganAdd.NPWP.Clear()
+        FPelangganAdd.statmsg.Text = ""
+        FPelangganAdd.ShowDialog()
     End Sub
+    Private Sub ToolEdit_Click(sender As Object, e As EventArgs) Handles ToolEdit.Click
+        If getCountSelectedData() > 0 Then
+            FPelangganAdd.txtNama.Text = CStr(DataGridView1.Rows(getRowIndexSelected()).Cells("mcusname").Value)
+            FPelangganAdd.nama.Text = CStr(DataGridView1.Rows(getRowIndexSelected()).Cells("mcusname").Value)
+            FPelangganAdd.txtPhone1.Text = CStr(DataGridView1.Rows(getRowIndexSelected()).Cells("mcusphone1").Value)
+            FPelangganAdd.txtPhone2.Text = CStr(DataGridView1.Rows(getRowIndexSelected()).Cells("mcusphone2").Value)
+            FPelangganAdd.txtFax.Text = CStr(DataGridView1.Rows(getRowIndexSelected()).Cells("mcusfax").Value)
+            FPelangganAdd.txtEmail.Text = CStr(DataGridView1.Rows(getRowIndexSelected()).Cells("mcusemail").Value)
+            FPelangganAdd.txtNPWP.Text = CStr(DataGridView1.Rows(getRowIndexSelected()).Cells("mcustaxcode").Value)
+            FPelangganAdd.NPWP.Text = CStr(DataGridView1.Rows(getRowIndexSelected()).Cells("mcustaxcode").Value)
+            FPelangganAdd.txtAddr2.Text = CStr(DataGridView1.Rows(getRowIndexSelected()).Cells("mcusaddr2").Value)
+            FPelangganAdd.txtAddr3.Text = CStr(DataGridView1.Rows(getRowIndexSelected()).Cells("mcusaddr3").Value)
+            FPelangganAdd.txtAddr4.Text = CStr(DataGridView1.Rows(getRowIndexSelected()).Cells("mcusaddr4").Value)
+            FPelangganAdd.txtAddr5.Text = CStr(DataGridView1.Rows(getRowIndexSelected()).Cells("mcusaddr5").Value)
+            FPelangganAdd.txtMcusID.Text = CStr(DataGridView1.Rows(getRowIndexSelected()).Cells("mcusid").Value)
+            FPelangganAdd.statmsg.Text = ""
+            FPelangganAdd.ShowDialog()
+        Else
+            MyApplication.ShowStatus("No data is selected", NOTICE_STAT)
+        End If
 
+    End Sub
     Private Sub ToolDelete_Click(sender As Object, e As EventArgs) Handles ToolDelete.Click
-        If DataGridViewTanaman.RowCount > 0 Then
-            Dim GetKey(DataGridViewTanaman.Rows.Count) As String
-            For i As Integer = 0 To DataGridViewTanaman.Rows.Count - 1
+        If DataGridView1.RowCount > 0 Then
+            Dim mcusid(DataGridView1.Rows.Count) As String
+            For i As Integer = 0 To DataGridView1.Rows.Count - 1
                 'delete data
-                If DataGridViewTanaman.Rows(i).Cells(DGVColumnCheckIndex).FormattedValue = True Then
-                    GetKey(i) = DataGridViewTanaman.Rows(i).Cells("PrimaryKey").Value
+                If DataGridView1.Rows(i).Cells(DGVColumnCheckIndex).FormattedValue = True Then
+                    mcusid(i) = DataGridView1.Rows(i).Cells("mcusid").Value
                 End If
 
             Next
@@ -259,7 +298,7 @@ Public Class FDataTanaman
                     '        Model.DeleteData(groupid)
                     '    End If
                     'Next
-                    Model.MultipleDeleteData(GetKey)
+                    Model.MultipleDeleteData(mcusid)
                 End If
                 'MyApplication.ShowStatus("Deleted " & getCountSelectedData() & " data")
                 init()
@@ -278,57 +317,22 @@ Public Class FDataTanaman
         '    RetrieveData()
         'End If
     End Sub
-
+    Private Sub ToolRefresh_Click(sender As Object, e As EventArgs) Handles ToolRefresh.Click
+        RetrieveData()
+        ToolTextFind.Text = ""
+    End Sub
     Private Sub ToolFisrt_Click(sender As Object, e As EventArgs) Handles ToolFisrt.Click
         RetrieveFirst()
     End Sub
-
     Private Sub ToolPrev_Click(sender As Object, e As EventArgs) Handles ToolPrev.Click
         RetrievePrev()
     End Sub
-
     Private Sub ToolNext_Click(sender As Object, e As EventArgs) Handles ToolNext.Click
         RetrieveNext()
     End Sub
-
     Private Sub ToolLast_Click(sender As Object, e As EventArgs) Handles ToolLast.Click
         RetrieveLast()
     End Sub
-
-    Private Sub DataGridViewTanaman_CellContentClick(sender As Object, e As DataGridViewCellEventArgs) Handles DataGridViewTanaman.CellContentClick
-        If DGVColumnCheckIndex = e.ColumnIndex Then
-            If e.RowIndex > -1 Then
-                DataGridViewTanaman.Rows(e.RowIndex).Cells(DGVColumnCheckIndex).Value = Not DataGridViewTanaman.Rows(e.RowIndex).Cells(DGVColumnCheckIndex).FormattedValue
-            Else
-                DataGridViewTanaman.ClearSelection()
-                'DataGridView1.Columns
-            End If
-        End If
-        If getCountSelectedData() = 1 Then
-            ToolAdd.Enabled = False
-            ToolEdit.Enabled = True
-            ToolDelete.Enabled = True
-        ElseIf getCountSelectedData() > 1 Then
-            ToolAdd.Enabled = False
-            ToolEdit.Enabled = False
-            ToolDelete.Enabled = True
-        Else
-            ToolAdd.Enabled = True
-            ToolEdit.Enabled = False
-            ToolDelete.Enabled = False
-        End If
-    End Sub
-    Private Sub DataGridViewTanaman_Sorted(sender As Object, e As EventArgs) Handles DataGridViewTanaman.Sorted
-        With DataGridViewTanaman
-            If .RowCount > 0 Then
-                For i As Integer = 0 To .Rows.Count - 1
-                    Dim count As Integer = Model.startRecord
-                    .Rows(i).HeaderCell.Value = (i + Model.startRecord + 1).ToString
-                Next
-            End If
-        End With
-    End Sub
-
     Private Sub txtPageCurrent_KeyPress(sender As Object, e As KeyPressEventArgs) Handles txtPageCurrent.KeyPress
         If Asc(e.KeyChar) = 13 Then
             'MessageBox.Show(Model.limitrecord)
@@ -353,8 +357,7 @@ Public Class FDataTanaman
         End If
         'MessageBox.Show(Asc(e.KeyChar))
     End Sub
-
-    Private Sub cmbperPage_SelectedIndexChanged(sender As Object, e As EventArgs) Handles cmbperPage.SelectedIndexChanged
+    Private Sub cmbperpage_SelectedIndexChanged(sender As Object, e As EventArgs) Handles cmbperPage.SelectedIndexChanged
         If IsNumeric(cmbperPage.Text) Then
             Model.limitrecord = Int(cmbperPage.Text)
         Else
@@ -363,65 +366,16 @@ Public Class FDataTanaman
         RetrieveData()
     End Sub
 
-    Private Sub FDataTanaman_Shown(sender As Object, e As EventArgs) Handles MyBase.Shown
+    Private Sub FDataPelanggan_Shown(sender As Object, e As EventArgs) Handles MyBase.Shown
         'MessageBox.Show("Event Show")
-        FDataTanaman_Load(Nothing, Nothing)
+        FDataPelanggan_Load(Nothing, Nothing)
     End Sub
 
-    Private Sub ToolRefresh_Click(sender As Object, e As EventArgs) Handles ToolRefresh.Click
-        RetrieveData()
-        ToolTextFind.Text = ""
+    Private Sub FDataPelanggan_Load(sender As Object, e As EventArgs) Handles MyBase.Load
+        'MessageBox.Show("Form Load")
+        MyApplication.ShowStatus(Me.Text & " Loaded")
+        InitializeDataGridView()
+        init()
     End Sub
 
-    Private Sub toolImport_Click(sender As Object, e As EventArgs) Handles toolPrint.Click
-
-
-        Try
-            Dim xlApp As Microsoft.Office.Interop.Excel.Application
-            Dim xlWorkBook As Microsoft.Office.Interop.Excel.Workbook
-            Dim xlWorkSheet As Microsoft.Office.Interop.Excel.Worksheet
-            Dim misValue As Object = System.Reflection.Missing.Value
-            Dim i As Integer
-            Dim j As Integer
-
-            xlApp = New Microsoft.Office.Interop.Excel.Application
-            xlWorkBook = xlApp.Workbooks.Add(misValue)
-            xlWorkSheet = xlWorkBook.Sheets("sheet1")
-
-
-            For i = 1 To DataGridViewTanaman.RowCount - 2
-                For j = 1 To DataGridViewTanaman.ColumnCount - 3
-                    For k As Integer = 1 To DataGridViewTanaman.Columns.Count - 3
-                        xlWorkSheet.Cells(2, k) = DataGridViewTanaman.Columns(k - 0).HeaderText
-                        xlWorkSheet.Cells(i + 2, j + 0) = DataGridViewTanaman(j, i).Value.ToString()
-                    Next
-                Next
-            Next
-
-            xlWorkSheet.SaveAs("D:\DataTanaman.xlsx")
-            xlWorkBook.Close()
-            'xlApp.Quit()
-
-            releaseObject(xlApp)
-            releaseObject(xlWorkBook)
-            releaseObject(xlWorkSheet)
-
-            MsgBox("Hasil export tersimpan di D:\DataTanaman.xlsx")
-            Process.Start("D:\DataTanaman.xlsx")
-        Catch ex As Exception
-
-        End Try
-    End Sub
-
-    Private Sub releaseObject(ByVal obj As Object)
-        Try
-            System.Runtime.InteropServices.Marshal.ReleaseComObject(obj)
-            obj = Nothing
-        Catch ex As Exception
-            obj = Nothing
-        Finally
-            GC.Collect()
-        End Try
-
-    End Sub
 End Class

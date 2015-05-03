@@ -48,7 +48,7 @@ Public Class MainForm
         Catch ex As Exception
             MsgBox(ex.Message)
         End Try
-        
+
     End Sub
 
     Public Sub RestrictUserMenu(Optional MenuItems As ToolStripMenuItem = Nothing)
@@ -84,5 +84,27 @@ Public Class MainForm
         'FDataTanaman.MdiParent = Me
         'FDataTanaman.Show()
         LoadMdiChildForm(FDataTanaman, "menu101")
+    End Sub
+
+    Private Sub menu102_Click(sender As Object, e As EventArgs) Handles menu102.Click
+        'FDataBibitTanaman.WindowState = FormWindowState.Maximized
+        'FDataBibitTanaman.MdiParent = Me
+        'FDataBibitTanaman.Show()
+    End Sub
+
+    Private Sub menu201_Click(sender As Object, e As EventArgs) Handles menu201.Click
+        LoadMdiChildForm(FDataBibitTanaman, "menu201")
+    End Sub
+
+    Private Sub menu301_Click(sender As Object, e As EventArgs) Handles menu301.Click
+        LoadMdiChildForm(FDataPelanggan, "menu301")
+    End Sub
+
+    Private Sub menu401_Click(sender As Object, e As EventArgs) Handles menu401.Click
+        LoadMdiChildForm(FCOAheader, "menu401")
+    End Sub
+
+    Private Sub menu402_Click(sender As Object, e As EventArgs) Handles menu402.Click
+        LoadMdiChildForm(FCOADetail, "menu402")
     End Sub
 End Class

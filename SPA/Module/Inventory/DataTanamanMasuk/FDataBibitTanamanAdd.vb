@@ -1,5 +1,7 @@
-﻿Public Class FDataTanamanAdd
-    Private Model As New MTanaman
+﻿Public Class FDataBibitTanamanAdd
+    Private Model As New MBibitTanaman
+
+    Shared Property txtMmtrg2 As Object
 
     Private Sub btnSimpan_Click(sender As Object, e As EventArgs) Handles btnSimpan.Click
         'MessageBox.Show(Model.EscapeString(TextBox1.Text))
@@ -7,25 +9,26 @@
         If DataIsValid() Then
             Dim res As Integer
 
-            Model.GetKey = Model.EscapeString(txtKeyID.Text)
+            Model.GetKey1 = Model.EscapeString(txtKeyID1.Text)
+            Model.GetKey2 = Model.EscapeString(txtKeyID2.Text)
+            Model.mmtrg2 = "2"
             Model.mmtrhid = Model.EscapeString(txtMmtrhid.Text)
-            Model.mmtrg = Model.EscapeString(txtMmtrg.Text)
+            Model.mmtrg1 = Model.EscapeString(txtKode2.Text)
             Model.mmtrname = Model.EscapeString(txtJnsTanaman.Text)
             Model.polybag = cmbPolybag.Text
             Model.mmtrunit = txtSatuan.Text
             Model.mmtrprice = Convert.ToDouble(txtHarga.Text)
-            Model.mmtrid = txtKode.Text + txtKode2.Text + txtKode3.Text
-            If txtMmtrg.Text <> "" Then
-                res = Model.UpdateData()
+            Model.mmtrid1 = txtKode.Text + txtKode2.Text + txtKode3.Text
+            Model.mmtrid2 = txtKode.Text + "2" + txtKode3.Text
+            If txtKeyID1.Text <> "" And txtKeyID2.Text <> "" Then
+                res = Model.UpdateData() And Model.UpdateData1()
                 'MyApplication.ShowStatus("Data has been updated")
             Else
-                res = Model.InsertData()
+                res = Model.InsertData() And Model.InsertData1()
                 'MyApplication.ShowStatus("Data has been saved")
             End If
-            FDataTanaman.init()
-            'FUserGroup.RetrieveLast()
+            FDataBibitTanaman.init()
             Me.Close()
-
         End If
     End Sub
 
@@ -34,19 +37,20 @@
         txtJnsTanaman.BackColor = Color.White
     End Sub
 
-    Private Sub FDataTanamanAdd_Load(sender As Object, e As EventArgs) Handles MyBase.Load
-        txtKode2.Text = "3"
+    Private Sub FDataBibitTanamanAdd_Load(sender As Object, e As EventArgs) Handles MyBase.Load
+
+        txtKode2.Text = "1"
         statmsg.Text = ""
 
         txtJnsTanaman.Focus()
     End Sub
 
     Private Sub Prompt_Click(sender As Object, e As EventArgs) Handles Prompt.Click
-        FjensiTanaman.ShowDialog()
+        FjenisBibitTanaman.ShowDialog()
     End Sub
 
     Private Sub btnBatal_Click(sender As Object, e As EventArgs) Handles btnBatal.Click
-        FDataTanaman.Refresh()
+        FjenisBibitTanaman.Refresh()
         Me.Close()
     End Sub
 
@@ -86,7 +90,7 @@
     Private Sub txtKode_Leave(sender As Object, e As EventArgs) Handles txtKode.Leave
         Dim mmtrid As String = txtKode.Text + txtKode2.Text + txtKode3.Text
 
-        If txtMmtrg.Text = "" Then
+        If txtMmtrg1.Text = "" Then
             If Not Model.IfKeyExist(mmtrid) Then
                 statmsg.Text = "Kode Valid"
                 statmsg.ForeColor = Color.Green
@@ -104,6 +108,11 @@
         e.KeyChar = UCase(e.KeyChar)
     End Sub
 
+    Private Sub txtKode2_KeyPress(sender As Object, e As KeyPressEventArgs) Handles txtKode2.KeyPress
+        txtKode2.ReadOnly = True
+        txtKode2.BackColor = Color.White
+    End Sub
+
     Private Sub txtSatuan_KeyPress(sender As Object, e As KeyPressEventArgs) Handles txtSatuan.KeyPress
         e.KeyChar = UCase(e.KeyChar)
     End Sub
@@ -111,8 +120,8 @@
         DataIsValid = True
         Dim mmtrid As String = txtKode.Text + txtKode2.Text + txtKode3.Text
 
-        If txtKeyID.Text <> "" Then
-            If txtKeyID.Text <> txtKode.Text + txtKode2.Text + txtKode3.Text + txtMmtrg.Text Then
+        If txtKeyID1.Text <> "" Then
+            If txtKeyID1.Text <> txtKode.Text + txtKode2.Text + txtKode3.Text + txtMmtrg1.Text Then
                 If Model.IfKeyExist(mmtrid) Then
                     statmsg.Text = "Kode sudah ada, silahkan masukan Kode yang lain."
                     statmsg.ForeColor = Color.DarkRed
@@ -168,7 +177,6 @@
                 DataIsValid = False
             End If
         End If
-
         Return DataIsValid
     End Function
 End Class

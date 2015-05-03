@@ -1,8 +1,8 @@
-﻿Public Class FjenisBibitTanaman
+﻿Public Class FGroupCOA
     Dim dt As New DataTable
     Dim DGVColumnCheckIndex As Integer
 
-    Private Model As New MJenisBibitTanaman
+    Private Model As New MGroupCOA
 
     Public Sub init()
         ToolAdd.Enabled = True
@@ -70,11 +70,11 @@
                 .Columns(DGVColumnCheckIndex).Width = 35
 
                 .DataSource = dt
-                .Columns("mmtrhid").Visible = False
-                .Columns("mmtrhname").HeaderText = "Jenis Tanaman"
+                .Columns("mcoagid").Visible = False
+                .Columns("mcoagroup").HeaderText = "Group COA"
 
                 .RowHeadersWidth = 75
-                .Columns("mmtrhname").Width = 360
+                .Columns("mcoagroup").Width = 360
                 .Refresh()
                 If .RowCount > 0 Then
                     For i As Integer = 0 To .Rows.Count - 1
@@ -187,12 +187,6 @@
         RetrieveData()
     End Sub
 #End Region
-    Private Sub Form1_Load(sender As Object, e As EventArgs) Handles MyBase.Load
-        'MessageBox.Show("Form Load")
-        MyApplication.ShowStatus(Me.Text & " Loaded")
-        InitializeDataGridView()
-        init()
-    End Sub
 
     'Private Sub DataGridView1_CellContentClick(sender As Object, e As DataGridViewCellEventArgs) Handles DataGridView1.CellContentClick
     Private Sub DataGridView1_CellContentClick(sender As Object, e As DataGridViewCellEventArgs) Handles DataGridView1.CellContentClick
@@ -231,13 +225,17 @@
     End Sub
 
     Private Sub ToolAdd_Click(sender As Object, e As EventArgs) Handles ToolAdd.Click
-        FJensiTanamanAdd.ShowDialog()
+        FGroupCoaAdd.txtGroupName.Clear()
+        FGroupCoaAdd.txtGroupID.Clear()
+        FGroupCoaAdd.statmsg.Text = ""
+        FGroupCoaAdd.ShowDialog()
     End Sub
     Private Sub ToolEdit_Click(sender As Object, e As EventArgs) Handles ToolEdit.Click
         If getCountSelectedData() > 0 Then
-            FJensiTanamanAdd.txtid.Text = CStr(DataGridView1.Rows(getRowIndexSelected()).Cells("mmtrhid").Value)
-            FJensiTanamanAdd.TextBox1.Text = CStr(DataGridView1.Rows(getRowIndexSelected()).Cells("mmtrhname").Value)
-            FJensiTanamanAdd.Show()
+            FGroupCoaAdd.txtGroupName.Text = CStr(DataGridView1.Rows(getRowIndexSelected()).Cells("mcoagroup").Value)
+            FGroupCoaAdd.txtGroupID.Text = CStr(DataGridView1.Rows(getRowIndexSelected()).Cells("mcoagid").Value)
+            FGroupCoaAdd.statmsg.Text = ""
+            FGroupCoaAdd.ShowDialog()
         Else
             MyApplication.ShowStatus("No data is selected", NOTICE_STAT)
         End If
@@ -245,11 +243,11 @@
     End Sub
     Private Sub ToolDelete_Click(sender As Object, e As EventArgs) Handles ToolDelete.Click
         If DataGridView1.RowCount > 0 Then
-            Dim mmtrhid(DataGridView1.Rows.Count) As String
+            Dim mcoagid(DataGridView1.Rows.Count) As String
             For i As Integer = 0 To DataGridView1.Rows.Count - 1
                 'delete data
                 If DataGridView1.Rows(i).Cells(DGVColumnCheckIndex).FormattedValue = True Then
-                    mmtrhid(i) = DataGridView1.Rows(i).Cells("mmtrhid").Value
+                    mcoagid(i) = DataGridView1.Rows(i).Cells("mcoagid").Value
                 End If
 
             Next
@@ -261,7 +259,7 @@
                     '        Model.DeleteData(groupid)
                     '    End If
                     'Next
-                    Model.MultipleDeleteData(mmtrhid)
+                    Model.MultipleDeleteData(mcoagid)
                 End If
                 'MyApplication.ShowStatus("Deleted " & getCountSelectedData() & " data")
                 init()
@@ -330,18 +328,21 @@
     End Sub
 
     Private Sub DataGridView1_CellDoubleClick(sender As Object, e As DataGridViewCellEventArgs) Handles DataGridView1.CellDoubleClick
-        'FDataTanamanAdd.txtJnsTanaman.Text = Convert.ToString(DataGridView1.SelectedCells())
-        'FDataTanamanAdd.txtMmtrhid.Text = Convert.ToString(DataGridView1.SelectedColumns("mmtrid"))
-        'FDataTanamanAdd.statmsg.Text = "Jensi Tanaman yang di pilih " & Convert.ToString(DataGridView1.SelectedColumns("mmtrname"))
-        FDataTanamanAdd.txtJnsTanaman.Text = CStr(DataGridView1.Rows(e.RowIndex).Cells("mmtrhname").Value())
-        FDataTanamanAdd.txtMmtrhid.Text = CStr(DataGridView1.Rows(e.RowIndex).Cells("mmtrhid").Value())
-        FDataTanamanAdd.statmsg.Text = CStr(DataGridView1.Rows(e.RowIndex).Cells("mmtrhname").Value())
+        FKlasifikasiAdd.txtGroupName.Text = CStr(DataGridView1.Rows(e.RowIndex).Cells("mcoagroup").Value())
+        FKlasifikasiAdd.txtGroupID.Text = Convert.ToString(DataGridView1.Rows(e.RowIndex).Cells("mcoagid").Value())
+        FKlasifikasiAdd.statmsg.Text = CStr(DataGridView1.Rows(e.RowIndex).Cells("mcoagroup").Value())
 
         Me.Close()
     End Sub
+    Private Sub FKlasifikasiCOA_Load(sender As Object, e As EventArgs) Handles MyBase.Load
+        'MessageBox.Show("Form Load")
+        MyApplication.ShowStatus(Me.Text & " Loaded")
+        InitializeDataGridView()
+        init()
+    End Sub
 
-    Private Sub FjenisTanaman_Shown(sender As Object, e As EventArgs) Handles MyBase.Shown
+    Private Sub FKlasifikasiCOA_Shown(sender As Object, e As EventArgs) Handles MyBase.Shown
         'MessageBox.Show("Event Show")
-        Form1_Load(Nothing, Nothing)
+        FKlasifikasiCOA_Load(Nothing, Nothing)
     End Sub
 End Class
