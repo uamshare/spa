@@ -17,5 +17,8 @@
     <Setting Name="database" Type="System.String" Scope="User">
       <Value Profile="(Default)">simagro</Value>
     </Setting>
+    <Setting Name="CabangID" Type="System.String" Scope="User">
+      <Value Profile="(Default)">01</Value>
+    </Setting>
   </Settings>
 </SettingsFile>

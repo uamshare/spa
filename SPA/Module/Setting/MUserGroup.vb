@@ -21,7 +21,7 @@
         Return MyBase.GetData
     End Function
     Public Overloads Function InsertData() As Integer
-        Me.StringSQL = "INSERT INTO " & TableName + "(groupname) VALUES('" & groupname & "')"
+        Me.StringSQL = "INSERT INTO " & TableName + "(groupname,dtcreated) VALUES('" & groupname & "','" & Format(Date.Now, "yyyy/MM/dd H:mm:ss") & "')"
         Return MyBase.InsertData()
     End Function
 

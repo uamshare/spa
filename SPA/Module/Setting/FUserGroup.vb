@@ -92,10 +92,6 @@
                 .Columns("groupname").HeaderText = "Group Name"
                 .Columns("groupaktive").HeaderText = "Status"
 
-                .Columns("groupid").Visible = False
-                .Columns("groupname").HeaderText = "Group Name"
-                .Columns("groupaktive").HeaderText = "Status"
-
                 .RowHeadersWidth = 75
                 .Columns("groupname").Width = 300
                 .Columns("groupaktive").Width = 50

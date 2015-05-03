@@ -77,7 +77,7 @@ Module MyApplication
             End If
             'MsgBox(StatusType)
             If Global.SPA.My.Settings.ENVIRONTMENT = "DEV" And StatusType <> INFO_STAT Then
-                MessageBox.Show(Message)
+                MessageBox.Show(Message, "Error")
             End If
         Catch ex As Exception
             ErrorLogger.WriteToErrorLog(ex.Message, ex.StackTrace, ERROR_STAT)

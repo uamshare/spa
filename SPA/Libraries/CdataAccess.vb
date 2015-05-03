@@ -255,6 +255,34 @@ Public Class CDataAcces 'Name dari Class yang dibuat.
         Return rowCountAffected
     End Function
 
+    Function GetDataScalar() As Integer
+        'BeginTrans("attempting fetch data, please wait ... ") 'begin transaction
+        Try
+            If Me.mCONN.State <> ConnectionState.Closed Then Me.mCONN.Close()
+            Me.mCONN.Open()
+            cmd.Connection = mCONN
+            If String.IsNullOrEmpty(Me.StringSQL) Then Me.StringSQL = "SELECT COUNT(*) FROM " & TableName & " " & mWHERE
+            cmd.CommandText = Me.StringSQL
+            rowCountAffected = cmd.ExecuteScalar() 'returns the number of rows affected. 
+            Me.mCONN.Close()
+        Catch ex As MySqlException
+            Dim errMsg As String = "Kesalahan " & ex.Number & " Pesan kesalahan : " & ex.Message
+            ErrorLogger.WriteToErrorLog(errMsg, ex.StackTrace, ERROR_STAT, "select", "2")
+            MyApplication.ShowStatus(errMsg, ERROR_STAT, True, 10000)
+            Me.mCONN.Close()
+            Return Nothing
+        Catch ex As Exception
+            Dim errMsg As String = "Terjadi kesalahan : " & ex.Message
+            ErrorLogger.WriteToErrorLog(errMsg, ex.StackTrace, ERROR_STAT, "select", "2")
+            MyApplication.ShowStatus(errMsg, ERROR_STAT, True, 10000)
+            Me.mCONN.Close()
+            Return Nothing
+        End Try
+        'CommitTrans(" fetch data have been completed ") 'Commit All Transaction
+
+        Return rowCountAffected
+    End Function
+
     Public Function IfKeyExist(Optional keyvalue As String = "") As Boolean
         'BeginTrans("attempting fetch data, please wait ... ") 'begin transaction
         Try

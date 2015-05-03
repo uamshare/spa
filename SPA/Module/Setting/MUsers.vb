@@ -84,7 +84,7 @@
                         "IF(ISNULL(T2.`pcreate`),0,T2.`pupdate`) AS pupdate," & _
                         "IF(ISNULL(T2.`pcreate`),0,T2.`pdelete`) AS pdelete," & _
                         "IF(ISNULL(T2.`pcreate`),0,T2.`pview`) AS pview " & _
-                       "FROM muserl T1 LEFT OUTER JOIN (SELECT * FROM muserp WHERE `groupid`='" & UserInfo()("userid") & "') T2 ON T1.`menuid` = T2.`menuid`"
+                       "FROM muserl T1 LEFT OUTER JOIN (SELECT * FROM muserp WHERE `groupid`='" & UserInfo()("groupid") & "') T2 ON T1.`menuid` = T2.`menuid`"
             reader = GetDataReader(StringSQL)
             While reader.Read()
                 ' Insert each column into a dictionary
