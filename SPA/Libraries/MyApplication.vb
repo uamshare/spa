@@ -77,7 +77,7 @@ Module MyApplication
             End If
             'MsgBox(StatusType)
             If Global.SPA.My.Settings.ENVIRONTMENT = "DEV" And StatusType <> INFO_STAT Then
-                MessageBox.Show(Message, "Error")
+                MessageBox.Show(Message, StatusType)
             End If
         Catch ex As Exception
             ErrorLogger.WriteToErrorLog(ex.Message, ex.StackTrace, ERROR_STAT)
@@ -99,4 +99,27 @@ Module MyApplication
         'MainForm.StatusStrip.BackColor = Color.DodgerBlue
         'MainForm.StatusMessage.Text = "Application Ready"
     End Sub
+
+    Public Function ValidNumber(e As KeyPressEventArgs) As Boolean
+        Dim res As Boolean
+        'Dim chr As Char
+        Try
+            'If Not e Is Nothing Then
+            '    chr = e.KeyChar
+            'End If
+            If (Not e.KeyChar = ChrW(Keys.Back) And ("0123456789.").IndexOf(e.KeyChar) = -1) Then 'Or (chr = "." And Data.Text.ToCharArray().Count(Function(c) c = ".") > 0) Then
+                res = True
+                'If Not e Is Nothing Then e.Handled = True
+            Else
+                res = False
+                'If Not e Is Nothing Then e.Handled = False
+            End If
+
+
+        Catch ex As Exception
+            MsgBox(ex.Message)
+        End Try
+
+        Return res
+    End Function
 End Module

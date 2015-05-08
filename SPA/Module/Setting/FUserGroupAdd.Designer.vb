@@ -94,7 +94,8 @@ Partial Class FUserGroupAdd
         Me.MaximizeBox = False
         Me.MinimizeBox = False
         Me.Name = "FUserGroupAdd"
-        Me.Text = "UserGroupAdd"
+        Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent
+        Me.Text = "Tambah Grup Akses"
         Me.StatusStrip1.ResumeLayout(False)
         Me.StatusStrip1.PerformLayout()
         Me.ResumeLayout(False)

@@ -22,8 +22,14 @@ Partial Class FTanamanMasuk
     'Do not modify it using the code editor.
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
+        Me.components = New System.ComponentModel.Container()
         Me.Panel1 = New System.Windows.Forms.Panel()
+        Me.Panel2 = New System.Windows.Forms.Panel()
+        Me.DataGridView1 = New System.Windows.Forms.DataGridView()
+        Me.Tool1 = New System.Windows.Forms.ToolStrip()
+        Me.ToolDelete = New System.Windows.Forms.ToolStripButton()
         Me.PanelHeader = New System.Windows.Forms.Panel()
+        Me.ButtonH = New System.Windows.Forms.Button()
         Me.DateTimePicker2 = New System.Windows.Forms.DateTimePicker()
         Me.TextBox3 = New System.Windows.Forms.TextBox()
         Me.Label4 = New System.Windows.Forms.Label()
@@ -40,18 +46,15 @@ Partial Class FTanamanMasuk
         Me.ButtonAdd = New System.Windows.Forms.Button()
         Me.ButtonCancel = New System.Windows.Forms.Button()
         Me.ButtonSave = New System.Windows.Forms.Button()
-        Me.Panel2 = New System.Windows.Forms.Panel()
-        Me.Tool1 = New System.Windows.Forms.ToolStrip()
-        Me.ToolAdd = New System.Windows.Forms.ToolStripButton()
-        Me.ToolEdit = New System.Windows.Forms.ToolStripButton()
-        Me.ToolDelete = New System.Windows.Forms.ToolStripButton()
-        Me.DataGridView1 = New System.Windows.Forms.DataGridView()
+        Me.ContextMenuStrip1 = New System.Windows.Forms.ContextMenuStrip(Me.components)
+        Me.HapusDataToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.Panel1.SuspendLayout()
+        Me.Panel2.SuspendLayout()
+        CType(Me.DataGridView1, System.ComponentModel.ISupportInitialize).BeginInit()
+        Me.Tool1.SuspendLayout()
         Me.PanelHeader.SuspendLayout()
         Me.Panel3.SuspendLayout()
-        Me.Panel2.SuspendLayout()
-        Me.Tool1.SuspendLayout()
-        CType(Me.DataGridView1, System.ComponentModel.ISupportInitialize).BeginInit()
+        Me.ContextMenuStrip1.SuspendLayout()
         Me.SuspendLayout()
         '
         'Panel1
@@ -63,13 +66,55 @@ Partial Class FTanamanMasuk
         Me.Panel1.Dock = System.Windows.Forms.DockStyle.Left
         Me.Panel1.Location = New System.Drawing.Point(0, 0)
         Me.Panel1.Name = "Panel1"
-        Me.Panel1.Size = New System.Drawing.Size(821, 474)
+        Me.Panel1.Size = New System.Drawing.Size(886, 474)
         Me.Panel1.TabIndex = 8
+        '
+        'Panel2
+        '
+        Me.Panel2.Controls.Add(Me.DataGridView1)
+        Me.Panel2.Controls.Add(Me.Tool1)
+        Me.Panel2.Dock = System.Windows.Forms.DockStyle.Fill
+        Me.Panel2.Location = New System.Drawing.Point(0, 114)
+        Me.Panel2.Name = "Panel2"
+        Me.Panel2.Size = New System.Drawing.Size(886, 307)
+        Me.Panel2.TabIndex = 23
+        '
+        'DataGridView1
+        '
+        Me.DataGridView1.BackgroundColor = System.Drawing.Color.Silver
+        Me.DataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
+        Me.DataGridView1.Location = New System.Drawing.Point(52, 66)
+        Me.DataGridView1.Name = "DataGridView1"
+        Me.DataGridView1.Size = New System.Drawing.Size(789, 170)
+        Me.DataGridView1.TabIndex = 6
+        '
+        'Tool1
+        '
+        Me.Tool1.BackColor = System.Drawing.SystemColors.ActiveCaption
+        Me.Tool1.GripStyle = System.Windows.Forms.ToolStripGripStyle.Hidden
+        Me.Tool1.ImageScalingSize = New System.Drawing.Size(32, 32)
+        Me.Tool1.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.ToolDelete})
+        Me.Tool1.Location = New System.Drawing.Point(0, 0)
+        Me.Tool1.Name = "Tool1"
+        Me.Tool1.RenderMode = System.Windows.Forms.ToolStripRenderMode.System
+        Me.Tool1.Size = New System.Drawing.Size(886, 39)
+        Me.Tool1.TabIndex = 24
+        Me.Tool1.Text = "Tool1"
+        '
+        'ToolDelete
+        '
+        Me.ToolDelete.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image
+        Me.ToolDelete.Image = Global.SPA.My.Resources.Resources.trush
+        Me.ToolDelete.ImageTransparentColor = System.Drawing.Color.Magenta
+        Me.ToolDelete.Name = "ToolDelete"
+        Me.ToolDelete.Size = New System.Drawing.Size(36, 36)
+        Me.ToolDelete.Text = "Del"
         '
         'PanelHeader
         '
-        Me.PanelHeader.BackColor = System.Drawing.SystemColors.ButtonFace
+        Me.PanelHeader.BackColor = System.Drawing.Color.LightGray
         Me.PanelHeader.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
+        Me.PanelHeader.Controls.Add(Me.ButtonH)
         Me.PanelHeader.Controls.Add(Me.DateTimePicker2)
         Me.PanelHeader.Controls.Add(Me.TextBox3)
         Me.PanelHeader.Controls.Add(Me.Label4)
@@ -83,32 +128,42 @@ Partial Class FTanamanMasuk
         Me.PanelHeader.Dock = System.Windows.Forms.DockStyle.Top
         Me.PanelHeader.Location = New System.Drawing.Point(0, 0)
         Me.PanelHeader.Name = "PanelHeader"
-        Me.PanelHeader.Size = New System.Drawing.Size(821, 148)
+        Me.PanelHeader.Size = New System.Drawing.Size(886, 114)
         Me.PanelHeader.TabIndex = 12
+        '
+        'ButtonH
+        '
+        Me.ButtonH.Location = New System.Drawing.Point(233, 51)
+        Me.ButtonH.Name = "ButtonH"
+        Me.ButtonH.Size = New System.Drawing.Size(28, 23)
+        Me.ButtonH.TabIndex = 19
+        Me.ButtonH.Text = "..."
+        Me.ButtonH.TextAlign = System.Drawing.ContentAlignment.TopCenter
+        Me.ButtonH.UseVisualStyleBackColor = True
         '
         'DateTimePicker2
         '
         Me.DateTimePicker2.Format = System.Windows.Forms.DateTimePickerFormat.Custom
-        Me.DateTimePicker2.Location = New System.Drawing.Point(452, 38)
+        Me.DateTimePicker2.Location = New System.Drawing.Point(360, 49)
         Me.DateTimePicker2.Name = "DateTimePicker2"
         Me.DateTimePicker2.Size = New System.Drawing.Size(145, 22)
-        Me.DateTimePicker2.TabIndex = 20
+        Me.DateTimePicker2.TabIndex = 4
         '
         'TextBox3
         '
         Me.TextBox3.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.TextBox3.Location = New System.Drawing.Point(452, 67)
+        Me.TextBox3.Location = New System.Drawing.Point(360, 78)
         Me.TextBox3.Margin = New System.Windows.Forms.Padding(4)
-        Me.TextBox3.MaxLength = 35
+        Me.TextBox3.MaxLength = 40
         Me.TextBox3.Name = "TextBox3"
         Me.TextBox3.Size = New System.Drawing.Size(363, 22)
-        Me.TextBox3.TabIndex = 19
+        Me.TextBox3.TabIndex = 5
         '
         'Label4
         '
         Me.Label4.AutoSize = True
         Me.Label4.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label4.Location = New System.Drawing.Point(373, 69)
+        Me.Label4.Location = New System.Drawing.Point(281, 80)
         Me.Label4.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.Label4.Name = "Label4"
         Me.Label4.Size = New System.Drawing.Size(66, 16)
@@ -119,7 +174,7 @@ Partial Class FTanamanMasuk
         '
         Me.Label3.AutoSize = True
         Me.Label3.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label3.Location = New System.Drawing.Point(372, 40)
+        Me.Label3.Location = New System.Drawing.Point(280, 51)
         Me.Label3.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.Label3.Name = "Label3"
         Me.Label3.Size = New System.Drawing.Size(50, 16)
@@ -129,18 +184,18 @@ Partial Class FTanamanMasuk
         'TextBox1
         '
         Me.TextBox1.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.TextBox1.Location = New System.Drawing.Point(452, 11)
+        Me.TextBox1.Location = New System.Drawing.Point(360, 22)
         Me.TextBox1.Margin = New System.Windows.Forms.Padding(4)
         Me.TextBox1.MaxLength = 20
         Me.TextBox1.Name = "TextBox1"
         Me.TextBox1.Size = New System.Drawing.Size(214, 22)
-        Me.TextBox1.TabIndex = 15
+        Me.TextBox1.TabIndex = 3
         '
         'Label2
         '
         Me.Label2.AutoSize = True
         Me.Label2.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label2.Location = New System.Drawing.Point(374, 14)
+        Me.Label2.Location = New System.Drawing.Point(282, 25)
         Me.Label2.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.Label2.Name = "Label2"
         Me.Label2.Size = New System.Drawing.Size(48, 16)
@@ -151,7 +206,7 @@ Partial Class FTanamanMasuk
         '
         Me.Label1.AutoSize = True
         Me.Label1.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label1.Location = New System.Drawing.Point(9, 11)
+        Me.Label1.Location = New System.Drawing.Point(12, 22)
         Me.Label1.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.Label1.Name = "Label1"
         Me.Label1.Size = New System.Drawing.Size(59, 16)
@@ -161,26 +216,26 @@ Partial Class FTanamanMasuk
         'DateTimePicker1
         '
         Me.DateTimePicker1.Format = System.Windows.Forms.DateTimePickerFormat.Custom
-        Me.DateTimePicker1.Location = New System.Drawing.Point(86, 11)
+        Me.DateTimePicker1.Location = New System.Drawing.Point(89, 22)
         Me.DateTimePicker1.Name = "DateTimePicker1"
         Me.DateTimePicker1.Size = New System.Drawing.Size(145, 22)
-        Me.DateTimePicker1.TabIndex = 12
+        Me.DateTimePicker1.TabIndex = 1
         '
         'TxtNo
         '
         Me.TxtNo.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.TxtNo.Location = New System.Drawing.Point(86, 40)
+        Me.TxtNo.Location = New System.Drawing.Point(89, 51)
         Me.TxtNo.Margin = New System.Windows.Forms.Padding(4)
         Me.TxtNo.MaxLength = 13
         Me.TxtNo.Name = "TxtNo"
         Me.TxtNo.Size = New System.Drawing.Size(145, 22)
-        Me.TxtNo.TabIndex = 11
+        Me.TxtNo.TabIndex = 2
         '
         'lblName
         '
         Me.lblName.AutoSize = True
         Me.lblName.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.lblName.Location = New System.Drawing.Point(9, 40)
+        Me.lblName.Location = New System.Drawing.Point(12, 51)
         Me.lblName.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.lblName.Name = "lblName"
         Me.lblName.Size = New System.Drawing.Size(69, 16)
@@ -199,7 +254,7 @@ Partial Class FTanamanMasuk
         Me.Panel3.Dock = System.Windows.Forms.DockStyle.Bottom
         Me.Panel3.Location = New System.Drawing.Point(0, 421)
         Me.Panel3.Name = "Panel3"
-        Me.Panel3.Size = New System.Drawing.Size(821, 53)
+        Me.Panel3.Size = New System.Drawing.Size(886, 53)
         Me.Panel3.TabIndex = 11
         '
         'ButtonPrint
@@ -235,7 +290,7 @@ Partial Class FTanamanMasuk
         'ButtonCancel
         '
         Me.ButtonCancel.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.ButtonCancel.Location = New System.Drawing.Point(627, 13)
+        Me.ButtonCancel.Location = New System.Drawing.Point(804, 13)
         Me.ButtonCancel.Name = "ButtonCancel"
         Me.ButtonCancel.Size = New System.Drawing.Size(77, 31)
         Me.ButtonCancel.TabIndex = 29
@@ -252,84 +307,39 @@ Partial Class FTanamanMasuk
         Me.ButtonSave.Text = "Simpan"
         Me.ButtonSave.UseVisualStyleBackColor = True
         '
-        'Panel2
+        'ContextMenuStrip1
         '
-        Me.Panel2.Controls.Add(Me.DataGridView1)
-        Me.Panel2.Controls.Add(Me.Tool1)
-        Me.Panel2.Dock = System.Windows.Forms.DockStyle.Fill
-        Me.Panel2.Location = New System.Drawing.Point(0, 148)
-        Me.Panel2.Name = "Panel2"
-        Me.Panel2.Size = New System.Drawing.Size(821, 273)
-        Me.Panel2.TabIndex = 23
+        Me.ContextMenuStrip1.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.HapusDataToolStripMenuItem})
+        Me.ContextMenuStrip1.Name = "ContextMenuStrip1"
+        Me.ContextMenuStrip1.Size = New System.Drawing.Size(136, 26)
         '
-        'Tool1
+        'HapusDataToolStripMenuItem
         '
-        Me.Tool1.BackColor = System.Drawing.SystemColors.ActiveCaption
-        Me.Tool1.GripStyle = System.Windows.Forms.ToolStripGripStyle.Hidden
-        Me.Tool1.ImageScalingSize = New System.Drawing.Size(32, 32)
-        Me.Tool1.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.ToolAdd, Me.ToolEdit, Me.ToolDelete})
-        Me.Tool1.Location = New System.Drawing.Point(0, 0)
-        Me.Tool1.Name = "Tool1"
-        Me.Tool1.RenderMode = System.Windows.Forms.ToolStripRenderMode.System
-        Me.Tool1.Size = New System.Drawing.Size(821, 39)
-        Me.Tool1.TabIndex = 24
-        Me.Tool1.Text = "Tool1"
-        '
-        'ToolAdd
-        '
-        Me.ToolAdd.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image
-        Me.ToolAdd.Image = Global.SPA.My.Resources.Resources.add1
-        Me.ToolAdd.ImageTransparentColor = System.Drawing.Color.Magenta
-        Me.ToolAdd.Name = "ToolAdd"
-        Me.ToolAdd.Size = New System.Drawing.Size(36, 36)
-        Me.ToolAdd.Text = "Add"
-        '
-        'ToolEdit
-        '
-        Me.ToolEdit.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image
-        Me.ToolEdit.Image = Global.SPA.My.Resources.Resources.edit1
-        Me.ToolEdit.ImageTransparentColor = System.Drawing.Color.Magenta
-        Me.ToolEdit.Name = "ToolEdit"
-        Me.ToolEdit.Size = New System.Drawing.Size(36, 36)
-        Me.ToolEdit.Text = "Edit"
-        '
-        'ToolDelete
-        '
-        Me.ToolDelete.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image
-        Me.ToolDelete.Image = Global.SPA.My.Resources.Resources.trush
-        Me.ToolDelete.ImageTransparentColor = System.Drawing.Color.Magenta
-        Me.ToolDelete.Name = "ToolDelete"
-        Me.ToolDelete.Size = New System.Drawing.Size(36, 36)
-        Me.ToolDelete.Text = "Del"
-        '
-        'DataGridView1
-        '
-        Me.DataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
-        Me.DataGridView1.Location = New System.Drawing.Point(52, 66)
-        Me.DataGridView1.Name = "DataGridView1"
-        Me.DataGridView1.ReadOnly = True
-        Me.DataGridView1.Size = New System.Drawing.Size(602, 141)
-        Me.DataGridView1.TabIndex = 25
+        Me.HapusDataToolStripMenuItem.Name = "HapusDataToolStripMenuItem"
+        Me.HapusDataToolStripMenuItem.Size = New System.Drawing.Size(135, 22)
+        Me.HapusDataToolStripMenuItem.Text = "Hapus Data"
         '
         'FTanamanMasuk
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(8.0!, 16.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(942, 474)
+        Me.BackColor = System.Drawing.Color.Silver
+        Me.ClientSize = New System.Drawing.Size(1273, 474)
         Me.Controls.Add(Me.Panel1)
         Me.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Margin = New System.Windows.Forms.Padding(4)
         Me.Name = "FTanamanMasuk"
         Me.Text = "Data Tanaman Masuk"
         Me.Panel1.ResumeLayout(False)
+        Me.Panel2.ResumeLayout(False)
+        Me.Panel2.PerformLayout()
+        CType(Me.DataGridView1, System.ComponentModel.ISupportInitialize).EndInit()
+        Me.Tool1.ResumeLayout(False)
+        Me.Tool1.PerformLayout()
         Me.PanelHeader.ResumeLayout(False)
         Me.PanelHeader.PerformLayout()
         Me.Panel3.ResumeLayout(False)
-        Me.Panel2.ResumeLayout(False)
-        Me.Panel2.PerformLayout()
-        Me.Tool1.ResumeLayout(False)
-        Me.Tool1.PerformLayout()
-        CType(Me.DataGridView1, System.ComponentModel.ISupportInitialize).EndInit()
+        Me.ContextMenuStrip1.ResumeLayout(False)
         Me.ResumeLayout(False)
 
     End Sub
@@ -353,8 +363,9 @@ Partial Class FTanamanMasuk
     Friend WithEvents Label2 As System.Windows.Forms.Label
     Friend WithEvents Panel2 As System.Windows.Forms.Panel
     Friend WithEvents Tool1 As System.Windows.Forms.ToolStrip
-    Friend WithEvents ToolAdd As System.Windows.Forms.ToolStripButton
-    Friend WithEvents ToolEdit As System.Windows.Forms.ToolStripButton
     Friend WithEvents ToolDelete As System.Windows.Forms.ToolStripButton
     Friend WithEvents DataGridView1 As System.Windows.Forms.DataGridView
+    Friend WithEvents ContextMenuStrip1 As System.Windows.Forms.ContextMenuStrip
+    Friend WithEvents HapusDataToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
+    Friend WithEvents ButtonH As System.Windows.Forms.Button
 End Class

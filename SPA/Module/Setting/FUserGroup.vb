@@ -218,7 +218,6 @@
         'MessageBox.Show("Event Show")
         Form1_Load(Nothing, Nothing)
     End Sub
-
     'Private Sub DataGridView1_CellContentClick(sender As Object, e As DataGridViewCellEventArgs) Handles DataGridView1.CellContentClick
     Private Sub DataGridView1_CellContentClick(sender As Object, e As DataGridViewCellEventArgs) Handles DataGridView1.CellContentClick
 
@@ -265,15 +264,14 @@
             End If
         End With
     End Sub
-
     Private Sub ToolAdd_Click(sender As Object, e As EventArgs) Handles ToolAdd.Click
-        FUserGroupAdd.Show()
+        FUserGroupAdd.ShowDialog()
     End Sub
     Private Sub ToolEdit_Click(sender As Object, e As EventArgs) Handles ToolEdit.Click
         If getCountSelectedData() > 0 Then
             FUserGroupAdd.txtid.Text = CStr(DataGridView1.Rows(getRowIndexSelected()).Cells("groupid").Value)
             FUserGroupAdd.TextBox1.Text = DataGridView1.Rows(getRowIndexSelected()).Cells("groupname").Value
-            FUserGroupAdd.Show()
+            FUserGroupAdd.ShowDialog()
         Else
             MyApplication.ShowStatus("No data is selected", NOTICE_STAT)
         End If
@@ -326,7 +324,6 @@
         End If
         'Cursor.Current = Cursors.Default
     End Sub
-
     Private Sub ToolFind_Click(sender As Object, e As EventArgs) Handles ToolFind.Click
         Model.startRecord = 0
         'If Not String.IsNullOrEmpty(ToolFind.Text) Then

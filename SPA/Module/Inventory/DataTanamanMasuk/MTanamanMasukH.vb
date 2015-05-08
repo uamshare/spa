@@ -8,14 +8,16 @@
     Public supplier As String
     Public userid As String
 
-    Private dtcreated As String
-
+    Public dtcreated As String
     Sub New()
         MyBase.New()
         BaseQuery = "SELECT * FROM trcvmh"
-        SelectQuery = "SELECT `trcvmhno`,`trcvmhdt`,`pono`,`podate`,`supplier`,`userid` FROM trcvmh"
-        TableName = "trcvmh"
+        SelectQuery = "SELECT `trcvmhno`,`trcvmhdt`,`pono`,`podate`,`supplier`,`dtcreated`,`userid` FROM trcvmh"
+        Me.TableName = "trcvmh"
         PrimaryKey = "trcvmhno"
+
+        userid = MUsers.UserInfo()("userid")
+
     End Sub
 
     Function FindData(sSearch As String) As DataTable
@@ -32,9 +34,7 @@
     End Function
     Public Overloads Function InsertData() As Integer
         Dim values As String
-        dtcreated = Format(Date.Now, "yyyy/MM/dd H:mm:ss")
-        userid = MUsers.UserInfo()("userid")
-
+        dtcreated = IIf(String.IsNullOrEmpty(dtcreated), Format(Date.Now, "yyyy/MM/dd H:mm:ss"), dtcreated)
         values = "('" & trcvmhno & "','" & _
                       trcvmhdt & "','" & _
                       pono & "','" & _
@@ -42,21 +42,22 @@
                       supplier & "','" & _
                       userid & "','" & _
                       dtcreated & "')"
-        Me.StringSQL = "INSERT INTO " & TableName + "(`trcvmhno`,`trcvmhdt`,`pono`,`podate`,`supplier`,`userid`,`dtcreated`) VALUES " & values
+        'Me.StringSQL = "INSERT INTO " & TableName + "(`trcvmhno`,`trcvmhdt`,`pono`,`podate`,`supplier`,`userid`,`dtcreated`) VALUES " & values
+        Me.StringSQL = IIf(Not String.IsNullOrEmpty(Me.StringSQL), Me.StringSQL, "INSERT INTO " & TableName + "(`trcvmhno`,`trcvmhdt`,`pono`,`podate`,`supplier`,`userid`,`dtcreated`) VALUES " & values)
         Return MyBase.InsertData()
     End Function
 
-    Public Overloads Function UpdateData() As Integer
+    Public Overloads Function UpdateData(Optional ByVal id As String = "") As Integer
         Dim setquery As String
         userid = MUsers.UserInfo()("userid")
 
-        setquery = "SET trcvmhno='" & trcvmhno & "','" & _
-                    "trcvmhdt='" & trcvmhdt & "','" & _
-                    "pono='" & pono & "','" & _
-                    "podate='" & podate & "','" & _
-                    "supplier='" & supplier & "','" & _
-                    "userid='" & userid & "'"
-        Me.StringSQL = "UPDATE " & TableName + " " & setquery
+        id = IIf(Not String.IsNullOrEmpty(id), id, trcvmhno)
+        setquery = "SET trcvmhdt='" & trcvmhdt & "'," & _
+                    "pono='" & pono & "'," & _
+                    "podate='" & podate & "'," & _
+                    "supplier='" & supplier & "'," & _
+                    "userid='" & userid & "' WHERE trcvmhno ='" & id & "'"
+        Me.StringSQL = IIf(Not String.IsNullOrEmpty(Me.StringSQL), Me.StringSQL, "UPDATE " & TableName + " " & setquery)
         Return MyBase.UpdateData()
     End Function
 

@@ -95,7 +95,7 @@ Public Class CDataAcces 'Name dari Class yang dibuat.
 
         If rowCountAffected > 0 And actlog <> "delete" Then
             Dim LogMsg As String = "Done. " & rowCountAffected & message
-            ErrorLogger.WriteToErrorLog(LogMsg, actlog, INFO_STAT, actlog, "2")
+            ErrorLogger.WriteToErrorLog(LogMsg & vbCrLf & Me.StringSQL, actlog, INFO_STAT, actlog, "2")
             MyApplication.ShowStatus(LogMsg, INFO_STAT)
         ElseIf rowCountAffected > -1 And actlog = "delete" Then
             Dim LogMsg As String = "Done. " & rowCountAffected & message
@@ -234,7 +234,9 @@ Public Class CDataAcces 'Name dari Class yang dibuat.
             If Me.mCONN.State <> ConnectionState.Closed Then Me.mCONN.Close()
             Me.mCONN.Open()
             cmd.Connection = mCONN
-            cmd.CommandText = "SELECT COUNT(*) FROM " & TableName & " " & mWHERE
+
+            If String.IsNullOrEmpty(Me.StringSQL) Then Me.StringSQL = "SELECT COUNT(*) FROM " & TableName & " " & mWHERE
+            cmd.CommandText = Me.StringSQL
             rowCountAffected = cmd.ExecuteScalar() 'returns the number of rows affected. 
             Me.mCONN.Close()
         Catch ex As MySqlException
@@ -412,6 +414,17 @@ Public Class CDataAcces 'Name dari Class yang dibuat.
         Return rowCountAffected
     End Function
     Function EscapeString(ByVal Input As String) As String
+        Dim ReplaceString As String
+        Dim FindChars = {"'", "#", """"}
+
+        ReplaceString = Input
+        For Each fchar In FindChars
+            ReplaceString = Replace(ReplaceString, fchar, "\" & fchar)
+        Next
+        Return ReplaceString
+    End Function
+
+    Public Shared Function EscString(ByVal Input As String) As String
         Dim ReplaceString As String
         Dim FindChars = {"'", "#", """"}
 

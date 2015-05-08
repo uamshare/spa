@@ -192,6 +192,12 @@
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Module\Inventory\DataPelanggan\MDataPelanggan.vb" />
+    <Compile Include="Module\Inventory\DataTanamanMasuk\FListTanamanMasuk.Designer.vb">
+      <DependentUpon>FListTanamanMasuk.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Module\Inventory\DataTanamanMasuk\FListTanamanMasuk.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="Module\Inventory\DataTanamanMasuk\FTanamanMasuk.Designer.vb">
       <DependentUpon>FTanamanMasuk.vb</DependentUpon>
     </Compile>
@@ -246,6 +252,13 @@
     </Compile>
     <Compile Include="Module\Inventory\DataBibitTanaman\MBibitTanaman.vb" />
     <Compile Include="Module\Inventory\DataTanaman\MTanaman.vb" />
+    <Compile Include="Module\Inventory\FListTanaman.Designer.vb">
+      <DependentUpon>FListTanaman.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Module\Inventory\FListTanaman.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Module\Inventory\Rstockm.vb" />
     <Compile Include="Module\MainForm.Designer.vb">
       <DependentUpon>MainForm.vb</DependentUpon>
     </Compile>
@@ -337,6 +350,9 @@
     <EmbeddedResource Include="Module\Inventory\DataPelanggan\FPelangganAdd.resx">
       <DependentUpon>FPelangganAdd.vb</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Module\Inventory\DataTanamanMasuk\FListTanamanMasuk.resx">
+      <DependentUpon>FListTanamanMasuk.vb</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Module\Inventory\DataTanamanMasuk\FTanamanMasuk.resx">
       <DependentUpon>FTanamanMasuk.vb</DependentUpon>
     </EmbeddedResource>
@@ -360,6 +376,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Module\Inventory\DataTanaman\FJensiTanamanAdd.resx">
       <DependentUpon>FJensiTanamanAdd.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Module\Inventory\FListTanaman.resx">
+      <DependentUpon>FListTanaman.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Module\MainForm.resx">
       <DependentUpon>MainForm.vb</DependentUpon>
@@ -478,6 +497,9 @@
       <ProductName>.NET Framework 3.5 SP1</ProductName>
       <Install>false</Install>
     </BootstrapperPackage>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resource\76x76\check.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.VisualBasic.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

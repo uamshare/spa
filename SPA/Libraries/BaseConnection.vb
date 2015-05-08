@@ -10,6 +10,8 @@ Public Class BaseConnection
         Dim myConnectionString As String = "server=" & My.Settings.server & ";" _
                 & "uid=" & My.Settings.uid & ";" _
                 & "pwd=" & My.Settings.pwd & ";" _
+                & "Persist Security Info=True;" _
+                & "Convert Zero Datetime=true;" _
                 & "database=" & My.Settings.database & ";"
         'Dim myConnectionString As String = "server=103.8.79.229;" _
         '        & "uid=tjeloacl;" _

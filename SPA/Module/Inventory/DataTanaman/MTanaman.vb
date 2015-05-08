@@ -12,11 +12,12 @@ Public Class MTanaman
     Public GetKey As String
     Private Key As String
 
+    Private ViewTableName As String
 
 
-    Sub New()
+    Sub New(Optional ViewTableName As String = "material_fig")
         MyBase.New()
-
+        Me.ViewTableName = ViewTableName
         BaseQuery = "SELECT mmtrhid,mmtrid,mmtrname,polybag,mmtrunit,mmtrprice,mmtrg, CONCAT(mmtrid, CONVERT(mmtrg, CHAR)) AS PrimaryKey FROM material_fig"
         SelectQuery = "SELECT mmtrhid,mmtrid,mmtrname,polybag,mmtrunit,mmtrprice,mmtrg, CONCAT(mmtrid, CONVERT(mmtrg, CHAR)) AS PrimaryKey FROM material_fig"
         TableName = "mmtr"
@@ -72,4 +73,13 @@ Public Class MTanaman
         Return rowCountAffected
     End Function
 
+    'Update by : UAM (05 Mei 2015) for "Get data Tanaman"
+    Public Function GetListData() As List(Of Dictionary(Of String, Object))
+        Me.StringSQL = "SELECT * FROM material_fig"
+        Return MyBase.GetDataList()
+    End Function
+    Public Overloads Function GetRowsCount() As Integer
+        Me.StringSQL = "SELECT COUNT(*) FROM " & ViewTableName & " " & mWHERE
+        Return MyBase.GetRowsCount()
+    End Function
 End Class

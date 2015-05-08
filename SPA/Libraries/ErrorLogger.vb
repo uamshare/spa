@@ -75,13 +75,13 @@ Public Class ErrorLogger
         cmd.Transaction = Trans
         rowCountAffected = -1
         Try
-            values = "('" & title & "','" & _
-                        stkTrace & "','" & _
-                        My.Settings.server & "','" & _
-                        MUsers.UserInfo()("userid") & "','" & _
-                        msg & "','" & _
-                        logaction & "','" & _
-                        logtype & "')"
+            values = "('" & EscString(title) & "','" & _
+                        EscString(stkTrace) & "','" & _
+                        EscString(My.Settings.server) & "','" & _
+                        EscString(MUsers.UserInfo()("userid")) & "','" & _
+                        EscString(msg) & "','" & _
+                        EscString(logaction) & "','" & _
+                        EscString(logtype) & "')"
             cmd.Connection = BaseConnection.GetInstance
             cmd.CommandText = "INSERT INTO logapp (logapptitle,logappstktrace,logipserver,userid,logdesc,logaction,logtype) VALUES " & values
             rowCountAffected = cmd.ExecuteNonQuery() 'returns the number of rows affected. 

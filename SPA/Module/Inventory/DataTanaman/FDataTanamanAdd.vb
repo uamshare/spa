@@ -66,7 +66,8 @@
     End Sub
 
     Private Sub txtHarga_KeyPress(sender As Object, e As KeyPressEventArgs) Handles txtHarga.KeyPress
-        If Not ((e.KeyChar >= "0" And e.KeyChar <= "9") Or e.KeyChar = vbBack) Then e.Handled = True
+        'If Not ((e.KeyChar >= "0" And e.KeyChar <= "9") Or e.KeyChar = vbBack) Then e.Handled = True
+        e.Handled = MyApplication.ValidNumber(e)
     End Sub
 
     Private Sub txtKode3_KeyDown(sender As Object, e As KeyEventArgs) Handles txtKode3.KeyDown
