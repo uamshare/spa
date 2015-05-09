@@ -90,8 +90,12 @@ Public Class FDataBibitTanaman
                 .Columns("mmtrid").Width = 100
                 .Columns("mmtrname").Width = 200
                 .Columns("polybag").Width = 75
+                .Columns("polybag").DefaultCellStyle().Alignment = DataGridViewContentAlignment.MiddleCenter
                 .Columns("mmtrunit").Width = 100
                 .Columns("mmtrprice").Width = 100
+                .Columns("mmtrprice").DefaultCellStyle().Alignment = DataGridViewContentAlignment.MiddleRight
+                .Columns("mmtrprice").DefaultCellStyle().Format = "##,##0"
+                .Columns("mmtrprice").ValueType = GetType(Decimal)
 
                 .Refresh()
                 If .RowCount > 0 Then
@@ -215,18 +219,23 @@ Public Class FDataBibitTanaman
 
     Private Sub ToolEdit_Click(sender As Object, e As EventArgs) Handles ToolEdit.Click
         If getCountSelectedData() > 0 Then
+            FDataBibitTanamanAdd.isEdit = True
+
+            FDataBibitTanamanAdd.txtKode2.Text = "1"
+            FDataBibitTanamanAdd.Tunique.Text = "1" & Strings.Right(CStr(DataGridViewTanaman.Rows(getRowIndexSelected()).Cells("mmtrid").Value), 3) & _
+                                                CStr(DataGridViewTanaman.Rows(getRowIndexSelected()).Cells("mmtrhid").Value)
             FDataBibitTanamanAdd.txtMmtrhid.Text = CStr(DataGridViewTanaman.Rows(getRowIndexSelected()).Cells("mmtrhid").Value)
             FDataBibitTanamanAdd.txtJnsTanaman.Text = CStr(DataGridViewTanaman.Rows(getRowIndexSelected()).Cells("mmtrname").Value)
             FDataBibitTanamanAdd.txtKeyID1.Text = CStr(DataGridViewTanaman.Rows(getRowIndexSelected()).Cells("PrimaryKey").Value)
             FDataBibitTanamanAdd.txtMmtrg1.Text = CStr(DataGridViewTanaman.Rows(getRowIndexSelected()).Cells("mmtrg").Value)
             FDataBibitTanamanAdd.cmbPolybag.Text = CStr(DataGridViewTanaman.Rows(getRowIndexSelected()).Cells("polybag").Value)
             FDataBibitTanamanAdd.txtKode.Text = Strings.Left(CStr(DataGridViewTanaman.Rows(getRowIndexSelected()).Cells("mmtrid").Value), 5)
-            FDataBibitTanamanAdd.txtKode2.Text = "1"
+
             FDataBibitTanamanAdd.txtKode3.Text = Strings.Right(CStr(DataGridViewTanaman.Rows(getRowIndexSelected()).Cells("mmtrid").Value), 3)
-            FDataBibitTanamanAdd.txtHarga.Text = Convert.ToString(DataGridViewTanaman.Rows(getRowIndexSelected()).Cells("mmtrprice").Value)
+            FDataBibitTanamanAdd.txtHarga.Text = Format(DataGridViewTanaman.Rows(getRowIndexSelected()).Cells("mmtrprice").Value, "##,##0")
             FDataBibitTanamanAdd.txtSatuan.Text = CStr(DataGridViewTanaman.Rows(getRowIndexSelected()).Cells("mmtrunit").Value)
             FDataBibitTanamanAdd.txtKeyID2.Text = Strings.Left(CStr(DataGridViewTanaman.Rows(getRowIndexSelected()).Cells("mmtrid").Value), 5) + "2" + Strings.Right(CStr(DataGridViewTanaman.Rows(getRowIndexSelected()).Cells("mmtrid").Value), 3) + "2"
-            FDataBibitTanamanAdd.Show()
+            FDataBibitTanamanAdd.ShowDialog()
         Else
             MyApplication.ShowStatus("No data is selected", NOTICE_STAT)
         End If
@@ -241,6 +250,8 @@ Public Class FDataBibitTanaman
         FDataBibitTanamanAdd.txtHarga.Clear()
         FDataBibitTanamanAdd.txtKeyID1.Clear()
         FDataBibitTanamanAdd.txtHarga.Text = 0
+        FDataBibitTanamanAdd.isEdit = False
+        FDataBibitTanamanAdd.cmbPolybag.SelectedIndex = -1
         FDataBibitTanamanAdd.ShowDialog()
     End Sub
 
@@ -252,22 +263,19 @@ Public Class FDataBibitTanaman
                 'delete data
                 If DataGridViewTanaman.Rows(i).Cells(DGVColumnCheckIndex).FormattedValue = True Then
                     GetKey1(i) = DataGridViewTanaman.Rows(i).Cells("PrimaryKey").Value
-                    GetKey2(i) = Strings.Left(CStr(DataGridViewTanaman.Rows(getRowIndexSelected()).Cells("mmtrid").Value), 5) + "2" + Strings.Right(CStr(DataGridViewTanaman.Rows(getRowIndexSelected()).Cells("mmtrid").Value), 3) + "2"
+                    GetKey2(i) = Strings.Left(CStr(DataGridViewTanaman.Rows(i).Cells("mmtrid").Value), 5) + "2" + _
+                                Strings.Right(CStr(DataGridViewTanaman.Rows(i).Cells("mmtrid").Value), 3) + "2"
                 End If
 
             Next
             If getCountSelectedData() > 0 Then
                 Dim dr As DialogResult = MessageBox.Show("Delete " & getCountSelectedData() & " data ?", "Confirmation", MessageBoxButtons.YesNo, MessageBoxIcon.Question)
                 If dr = Windows.Forms.DialogResult.Yes Then
-                    'For Each groupid In groupids
-                    '    If Not String.IsNullOrEmpty(groupid) Then
-                    '        Model.DeleteData(groupid)
-                    '    End If
-                    'Next
                     Model.MultipleDeleteData1(GetKey1)
-                    Model.MultipleDeleteData2(GetKey2)
+                    Model.MultipleDeleteData1(GetKey2)
+                    'Model.MultipleDeleteData2(GetKey2)
                 End If
-                'MyApplication.ShowStatus("Deleted " & getCountSelectedData() & " data")
+                MyApplication.ShowStatus("Deleted " & getCountSelectedData() & " data")
                 init()
             Else
                 MyApplication.ShowStatus("No data is selected", NOTICE_STAT)
@@ -278,11 +286,7 @@ Public Class FDataBibitTanaman
 
     Private Sub ToolFind_Click(sender As Object, e As EventArgs) Handles ToolFind.Click
         Model.startRecord = 0
-        'If Not String.IsNullOrEmpty(ToolFind.Text) Then
         RetrieveData(ToolTextFind.Text)
-        'Else
-        '    RetrieveData()
-        'End If
     End Sub
 
     Private Sub ToolFisrt_Click(sender As Object, e As EventArgs) Handles ToolFisrt.Click
@@ -307,7 +311,6 @@ Public Class FDataBibitTanaman
                 DataGridViewTanaman.Rows(e.RowIndex).Cells(DGVColumnCheckIndex).Value = Not DataGridViewTanaman.Rows(e.RowIndex).Cells(DGVColumnCheckIndex).FormattedValue
             Else
                 DataGridViewTanaman.ClearSelection()
-                'DataGridView1.Columns
             End If
         End If
         If getCountSelectedData() = 1 Then
@@ -337,7 +340,6 @@ Public Class FDataBibitTanaman
 
     Private Sub txtPageCurrent_KeyPress(sender As Object, e As KeyPressEventArgs) Handles txtPageCurrent.KeyPress
         If Asc(e.KeyChar) = 13 Then
-            'MessageBox.Show(Model.limitrecord)
             Dim countpage As Integer
             Dim pageto As Integer = Val(txtPageCurrent.Text)
             If Model.limitrecord > 0 Then
@@ -370,7 +372,6 @@ Public Class FDataBibitTanaman
     End Sub
 
     Private Sub FDataBibitTanaman_Shown(sender As Object, e As EventArgs) Handles MyBase.Shown
-        'MessageBox.Show("Event Show")
         FDataBibitTanaman_Load(Nothing, Nothing)
     End Sub
 
@@ -380,8 +381,6 @@ Public Class FDataBibitTanaman
     End Sub
 
     Private Sub toolImport_Click(sender As Object, e As EventArgs) Handles toolImport.Click
-
-
         Try
             Dim xlApp As Microsoft.Office.Interop.Excel.Application
             Dim xlWorkBook As Microsoft.Office.Interop.Excel.Workbook

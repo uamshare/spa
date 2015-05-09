@@ -235,6 +235,7 @@ Partial Class FListTanamanMasuk
         Me.MaximizeBox = False
         Me.MinimizeBox = False
         Me.Name = "FListTanamanMasuk"
+        Me.ShowInTaskbar = False
         Me.Text = "FListTanamanMasuk"
         Me.Tool1.ResumeLayout(False)
         Me.Tool1.PerformLayout()

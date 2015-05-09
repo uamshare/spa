@@ -282,6 +282,7 @@ Partial Class FjenisBibitTanaman
         Me.ClientSize = New System.Drawing.Size(468, 591)
         Me.Controls.Add(Me.Panelbarang)
         Me.Name = "FjenisBibitTanaman"
+        Me.ShowInTaskbar = False
         Me.Text = "Jenis Biit Tanaman"
         Me.Toolbarang.ResumeLayout(False)
         Me.Toolbarang.PerformLayout()

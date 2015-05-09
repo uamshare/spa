@@ -46,17 +46,14 @@
                 Next
             End If
 
-            CommitTrans(" data have been deleted ", "delete") 'Commit All Transaction
-            'Catch ex As MySql.Data.MySqlClient.MySqlException
-            '    MyApplication.ShowStatus("Error " & ex.Number & " has occurred: " & NOTICE_STAT, True, 10000)
+            CommitTrans("Data telah terhapus ", "delete") 'Commit All Transaction
         Catch ex As MySql.Data.MySqlClient.MySqlException
-            RollbackTrans("Error " & ex.Number & " has occurred: " & ex.Message, "delete")
+            RollbackTrans("Terjadi kesalahan saat menghapus data. No : " & ex.Number & " Pesan Kesalahan : " & ex.Message, "delete")
             Return Nothing
         Catch ex As Exception
-            RollbackTrans("Error has occurred: " & ex.Message, "delete")
+            RollbackTrans("Terjadi kesalahan saat menghapus data : " & ex.Message, "delete")
             Return Nothing
         End Try
-
         Return rowCountAffected
     End Function
 

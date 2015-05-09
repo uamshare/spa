@@ -99,7 +99,7 @@ Public Class CDataAcces 'Name dari Class yang dibuat.
             MyApplication.ShowStatus(LogMsg, INFO_STAT)
         ElseIf rowCountAffected > -1 And actlog = "delete" Then
             Dim LogMsg As String = "Done. " & rowCountAffected & message
-            ErrorLogger.WriteToErrorLog(LogMsg, actlog, INFO_STAT, actlog, "2")
+            ErrorLogger.WriteToErrorLog(LogMsg & vbCrLf & Me.StringSQL, actlog, INFO_STAT, actlog, "2")
             MyApplication.ShowStatus(LogMsg, INFO_STAT)
         End If
         Me.StringSQL = ""
@@ -285,12 +285,13 @@ Public Class CDataAcces 'Name dari Class yang dibuat.
         Return rowCountAffected
     End Function
 
-    Public Function IfKeyExist(Optional keyvalue As String = "") As Boolean
+    Public Overridable Function IfKeyExist(Optional keyvalue As String = "") As Boolean
         'BeginTrans("attempting fetch data, please wait ... ") 'begin transaction
         Try
             If Me.mCONN.State = ConnectionState.Closed Then Me.mCONN.Open()
             cmd.Connection = mCONN
-            cmd.CommandText = IIf(String.IsNullOrEmpty(StringSQL), "SELECT COUNT(*) FROM " & TableName & " WHERE " & PrimaryKey & "='" & keyvalue & "'", StringSQL)
+            cmd.CommandText = IIf(String.IsNullOrEmpty(StringSQL), "SELECT COUNT(*) FROM " & TableName & _
+                                  " WHERE " & PrimaryKey & "='" & keyvalue & "'", StringSQL)
             rowCountAffected = cmd.ExecuteScalar() 'returns the number of rows affected. 
             'Me.mCONN.Close()
 

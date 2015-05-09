@@ -335,7 +335,7 @@
         'FDataTanamanAdd.statmsg.Text = "Jensi Tanaman yang di pilih " & Convert.ToString(DataGridView1.SelectedColumns("mmtrname"))
         FDataBibitTanamanAdd.txtJnsTanaman.Text = CStr(DataGridView1.Rows(e.RowIndex).Cells("mmtrhname").Value())
         FDataBibitTanamanAdd.txtMmtrhid.Text = CStr(DataGridView1.Rows(e.RowIndex).Cells("mmtrhid").Value())
-        FDataBibitTanamanAdd.statmsg.Text = CStr(DataGridView1.Rows(e.RowIndex).Cells("mmtrhname").Value())
+        'FDataBibitTanamanAdd.statmsg.Text = CStr(DataGridView1.Rows(e.RowIndex).Cells("mmtrhname").Value())
 
         Me.Close()
     End Sub

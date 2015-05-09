@@ -237,7 +237,7 @@
         If getCountSelectedData() > 0 Then
             FJensiTanamanAdd.txtid.Text = CStr(DataGridView1.Rows(getRowIndexSelected()).Cells("mmtrhid").Value)
             FJensiTanamanAdd.TextBox1.Text = CStr(DataGridView1.Rows(getRowIndexSelected()).Cells("mmtrhname").Value)
-            FJensiTanamanAdd.Show()
+            FJensiTanamanAdd.ShowDialog()
         Else
             MyApplication.ShowStatus("No data is selected", NOTICE_STAT)
         End If
@@ -335,7 +335,7 @@
         'FDataTanamanAdd.statmsg.Text = "Jensi Tanaman yang di pilih " & Convert.ToString(DataGridView1.SelectedColumns("mmtrname"))
         FDataTanamanAdd.txtJnsTanaman.Text = CStr(DataGridView1.Rows(e.RowIndex).Cells("mmtrhname").Value())
         FDataTanamanAdd.txtMmtrhid.Text = CStr(DataGridView1.Rows(e.RowIndex).Cells("mmtrhid").Value())
-        FDataTanamanAdd.statmsg.Text = CStr(DataGridView1.Rows(e.RowIndex).Cells("mmtrhname").Value())
+        'FDataTanamanAdd.statmsg.Text = CStr(DataGridView1.Rows(e.RowIndex).Cells("mmtrhname").Value())
 
         Me.Close()
     End Sub

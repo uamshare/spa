@@ -111,6 +111,7 @@ Partial Class FJensiTanamanAdd
         Me.MaximizeBox = False
         Me.MinimizeBox = False
         Me.Name = "FJensiTanamanAdd"
+        Me.ShowInTaskbar = False
         Me.Text = "Jenis Tanaman"
         Me.StatusStrip1.ResumeLayout(False)
         Me.StatusStrip1.PerformLayout()

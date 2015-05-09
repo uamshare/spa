@@ -43,6 +43,7 @@ Partial Class FDataBibitTanamanAdd
         Me.txtMmtrg1 = New System.Windows.Forms.TextBox()
         Me.txtMmtrhid = New System.Windows.Forms.TextBox()
         Me.txtKeyID2 = New System.Windows.Forms.TextBox()
+        Me.Tunique = New System.Windows.Forms.TextBox()
         Me.StatusStrip1.SuspendLayout()
         Me.SuspendLayout()
         '
@@ -263,12 +264,21 @@ Partial Class FDataBibitTanamanAdd
         Me.txtKeyID2.TabIndex = 19
         Me.txtKeyID2.Visible = False
         '
+        'Tunique
+        '
+        Me.Tunique.Location = New System.Drawing.Point(395, 42)
+        Me.Tunique.Name = "Tunique"
+        Me.Tunique.Size = New System.Drawing.Size(100, 23)
+        Me.Tunique.TabIndex = 20
+        Me.Tunique.Visible = False
+        '
         'FDataBibitTanamanAdd
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(8.0!, 16.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.CancelButton = Me.btnBatal
         Me.ClientSize = New System.Drawing.Size(541, 249)
+        Me.Controls.Add(Me.Tunique)
         Me.Controls.Add(Me.txtKeyID2)
         Me.Controls.Add(Me.txtMmtrhid)
         Me.Controls.Add(Me.txtMmtrg1)
@@ -294,6 +304,7 @@ Partial Class FDataBibitTanamanAdd
         Me.MaximizeBox = False
         Me.MinimizeBox = False
         Me.Name = "FDataBibitTanamanAdd"
+        Me.ShowInTaskbar = False
         Me.Text = "Data Tanaman Masuk"
         Me.StatusStrip1.ResumeLayout(False)
         Me.StatusStrip1.PerformLayout()
@@ -322,4 +333,5 @@ Partial Class FDataBibitTanamanAdd
     Friend WithEvents txtMmtrg1 As System.Windows.Forms.TextBox
     Friend WithEvents txtMmtrhid As System.Windows.Forms.TextBox
     Friend WithEvents txtKeyID2 As System.Windows.Forms.TextBox
+    Friend WithEvents Tunique As System.Windows.Forms.TextBox
 End Class

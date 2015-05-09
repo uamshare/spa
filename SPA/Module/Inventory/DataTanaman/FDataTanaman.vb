@@ -82,16 +82,16 @@ Public Class FDataTanaman
                 .Columns("PrimaryKey").Visible = False
                 .Columns("mmtrg").Visible = False
 
-                '.Columns("groupid").Visible = False
-                '.Columns("groupname").HeaderText = "Group Name"
-                '.Columns("groupaktive").HeaderText = "Status"
-
                 .RowHeadersWidth = 75
                 .Columns("mmtrid").Width = 100
                 .Columns("mmtrname").Width = 200
                 .Columns("polybag").Width = 75
+                .Columns("polybag").DefaultCellStyle().Alignment = DataGridViewContentAlignment.MiddleCenter
                 .Columns("mmtrunit").Width = 100
                 .Columns("mmtrprice").Width = 100
+                .Columns("mmtrprice").DefaultCellStyle().Alignment = DataGridViewContentAlignment.MiddleRight
+                .Columns("mmtrprice").DefaultCellStyle().Format = "##,##0"
+                .Columns("mmtrprice").ValueType = GetType(Decimal)
 
                 .Refresh()
                 If .RowCount > 0 Then
@@ -215,6 +215,10 @@ Public Class FDataTanaman
 
     Private Sub ToolEdit_Click(sender As Object, e As EventArgs) Handles ToolEdit.Click
         If getCountSelectedData() > 0 Then
+            FDataTanamanAdd.isEdit = True
+
+            FDataTanamanAdd.Tunique.Text = "3" & Strings.Right(CStr(DataGridViewTanaman.Rows(getRowIndexSelected()).Cells("mmtrid").Value), 3) & _
+                                                CStr(DataGridViewTanaman.Rows(getRowIndexSelected()).Cells("mmtrhid").Value)
             FDataTanamanAdd.txtMmtrhid.Text = CStr(DataGridViewTanaman.Rows(getRowIndexSelected()).Cells("mmtrhid").Value)
             FDataTanamanAdd.txtJnsTanaman.Text = CStr(DataGridViewTanaman.Rows(getRowIndexSelected()).Cells("mmtrname").Value)
             FDataTanamanAdd.txtKeyID.Text = CStr(DataGridViewTanaman.Rows(getRowIndexSelected()).Cells("PrimaryKey").Value)
@@ -223,7 +227,7 @@ Public Class FDataTanaman
             FDataTanamanAdd.txtKode.Text = Strings.Left(CStr(DataGridViewTanaman.Rows(getRowIndexSelected()).Cells("mmtrid").Value), 5)
             FDataTanamanAdd.txtKode3.Text = Strings.Right(CStr(DataGridViewTanaman.Rows(getRowIndexSelected()).Cells("mmtrid").Value), 3)
             FDataTanamanAdd.txtSatuan.Text = CStr(DataGridViewTanaman.Rows(getRowIndexSelected()).Cells("mmtrunit").Value)
-            FDataTanamanAdd.txtHarga.Text = Convert.ToString(DataGridViewTanaman.Rows(getRowIndexSelected()).Cells("mmtrprice").Value)
+            FDataTanamanAdd.txtHarga.Text = Format(DataGridViewTanaman.Rows(getRowIndexSelected()).Cells("mmtrprice").Value, "##,##0")
             FDataTanamanAdd.Show()
         Else
             MyApplication.ShowStatus("No data is selected", NOTICE_STAT)
@@ -238,6 +242,7 @@ Public Class FDataTanaman
         FDataTanamanAdd.txtSatuan.Clear()
         FDataTanamanAdd.txtMmtrg.Clear()
         FDataTanamanAdd.txtHarga.Text = 0
+        FDataTanamanAdd.isEdit = False
         FDataTanamanAdd.ShowDialog()
     End Sub
 
@@ -374,8 +379,6 @@ Public Class FDataTanaman
     End Sub
 
     Private Sub toolImport_Click(sender As Object, e As EventArgs) Handles toolPrint.Click
-
-
         Try
             Dim xlApp As Microsoft.Office.Interop.Excel.Application
             Dim xlWorkBook As Microsoft.Office.Interop.Excel.Workbook

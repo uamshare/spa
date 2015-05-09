@@ -139,7 +139,7 @@ Partial Class FjensiTanaman
         '
         Me.ToolTextFind.Alignment = System.Windows.Forms.ToolStripItemAlignment.Right
         Me.ToolTextFind.Name = "ToolTextFind"
-        Me.ToolTextFind.Size = New System.Drawing.Size(250, 39)
+        Me.ToolTextFind.Size = New System.Drawing.Size(250, 23)
         '
         'ToolStripButton1
         '
@@ -282,6 +282,7 @@ Partial Class FjensiTanaman
         Me.ClientSize = New System.Drawing.Size(508, 574)
         Me.Controls.Add(Me.Panelbarang)
         Me.Name = "FjensiTanaman"
+        Me.ShowInTaskbar = False
         Me.Text = "Jenis Tanaman"
         Me.Toolbarang.ResumeLayout(False)
         Me.Toolbarang.PerformLayout()

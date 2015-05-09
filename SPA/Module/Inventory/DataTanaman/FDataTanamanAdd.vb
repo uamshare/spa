@@ -1,5 +1,6 @@
 ﻿Public Class FDataTanamanAdd
     Private Model As New MTanaman
+    Public isEdit As Boolean = False
 
     Private Sub btnSimpan_Click(sender As Object, e As EventArgs) Handles btnSimpan.Click
         'MessageBox.Show(Model.EscapeString(TextBox1.Text))
@@ -15,7 +16,8 @@
             Model.mmtrunit = txtSatuan.Text
             Model.mmtrprice = Convert.ToDouble(txtHarga.Text)
             Model.mmtrid = txtKode.Text + txtKode2.Text + txtKode3.Text
-            If txtMmtrg.Text <> "" Then
+            'If txtMmtrg.Text <> "" Then
+            If isEdit Then
                 res = Model.UpdateData()
                 'MyApplication.ShowStatus("Data has been updated")
             Else
@@ -50,7 +52,36 @@
         Me.Close()
     End Sub
 
+    Private Sub cmbPolybag_Leave(sender As Object, e As EventArgs) Handles cmbPolybag.Leave
+        Dim keyunique As String = txtKode2.Text + txtKode3.Text + txtMmtrhid.Text
+        If Not isEdit Then
+            If Not Model.IfKeyExist(keyunique) Then
+                statmsg.Text = ""
+                statmsg.ForeColor = Color.Green
+            Else
+                statmsg.Text = "Silahkan pilih Polybag yang lain."
+                statmsg.ForeColor = Color.DarkRed
+                txtKode3.Text = ""
+                cmbPolybag.Focus()
+            End If
+        ElseIf keyunique <> Tunique.Text Then
+            If Not Model.IfKeyExist(keyunique) Then
+                statmsg.Text = ""
+                statmsg.ForeColor = Color.Green
+            Else
+                statmsg.Text = "Silahkan pilih Polybag yang lain."
+                statmsg.ForeColor = Color.DarkRed
+                txtKode3.Text = ""
+                cmbPolybag.Focus()
+            End If
+        Else
+            statmsg.Text = ""
+            statmsg.ForeColor = Color.Green
+        End If
+    End Sub
     Private Sub cmbPolybag_SelectedIndexChanged(sender As Object, e As EventArgs) Handles cmbPolybag.SelectedIndexChanged
+        statmsg.Text = ""
+        statmsg.ForeColor = Color.Green
         If cmbPolybag.SelectedItem = "P25" Then
             txtKode3.Text = "025"
         ElseIf cmbPolybag.SelectedItem = "P35" Then
@@ -61,8 +92,8 @@
             txtKode3.Text = "080"
         Else
             txtKode3.Text = "150"
-
         End If
+        cmbPolybag_Leave(sender, e)
     End Sub
 
     Private Sub txtHarga_KeyPress(sender As Object, e As KeyPressEventArgs) Handles txtHarga.KeyPress
@@ -89,7 +120,7 @@
 
         If txtMmtrg.Text = "" Then
             If Not Model.IfKeyExist(mmtrid) Then
-                statmsg.Text = "Kode Valid"
+                statmsg.Text = ""
                 statmsg.ForeColor = Color.Green
             Else
                 statmsg.Text = "Kode sudah ada, silahkan masukan kode yang lain."
@@ -137,6 +168,32 @@
                 DataIsValid = True
             End If
         End If
+        Dim keyunique As String = txtKode2.Text + txtKode3.Text + txtMmtrhid.Text
+        If Not isEdit Then
+            If Not Model.IfKeyExist(keyunique) Then
+                statmsg.Text = ""
+                statmsg.ForeColor = Color.Green
+            Else
+                statmsg.Text = "Silahkan pilih Polybag yang lain."
+                statmsg.ForeColor = Color.DarkRed
+                txtKode3.Text = ""
+                cmbPolybag.Focus()
+                DataIsValid = False
+            End If
+        ElseIf keyunique <> Tunique.Text Then
+            If Not Model.IfKeyExist(keyunique) Then
+                statmsg.Text = ""
+                statmsg.ForeColor = Color.Green
+            Else
+                statmsg.Text = "Silahkan pilih Polybag yang lain."
+                statmsg.ForeColor = Color.DarkRed
+                txtKode3.Text = ""
+                cmbPolybag.Focus()
+                DataIsValid = False
+                Exit Function
+            End If
+        End If
+
         If txtJnsTanaman.Text = "" Then
             'MessageBox.Show("User group cannot be empty")
             statmsg.Text = "Jenis Tanaman tidak boleh kosong !"
@@ -172,4 +229,8 @@
 
         Return DataIsValid
     End Function
+
+    Private Sub txtHarga_Validated(sender As Object, e As EventArgs) Handles txtHarga.Validated
+        txtHarga.Text = Format(CDec(txtHarga.Text), "##,##0")
+    End Sub
 End Class

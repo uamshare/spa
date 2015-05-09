@@ -15,13 +15,13 @@ Public Class MBibitTanaman
     Public GetKey2 As String
     Private Key As String
 
+    Private ViewTableName As String
 
-
-    Sub New()
+    Sub New(Optional ViewTableName As String = "material_raw")
         MyBase.New()
-
-        BaseQuery = "SELECT mmtrhid,mmtrid,mmtrname,polybag,mmtrunit,mmtrprice,mmtrg, CONCAT(mmtrid, CONVERT(mmtrg, CHAR)) AS PrimaryKey FROM material_raw"
-        SelectQuery = "SELECT mmtrhid,mmtrid,mmtrname,polybag,mmtrunit,mmtrprice,mmtrg, CONCAT(mmtrid, CONVERT(mmtrg, CHAR)) AS PrimaryKey FROM material_raw"
+        Me.ViewTableName = ViewTableName
+        BaseQuery = "SELECT mmtrhid,mmtrid,mmtrname,polybag,ifnull(mmtrunit,'') as mmtrunit,mmtrprice,mmtrg, CONCAT(mmtrid, CONVERT(mmtrg, CHAR)) AS PrimaryKey FROM material_raw"
+        SelectQuery = "SELECT mmtrhid,mmtrid,mmtrname,polybag,ifnull(mmtrunit,'') as mmtrunit,mmtrprice,mmtrg, CONCAT(mmtrid, CONVERT(mmtrg, CHAR)) AS PrimaryKey FROM material_raw"
         TableName = "mmtr"
 
         PrimaryKey = "mmtrid"
@@ -72,43 +72,70 @@ Public Class MBibitTanaman
     End Function
 
     Function MultipleDeleteData1(ByVal ids() As String) As Integer
-        BeginTrans("attempting delete data, please wait ... ") 'begin transaction
         Try
+            BeginTrans("Persiapan untuk menghapus data, silahkan tunggu sebentar ... ") 'begin transaction
             cmd.Connection = PCONN
             'cmd.Prepare()
+            Me.StringSQL = ""
             If IsArray(ids) And ids.Length > 0 Then
                 For Each GetKey1 As String In ids
                     If Not String.IsNullOrEmpty(GetKey1) Then
-                        Me.StringSQL = "DELETE FROM " & TableName + " WHERE CONCAT(mmtrid, CONVERT(mmtrg, CHAR)) = '" & GetKey1 & "' "
-                        cmd.CommandText = Me.StringSQL
-                        rowCountAffected += cmd.ExecuteNonQuery()
+                        Me.StringSQL = Me.StringSQL & "DELETE FROM " & TableName + " WHERE CONCAT(mmtrid, CONVERT(mmtrg, CHAR)) = '" & GetKey1 & "';"
                     End If
                 Next
+                'If Not String.IsNullOrEmpty(Me.StringSQL) Then
+                '    Me.StringSQL = Me.StringSQL.Substring(0, Me.StringSQL.Length - 1)
+                'End If
             End If
+
+            'Console.WriteLine(Me.StringSQL)
+            cmd.CommandText = Me.StringSQL
+            rowCountAffected += cmd.ExecuteNonQuery()
+            CommitTrans("Data telah terhapus ", "delete") 'Commit All Transaction
         Catch ex As MySql.Data.MySqlClient.MySqlException
-            MyApplication.ShowStatus("Error " & ex.Number & " has occurred: " & ex.Message, ERROR_STAT, True, 10000)
+            RollbackTrans("Terjadi kesalahan saat menghapus data. No : " & ex.Number & " Pesan Kesalahan : " & ex.Message, "delete")
+            Return Nothing
+        Catch ex As Exception
+            RollbackTrans("Terjadi kesalahan saat menghapus data : " & ex.Message, "delete")
+            Return Nothing
         End Try
-        CommitTrans(" data have been deleted ") 'Commit All Transaction
         Return rowCountAffected
     End Function
-    Function MultipleDeleteData2(ByVal ids2() As String) As Integer
-        BeginTrans("attempting delete data, please wait ... ") 'begin transaction
-        Try
-            cmd.Connection = PCONN
-            'cmd.Prepare()
-            If IsArray(ids2) And ids2.Length > 0 Then
-                For Each GetKey2 As String In ids2
-                    If Not String.IsNullOrEmpty(GetKey2) Then
-                        Me.StringSQL = "DELETE FROM " & TableName + " WHERE CONCAT(mmtrid, CONVERT(mmtrg, CHAR)) = '" & GetKey2 & "'"
-                        cmd.CommandText = Me.StringSQL
-                        rowCountAffected += cmd.ExecuteNonQuery()
-                    End If
-                Next
-            End If
-        Catch ex As MySql.Data.MySqlClient.MySqlException
-            MyApplication.ShowStatus("Error " & ex.Number & " has occurred: " & ex.Message, ERROR_STAT, True, 10000)
-        End Try
-        CommitTrans(" data have been deleted ") 'Commit All Transaction
-        Return rowCountAffected
+    'Function MultipleDeleteData2(ByVal ids2() As String) As Integer
+    '    Try
+    '        BeginTrans("attempting delete data, please wait ... ") 'begin transaction
+    '        cmd.Connection = PCONN
+    '        'cmd.Prepare()
+    '        If IsArray(ids2) And ids2.Length > 0 Then
+    '            For Each GetKey2 As String In ids2
+    '                If Not String.IsNullOrEmpty(GetKey2) Then
+    '                    Me.StringSQL = "DELETE FROM " & TableName + " WHERE CONCAT(mmtrid, CONVERT(mmtrg, CHAR)) = '" & GetKey2 & "'"
+    '                    cmd.CommandText = Me.StringSQL
+    '                    rowCountAffected += cmd.ExecuteNonQuery()
+    '                End If
+    '            Next
+    '        End If
+
+    '        CommitTrans("Data telah terhapus ", "delete") 'Commit All Transaction
+    '    Catch ex As MySql.Data.MySqlClient.MySqlException
+    '        RollbackTrans("Terjadi kesalahan saat menghapus data. No : " & ex.Number & " Pesan Kesalahan : " & ex.Message, "delete")
+    '        Return Nothing
+    '    Catch ex As Exception
+    '        RollbackTrans("Terjadi kesalahan saat menghapus data : " & ex.Message, "delete")
+    '        Return Nothing
+    '    End Try
+    '    Return rowCountAffected
+
+    'End Function
+
+    Public Overloads Function GetRowsCount() As Integer
+        Me.StringSQL = "SELECT COUNT(*) FROM " & ViewTableName & " " & mWHERE
+        Return MyBase.GetRowsCount()
+    End Function
+    Public Overrides Function IfKeyExist(Optional keyvalue As String = "") As Boolean
+        Me.StringSQL = "SELECT COUNT(*) FROM " & TableName & _
+            " WHERE (CONCAT(SUBSTRING(mmtrid,6), CONVERT(mmtrhid, CHAR)) ='" & keyvalue & "') " & _
+            "OR " & PrimaryKey & "='" & keyvalue & "'"
+        Return MyBase.IfKeyExist()
     End Function
 End Class
