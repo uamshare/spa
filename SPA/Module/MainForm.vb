@@ -111,4 +111,12 @@ Public Class MainForm
     Private Sub menu403_Click(sender As Object, e As EventArgs) Handles menu403.Click
         LoadMdiChildForm(FAkunPosting, "menu403")
     End Sub
+
+    Private Sub menu502_Click(sender As Object, e As EventArgs) Handles menu502.Click
+        LoadMdiChildForm(FDataPengguna, "menu502")
+    End Sub
+
+    Private Sub menu503_Click(sender As Object, e As EventArgs) Handles menu503.Click
+        LoadMdiChildForm(FProfilPerusahaan, "menu503")
+    End Sub
 End Class

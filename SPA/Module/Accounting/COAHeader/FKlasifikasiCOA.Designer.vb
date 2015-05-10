@@ -239,7 +239,7 @@ Partial Class FKlasifikasiCOA
         '
         Me.ToolRefresh.Alignment = System.Windows.Forms.ToolStripItemAlignment.Right
         Me.ToolRefresh.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image
-        Me.ToolRefresh.Image = Global.SPA.My.Resources.Resources.share
+        Me.ToolRefresh.Image = Global.SPA.My.Resources.Resources.refresh1
         Me.ToolRefresh.ImageTransparentColor = System.Drawing.Color.Magenta
         Me.ToolRefresh.Name = "ToolRefresh"
         Me.ToolRefresh.Size = New System.Drawing.Size(36, 36)

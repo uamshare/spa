@@ -263,6 +263,19 @@
     <Compile Include="Module\MainForm.vb">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="Module\Setting\DataPengguna\FDataPengguna.Designer.vb">
+      <DependentUpon>FDataPengguna.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Module\Setting\DataPengguna\FDataPengguna.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Module\Setting\DataPengguna\FDataPenggunaAdd.Designer.vb">
+      <DependentUpon>FDataPenggunaAdd.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Module\Setting\DataPengguna\FDataPenggunaAdd.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Module\Setting\DataPengguna\MDataPengguna.vb" />
     <Compile Include="Module\Setting\FUserGroupAdd.Designer.vb">
       <DependentUpon>FUserGroupAdd.vb</DependentUpon>
     </Compile>
@@ -279,6 +292,13 @@
     <Compile Include="Module\Setting\MUserGroup.vb" />
     <Compile Include="Module\Setting\MUserListMenu.vb" />
     <Compile Include="Module\Setting\MUsers.vb" />
+    <Compile Include="Module\Setting\ProfilPerusahaan\FProfilPerusahaan.Designer.vb">
+      <DependentUpon>FProfilPerusahaan.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Module\Setting\ProfilPerusahaan\FProfilPerusahaan.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Module\Setting\ProfilPerusahaan\MProfilPerusahaan.vb" />
     <Compile Include="Module\SplashScreen1.Designer.vb">
       <DependentUpon>SplashScreen1.vb</DependentUpon>
     </Compile>
@@ -381,11 +401,20 @@
     <EmbeddedResource Include="Module\MainForm.resx">
       <DependentUpon>MainForm.vb</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Module\Setting\DataPengguna\FDataPengguna.resx">
+      <DependentUpon>FDataPengguna.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Module\Setting\DataPengguna\FDataPenggunaAdd.resx">
+      <DependentUpon>FDataPenggunaAdd.vb</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Module\Setting\FUserGroupAdd.resx">
       <DependentUpon>FUserGroupAdd.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Module\Setting\FUserGroup.resx">
       <DependentUpon>FUserGroup.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Module\Setting\ProfilPerusahaan\FProfilPerusahaan.resx">
+      <DependentUpon>FProfilPerusahaan.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Module\SplashScreen1.resx">
       <DependentUpon>SplashScreen1.vb</DependentUpon>
