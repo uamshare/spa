@@ -80,6 +80,7 @@ Partial Class FDataPenggunaAdd
         Me.cmbPosisi.Name = "cmbPosisi"
         Me.cmbPosisi.Size = New System.Drawing.Size(150, 24)
         Me.cmbPosisi.TabIndex = 8
+        Me.cmbPosisi.Visible = False
         '
         'Label7
         '
@@ -89,6 +90,7 @@ Partial Class FDataPenggunaAdd
         Me.Label7.Size = New System.Drawing.Size(45, 16)
         Me.Label7.TabIndex = 7
         Me.Label7.Text = "Posisi"
+        Me.Label7.Visible = False
         '
         'txtEmail
         '
