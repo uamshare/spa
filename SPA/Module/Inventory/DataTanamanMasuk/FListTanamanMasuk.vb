@@ -86,8 +86,12 @@
                 .RowHeadersWidth = 75
                 .Columns("trcvmhno").Width = 130
                 .Columns("trcvmhdt").Width = 100
+                .Columns("trcvmhdt").DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter
+                .Columns("trcvmhdt").DefaultCellStyle.Format = MyApplication.DefaultFormatDate
                 .Columns("pono").Width = 100
                 .Columns("podate").Width = 100
+                .Columns("podate").DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter
+                .Columns("podate").DefaultCellStyle.Format = MyApplication.DefaultFormatDate
                 .Columns("supplier").Width = 300
                 .Refresh()
 
@@ -138,7 +142,7 @@
 
                 FTanamanMasuk.ButtonAdd.Enabled = False
                 FTanamanMasuk.ButtonSave.Enabled = True
-                FTanamanMasuk.ButtonDel.Enabled = False
+                FTanamanMasuk.ButtonDel.Enabled = True
                 FTanamanMasuk.ButtonPrint.Enabled = False
                 FTanamanMasuk.ButtonCancel.Enabled = True
                 FTanamanMasuk.ButtonH.Enabled = True
@@ -301,5 +305,4 @@
     Private Sub ToolCheck_Click(sender As Object, e As EventArgs) Handles ToolCheck.Click
         DataGridView1_CellContentDoubleClick(sender, Nothing)
     End Sub
-
 End Class

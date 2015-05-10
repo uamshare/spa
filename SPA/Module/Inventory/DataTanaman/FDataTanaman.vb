@@ -78,7 +78,7 @@ Public Class FDataTanaman
                 .Columns("mmtrname").HeaderText = "Jenis Tanaman"
                 .Columns("polybag").HeaderText = "Polybag"
                 .Columns("mmtrunit").HeaderText = "Satuan"
-                .Columns("mmtrprice").HeaderText = "Harga"
+                .Columns("mmtrprice").HeaderText = "Harga Jual"
                 .Columns("PrimaryKey").Visible = False
                 .Columns("mmtrg").Visible = False
 

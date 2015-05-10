@@ -50,6 +50,12 @@
                 txt.Text = ""
             End If
         Next
+        For Each ctrl As Control In PanelFooter.Controls
+            If (ctrl.GetType() Is GetType(TextBox)) Then
+                Dim txt As TextBox = CType(ctrl, TextBox)
+                txt.Text = ""
+            End If
+        Next
         DateTimePicker1.Value = Format(Date.Now)
         DateTimePicker2.Value = Format(Date.Now)
     End Sub
@@ -119,7 +125,7 @@
             btn.UseColumnTextForButtonValue = True
             btn.Width = 35
 
-            .ColumnCount = 9
+            .ColumnCount = 11
             '.Columns(1).Name = "mmtrid"
             '.Columns("mmtrid").HeaderText = "Kode"
             .Columns(3).Name = "mmtrhname"
@@ -142,6 +148,26 @@
                 .DefaultCellStyle().Format = "yyyy/MM/dd H:mm:ss"
                 .ValueType = GetType(Date)
             End With
+            .Columns(9).Name = "oldhpp"
+            .Columns("oldhpp").HeaderText = "OLD HPP"
+            .Columns("oldhpp").Visible = False
+            With .Columns("oldhpp")
+                .Width = 120
+                .DefaultCellStyle().Alignment = 64 'DataGridViewContentAlignment.MiddleRight
+                .HeaderCell.Style.Alignment = 64
+                .DefaultCellStyle().Format = "##,000"
+                .ValueType = GetType(Decimal)
+            End With
+            .Columns(10).Name = "hpp"
+            .Columns("hpp").HeaderText = "HPP / Unit"
+            .Columns("hpp").Visible = False
+            With .Columns("hpp")
+                .Width = 120
+                .DefaultCellStyle().Alignment = 64 'DataGridViewContentAlignment.MiddleRight
+                .HeaderCell.Style.Alignment = 64
+                .DefaultCellStyle().Format = "##,000"
+                .ValueType = GetType(Decimal)
+            End With
 
             With .Columns("mmtrid")
                 .Width = 100
@@ -157,7 +183,7 @@
                 .DefaultCellStyle().Alignment = 64 'DataGridViewContentAlignment.MiddleRight
                 .HeaderCell.Style.Alignment = 64
                 .DefaultCellStyle().Format = "##,000"
-                .ValueType = GetType(Integer)
+                .ValueType = GetType(Decimal)
             End With
 
             With .Columns("price")
@@ -165,7 +191,7 @@
                 .DefaultCellStyle().Alignment = 64 'DataGridViewContentAlignment.MiddleRight
                 .HeaderCell.Style.Alignment = 64
                 .DefaultCellStyle().Format = "##,000"
-                .ValueType = GetType(Integer)
+                .ValueType = GetType(Decimal)
             End With
             With .Columns("subtotal")
                 .Width = 120
@@ -209,14 +235,23 @@
             If e.RowIndex > -1 And e.ColumnIndex > -1 Then
                 If {"qty", "price", "subtotal"}.Contains(DataGridView1.Columns(e.ColumnIndex).Name) Then
                     Dim jml, qty, price As Decimal
+                    Dim hpp, oldhpp As Decimal
                     qty = CDec(DataGridView1.Rows(e.RowIndex).Cells("qty").Value)
                     price = CDec(DataGridView1.Rows(e.RowIndex).Cells("price").Value)
+                    oldhpp = CDec(DataGridView1.Rows(e.RowIndex).Cells("oldhpp").Value)
                     jml = qty * price
+                    If oldhpp > 0 And price > 0 Then
+                        hpp = (price + oldhpp) / 2
+                    Else
+                        hpp = IIf(price > 0, price, oldhpp)
+                    End If
 
                     Dim cvalue = Format(CDec(DataGridView1.Rows(e.RowIndex).Cells(e.ColumnIndex).Value), "##,##0")
                     DataGridView1.Rows(e.RowIndex).Cells(e.ColumnIndex).Value = cvalue
                     DataGridView1.Rows(e.RowIndex).Cells("subtotal").Value = Format(jml, "##,##0")
+                    DataGridView1.Rows(e.RowIndex).Cells("hpp").Value = hpp
                     'MsgBox(jml)
+                    SetSummaryField()
                 End If
                 If DataGridView1.Columns(e.ColumnIndex).Name = "mmtrid" Then
                     If CekDuplicateID(DataGridView1.Rows(e.RowIndex).Cells("mmtrid").Value, e.RowIndex) Then
@@ -225,9 +260,11 @@
                             If dat("mmtrid") = DataGridView1.Rows(e.RowIndex).Cells("mmtrid").Value Then
                                 DataGridView1.Rows(e.RowIndex).Cells("mmtrhname").Value = dat("mmtrname") 'ListDataTanaman(1)("mmtrname")
                                 DataGridView1.Rows(e.RowIndex).Cells("polybag").Value = dat("polybag") 'ListDataTanaman(1)("mmtrname")
-                                DataGridView1.Rows(e.RowIndex).Cells("price").Value = 0
+                                DataGridView1.Rows(e.RowIndex).Cells("price").Value = CDec(dat("hpp"))
                                 'DataGridView1.Rows(e.RowIndex).Cells("qty").Value = IIf(DataGridView1.Rows(e.RowIndex).Cells("qty").Value.ToString.Length > 0, CDec(DataGridView1.Rows(e.RowIndex).Cells("qty").Value), 0)
                                 'DataGridView1.Rows(e.RowIndex).Cells("price").Selected = True
+                                DataGridView1.Rows(e.RowIndex).Cells("oldhpp").Value = CDec(dat("hpp"))
+                                DataGridView1.Rows(e.RowIndex).Cells("hpp").Value = CDec(dat("hpp"))
                             End If
                         Next
                     Else
@@ -244,6 +281,22 @@
         Catch ex As Exception
             MyApplication.ShowStatus(ex.Message & vbCrLf & ex.StackTrace, WARNING_STAT)
         End Try
+    End Sub
+    Private Sub SetSummaryField()
+        Dim nilpembelian As Decimal = 0
+        Dim nilhpp As Decimal = 0
+        For Each row As DataGridViewRow In DataGridView1.Rows
+            If Not row.IsNewRow Then
+                Dim qty As Decimal = CDec(row.Cells("qty").Value)
+                Dim hpp As Decimal = CDec(row.Cells("hpp").Value)
+                Dim jmlhpp As Decimal = qty * hpp
+
+                nilpembelian = nilpembelian + CDec(row.Cells("subtotal").Value)
+                nilhpp = nilhpp + jmlhpp
+            End If
+        Next
+        txtsum1.Text = Format(nilpembelian, "##,##0")
+        txtsum2.Text = Format(nilhpp, "##,##0")
     End Sub
     Private Function CekDuplicateID(mmtrid As String, rowindex As Integer) As Boolean
         Try
@@ -367,15 +420,14 @@
 #End Region
     Private Sub FTanamanMasuk_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         DateTimePicker1.Format = DateTimePickerFormat.Custom
-        DateTimePicker1.CustomFormat = "dd-MM-yyyy"
+        DateTimePicker1.CustomFormat = MyApplication.DefaultFormatDate
         DateTimePicker2.Format = DateTimePickerFormat.Custom
-        DateTimePicker2.CustomFormat = "dd-MM-yyyy"
+        DateTimePicker2.CustomFormat = MyApplication.DefaultFormatDate
 
         InitializeDataGridView()
         init()
         'MessageBox.Show(Format(Date.Now, "yyyy/MM/dd H:mm:ss"))
     End Sub
-
     Private Sub ButtonAdd_Click(sender As Object, e As EventArgs) Handles ButtonAdd.Click
         ClearControll()
         ActiveControll()
@@ -390,8 +442,8 @@
         ToolDelete.Enabled = True
         TxtNo.Text = ModelH.getAutoNo
         TextBox1.Focus()
+        isEdit = False
     End Sub
-
     Private Sub ButtonSave_Click(sender As Object, e As EventArgs) Handles ButtonSave.Click
         Dim Formvalid As Boolean = True
         If TxtNo.Text = "" Then
@@ -409,20 +461,32 @@
             ModelD.trcvmhno = ModelH.EscapeString(TxtNo.Text)
             ModelD.trcvmhdt = ModelH.EscapeString(Format(DateTimePicker1.Value, "yyyy/MM/dd"))
             ModelD.pono = ModelH.EscapeString(TextBox1.Text)
-            ModelD.podate = ModelH.EscapeString(Format(DateTimePicker2.Value, "yyyy/MM/dd"))
+            If Not String.IsNullOrEmpty(ModelD.pono) Then
+                ModelD.podate = ModelH.EscapeString(Format(DateTimePicker2.Value, "yyyy/MM/dd"))
+            End If
+
             ModelD.supplier = ModelH.EscapeString(TextBox3.Text)
+            ModelD.bookvalue = ModelH.EscapeString(txtsum2.Text) 'for posting to General Ledger
 
             Dim ListDetail As New List(Of Dictionary(Of String, Object))
             For Each row In DataGridView1.Rows
                 Dim dict As New Dictionary(Of String, Object)
                 If Not row.IsNewRow Then
-                    dict.Add("trcvmhno", ModelH.trcvmhno)
-                    dict.Add("mmtrid", row.Cells("mmtrid").Value)
-                    dict.Add("trcvmdqty", CDec(row.Cells("qty").Value))
-                    dict.Add("trcvmdprice", CDec(row.Cells("price").Value))
-                    dict.Add("dtcreated", row.Cells("dtcreated").FormattedValue)
-                    'MsgBox(row.Cells("dtcreated").FormattedValue)
-                    ListDetail.Add(dict)
+                    If Not String.IsNullOrEmpty(row.Cells("mmtrid").Value.ToString) And _
+                        (CDec(row.Cells("qty").Value) > 0 And CDec(row.Cells("price").Value) > 0) Then
+                        dict.Add("trcvmhno", ModelH.trcvmhno)
+                        dict.Add("mmtrid", row.Cells("mmtrid").Value)
+                        dict.Add("trcvmdqty", CDec(row.Cells("qty").Value))
+                        dict.Add("trcvmdprice", CDec(row.Cells("price").Value))
+                        dict.Add("dtcreated", row.Cells("dtcreated").FormattedValue)
+
+                        dict.Add("hpp", CDec(row.Cells("hpp").Value)) 'for set HPP Value / unit
+                        'MsgBox(row.Cells("dtcreated").FormattedValue)
+                        ListDetail.Add(dict)
+                    Else
+                        MyApplication.ShowStatus("Qty / Harga tidak boleh '0'", NOTICE_STAT)
+                        Exit Sub
+                    End If
                 End If
             Next
 
@@ -436,15 +500,16 @@
             init()
         End If
     End Sub
-
     Private Sub ButtonDel_Click(sender As Object, e As EventArgs) Handles ButtonDel.Click
-
+        Dim dr As DialogResult = MessageBox.Show("Anda yakin akan menghpuas data ini?", "Konfirmasi", MessageBoxButtons.YesNo, MessageBoxIcon.Question)
+        If dr = Windows.Forms.DialogResult.Yes Then
+            ModelD.DeleteData(ModelH.EscapeString(TxtNo.Text))
+            init()
+        End If
     End Sub
-
     Private Sub ButtonPrint_Click(sender As Object, e As EventArgs) Handles ButtonPrint.Click
 
     End Sub
-
     Private Sub ButtonCancel_Click(sender As Object, e As EventArgs) Handles ButtonCancel.Click
         init()
     End Sub

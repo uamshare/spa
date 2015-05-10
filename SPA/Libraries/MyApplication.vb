@@ -7,6 +7,7 @@ Module MyApplication
     Public Const WARNING_STAT As String = "Warning"
     Public Const INFO_STAT As String = "Information"
 
+    Public Const DefaultFormatDate = "dd-MM-yyyy"
 
     'Public PUSERID As Integer = 1
     Sub Main()

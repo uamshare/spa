@@ -259,6 +259,7 @@
     <Compile Include="Module\Inventory\FListTanaman.vb">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="Module\Inventory\Mhpp.vb" />
     <Compile Include="Module\Inventory\Rstockm.vb" />
     <Compile Include="Module\MainForm.Designer.vb">
       <DependentUpon>MainForm.vb</DependentUpon>

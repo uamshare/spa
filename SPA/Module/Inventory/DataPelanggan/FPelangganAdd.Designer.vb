@@ -136,7 +136,7 @@ Partial Class FPelangganAdd
         Me.GroupBox1.Location = New System.Drawing.Point(404, 6)
         Me.GroupBox1.Name = "GroupBox1"
         Me.GroupBox1.Size = New System.Drawing.Size(385, 233)
-        Me.GroupBox1.TabIndex = 8
+        Me.GroupBox1.TabIndex = 10
         Me.GroupBox1.TabStop = False
         Me.GroupBox1.Text = "Alamat Pelanggan"
         '
@@ -146,7 +146,7 @@ Partial Class FPelangganAdd
         Me.txtAddr5.MaxLength = 35
         Me.txtAddr5.Name = "txtAddr5"
         Me.txtAddr5.Size = New System.Drawing.Size(248, 22)
-        Me.txtAddr5.TabIndex = 15
+        Me.txtAddr5.TabIndex = 11
         '
         'txtAddr4
         '
@@ -154,7 +154,7 @@ Partial Class FPelangganAdd
         Me.txtAddr4.MaxLength = 35
         Me.txtAddr4.Name = "txtAddr4"
         Me.txtAddr4.Size = New System.Drawing.Size(248, 22)
-        Me.txtAddr4.TabIndex = 14
+        Me.txtAddr4.TabIndex = 10
         '
         'txtAddr3
         '
@@ -162,7 +162,7 @@ Partial Class FPelangganAdd
         Me.txtAddr3.MaxLength = 35
         Me.txtAddr3.Name = "txtAddr3"
         Me.txtAddr3.Size = New System.Drawing.Size(248, 22)
-        Me.txtAddr3.TabIndex = 13
+        Me.txtAddr3.TabIndex = 9
         '
         'txtAddr2
         '
@@ -170,7 +170,7 @@ Partial Class FPelangganAdd
         Me.txtAddr2.MaxLength = 35
         Me.txtAddr2.Name = "txtAddr2"
         Me.txtAddr2.Size = New System.Drawing.Size(248, 22)
-        Me.txtAddr2.TabIndex = 12
+        Me.txtAddr2.TabIndex = 8
         '
         'txtAddr1
         '
@@ -179,7 +179,7 @@ Partial Class FPelangganAdd
         Me.txtAddr1.Multiline = True
         Me.txtAddr1.Name = "txtAddr1"
         Me.txtAddr1.Size = New System.Drawing.Size(248, 81)
-        Me.txtAddr1.TabIndex = 11
+        Me.txtAddr1.TabIndex = 7
         '
         'Label10
         '
@@ -235,7 +235,7 @@ Partial Class FPelangganAdd
         Me.txtNPWP.MaxLength = 25
         Me.txtNPWP.Name = "txtNPWP"
         Me.txtNPWP.Size = New System.Drawing.Size(171, 22)
-        Me.txtNPWP.TabIndex = 10
+        Me.txtNPWP.TabIndex = 6
         '
         'txtEmail
         '
@@ -243,7 +243,7 @@ Partial Class FPelangganAdd
         Me.txtEmail.MaxLength = 25
         Me.txtEmail.Name = "txtEmail"
         Me.txtEmail.Size = New System.Drawing.Size(245, 22)
-        Me.txtEmail.TabIndex = 9
+        Me.txtEmail.TabIndex = 5
         '
         'txtFax
         '
@@ -251,7 +251,7 @@ Partial Class FPelangganAdd
         Me.txtFax.MaxLength = 15
         Me.txtFax.Name = "txtFax"
         Me.txtFax.Size = New System.Drawing.Size(139, 22)
-        Me.txtFax.TabIndex = 8
+        Me.txtFax.TabIndex = 4
         '
         'txtPhone2
         '
@@ -259,7 +259,7 @@ Partial Class FPelangganAdd
         Me.txtPhone2.MaxLength = 15
         Me.txtPhone2.Name = "txtPhone2"
         Me.txtPhone2.Size = New System.Drawing.Size(122, 22)
-        Me.txtPhone2.TabIndex = 7
+        Me.txtPhone2.TabIndex = 3
         '
         'txtPhone1
         '
@@ -267,7 +267,7 @@ Partial Class FPelangganAdd
         Me.txtPhone1.MaxLength = 15
         Me.txtPhone1.Name = "txtPhone1"
         Me.txtPhone1.Size = New System.Drawing.Size(122, 22)
-        Me.txtPhone1.TabIndex = 6
+        Me.txtPhone1.TabIndex = 2
         '
         'txtNama
         '
@@ -275,7 +275,7 @@ Partial Class FPelangganAdd
         Me.txtNama.MaxLength = 35
         Me.txtNama.Name = "txtNama"
         Me.txtNama.Size = New System.Drawing.Size(245, 22)
-        Me.txtNama.TabIndex = 5
+        Me.txtNama.TabIndex = 1
         '
         'btnSimpan
         '
@@ -283,7 +283,7 @@ Partial Class FPelangganAdd
         Me.btnSimpan.Location = New System.Drawing.Point(604, 248)
         Me.btnSimpan.Name = "btnSimpan"
         Me.btnSimpan.Size = New System.Drawing.Size(88, 31)
-        Me.btnSimpan.TabIndex = 10
+        Me.btnSimpan.TabIndex = 12
         Me.btnSimpan.Text = "Simpan"
         Me.btnSimpan.UseVisualStyleBackColor = True
         '
@@ -293,7 +293,7 @@ Partial Class FPelangganAdd
         Me.btnBatal.Location = New System.Drawing.Point(699, 247)
         Me.btnBatal.Name = "btnBatal"
         Me.btnBatal.Size = New System.Drawing.Size(87, 32)
-        Me.btnBatal.TabIndex = 11
+        Me.btnBatal.TabIndex = 13
         Me.btnBatal.Text = "Batal"
         Me.btnBatal.UseVisualStyleBackColor = True
         '

@@ -13,6 +13,7 @@ Public Class MTanaman
     Private Key As String
 
     Private ViewTableName As String
+    Private ModelHpp As New Mhpp
 
 
     Sub New(Optional ViewTableName As String = "material_fig")
@@ -85,6 +86,9 @@ Public Class MTanaman
     Public Function GetListData() As List(Of Dictionary(Of String, Object))
         Me.StringSQL = "SELECT * FROM material_fig"
         Return MyBase.GetDataList()
+    End Function
+    Public Overloads Function getDataList(Optional noref As String = "") As List(Of Dictionary(Of String, Object))
+        Return ModelHpp.getDataList("", "material_fig")
     End Function
     Public Overloads Function GetRowsCount() As Integer
         Me.StringSQL = "SELECT COUNT(*) FROM " & ViewTableName & " " & mWHERE

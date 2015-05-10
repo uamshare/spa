@@ -59,7 +59,7 @@ Partial Class FKlasifikasiAdd
         Me.txtGroupName.MaxLength = 30
         Me.txtGroupName.Name = "txtGroupName"
         Me.txtGroupName.Size = New System.Drawing.Size(235, 22)
-        Me.txtGroupName.TabIndex = 20
+        Me.txtGroupName.TabIndex = 1
         '
         'txtKlasifikasiName
         '
@@ -68,7 +68,7 @@ Partial Class FKlasifikasiAdd
         Me.txtKlasifikasiName.MaxLength = 100
         Me.txtKlasifikasiName.Name = "txtKlasifikasiName"
         Me.txtKlasifikasiName.Size = New System.Drawing.Size(235, 22)
-        Me.txtKlasifikasiName.TabIndex = 21
+        Me.txtKlasifikasiName.TabIndex = 2
         '
         'Label1
         '
@@ -106,7 +106,7 @@ Partial Class FKlasifikasiAdd
         Me.btnSimpan.Location = New System.Drawing.Point(202, 73)
         Me.btnSimpan.Name = "btnSimpan"
         Me.btnSimpan.Size = New System.Drawing.Size(87, 34)
-        Me.btnSimpan.TabIndex = 25
+        Me.btnSimpan.TabIndex = 3
         Me.btnSimpan.Text = "Simpan"
         Me.btnSimpan.UseVisualStyleBackColor = True
         '
@@ -116,7 +116,7 @@ Partial Class FKlasifikasiAdd
         Me.btnBatal.Location = New System.Drawing.Point(289, 73)
         Me.btnBatal.Name = "btnBatal"
         Me.btnBatal.Size = New System.Drawing.Size(85, 34)
-        Me.btnBatal.TabIndex = 26
+        Me.btnBatal.TabIndex = 4
         Me.btnBatal.Text = "Batal"
         Me.btnBatal.UseVisualStyleBackColor = True
         '

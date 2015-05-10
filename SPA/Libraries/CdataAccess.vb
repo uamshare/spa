@@ -94,11 +94,12 @@ Public Class CDataAcces 'Name dari Class yang dibuat.
         MainForm.ToolProgressBar1.Style = ProgressBarStyle.Blocks
 
         If rowCountAffected > 0 And actlog <> "delete" Then
-            Dim LogMsg As String = "Done. " & rowCountAffected & message
+            'Dim LogMsg As String = "Done. " & rowCountAffected & message
+            Dim LogMsg As String = "Done. " & message
             ErrorLogger.WriteToErrorLog(LogMsg & vbCrLf & Me.StringSQL, actlog, INFO_STAT, actlog, "2")
             MyApplication.ShowStatus(LogMsg, INFO_STAT)
         ElseIf rowCountAffected > -1 And actlog = "delete" Then
-            Dim LogMsg As String = "Done. " & rowCountAffected & message
+            Dim LogMsg As String = "Done. " & message
             ErrorLogger.WriteToErrorLog(LogMsg & vbCrLf & Me.StringSQL, actlog, INFO_STAT, actlog, "2")
             MyApplication.ShowStatus(LogMsg, INFO_STAT)
         End If
@@ -115,7 +116,7 @@ Public Class CDataAcces 'Name dari Class yang dibuat.
         End If
 
         Dim LogMsg As String = "Fails. " & message
-        ErrorLogger.WriteToErrorLog(LogMsg, actlog, ERROR_STAT, actlog, "2")
+        ErrorLogger.WriteToErrorLog(LogMsg & vbCrLf & Me.StringSQL, actlog, ERROR_STAT, actlog, "2")
         MyApplication.ShowStatus(LogMsg, WARNING_STAT, True, 10000)
         Cursor.Current = Cursors.Default
     End Sub

@@ -98,7 +98,7 @@ Partial Class FCOAheaderAdd
         Me.txtKlasifikasi.Location = New System.Drawing.Point(153, 11)
         Me.txtKlasifikasi.Name = "txtKlasifikasi"
         Me.txtKlasifikasi.Size = New System.Drawing.Size(258, 22)
-        Me.txtKlasifikasi.TabIndex = 5
+        Me.txtKlasifikasi.TabIndex = 1
         '
         'txtNo
         '
@@ -107,7 +107,7 @@ Partial Class FCOAheaderAdd
         Me.txtNo.MaxLength = 6
         Me.txtNo.Name = "txtNo"
         Me.txtNo.Size = New System.Drawing.Size(100, 22)
-        Me.txtNo.TabIndex = 6
+        Me.txtNo.TabIndex = 2
         '
         'txtNama
         '
@@ -116,7 +116,7 @@ Partial Class FCOAheaderAdd
         Me.txtNama.MaxLength = 50
         Me.txtNama.Name = "txtNama"
         Me.txtNama.Size = New System.Drawing.Size(291, 22)
-        Me.txtNama.TabIndex = 7
+        Me.txtNama.TabIndex = 3
         '
         'btnSimpan
         '
@@ -124,7 +124,7 @@ Partial Class FCOAheaderAdd
         Me.btnSimpan.Location = New System.Drawing.Point(263, 149)
         Me.btnSimpan.Name = "btnSimpan"
         Me.btnSimpan.Size = New System.Drawing.Size(88, 36)
-        Me.btnSimpan.TabIndex = 10
+        Me.btnSimpan.TabIndex = 6
         Me.btnSimpan.Text = "Simpan"
         Me.btnSimpan.UseVisualStyleBackColor = True
         '
@@ -134,7 +134,7 @@ Partial Class FCOAheaderAdd
         Me.btnBatal.Location = New System.Drawing.Point(357, 149)
         Me.btnBatal.Name = "btnBatal"
         Me.btnBatal.Size = New System.Drawing.Size(86, 36)
-        Me.btnBatal.TabIndex = 11
+        Me.btnBatal.TabIndex = 7
         Me.btnBatal.Text = "Batal"
         Me.btnBatal.UseVisualStyleBackColor = True
         '
@@ -151,6 +151,7 @@ Partial Class FCOAheaderAdd
         'cmbLaporan
         '
         Me.cmbLaporan.FormattingEnabled = True
+        Me.cmbLaporan.ItemHeight = 13
         Me.cmbLaporan.Items.AddRange(New Object() {"NRC", "LR"})
         Me.cmbLaporan.Location = New System.Drawing.Point(153, 122)
         Me.cmbLaporan.Name = "cmbLaporan"
@@ -160,6 +161,7 @@ Partial Class FCOAheaderAdd
         'cmbSaldo
         '
         Me.cmbSaldo.FormattingEnabled = True
+        Me.cmbSaldo.ItemHeight = 13
         Me.cmbSaldo.Items.AddRange(New Object() {"D", "K"})
         Me.cmbSaldo.Location = New System.Drawing.Point(153, 97)
         Me.cmbSaldo.Name = "cmbSaldo"

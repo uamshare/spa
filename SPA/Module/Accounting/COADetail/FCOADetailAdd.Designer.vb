@@ -93,7 +93,7 @@ Partial Class FCOADetailAdd
         Me.txtCoaHeader.MaxLength = 35
         Me.txtCoaHeader.Name = "txtCoaHeader"
         Me.txtCoaHeader.Size = New System.Drawing.Size(287, 22)
-        Me.txtCoaHeader.TabIndex = 22
+        Me.txtCoaHeader.TabIndex = 1
         '
         'txtCoaDetail
         '
@@ -102,7 +102,7 @@ Partial Class FCOADetailAdd
         Me.txtCoaDetail.MaxLength = 6
         Me.txtCoaDetail.Name = "txtCoaDetail"
         Me.txtCoaDetail.Size = New System.Drawing.Size(100, 22)
-        Me.txtCoaDetail.TabIndex = 23
+        Me.txtCoaDetail.TabIndex = 2
         '
         'txtNamaAkun
         '
@@ -111,7 +111,7 @@ Partial Class FCOADetailAdd
         Me.txtNamaAkun.MaxLength = 35
         Me.txtNamaAkun.Name = "txtNamaAkun"
         Me.txtNamaAkun.Size = New System.Drawing.Size(318, 22)
-        Me.txtNamaAkun.TabIndex = 24
+        Me.txtNamaAkun.TabIndex = 3
         '
         'btnPrompt
         '
@@ -129,7 +129,7 @@ Partial Class FCOADetailAdd
         Me.btbSimpan.Location = New System.Drawing.Point(284, 107)
         Me.btbSimpan.Name = "btbSimpan"
         Me.btbSimpan.Size = New System.Drawing.Size(76, 31)
-        Me.btbSimpan.TabIndex = 26
+        Me.btbSimpan.TabIndex = 4
         Me.btbSimpan.Text = "Simpan"
         Me.btbSimpan.UseVisualStyleBackColor = True
         '
@@ -139,7 +139,7 @@ Partial Class FCOADetailAdd
         Me.btnBatal.Location = New System.Drawing.Point(366, 107)
         Me.btnBatal.Name = "btnBatal"
         Me.btnBatal.Size = New System.Drawing.Size(77, 31)
-        Me.btnBatal.TabIndex = 27
+        Me.btnBatal.TabIndex = 5
         Me.btnBatal.Text = "Batal"
         Me.btnBatal.UseVisualStyleBackColor = True
         '

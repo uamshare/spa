@@ -40,7 +40,11 @@ Partial Class FTanamanMasuk
         Me.DateTimePicker1 = New System.Windows.Forms.DateTimePicker()
         Me.TxtNo = New System.Windows.Forms.TextBox()
         Me.lblName = New System.Windows.Forms.Label()
-        Me.Panel3 = New System.Windows.Forms.Panel()
+        Me.PanelFooter = New System.Windows.Forms.Panel()
+        Me.txtsum2 = New System.Windows.Forms.TextBox()
+        Me.Label6 = New System.Windows.Forms.Label()
+        Me.txtsum1 = New System.Windows.Forms.TextBox()
+        Me.Label5 = New System.Windows.Forms.Label()
         Me.ButtonPrint = New System.Windows.Forms.Button()
         Me.ButtonDel = New System.Windows.Forms.Button()
         Me.ButtonAdd = New System.Windows.Forms.Button()
@@ -53,7 +57,7 @@ Partial Class FTanamanMasuk
         CType(Me.DataGridView1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.Tool1.SuspendLayout()
         Me.PanelHeader.SuspendLayout()
-        Me.Panel3.SuspendLayout()
+        Me.PanelFooter.SuspendLayout()
         Me.ContextMenuStrip1.SuspendLayout()
         Me.SuspendLayout()
         '
@@ -62,7 +66,7 @@ Partial Class FTanamanMasuk
         Me.Panel1.BackColor = System.Drawing.SystemColors.ButtonFace
         Me.Panel1.Controls.Add(Me.Panel2)
         Me.Panel1.Controls.Add(Me.PanelHeader)
-        Me.Panel1.Controls.Add(Me.Panel3)
+        Me.Panel1.Controls.Add(Me.PanelFooter)
         Me.Panel1.Dock = System.Windows.Forms.DockStyle.Left
         Me.Panel1.Location = New System.Drawing.Point(0, 0)
         Me.Panel1.Name = "Panel1"
@@ -76,7 +80,7 @@ Partial Class FTanamanMasuk
         Me.Panel2.Dock = System.Windows.Forms.DockStyle.Fill
         Me.Panel2.Location = New System.Drawing.Point(0, 114)
         Me.Panel2.Name = "Panel2"
-        Me.Panel2.Size = New System.Drawing.Size(886, 307)
+        Me.Panel2.Size = New System.Drawing.Size(886, 262)
         Me.Panel2.TabIndex = 23
         '
         'DataGridView1
@@ -163,7 +167,7 @@ Partial Class FTanamanMasuk
         '
         Me.Label4.AutoSize = True
         Me.Label4.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label4.Location = New System.Drawing.Point(281, 80)
+        Me.Label4.Location = New System.Drawing.Point(281, 81)
         Me.Label4.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.Label4.Name = "Label4"
         Me.Label4.Size = New System.Drawing.Size(66, 16)
@@ -174,7 +178,7 @@ Partial Class FTanamanMasuk
         '
         Me.Label3.AutoSize = True
         Me.Label3.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label3.Location = New System.Drawing.Point(280, 51)
+        Me.Label3.Location = New System.Drawing.Point(280, 52)
         Me.Label3.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.Label3.Name = "Label3"
         Me.Label3.Size = New System.Drawing.Size(50, 16)
@@ -206,7 +210,7 @@ Partial Class FTanamanMasuk
         '
         Me.Label1.AutoSize = True
         Me.Label1.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label1.Location = New System.Drawing.Point(12, 22)
+        Me.Label1.Location = New System.Drawing.Point(12, 25)
         Me.Label1.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.Label1.Name = "Label1"
         Me.Label1.Size = New System.Drawing.Size(59, 16)
@@ -235,32 +239,84 @@ Partial Class FTanamanMasuk
         '
         Me.lblName.AutoSize = True
         Me.lblName.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.lblName.Location = New System.Drawing.Point(12, 51)
+        Me.lblName.Location = New System.Drawing.Point(12, 54)
         Me.lblName.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.lblName.Name = "lblName"
         Me.lblName.Size = New System.Drawing.Size(69, 16)
         Me.lblName.TabIndex = 10
         Me.lblName.Text = "No Masuk"
         '
-        'Panel3
+        'PanelFooter
         '
-        Me.Panel3.BackColor = System.Drawing.SystemColors.AppWorkspace
-        Me.Panel3.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
-        Me.Panel3.Controls.Add(Me.ButtonPrint)
-        Me.Panel3.Controls.Add(Me.ButtonDel)
-        Me.Panel3.Controls.Add(Me.ButtonAdd)
-        Me.Panel3.Controls.Add(Me.ButtonCancel)
-        Me.Panel3.Controls.Add(Me.ButtonSave)
-        Me.Panel3.Dock = System.Windows.Forms.DockStyle.Bottom
-        Me.Panel3.Location = New System.Drawing.Point(0, 421)
-        Me.Panel3.Name = "Panel3"
-        Me.Panel3.Size = New System.Drawing.Size(886, 53)
-        Me.Panel3.TabIndex = 11
+        Me.PanelFooter.BackColor = System.Drawing.SystemColors.AppWorkspace
+        Me.PanelFooter.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
+        Me.PanelFooter.Controls.Add(Me.txtsum2)
+        Me.PanelFooter.Controls.Add(Me.Label6)
+        Me.PanelFooter.Controls.Add(Me.txtsum1)
+        Me.PanelFooter.Controls.Add(Me.Label5)
+        Me.PanelFooter.Controls.Add(Me.ButtonPrint)
+        Me.PanelFooter.Controls.Add(Me.ButtonDel)
+        Me.PanelFooter.Controls.Add(Me.ButtonAdd)
+        Me.PanelFooter.Controls.Add(Me.ButtonCancel)
+        Me.PanelFooter.Controls.Add(Me.ButtonSave)
+        Me.PanelFooter.Dock = System.Windows.Forms.DockStyle.Bottom
+        Me.PanelFooter.Location = New System.Drawing.Point(0, 376)
+        Me.PanelFooter.Name = "PanelFooter"
+        Me.PanelFooter.Size = New System.Drawing.Size(886, 98)
+        Me.PanelFooter.TabIndex = 11
+        '
+        'txtsum2
+        '
+        Me.txtsum2.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.txtsum2.Location = New System.Drawing.Point(692, 29)
+        Me.txtsum2.Margin = New System.Windows.Forms.Padding(4)
+        Me.txtsum2.MaxLength = 13
+        Me.txtsum2.Name = "txtsum2"
+        Me.txtsum2.ReadOnly = True
+        Me.txtsum2.Size = New System.Drawing.Size(188, 22)
+        Me.txtsum2.TabIndex = 35
+        Me.txtsum2.TextAlign = System.Windows.Forms.HorizontalAlignment.Right
+        Me.txtsum2.Visible = False
+        '
+        'Label6
+        '
+        Me.Label6.AutoSize = True
+        Me.Label6.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label6.Location = New System.Drawing.Point(579, 33)
+        Me.Label6.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
+        Me.Label6.Name = "Label6"
+        Me.Label6.Size = New System.Drawing.Size(66, 16)
+        Me.Label6.TabIndex = 36
+        Me.Label6.Text = "Nilai HPP"
+        Me.Label6.Visible = False
+        '
+        'txtsum1
+        '
+        Me.txtsum1.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.txtsum1.Location = New System.Drawing.Point(692, 6)
+        Me.txtsum1.Margin = New System.Windows.Forms.Padding(4)
+        Me.txtsum1.MaxLength = 13
+        Me.txtsum1.Name = "txtsum1"
+        Me.txtsum1.ReadOnly = True
+        Me.txtsum1.Size = New System.Drawing.Size(188, 22)
+        Me.txtsum1.TabIndex = 33
+        Me.txtsum1.TextAlign = System.Windows.Forms.HorizontalAlignment.Right
+        '
+        'Label5
+        '
+        Me.Label5.AutoSize = True
+        Me.Label5.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label5.Location = New System.Drawing.Point(579, 10)
+        Me.Label5.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
+        Me.Label5.Name = "Label5"
+        Me.Label5.Size = New System.Drawing.Size(103, 16)
+        Me.Label5.TabIndex = 34
+        Me.Label5.Text = "Nilai Pembelian"
         '
         'ButtonPrint
         '
         Me.ButtonPrint.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.ButtonPrint.Location = New System.Drawing.Point(251, 13)
+        Me.ButtonPrint.Location = New System.Drawing.Point(251, 58)
         Me.ButtonPrint.Name = "ButtonPrint"
         Me.ButtonPrint.Size = New System.Drawing.Size(77, 31)
         Me.ButtonPrint.TabIndex = 32
@@ -270,7 +326,7 @@ Partial Class FTanamanMasuk
         'ButtonDel
         '
         Me.ButtonDel.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.ButtonDel.Location = New System.Drawing.Point(168, 13)
+        Me.ButtonDel.Location = New System.Drawing.Point(168, 58)
         Me.ButtonDel.Name = "ButtonDel"
         Me.ButtonDel.Size = New System.Drawing.Size(77, 31)
         Me.ButtonDel.TabIndex = 31
@@ -280,7 +336,7 @@ Partial Class FTanamanMasuk
         'ButtonAdd
         '
         Me.ButtonAdd.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.ButtonAdd.Location = New System.Drawing.Point(3, 13)
+        Me.ButtonAdd.Location = New System.Drawing.Point(3, 58)
         Me.ButtonAdd.Name = "ButtonAdd"
         Me.ButtonAdd.Size = New System.Drawing.Size(76, 31)
         Me.ButtonAdd.TabIndex = 30
@@ -290,7 +346,7 @@ Partial Class FTanamanMasuk
         'ButtonCancel
         '
         Me.ButtonCancel.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.ButtonCancel.Location = New System.Drawing.Point(804, 13)
+        Me.ButtonCancel.Location = New System.Drawing.Point(804, 58)
         Me.ButtonCancel.Name = "ButtonCancel"
         Me.ButtonCancel.Size = New System.Drawing.Size(77, 31)
         Me.ButtonCancel.TabIndex = 29
@@ -300,7 +356,7 @@ Partial Class FTanamanMasuk
         'ButtonSave
         '
         Me.ButtonSave.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.ButtonSave.Location = New System.Drawing.Point(86, 13)
+        Me.ButtonSave.Location = New System.Drawing.Point(86, 58)
         Me.ButtonSave.Name = "ButtonSave"
         Me.ButtonSave.Size = New System.Drawing.Size(76, 31)
         Me.ButtonSave.TabIndex = 28
@@ -338,7 +394,8 @@ Partial Class FTanamanMasuk
         Me.Tool1.PerformLayout()
         Me.PanelHeader.ResumeLayout(False)
         Me.PanelHeader.PerformLayout()
-        Me.Panel3.ResumeLayout(False)
+        Me.PanelFooter.ResumeLayout(False)
+        Me.PanelFooter.PerformLayout()
         Me.ContextMenuStrip1.ResumeLayout(False)
         Me.ResumeLayout(False)
 
@@ -349,7 +406,7 @@ Partial Class FTanamanMasuk
     Friend WithEvents DateTimePicker1 As System.Windows.Forms.DateTimePicker
     Friend WithEvents TxtNo As System.Windows.Forms.TextBox
     Friend WithEvents lblName As System.Windows.Forms.Label
-    Friend WithEvents Panel3 As System.Windows.Forms.Panel
+    Friend WithEvents PanelFooter As System.Windows.Forms.Panel
     Friend WithEvents ButtonPrint As System.Windows.Forms.Button
     Friend WithEvents ButtonDel As System.Windows.Forms.Button
     Friend WithEvents ButtonAdd As System.Windows.Forms.Button
@@ -368,4 +425,8 @@ Partial Class FTanamanMasuk
     Friend WithEvents ContextMenuStrip1 As System.Windows.Forms.ContextMenuStrip
     Friend WithEvents HapusDataToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
     Friend WithEvents ButtonH As System.Windows.Forms.Button
+    Friend WithEvents txtsum1 As System.Windows.Forms.TextBox
+    Friend WithEvents Label5 As System.Windows.Forms.Label
+    Friend WithEvents txtsum2 As System.Windows.Forms.TextBox
+    Friend WithEvents Label6 As System.Windows.Forms.Label
 End Class

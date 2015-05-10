@@ -55,7 +55,7 @@ Partial Class FGroupCoaAdd
         Me.txtGroupName.MaxLength = 30
         Me.txtGroupName.Name = "txtGroupName"
         Me.txtGroupName.Size = New System.Drawing.Size(271, 22)
-        Me.txtGroupName.TabIndex = 21
+        Me.txtGroupName.TabIndex = 1
         '
         'Label1
         '
@@ -73,7 +73,7 @@ Partial Class FGroupCoaAdd
         Me.btnSimpan.Location = New System.Drawing.Point(190, 37)
         Me.btnSimpan.Name = "btnSimpan"
         Me.btnSimpan.Size = New System.Drawing.Size(86, 34)
-        Me.btnSimpan.TabIndex = 23
+        Me.btnSimpan.TabIndex = 2
         Me.btnSimpan.Text = "Simpan"
         Me.btnSimpan.UseVisualStyleBackColor = True
         '
@@ -83,7 +83,7 @@ Partial Class FGroupCoaAdd
         Me.btnBatal.Location = New System.Drawing.Point(282, 37)
         Me.btnBatal.Name = "btnBatal"
         Me.btnBatal.Size = New System.Drawing.Size(95, 34)
-        Me.btnBatal.TabIndex = 24
+        Me.btnBatal.TabIndex = 3
         Me.btnBatal.Text = "Batal"
         Me.btnBatal.UseVisualStyleBackColor = True
         '

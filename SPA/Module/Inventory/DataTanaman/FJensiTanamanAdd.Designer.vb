@@ -64,7 +64,7 @@ Partial Class FJensiTanamanAdd
         Me.Button1.Location = New System.Drawing.Point(220, 42)
         Me.Button1.Name = "Button1"
         Me.Button1.Size = New System.Drawing.Size(83, 40)
-        Me.Button1.TabIndex = 16
+        Me.Button1.TabIndex = 2
         Me.Button1.Text = "Simpan"
         Me.Button1.UseVisualStyleBackColor = True
         '
@@ -75,7 +75,7 @@ Partial Class FJensiTanamanAdd
         Me.TextBox1.MaxLength = 50
         Me.TextBox1.Name = "TextBox1"
         Me.TextBox1.Size = New System.Drawing.Size(281, 22)
-        Me.TextBox1.TabIndex = 15
+        Me.TextBox1.TabIndex = 1
         '
         'Label1
         '
@@ -93,7 +93,7 @@ Partial Class FJensiTanamanAdd
         Me.Button2.Location = New System.Drawing.Point(309, 42)
         Me.Button2.Name = "Button2"
         Me.Button2.Size = New System.Drawing.Size(87, 40)
-        Me.Button2.TabIndex = 19
+        Me.Button2.TabIndex = 3
         Me.Button2.Text = "Batal"
         Me.Button2.UseVisualStyleBackColor = True
         '

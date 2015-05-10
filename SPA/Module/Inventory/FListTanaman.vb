@@ -79,7 +79,7 @@
                 .Columns("mmtrname").HeaderText = "Jenis Tanaman"
                 .Columns("polybag").HeaderText = "Polybag"
                 .Columns("mmtrunit").HeaderText = "Satuan"
-                .Columns("mmtrprice").HeaderText = "Harga"
+                .Columns("mmtrprice").HeaderText = "Harga Jual"
                 .Columns("PrimaryKey").Visible = False
                 .Columns("mmtrg").Visible = False
 
@@ -87,8 +87,11 @@
                 .Columns("mmtrid").Width = 100
                 .Columns("mmtrname").Width = 200
                 .Columns("polybag").Width = 75
+                .Columns("polybag").DefaultCellStyle().Alignment = DataGridViewContentAlignment.MiddleCenter
                 .Columns("mmtrunit").Width = 100
                 .Columns("mmtrprice").Width = 100
+                .Columns("mmtrprice").DefaultCellStyle().Format = "##,##0"
+                .Columns("mmtrprice").DefaultCellStyle().Alignment = DataGridViewContentAlignment.MiddleRight
                 .Refresh()
 
                 If .RowCount > 0 Then

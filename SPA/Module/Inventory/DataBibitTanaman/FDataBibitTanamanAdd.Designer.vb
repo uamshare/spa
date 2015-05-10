@@ -110,7 +110,7 @@ Partial Class FDataBibitTanamanAdd
         Me.txtJnsTanaman.MaxLength = 25
         Me.txtJnsTanaman.Name = "txtJnsTanaman"
         Me.txtJnsTanaman.Size = New System.Drawing.Size(321, 22)
-        Me.txtJnsTanaman.TabIndex = 5
+        Me.txtJnsTanaman.TabIndex = 1
         '
         'txtKode
         '
@@ -120,7 +120,7 @@ Partial Class FDataBibitTanamanAdd
         Me.txtKode.MaxLength = 5
         Me.txtKode.Name = "txtKode"
         Me.txtKode.Size = New System.Drawing.Size(132, 22)
-        Me.txtKode.TabIndex = 6
+        Me.txtKode.TabIndex = 3
         '
         'txtKode2
         '
@@ -150,7 +150,7 @@ Partial Class FDataBibitTanamanAdd
         Me.txtSatuan.MaxLength = 10
         Me.txtSatuan.Name = "txtSatuan"
         Me.txtSatuan.Size = New System.Drawing.Size(321, 22)
-        Me.txtSatuan.TabIndex = 9
+        Me.txtSatuan.TabIndex = 4
         '
         'txtHarga
         '
@@ -160,7 +160,7 @@ Partial Class FDataBibitTanamanAdd
         Me.txtHarga.MaxLength = 15
         Me.txtHarga.Name = "txtHarga"
         Me.txtHarga.Size = New System.Drawing.Size(321, 22)
-        Me.txtHarga.TabIndex = 10
+        Me.txtHarga.TabIndex = 5
         Me.txtHarga.TextAlign = System.Windows.Forms.HorizontalAlignment.Right
         '
         'cmbPolybag
@@ -173,7 +173,7 @@ Partial Class FDataBibitTanamanAdd
         Me.cmbPolybag.Margin = New System.Windows.Forms.Padding(4)
         Me.cmbPolybag.Name = "cmbPolybag"
         Me.cmbPolybag.Size = New System.Drawing.Size(99, 24)
-        Me.cmbPolybag.TabIndex = 11
+        Me.cmbPolybag.TabIndex = 2
         '
         'Prompt
         '
@@ -182,7 +182,7 @@ Partial Class FDataBibitTanamanAdd
         Me.Prompt.Margin = New System.Windows.Forms.Padding(4)
         Me.Prompt.Name = "Prompt"
         Me.Prompt.Size = New System.Drawing.Size(35, 27)
-        Me.Prompt.TabIndex = 12
+        Me.Prompt.TabIndex = 20
         Me.Prompt.Text = "..."
         Me.Prompt.TextAlign = System.Drawing.ContentAlignment.TopCenter
         Me.Prompt.UseVisualStyleBackColor = True
@@ -194,7 +194,7 @@ Partial Class FDataBibitTanamanAdd
         Me.btnSimpan.Margin = New System.Windows.Forms.Padding(4)
         Me.btnSimpan.Name = "btnSimpan"
         Me.btnSimpan.Size = New System.Drawing.Size(100, 39)
-        Me.btnSimpan.TabIndex = 13
+        Me.btnSimpan.TabIndex = 6
         Me.btnSimpan.Text = "Simpan"
         Me.btnSimpan.UseVisualStyleBackColor = True
         '
@@ -206,7 +206,7 @@ Partial Class FDataBibitTanamanAdd
         Me.btnBatal.Margin = New System.Windows.Forms.Padding(4)
         Me.btnBatal.Name = "btnBatal"
         Me.btnBatal.Size = New System.Drawing.Size(100, 39)
-        Me.btnBatal.TabIndex = 14
+        Me.btnBatal.TabIndex = 7
         Me.btnBatal.Text = "Batal"
         Me.btnBatal.UseVisualStyleBackColor = True
         '

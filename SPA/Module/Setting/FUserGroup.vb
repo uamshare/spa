@@ -288,7 +288,7 @@
 
             Next
             If getCountSelectedData() > 0 Then
-                Dim dr As DialogResult = MessageBox.Show("Delete " & getCountSelectedData() & " data ?", "Confirmation", MessageBoxButtons.YesNo, MessageBoxIcon.Question)
+                Dim dr As DialogResult = MessageBox.Show("Hapus " & getCountSelectedData() & " data terpilih ?", "Konfirmasi", MessageBoxButtons.YesNo, MessageBoxIcon.Question)
                 If dr = Windows.Forms.DialogResult.Yes Then
                     'For Each groupid In groupids
                     '    If Not String.IsNullOrEmpty(groupid) Then

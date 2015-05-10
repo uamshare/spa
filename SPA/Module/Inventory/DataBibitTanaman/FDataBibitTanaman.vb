@@ -79,6 +79,7 @@ Public Class FDataBibitTanaman
                 .Columns("polybag").HeaderText = "Polybag"
                 .Columns("mmtrunit").HeaderText = "Satuan"
                 .Columns("mmtrprice").HeaderText = "Harga"
+                .Columns("mmtrprice").Visible = False
                 .Columns("PrimaryKey").Visible = False
                 .Columns("mmtrg").Visible = False
 

@@ -6,7 +6,11 @@
     Public trcvmdqty As String = "0"
     Public trcvmdprice As String = "0"
     Public dtcreatedforDeatil As String = ""
+    Public bookvalue As String 'additional for posting to General Ledger
+
+    Dim ModelHeader As New MTanamanMasukH
     Dim ModelStock As New Rstockm
+    Dim ModelHPP As New Mhpp
 
     'Private dtcreated As String
 
@@ -40,79 +44,72 @@
         Dim trans As Integer = 0
         dtcreated = IIf(String.IsNullOrEmpty(dtcreated), Format(Date.Now, "yyyy/MM/dd H:mm:ss"), dtcreated)
 
-        Dim ModelHeader As New MTanamanMasukH
+        Me.StringSQL = ""
         ModelHeader.trcvmhno = Me.trcvmhno
         ModelHeader.trcvmhdt = Me.trcvmhdt
         ModelHeader.pono = Me.pono
         ModelHeader.podate = Me.podate
         ModelHeader.supplier = Me.supplier
         ModelHeader.dtcreated = Me.dtcreated
-        trans = ModelHeader.InsertData()
+        Me.StringSQL = ModelHeader.GetSqlInsertData()
 
-        If trans > 0 Then 'MyBase.InsertData() ==> Insert Header
+        If Not String.IsNullOrEmpty(Me.StringSQL) Then 'Insert Header
             values = "('" & MyBase.trcvmhno & "','" & _
                       mmtrid & "','" & _
                       trcvmdqty & "','" & _
                       trcvmdprice & "','" & _
                       dtcreated & "')"
-            Me.StringSQL = "INSERT INTO " & TableName + "(`trcvmhno`,`mmtrid`,`trcvmdqty`,`trcvmdprice`,`dtcreated`) VALUES " & values
+            Me.StringSQL = Me.StringSQL + "INSERT INTO " & TableName + "(`trcvmhno`,`mmtrid`,`trcvmdqty`,`trcvmdprice`,`dtcreated`) VALUES " & values
             trans = MyBase.InsertData() 'MyBase.InsertData() ==> Insert Detail
         End If
         Return trans
     End Function
     Public Overloads Function InsertData(ByVal datadetail As List(Of Dictionary(Of String, Object))) As Integer
-        Dim multivalue As String = ""
-        Dim datatostock As New List(Of Dictionary(Of String, Object))
         Dim trans As Integer = 0
-        dtcreated = IIf(String.IsNullOrEmpty(dtcreated), Format(Date.Now, "yyyy/MM/dd H:mm:ss"), dtcreated)
-        Try
-            For Each dat In datadetail
 
-                multivalue = multivalue & "('" & MyBase.trcvmhno & "','" & _
-                                 dat("mmtrid").ToString & "','" & _
-                                 dat("trcvmdqty").ToString & "','" & _
-                                 dat("trcvmdprice").ToString & "','" & _
-                                 dtcreated & "'),"
-                Dim dict As New Dictionary(Of String, Object)
-                
-                dict.Add("noref", trcvmhno)
-                dict.Add("mmtrid", dat("mmtrid"))
-                dict.Add("stockin", CDec(dat("trcvmdqty")))
-                dict.Add("stockout", 0)
-                dict.Add("rstockmdesc", "Data Tanaman Masuk No " & trcvmhno)
-                dict.Add("fk_id", "")
-                dict.Add("userid", userid)
-                datatostock.Add(dict)
-            Next
-
-        Catch ex As Exception
-            MyApplication.ShowStatus(ex.Message & vbCrLf & ex.StackTrace, WARNING_STAT)
-            Return 0
-        End Try
-
-        Dim ModelHeader As New MTanamanMasukH
+        Me.StringSQL = ""
         ModelHeader.trcvmhno = Me.trcvmhno
         ModelHeader.trcvmhdt = Me.trcvmhdt
         ModelHeader.pono = Me.pono
         ModelHeader.podate = Me.podate
         ModelHeader.supplier = Me.supplier
         ModelHeader.dtcreated = Me.dtcreated
-        trans = ModelHeader.InsertData()
+        Me.StringSQL = ModelHeader.GetSqlInsertData()
 
-        If trans > 0 And multivalue.Length > 1 Then 'MyBase.InsertData() ==> Insert Header
-            multivalue = multivalue.Substring(0, multivalue.Length - 1)
-            Me.StringSQL = "INSERT INTO " & TableName + "(`trcvmhno`,`mmtrid`,`trcvmdqty`,`trcvmdprice`,`dtcreated`) VALUES " & multivalue
-            trans = MyBase.InsertData() 'MyBase.InsertData() ==> Insert Detail
-            If trans > 0 Then
-                ModelStock.InsertData(datatostock)
-            End If
+        If Not String.IsNullOrEmpty(Me.StringSQL) Then 'Insert Header
+            Me.StringSQL = Me.StringSQL + queryInsertDetail(datadetail)
+            trans = MyBase.InsertData()
         End If
         Return trans
     End Function
     Public Overloads Function UpdateData(ByVal datadetail As List(Of Dictionary(Of String, Object))) As Integer
-        Dim multivalue As String = ""
         Dim trans As Integer = 0
-        Dim datatostock As New List(Of Dictionary(Of String, Object))
+
+        Me.StringSQL = ""
+        ModelHeader.trcvmhno = Me.trcvmhno
+        ModelHeader.trcvmhdt = Me.trcvmhdt
+        ModelHeader.pono = Me.pono
+        ModelHeader.podate = Me.podate
+        ModelHeader.supplier = Me.supplier
+        'ModelHeader.dtcreated = Me.dtcreated
+        Me.StringSQL = ModelHeader.GetSqlUpdateData() 'Update Header
+
+        If Not String.IsNullOrEmpty(Me.StringSQL) Then 'Insert Header
+            Me.StringSQL = Me.StringSQL + DeleteByNo(Me.trcvmhno)
+            Me.StringSQL = Me.StringSQL + queryInsertDetail(datadetail)
+            trans = MyBase.UpdateData()
+        End If
+        'If trans > 0 Then
+        '    DeleteByNo(Me.trcvmhno)
+        '    trans = queryInsertDetail(datadetail)
+        'End If
+        Return trans
+    End Function
+    Private Function queryInsertDetail(ByVal datadetail As List(Of Dictionary(Of String, Object))) As String
+        Dim multivalue As String = ""
+        Dim strsql = ""
+        Dim trans As Integer = 0
+        Dim datatostock, datahpp As New List(Of Dictionary(Of String, Object))
 
         dtcreated = IIf(String.IsNullOrEmpty(dtcreated), Format(Date.Now, "yyyy/MM/dd H:mm:ss"), dtcreated)
         Try
@@ -140,45 +137,55 @@
                 dict.Add("userid", userid)
                 dict.Add("dtcreated", dtcreatedforDeatil)
                 datatostock.Add(dict)
+
+                'prepare to hpp
+                Dim dicthpp As New Dictionary(Of String, Object)
+                dicthpp.Add("noref", trcvmhno)
+                dicthpp.Add("mmtrid", dat("mmtrid"))
+                dicthpp.Add("hpp", dat("hpp"))
+                dicthpp.Add("dtcreated", dtcreatedforDeatil)
+                datahpp.Add(dicthpp)
             Next
 
         Catch ex As Exception
-            MyApplication.ShowStatus(ex.Message & vbCrLf & ex.StackTrace, WARNING_STAT)
+            Dim LogMsg As String = ex.Message & vbCrLf & ex.StackTrace
+            MyApplication.ShowStatus(LogMsg, WARNING_STAT)
+            ErrorLogger.WriteToErrorLog(LogMsg, "Insert", ERROR_STAT, "Insert")
             Return 0
         End Try
 
-        Dim ModelHeader As New MTanamanMasukH
-        ModelHeader.trcvmhno = Me.trcvmhno
-        ModelHeader.trcvmhdt = Me.trcvmhdt
-        ModelHeader.pono = Me.pono
-        ModelHeader.podate = Me.podate
-        ModelHeader.supplier = Me.supplier
-        'ModelHeader.dtcreated = Me.dtcreated
-        trans = ModelHeader.UpdateData()
-
-        If trans > 0 And multivalue.Length > 1 Then 'MyBase.InsertData() ==> Insert Header
+        If multivalue.Length > 1 Then 'MyBase.InsertData() ==> Insert Header
             multivalue = multivalue.Substring(0, multivalue.Length - 1)
-            'MsgBox(multivalue)
             DeleteByNo(trcvmhno)
-            Me.StringSQL = "INSERT INTO " & TableName + "(`trcvmhno`,`mmtrid`,`trcvmdqty`,`trcvmdprice`,`dtcreated`) VALUES " & multivalue
-            trans = MyBase.InsertData() 'MyBase.InsertData() ==> Insert Detail
-            If trans > 0 Then
-                ModelStock.InsertData(datatostock)
-            End If
+            strsql = "INSERT INTO " & TableName + "(`trcvmhno`,`mmtrid`,`trcvmdqty`,`trcvmdprice`,`dtcreated`) VALUES " & multivalue & ";"
+            'trans = MyBase.InsertData() 'MyBase.InsertData() ==> Insert Detail
+            'If trans > 0 Then
+            strsql = strsql + ModelStock.InsertData(datatostock) 'Insert/Update New Stok
+            strsql = strsql + ModelHPP.InsertData(datahpp) 'Insert/Update New HPP
+            'End If
+        End If
+        Return strsql
+    End Function
+    Public Function DeleteByNo(Optional ByVal NoHeader As String = "") As String
+        Dim no As String
+        Dim sqlstr = ""
+        no = IIf(String.IsNullOrEmpty(NoHeader), trcvmhno, NoHeader)
+        sqlstr = "DELETE FROM " & TableName + " WHERE trcvmhno='" & no & "';"
+        'Dim res As Integer = MyBase.DeleteData
+        If Not String.IsNullOrEmpty(sqlstr) Then
+            sqlstr = sqlstr & ModelStock.DeleteByNo(no)
+            sqlstr = sqlstr & ModelHPP.DeleteByNo(no)
+        End If
+        Return sqlstr
+    End Function
+    Public Overloads Function DeleteData(Optional ByVal id = -1) As Integer
+        Dim trans As Integer = 0
+        Me.StringSQL = ""
+        Me.StringSQL = DeleteByNo(id)
+        If Not String.IsNullOrEmpty(Me.StringSQL) Then 'Insert Header
+            Me.StringSQL = Me.StringSQL + ModelHeader.GetSqlDeleteData(id)
+            trans = MyBase.DeleteData()
         End If
         Return trans
-    End Function
-    Public Function DeleteByNo(Optional ByVal NoHeader As String = "") As Integer
-        Dim no As String
-        no = IIf(String.IsNullOrEmpty(NoHeader), trcvmhno, NoHeader)
-        Me.StringSQL = "DELETE FROM " & TableName + " WHERE trcvmhno='" & no & "'"
-
-
-        Dim res As Integer = MyBase.DeleteData
-        If res > -1 Then
-            ModelStock.DeleteByNo(no)
-        End If
-
-        Return res
     End Function
 End Class

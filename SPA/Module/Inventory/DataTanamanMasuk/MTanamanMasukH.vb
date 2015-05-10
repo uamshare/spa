@@ -12,7 +12,7 @@
     Sub New()
         MyBase.New()
         BaseQuery = "SELECT * FROM trcvmh"
-        SelectQuery = "SELECT `trcvmhno`,`trcvmhdt`,`pono`,`podate`,`supplier`,`dtcreated`,`userid` FROM trcvmh"
+        SelectQuery = "SELECT `trcvmhno`,`trcvmhdt`,`pono`,`podate`,`supplier`,`dtcreated`,`userid` FROM trcvmh ORDER BY 1 DESC"
         Me.TableName = "trcvmh"
         PrimaryKey = "trcvmhno"
 
@@ -47,6 +47,19 @@
         Return MyBase.InsertData()
     End Function
 
+    Public Function GetSqlInsertData() As String
+        Dim values As String
+        dtcreated = IIf(String.IsNullOrEmpty(dtcreated), Format(Date.Now, "yyyy/MM/dd H:mm:ss"), dtcreated)
+        values = "('" & trcvmhno & "','" & _
+                      trcvmhdt & "','" & _
+                      pono & "','" & _
+                      podate & "','" & _
+                      supplier & "','" & _
+                      userid & "','" & _
+                      dtcreated & "')"
+        Return "INSERT INTO " & TableName + "(`trcvmhno`,`trcvmhdt`,`pono`,`podate`,`supplier`,`userid`,`dtcreated`) VALUES " & values & ";"
+    End Function
+
     Public Overloads Function UpdateData(Optional ByVal id As String = "") As Integer
         Dim setquery As String
         userid = MUsers.UserInfo()("userid")
@@ -60,6 +73,18 @@
         Me.StringSQL = IIf(Not String.IsNullOrEmpty(Me.StringSQL), Me.StringSQL, "UPDATE " & TableName + " " & setquery)
         Return MyBase.UpdateData()
     End Function
+    Public Function GetSqlUpdateData(Optional ByVal id As String = "") As String
+        Dim setquery As String
+        userid = MUsers.UserInfo()("userid")
+
+        id = IIf(Not String.IsNullOrEmpty(id), id, trcvmhno)
+        setquery = "SET trcvmhdt='" & trcvmhdt & "'," & _
+                    "pono='" & pono & "'," & _
+                    "podate='" & podate & "'," & _
+                    "supplier='" & supplier & "'," & _
+                    "userid='" & userid & "' WHERE trcvmhno ='" & id & "'"
+        Return "UPDATE " & TableName + " " & setquery & ";"
+    End Function
 
     Public Function getAutoNo() As String
         Dim autono As String = Nothing
@@ -69,5 +94,14 @@
         no = Me.GetDataScalar() + 1
         autono = My.Settings.CabangID & "RC" & Format(Date.Now, "yy") & Format(no, "0000000")
         Return autono
+    End Function
+    Public Overloads Function DeleteData(Optional ByVal id = -1) As Integer
+        If String.IsNullOrEmpty(Me.StringSQL) Then
+            Me.StringSQL = "DELETE FROM " & TableName + " WHERE " & PrimaryKey & " = '" & id & "'"
+        End If
+        Return MyBase.DeleteData()
+    End Function
+    Public Function GetSqlDeleteData(Optional ByVal id = -1) As String
+        Return "DELETE FROM " & TableName + " WHERE " & PrimaryKey & " = '" & id & "'"
     End Function
 End Class
