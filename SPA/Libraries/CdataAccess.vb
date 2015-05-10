@@ -18,6 +18,7 @@ Public Class CDataAcces 'Name dari Class yang dibuat.
     Private mCONN As New MySql.Data.MySqlClient.MySqlConnection
 
     Protected TableName = "MyTable"
+    Protected TableName2 = "MyTable"
     Protected BaseQuery = "SELECT * FROM " & TableName
     Protected SelectQuery = "SELECT * FROM " & TableName
     Protected PrimaryKey As String
@@ -362,7 +363,31 @@ Public Class CDataAcces 'Name dari Class yang dibuat.
         'CommitTrans(" fetch data have been completed ") 'Commit All Transaction
         Return IIf(rowCountAffected <= 0, False, True)
     End Function
+    Public Function IfDataExist3(Optional keyvalue As String = "") As Boolean
+        'BeginTrans("attempting fetch data, please wait ... ") 'begin transaction
+        Try
+            If Me.mCONN.State = ConnectionState.Closed Then Me.mCONN.Open()
+            cmd.Connection = mCONN
+            cmd.CommandText = IIf(String.IsNullOrEmpty(StringSQL), "SELECT COUNT(*) FROM " & TableName2 & " WHERE " & DuplicateData1 & "='" & keyvalue & "'", StringSQL)
+            rowCountAffected = cmd.ExecuteScalar() 'returns the number of rows affected. 
+            'Me.mCONN.Close()
 
+        Catch ex As MySqlException
+            Dim errMsg As String = "Kesalahan " & ex.Number & " Pesan kesalahan : " & ex.Message
+            ErrorLogger.WriteToErrorLog(errMsg, ex.StackTrace, ERROR_STAT, "select", "2")
+            MyApplication.ShowStatus(errMsg, ERROR_STAT, True, 10000)
+            Me.mCONN.Close()
+            Return Nothing
+        Catch ex As Exception
+            Dim errMsg As String = "Terjadi kesalahan : " & ex.Message
+            ErrorLogger.WriteToErrorLog(errMsg, ex.StackTrace, ERROR_STAT, "select", "2")
+            MyApplication.ShowStatus(errMsg, ERROR_STAT, True, 10000)
+            Me.mCONN.Close()
+            Return Nothing
+        End Try
+        'CommitTrans(" fetch data have been completed ") 'Commit All Transaction
+        Return IIf(rowCountAffected <= 0, False, True)
+    End Function
 
     Function InsertData() As Integer Implements IDataAccess.InsertData
         Try

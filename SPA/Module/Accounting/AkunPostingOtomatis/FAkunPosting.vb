@@ -1,8 +1,8 @@
-﻿Public Class FCOADetail
+﻿Public Class FAkunPosting
     Dim dt As New DataTable
     Dim DGVColumnCheckIndex As Integer
 
-    Private Model As New MCOADetail
+    Private Model As New MAkunPosting
 
     Public Sub init()
         ToolAdd.Enabled = True
@@ -70,25 +70,28 @@
                 .Columns(DGVColumnCheckIndex).Width = 35
 
                 .DataSource = dt
-                .Columns("mcoadno").HeaderText = "No Akun"
-                .Columns("mcoadname").HeaderText = "Nama Akun"
-                .Columns("mcoahno").HeaderText = "No Akun Header"
-                .Columns("mcoahname").HeaderText = "Nama Akun Header"
-                .Columns("classification").HeaderText = "Klasifikasi"
-                .Columns("mcoagroup").HeaderText = "Group"
-                .Columns("postbalance").HeaderText = "Posisi Saldo"
-                .Columns("postgl").HeaderText = "Posisi Laporan"
-                .Columns("active").Visible = False
+                .Columns("mapoid").HeaderText = "Kode"
+                .Columns("maponame").HeaderText = "Transaksi"
+                .Columns("acc_debit").HeaderText = "Debit 1"
+                .Columns("acc_credit").HeaderText = "Kredit 1"
+                .Columns("acc_debit2").HeaderText = "Debit 2"
+                .Columns("acc_credit2").HeaderText = "Kredit 2"
+                .Columns("acc_debit3").HeaderText = "Debit 3"
+                .Columns("acc_credit3").HeaderText = "Kredit 3"
+                .Columns("acc_debit4").HeaderText = "Debit 4"
+                .Columns("acc_credit4").HeaderText = "Kredit 4"
 
                 .RowHeadersWidth = 75
-                .Columns("mcoadno").Width = 100
-                .Columns("mcoadname").Width = 260
-                .Columns("mcoahno").Width = 100
-                .Columns("mcoahname").Width = 260
-                .Columns("classification").Width = 230
-                .Columns("mcoagroup").Width = 130
-                .Columns("postbalance").Width = 100
-                .Columns("postgl").Width = 90
+                .Columns("mapoid").Width = 100
+                .Columns("maponame").Width = 260
+                .Columns("acc_debit").Width = 100
+                .Columns("acc_credit").Width = 100
+                .Columns("acc_debit2").Width = 100
+                .Columns("acc_credit2").Width = 100
+                .Columns("acc_debit3").Width = 100
+                .Columns("acc_credit3").Width = 100
+                .Columns("acc_debit4").Width = 100
+                .Columns("acc_credit4").Width = 100
                 .Refresh()
                 If .RowCount > 0 Then
                     For i As Integer = 0 To .Rows.Count - 1
@@ -239,23 +242,44 @@
     End Sub
 
     Private Sub ToolAdd_Click(sender As Object, e As EventArgs) Handles ToolAdd.Click
-        FCOADetailAdd.txtCoaDetail.Clear()
-        FCOADetailAdd.txtDetail.Clear()
-        FCOADetailAdd.txtCoaHeader.Clear()
-        FCOADetailAdd.txtHeader.Clear()
-        FCOADetailAdd.txtNamaAkun.Clear()
-        FCOADetailAdd.statmsg.Text = ""
-        FCOADetailAdd.ShowDialog()
+        FAkunPostingAdd.txtKode.Clear()
+        FAkunPostingAdd.txtMapoID.Clear()
+        FAkunPostingAdd.txtNama.Clear()
+        FAkunPostingAdd.cmbDebit1.SelectedIndex = -1
+        FAkunPostingAdd.cmbKredit1.SelectedIndex = -1
+        FAkunPostingAdd.cmbDebit2.SelectedIndex = -1
+        FAkunPostingAdd.cmbKredit2.SelectedIndex = -1
+        FAkunPostingAdd.cmbDebit3.SelectedIndex = -1
+        FAkunPostingAdd.cmbKredit3.SelectedIndex = -1
+        FAkunPostingAdd.cmbDebit4.SelectedIndex = -1
+        FAkunPostingAdd.cmbKredit4.SelectedIndex = -1
+        FAkunPostingAdd.statmsg.Text = ""
+        FAkunPostingAdd.ShowDialog()
     End Sub
     Private Sub ToolEdit_Click(sender As Object, e As EventArgs) Handles ToolEdit.Click
         If getCountSelectedData() > 0 Then
-            FCOADetailAdd.txtCoaDetail.Text = CStr(DataGridView1.Rows(getRowIndexSelected()).Cells("mcoadno").Value)
-            FCOADetailAdd.txtDetail.Text = CStr(DataGridView1.Rows(getRowIndexSelected()).Cells("mcoadno").Value)
-            FCOADetailAdd.txtCoaHeader.Text = CStr(DataGridView1.Rows(getRowIndexSelected()).Cells("mcoahno").Value)
-            FCOADetailAdd.txtHeader.Text = CStr(DataGridView1.Rows(getRowIndexSelected()).Cells("mcoahno").Value)
-            FCOADetailAdd.txtNamaAkun.Text = CStr(DataGridView1.Rows(getRowIndexSelected()).Cells("mcoadname").Value)
-            FCOADetailAdd.statmsg.Text = ""
-            FCOADetailAdd.ShowDialog()
+            FAkunPostingAdd.txtKode.Enabled = False
+            FAkunPostingAdd.cmbDebit1.SelectedIndex = -1
+            FAkunPostingAdd.cmbKredit1.SelectedIndex = -1
+            FAkunPostingAdd.cmbDebit2.SelectedIndex = -1
+            FAkunPostingAdd.cmbKredit2.SelectedIndex = -1
+            FAkunPostingAdd.cmbDebit3.SelectedIndex = -1
+            FAkunPostingAdd.cmbKredit3.SelectedIndex = -1
+            FAkunPostingAdd.cmbDebit4.SelectedIndex = -1
+            FAkunPostingAdd.cmbKredit4.SelectedIndex = -1
+            FAkunPostingAdd.txtKode.Text = CStr(DataGridView1.Rows(getRowIndexSelected()).Cells("mapoid").Value)
+            FAkunPostingAdd.txtMapoID.Text = CStr(DataGridView1.Rows(getRowIndexSelected()).Cells("mapoid").Value)
+            FAkunPostingAdd.txtNama.Text = CStr(DataGridView1.Rows(getRowIndexSelected()).Cells("maponame").Value)
+            FAkunPostingAdd.cmbDebit1.Text = CStr(DataGridView1.Rows(getRowIndexSelected()).Cells("acc_debit").Value)
+            FAkunPostingAdd.cmbKredit1.Text = CStr(DataGridView1.Rows(getRowIndexSelected()).Cells("acc_credit").Value)
+            FAkunPostingAdd.cmbDebit2.Text = CStr(DataGridView1.Rows(getRowIndexSelected()).Cells("acc_debit2").Value)
+            FAkunPostingAdd.cmbKredit2.Text = CStr(DataGridView1.Rows(getRowIndexSelected()).Cells("acc_credit2").Value)
+            FAkunPostingAdd.cmbDebit3.Text = CStr(DataGridView1.Rows(getRowIndexSelected()).Cells("acc_debit3").Value)
+            FAkunPostingAdd.cmbKredit3.Text = CStr(DataGridView1.Rows(getRowIndexSelected()).Cells("acc_credit3").Value)
+            FAkunPostingAdd.cmbDebit4.Text = CStr(DataGridView1.Rows(getRowIndexSelected()).Cells("acc_debit4").Value)
+            FAkunPostingAdd.cmbKredit4.Text = CStr(DataGridView1.Rows(getRowIndexSelected()).Cells("acc_credit4").Value)
+            FAkunPostingAdd.statmsg.Text = ""
+            FAkunPostingAdd.ShowDialog()
         Else
             MyApplication.ShowStatus("No data is selected", NOTICE_STAT)
         End If
@@ -263,11 +287,11 @@
     End Sub
     Private Sub ToolDelete_Click(sender As Object, e As EventArgs) Handles ToolDelete.Click
         If DataGridView1.RowCount > 0 Then
-            Dim mcoadno(DataGridView1.Rows.Count) As String
+            Dim mapoid(DataGridView1.Rows.Count) As String
             For i As Integer = 0 To DataGridView1.Rows.Count - 1
                 'delete data
                 If DataGridView1.Rows(i).Cells(DGVColumnCheckIndex).FormattedValue = True Then
-                    mcoadno(i) = DataGridView1.Rows(i).Cells("mcoadno").Value
+                    mapoid(i) = DataGridView1.Rows(i).Cells("mapoid").Value
                 End If
 
             Next
@@ -279,7 +303,7 @@
                     '        Model.DeleteData(groupid)
                     '    End If
                     'Next
-                    Model.MultipleDeleteData(mcoadno)
+                    Model.MultipleDeleteData(mapoid)
                 End If
                 'MyApplication.ShowStatus("Deleted " & getCountSelectedData() & " data")
                 init()
@@ -346,13 +370,14 @@
         End If
         RetrieveData()
     End Sub
-    Private Sub FCOADetail_Load(sender As Object, e As EventArgs) Handles MyBase.Load
+
+    Private Sub FAkunPosting_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         MyApplication.ShowStatus(Me.Text & " Loaded")
         InitializeDataGridView()
         init()
     End Sub
 
-    Private Sub FCOADetail_Shown(sender As Object, e As EventArgs) Handles MyBase.Shown
-        FCOADetail_Load(Nothing, Nothing)
+    Private Sub FAkunPosting_Shown(sender As Object, e As EventArgs) Handles MyBase.Shown
+        FAkunPosting_Load(Nothing, Nothing)
     End Sub
 End Class

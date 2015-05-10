@@ -1,8 +1,8 @@
-﻿Public Class FCOADetail
+﻿Public Class FDataPengguna
     Dim dt As New DataTable
     Dim DGVColumnCheckIndex As Integer
 
-    Private Model As New MCOADetail
+    Private Model As New MDataPengguna
 
     Public Sub init()
         ToolAdd.Enabled = True
@@ -70,25 +70,25 @@
                 .Columns(DGVColumnCheckIndex).Width = 35
 
                 .DataSource = dt
-                .Columns("mcoadno").HeaderText = "No Akun"
-                .Columns("mcoadname").HeaderText = "Nama Akun"
-                .Columns("mcoahno").HeaderText = "No Akun Header"
-                .Columns("mcoahname").HeaderText = "Nama Akun Header"
-                .Columns("classification").HeaderText = "Klasifikasi"
-                .Columns("mcoagroup").HeaderText = "Group"
-                .Columns("postbalance").HeaderText = "Posisi Saldo"
-                .Columns("postgl").HeaderText = "Posisi Laporan"
-                .Columns("active").Visible = False
+                .Columns("mempid").Visible = False
+                .Columns("mempname").HeaderText = "Nama Penggun"
+                .Columns("mempaddr").Visible = False
+                .Columns("memphone1").HeaderText = "Telepon"
+                .Columns("memphone2").Visible = False
+                .Columns("mempemail").HeaderText = "Email"
+                .Columns("memposid").HeaderText = "Posisi"
+                .Columns("username").HeaderText = "UserNmae"
+                .Columns("groupname").HeaderText = "Group Aksess"
+                .Columns("userid").Visible = False
+                .Columns("userpassword").Visible = False
 
                 .RowHeadersWidth = 75
-                .Columns("mcoadno").Width = 100
-                .Columns("mcoadname").Width = 260
-                .Columns("mcoahno").Width = 100
-                .Columns("mcoahname").Width = 260
-                .Columns("classification").Width = 230
-                .Columns("mcoagroup").Width = 130
-                .Columns("postbalance").Width = 100
-                .Columns("postgl").Width = 90
+                .Columns("mempname").Width = 200
+                .Columns("memphone1").Width = 150
+                .Columns("mempemail").Width = 150
+                .Columns("memposid").Width = 100
+                .Columns("username").Width = 100
+                .Columns("groupname").Width = 100
                 .Refresh()
                 If .RowCount > 0 Then
                     For i As Integer = 0 To .Rows.Count - 1
@@ -239,23 +239,35 @@
     End Sub
 
     Private Sub ToolAdd_Click(sender As Object, e As EventArgs) Handles ToolAdd.Click
-        FCOADetailAdd.txtCoaDetail.Clear()
-        FCOADetailAdd.txtDetail.Clear()
-        FCOADetailAdd.txtCoaHeader.Clear()
-        FCOADetailAdd.txtHeader.Clear()
-        FCOADetailAdd.txtNamaAkun.Clear()
-        FCOADetailAdd.statmsg.Text = ""
-        FCOADetailAdd.ShowDialog()
+        FDataPenggunaAdd.txtKode.Clear()
+        FDataPenggunaAdd.txtNama.Clear()
+        FDataPenggunaAdd.txtPhon1.Clear()
+        FDataPenggunaAdd.txtPhon2.Clear()
+        FDataPenggunaAdd.txtEmail.Clear()
+        FDataPenggunaAdd.cmbGroup.SelectedIndex = -1
+        FDataPenggunaAdd.txtUser.Clear()
+        FDataPenggunaAdd.UserName.Clear()
+        FDataPenggunaAdd.txtGroupID.Clear()
+        FDataPenggunaAdd.txtUserID.Clear()
+        FDataPenggunaAdd.txtPass.Clear()
+        FPelangganAdd.statmsg.Text = ""
+        FDataPenggunaAdd.ShowDialog()
     End Sub
     Private Sub ToolEdit_Click(sender As Object, e As EventArgs) Handles ToolEdit.Click
         If getCountSelectedData() > 0 Then
-            FCOADetailAdd.txtCoaDetail.Text = CStr(DataGridView1.Rows(getRowIndexSelected()).Cells("mcoadno").Value)
-            FCOADetailAdd.txtDetail.Text = CStr(DataGridView1.Rows(getRowIndexSelected()).Cells("mcoadno").Value)
-            FCOADetailAdd.txtCoaHeader.Text = CStr(DataGridView1.Rows(getRowIndexSelected()).Cells("mcoahno").Value)
-            FCOADetailAdd.txtHeader.Text = CStr(DataGridView1.Rows(getRowIndexSelected()).Cells("mcoahno").Value)
-            FCOADetailAdd.txtNamaAkun.Text = CStr(DataGridView1.Rows(getRowIndexSelected()).Cells("mcoadname").Value)
-            FCOADetailAdd.statmsg.Text = ""
-            FCOADetailAdd.ShowDialog()
+            FDataPenggunaAdd.txtKode.Text = CStr(DataGridView1.Rows(getRowIndexSelected()).Cells("mempid").Value)
+            FDataPenggunaAdd.txtNama.Text = CStr(DataGridView1.Rows(getRowIndexSelected()).Cells("mempname").Value)
+            FDataPenggunaAdd.txtPhon1.Text = CStr(DataGridView1.Rows(getRowIndexSelected()).Cells("memphone2").Value)
+            FDataPenggunaAdd.txtPhon2.Text = CStr(DataGridView1.Rows(getRowIndexSelected()).Cells("memphone2").Value)
+            FDataPenggunaAdd.txtEmail.Text = CStr(DataGridView1.Rows(getRowIndexSelected()).Cells("mempemail").Value)
+            FDataPenggunaAdd.cmbGroup.SelectedIndex = -1
+            FDataPenggunaAdd.cmbGroup.Text = CStr(DataGridView1.Rows(getRowIndexSelected()).Cells("groupname").Value)
+            FDataPenggunaAdd.txtUser.Text = CStr(DataGridView1.Rows(getRowIndexSelected()).Cells("username").Value)
+            FDataPenggunaAdd.UserName.Text = CStr(DataGridView1.Rows(getRowIndexSelected()).Cells("username").Value)
+            FDataPenggunaAdd.txtUserID.Text = CStr(DataGridView1.Rows(getRowIndexSelected()).Cells("userid").Value)
+            FDataPenggunaAdd.txtPass.Text = CStr(DataGridView1.Rows(getRowIndexSelected()).Cells("userpassword").Value)
+            FPelangganAdd.statmsg.Text = ""
+            FDataPenggunaAdd.ShowDialog()
         Else
             MyApplication.ShowStatus("No data is selected", NOTICE_STAT)
         End If
@@ -263,11 +275,13 @@
     End Sub
     Private Sub ToolDelete_Click(sender As Object, e As EventArgs) Handles ToolDelete.Click
         If DataGridView1.RowCount > 0 Then
-            Dim mcoadno(DataGridView1.Rows.Count) As String
+            Dim mempid(DataGridView1.Rows.Count) As String
+            Dim userid(DataGridView1.Rows.Count) As String
             For i As Integer = 0 To DataGridView1.Rows.Count - 1
                 'delete data
                 If DataGridView1.Rows(i).Cells(DGVColumnCheckIndex).FormattedValue = True Then
-                    mcoadno(i) = DataGridView1.Rows(i).Cells("mcoadno").Value
+                    mempid(i) = DataGridView1.Rows(i).Cells("mempid").Value
+                    userid(i) = DataGridView1.Rows(i).Cells("userid").Value
                 End If
 
             Next
@@ -279,7 +293,8 @@
                     '        Model.DeleteData(groupid)
                     '    End If
                     'Next
-                    Model.MultipleDeleteData(mcoadno)
+                    Model.MultipleDeleteData1(mempid)
+                    Model.MultipleDeleteData2(userid)
                 End If
                 'MyApplication.ShowStatus("Deleted " & getCountSelectedData() & " data")
                 init()
@@ -346,13 +361,16 @@
         End If
         RetrieveData()
     End Sub
-    Private Sub FCOADetail_Load(sender As Object, e As EventArgs) Handles MyBase.Load
+
+    Private Sub FDataPengguna_Load(sender As Object, e As EventArgs) Handles MyBase.Load
+        'MessageBox.Show("Form Load")
         MyApplication.ShowStatus(Me.Text & " Loaded")
         InitializeDataGridView()
         init()
     End Sub
 
-    Private Sub FCOADetail_Shown(sender As Object, e As EventArgs) Handles MyBase.Shown
-        FCOADetail_Load(Nothing, Nothing)
+    Private Sub FDataPengguna_Shown(sender As Object, e As EventArgs) Handles MyBase.Shown
+        'MessageBox.Show("Event Show")
+        FDataPengguna_Load(Nothing, Nothing)
     End Sub
 End Class

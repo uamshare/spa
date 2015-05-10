@@ -81,7 +81,7 @@ Partial Class FCOADetail
         '
         Me.ToolRefresh.Alignment = System.Windows.Forms.ToolStripItemAlignment.Right
         Me.ToolRefresh.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image
-        Me.ToolRefresh.Image = Global.SPA.My.Resources.Resources.share
+        Me.ToolRefresh.Image = Global.SPA.My.Resources.Resources.refresh1
         Me.ToolRefresh.ImageTransparentColor = System.Drawing.Color.Magenta
         Me.ToolRefresh.Name = "ToolRefresh"
         Me.ToolRefresh.Size = New System.Drawing.Size(36, 36)
@@ -141,7 +141,7 @@ Partial Class FCOADetail
         Me.Toolbarang.Location = New System.Drawing.Point(0, 0)
         Me.Toolbarang.Name = "Toolbarang"
         Me.Toolbarang.RenderMode = System.Windows.Forms.ToolStripRenderMode.System
-        Me.Toolbarang.Size = New System.Drawing.Size(1243, 39)
+        Me.Toolbarang.Size = New System.Drawing.Size(1387, 39)
         Me.Toolbarang.TabIndex = 9
         Me.Toolbarang.Text = "Tool1"
         '
@@ -251,7 +251,7 @@ Partial Class FCOADetail
         Me.ToolStrip1.Location = New System.Drawing.Point(0, 529)
         Me.ToolStrip1.Name = "ToolStrip1"
         Me.ToolStrip1.RenderMode = System.Windows.Forms.ToolStripRenderMode.System
-        Me.ToolStrip1.Size = New System.Drawing.Size(1243, 25)
+        Me.ToolStrip1.Size = New System.Drawing.Size(1387, 25)
         Me.ToolStrip1.TabIndex = 19
         Me.ToolStrip1.Text = "ToolStrip1"
         '
@@ -264,7 +264,7 @@ Partial Class FCOADetail
         Me.Panelbarang.Dock = System.Windows.Forms.DockStyle.Left
         Me.Panelbarang.Location = New System.Drawing.Point(0, 0)
         Me.Panelbarang.Name = "Panelbarang"
-        Me.Panelbarang.Size = New System.Drawing.Size(1243, 554)
+        Me.Panelbarang.Size = New System.Drawing.Size(1387, 554)
         Me.Panelbarang.TabIndex = 13
         '
         'DataGridView1
@@ -272,14 +272,14 @@ Partial Class FCOADetail
         Me.DataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
         Me.DataGridView1.Location = New System.Drawing.Point(0, 38)
         Me.DataGridView1.Name = "DataGridView1"
-        Me.DataGridView1.Size = New System.Drawing.Size(1101, 225)
+        Me.DataGridView1.Size = New System.Drawing.Size(1384, 488)
         Me.DataGridView1.TabIndex = 20
         '
         'FCOADetail
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(1238, 554)
+        Me.ClientSize = New System.Drawing.Size(1387, 554)
         Me.Controls.Add(Me.Panelbarang)
         Me.Name = "FCOADetail"
         Me.Text = "COA Detail"

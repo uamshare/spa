@@ -8,8 +8,8 @@
 
     Sub New()
         MyBase.New()
-        BaseQuery = "SELECT userid,username,userstatus FROM muser"
-        SelectQuery = "SELECT userid,username,userstatus FROM muser"
+        BaseQuery = "SELECT a.userid,a.username,a.userstatus, a.groupid, b.groupname, LAST_INSERT_ID() FROM muser AS a INNER JOIN muserg AS b ON a.groupid=b.groupid"
+        SelectQuery = "SELECT a.userid,a.username,a.userstatus, a.groupid, b.groupname, LAST_INSERT_ID() FROM muser AS a INNER JOIN muserg AS b ON a.groupid=b.groupid"
         TableName = "muser"
         PrimaryKey = "userid"
     End Sub
