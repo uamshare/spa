@@ -16,7 +16,7 @@
 
     Function FindData(sSearch As String) As DataTable
         If Not String.IsNullOrEmpty(sSearch) Then
-            Me.WHERE = "WHERE mcusname like '%" & sSearch & "%'"
+            Me.WHERE = "WHERE mempname like '%" & sSearch & "%' OR username like '%" & sSearch & "%'"
         Else
             Me.WHERE = ""
         End If
