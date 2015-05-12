@@ -87,8 +87,9 @@ Public Class MTanaman
         Me.StringSQL = "SELECT * FROM material_fig"
         Return MyBase.GetDataList()
     End Function
-    Public Overloads Function getDataList(Optional noref As String = "") As List(Of Dictionary(Of String, Object))
-        Return ModelHpp.getDataList("", "material_fig")
+    Public Overloads Function getDataList(Currdt As Date, Optional noref As String = "") As List(Of Dictionary(Of String, Object))
+        'MsgBox(Currdt.ToString)
+        Return ModelHpp.GetDataList(Currdt, "", "material_fig")
     End Function
     Public Overloads Function GetRowsCount() As Integer
         Me.StringSQL = "SELECT COUNT(*) FROM " & ViewTableName & " " & mWHERE

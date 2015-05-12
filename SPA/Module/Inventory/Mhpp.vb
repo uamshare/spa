@@ -5,6 +5,7 @@
     Public mhppid As Integer
     Public mmtrid As String
     Public hpp As Decimal = 0
+    Public price As Decimal = 0
 
     Public dtcreated As String
 
@@ -37,6 +38,7 @@
                                 "('" & dat("noref").ToString & "','" & _
                                  dat("mmtrid").ToString & "','" & _
                                  dat("hpp").ToString & "','" & _
+                                 dat("price").ToString & "','" & _
                                  dtcreated & "'),"
             Next
 
@@ -49,7 +51,7 @@
         If multivalue.Length > 1 Then
             multivalue = multivalue.Substring(0, multivalue.Length - 1)
             strsqll = "INSERT INTO " & TableName & _
-                   "(`noref`,`mmtrid`,`hpp`,`dtcreated`) VALUES " & multivalue
+                   "(`noref`,`mmtrid`,`hpp`,`price`,`dtcreated`) VALUES " & multivalue & ";" & vbCrLf
         End If
 
         'MsgBox(Me.StringSQL)
@@ -57,7 +59,7 @@
         Return strsqll
     End Function
 
-    Public Overloads Function getDataList(Optional noref As String = "", Optional viewtable As String = "mmtr") As List(Of Dictionary(Of String, Object))
+    Public Overloads Function getDataList(Currdt As Date, Optional noref As String = "", Optional viewtable As String = "mmtr") As List(Of Dictionary(Of String, Object))
         Dim where As String = ""
         If Not String.IsNullOrEmpty(noref) Then
             where = "WHERE mmtrid='" & noref & "'"
@@ -65,11 +67,11 @@
         Me.StringSQL = "SELECT TA.*,IFNULL(TB.hpp,0) hpp FROM " & _
                        "(SELECT * FROM `" & viewtable & "` " & where & ") TA " & _
                        "LEFT JOIN " & _
-                       "(SELECT * FROM (SELECT * FROM mhpp ORDER BY 1 DESC) T1 " & _
+                       "(SELECT * FROM (SELECT * FROM mhpp WHERE `dtcreated` < '" & Format(Currdt, "yyyy-MM-dd") & "' ORDER BY 1 DESC) T1 " & _
                        "GROUP BY mmtrid) TB ON TA.mmtrid = TB.mmtrid"
         Return MyBase.GetDataList
     End Function
     Public Function DeleteByNo(ByVal NoHeader As String) As String
-        Return "DELETE FROM " & TableName + " WHERE noref='" & NoHeader & "';"
+        Return "DELETE FROM " & TableName + " WHERE noref='" & NoHeader & "';" & vbCrLf
     End Function
 End Class

@@ -12,7 +12,7 @@
     Sub New()
         MyBase.New()
         BaseQuery = "SELECT * FROM trcvmh"
-        SelectQuery = "SELECT `trcvmhno`,`trcvmhdt`,`pono`,`podate`,`supplier`,`dtcreated`,`userid` FROM trcvmh ORDER BY 1 DESC"
+        SelectQuery = "SELECT `trcvmhno`,`trcvmhdt`,`pono`,`podate`,`supplier`,`dtcreated`,`userid` FROM trcvmh_fig ORDER BY 1 DESC"
         Me.TableName = "trcvmh"
         PrimaryKey = "trcvmhno"
 
@@ -57,7 +57,7 @@
                       supplier & "','" & _
                       userid & "','" & _
                       dtcreated & "')"
-        Return "INSERT INTO " & TableName + "(`trcvmhno`,`trcvmhdt`,`pono`,`podate`,`supplier`,`userid`,`dtcreated`) VALUES " & values & ";"
+        Return "INSERT INTO " & TableName + "(`trcvmhno`,`trcvmhdt`,`pono`,`podate`,`supplier`,`userid`,`dtcreated`) VALUES " & values & ";" & vbCrLf
     End Function
 
     Public Overloads Function UpdateData(Optional ByVal id As String = "") As Integer
@@ -83,7 +83,7 @@
                     "podate='" & podate & "'," & _
                     "supplier='" & supplier & "'," & _
                     "userid='" & userid & "' WHERE trcvmhno ='" & id & "'"
-        Return "UPDATE " & TableName + " " & setquery & ";"
+        Return "UPDATE " & TableName + " " & setquery & ";" & vbCrLf
     End Function
 
     Public Function getAutoNo() As String
@@ -102,6 +102,6 @@
         Return MyBase.DeleteData()
     End Function
     Public Function GetSqlDeleteData(Optional ByVal id = -1) As String
-        Return "DELETE FROM " & TableName + " WHERE " & PrimaryKey & " = '" & id & "'"
+        Return "DELETE FROM " & TableName + " WHERE " & PrimaryKey & " = '" & id & "'" & vbCrLf
     End Function
 End Class

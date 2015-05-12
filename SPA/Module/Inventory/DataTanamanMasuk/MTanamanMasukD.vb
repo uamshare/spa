@@ -11,6 +11,7 @@
     Dim ModelHeader As New MTanamanMasukH
     Dim ModelStock As New Rstockm
     Dim ModelHPP As New Mhpp
+    Dim ModelGL As New GeneralLedger
 
     'Private dtcreated As String
 
@@ -77,7 +78,23 @@
         Me.StringSQL = ModelHeader.GetSqlInsertData()
 
         If Not String.IsNullOrEmpty(Me.StringSQL) Then 'Insert Header
+            'Do Posting to General Ledger
+            ModelGL.rgldt = Me.trcvmhdt
+            ModelGL.noref = Me.trcvmhno
+            ModelGL.noref2 = Me.trcvmhno
+            ModelGL.rgldesc = "Update Data Tanaman Masuk No " & Me.trcvmhno
+            ModelGL.dtcreated = Me.dtcreated
+            Dim ParamPosting As New Dictionary(Of String, Object)
+            ParamPosting.Add("idtrrans", "PB")
+            Dim accountlistvalue As New Dictionary(Of String, Object)
+            accountlistvalue.Add("acc_debit", Me.bookvalue)
+            accountlistvalue.Add("acc_credit", Me.bookvalue)
+            ParamPosting.Add("accountlistvalue", accountlistvalue)
+            Me.StringSQL = Me.StringSQL + ModelGL.doPosting(ParamPosting)
+            'MsgBox(ModelGL.doPosting(ParamPosting))
+
             Me.StringSQL = Me.StringSQL + queryInsertDetail(datadetail)
+
             trans = MyBase.InsertData()
         End If
         Return trans
@@ -95,14 +112,27 @@
         Me.StringSQL = ModelHeader.GetSqlUpdateData() 'Update Header
 
         If Not String.IsNullOrEmpty(Me.StringSQL) Then 'Insert Header
+            Me.StringSQL = Me.StringSQL + ModelGL.DeleteByNo(Me.trcvmhno) 'Update Header
+            'Do Posting to General Ledger
+            ModelGL.rgldt = Me.trcvmhdt
+            ModelGL.noref = Me.trcvmhno
+            ModelGL.noref2 = Me.trcvmhno
+            ModelGL.rgldesc = "Update Data Tanaman Masuk No " & Me.trcvmhno
+            ModelGL.dtcreated = Me.dtcreated
+            Dim ParamPosting As New Dictionary(Of String, Object)
+            ParamPosting.Add("idtrrans", "PB")
+            Dim accountlistvalue As New Dictionary(Of String, Object)
+            accountlistvalue.Add("acc_debit", Me.bookvalue)
+            accountlistvalue.Add("acc_credit", Me.bookvalue)
+            ParamPosting.Add("accountlistvalue", accountlistvalue)
+            Me.StringSQL = Me.StringSQL + ModelGL.doPosting(ParamPosting)
+
+            'MsgBox(Me.StringSQL)
+
             Me.StringSQL = Me.StringSQL + DeleteByNo(Me.trcvmhno)
             Me.StringSQL = Me.StringSQL + queryInsertDetail(datadetail)
             trans = MyBase.UpdateData()
         End If
-        'If trans > 0 Then
-        '    DeleteByNo(Me.trcvmhno)
-        '    trans = queryInsertDetail(datadetail)
-        'End If
         Return trans
     End Function
     Private Function queryInsertDetail(ByVal datadetail As List(Of Dictionary(Of String, Object))) As String
@@ -143,6 +173,7 @@
                 dicthpp.Add("noref", trcvmhno)
                 dicthpp.Add("mmtrid", dat("mmtrid"))
                 dicthpp.Add("hpp", dat("hpp"))
+                dicthpp.Add("price", dat("trcvmdprice"))
                 dicthpp.Add("dtcreated", dtcreatedforDeatil)
                 datahpp.Add(dicthpp)
             Next
@@ -157,7 +188,7 @@
         If multivalue.Length > 1 Then 'MyBase.InsertData() ==> Insert Header
             multivalue = multivalue.Substring(0, multivalue.Length - 1)
             DeleteByNo(trcvmhno)
-            strsql = "INSERT INTO " & TableName + "(`trcvmhno`,`mmtrid`,`trcvmdqty`,`trcvmdprice`,`dtcreated`) VALUES " & multivalue & ";"
+            strsql = "INSERT INTO " & TableName + "(`trcvmhno`,`mmtrid`,`trcvmdqty`,`trcvmdprice`,`dtcreated`) VALUES " & multivalue & ";" & vbCrLf
             'trans = MyBase.InsertData() 'MyBase.InsertData() ==> Insert Detail
             'If trans > 0 Then
             strsql = strsql + ModelStock.InsertData(datatostock) 'Insert/Update New Stok
@@ -170,7 +201,7 @@
         Dim no As String
         Dim sqlstr = ""
         no = IIf(String.IsNullOrEmpty(NoHeader), trcvmhno, NoHeader)
-        sqlstr = "DELETE FROM " & TableName + " WHERE trcvmhno='" & no & "';"
+        sqlstr = "DELETE FROM " & TableName + " WHERE trcvmhno='" & no & "';" & vbCrLf
         'Dim res As Integer = MyBase.DeleteData
         If Not String.IsNullOrEmpty(sqlstr) Then
             sqlstr = sqlstr & ModelStock.DeleteByNo(no)

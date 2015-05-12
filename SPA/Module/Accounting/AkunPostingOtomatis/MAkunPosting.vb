@@ -57,4 +57,9 @@
         CommitTrans(" data have been deleted ", "delete") 'Commit All Transaction
         Return rowCountAffected
     End Function
+
+    Public Function getListAccountPosting(ByVal idtrans As String) As List(Of Dictionary(Of String, Object))
+        Me.StringSQL = "SELECT * FROM mapo WHERE mapoid = '" & idtrans & "'"
+        Return MyBase.GetDataList
+    End Function
 End Class

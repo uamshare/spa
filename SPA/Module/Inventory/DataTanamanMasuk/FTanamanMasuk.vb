@@ -3,7 +3,7 @@
     Private ModelD As New MTanamanMasukD
     Private ModelM As New MTanaman
 
-    Private ListDataTanaman As List(Of Dictionary(Of String, Object)) = ModelM.GetDataList
+    Public ListDataTanaman As List(Of Dictionary(Of String, Object)) '= ModelM.GetDataList
     Private isEdit As Boolean = False
     Public Sub init()
         Me.isEdit = False
@@ -443,6 +443,7 @@
         TxtNo.Text = ModelH.getAutoNo
         TextBox1.Focus()
         isEdit = False
+        'ListDataTanaman = ModelM.GetDataList(DateTimePicker1.Value)
     End Sub
     Private Sub ButtonSave_Click(sender As Object, e As EventArgs) Handles ButtonSave.Click
         Dim Formvalid As Boolean = True
@@ -451,11 +452,12 @@
             TxtNo.Focus()
             Formvalid = False
         End If
-        'If TextBox1.Text = "" Then
-        '    MyApplication.ShowStatus("No PO harus diisi", WARNING_STAT)
-        '    TextBox1.Focus()
-        '    Formvalid = False
-        'End If
+        If DataGridView1.Rows.Count <= 1 Then
+            MyApplication.ShowStatus("Data Tanaman belum diisi", NOTICE_STAT)
+            DataGridView1.Select()
+            DataGridView1.Focus()
+            Formvalid = False
+        End If
 
         If Formvalid Then
             ModelD.trcvmhno = ModelH.EscapeString(TxtNo.Text)
@@ -498,6 +500,8 @@
                 ModelD.InsertData(ListDetail)
             End If
             init()
+            txtsum1.Text = ""
+            txtsum2.Text = ""
         End If
     End Sub
     Private Sub ButtonDel_Click(sender As Object, e As EventArgs) Handles ButtonDel.Click
@@ -542,5 +546,9 @@
                 DataGridView1.Refresh()
             End If
         End If
+    End Sub
+
+    Private Sub DateTimePicker1_ValueChanged(sender As Object, e As EventArgs) Handles DateTimePicker1.ValueChanged
+        ListDataTanaman = ModelM.GetDataList(CDate(DateTimePicker1.Value))
     End Sub
 End Class

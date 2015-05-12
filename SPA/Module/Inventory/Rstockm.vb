@@ -62,7 +62,7 @@
         If multivalue.Length > 1 Then
             multivalue = multivalue.Substring(0, multivalue.Length - 1)
             strsqll = "INSERT INTO " & TableName & _
-                   "(`noref`,`mmtrid`,`stockin`,`stockout`,`rstockmdesc`,`fk_id`,`userid`,`dtcreated`) VALUES " & multivalue & ";"
+                   "(`noref`,`mmtrid`,`stockin`,`stockout`,`rstockmdesc`,`fk_id`,`userid`,`dtcreated`) VALUES " & multivalue & ";" & vbCrLf
         End If
 
         'MsgBox(Me.StringSQL)
@@ -71,6 +71,6 @@
     End Function
 
     Public Function DeleteByNo(ByVal NoHeader As String) As String
-        Return "DELETE FROM " & TableName + " WHERE noref='" & NoHeader & "';"
+        Return "DELETE FROM " & TableName + " WHERE noref='" & NoHeader & "';" & vbCrLf
     End Function
 End Class
