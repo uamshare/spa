@@ -76,17 +76,18 @@
                 .Columns("memphone1").HeaderText = "Telepon"
                 .Columns("memphone2").Visible = False
                 .Columns("mempemail").HeaderText = "Email"
-                .Columns("memposid").HeaderText = "Posisi"
+                .Columns("memposname").HeaderText = "Posisi"
                 .Columns("username").HeaderText = "UserNmae"
                 .Columns("groupname").HeaderText = "Group Aksess"
                 .Columns("userid").Visible = False
+                .Columns("mlctid").Visible = False
                 .Columns("userpassword").Visible = False
 
                 .RowHeadersWidth = 75
                 .Columns("mempname").Width = 200
                 .Columns("memphone1").Width = 150
                 .Columns("mempemail").Width = 150
-                .Columns("memposid").Width = 100
+                .Columns("memposname").Width = 100
                 .Columns("username").Width = 100
                 .Columns("groupname").Width = 100
                 .Refresh()

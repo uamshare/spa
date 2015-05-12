@@ -1,13 +1,13 @@
 ﻿Public Class MDataPengguna
     Inherits CDataAcces
 
-    Public mempid, mempname, mempaddr, memphone1, memphone2, mempemail, memposid, groupid, userid, username, password As String
+    Public mempid, mempname, mempaddr, memphone1, memphone2, mempemail, memposname, memposid, groupid, userid, username, password As String
     Public dtcreated, dtupdated As String
 
     Sub New()
         MyBase.New()
-        BaseQuery = "SELECT a.mempid,a.mempname,a.mempaddr,a.memphone1,a.memphone2,a.mempemail,a.memposid,a.userid,b.username,b.userpassword, c.groupname FROM memp AS a INNER JOIN muser AS b ON a.userid=b.userid INNER JOIN muserg AS c ON b.groupid=c.groupid"
-        SelectQuery = "SELECT a.mempid,a.mempname,a.mempaddr,a.memphone1,a.memphone2,a.mempemail,a.memposid,a.userid,b.username,b.userpassword, c.groupname FROM memp AS a INNER JOIN muser AS b ON a.userid=b.userid INNER JOIN muserg AS c ON b.groupid=c.groupid"
+        BaseQuery = "SELECT a.mempid,a.mempname,a.mempaddr,a.memphone1,a.memphone2,a.mempemail,d.memposname,a.mlctid,a.userid,b.username,b.userpassword, c.groupname FROM memp AS a INNER JOIN mempos AS d ON a.memposid=d.memposid INNER JOIN muser AS b ON a.userid=b.userid INNER JOIN muserg AS c ON b.groupid=c.groupid"
+        SelectQuery = "SELECT a.mempid,a.mempname,a.mempaddr,a.memphone1,a.memphone2,a.mempemail,d.memposname,a.mlctid,a.userid,b.username,b.userpassword, c.groupname FROM memp AS a INNER JOIN mempos AS d ON a.memposid=d.memposid INNER JOIN muser AS b ON a.userid=b.userid INNER JOIN muserg AS c ON b.groupid=c.groupid"
         TableName = "memp"
         TableName2 = "muser"
         PrimaryKey = "mempid"
