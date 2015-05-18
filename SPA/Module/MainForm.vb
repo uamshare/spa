@@ -31,7 +31,7 @@ Public Class MainForm
         LoadMdiChildForm(FUserGroup, "menu501")
     End Sub
 
-    Sub LoadMdiChildForm(CForm As Form, menuname As String)
+    Public Sub LoadMdiChildForm(CForm As Form, menuname As String)
         Try
             If Not ChildForm Is Nothing Then
                 If ChildForm.Name <> CForm.Name Then
@@ -118,5 +118,17 @@ Public Class MainForm
 
     Private Sub menu503_Click(sender As Object, e As EventArgs) Handles menu503.Click
         LoadMdiChildForm(FProfilPerusahaan, "menu503")
+    End Sub
+
+    Private Sub menu103_Click(sender As Object, e As EventArgs) Handles menu103.Click
+        LoadMdiChildForm(FTransferStokTanaman, "menu103")
+    End Sub
+
+    Private Sub menu104_Click(sender As Object, e As EventArgs) Handles menu104.Click
+        LoadMdiChildForm(FPenyesuaianStok, "menu104")
+    End Sub
+
+    Private Sub menu105_Click(sender As Object, e As EventArgs) Handles menu105.Click
+        LoadMdiChildForm(FRekapStok, "menu105")
     End Sub
 End Class

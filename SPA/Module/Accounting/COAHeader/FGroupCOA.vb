@@ -3,7 +3,7 @@
     Dim DGVColumnCheckIndex As Integer
 
     Private Model As New MGroupCOA
-
+    Private ModelRowCount As Integer = Model.GetRowsCount()
     Public Sub init()
         ToolAdd.Enabled = True
         ToolEdit.Enabled = False
@@ -62,6 +62,7 @@
             Else
                 dt = Model.GetData()
             End If
+            ModelRowCount = Model.GetRowsCount()
             With DataGridView1
                 .Columns.Clear()
                 DGVColumnCheckIndex = .Columns.Add(New DataGridViewCheckBoxColumn)
@@ -118,8 +119,8 @@
         Try
             Dim page, CurrentCountRows, endofpage As Integer
             If Model.limitrecord > 0 Then
-                endofpage = (Model.GetRowsCount() \ Model.limitrecord) '* Model.limitrecord
-                endofpage = IIf((endofpage * Model.limitrecord) < Model.GetRowsCount(), endofpage, endofpage - 1) + 1
+                endofpage = (ModelRowCount \ Model.limitrecord) '* Model.limitrecord
+                endofpage = IIf((endofpage * Model.limitrecord) < ModelRowCount, endofpage, endofpage - 1) + 1
                 page = IIf(Model.startRecord = 0, 0, Model.startRecord / Model.limitrecord) + 1
                 'Dim page As Integer = IIf(Model.startRecord = 0, 0, Model.startRecord / Model.limitrecord) + 1
 
@@ -141,8 +142,8 @@
                 End If
                 cmbperPage.Text = Model.limitrecord
                 'page = IIf(Model.startRecord = 0, 0, Model.startRecord / Model.limitrecord) + 1
-                CurrentCountRows = IIf((Model.startRecord + Model.limitrecord) > Model.GetRowsCount(), Model.GetRowsCount(), (Model.startRecord + Model.limitrecord))
-                'lpageinfo.Text = "Page " & page & " of " & (Model.GetRowsCount() \ Model.limitrecord) & " as " & Model.GetRowsCount() & " Records"
+                CurrentCountRows = IIf((Model.startRecord + Model.limitrecord) > ModelRowCount, ModelRowCount, (Model.startRecord + Model.limitrecord))
+                'lpageinfo.Text = "Page " & page & " of " & (ModelRowCount \ Model.limitrecord) & " as " & ModelRowCount & " Records"
 
             Else
                 ToolFisrt.Enabled = False
@@ -154,7 +155,7 @@
             End If
 
             'Navigator Info
-            lpageInfo.Text = (Model.startRecord + 1) & "-" & CurrentCountRows & " as " & Model.GetRowsCount() & " Rows"
+            lpageInfo.Text = (Model.startRecord + 1) & "-" & CurrentCountRows & " as " & ModelRowCount & " Rows"
             Me.lCountPage.Text = "of " & endofpage
             txtPageCurrent.Text = page
         Catch ex As Exception
@@ -172,14 +173,14 @@
         End If
     End Sub
     Sub RetrieveNext()
-        If Model.startRecord < Model.GetRowsCount() Then
+        If Model.startRecord < ModelRowCount Then
             Model.startRecord = Model.startRecord + Model.limitrecord
             RetrieveData()
         End If
     End Sub
     Sub RetrieveLast()
-        Dim totalpage = (Model.GetRowsCount() \ Model.limitrecord) * Model.limitrecord
-        If totalpage < Model.GetRowsCount() Then
+        Dim totalpage = (ModelRowCount \ Model.limitrecord) * Model.limitrecord
+        If totalpage < ModelRowCount Then
             Model.startRecord = totalpage
         Else
             Model.startRecord = totalpage - Model.limitrecord
@@ -300,7 +301,7 @@
             Dim countpage As Integer
             Dim pageto As Integer = Val(txtPageCurrent.Text)
             If Model.limitrecord > 0 Then
-                countpage = (Model.GetRowsCount() \ Model.limitrecord)
+                countpage = (ModelRowCount \ Model.limitrecord)
             Else
                 countpage = 1
             End If

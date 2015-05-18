@@ -122,6 +122,16 @@ Namespace My
                 Me("CabangID") = value
             End Set
         End Property
+        
+        <Global.System.Configuration.ApplicationScopedSettingAttribute(),  _
+         Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.Configuration.SpecialSettingAttribute(Global.System.Configuration.SpecialSetting.ConnectionString),  _
+         Global.System.Configuration.DefaultSettingValueAttribute("server=localhost;persistsecurityinfo=True;user id=root;database=simagro")>  _
+        Public ReadOnly Property simagroConnectionString() As String
+            Get
+                Return CType(Me("simagroConnectionString"),String)
+            End Get
+        End Property
     End Class
 End Namespace
 

@@ -18,7 +18,7 @@
     Sub New()
         MyBase.New()
         BaseQuery = "SELECT * FROM trcvmd"
-        SelectQuery = "SELECT T1.`trcvmdid`,T1.`trcvmhno`,T1.`mmtrid`,T2.`mmtrname`,T2.`polybag`,T1.`trcvmdqty`,T1.`trcvmdprice`,(T1.`trcvmdqty` * T1.`trcvmdprice`) AS jumlah,dtcreated " & _
+        SelectQuery = "SELECT T1.`trcvmdid`,T1.`trcvmhno`,T1.`mmtrid`,T2.`mmtrname`,T2.`polybag`,T1.`trcvmdqty`,T1.`trcvmdprice`,(T1.`trcvmdqty` * T1.`trcvmdprice`) AS jumlah,T1.dtcreated " & _
                       "FROM trcvmd T1 INNER JOIN mmtr T2 ON T1.`mmtrid` = T2.`mmtrid`"
         TableName = "trcvmd"
         PrimaryKey = "trcvmdid"
@@ -82,7 +82,7 @@
             ModelGL.rgldt = Me.trcvmhdt
             ModelGL.noref = Me.trcvmhno
             ModelGL.noref2 = Me.trcvmhno
-            ModelGL.rgldesc = "Update Data Tanaman Masuk No " & Me.trcvmhno
+            ModelGL.rgldesc = "Insert Data Tanaman Masuk No " & Me.trcvmhno
             ModelGL.dtcreated = Me.dtcreated
             Dim ParamPosting As New Dictionary(Of String, Object)
             ParamPosting.Add("idtrrans", "PB")

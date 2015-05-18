@@ -52,12 +52,11 @@ Partial Class FListTanamanMasuk
         '
         'ToolCheck
         '
-        Me.ToolCheck.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image
         Me.ToolCheck.Image = Global.SPA.My.Resources.Resources.check
         Me.ToolCheck.ImageTransparentColor = System.Drawing.Color.Magenta
         Me.ToolCheck.Name = "ToolCheck"
-        Me.ToolCheck.Size = New System.Drawing.Size(36, 36)
-        Me.ToolCheck.Text = "ToolStripButton1"
+        Me.ToolCheck.Size = New System.Drawing.Size(93, 36)
+        Me.ToolCheck.Text = "Pilih Data"
         Me.ToolCheck.ToolTipText = "Pilih Data"
         '
         'ToolFind

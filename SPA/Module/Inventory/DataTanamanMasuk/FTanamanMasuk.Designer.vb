@@ -70,7 +70,7 @@ Partial Class FTanamanMasuk
         Me.Panel1.Dock = System.Windows.Forms.DockStyle.Left
         Me.Panel1.Location = New System.Drawing.Point(0, 0)
         Me.Panel1.Name = "Panel1"
-        Me.Panel1.Size = New System.Drawing.Size(886, 474)
+        Me.Panel1.Size = New System.Drawing.Size(883, 430)
         Me.Panel1.TabIndex = 8
         '
         'Panel2
@@ -78,9 +78,9 @@ Partial Class FTanamanMasuk
         Me.Panel2.Controls.Add(Me.DataGridView1)
         Me.Panel2.Controls.Add(Me.Tool1)
         Me.Panel2.Dock = System.Windows.Forms.DockStyle.Fill
-        Me.Panel2.Location = New System.Drawing.Point(0, 114)
+        Me.Panel2.Location = New System.Drawing.Point(0, 85)
         Me.Panel2.Name = "Panel2"
-        Me.Panel2.Size = New System.Drawing.Size(886, 262)
+        Me.Panel2.Size = New System.Drawing.Size(883, 247)
         Me.Panel2.TabIndex = 23
         '
         'DataGridView1
@@ -101,7 +101,7 @@ Partial Class FTanamanMasuk
         Me.Tool1.Location = New System.Drawing.Point(0, 0)
         Me.Tool1.Name = "Tool1"
         Me.Tool1.RenderMode = System.Windows.Forms.ToolStripRenderMode.System
-        Me.Tool1.Size = New System.Drawing.Size(886, 39)
+        Me.Tool1.Size = New System.Drawing.Size(883, 39)
         Me.Tool1.TabIndex = 24
         Me.Tool1.Text = "Tool1"
         '
@@ -132,14 +132,14 @@ Partial Class FTanamanMasuk
         Me.PanelHeader.Dock = System.Windows.Forms.DockStyle.Top
         Me.PanelHeader.Location = New System.Drawing.Point(0, 0)
         Me.PanelHeader.Name = "PanelHeader"
-        Me.PanelHeader.Size = New System.Drawing.Size(886, 114)
+        Me.PanelHeader.Size = New System.Drawing.Size(883, 85)
         Me.PanelHeader.TabIndex = 12
         '
         'ButtonH
         '
-        Me.ButtonH.Location = New System.Drawing.Point(233, 51)
+        Me.ButtonH.Location = New System.Drawing.Point(237, 33)
         Me.ButtonH.Name = "ButtonH"
-        Me.ButtonH.Size = New System.Drawing.Size(28, 23)
+        Me.ButtonH.Size = New System.Drawing.Size(24, 24)
         Me.ButtonH.TabIndex = 19
         Me.ButtonH.Text = "..."
         Me.ButtonH.TextAlign = System.Drawing.ContentAlignment.TopCenter
@@ -148,15 +148,15 @@ Partial Class FTanamanMasuk
         'DateTimePicker2
         '
         Me.DateTimePicker2.Format = System.Windows.Forms.DateTimePickerFormat.Custom
-        Me.DateTimePicker2.Location = New System.Drawing.Point(360, 49)
+        Me.DateTimePicker2.Location = New System.Drawing.Point(510, 35)
         Me.DateTimePicker2.Name = "DateTimePicker2"
-        Me.DateTimePicker2.Size = New System.Drawing.Size(145, 22)
+        Me.DateTimePicker2.Size = New System.Drawing.Size(167, 22)
         Me.DateTimePicker2.TabIndex = 4
         '
         'TextBox3
         '
         Me.TextBox3.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.TextBox3.Location = New System.Drawing.Point(360, 78)
+        Me.TextBox3.Location = New System.Drawing.Point(510, 58)
         Me.TextBox3.Margin = New System.Windows.Forms.Padding(4)
         Me.TextBox3.MaxLength = 40
         Me.TextBox3.Name = "TextBox3"
@@ -167,7 +167,7 @@ Partial Class FTanamanMasuk
         '
         Me.Label4.AutoSize = True
         Me.Label4.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label4.Location = New System.Drawing.Point(281, 81)
+        Me.Label4.Location = New System.Drawing.Point(431, 61)
         Me.Label4.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.Label4.Name = "Label4"
         Me.Label4.Size = New System.Drawing.Size(66, 16)
@@ -178,7 +178,7 @@ Partial Class FTanamanMasuk
         '
         Me.Label3.AutoSize = True
         Me.Label3.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label3.Location = New System.Drawing.Point(280, 52)
+        Me.Label3.Location = New System.Drawing.Point(430, 38)
         Me.Label3.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.Label3.Name = "Label3"
         Me.Label3.Size = New System.Drawing.Size(50, 16)
@@ -188,18 +188,18 @@ Partial Class FTanamanMasuk
         'TextBox1
         '
         Me.TextBox1.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.TextBox1.Location = New System.Drawing.Point(360, 22)
+        Me.TextBox1.Location = New System.Drawing.Point(510, 12)
         Me.TextBox1.Margin = New System.Windows.Forms.Padding(4)
         Me.TextBox1.MaxLength = 20
         Me.TextBox1.Name = "TextBox1"
-        Me.TextBox1.Size = New System.Drawing.Size(214, 22)
+        Me.TextBox1.Size = New System.Drawing.Size(363, 22)
         Me.TextBox1.TabIndex = 3
         '
         'Label2
         '
         Me.Label2.AutoSize = True
         Me.Label2.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label2.Location = New System.Drawing.Point(282, 25)
+        Me.Label2.Location = New System.Drawing.Point(432, 15)
         Me.Label2.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.Label2.Name = "Label2"
         Me.Label2.Size = New System.Drawing.Size(48, 16)
@@ -210,7 +210,7 @@ Partial Class FTanamanMasuk
         '
         Me.Label1.AutoSize = True
         Me.Label1.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label1.Location = New System.Drawing.Point(12, 25)
+        Me.Label1.Location = New System.Drawing.Point(5, 15)
         Me.Label1.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.Label1.Name = "Label1"
         Me.Label1.Size = New System.Drawing.Size(59, 16)
@@ -220,15 +220,15 @@ Partial Class FTanamanMasuk
         'DateTimePicker1
         '
         Me.DateTimePicker1.Format = System.Windows.Forms.DateTimePickerFormat.Custom
-        Me.DateTimePicker1.Location = New System.Drawing.Point(89, 22)
+        Me.DateTimePicker1.Location = New System.Drawing.Point(93, 11)
         Me.DateTimePicker1.Name = "DateTimePicker1"
-        Me.DateTimePicker1.Size = New System.Drawing.Size(145, 22)
+        Me.DateTimePicker1.Size = New System.Drawing.Size(167, 22)
         Me.DateTimePicker1.TabIndex = 1
         '
         'TxtNo
         '
         Me.TxtNo.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.TxtNo.Location = New System.Drawing.Point(89, 51)
+        Me.TxtNo.Location = New System.Drawing.Point(93, 34)
         Me.TxtNo.Margin = New System.Windows.Forms.Padding(4)
         Me.TxtNo.MaxLength = 13
         Me.TxtNo.Name = "TxtNo"
@@ -239,7 +239,7 @@ Partial Class FTanamanMasuk
         '
         Me.lblName.AutoSize = True
         Me.lblName.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.lblName.Location = New System.Drawing.Point(12, 54)
+        Me.lblName.Location = New System.Drawing.Point(5, 38)
         Me.lblName.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.lblName.Name = "lblName"
         Me.lblName.Size = New System.Drawing.Size(69, 16)
@@ -260,15 +260,15 @@ Partial Class FTanamanMasuk
         Me.PanelFooter.Controls.Add(Me.ButtonCancel)
         Me.PanelFooter.Controls.Add(Me.ButtonSave)
         Me.PanelFooter.Dock = System.Windows.Forms.DockStyle.Bottom
-        Me.PanelFooter.Location = New System.Drawing.Point(0, 376)
+        Me.PanelFooter.Location = New System.Drawing.Point(0, 332)
         Me.PanelFooter.Name = "PanelFooter"
-        Me.PanelFooter.Size = New System.Drawing.Size(886, 98)
+        Me.PanelFooter.Size = New System.Drawing.Size(883, 98)
         Me.PanelFooter.TabIndex = 11
         '
         'txtsum2
         '
         Me.txtsum2.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.txtsum2.Location = New System.Drawing.Point(692, 29)
+        Me.txtsum2.Location = New System.Drawing.Point(692, 28)
         Me.txtsum2.Margin = New System.Windows.Forms.Padding(4)
         Me.txtsum2.MaxLength = 13
         Me.txtsum2.Name = "txtsum2"
@@ -282,7 +282,7 @@ Partial Class FTanamanMasuk
         '
         Me.Label6.AutoSize = True
         Me.Label6.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label6.Location = New System.Drawing.Point(579, 33)
+        Me.Label6.Location = New System.Drawing.Point(579, 32)
         Me.Label6.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.Label6.Name = "Label6"
         Me.Label6.Size = New System.Drawing.Size(66, 16)
@@ -380,7 +380,7 @@ Partial Class FTanamanMasuk
         Me.AutoScaleDimensions = New System.Drawing.SizeF(8.0!, 16.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.BackColor = System.Drawing.Color.Silver
-        Me.ClientSize = New System.Drawing.Size(1273, 474)
+        Me.ClientSize = New System.Drawing.Size(884, 430)
         Me.Controls.Add(Me.Panel1)
         Me.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Margin = New System.Windows.Forms.Padding(4)

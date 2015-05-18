@@ -68,7 +68,7 @@ Partial Class FDataPenggunaAdd
         Me.GroupBox1.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.GroupBox1.Location = New System.Drawing.Point(12, 12)
         Me.GroupBox1.Name = "GroupBox1"
-        Me.GroupBox1.Size = New System.Drawing.Size(402, 173)
+        Me.GroupBox1.Size = New System.Drawing.Size(402, 160)
         Me.GroupBox1.TabIndex = 0
         Me.GroupBox1.TabStop = False
         Me.GroupBox1.Text = "Biodata Pengguna"
@@ -76,7 +76,7 @@ Partial Class FDataPenggunaAdd
         'cmbPosisi
         '
         Me.cmbPosisi.FormattingEnabled = True
-        Me.cmbPosisi.Location = New System.Drawing.Point(139, 141)
+        Me.cmbPosisi.Location = New System.Drawing.Point(138, 123)
         Me.cmbPosisi.Name = "cmbPosisi"
         Me.cmbPosisi.Size = New System.Drawing.Size(150, 24)
         Me.cmbPosisi.TabIndex = 8
@@ -85,7 +85,7 @@ Partial Class FDataPenggunaAdd
         'Label7
         '
         Me.Label7.AutoSize = True
-        Me.Label7.Location = New System.Drawing.Point(27, 141)
+        Me.Label7.Location = New System.Drawing.Point(31, 123)
         Me.Label7.Name = "Label7"
         Me.Label7.Size = New System.Drawing.Size(45, 16)
         Me.Label7.TabIndex = 7
@@ -94,7 +94,7 @@ Partial Class FDataPenggunaAdd
         '
         'txtEmail
         '
-        Me.txtEmail.Location = New System.Drawing.Point(139, 110)
+        Me.txtEmail.Location = New System.Drawing.Point(138, 100)
         Me.txtEmail.MaxLength = 25
         Me.txtEmail.Name = "txtEmail"
         Me.txtEmail.Size = New System.Drawing.Size(183, 22)
@@ -103,7 +103,7 @@ Partial Class FDataPenggunaAdd
         'txtPhon2
         '
         Me.txtPhon2.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.txtPhon2.Location = New System.Drawing.Point(138, 83)
+        Me.txtPhon2.Location = New System.Drawing.Point(138, 77)
         Me.txtPhon2.MaxLength = 15
         Me.txtPhon2.Name = "txtPhon2"
         Me.txtPhon2.Size = New System.Drawing.Size(151, 22)
@@ -112,7 +112,7 @@ Partial Class FDataPenggunaAdd
         'txtPhon1
         '
         Me.txtPhon1.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.txtPhon1.Location = New System.Drawing.Point(138, 56)
+        Me.txtPhon1.Location = New System.Drawing.Point(138, 54)
         Me.txtPhon1.MaxLength = 15
         Me.txtPhon1.Name = "txtPhon1"
         Me.txtPhon1.Size = New System.Drawing.Size(151, 22)
@@ -131,7 +131,7 @@ Partial Class FDataPenggunaAdd
         '
         Me.Label3.AutoSize = True
         Me.Label3.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label3.Location = New System.Drawing.Point(26, 114)
+        Me.Label3.Location = New System.Drawing.Point(31, 100)
         Me.Label3.Name = "Label3"
         Me.Label3.Size = New System.Drawing.Size(42, 16)
         Me.Label3.TabIndex = 2
@@ -141,7 +141,7 @@ Partial Class FDataPenggunaAdd
         '
         Me.Label2.AutoSize = True
         Me.Label2.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label2.Location = New System.Drawing.Point(26, 57)
+        Me.Label2.Location = New System.Drawing.Point(26, 54)
         Me.Label2.Name = "Label2"
         Me.Label2.Size = New System.Drawing.Size(59, 16)
         Me.Label2.TabIndex = 1
@@ -166,9 +166,9 @@ Partial Class FDataPenggunaAdd
         Me.GroupBox2.Controls.Add(Me.Label5)
         Me.GroupBox2.Controls.Add(Me.Label4)
         Me.GroupBox2.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.GroupBox2.Location = New System.Drawing.Point(12, 196)
+        Me.GroupBox2.Location = New System.Drawing.Point(12, 174)
         Me.GroupBox2.Name = "GroupBox2"
-        Me.GroupBox2.Size = New System.Drawing.Size(402, 153)
+        Me.GroupBox2.Size = New System.Drawing.Size(402, 120)
         Me.GroupBox2.TabIndex = 1
         Me.GroupBox2.TabStop = False
         Me.GroupBox2.Text = "Aksess Pengguna"
@@ -183,7 +183,7 @@ Partial Class FDataPenggunaAdd
         '
         'txtPass
         '
-        Me.txtPass.Location = New System.Drawing.Point(138, 105)
+        Me.txtPass.Location = New System.Drawing.Point(138, 79)
         Me.txtPass.MaxLength = 60
         Me.txtPass.Name = "txtPass"
         Me.txtPass.Size = New System.Drawing.Size(151, 22)
@@ -192,7 +192,7 @@ Partial Class FDataPenggunaAdd
         '
         'txtUser
         '
-        Me.txtUser.Location = New System.Drawing.Point(138, 71)
+        Me.txtUser.Location = New System.Drawing.Point(138, 56)
         Me.txtUser.MaxLength = 25
         Me.txtUser.Name = "txtUser"
         Me.txtUser.Size = New System.Drawing.Size(258, 22)
@@ -201,25 +201,25 @@ Partial Class FDataPenggunaAdd
         'Label6
         '
         Me.Label6.AutoSize = True
-        Me.Label6.Location = New System.Drawing.Point(30, 105)
+        Me.Label6.Location = New System.Drawing.Point(31, 79)
         Me.Label6.Name = "Label6"
-        Me.Label6.Size = New System.Drawing.Size(68, 16)
+        Me.Label6.Size = New System.Drawing.Size(43, 16)
         Me.Label6.TabIndex = 2
-        Me.Label6.Text = "Password"
+        Me.Label6.Text = "Sandi"
         '
         'Label5
         '
         Me.Label5.AutoSize = True
-        Me.Label5.Location = New System.Drawing.Point(29, 71)
+        Me.Label5.Location = New System.Drawing.Point(30, 56)
         Me.Label5.Name = "Label5"
-        Me.Label5.Size = New System.Drawing.Size(74, 16)
+        Me.Label5.Size = New System.Drawing.Size(86, 16)
         Me.Label5.TabIndex = 1
-        Me.Label5.Text = "UserNmae"
+        Me.Label5.Text = "ID Pengguna"
         '
         'Label4
         '
         Me.Label4.AutoSize = True
-        Me.Label4.Location = New System.Drawing.Point(29, 40)
+        Me.Label4.Location = New System.Drawing.Point(31, 31)
         Me.Label4.Name = "Label4"
         Me.Label4.Size = New System.Drawing.Size(93, 16)
         Me.Label4.TabIndex = 0
@@ -228,9 +228,9 @@ Partial Class FDataPenggunaAdd
         'btnSimpan
         '
         Me.btnSimpan.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.btnSimpan.Location = New System.Drawing.Point(251, 356)
+        Me.btnSimpan.Location = New System.Drawing.Point(254, 308)
         Me.btnSimpan.Name = "btnSimpan"
-        Me.btnSimpan.Size = New System.Drawing.Size(75, 33)
+        Me.btnSimpan.Size = New System.Drawing.Size(77, 31)
         Me.btnSimpan.TabIndex = 2
         Me.btnSimpan.Text = "Simpan"
         Me.btnSimpan.UseVisualStyleBackColor = True
@@ -238,9 +238,9 @@ Partial Class FDataPenggunaAdd
         'btnBatal
         '
         Me.btnBatal.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.btnBatal.Location = New System.Drawing.Point(333, 355)
+        Me.btnBatal.Location = New System.Drawing.Point(336, 307)
         Me.btnBatal.Name = "btnBatal"
-        Me.btnBatal.Size = New System.Drawing.Size(75, 33)
+        Me.btnBatal.Size = New System.Drawing.Size(77, 31)
         Me.btnBatal.TabIndex = 3
         Me.btnBatal.Text = "Batal"
         Me.btnBatal.UseVisualStyleBackColor = True
@@ -249,7 +249,7 @@ Partial Class FDataPenggunaAdd
         '
         Me.StatusStrip1.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.StatusStrip1.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.statmsg})
-        Me.StatusStrip1.Location = New System.Drawing.Point(0, 403)
+        Me.StatusStrip1.Location = New System.Drawing.Point(0, 343)
         Me.StatusStrip1.Name = "StatusStrip1"
         Me.StatusStrip1.Padding = New System.Windows.Forms.Padding(1, 0, 19, 0)
         Me.StatusStrip1.Size = New System.Drawing.Size(422, 22)
@@ -299,7 +299,7 @@ Partial Class FDataPenggunaAdd
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(422, 425)
+        Me.ClientSize = New System.Drawing.Size(422, 365)
         Me.Controls.Add(Me.txtGroupID)
         Me.Controls.Add(Me.txtUserID)
         Me.Controls.Add(Me.UserName)

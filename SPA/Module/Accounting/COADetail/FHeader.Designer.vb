@@ -141,7 +141,7 @@ Partial Class FHeader
         Me.Toolbarang.Location = New System.Drawing.Point(0, 0)
         Me.Toolbarang.Name = "Toolbarang"
         Me.Toolbarang.RenderMode = System.Windows.Forms.ToolStripRenderMode.System
-        Me.Toolbarang.Size = New System.Drawing.Size(1243, 39)
+        Me.Toolbarang.Size = New System.Drawing.Size(888, 39)
         Me.Toolbarang.TabIndex = 9
         Me.Toolbarang.Text = "Tool1"
         '
@@ -251,7 +251,7 @@ Partial Class FHeader
         Me.ToolStrip1.Location = New System.Drawing.Point(0, 528)
         Me.ToolStrip1.Name = "ToolStrip1"
         Me.ToolStrip1.RenderMode = System.Windows.Forms.ToolStripRenderMode.System
-        Me.ToolStrip1.Size = New System.Drawing.Size(1243, 25)
+        Me.ToolStrip1.Size = New System.Drawing.Size(888, 25)
         Me.ToolStrip1.TabIndex = 19
         Me.ToolStrip1.Text = "ToolStrip1"
         '
@@ -261,10 +261,10 @@ Partial Class FHeader
         Me.Panelbarang.Controls.Add(Me.DataGridView1)
         Me.Panelbarang.Controls.Add(Me.ToolStrip1)
         Me.Panelbarang.Controls.Add(Me.Toolbarang)
-        Me.Panelbarang.Dock = System.Windows.Forms.DockStyle.Left
+        Me.Panelbarang.Dock = System.Windows.Forms.DockStyle.Fill
         Me.Panelbarang.Location = New System.Drawing.Point(0, 0)
         Me.Panelbarang.Name = "Panelbarang"
-        Me.Panelbarang.Size = New System.Drawing.Size(1243, 553)
+        Me.Panelbarang.Size = New System.Drawing.Size(888, 553)
         Me.Panelbarang.TabIndex = 13
         '
         'DataGridView1
@@ -272,14 +272,14 @@ Partial Class FHeader
         Me.DataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
         Me.DataGridView1.Location = New System.Drawing.Point(3, 39)
         Me.DataGridView1.Name = "DataGridView1"
-        Me.DataGridView1.Size = New System.Drawing.Size(1237, 488)
+        Me.DataGridView1.Size = New System.Drawing.Size(545, 302)
         Me.DataGridView1.TabIndex = 20
         '
         'FHeader
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(1243, 553)
+        Me.ClientSize = New System.Drawing.Size(888, 553)
         Me.Controls.Add(Me.Panelbarang)
         Me.Name = "FHeader"
         Me.Text = "FHeader"

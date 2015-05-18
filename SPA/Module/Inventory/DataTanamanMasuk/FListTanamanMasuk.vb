@@ -4,7 +4,7 @@
 
     Private Model As New MTanamanMasukH
     'Public DatagridParent As DataGridView
-
+    Private ModelRowCount As Integer = Model.GetRowsCount()
     Public Sub init()
         Model.limitrecord = 25
         RetrieveData()
@@ -69,7 +69,7 @@
             Else
                 dt = Model.GetData()
             End If
-
+            ModelRowCount = Model.GetRowsCount()
             With DataGridView1
                 .Columns.Clear()
 
@@ -104,7 +104,7 @@
             End With
             setButtonPager()
         Catch ex As Exception
-            MyApplication.ShowStatus("Failed to RetrieveData = " & ex.Message, WARNING_STAT)
+            MyApplication.ShowStatus("Gagal menampilkan data = " & ex.Message, WARNING_STAT)
         End Try
 
     End Sub
@@ -133,12 +133,16 @@
     Private Sub DataGridView1_CellContentDoubleClick(sender As Object, e As DataGridViewCellEventArgs) Handles DataGridView1.CellContentDoubleClick
         Try
             If DataGridView1.SelectedRows.Count > 0 Then
-                FTanamanMasuk.TxtNo.Text = DataGridView1.CurrentRow.Cells("trcvmhno").Value()
+                FTanamanMasuk.TxtNo.Text = DataGridView1.CurrentRow.Cells("trcvmhno").Value().ToString
                 'FTanamanMasuk.txtdtcreated.Text = DataGridView1.CurrentRow.Cells("dtcreated").Value()
-                FTanamanMasuk.DateTimePicker1.Value = DataGridView1.CurrentRow.Cells("trcvmhdt").Value()
-                FTanamanMasuk.TextBox1.Text = DataGridView1.CurrentRow.Cells("pono").Value()
-                FTanamanMasuk.DateTimePicker2.Value = DataGridView1.CurrentRow.Cells("trcvmhdt").Value()
-                FTanamanMasuk.TextBox3.Text = DataGridView1.CurrentRow.Cells("supplier").Value()
+                FTanamanMasuk.DateTimePicker1.Value = DataGridView1.CurrentRow.Cells("trcvmhdt").Value().ToString
+                FTanamanMasuk.TextBox1.Text = DataGridView1.CurrentRow.Cells("pono").Value().ToString
+                'MsgBox(Format(CDate(DataGridView1.CurrentRow.Cells("podate").Value().ToString), "yyyy-MM-dd"))
+                If Format(CDate(DataGridView1.CurrentRow.Cells("podate").Value().ToString), "yyyy-MM-dd") <> "0001-01-01" Then
+                    FTanamanMasuk.DateTimePicker2.Value = CDate(DataGridView1.CurrentRow.Cells("podate").Value().ToString)
+                End If
+
+                FTanamanMasuk.TextBox3.Text = DataGridView1.CurrentRow.Cells("supplier").Value().ToString
 
                 FTanamanMasuk.ButtonAdd.Enabled = False
                 FTanamanMasuk.ButtonSave.Enabled = True
@@ -176,8 +180,8 @@
         Try
             Dim page, CurrentCountRows, endofpage As Integer
             If Model.limitrecord > 0 Then
-                endofpage = (Model.GetRowsCount() \ Model.limitrecord) '* Model.limitrecord
-                endofpage = IIf((endofpage * Model.limitrecord) < Model.GetRowsCount(), endofpage, endofpage - 1) + 1
+                endofpage = (ModelRowCount \ Model.limitrecord) '* Model.limitrecord
+                endofpage = IIf((endofpage * Model.limitrecord) < ModelRowCount, endofpage, endofpage - 1) + 1
                 page = IIf(Model.startRecord = 0, 0, Model.startRecord / Model.limitrecord) + 1
                 'Dim page As Integer = IIf(Model.startRecord = 0, 0, Model.startRecord / Model.limitrecord) + 1
 
@@ -199,8 +203,8 @@
                 End If
                 cmbperpage.Text = Model.limitrecord
                 'page = IIf(Model.startRecord = 0, 0, Model.startRecord / Model.limitrecord) + 1
-                CurrentCountRows = IIf((Model.startRecord + Model.limitrecord) > Model.GetRowsCount(), Model.GetRowsCount(), (Model.startRecord + Model.limitrecord))
-                'lpageinfo.Text = "Page " & page & " of " & (Model.GetRowsCount() \ Model.limitrecord) & " as " & Model.GetRowsCount() & " Records"
+                CurrentCountRows = IIf((Model.startRecord + Model.limitrecord) > ModelRowCount, ModelRowCount, (Model.startRecord + Model.limitrecord))
+                'lpageinfo.Text = "Page " & page & " of " & (ModelRowCount \ Model.limitrecord) & " as " & ModelRowCount & " Records"
 
             Else
                 ToolFisrt.Enabled = False
@@ -212,7 +216,7 @@
             End If
 
             'Navigator Info
-            lpageinfo.Text = (Model.startRecord + 1) & "-" & CurrentCountRows & " as " & Model.GetRowsCount() & " Rows"
+            lpageinfo.Text = (Model.startRecord + 1) & "-" & CurrentCountRows & " as " & ModelRowCount & " Rows"
             Me.lCountPage.Text = "of " & endofpage
             txtPageCurrent.Text = page
         Catch ex As Exception
@@ -230,14 +234,14 @@
         End If
     End Sub
     Sub RetrieveNext()
-        If Model.startRecord < Model.GetRowsCount() Then
+        If Model.startRecord < ModelRowCount Then
             Model.startRecord = Model.startRecord + Model.limitrecord
             RetrieveData()
         End If
     End Sub
     Sub RetrieveLast()
-        Dim totalpage = (Model.GetRowsCount() \ Model.limitrecord) * Model.limitrecord
-        If totalpage < Model.GetRowsCount() Then
+        Dim totalpage = (ModelRowCount \ Model.limitrecord) * Model.limitrecord
+        If totalpage < ModelRowCount Then
             Model.startRecord = totalpage
         Else
             Model.startRecord = totalpage - Model.limitrecord
@@ -265,7 +269,7 @@
             Dim countpage As Integer
             Dim pageto As Integer = Val(txtPageCurrent.Text)
             If Model.limitrecord > 0 Then
-                countpage = (Model.GetRowsCount() \ Model.limitrecord)
+                countpage = (ModelRowCount \ Model.limitrecord)
             Else
                 countpage = 1
             End If
@@ -285,8 +289,8 @@
     End Sub
 
     Private Sub cmbperPage_SelectedIndexChanged(sender As Object, e As EventArgs) Handles cmbperpage.SelectedIndexChanged
-        If IsNumeric(cmbperPage.Text) Then
-            Model.limitrecord = Int(cmbperPage.Text)
+        If IsNumeric(cmbperpage.Text) Then
+            Model.limitrecord = Int(cmbperpage.Text)
         Else
             Model.limitrecord = 0
         End If
@@ -301,7 +305,6 @@
         RetrieveData(ToolTextFind.Text)
     End Sub
 #End Region
-
     Private Sub ToolCheck_Click(sender As Object, e As EventArgs) Handles ToolCheck.Click
         DataGridView1_CellContentDoubleClick(sender, Nothing)
     End Sub

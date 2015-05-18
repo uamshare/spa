@@ -52,15 +52,18 @@
         CommitTrans(" data have been deleted ", "delete") 'Commit All Transaction
         Return rowCountAffected
     End Function
-
+    Private Shared _UserInfo As New Dictionary(Of String, String)
     Public Shared Function UserInfo() As Dictionary(Of String, String)
         'Dim result As New List(Of Dictionary(Of String, Object)) 'for result function
 
         Dim result As New Dictionary(Of String, String) 'for result function
-        result.Add("userid", "1")
-        result.Add("username", "Administrator")
-        result.Add("groupid", "1")
-        Return result
+        If MUsers._UserInfo Is Nothing Then
+            MUsers._UserInfo.Add("userid", "Empty")
+            MUsers._UserInfo.Add("username", "Empty")
+            MUsers._UserInfo.Add("groupid", "Empty")
+        End If
+        'MsgBox(_UserInfo.Count)
+        Return MUsers._UserInfo
     End Function
     ''' <summary>
     ''' Author : UAM
@@ -108,5 +111,35 @@
             If Not reader Is Nothing Then reader.Close()
         End Try
         Return result
+    End Function
+
+    Public Function DoLogin(ByVal Username As String, ByVal Password As String) As Boolean
+        Dim IsValidUser As Boolean = False
+        Dim ObjUsers As List(Of Dictionary(Of String, Object))
+        Me.StringSQL = "SELECT T1.*,IFNULL(T2.`mempname`,'') mempname FROM muser T1 LEFT JOIN memp T2 ON T1.`userid` = T2.`userid` WHERE username = '" & Username & _
+                        "' AND userpassword = SHA1('" & Password & "')"
+        ObjUsers = MyBase.GetDataList
+
+        Try
+            If ObjUsers.Count > 0 Then
+                For Each dat In ObjUsers
+                    MUsers._UserInfo.Add("userid", dat("userid").ToString)
+                    MUsers._UserInfo.Add("username", dat("username").ToString)
+                    MUsers._UserInfo.Add("fullname", dat("mempname").ToString)
+                    MUsers._UserInfo.Add("groupid", dat("groupid").ToString)
+                    'MUsers._UserInfo.Add("userid") = dat("userid").ToString
+                    'MUsers._UserInfo("username") = dat("username").ToString
+                    'MUsers._UserInfo("groupid") = dat("groupid").ToString
+                Next
+
+                IsValidUser = True
+            End If
+        Catch ex As Exception
+            Dim errMsg As String = ex.Message
+            ErrorLogger.WriteToErrorLog(errMsg, ex.StackTrace, ERROR_STAT, "login", "1")
+            MyApplication.ShowStatus(errMsg, ERROR_STAT, True, 10000)
+        End Try
+        
+        Return IsValidUser
     End Function
 End Class

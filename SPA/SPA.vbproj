@@ -13,23 +13,28 @@
     <MyType>WindowsForms</MyType>
     <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
     <IsWebBootstrapper>false</IsWebBootstrapper>
-    <PublishUrl>publish\</PublishUrl>
+    <TargetFrameworkProfile>
+    </TargetFrameworkProfile>
+    <PublishUrl>E:\2015\PROJECT\SIM\01. SPA - PAK WILLIAM\20. Development\PUBLISH SPA\</PublishUrl>
     <Install>true</Install>
     <InstallFrom>Disk</InstallFrom>
-    <UpdateEnabled>false</UpdateEnabled>
+    <UpdateEnabled>true</UpdateEnabled>
     <UpdateMode>Foreground</UpdateMode>
     <UpdateInterval>7</UpdateInterval>
     <UpdateIntervalUnits>Days</UpdateIntervalUnits>
     <UpdatePeriodically>false</UpdatePeriodically>
     <UpdateRequired>false</UpdateRequired>
     <MapFileExtensions>true</MapFileExtensions>
+    <UpdateUrl>http://localhost/SPA/</UpdateUrl>
+    <ProductName>SPA</ProductName>
+    <PublisherName>UAM</PublisherName>
+    <SuiteName>-</SuiteName>
     <ApplicationRevision>1</ApplicationRevision>
     <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
-    <UseApplicationTrust>false</UseApplicationTrust>
+    <UseApplicationTrust>true</UseApplicationTrust>
+    <CreateDesktopShortcut>true</CreateDesktopShortcut>
     <PublishWizardCompleted>true</PublishWizardCompleted>
     <BootstrapperEnabled>true</BootstrapperEnabled>
-    <TargetFrameworkProfile>
-    </TargetFrameworkProfile>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <PlatformTarget>AnyCPU</PlatformTarget>
@@ -87,14 +92,19 @@
     <Reference Include="Microsoft.Office.Interop.Excel, Version=15.0.0.0, Culture=neutral, PublicKeyToken=71e9bce111e9429c, processorArchitecture=MSIL">
       <EmbedInteropTypes>True</EmbedInteropTypes>
     </Reference>
+    <Reference Include="Microsoft.ReportViewer.Common, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91" />
+    <Reference Include="Microsoft.ReportViewer.WinForms, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91" />
     <Reference Include="MySql.Data, Version=6.9.6.0, Culture=neutral, PublicKeyToken=c5687fc88969c44d, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>C:\Program Files\MySQL\MySQL Connector Net 6.9.6\Assemblies\v4.0\MySql.Data.dll</HintPath>
     </Reference>
     <Reference Include="System" />
+    <Reference Include="System.Configuration" />
     <Reference Include="System.Data" />
     <Reference Include="System.Deployment" />
     <Reference Include="System.Drawing" />
+    <Reference Include="System.Web.Extensions" />
+    <Reference Include="System.Web.Services" />
     <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xml" />
     <Reference Include="System.Core" />
@@ -193,6 +203,12 @@
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Module\Accounting\GeneralLedger.vb" />
+    <Compile Include="Module\FLogin.Designer.vb">
+      <DependentUpon>FLogin.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Module\FLogin.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="Module\Inventory\DataPelanggan\FDataPelanggan.Designer.vb">
       <DependentUpon>FDataPelanggan.vb</DependentUpon>
     </Compile>
@@ -273,7 +289,53 @@
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Module\Inventory\Mhpp.vb" />
+    <Compile Include="Module\Inventory\PenyesuaianStock\FListPenyesuaianStok.Designer.vb">
+      <DependentUpon>FListPenyesuaianStok.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Module\Inventory\PenyesuaianStock\FListPenyesuaianStok.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Module\Inventory\PenyesuaianStock\FListTanaman2.Designer.vb">
+      <DependentUpon>FListTanaman2.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Module\Inventory\PenyesuaianStock\FListTanaman2.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Module\Inventory\PenyesuaianStock\FPenyesuaianStok.Designer.vb">
+      <DependentUpon>FPenyesuaianStok.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Module\Inventory\PenyesuaianStock\FPenyesuaianStok.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Module\Inventory\PenyesuaianStock\MPenyesuaianStokD.vb" />
+    <Compile Include="Module\Inventory\PenyesuaianStock\MPenyesuaianStokH.vb" />
     <Compile Include="Module\Inventory\Rstockm.vb" />
+    <Compile Include="Module\Inventory\StokTanaman\FRekapStok.Designer.vb">
+      <DependentUpon>FRekapStok.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Module\Inventory\StokTanaman\FRekapStok.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Module\Inventory\StokTanaman\FStokTanaman.Designer.vb">
+      <DependentUpon>FStokTanaman.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Module\Inventory\StokTanaman\FStokTanaman.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Module\Inventory\TransferStokTanaman\FListTransferStokTanaman.Designer.vb">
+      <DependentUpon>FListTransferStokTanaman.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Module\Inventory\TransferStokTanaman\FListTransferStokTanaman.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Module\Inventory\TransferStokTanaman\FTransferStokTanaman.Designer.vb">
+      <DependentUpon>FTransferStokTanaman.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Module\Inventory\TransferStokTanaman\FTransferStokTanaman.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Module\Inventory\TransferStokTanaman\MTransferStokTanamanD.vb" />
+    <Compile Include="Module\Inventory\TransferStokTanaman\MTransferStokTanamanH.vb" />
     <Compile Include="Module\MainForm.Designer.vb">
       <DependentUpon>MainForm.vb</DependentUpon>
     </Compile>
@@ -349,6 +411,11 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
+    <Compile Include="RstockAll.Designer.vb">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>RstockAll.xsd</DependentUpon>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Module\Accounting\AkunPostingOtomatis\FAkunPosting.resx">
@@ -383,6 +450,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Module\Accounting\COAHeader\FKlasifikasiCOA.resx">
       <DependentUpon>FKlasifikasiCOA.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Module\FLogin.resx">
+      <DependentUpon>FLogin.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Module\Inventory\DataPelanggan\FDataPelanggan.resx">
       <DependentUpon>FDataPelanggan.vb</DependentUpon>
@@ -420,6 +490,28 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Module\Inventory\FListTanaman.resx">
       <DependentUpon>FListTanaman.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Module\Inventory\PenyesuaianStock\FListPenyesuaianStok.resx">
+      <DependentUpon>FListPenyesuaianStok.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Module\Inventory\PenyesuaianStock\FListTanaman2.resx">
+      <DependentUpon>FListTanaman2.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Module\Inventory\PenyesuaianStock\FPenyesuaianStok.resx">
+      <DependentUpon>FPenyesuaianStok.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Module\Inventory\StokTanaman\FRekapStok.resx">
+      <DependentUpon>FRekapStok.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Module\Inventory\StokTanaman\FStokTanaman.resx">
+      <DependentUpon>FStokTanaman.vb</DependentUpon>
+    </EmbeddedResource>
+    <Content Include="Reports\DRStokTanaman.rdlc" />
+    <EmbeddedResource Include="Module\Inventory\TransferStokTanaman\FListTransferStokTanaman.resx">
+      <DependentUpon>FListTransferStokTanaman.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Module\Inventory\TransferStokTanaman\FTransferStokTanaman.resx">
+      <DependentUpon>FTransferStokTanaman.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Module\MainForm.resx">
       <DependentUpon>MainForm.vb</DependentUpon>
@@ -464,12 +556,22 @@
       <LastGenOutput>Settings.Designer.vb</LastGenOutput>
     </None>
     <None Include="App.config" />
+    <None Include="RstockAll.xsc">
+      <DependentUpon>RstockAll.xsd</DependentUpon>
+    </None>
+    <None Include="RstockAll.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>RstockAll.Designer.vb</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="RstockAll.xss">
+      <DependentUpon>RstockAll.xsd</DependentUpon>
+    </None>
     <None Include="SPA_TemporaryKey.pfx" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Module\Sales\" />
     <Folder Include="Module\ViewReport\" />
-    <Folder Include="Report\" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Resource\new-pro.bmp" />
@@ -550,6 +652,68 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resource\76x76\check.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <PublishFile Include="Microsoft.ReportViewer.Common">
+      <Visible>False</Visible>
+      <Group>
+      </Group>
+      <TargetPath>
+      </TargetPath>
+      <PublishState>Include</PublishState>
+      <IncludeHash>True</IncludeHash>
+      <FileType>Assembly</FileType>
+    </PublishFile>
+    <PublishFile Include="Microsoft.ReportViewer.DataVisualization">
+      <Visible>False</Visible>
+      <Group>
+      </Group>
+      <TargetPath>
+      </TargetPath>
+      <PublishState>Include</PublishState>
+      <IncludeHash>True</IncludeHash>
+      <FileType>Assembly</FileType>
+    </PublishFile>
+    <PublishFile Include="Microsoft.ReportViewer.ProcessingObjectModel">
+      <Visible>False</Visible>
+      <Group>
+      </Group>
+      <TargetPath>
+      </TargetPath>
+      <PublishState>Include</PublishState>
+      <IncludeHash>True</IncludeHash>
+      <FileType>Assembly</FileType>
+    </PublishFile>
+    <PublishFile Include="Microsoft.ReportViewer.WinForms">
+      <Visible>False</Visible>
+      <Group>
+      </Group>
+      <TargetPath>
+      </TargetPath>
+      <PublishState>Include</PublishState>
+      <IncludeHash>True</IncludeHash>
+      <FileType>Assembly</FileType>
+    </PublishFile>
+    <PublishFile Include="Microsoft.SqlServer.Types">
+      <Visible>False</Visible>
+      <Group>
+      </Group>
+      <TargetPath>
+      </TargetPath>
+      <PublishState>Include</PublishState>
+      <IncludeHash>True</IncludeHash>
+      <FileType>Assembly</FileType>
+    </PublishFile>
+    <PublishFile Include="MySql.Data">
+      <Visible>False</Visible>
+      <Group>
+      </Group>
+      <TargetPath>
+      </TargetPath>
+      <PublishState>Include</PublishState>
+      <IncludeHash>True</IncludeHash>
+      <FileType>Assembly</FileType>
+    </PublishFile>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.VisualBasic.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

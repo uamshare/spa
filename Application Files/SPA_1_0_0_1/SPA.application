@@ -1,0 +1,28 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<asmv1:assembly xsi:schemaLocation="urn:schemas-microsoft-com:asm.v1 assembly.adaptive.xsd" manifestVersion="1.0" xmlns:asmv1="urn:schemas-microsoft-com:asm.v1" xmlns="urn:schemas-microsoft-com:asm.v2" xmlns:asmv2="urn:schemas-microsoft-com:asm.v2" xmlns:xrml="urn:mpeg:mpeg21:2003:01-REL-R-NS" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:asmv3="urn:schemas-microsoft-com:asm.v3" xmlns:dsig="http://www.w3.org/2000/09/xmldsig#" xmlns:co.v1="urn:schemas-microsoft-com:clickonce.v1" xmlns:co.v2="urn:schemas-microsoft-com:clickonce.v2">
+  <assemblyIdentity name="SPA.application" version="1.0.0.1" publicKeyToken="51d3c4896fbcbb1d" language="neutral" processorArchitecture="msil" xmlns="urn:schemas-microsoft-com:asm.v1" />
+  <description asmv2:publisher="SPA" asmv2:product="SPA" xmlns="urn:schemas-microsoft-com:asm.v1" />
+  <deployment install="true" mapFileExtensions="true">
+    <subscription>
+      <update>
+        <beforeApplicationStartup />
+      </update>
+    </subscription>
+    <deploymentProvider codebase="http://psi/SPA/SPA.application" />
+  </deployment>
+  <compatibleFrameworks xmlns="urn:schemas-microsoft-com:clickonce.v2">
+    <framework targetVersion="4.0" profile="Full" supportedRuntime="4.0.30319" />
+  </compatibleFrameworks>
+  <dependency>
+    <dependentAssembly dependencyType="install" codebase="Application Files\SPA_1_0_0_1\SPA.exe.manifest" size="10166">
+      <assemblyIdentity name="SPA.exe" version="1.0.0.1" publicKeyToken="51d3c4896fbcbb1d" language="neutral" processorArchitecture="msil" type="win32" />
+      <hash>
+        <dsig:Transforms>
+          <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+        </dsig:Transforms>
+        <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1" />
+        <dsig:DigestValue>VE1uBJQKAVhhuW0LGfwKHD4ZFFM=</dsig:DigestValue>
+      </hash>
+    </dependentAssembly>
+  </dependency>
+<publisherIdentity name="CN=PSI\PSI-14" issuerKeyHash="414d159081fd56b935ddac626ca7e39939ef6891" /><Signature Id="StrongNameSignature" xmlns="http://www.w3.org/2000/09/xmldsig#"><SignedInfo><CanonicalizationMethod Algorithm="http://www.w3.org/2001/10/xml-exc-c14n#" /><SignatureMethod Algorithm="http://www.w3.org/2000/09/xmldsig#rsa-sha1" /><Reference URI=""><Transforms><Transform Algorithm="http://www.w3.org/2000/09/xmldsig#enveloped-signature" /><Transform Algorithm="http://www.w3.org/2001/10/xml-exc-c14n#" /></Transforms><DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1" /><DigestValue>veepghzgqwrMG8WFKvVIc/skDMU=</DigestValue></Reference></SignedInfo><SignatureValue>LXZTyvQ+xvykQO9NILsLKVARjJ4MsnCTxXK+HppSnlMGlOb57a0b2RHKKb1FViB7F9pBnT9dqG7Wx0I6T8HwR9PEnKigLIa/kkFD5ZZJOtVnbw6Ha2iKF1cXzzO2vKeno0ztu/SjDCLXaLdHA4YRMX1zWecPmaDgZD4kWIbSYUY=</SignatureValue><KeyInfo Id="StrongNameKeyInfo"><KeyValue><RSAKeyValue><Modulus>itcxHtwnlU6vY+sR1QVb0UqeqqetnJPY9SQBb50Vms2zM8NhjprHeeRVNFmOZAQMxVAayFEJnGOGt28Wkma5x3bPhAMeP1g2PgYVRIhQh2ahKiAeaEaWIiurWNJO/UV0+lx3d2ACtKv2jpJKBKdNsRHbfuCaNamL0MMkdAuGbD0=</Modulus><Exponent>AQAB</Exponent></RSAKeyValue></KeyValue><msrel:RelData xmlns:msrel="http://schemas.microsoft.com/windows/rel/2005/reldata"><r:license xmlns:r="urn:mpeg:mpeg21:2003:01-REL-R-NS" xmlns:as="http://schemas.microsoft.com/windows/pki/2005/Authenticode"><r:grant><as:ManifestInformation Hash="c50c24fb7348f52a85c51bcc0aabe01c82a9e7bd" Description="" Url=""><as:assemblyIdentity name="SPA.application" version="1.0.0.1" publicKeyToken="51d3c4896fbcbb1d" language="neutral" processorArchitecture="msil" xmlns="urn:schemas-microsoft-com:asm.v1" /></as:ManifestInformation><as:SignedBy /><as:AuthenticodePublisher><as:X509SubjectName>CN=PSI\PSI-14</as:X509SubjectName></as:AuthenticodePublisher></r:grant><r:issuer><Signature Id="AuthenticodeSignature" xmlns="http://www.w3.org/2000/09/xmldsig#"><SignedInfo><CanonicalizationMethod Algorithm="http://www.w3.org/2001/10/xml-exc-c14n#" /><SignatureMethod Algorithm="http://www.w3.org/2000/09/xmldsig#rsa-sha1" /><Reference URI=""><Transforms><Transform Algorithm="http://www.w3.org/2000/09/xmldsig#enveloped-signature" /><Transform Algorithm="http://www.w3.org/2001/10/xml-exc-c14n#" /></Transforms><DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1" /><DigestValue>UkUoiUAXsvLWHbu5WhB/kMfQsG8=</DigestValue></Reference></SignedInfo><SignatureValue>a/jyK1iMtAqhXIkHN/wS5Nq9paegC7bSdZePHRdSLSYMv+DOVaBfDBWLqB3NDgn9EtiDwXHe0rztdO0jy7ugskwWoteTZdD9Tv8FL092qOWTrOQkNY/f407l1f17P5oLJgQ4/vCJ8JnVezlRNjhp/3XDP+sJ5IQi3xF23CuoH3E=</SignatureValue><KeyInfo><KeyValue><RSAKeyValue><Modulus>itcxHtwnlU6vY+sR1QVb0UqeqqetnJPY9SQBb50Vms2zM8NhjprHeeRVNFmOZAQMxVAayFEJnGOGt28Wkma5x3bPhAMeP1g2PgYVRIhQh2ahKiAeaEaWIiurWNJO/UV0+lx3d2ACtKv2jpJKBKdNsRHbfuCaNamL0MMkdAuGbD0=</Modulus><Exponent>AQAB</Exponent></RSAKeyValue></KeyValue><X509Data><X509Certificate>MIIBwTCCASqgAwIBAgIQQ09e2ovIwqJOVc/qqYAHhjANBgkqhkiG9w0BAQsFADAfMR0wGwYDVQQDHhQAUABTAEkAXABQAFMASQAtADEANDAeFw0xNTA0MjcwMjEwMjJaFw0xNjA0MjYwODEwMjJaMB8xHTAbBgNVBAMeFABQAFMASQBcAFAAUwBJAC0AMQA0MIGfMA0GCSqGSIb3DQEBAQUAA4GNADCBiQKBgQCK1zEe3CeVTq9j6xHVBVvRSp6qp62ck9j1JAFvnRWazbMzw2GOmsd55FU0WY5kBAzFUBrIUQmcY4a3bxaSZrnHds+EAx4/WDY+BhVEiFCHZqEqIB5oRpYiK6tY0k79RXT6XHd3YAK0q/aOkkoEp02xEdt+4Jo1qYvQwyR0C4ZsPQIDAQABMA0GCSqGSIb3DQEBCwUAA4GBAE0p/II7tznWwarVhSS2HuX+pieBtvxqpmEgj+eX4+YVBf1TwQ03H/0rvYNcq6d9b456uww3+SNItyR/q4++yrh/YYmCmQRTH+ShV+Mm4k8cBclAL9Ydx5nP9pqrfiHwLz2GDb1QC0vBHG7RImUAP5SGaUTroXLRfa3q27PBNEsw</X509Certificate></X509Data></KeyInfo></Signature></r:issuer></r:license></msrel:RelData></KeyInfo></Signature></asmv1:assembly>

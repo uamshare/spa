@@ -155,5 +155,6 @@
             ' tampilkan pesan error
             MessageBox.Show(ex.Message)
         End Try
+        Return True
     End Function
 End Class

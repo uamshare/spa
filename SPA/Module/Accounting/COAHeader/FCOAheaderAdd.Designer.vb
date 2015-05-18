@@ -174,6 +174,7 @@ Partial Class FCOAheaderAdd
         Me.txtCoaId.Name = "txtCoaId"
         Me.txtCoaId.Size = New System.Drawing.Size(100, 20)
         Me.txtCoaId.TabIndex = 15
+        Me.txtCoaId.Visible = False
         '
         'StatusStrip1
         '
@@ -199,6 +200,7 @@ Partial Class FCOAheaderAdd
         Me.KeyID.Name = "KeyID"
         Me.KeyID.Size = New System.Drawing.Size(100, 20)
         Me.KeyID.TabIndex = 18
+        Me.KeyID.Visible = False
         '
         'FCOAheaderAdd
         '

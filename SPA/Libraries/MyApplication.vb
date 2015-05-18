@@ -11,16 +11,15 @@ Module MyApplication
 
     'Public PUSERID As Integer = 1
     Sub Main()
-        'MsgBox(CInt(Application.ProductVersion.Replace(".", "")))
-        'Web_update.Main()
         If IsNothing(BaseConnection.GetInstance()) Or BaseConnection.GetInstance().State <= 0 Then
             ShowStatus("Database is not Connected", ERROR_STAT, False)
             MainForm.MenuStrip.Enabled = False
         Else
             'MsgBox(MUsers.UserListMenuPrivileges()("menu501")("menuname").ToString)
-            MainForm.RestrictUserMenu()
-            ShowStatus("Ready")
-            MainForm.MenuStrip.Visible = True
+            MainForm.LoadMdiChildForm(FLogin, "")
+            'MainForm.RestrictUserMenu()
+            'ShowStatus("Ready")
+            'MainForm.MenuStrip.Visible = True
         End If
         'MainForm.Show()
     End Sub
@@ -122,5 +121,14 @@ Module MyApplication
         End Try
 
         Return res
+    End Function
+    Function ReportPath() As String
+        Dim path As String = ""
+        If System.IO.Directory.Exists(Application.StartupPath & "\Reports\") Then
+            path = Application.StartupPath & "\Reports\"
+        Else
+            path = "..\..\Reports\"
+        End If
+        Return path
     End Function
 End Module

@@ -25,8 +25,41 @@ Public Class MTanaman
 
         PrimaryKey = "mmtrid"
     End Sub
+    Public Overloads Function FindData(sSearch As String) As DataTable
+        Dim viewtable As String = "material_fig"
+        Select Case mmtrg
+            Case "1"
+                viewtable = "material_raw"
+            Case "2"
+                viewtable = "material_gip"
+            Case "3"
+                viewtable = "material_fig"
+        End Select
 
-    Function FindData(sSearch As String) As DataTable
+        If Not String.IsNullOrEmpty(sSearch) Then
+            Me.WHERE = "WHERE mmtrid like '%" & sSearch & "%' OR mmtrname like '%" & sSearch & "%' OR mmtrunit like '%" & sSearch & "%' OR polybag like '%" & sSearch & "%' "
+        Else
+            Me.WHERE = ""
+        End If
+        Me.StringSQL = "SELECT mmtrhid,mmtrid,mmtrname,polybag,ifnull(mmtrunit,'') as mmtrunit,mmtrprice,mmtrg, CONCAT(mmtrid, CONVERT(mmtrg, CHAR)) AS PrimaryKey FROM `" & viewtable & "`" '"SELECT * FROM `" & viewtable & "`"
+        Return MyBase.GetData
+    End Function
+    Public Overloads Function GetData(ByVal mmtrg As String) As DataTable
+        Dim viewtable As String = "material_fig"
+        Select Case mmtrg
+            Case "1"
+                viewtable = "material_raw"
+            Case "2"
+                viewtable = "material_gip"
+            Case "3"
+                viewtable = "material_fig"
+        End Select
+        If String.IsNullOrEmpty(Me.StringSQL) Then
+            Me.StringSQL = "SELECT mmtrhid,mmtrid,mmtrname,polybag,ifnull(mmtrunit,'') as mmtrunit,mmtrprice,mmtrg, CONCAT(mmtrid, CONVERT(mmtrg, CHAR)) AS PrimaryKey FROM `" & viewtable & "`"
+        End If
+        Return MyBase.GetData
+    End Function
+    Public Overloads Function FindData(ByVal sSearch As String, ByVal mmtrg As String) As DataTable
         If Not String.IsNullOrEmpty(sSearch) Then
             Me.WHERE = "WHERE mmtrid like '%" & sSearch & "%' OR mmtrname like '%" & sSearch & "%' OR mmtrunit like '%" & sSearch & "%' OR polybag like '%" & sSearch & "%' "
         Else
@@ -41,7 +74,7 @@ Public Class MTanaman
         dtupdated = Format(Date.Now, "yyyy/MM/dd hh:m:s")
 
         Me.StringSQL = "INSERT INTO " & TableName + "(mmtrhid,mmtrid,mmtrname,polybag,mmtrunit,mmtrprice,dtcreated,dtupdated) VALUES('" & mmtrhid & "','" & mmtrid & "','" & mmtrname & "','" & polybag & "','" & mmtrunit & "','" & mmtrprice & "','" & dtcreated & "','" & dtupdated & "')"
-            Return MyBase.InsertData()
+        Return MyBase.InsertData()
 
     End Function
 
@@ -87,9 +120,9 @@ Public Class MTanaman
         Me.StringSQL = "SELECT * FROM material_fig"
         Return MyBase.GetDataList()
     End Function
-    Public Overloads Function getDataList(Currdt As Date, Optional noref As String = "") As List(Of Dictionary(Of String, Object))
+    Public Overloads Function getDataList(Currdt As Date, Optional noref As String = "", Optional viewtable As String = "material_fig") As List(Of Dictionary(Of String, Object))
         'MsgBox(Currdt.ToString)
-        Return ModelHpp.GetDataList(Currdt, "", "material_fig")
+        Return ModelHpp.GetDataList(Currdt, noref, viewtable)
     End Function
     Public Overloads Function GetRowsCount() As Integer
         Me.StringSQL = "SELECT COUNT(*) FROM " & ViewTableName & " " & mWHERE

@@ -19,6 +19,12 @@
                 txt.Enabled = False
             End If
         Next
+        For Each ctrl As Control In PanelFooter.Controls
+            If (ctrl.GetType() Is GetType(TextBox)) Then
+                Dim txt As TextBox = CType(ctrl, TextBox)
+                txt.Enabled = False
+            End If
+        Next
         DateTimePicker1.Enabled = False
         DateTimePicker2.Enabled = False
         ButtonAdd.Enabled = True
@@ -242,6 +248,7 @@
                     jml = qty * price
                     If oldhpp > 0 And price > 0 Then
                         hpp = (price + oldhpp) / 2
+                        'hpp = CDec(hpp)
                     Else
                         hpp = IIf(price > 0, price, oldhpp)
                     End If
@@ -524,7 +531,6 @@
         Me.isEdit = True
         FListTanamanMasuk.ShowDialog()
     End Sub
-
     Private Sub TxtNo_TextChanged(sender As Object, e As EventArgs) Handles TxtNo.TextChanged
         If isEdit Then
             ActiveControll()
@@ -547,7 +553,6 @@
             End If
         End If
     End Sub
-
     Private Sub DateTimePicker1_ValueChanged(sender As Object, e As EventArgs) Handles DateTimePicker1.ValueChanged
         ListDataTanaman = ModelM.GetDataList(CDate(DateTimePicker1.Value))
     End Sub

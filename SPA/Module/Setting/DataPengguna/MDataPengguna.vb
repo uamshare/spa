@@ -6,8 +6,8 @@
 
     Sub New()
         MyBase.New()
-        BaseQuery = "SELECT a.mempid,a.mempname,a.mempaddr,a.memphone1,a.memphone2,a.mempemail,d.memposname,a.mlctid,a.userid,b.username,b.userpassword, c.groupname FROM memp AS a INNER JOIN mempos AS d ON a.memposid=d.memposid INNER JOIN muser AS b ON a.userid=b.userid INNER JOIN muserg AS c ON b.groupid=c.groupid"
-        SelectQuery = "SELECT a.mempid,a.mempname,a.mempaddr,a.memphone1,a.memphone2,a.mempemail,d.memposname,a.mlctid,a.userid,b.username,b.userpassword, c.groupname FROM memp AS a INNER JOIN mempos AS d ON a.memposid=d.memposid INNER JOIN muser AS b ON a.userid=b.userid INNER JOIN muserg AS c ON b.groupid=c.groupid"
+        BaseQuery = "SELECT a.mempid,a.mempname,a.mempaddr,a.memphone1,a.memphone2,a.mempemail,IFNULL(d.memposname,'') AS memposname,IFNULL(a.mlctid,'') mlctid,a.userid,b.username,b.userpassword, c.groupname FROM memp AS a LEFT JOIN mempos AS d ON a.memposid=d.memposid INNER JOIN muser AS b ON a.userid=b.userid INNER JOIN muserg AS c ON b.groupid=c.groupid"
+        SelectQuery = "SELECT a.mempid,a.mempname,a.mempaddr,a.memphone1,a.memphone2,a.mempemail,IFNULL(d.memposname,'') AS memposname,IFNULL(a.mlctid,'') mlctid,a.userid,b.username,b.userpassword, c.groupname FROM memp AS a LEFT JOIN mempos AS d ON a.memposid=d.memposid INNER JOIN muser AS b ON a.userid=b.userid INNER JOIN muserg AS c ON b.groupid=c.groupid"
         TableName = "memp"
         TableName2 = "muser"
         PrimaryKey = "mempid"
@@ -40,7 +40,7 @@
         dtupdated = Format(Date.Now, "yyyy/MM/dd hh:m:s")
 
         Me.StringSQL = "INSERT INTO muser (username,userpassword,groupid,dtcreated,dtupdated) VALUES " & _
-                       " ('" & username & "', '" & password & "',  '" & groupid & "', '" & dtcreated & "', '" & dtupdated & "')"
+                       " ('" & username & "', SHA1('" & password & "'),  '" & groupid & "', '" & dtcreated & "', '" & dtupdated & "')"
         Return MyBase.InsertData()
     End Function
 
@@ -88,9 +88,11 @@
             If IsArray(ids) And ids.Length > 0 Then
                 For Each userid As String In ids
                     If Not String.IsNullOrEmpty(userid) Then
-                        Me.StringSQL = "DELETE FROM " & TableName2 + " WHERE userid = '" & userid & "'"
-                        cmd.CommandText = Me.StringSQL
-                        rowCountAffected += cmd.ExecuteNonQuery()
+                        If userid <> "1" Then
+                            Me.StringSQL = "DELETE FROM " & TableName2 + " WHERE userid = '" & userid & "'"
+                            cmd.CommandText = Me.StringSQL
+                            rowCountAffected += cmd.ExecuteNonQuery()
+                        End If
                     End If
                 Next
             End If

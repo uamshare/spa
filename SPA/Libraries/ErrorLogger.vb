@@ -75,10 +75,16 @@ Public Class ErrorLogger
         cmd.Transaction = Trans
         rowCountAffected = -1
         Try
+            Dim userid As String
+            If MUsers.UserInfo().ContainsKey("userid") Then
+                userid = MUsers.UserInfo()("userid")
+            Else
+                userid = -1
+            End If
             values = "('" & EscString(title) & "','" & _
                         EscString(stkTrace) & "','" & _
                         EscString(My.Settings.server) & "','" & _
-                        EscString(MUsers.UserInfo()("userid")) & "','" & _
+                        EscString(userid) & "','" & _
                         EscString(msg) & "','" & _
                         EscString(logaction) & "','" & _
                         EscString(logtype) & "')"
@@ -87,8 +93,12 @@ Public Class ErrorLogger
             rowCountAffected = cmd.ExecuteNonQuery() 'returns the number of rows affected. 
         Catch ex As MySql.Data.MySqlClient.MySqlException
             Trans.Rollback() 'Rollback All Transaction
-            'mCONN.Close()
             ErrorLogger.WriteToErrorLogTxt(ex.Message, ex.StackTrace, "Error Write LogDb")
+            Return Nothing
+        Catch ex As Exception
+            Trans.Rollback() 'Rollback All Transaction
+            Dim errMsg As String = "Terjadi kesalahan : " & ex.Message
+            ErrorLogger.WriteToErrorLogTxt(errMsg, ex.StackTrace, "Error Write LogDb")
             Return Nothing
         End Try
         Trans.Commit()

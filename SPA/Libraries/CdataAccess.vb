@@ -113,6 +113,7 @@ Public Class CDataAcces 'Name dari Class yang dibuat.
         If Trans.Connection.State <> ConnectionState.Closed Then
             Trans.Rollback() 'Rollback All Transaction
             mCONN.Close()
+            Me.StringSQL = ""
             'StopProgress()
         End If
 
@@ -121,6 +122,7 @@ Public Class CDataAcces 'Name dari Class yang dibuat.
         MyApplication.ShowStatus(LogMsg, WARNING_STAT, True, 10000)
         Cursor.Current = Cursors.Default
     End Sub
+
     Function GetData() As DataTable Implements IDataAccess.GetData
         Dim SelectQuery As String
         Dim dt As New DataTable
@@ -134,7 +136,13 @@ Public Class CDataAcces 'Name dari Class yang dibuat.
             Else
                 mLIMIT = ""
             End If
+
+            If Not String.IsNullOrEmpty(Me.StringSQL) Then
+                Me.SelectQuery = Me.StringSQL
+            End If
+
             SelectQuery = Me.SelectQuery & " " & mWHERE & " " & mLIMIT
+            'MsgBox(SelectQuery)
             Dim da As New MySqlDataAdapter(SelectQuery, Me.mCONN)
             da.Fill(dt)
             mLIMIT = ""
@@ -150,6 +158,7 @@ Public Class CDataAcces 'Name dari Class yang dibuat.
             MyApplication.ShowStatus("Error has occurred : " & ex.Message, ERROR_STAT, True, 10000)
         End Try
         Cursor.Current = Cursors.Default
+        Me.StringSQL = ""
         Return dt
     End Function
     Public Function GetDataReader() As MySqlDataReader
@@ -228,6 +237,7 @@ Public Class CDataAcces 'Name dari Class yang dibuat.
         Finally
             If Not reader Is Nothing Then reader.Close()
         End Try
+        Me.StringSQL = ""
         Return result
     End Function
     Function GetRowsCount() As Integer Implements IDataAccess.GetRowsCount
@@ -239,6 +249,7 @@ Public Class CDataAcces 'Name dari Class yang dibuat.
 
             If String.IsNullOrEmpty(Me.StringSQL) Then Me.StringSQL = "SELECT COUNT(*) FROM " & TableName & " " & mWHERE
             cmd.CommandText = Me.StringSQL
+            'MsgBox(Me.StringSQL)
             rowCountAffected = cmd.ExecuteScalar() 'returns the number of rows affected. 
             Me.mCONN.Close()
         Catch ex As MySqlException
@@ -248,14 +259,14 @@ Public Class CDataAcces 'Name dari Class yang dibuat.
             Me.mCONN.Close()
             Return Nothing
         Catch ex As Exception
-            Dim errMsg As String = "Terjadi kesalahan : " & ex.Message
+            Dim errMsg As String = "Terjadi kesalahan : " & ex.Message & vbCrLf & ex.StackTrace
             ErrorLogger.WriteToErrorLog(errMsg, ex.StackTrace, ERROR_STAT, "select", "2")
             MyApplication.ShowStatus(errMsg, ERROR_STAT, True, 10000)
             Me.mCONN.Close()
             Return Nothing
         End Try
         'CommitTrans(" fetch data have been completed ") 'Commit All Transaction
-
+        Me.StringSQL = ""
         Return rowCountAffected
     End Function
 
@@ -283,7 +294,7 @@ Public Class CDataAcces 'Name dari Class yang dibuat.
             Return Nothing
         End Try
         'CommitTrans(" fetch data have been completed ") 'Commit All Transaction
-
+        Me.StringSQL = ""
         Return rowCountAffected
     End Function
 
@@ -311,6 +322,7 @@ Public Class CDataAcces 'Name dari Class yang dibuat.
             Return Nothing
         End Try
         'CommitTrans(" fetch data have been completed ") 'Commit All Transaction
+        Me.StringSQL = ""
         Return IIf(rowCountAffected <= 0, False, True)
     End Function
     Public Function IfDataExist1(Optional keyvalue As String = "") As Boolean
@@ -336,6 +348,7 @@ Public Class CDataAcces 'Name dari Class yang dibuat.
             Return Nothing
         End Try
         'CommitTrans(" fetch data have been completed ") 'Commit All Transaction
+        Me.StringSQL = ""
         Return IIf(rowCountAffected <= 0, False, True)
     End Function
     Public Function IfDataExist2(Optional keyvalue As String = "") As Boolean
@@ -361,6 +374,7 @@ Public Class CDataAcces 'Name dari Class yang dibuat.
             Return Nothing
         End Try
         'CommitTrans(" fetch data have been completed ") 'Commit All Transaction
+        Me.StringSQL = ""
         Return IIf(rowCountAffected <= 0, False, True)
     End Function
     Public Function IfDataExist3(Optional keyvalue As String = "") As Boolean
@@ -386,6 +400,7 @@ Public Class CDataAcces 'Name dari Class yang dibuat.
             Return Nothing
         End Try
         'CommitTrans(" fetch data have been completed ") 'Commit All Transaction
+        Me.StringSQL = ""
         Return IIf(rowCountAffected <= 0, False, True)
     End Function
 

@@ -64,12 +64,16 @@ Partial Class MainForm
         Me.ToolStrip = New System.Windows.Forms.ToolStrip()
         Me.StatusStrip = New System.Windows.Forms.StatusStrip()
         Me.statusmessageicon = New System.Windows.Forms.ToolStripStatusLabel()
-        Me.ToolProgressBar1 = New System.Windows.Forms.ToolStripProgressBar()
         Me.StatusMessage = New System.Windows.Forms.ToolStripStatusLabel()
+        Me.ToolProgressBar1 = New System.Windows.Forms.ToolStripProgressBar()
         Me.ToolTip = New System.Windows.Forms.ToolTip(Me.components)
         Me.TimeStat = New System.Windows.Forms.Timer(Me.components)
+        Me.ToolStrip1 = New System.Windows.Forms.ToolStrip()
+        Me.StatusPengguna = New System.Windows.Forms.ToolStripLabel()
+        Me.ToolStripLabel2 = New System.Windows.Forms.ToolStripLabel()
         Me.MenuStrip.SuspendLayout()
         Me.StatusStrip.SuspendLayout()
+        Me.ToolStrip1.SuspendLayout()
         Me.SuspendLayout()
         '
         'MenuStrip
@@ -78,7 +82,7 @@ Partial Class MainForm
         Me.MenuStrip.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.menu100, Me.menu200, Me.menu300, Me.menu400, Me.menu500, Me.ExitMenu})
         Me.MenuStrip.Location = New System.Drawing.Point(0, 0)
         Me.MenuStrip.Name = "MenuStrip"
-        Me.MenuStrip.Size = New System.Drawing.Size(779, 24)
+        Me.MenuStrip.Size = New System.Drawing.Size(873, 24)
         Me.MenuStrip.TabIndex = 5
         Me.MenuStrip.Text = "MenuStrip"
         Me.MenuStrip.Visible = False
@@ -89,43 +93,43 @@ Partial Class MainForm
         Me.menu100.Image = Global.SPA.My.Resources.Resources.inventory2
         Me.menu100.ImageTransparentColor = System.Drawing.SystemColors.ActiveBorder
         Me.menu100.Name = "menu100"
-        Me.menu100.Size = New System.Drawing.Size(145, 20)
+        Me.menu100.Size = New System.Drawing.Size(144, 20)
         Me.menu100.Text = "Persediaan Tanaman"
         '
         'menu101
         '
         Me.menu101.Name = "menu101"
-        Me.menu101.Size = New System.Drawing.Size(196, 22)
+        Me.menu101.Size = New System.Drawing.Size(194, 22)
         Me.menu101.Text = "Data Tanaman"
         '
         'menu102
         '
         Me.menu102.Name = "menu102"
-        Me.menu102.Size = New System.Drawing.Size(196, 22)
+        Me.menu102.Size = New System.Drawing.Size(194, 22)
         Me.menu102.Text = "Data Tanaman Masuk"
         '
         'menu103
         '
         Me.menu103.Name = "menu103"
-        Me.menu103.Size = New System.Drawing.Size(196, 22)
+        Me.menu103.Size = New System.Drawing.Size(194, 22)
         Me.menu103.Text = "Transfer Stok Tanaman"
         '
         'menu104
         '
         Me.menu104.Name = "menu104"
-        Me.menu104.Size = New System.Drawing.Size(196, 22)
+        Me.menu104.Size = New System.Drawing.Size(194, 22)
         Me.menu104.Text = "Penyesuaian Stok"
         '
         'menu105
         '
         Me.menu105.Name = "menu105"
-        Me.menu105.Size = New System.Drawing.Size(196, 22)
+        Me.menu105.Size = New System.Drawing.Size(194, 22)
         Me.menu105.Text = "Stok Tanaman"
         '
         'menu106
         '
         Me.menu106.Name = "menu106"
-        Me.menu106.Size = New System.Drawing.Size(196, 22)
+        Me.menu106.Size = New System.Drawing.Size(194, 22)
         Me.menu106.Text = "Kartu Stok Tanaman"
         '
         'menu200
@@ -133,43 +137,43 @@ Partial Class MainForm
         Me.menu200.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.menu201, Me.menu202, Me.menu203, Me.menu204, Me.menu205, Me.menu206})
         Me.menu200.Image = Global.SPA.My.Resources.Resources.production
         Me.menu200.Name = "menu200"
-        Me.menu200.Size = New System.Drawing.Size(184, 20)
+        Me.menu200.Size = New System.Drawing.Size(183, 20)
         Me.menu200.Text = "Penangkaran Bibit Tanaman"
         '
         'menu201
         '
         Me.menu201.Name = "menu201"
-        Me.menu201.Size = New System.Drawing.Size(320, 22)
+        Me.menu201.Size = New System.Drawing.Size(319, 22)
         Me.menu201.Text = "Data Bibit Tanaman"
         '
         'menu202
         '
         Me.menu202.Name = "menu202"
-        Me.menu202.Size = New System.Drawing.Size(320, 22)
+        Me.menu202.Size = New System.Drawing.Size(319, 22)
         Me.menu202.Text = "Data Bibit Tanaman Masuk"
         '
         'menu203
         '
         Me.menu203.Name = "menu203"
-        Me.menu203.Size = New System.Drawing.Size(320, 22)
+        Me.menu203.Size = New System.Drawing.Size(319, 22)
         Me.menu203.Text = "Proses Penangkaran"
         '
         'menu204
         '
         Me.menu204.Name = "menu204"
-        Me.menu204.Size = New System.Drawing.Size(320, 22)
+        Me.menu204.Size = New System.Drawing.Size(319, 22)
         Me.menu204.Text = "Proses Bibit Tanaman Siap Jual"
         '
         'menu205
         '
         Me.menu205.Name = "menu205"
-        Me.menu205.Size = New System.Drawing.Size(320, 22)
+        Me.menu205.Size = New System.Drawing.Size(319, 22)
         Me.menu205.Text = "Stok Bibit Tanaman & Proses Penangkaran"
         '
         'menu206
         '
         Me.menu206.Name = "menu206"
-        Me.menu206.Size = New System.Drawing.Size(320, 22)
+        Me.menu206.Size = New System.Drawing.Size(319, 22)
         Me.menu206.Text = "Kartu Stok Bibit Tanaman & Proses Penangkaran"
         '
         'menu300
@@ -177,7 +181,7 @@ Partial Class MainForm
         Me.menu300.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.menu301, Me.menu302, Me.menu303, Me.menu304, Me.menu305})
         Me.menu300.Image = Global.SPA.My.Resources.Resources.sales2
         Me.menu300.Name = "menu300"
-        Me.menu300.Size = New System.Drawing.Size(140, 20)
+        Me.menu300.Size = New System.Drawing.Size(139, 20)
         Me.menu300.Text = "Penjualan Tanaman"
         '
         'menu301
@@ -318,17 +322,17 @@ Partial Class MainForm
         Me.ToolStrip.GripStyle = System.Windows.Forms.ToolStripGripStyle.Hidden
         Me.ToolStrip.Location = New System.Drawing.Point(0, 24)
         Me.ToolStrip.Name = "ToolStrip"
-        Me.ToolStrip.Size = New System.Drawing.Size(26, 353)
+        Me.ToolStrip.Size = New System.Drawing.Size(26, 367)
         Me.ToolStrip.TabIndex = 6
         Me.ToolStrip.Text = "ToolStrip"
         '
         'StatusStrip
         '
         Me.StatusStrip.BackColor = System.Drawing.Color.DodgerBlue
-        Me.StatusStrip.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.statusmessageicon, Me.ToolProgressBar1, Me.StatusMessage})
-        Me.StatusStrip.Location = New System.Drawing.Point(0, 377)
+        Me.StatusStrip.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.statusmessageicon, Me.StatusMessage, Me.ToolProgressBar1})
+        Me.StatusStrip.Location = New System.Drawing.Point(0, 391)
         Me.StatusStrip.Name = "StatusStrip"
-        Me.StatusStrip.Size = New System.Drawing.Size(779, 22)
+        Me.StatusStrip.Size = New System.Drawing.Size(873, 22)
         Me.StatusStrip.TabIndex = 7
         Me.StatusStrip.Text = "StatusStrip"
         '
@@ -340,32 +344,62 @@ Partial Class MainForm
         Me.statusmessageicon.Size = New System.Drawing.Size(16, 17)
         Me.statusmessageicon.Text = "::"
         '
+        'StatusMessage
+        '
+        Me.StatusMessage.Margin = New System.Windows.Forms.Padding(5, 3, 0, 2)
+        Me.StatusMessage.Name = "StatusMessage"
+        Me.StatusMessage.Size = New System.Drawing.Size(837, 17)
+        Me.StatusMessage.Spring = True
+        Me.StatusMessage.Text = "Please Wait ..."
+        Me.StatusMessage.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
+        '
         'ToolProgressBar1
         '
+        Me.ToolProgressBar1.Alignment = System.Windows.Forms.ToolStripItemAlignment.Right
         Me.ToolProgressBar1.Margin = New System.Windows.Forms.Padding(10, 3, 1, 3)
         Me.ToolProgressBar1.Name = "ToolProgressBar1"
-        Me.ToolProgressBar1.Size = New System.Drawing.Size(100, 16)
+        Me.ToolProgressBar1.Size = New System.Drawing.Size(150, 16)
         Me.ToolProgressBar1.Step = 5
         Me.ToolProgressBar1.Style = System.Windows.Forms.ProgressBarStyle.Marquee
         Me.ToolProgressBar1.Value = 10
         Me.ToolProgressBar1.Visible = False
         '
-        'StatusMessage
-        '
-        Me.StatusMessage.Margin = New System.Windows.Forms.Padding(5, 3, 0, 2)
-        Me.StatusMessage.Name = "StatusMessage"
-        Me.StatusMessage.Size = New System.Drawing.Size(79, 17)
-        Me.StatusMessage.Text = "Please Wait ..."
-        '
         'TimeStat
         '
+        '
+        'ToolStrip1
+        '
+        Me.ToolStrip1.Dock = System.Windows.Forms.DockStyle.Bottom
+        Me.ToolStrip1.GripStyle = System.Windows.Forms.ToolStripGripStyle.Hidden
+        Me.ToolStrip1.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.StatusPengguna, Me.ToolStripLabel2})
+        Me.ToolStrip1.Location = New System.Drawing.Point(26, 366)
+        Me.ToolStrip1.Name = "ToolStrip1"
+        Me.ToolStrip1.Size = New System.Drawing.Size(847, 25)
+        Me.ToolStrip1.TabIndex = 9
+        Me.ToolStrip1.Text = "ToolStrip1"
+        '
+        'StatusPengguna
+        '
+        Me.StatusPengguna.Alignment = System.Windows.Forms.ToolStripItemAlignment.Right
+        Me.StatusPengguna.Font = New System.Drawing.Font("Segoe UI", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.StatusPengguna.Name = "StatusPengguna"
+        Me.StatusPengguna.Size = New System.Drawing.Size(39, 22)
+        Me.StatusPengguna.Text = "Nama"
+        '
+        'ToolStripLabel2
+        '
+        Me.ToolStripLabel2.Alignment = System.Windows.Forms.ToolStripItemAlignment.Right
+        Me.ToolStripLabel2.Name = "ToolStripLabel2"
+        Me.ToolStripLabel2.Size = New System.Drawing.Size(70, 22)
+        Me.ToolStripLabel2.Text = "Pengguna : "
         '
         'MainForm
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.BackColor = System.Drawing.SystemColors.ActiveCaption
-        Me.ClientSize = New System.Drawing.Size(779, 399)
+        Me.ClientSize = New System.Drawing.Size(873, 413)
+        Me.Controls.Add(Me.ToolStrip1)
         Me.Controls.Add(Me.ToolStrip)
         Me.Controls.Add(Me.MenuStrip)
         Me.Controls.Add(Me.StatusStrip)
@@ -378,6 +412,8 @@ Partial Class MainForm
         Me.MenuStrip.PerformLayout()
         Me.StatusStrip.ResumeLayout(False)
         Me.StatusStrip.PerformLayout()
+        Me.ToolStrip1.ResumeLayout(False)
+        Me.ToolStrip1.PerformLayout()
         Me.ResumeLayout(False)
         Me.PerformLayout()
 
@@ -392,7 +428,6 @@ Partial Class MainForm
     Friend WithEvents menu200 As System.Windows.Forms.ToolStripMenuItem
     Friend WithEvents menu300 As System.Windows.Forms.ToolStripMenuItem
     Friend WithEvents menu500 As System.Windows.Forms.ToolStripMenuItem
-    Friend WithEvents StatusMessage As System.Windows.Forms.ToolStripStatusLabel
     Friend WithEvents TimeStat As System.Windows.Forms.Timer
     Friend WithEvents ToolProgressBar1 As System.Windows.Forms.ToolStripProgressBar
     Friend WithEvents menu400 As System.Windows.Forms.ToolStripMenuItem
@@ -426,5 +461,9 @@ Partial Class MainForm
     Friend WithEvents menu408 As System.Windows.Forms.ToolStripMenuItem
     Friend WithEvents menu409 As System.Windows.Forms.ToolStripMenuItem
     Friend WithEvents menu410 As System.Windows.Forms.ToolStripMenuItem
+    Friend WithEvents ToolStrip1 As System.Windows.Forms.ToolStrip
+    Friend WithEvents StatusPengguna As System.Windows.Forms.ToolStripLabel
+    Friend WithEvents ToolStripLabel2 As System.Windows.Forms.ToolStripLabel
+    Friend WithEvents StatusMessage As System.Windows.Forms.ToolStripStatusLabel
 
 End Class

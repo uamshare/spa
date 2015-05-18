@@ -12,16 +12,15 @@
     Sub New()
         MyBase.New()
         BaseQuery = "SELECT * FROM trcvmh"
-        SelectQuery = "SELECT `trcvmhno`,`trcvmhdt`,`pono`,`podate`,`supplier`,`dtcreated`,`userid` FROM trcvmh_fig ORDER BY 1 DESC"
+        SelectQuery = "SELECT `trcvmhno`,`trcvmhdt`,`pono`,`podate`,`supplier`,`dtcreated`,`userid` FROM trcvmh_fig ORDER BY trcvmhno DESC"
         Me.TableName = "trcvmh"
         PrimaryKey = "trcvmhno"
-
         userid = MUsers.UserInfo()("userid")
-
     End Sub
 
     Function FindData(sSearch As String) As DataTable
         If Not String.IsNullOrEmpty(sSearch) Then
+            Me.StringSQL = "SELECT `trcvmhno`,`trcvmhdt`,`pono`,`podate`,`supplier`,`dtcreated`,`userid` FROM trcvmh_fig"
             Me.WHERE = "WHERE trcvmhno like '%" & sSearch & "%' " & _
                         "OR trcvmhdt like '%" & sSearch & "%' " & _
                         "OR pono like '%" & sSearch & "%' " & _
@@ -89,8 +88,8 @@
     Public Function getAutoNo() As String
         Dim autono As String = Nothing
         Dim no As Integer = 0
-
-        Me.StringSQL = "SELECT IFNULL(MAX(SUBSTR(trcvmhno,7)),0) AS lasnumber FROM trcvmh"
+        Dim curyear As String = Format(Date.Now, "yyyy")
+        Me.StringSQL = "SELECT IFNULL(MAX(SUBSTR(trcvmhno,7)),0) AS lasnumber FROM trcvmh WHERE YEAR(`trcvmhdt`) =" & curyear
         no = Me.GetDataScalar() + 1
         autono = My.Settings.CabangID & "RC" & Format(Date.Now, "yy") & Format(no, "0000000")
         Return autono

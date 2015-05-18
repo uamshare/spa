@@ -1,5 +1,6 @@
 ﻿Public Class FKlasifikasiAdd
     Private Model As New MKlasifikasiCOA
+
     Private Sub btnSimpan_Click(sender As Object, e As EventArgs) Handles btnSimpan.Click
         'MessageBox.Show(Model.EscapeString(TextBox1.Text))
         'Exit Sub
