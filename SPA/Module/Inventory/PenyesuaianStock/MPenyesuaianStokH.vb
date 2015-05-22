@@ -109,6 +109,6 @@
         Return MyBase.DeleteData()
     End Function
     Public Function GetSqlDeleteData(Optional ByVal id = -1) As String
-        Return "DELETE FROM " & TableName + " WHERE " & PrimaryKey & " = '" & id & "'" & vbCrLf
+        Return "DELETE FROM " & TableName + " WHERE " & PrimaryKey & " = '" & id & "';" & vbCrLf
     End Function
 End Class

@@ -57,7 +57,7 @@
             If Not String.IsNullOrEmpty(sSearch) Then
                 dt = Model.FindData(sSearch, Date.Now)
             Else
-                dt = Model.GetData(Date.Now, Date.Now)
+                dt = Model.GetData()
             End If
             With DataGridView1
                 .Columns.Clear()

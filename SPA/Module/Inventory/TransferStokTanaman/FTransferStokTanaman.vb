@@ -111,48 +111,48 @@
     End Sub
 
 #Region "Format DataGridView"
-    Private Sub InitializeDataGridView(DG As DataGridView)
-        With DG
-            ' Initialize basic DataGridView properties.
-            .Dock = DockStyle.Fill
-            .BackgroundColor = Color.LightGray
-            .BorderStyle = BorderStyle.Fixed3D
+    'Private Sub InitializeDataGridView(DG As DataGridView)
+    '    With DG
+    '        ' Initialize basic DataGridView properties.
+    '        .Dock = DockStyle.Fill
+    '        .BackgroundColor = Color.LightGray
+    '        .BorderStyle = BorderStyle.Fixed3D
 
-            ' Set property values appropriate for read-only display and  
-            ' limited interactivity. 
-            .AllowUserToAddRows = True
-            .AllowUserToDeleteRows = True
-            .AllowUserToOrderColumns = True
-            .ReadOnly = False
-            .SelectionMode = DataGridViewSelectionMode.RowHeaderSelect 'DataGridViewSelectionMode.CellSelect
-            .MultiSelect = False
-            .AutoSizeRowsMode = DataGridViewAutoSizeRowsMode.None
-            .AllowUserToResizeColumns = True
-            .ColumnHeadersHeightSizeMode = _
-                DataGridViewColumnHeadersHeightSizeMode.DisableResizing
-            .AllowUserToResizeRows = False
-            .RowHeadersWidthSizeMode = _
-                DataGridViewRowHeadersWidthSizeMode.DisableResizing
+    '        ' Set property values appropriate for read-only display and  
+    '        ' limited interactivity. 
+    '        .AllowUserToAddRows = True
+    '        .AllowUserToDeleteRows = True
+    '        .AllowUserToOrderColumns = True
+    '        .ReadOnly = False
+    '        .SelectionMode = DataGridViewSelectionMode.RowHeaderSelect 'DataGridViewSelectionMode.CellSelect
+    '        .MultiSelect = False
+    '        .AutoSizeRowsMode = DataGridViewAutoSizeRowsMode.None
+    '        .AllowUserToResizeColumns = True
+    '        .ColumnHeadersHeightSizeMode = _
+    '            DataGridViewColumnHeadersHeightSizeMode.DisableResizing
+    '        .AllowUserToResizeRows = False
+    '        .RowHeadersWidthSizeMode = _
+    '            DataGridViewRowHeadersWidthSizeMode.DisableResizing
 
-            ' Set the selection background color for all the cells.
-            .DefaultCellStyle.SelectionBackColor = Color.LightGray
-            .DefaultCellStyle.SelectionForeColor = Color.Black
+    '        ' Set the selection background color for all the cells.
+    '        .DefaultCellStyle.SelectionBackColor = Color.LightGray
+    '        .DefaultCellStyle.SelectionForeColor = Color.Black
 
-            ' Set RowHeadersDefaultCellStyle.SelectionBackColor so that its default 
-            ' value won't override DataGridView.DefaultCellStyle.SelectionBackColor.
-            .RowHeadersDefaultCellStyle.SelectionBackColor = Color.White
+    '        ' Set RowHeadersDefaultCellStyle.SelectionBackColor so that its default 
+    '        ' value won't override DataGridView.DefaultCellStyle.SelectionBackColor.
+    '        .RowHeadersDefaultCellStyle.SelectionBackColor = Color.White
 
-            ' Set the background color for all rows and for alternating rows.  
-            ' The value for alternating rows overrides the value for all rows. 
-            .RowsDefaultCellStyle.BackColor = Color.White 'Color.LightGray
-            .AlternatingRowsDefaultCellStyle.BackColor = Color.LightGray
+    '        ' Set the background color for all rows and for alternating rows.  
+    '        ' The value for alternating rows overrides the value for all rows. 
+    '        .RowsDefaultCellStyle.BackColor = Color.White 'Color.LightGray
+    '        .AlternatingRowsDefaultCellStyle.BackColor = Color.LightGray
 
-            ' Set the row and column header styles.
-            .ColumnHeadersDefaultCellStyle.ForeColor = Color.White
-            .ColumnHeadersDefaultCellStyle.BackColor = Color.Black
-            .RowHeadersDefaultCellStyle.BackColor = Color.Black
-        End With
-    End Sub
+    '        ' Set the row and column header styles.
+    '        .ColumnHeadersDefaultCellStyle.ForeColor = Color.White
+    '        .ColumnHeadersDefaultCellStyle.BackColor = Color.Black
+    '        .RowHeadersDefaultCellStyle.BackColor = Color.Black
+    '    End With
+    'End Sub
     Private Sub RetriveDataGrid(DG As DataGridView)
         With DG
             .ColumnHeadersHeight = 35
@@ -298,8 +298,19 @@
         DateTimePicker2.Format = DateTimePickerFormat.Custom
         DateTimePicker2.CustomFormat = MyApplication.DefaultFormatDate
 
-        InitializeDataGridView(DataGridView1)
-        InitializeDataGridView(DataGridView2)
+        'InitializeDataGridView(DataGridView1)
+        'InitializeDataGridView(DataGridView2)
+        MyApplication.InitializeDataGridView(DataGridView1)
+        MyApplication.InitializeDataGridView(DataGridView2)
+        DataGridView1.AllowUserToAddRows = True
+        DataGridView1.AllowUserToDeleteRows = True
+        DataGridView1.AllowUserToOrderColumns = True
+        DataGridView1.ReadOnly = False
+        DataGridView2.AllowUserToAddRows = True
+        DataGridView2.AllowUserToDeleteRows = True
+        DataGridView2.AllowUserToOrderColumns = True
+        DataGridView2.ReadOnly = False
+
         init()
         'MessageBox.Show(Format(Date.Now, "yyyy/MM/dd H:mm:ss"))
     End Sub
@@ -438,6 +449,7 @@
                     SetSummaryField()
                 End If
                 If DataGridView1.Columns(e.ColumnIndex).Name = "mmtrid" Then
+                    If DataGridView1.Rows(e.RowIndex).Cells("mmtrid").Value = mmtridbefore Then Exit Sub
                     If CekDuplicateID(DataGridView1.Rows(e.RowIndex).Cells("mmtrid").Value, e.RowIndex, DataGridView1) Then
                         For Each dat In ListDataTanaman
                             'col.Add(dat("mmtrid"))
@@ -512,13 +524,17 @@
     End Sub
 
     Private rowIndex As Integer = 0
+    Private mmtridbefore As String = ""
     Private Sub DataGridView1_CellMouseUp_1(ByVal sender As System.Object, ByVal e As System.Windows.Forms.DataGridViewCellMouseEventArgs) Handles DataGridView1.CellMouseUp
-        If e.Button = MouseButtons.Right Then
-            Me.DataGridView1.Rows(e.RowIndex).Selected = True
-            Me.rowIndex = e.RowIndex
-            Me.DataGridView1.CurrentCell = Me.DataGridView1.Rows(e.RowIndex).Cells(1)
-            Me.ContextMenuStrip1.Show(Me.DataGridView1, e.Location)
-            ContextMenuStrip1.Show(Cursor.Position)
+        If e.RowIndex > -1 And e.ColumnIndex > -1 Then
+            mmtridbefore = DataGridView1.Rows(e.RowIndex).Cells("mmtrid").Value
+            If e.Button = MouseButtons.Right Then
+                Me.DataGridView1.Rows(e.RowIndex).Selected = True
+                Me.rowIndex = e.RowIndex
+                Me.DataGridView1.CurrentCell = Me.DataGridView1.Rows(e.RowIndex).Cells(1)
+                Me.ContextMenuStrip1.Show(Me.DataGridView1, e.Location)
+                ContextMenuStrip1.Show(Cursor.Position)
+            End If
         End If
     End Sub
     Private Sub ContextMenuStrip1_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles ContextMenuStrip1.Click
@@ -710,26 +726,27 @@
                     SetSummaryField2()
                 End If
                 If DataGridView2.Columns(e.ColumnIndex).Name = "mmtrid" Then
-                    If CekDuplicateID(DataGridView2.Rows(e.rowIndex).Cells("mmtrid").Value, e.rowIndex, DataGridView2) Then
+                    If DataGridView2.Rows(e.RowIndex).Cells("mmtrid").Value = mmtridbefore2 Then Exit Sub
+                    If CekDuplicateID(DataGridView2.Rows(e.RowIndex).Cells("mmtrid").Value, e.RowIndex, DataGridView2) Then
                         For Each dat In ListDataTanaman
                             'col.Add(dat("mmtrid"))
-                            If dat("mmtrid") = DataGridView2.Rows(e.rowIndex).Cells("mmtrid").Value Then
-                                DataGridView2.Rows(e.rowIndex).Cells("mmtrhname").Value = dat("mmtrname") 'ListDataTanaman(1)("mmtrname")
-                                DataGridView2.Rows(e.rowIndex).Cells("polybag").Value = dat("polybag") 'ListDataTanaman(1)("mmtrname")
-                                DataGridView2.Rows(e.rowIndex).Cells("price").Value = CDec(dat("hpp"))
+                            If dat("mmtrid") = DataGridView2.Rows(e.RowIndex).Cells("mmtrid").Value Then
+                                DataGridView2.Rows(e.RowIndex).Cells("mmtrhname").Value = dat("mmtrname") 'ListDataTanaman(1)("mmtrname")
+                                DataGridView2.Rows(e.RowIndex).Cells("polybag").Value = dat("polybag") 'ListDataTanaman(1)("mmtrname")
+                                DataGridView2.Rows(e.RowIndex).Cells("price").Value = CDec(dat("hpp"))
                                 'DataGridView2.Rows(e.rowIndex).Cells("qty").Value = IIf(DataGridView2.Rows(e.rowIndex).Cells("qty").Value.ToString.Length > 0, CDec(DataGridView2.Rows(e.rowIndex).Cells("qty").Value), 0)
                                 'DataGridView2.Rows(e.rowIndex).Cells("price").Selected = True
-                                DataGridView2.Rows(e.rowIndex).Cells("oldhpp").Value = CDec(dat("hpp"))
-                                DataGridView2.Rows(e.rowIndex).Cells("hpp").Value = CDec(dat("hpp"))
+                                DataGridView2.Rows(e.RowIndex).Cells("oldhpp").Value = CDec(dat("hpp"))
+                                DataGridView2.Rows(e.RowIndex).Cells("hpp").Value = CDec(dat("hpp"))
                             End If
                         Next
                     Else
-                        DataGridView2.Rows(e.rowIndex).Cells("mmtrid").Value = ""
-                        DataGridView2.Rows(e.rowIndex).Cells("mmtrhname").Value = ""
-                        DataGridView2.Rows(e.rowIndex).Cells("polybag").Value = ""
-                        DataGridView2.Rows(e.rowIndex).Cells("price").Value = 0
-                        DataGridView2.Rows(e.rowIndex).Cells("qty").Value = 0
-                        DataGridView2.CurrentCell = DataGridView2("mmtrid", e.rowIndex)
+                        DataGridView2.Rows(e.RowIndex).Cells("mmtrid").Value = ""
+                        DataGridView2.Rows(e.RowIndex).Cells("mmtrhname").Value = ""
+                        DataGridView2.Rows(e.RowIndex).Cells("polybag").Value = ""
+                        DataGridView2.Rows(e.RowIndex).Cells("price").Value = 0
+                        DataGridView2.Rows(e.RowIndex).Cells("qty").Value = 0
+                        DataGridView2.CurrentCell = DataGridView2("mmtrid", e.RowIndex)
                         DataGridView2.CancelEdit()
                     End If
                 End If
@@ -781,13 +798,17 @@
     End Sub
 
     Private rowIndex2 As Integer = 0
+    Private mmtridbefore2 As String = ""
     Private Sub DataGridView2_CellMouseUp_1(ByVal sender As System.Object, ByVal e As System.Windows.Forms.DataGridViewCellMouseEventArgs) Handles DataGridView2.CellMouseUp
-        If e.Button = MouseButtons.Right Then
-            Me.DataGridView2.Rows(e.rowIndex).Selected = True
-            Me.rowIndex = e.rowIndex
-            Me.DataGridView2.CurrentCell = Me.DataGridView2.Rows(e.rowIndex).Cells(1)
-            Me.ContextMenuStrip1.Show(Me.DataGridView2, e.Location)
-            ContextMenuStrip1.Show(Cursor.Position)
+        If e.RowIndex > -1 And e.ColumnIndex > -1 Then
+            mmtridbefore2 = DataGridView2.Rows(e.RowIndex).Cells("mmtrid").Value
+            If e.Button = MouseButtons.Right Then
+                Me.DataGridView2.Rows(e.RowIndex).Selected = True
+                Me.rowIndex = e.RowIndex
+                Me.DataGridView2.CurrentCell = Me.DataGridView2.Rows(e.RowIndex).Cells(1)
+                Me.ContextMenuStrip1.Show(Me.DataGridView2, e.Location)
+                ContextMenuStrip1.Show(Cursor.Position)
+            End If
         End If
     End Sub
     Private Sub ContextMenuStrip2_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles ContextMenuStrip2.Click
@@ -815,8 +836,8 @@
         End Try
     End Sub
     Private Sub DataGridView2_RowValidated(sender As Object, e As DataGridViewCellEventArgs) Handles DataGridView2.RowValidated
-        If Not DataGridView2.Rows(e.rowIndex).IsNewRow Then
-            DataGridView2.Rows(e.rowIndex).HeaderCell.Value = (e.rowIndex + 1).ToString '(e.rowIndex + ModelH.startRecord + 1).ToString
+        If Not DataGridView2.Rows(e.RowIndex).IsNewRow Then
+            DataGridView2.Rows(e.RowIndex).HeaderCell.Value = (e.RowIndex + 1).ToString '(e.rowIndex + ModelH.startRecord + 1).ToString
         End If
     End Sub
     Private Sub DataGridView2_RowsRemoved(sender As Object, e As DataGridViewRowsRemovedEventArgs) Handles DataGridView2.RowsRemoved

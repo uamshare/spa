@@ -9,13 +9,13 @@
       <Value Profile="(Default)">localhost</Value>
     </Setting>
     <Setting Name="uid" Type="System.String" Scope="User">
-      <Value Profile="(Default)">root</Value>
+      <Value Profile="(Default)">user</Value>
     </Setting>
     <Setting Name="pwd" Type="System.String" Scope="User">
-      <Value Profile="(Default)" />
+      <Value Profile="(Default)">password</Value>
     </Setting>
     <Setting Name="database" Type="System.String" Scope="User">
-      <Value Profile="(Default)">simagro</Value>
+      <Value Profile="(Default)">database</Value>
     </Setting>
     <Setting Name="CabangID" Type="System.String" Scope="User">
       <Value Profile="(Default)">01</Value>

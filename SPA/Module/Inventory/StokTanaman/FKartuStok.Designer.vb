@@ -1,5 +1,5 @@
 ﻿<Global.Microsoft.VisualBasic.CompilerServices.DesignerGenerated()> _
-Partial Class FRekapStok
+Partial Class FKartuStok
     Inherits System.Windows.Forms.Form
 
     'Form overrides dispose to clean up the component list.
@@ -24,9 +24,11 @@ Partial Class FRekapStok
     Private Sub InitializeComponent()
         Me.components = New System.ComponentModel.Container()
         Dim ReportDataSource1 As Microsoft.Reporting.WinForms.ReportDataSource = New Microsoft.Reporting.WinForms.ReportDataSource()
+        Me.StockcardBindingSource = New System.Windows.Forms.BindingSource(Me.components)
+        Me.simagro = New SPA.simagro()
         Me.stock_allBindingSource = New System.Windows.Forms.BindingSource(Me.components)
-        Me.RstockAll = New SPA.simagro()
-        Me.stock_allTableAdapter = New SPA.simagroTableAdapters.stock_allTableAdapter
+        Me.Panel2 = New System.Windows.Forms.Panel()
+        Me.ReportViewer1 = New Microsoft.Reporting.WinForms.ReportViewer()
         Me.Panel1 = New System.Windows.Forms.Panel()
         Me.Button1 = New System.Windows.Forms.Button()
         Me.ComboBox3 = New System.Windows.Forms.ComboBox()
@@ -40,29 +42,52 @@ Partial Class FRekapStok
         Me.Label2 = New System.Windows.Forms.Label()
         Me.DateTimePicker1 = New System.Windows.Forms.DateTimePicker()
         Me.Label1 = New System.Windows.Forms.Label()
-        Me.Panel2 = New System.Windows.Forms.Panel()
-        Me.ReportViewer1 = New Microsoft.Reporting.WinForms.ReportViewer()
+        Me.stock_allTableAdapter = New SPA.simagroTableAdapters.stock_allTableAdapter()
+        Me.Stock_cardTableAdapter = New SPA.simagroTableAdapters.stock_cardTableAdapter()
+        CType(Me.StockcardBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.simagro, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.stock_allBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.RstockAll, System.ComponentModel.ISupportInitialize).BeginInit()
+        Me.Panel2.SuspendLayout()
         Me.Panel1.SuspendLayout()
         Me.GroupBox2.SuspendLayout()
         Me.GroupBox1.SuspendLayout()
-        Me.Panel2.SuspendLayout()
         Me.SuspendLayout()
+        '
+        'StockcardBindingSource
+        '
+        Me.StockcardBindingSource.DataMember = "stock_card"
+        Me.StockcardBindingSource.DataSource = Me.simagro
+        '
+        'simagro
+        '
+        Me.simagro.DataSetName = "simagro"
+        Me.simagro.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema
         '
         'stock_allBindingSource
         '
         Me.stock_allBindingSource.DataMember = "stock_all"
-        Me.stock_allBindingSource.DataSource = Me.RstockAll
+        Me.stock_allBindingSource.DataSource = Me.simagro
         '
-        'RstockAll
+        'Panel2
         '
-        Me.RstockAll.DataSetName = "RstockAll"
-        Me.RstockAll.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema
+        Me.Panel2.Controls.Add(Me.ReportViewer1)
+        Me.Panel2.Dock = System.Windows.Forms.DockStyle.Fill
+        Me.Panel2.Location = New System.Drawing.Point(248, 0)
+        Me.Panel2.Margin = New System.Windows.Forms.Padding(4)
+        Me.Panel2.Name = "Panel2"
+        Me.Panel2.Size = New System.Drawing.Size(638, 462)
+        Me.Panel2.TabIndex = 4
         '
-        'stock_allTableAdapter
+        'ReportViewer1
         '
-        Me.stock_allTableAdapter.ClearBeforeFill = True
+        ReportDataSource1.Name = "StockCard"
+        ReportDataSource1.Value = Me.StockcardBindingSource
+        Me.ReportViewer1.LocalReport.DataSources.Add(ReportDataSource1)
+        Me.ReportViewer1.LocalReport.ReportEmbeddedResource = "SPA.DRKartuStok.rdlc"
+        Me.ReportViewer1.Location = New System.Drawing.Point(7, 12)
+        Me.ReportViewer1.Name = "ReportViewer1"
+        Me.ReportViewer1.Size = New System.Drawing.Size(601, 388)
+        Me.ReportViewer1.TabIndex = 0
         '
         'Panel1
         '
@@ -75,8 +100,8 @@ Partial Class FRekapStok
         Me.Panel1.Location = New System.Drawing.Point(0, 0)
         Me.Panel1.Margin = New System.Windows.Forms.Padding(4)
         Me.Panel1.Name = "Panel1"
-        Me.Panel1.Size = New System.Drawing.Size(248, 384)
-        Me.Panel1.TabIndex = 1
+        Me.Panel1.Size = New System.Drawing.Size(248, 462)
+        Me.Panel1.TabIndex = 3
         '
         'Button1
         '
@@ -186,58 +211,45 @@ Partial Class FRekapStok
         Me.Label1.TabIndex = 4
         Me.Label1.Text = "dari"
         '
-        'Panel2
+        'stock_allTableAdapter
         '
-        Me.Panel2.Controls.Add(Me.ReportViewer1)
-        Me.Panel2.Dock = System.Windows.Forms.DockStyle.Fill
-        Me.Panel2.Location = New System.Drawing.Point(248, 0)
-        Me.Panel2.Margin = New System.Windows.Forms.Padding(4)
-        Me.Panel2.Name = "Panel2"
-        Me.Panel2.Size = New System.Drawing.Size(525, 384)
-        Me.Panel2.TabIndex = 2
+        Me.stock_allTableAdapter.ClearBeforeFill = True
         '
-        'ReportViewer1
+        'Stock_cardTableAdapter
         '
-        ReportDataSource1.Name = "DataSet1"
-        ReportDataSource1.Value = Me.stock_allBindingSource
-        Me.ReportViewer1.LocalReport.DataSources.Add(ReportDataSource1)
-        Me.ReportViewer1.LocalReport.ReportEmbeddedResource = "SPA.DRStokTanaman.rdlc"
-        Me.ReportViewer1.Location = New System.Drawing.Point(47, 32)
-        Me.ReportViewer1.Margin = New System.Windows.Forms.Padding(4)
-        Me.ReportViewer1.Name = "ReportViewer1"
-        Me.ReportViewer1.Size = New System.Drawing.Size(439, 326)
-        Me.ReportViewer1.TabIndex = 1
+        Me.Stock_cardTableAdapter.ClearBeforeFill = True
         '
-        'FRekapStok
+        'FKartuStok
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(8.0!, 16.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.BackColor = System.Drawing.SystemColors.ControlDarkDark
-        Me.ClientSize = New System.Drawing.Size(773, 384)
+        Me.BackColor = System.Drawing.SystemColors.ButtonShadow
+        Me.ClientSize = New System.Drawing.Size(886, 462)
         Me.Controls.Add(Me.Panel2)
         Me.Controls.Add(Me.Panel1)
         Me.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Margin = New System.Windows.Forms.Padding(4)
-        Me.Name = "FRekapStok"
-        Me.Text = "Rekap Stok Tanaman"
+        Me.Name = "FKartuStok"
+        Me.Text = "Kartu Stok"
+        CType(Me.StockcardBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.simagro, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.stock_allBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.RstockAll, System.ComponentModel.ISupportInitialize).EndInit()
+        Me.Panel2.ResumeLayout(False)
         Me.Panel1.ResumeLayout(False)
         Me.GroupBox2.ResumeLayout(False)
         Me.GroupBox2.PerformLayout()
         Me.GroupBox1.ResumeLayout(False)
         Me.GroupBox1.PerformLayout()
-        Me.Panel2.ResumeLayout(False)
         Me.ResumeLayout(False)
 
     End Sub
-    Friend WithEvents stock_allBindingSource As System.Windows.Forms.BindingSource
-    Friend WithEvents RstockAll As SPA.simagro
-    Friend WithEvents stock_allTableAdapter As SPA.simagroTableAdapters.stock_allTableAdapter
-    Friend WithEvents Panel1 As System.Windows.Forms.Panel
     Friend WithEvents Panel2 As System.Windows.Forms.Panel
-    Friend WithEvents ReportViewer1 As Microsoft.Reporting.WinForms.ReportViewer
+    Friend WithEvents Panel1 As System.Windows.Forms.Panel
+    Friend WithEvents Button1 As System.Windows.Forms.Button
+    Friend WithEvents ComboBox3 As System.Windows.Forms.ComboBox
     Friend WithEvents GroupBox2 As System.Windows.Forms.GroupBox
+    Friend WithEvents TextBox2 As System.Windows.Forms.TextBox
+    Friend WithEvents TextBox1 As System.Windows.Forms.TextBox
     Friend WithEvents Label3 As System.Windows.Forms.Label
     Friend WithEvents Label4 As System.Windows.Forms.Label
     Friend WithEvents GroupBox1 As System.Windows.Forms.GroupBox
@@ -245,8 +257,10 @@ Partial Class FRekapStok
     Friend WithEvents Label2 As System.Windows.Forms.Label
     Friend WithEvents DateTimePicker1 As System.Windows.Forms.DateTimePicker
     Friend WithEvents Label1 As System.Windows.Forms.Label
-    Friend WithEvents ComboBox3 As System.Windows.Forms.ComboBox
-    Friend WithEvents Button1 As System.Windows.Forms.Button
-    Friend WithEvents TextBox2 As System.Windows.Forms.TextBox
-    Friend WithEvents TextBox1 As System.Windows.Forms.TextBox
+    Friend WithEvents stock_allBindingSource As System.Windows.Forms.BindingSource
+    Friend WithEvents simagro As SPA.simagro
+    Friend WithEvents stock_allTableAdapter As SPA.simagroTableAdapters.stock_allTableAdapter
+    Friend WithEvents ReportViewer1 As Microsoft.Reporting.WinForms.ReportViewer
+    Friend WithEvents StockcardBindingSource As System.Windows.Forms.BindingSource
+    Friend WithEvents Stock_cardTableAdapter As SPA.simagroTableAdapters.stock_cardTableAdapter
 End Class

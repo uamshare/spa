@@ -12,6 +12,11 @@
         PrimaryKey = "mcoadno"
     End Sub
 
+    Public Overloads Function GetData(mlimit As Integer) As DataTable
+        Me.limitrecord = mlimit
+        Me.StringSQL = "SELECT * FROM coa"
+        Return MyBase.GetData()
+    End Function
     Function FindData(sSearch As String) As DataTable
         If Not String.IsNullOrEmpty(sSearch) Then
             Me.WHERE = "WHERE mcoadname like '%" & sSearch & "%' OR mcoadno like '%" & sSearch & "%'"

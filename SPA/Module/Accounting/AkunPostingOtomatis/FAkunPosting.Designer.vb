@@ -63,10 +63,10 @@ Partial Class FAkunPosting
         Me.ToolStrip1.Dock = System.Windows.Forms.DockStyle.Bottom
         Me.ToolStrip1.GripStyle = System.Windows.Forms.ToolStripGripStyle.Hidden
         Me.ToolStrip1.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.ToolStripLabelbarang, Me.cmbperPage, Me.ToolStripLabel1, Me.ToolStripSeparator3, Me.ToolFisrt, Me.ToolPrev, Me.ToolStripSeparator1, Me.txtPageCurrent, Me.lCountPage, Me.ToolStripSeparator2, Me.ToolNext, Me.ToolLast, Me.lpageInfo, Me.ToolStripButton1})
-        Me.ToolStrip1.Location = New System.Drawing.Point(0, 526)
+        Me.ToolStrip1.Location = New System.Drawing.Point(0, 352)
         Me.ToolStrip1.Name = "ToolStrip1"
         Me.ToolStrip1.RenderMode = System.Windows.Forms.ToolStripRenderMode.System
-        Me.ToolStrip1.Size = New System.Drawing.Size(1275, 25)
+        Me.ToolStrip1.Size = New System.Drawing.Size(692, 25)
         Me.ToolStrip1.TabIndex = 19
         Me.ToolStrip1.Text = "ToolStrip1"
         '
@@ -176,7 +176,7 @@ Partial Class FAkunPosting
         Me.Toolbarang.Location = New System.Drawing.Point(0, 0)
         Me.Toolbarang.Name = "Toolbarang"
         Me.Toolbarang.RenderMode = System.Windows.Forms.ToolStripRenderMode.System
-        Me.Toolbarang.Size = New System.Drawing.Size(1275, 39)
+        Me.Toolbarang.Size = New System.Drawing.Size(692, 39)
         Me.Toolbarang.TabIndex = 9
         Me.Toolbarang.Text = "Tool1"
         '
@@ -261,26 +261,30 @@ Partial Class FAkunPosting
         Me.Panelbarang.Controls.Add(Me.DataGridView1)
         Me.Panelbarang.Controls.Add(Me.ToolStrip1)
         Me.Panelbarang.Controls.Add(Me.Toolbarang)
-        Me.Panelbarang.Dock = System.Windows.Forms.DockStyle.Left
+        Me.Panelbarang.Dock = System.Windows.Forms.DockStyle.Fill
         Me.Panelbarang.Location = New System.Drawing.Point(0, 0)
+        Me.Panelbarang.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
         Me.Panelbarang.Name = "Panelbarang"
-        Me.Panelbarang.Size = New System.Drawing.Size(1275, 551)
+        Me.Panelbarang.Size = New System.Drawing.Size(692, 377)
         Me.Panelbarang.TabIndex = 14
         '
         'DataGridView1
         '
         Me.DataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
-        Me.DataGridView1.Location = New System.Drawing.Point(0, 38)
+        Me.DataGridView1.Location = New System.Drawing.Point(0, 47)
+        Me.DataGridView1.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
         Me.DataGridView1.Name = "DataGridView1"
-        Me.DataGridView1.Size = New System.Drawing.Size(1272, 488)
+        Me.DataGridView1.Size = New System.Drawing.Size(691, 297)
         Me.DataGridView1.TabIndex = 20
         '
         'FAkunPosting
         '
-        Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
+        Me.AutoScaleDimensions = New System.Drawing.SizeF(8.0!, 16.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(1276, 551)
+        Me.ClientSize = New System.Drawing.Size(692, 377)
         Me.Controls.Add(Me.Panelbarang)
+        Me.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
         Me.Name = "FAkunPosting"
         Me.Text = "Akun Posting Otomatis"
         Me.ToolStrip1.ResumeLayout(False)

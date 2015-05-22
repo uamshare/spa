@@ -28,21 +28,21 @@ Public Class BaseConnection
                 Case 0
                     msgerror = "Error Number : " & ex.Number & " Error Message : " & ex.Message & ".Cannot connect to database server. Please contact your administrator"
                     ErrorLogger.WriteToErrorLogTxt(msgerror, ex.StackTrace, "Error Connection Database")
-                    MessageBox.Show(msgerror)
+                    MessageBox.Show(msgerror, "Connection Failed")
                     'End
                 Case 1045
                     msgerror = "Error Number : " & ex.Number & " Error Message : " & ex.Message & ".Invalid username/password, please try again"
                     ErrorLogger.WriteToErrorLogTxt(msgerror, ex.StackTrace, "Error Connection Database")
-                    MessageBox.Show(msgerror)
+                    MessageBox.Show(msgerror, "Connection Failed")
                 Case 1042
                     msgerror = "Error Number : " & ex.Number & " Error Message : " & ex.Message & ".Unable to connect to any of the specified MySQL host"
                     ErrorLogger.WriteToErrorLogTxt(msgerror, ex.StackTrace, "Error Connection Database")
-                    MessageBox.Show(msgerror)
+                    MessageBox.Show(msgerror, "Connection Failed")
                     'End
                 Case Else
                     msgerror = "Error Number : " & ex.Number & " Error Message : " & ex.Message
                     ErrorLogger.WriteToErrorLogTxt(msgerror, ex.StackTrace, "Error Connection Database")
-                    MessageBox.Show(msgerror)
+                    MessageBox.Show(msgerror, "Connection Failed")
             End Select
             'End ' End Aplication 
             'CONN = Nothing
@@ -51,9 +51,10 @@ Public Class BaseConnection
 
     Public Shared Function GetInstance(Optional ByVal id As Integer = 1) As MySql.Data.MySqlClient.MySqlConnection
         'Dim Obj As BaseConnection
-        If ObjConnection Is Nothing Then
+        If ObjConnection Is Nothing Or CONN.State <= 0 Then
             ObjConnection = New BaseConnection(id)
-            'MessageBox.Show("Connection " & id)
+        Else
+            'MessageBox.Show("Connection already set " & CONN.State)
         End If
         Return CONN
     End Function

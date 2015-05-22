@@ -20,12 +20,14 @@ Option Explicit On
  Global.System.ComponentModel.DesignerCategoryAttribute("code"),  _
  Global.System.ComponentModel.ToolboxItem(true),  _
  Global.System.Xml.Serialization.XmlSchemaProviderAttribute("GetTypedDataSetSchema"),  _
- Global.System.Xml.Serialization.XmlRootAttribute("RstockAll"),  _
+ Global.System.Xml.Serialization.XmlRootAttribute("simagro"),  _
  Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.DataSet")>  _
-Partial Public Class RstockAll
+Partial Public Class simagro
     Inherits Global.System.Data.DataSet
     
     Private tablestock_all As stock_allDataTable
+    
+    Private tablestock_card As stock_cardDataTable
     
     Private _schemaSerializationMode As Global.System.Data.SchemaSerializationMode = Global.System.Data.SchemaSerializationMode.IncludeSchema
     
@@ -59,6 +61,9 @@ Partial Public Class RstockAll
             If (Not (ds.Tables("stock_all")) Is Nothing) Then
                 MyBase.Tables.Add(New stock_allDataTable(ds.Tables("stock_all")))
             End If
+            If (Not (ds.Tables("stock_card")) Is Nothing) Then
+                MyBase.Tables.Add(New stock_cardDataTable(ds.Tables("stock_card")))
+            End If
             Me.DataSetName = ds.DataSetName
             Me.Prefix = ds.Prefix
             Me.Namespace = ds.Namespace
@@ -83,6 +88,16 @@ Partial Public Class RstockAll
     Public ReadOnly Property stock_all() As stock_allDataTable
         Get
             Return Me.tablestock_all
+        End Get
+    End Property
+    
+    <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+     Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0"),  _
+     Global.System.ComponentModel.Browsable(false),  _
+     Global.System.ComponentModel.DesignerSerializationVisibility(Global.System.ComponentModel.DesignerSerializationVisibility.Content)>  _
+    Public ReadOnly Property stock_card() As stock_cardDataTable
+        Get
+            Return Me.tablestock_card
         End Get
     End Property
     
@@ -128,7 +143,7 @@ Partial Public Class RstockAll
     <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
      Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
     Public Overrides Function Clone() As Global.System.Data.DataSet
-        Dim cln As RstockAll = CType(MyBase.Clone,RstockAll)
+        Dim cln As simagro = CType(MyBase.Clone,simagro)
         cln.InitVars
         cln.SchemaSerializationMode = Me.SchemaSerializationMode
         Return cln
@@ -155,6 +170,9 @@ Partial Public Class RstockAll
             ds.ReadXml(reader)
             If (Not (ds.Tables("stock_all")) Is Nothing) Then
                 MyBase.Tables.Add(New stock_allDataTable(ds.Tables("stock_all")))
+            End If
+            If (Not (ds.Tables("stock_card")) Is Nothing) Then
+                MyBase.Tables.Add(New stock_cardDataTable(ds.Tables("stock_card")))
             End If
             Me.DataSetName = ds.DataSetName
             Me.Prefix = ds.Prefix
@@ -194,23 +212,37 @@ Partial Public Class RstockAll
                 Me.tablestock_all.InitVars
             End If
         End If
+        Me.tablestock_card = CType(MyBase.Tables("stock_card"),stock_cardDataTable)
+        If (initTable = true) Then
+            If (Not (Me.tablestock_card) Is Nothing) Then
+                Me.tablestock_card.InitVars
+            End If
+        End If
     End Sub
     
     <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
      Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
     Private Sub InitClass()
-        Me.DataSetName = "RstockAll"
+        Me.DataSetName = "simagro"
         Me.Prefix = ""
-        Me.Namespace = "http://tempuri.org/RstockAll.xsd"
+        Me.Namespace = "http://tempuri.org/simagro.xsd"
         Me.EnforceConstraints = true
         Me.SchemaSerializationMode = Global.System.Data.SchemaSerializationMode.IncludeSchema
         Me.tablestock_all = New stock_allDataTable()
         MyBase.Tables.Add(Me.tablestock_all)
+        Me.tablestock_card = New stock_cardDataTable()
+        MyBase.Tables.Add(Me.tablestock_card)
     End Sub
     
     <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
      Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
     Private Function ShouldSerializestock_all() As Boolean
+        Return false
+    End Function
+    
+    <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+     Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+    Private Function ShouldSerializestock_card() As Boolean
         Return false
     End Function
     
@@ -225,7 +257,7 @@ Partial Public Class RstockAll
     <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
      Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
     Public Shared Function GetTypedDataSetSchema(ByVal xs As Global.System.Xml.Schema.XmlSchemaSet) As Global.System.Xml.Schema.XmlSchemaComplexType
-        Dim ds As RstockAll = New RstockAll()
+        Dim ds As simagro = New simagro()
         Dim type As Global.System.Xml.Schema.XmlSchemaComplexType = New Global.System.Xml.Schema.XmlSchemaComplexType()
         Dim sequence As Global.System.Xml.Schema.XmlSchemaSequence = New Global.System.Xml.Schema.XmlSchemaSequence()
         Dim any As Global.System.Xml.Schema.XmlSchemaAny = New Global.System.Xml.Schema.XmlSchemaAny()
@@ -275,6 +307,9 @@ Partial Public Class RstockAll
     <Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
     Public Delegate Sub stock_allRowChangeEventHandler(ByVal sender As Object, ByVal e As stock_allRowChangeEvent)
     
+    <Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+    Public Delegate Sub stock_cardRowChangeEventHandler(ByVal sender As Object, ByVal e As stock_cardRowChangeEvent)
+    
     '''<summary>
     '''Represents the strongly named DataTable class.
     '''</summary>
@@ -301,19 +336,15 @@ Partial Public Class RstockAll
         
         Private columndtupdated As Global.System.Data.DataColumn
         
+        Private columnhpp As Global.System.Data.DataColumn
+        
         Private columnstockstart As Global.System.Data.DataColumn
-        
-        Private columnhpp_start As Global.System.Data.DataColumn
-        
-        Private columnbookvalue_start As Global.System.Data.DataColumn
         
         Private columnstockin As Global.System.Data.DataColumn
         
         Private columnstockout As Global.System.Data.DataColumn
         
         Private columnstockend As Global.System.Data.DataColumn
-        
-        Private columnhpp As Global.System.Data.DataColumn
         
         Private columnbookvalue As Global.System.Data.DataColumn
         
@@ -426,25 +457,17 @@ Partial Public Class RstockAll
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public ReadOnly Property hppColumn() As Global.System.Data.DataColumn
+            Get
+                Return Me.columnhpp
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
         Public ReadOnly Property stockstartColumn() As Global.System.Data.DataColumn
             Get
                 Return Me.columnstockstart
-            End Get
-        End Property
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
-        Public ReadOnly Property hpp_startColumn() As Global.System.Data.DataColumn
-            Get
-                Return Me.columnhpp_start
-            End Get
-        End Property
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
-        Public ReadOnly Property bookvalue_startColumn() As Global.System.Data.DataColumn
-            Get
-                Return Me.columnbookvalue_start
             End Get
         End Property
         
@@ -469,14 +492,6 @@ Partial Public Class RstockAll
         Public ReadOnly Property stockendColumn() As Global.System.Data.DataColumn
             Get
                 Return Me.columnstockend
-            End Get
-        End Property
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
-        Public ReadOnly Property hppColumn() As Global.System.Data.DataColumn
-            Get
-                Return Me.columnhpp
             End Get
         End Property
         
@@ -525,34 +540,12 @@ Partial Public Class RstockAll
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
-        Public Overloads Function Addstock_allRow( _
-                    ByVal mmtrname As String,  _
-                    ByVal mmtrid As String,  _
-                    ByVal polybag As String,  _
-                    ByVal mmtrunit As String,  _
-                    ByVal mmtrprice As Decimal,  _
-                    ByVal mmtrg As String,  _
-                    ByVal dtcreated As Date,  _
-                    ByVal dtupdated As Date,  _
-                    ByVal stockstart As Decimal,  _
-                    ByVal hpp_start As Decimal,  _
-                    ByVal bookvalue_start As Decimal,  _
-                    ByVal stockin As Decimal,  _
-                    ByVal stockout As Decimal,  _
-                    ByVal stockend As Decimal,  _
-                    ByVal hpp As Decimal,  _
-                    ByVal bookvalue As Decimal) As stock_allRow
+        Public Overloads Function Addstock_allRow(ByVal mmtrhid As Integer, ByVal mmtrname As String, ByVal mmtrid As String, ByVal polybag As String, ByVal mmtrunit As String, ByVal mmtrprice As Decimal, ByVal mmtrg As String, ByVal dtcreated As Date, ByVal dtupdated As Date, ByVal hpp As Decimal, ByVal stockstart As Decimal, ByVal stockin As Decimal, ByVal stockout As Decimal, ByVal stockend As Decimal, ByVal bookvalue As Decimal) As stock_allRow
             Dim rowstock_allRow As stock_allRow = CType(Me.NewRow,stock_allRow)
-            Dim columnValuesArray() As Object = New Object() {Nothing, mmtrname, mmtrid, polybag, mmtrunit, mmtrprice, mmtrg, dtcreated, dtupdated, stockstart, hpp_start, bookvalue_start, stockin, stockout, stockend, hpp, bookvalue}
+            Dim columnValuesArray() As Object = New Object() {mmtrhid, mmtrname, mmtrid, polybag, mmtrunit, mmtrprice, mmtrg, dtcreated, dtupdated, hpp, stockstart, stockin, stockout, stockend, bookvalue}
             rowstock_allRow.ItemArray = columnValuesArray
             Me.Rows.Add(rowstock_allRow)
             Return rowstock_allRow
-        End Function
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
-        Public Function FindBymmtrhidmmtridmmtrg(ByVal mmtrhid As Integer, ByVal mmtrid As String, ByVal mmtrg As String) As stock_allRow
-            Return CType(Me.Rows.Find(New Object() {mmtrhid, mmtrid, mmtrg}),stock_allRow)
         End Function
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
@@ -581,13 +574,11 @@ Partial Public Class RstockAll
             Me.columnmmtrg = MyBase.Columns("mmtrg")
             Me.columndtcreated = MyBase.Columns("dtcreated")
             Me.columndtupdated = MyBase.Columns("dtupdated")
+            Me.columnhpp = MyBase.Columns("hpp")
             Me.columnstockstart = MyBase.Columns("stockstart")
-            Me.columnhpp_start = MyBase.Columns("hpp_start")
-            Me.columnbookvalue_start = MyBase.Columns("bookvalue_start")
             Me.columnstockin = MyBase.Columns("stockin")
             Me.columnstockout = MyBase.Columns("stockout")
             Me.columnstockend = MyBase.Columns("stockend")
-            Me.columnhpp = MyBase.Columns("hpp")
             Me.columnbookvalue = MyBase.Columns("bookvalue")
         End Sub
         
@@ -612,24 +603,18 @@ Partial Public Class RstockAll
             MyBase.Columns.Add(Me.columndtcreated)
             Me.columndtupdated = New Global.System.Data.DataColumn("dtupdated", GetType(Date), Nothing, Global.System.Data.MappingType.Element)
             MyBase.Columns.Add(Me.columndtupdated)
+            Me.columnhpp = New Global.System.Data.DataColumn("hpp", GetType(Decimal), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnhpp)
             Me.columnstockstart = New Global.System.Data.DataColumn("stockstart", GetType(Decimal), Nothing, Global.System.Data.MappingType.Element)
             MyBase.Columns.Add(Me.columnstockstart)
-            Me.columnhpp_start = New Global.System.Data.DataColumn("hpp_start", GetType(Decimal), Nothing, Global.System.Data.MappingType.Element)
-            MyBase.Columns.Add(Me.columnhpp_start)
-            Me.columnbookvalue_start = New Global.System.Data.DataColumn("bookvalue_start", GetType(Decimal), Nothing, Global.System.Data.MappingType.Element)
-            MyBase.Columns.Add(Me.columnbookvalue_start)
             Me.columnstockin = New Global.System.Data.DataColumn("stockin", GetType(Decimal), Nothing, Global.System.Data.MappingType.Element)
             MyBase.Columns.Add(Me.columnstockin)
             Me.columnstockout = New Global.System.Data.DataColumn("stockout", GetType(Decimal), Nothing, Global.System.Data.MappingType.Element)
             MyBase.Columns.Add(Me.columnstockout)
             Me.columnstockend = New Global.System.Data.DataColumn("stockend", GetType(Decimal), Nothing, Global.System.Data.MappingType.Element)
             MyBase.Columns.Add(Me.columnstockend)
-            Me.columnhpp = New Global.System.Data.DataColumn("hpp", GetType(Decimal), Nothing, Global.System.Data.MappingType.Element)
-            MyBase.Columns.Add(Me.columnhpp)
             Me.columnbookvalue = New Global.System.Data.DataColumn("bookvalue", GetType(Decimal), Nothing, Global.System.Data.MappingType.Element)
             MyBase.Columns.Add(Me.columnbookvalue)
-            Me.Constraints.Add(New Global.System.Data.UniqueConstraint("Constraint1", New Global.System.Data.DataColumn() {Me.columnmmtrhid, Me.columnmmtrid, Me.columnmmtrg}, true))
-            Me.columnmmtrhid.AutoIncrement = true
             Me.columnmmtrhid.AllowDBNull = false
             Me.columnmmtrname.MaxLength = 25
             Me.columnmmtrid.AllowDBNull = false
@@ -641,13 +626,11 @@ Partial Public Class RstockAll
             Me.columnmmtrg.MaxLength = 1
             Me.columndtcreated.AllowDBNull = false
             Me.columndtupdated.AllowDBNull = false
+            Me.columnhpp.AllowDBNull = false
             Me.columnstockstart.AllowDBNull = false
-            Me.columnhpp_start.AllowDBNull = false
-            Me.columnbookvalue_start.AllowDBNull = false
             Me.columnstockin.AllowDBNull = false
             Me.columnstockout.AllowDBNull = false
             Me.columnstockend.AllowDBNull = false
-            Me.columnhpp.AllowDBNull = false
             Me.columnbookvalue.AllowDBNull = false
         End Sub
         
@@ -716,7 +699,7 @@ Partial Public Class RstockAll
         Public Shared Function GetTypedTableSchema(ByVal xs As Global.System.Xml.Schema.XmlSchemaSet) As Global.System.Xml.Schema.XmlSchemaComplexType
             Dim type As Global.System.Xml.Schema.XmlSchemaComplexType = New Global.System.Xml.Schema.XmlSchemaComplexType()
             Dim sequence As Global.System.Xml.Schema.XmlSchemaSequence = New Global.System.Xml.Schema.XmlSchemaSequence()
-            Dim ds As RstockAll = New RstockAll()
+            Dim ds As simagro = New simagro()
             Dim any1 As Global.System.Xml.Schema.XmlSchemaAny = New Global.System.Xml.Schema.XmlSchemaAny()
             any1.Namespace = "http://www.w3.org/2001/XMLSchema"
             any1.MinOccurs = New Decimal(0)
@@ -735,6 +718,491 @@ Partial Public Class RstockAll
             Dim attribute2 As Global.System.Xml.Schema.XmlSchemaAttribute = New Global.System.Xml.Schema.XmlSchemaAttribute()
             attribute2.Name = "tableTypeName"
             attribute2.FixedValue = "stock_allDataTable"
+            type.Attributes.Add(attribute2)
+            type.Particle = sequence
+            Dim dsSchema As Global.System.Xml.Schema.XmlSchema = ds.GetSchemaSerializable
+            If xs.Contains(dsSchema.TargetNamespace) Then
+                Dim s1 As Global.System.IO.MemoryStream = New Global.System.IO.MemoryStream()
+                Dim s2 As Global.System.IO.MemoryStream = New Global.System.IO.MemoryStream()
+                Try 
+                    Dim schema As Global.System.Xml.Schema.XmlSchema = Nothing
+                    dsSchema.Write(s1)
+                    Dim schemas As Global.System.Collections.IEnumerator = xs.Schemas(dsSchema.TargetNamespace).GetEnumerator
+                    Do While schemas.MoveNext
+                        schema = CType(schemas.Current,Global.System.Xml.Schema.XmlSchema)
+                        s2.SetLength(0)
+                        schema.Write(s2)
+                        If (s1.Length = s2.Length) Then
+                            s1.Position = 0
+                            s2.Position = 0
+                            
+                            Do While ((s1.Position <> s1.Length)  _
+                                        AndAlso (s1.ReadByte = s2.ReadByte))
+                                
+                                
+                            Loop
+                            If (s1.Position = s1.Length) Then
+                                Return type
+                            End If
+                        End If
+                        
+                    Loop
+                Finally
+                    If (Not (s1) Is Nothing) Then
+                        s1.Close
+                    End If
+                    If (Not (s2) Is Nothing) Then
+                        s2.Close
+                    End If
+                End Try
+            End If
+            xs.Add(dsSchema)
+            Return type
+        End Function
+    End Class
+    
+    '''<summary>
+    '''Represents the strongly named DataTable class.
+    '''</summary>
+    <Global.System.Serializable(),  _
+     Global.System.Xml.Serialization.XmlSchemaProviderAttribute("GetTypedTableSchema")>  _
+    Partial Public Class stock_cardDataTable
+        Inherits Global.System.Data.TypedTableBase(Of stock_cardRow)
+        
+        Private columnmmtrhid As Global.System.Data.DataColumn
+        
+        Private columnmmtrname As Global.System.Data.DataColumn
+        
+        Private columnmmtrid As Global.System.Data.DataColumn
+        
+        Private columnpolybag As Global.System.Data.DataColumn
+        
+        Private columnmmtrunit As Global.System.Data.DataColumn
+        
+        Private columnmmtrprice As Global.System.Data.DataColumn
+        
+        Private columnmmtrg As Global.System.Data.DataColumn
+        
+        Private columndtcreated As Global.System.Data.DataColumn
+        
+        Private columndtupdated As Global.System.Data.DataColumn
+        
+        Private columnstockstart As Global.System.Data.DataColumn
+        
+        Private columnnoref As Global.System.Data.DataColumn
+        
+        Private columnrstockmdesc As Global.System.Data.DataColumn
+        
+        Private columnstockin As Global.System.Data.DataColumn
+        
+        Private columnstockout As Global.System.Data.DataColumn
+        
+        Private columnstockend As Global.System.Data.DataColumn
+        
+        Private columnbookvalue As Global.System.Data.DataColumn
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public Sub New()
+            MyBase.New
+            Me.TableName = "stock_card"
+            Me.BeginInit
+            Me.InitClass
+            Me.EndInit
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Friend Sub New(ByVal table As Global.System.Data.DataTable)
+            MyBase.New
+            Me.TableName = table.TableName
+            If (table.CaseSensitive <> table.DataSet.CaseSensitive) Then
+                Me.CaseSensitive = table.CaseSensitive
+            End If
+            If (table.Locale.ToString <> table.DataSet.Locale.ToString) Then
+                Me.Locale = table.Locale
+            End If
+            If (table.Namespace <> table.DataSet.Namespace) Then
+                Me.Namespace = table.Namespace
+            End If
+            Me.Prefix = table.Prefix
+            Me.MinimumCapacity = table.MinimumCapacity
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Protected Sub New(ByVal info As Global.System.Runtime.Serialization.SerializationInfo, ByVal context As Global.System.Runtime.Serialization.StreamingContext)
+            MyBase.New(info, context)
+            Me.InitVars
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public ReadOnly Property mmtrhidColumn() As Global.System.Data.DataColumn
+            Get
+                Return Me.columnmmtrhid
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public ReadOnly Property mmtrnameColumn() As Global.System.Data.DataColumn
+            Get
+                Return Me.columnmmtrname
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public ReadOnly Property mmtridColumn() As Global.System.Data.DataColumn
+            Get
+                Return Me.columnmmtrid
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public ReadOnly Property polybagColumn() As Global.System.Data.DataColumn
+            Get
+                Return Me.columnpolybag
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public ReadOnly Property mmtrunitColumn() As Global.System.Data.DataColumn
+            Get
+                Return Me.columnmmtrunit
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public ReadOnly Property mmtrpriceColumn() As Global.System.Data.DataColumn
+            Get
+                Return Me.columnmmtrprice
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public ReadOnly Property mmtrgColumn() As Global.System.Data.DataColumn
+            Get
+                Return Me.columnmmtrg
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public ReadOnly Property dtcreatedColumn() As Global.System.Data.DataColumn
+            Get
+                Return Me.columndtcreated
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public ReadOnly Property dtupdatedColumn() As Global.System.Data.DataColumn
+            Get
+                Return Me.columndtupdated
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public ReadOnly Property stockstartColumn() As Global.System.Data.DataColumn
+            Get
+                Return Me.columnstockstart
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public ReadOnly Property norefColumn() As Global.System.Data.DataColumn
+            Get
+                Return Me.columnnoref
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public ReadOnly Property rstockmdescColumn() As Global.System.Data.DataColumn
+            Get
+                Return Me.columnrstockmdesc
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public ReadOnly Property stockinColumn() As Global.System.Data.DataColumn
+            Get
+                Return Me.columnstockin
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public ReadOnly Property stockoutColumn() As Global.System.Data.DataColumn
+            Get
+                Return Me.columnstockout
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public ReadOnly Property stockendColumn() As Global.System.Data.DataColumn
+            Get
+                Return Me.columnstockend
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public ReadOnly Property bookvalueColumn() As Global.System.Data.DataColumn
+            Get
+                Return Me.columnbookvalue
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0"),  _
+         Global.System.ComponentModel.Browsable(false)>  _
+        Public ReadOnly Property Count() As Integer
+            Get
+                Return Me.Rows.Count
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public Default ReadOnly Property Item(ByVal index As Integer) As stock_cardRow
+            Get
+                Return CType(Me.Rows(index),stock_cardRow)
+            End Get
+        End Property
+        
+        <Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public Event stock_cardRowChanging As stock_cardRowChangeEventHandler
+        
+        <Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public Event stock_cardRowChanged As stock_cardRowChangeEventHandler
+        
+        <Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public Event stock_cardRowDeleting As stock_cardRowChangeEventHandler
+        
+        <Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public Event stock_cardRowDeleted As stock_cardRowChangeEventHandler
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public Overloads Sub Addstock_cardRow(ByVal row As stock_cardRow)
+            Me.Rows.Add(row)
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public Overloads Function Addstock_cardRow( _
+                    ByVal mmtrhid As Integer,  _
+                    ByVal mmtrname As String,  _
+                    ByVal mmtrid As String,  _
+                    ByVal polybag As String,  _
+                    ByVal mmtrunit As String,  _
+                    ByVal mmtrprice As Decimal,  _
+                    ByVal mmtrg As String,  _
+                    ByVal dtcreated As String,  _
+                    ByVal dtupdated As String,  _
+                    ByVal stockstart As Decimal,  _
+                    ByVal noref As String,  _
+                    ByVal rstockmdesc As String,  _
+                    ByVal stockin As Decimal,  _
+                    ByVal stockout As Decimal,  _
+                    ByVal stockend As Decimal,  _
+                    ByVal bookvalue As Decimal) As stock_cardRow
+            Dim rowstock_cardRow As stock_cardRow = CType(Me.NewRow,stock_cardRow)
+            Dim columnValuesArray() As Object = New Object() {mmtrhid, mmtrname, mmtrid, polybag, mmtrunit, mmtrprice, mmtrg, dtcreated, dtupdated, stockstart, noref, rstockmdesc, stockin, stockout, stockend, bookvalue}
+            rowstock_cardRow.ItemArray = columnValuesArray
+            Me.Rows.Add(rowstock_cardRow)
+            Return rowstock_cardRow
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public Overrides Function Clone() As Global.System.Data.DataTable
+            Dim cln As stock_cardDataTable = CType(MyBase.Clone,stock_cardDataTable)
+            cln.InitVars
+            Return cln
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Protected Overrides Function CreateInstance() As Global.System.Data.DataTable
+            Return New stock_cardDataTable()
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Friend Sub InitVars()
+            Me.columnmmtrhid = MyBase.Columns("mmtrhid")
+            Me.columnmmtrname = MyBase.Columns("mmtrname")
+            Me.columnmmtrid = MyBase.Columns("mmtrid")
+            Me.columnpolybag = MyBase.Columns("polybag")
+            Me.columnmmtrunit = MyBase.Columns("mmtrunit")
+            Me.columnmmtrprice = MyBase.Columns("mmtrprice")
+            Me.columnmmtrg = MyBase.Columns("mmtrg")
+            Me.columndtcreated = MyBase.Columns("dtcreated")
+            Me.columndtupdated = MyBase.Columns("dtupdated")
+            Me.columnstockstart = MyBase.Columns("stockstart")
+            Me.columnnoref = MyBase.Columns("noref")
+            Me.columnrstockmdesc = MyBase.Columns("rstockmdesc")
+            Me.columnstockin = MyBase.Columns("stockin")
+            Me.columnstockout = MyBase.Columns("stockout")
+            Me.columnstockend = MyBase.Columns("stockend")
+            Me.columnbookvalue = MyBase.Columns("bookvalue")
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Private Sub InitClass()
+            Me.columnmmtrhid = New Global.System.Data.DataColumn("mmtrhid", GetType(Integer), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnmmtrhid)
+            Me.columnmmtrname = New Global.System.Data.DataColumn("mmtrname", GetType(String), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnmmtrname)
+            Me.columnmmtrid = New Global.System.Data.DataColumn("mmtrid", GetType(String), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnmmtrid)
+            Me.columnpolybag = New Global.System.Data.DataColumn("polybag", GetType(String), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnpolybag)
+            Me.columnmmtrunit = New Global.System.Data.DataColumn("mmtrunit", GetType(String), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnmmtrunit)
+            Me.columnmmtrprice = New Global.System.Data.DataColumn("mmtrprice", GetType(Decimal), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnmmtrprice)
+            Me.columnmmtrg = New Global.System.Data.DataColumn("mmtrg", GetType(String), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnmmtrg)
+            Me.columndtcreated = New Global.System.Data.DataColumn("dtcreated", GetType(String), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columndtcreated)
+            Me.columndtupdated = New Global.System.Data.DataColumn("dtupdated", GetType(String), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columndtupdated)
+            Me.columnstockstart = New Global.System.Data.DataColumn("stockstart", GetType(Decimal), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnstockstart)
+            Me.columnnoref = New Global.System.Data.DataColumn("noref", GetType(String), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnnoref)
+            Me.columnrstockmdesc = New Global.System.Data.DataColumn("rstockmdesc", GetType(String), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnrstockmdesc)
+            Me.columnstockin = New Global.System.Data.DataColumn("stockin", GetType(Decimal), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnstockin)
+            Me.columnstockout = New Global.System.Data.DataColumn("stockout", GetType(Decimal), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnstockout)
+            Me.columnstockend = New Global.System.Data.DataColumn("stockend", GetType(Decimal), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnstockend)
+            Me.columnbookvalue = New Global.System.Data.DataColumn("bookvalue", GetType(Decimal), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnbookvalue)
+            Me.columnmmtrhid.AllowDBNull = false
+            Me.columnmmtrname.MaxLength = 25
+            Me.columnmmtrid.AllowDBNull = false
+            Me.columnmmtrid.MaxLength = 9
+            Me.columnpolybag.MaxLength = 5
+            Me.columnmmtrunit.AllowDBNull = false
+            Me.columnmmtrunit.MaxLength = 10
+            Me.columnmmtrg.AllowDBNull = false
+            Me.columnmmtrg.MaxLength = 1
+            Me.columndtcreated.AllowDBNull = false
+            Me.columndtcreated.MaxLength = 19
+            Me.columndtupdated.AllowDBNull = false
+            Me.columndtupdated.MaxLength = 19
+            Me.columnstockstart.AllowDBNull = false
+            Me.columnnoref.AllowDBNull = false
+            Me.columnnoref.MaxLength = 13
+            Me.columnrstockmdesc.AllowDBNull = false
+            Me.columnrstockmdesc.MaxLength = 255
+            Me.columnstockin.AllowDBNull = false
+            Me.columnstockout.AllowDBNull = false
+            Me.columnstockend.AllowDBNull = false
+            Me.columnbookvalue.AllowDBNull = false
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public Function Newstock_cardRow() As stock_cardRow
+            Return CType(Me.NewRow,stock_cardRow)
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Protected Overrides Function NewRowFromBuilder(ByVal builder As Global.System.Data.DataRowBuilder) As Global.System.Data.DataRow
+            Return New stock_cardRow(builder)
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Protected Overrides Function GetRowType() As Global.System.Type
+            Return GetType(stock_cardRow)
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Protected Overrides Sub OnRowChanged(ByVal e As Global.System.Data.DataRowChangeEventArgs)
+            MyBase.OnRowChanged(e)
+            If (Not (Me.stock_cardRowChangedEvent) Is Nothing) Then
+                RaiseEvent stock_cardRowChanged(Me, New stock_cardRowChangeEvent(CType(e.Row,stock_cardRow), e.Action))
+            End If
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Protected Overrides Sub OnRowChanging(ByVal e As Global.System.Data.DataRowChangeEventArgs)
+            MyBase.OnRowChanging(e)
+            If (Not (Me.stock_cardRowChangingEvent) Is Nothing) Then
+                RaiseEvent stock_cardRowChanging(Me, New stock_cardRowChangeEvent(CType(e.Row,stock_cardRow), e.Action))
+            End If
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Protected Overrides Sub OnRowDeleted(ByVal e As Global.System.Data.DataRowChangeEventArgs)
+            MyBase.OnRowDeleted(e)
+            If (Not (Me.stock_cardRowDeletedEvent) Is Nothing) Then
+                RaiseEvent stock_cardRowDeleted(Me, New stock_cardRowChangeEvent(CType(e.Row,stock_cardRow), e.Action))
+            End If
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Protected Overrides Sub OnRowDeleting(ByVal e As Global.System.Data.DataRowChangeEventArgs)
+            MyBase.OnRowDeleting(e)
+            If (Not (Me.stock_cardRowDeletingEvent) Is Nothing) Then
+                RaiseEvent stock_cardRowDeleting(Me, New stock_cardRowChangeEvent(CType(e.Row,stock_cardRow), e.Action))
+            End If
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public Sub Removestock_cardRow(ByVal row As stock_cardRow)
+            Me.Rows.Remove(row)
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public Shared Function GetTypedTableSchema(ByVal xs As Global.System.Xml.Schema.XmlSchemaSet) As Global.System.Xml.Schema.XmlSchemaComplexType
+            Dim type As Global.System.Xml.Schema.XmlSchemaComplexType = New Global.System.Xml.Schema.XmlSchemaComplexType()
+            Dim sequence As Global.System.Xml.Schema.XmlSchemaSequence = New Global.System.Xml.Schema.XmlSchemaSequence()
+            Dim ds As simagro = New simagro()
+            Dim any1 As Global.System.Xml.Schema.XmlSchemaAny = New Global.System.Xml.Schema.XmlSchemaAny()
+            any1.Namespace = "http://www.w3.org/2001/XMLSchema"
+            any1.MinOccurs = New Decimal(0)
+            any1.MaxOccurs = Decimal.MaxValue
+            any1.ProcessContents = Global.System.Xml.Schema.XmlSchemaContentProcessing.Lax
+            sequence.Items.Add(any1)
+            Dim any2 As Global.System.Xml.Schema.XmlSchemaAny = New Global.System.Xml.Schema.XmlSchemaAny()
+            any2.Namespace = "urn:schemas-microsoft-com:xml-diffgram-v1"
+            any2.MinOccurs = New Decimal(1)
+            any2.ProcessContents = Global.System.Xml.Schema.XmlSchemaContentProcessing.Lax
+            sequence.Items.Add(any2)
+            Dim attribute1 As Global.System.Xml.Schema.XmlSchemaAttribute = New Global.System.Xml.Schema.XmlSchemaAttribute()
+            attribute1.Name = "namespace"
+            attribute1.FixedValue = ds.Namespace
+            type.Attributes.Add(attribute1)
+            Dim attribute2 As Global.System.Xml.Schema.XmlSchemaAttribute = New Global.System.Xml.Schema.XmlSchemaAttribute()
+            attribute2.Name = "tableTypeName"
+            attribute2.FixedValue = "stock_cardDataTable"
             type.Attributes.Add(attribute2)
             type.Particle = sequence
             Dim dsSchema As Global.System.Xml.Schema.XmlSchema = ds.GetSchemaSerializable
@@ -906,34 +1374,23 @@ Partial Public Class RstockAll
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public Property hpp() As Decimal
+            Get
+                Return CType(Me(Me.tablestock_all.hppColumn),Decimal)
+            End Get
+            Set
+                Me(Me.tablestock_all.hppColumn) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
         Public Property stockstart() As Decimal
             Get
                 Return CType(Me(Me.tablestock_all.stockstartColumn),Decimal)
             End Get
             Set
                 Me(Me.tablestock_all.stockstartColumn) = value
-            End Set
-        End Property
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
-        Public Property hpp_start() As Decimal
-            Get
-                Return CType(Me(Me.tablestock_all.hpp_startColumn),Decimal)
-            End Get
-            Set
-                Me(Me.tablestock_all.hpp_startColumn) = value
-            End Set
-        End Property
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
-        Public Property bookvalue_start() As Decimal
-            Get
-                Return CType(Me(Me.tablestock_all.bookvalue_startColumn),Decimal)
-            End Get
-            Set
-                Me(Me.tablestock_all.bookvalue_startColumn) = value
             End Set
         End Property
         
@@ -967,17 +1424,6 @@ Partial Public Class RstockAll
             End Get
             Set
                 Me(Me.tablestock_all.stockendColumn) = value
-            End Set
-        End Property
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
-        Public Property hpp() As Decimal
-            Get
-                Return CType(Me(Me.tablestock_all.hppColumn),Decimal)
-            End Get
-            Set
-                Me(Me.tablestock_all.hppColumn) = value
             End Set
         End Property
         
@@ -1030,6 +1476,246 @@ Partial Public Class RstockAll
     End Class
     
     '''<summary>
+    '''Represents strongly named DataRow class.
+    '''</summary>
+    Partial Public Class stock_cardRow
+        Inherits Global.System.Data.DataRow
+        
+        Private tablestock_card As stock_cardDataTable
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Friend Sub New(ByVal rb As Global.System.Data.DataRowBuilder)
+            MyBase.New(rb)
+            Me.tablestock_card = CType(Me.Table,stock_cardDataTable)
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public Property mmtrhid() As Integer
+            Get
+                Return CType(Me(Me.tablestock_card.mmtrhidColumn),Integer)
+            End Get
+            Set
+                Me(Me.tablestock_card.mmtrhidColumn) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public Property mmtrname() As String
+            Get
+                Try 
+                    Return CType(Me(Me.tablestock_card.mmtrnameColumn),String)
+                Catch e As Global.System.InvalidCastException
+                    Throw New Global.System.Data.StrongTypingException("The value for column 'mmtrname' in table 'stock_card' is DBNull.", e)
+                End Try
+            End Get
+            Set
+                Me(Me.tablestock_card.mmtrnameColumn) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public Property mmtrid() As String
+            Get
+                Return CType(Me(Me.tablestock_card.mmtridColumn),String)
+            End Get
+            Set
+                Me(Me.tablestock_card.mmtridColumn) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public Property polybag() As String
+            Get
+                Try 
+                    Return CType(Me(Me.tablestock_card.polybagColumn),String)
+                Catch e As Global.System.InvalidCastException
+                    Throw New Global.System.Data.StrongTypingException("The value for column 'polybag' in table 'stock_card' is DBNull.", e)
+                End Try
+            End Get
+            Set
+                Me(Me.tablestock_card.polybagColumn) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public Property mmtrunit() As String
+            Get
+                Return CType(Me(Me.tablestock_card.mmtrunitColumn),String)
+            End Get
+            Set
+                Me(Me.tablestock_card.mmtrunitColumn) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public Property mmtrprice() As Decimal
+            Get
+                Try 
+                    Return CType(Me(Me.tablestock_card.mmtrpriceColumn),Decimal)
+                Catch e As Global.System.InvalidCastException
+                    Throw New Global.System.Data.StrongTypingException("The value for column 'mmtrprice' in table 'stock_card' is DBNull.", e)
+                End Try
+            End Get
+            Set
+                Me(Me.tablestock_card.mmtrpriceColumn) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public Property mmtrg() As String
+            Get
+                Return CType(Me(Me.tablestock_card.mmtrgColumn),String)
+            End Get
+            Set
+                Me(Me.tablestock_card.mmtrgColumn) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public Property dtcreated() As String
+            Get
+                Return CType(Me(Me.tablestock_card.dtcreatedColumn),String)
+            End Get
+            Set
+                Me(Me.tablestock_card.dtcreatedColumn) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public Property dtupdated() As String
+            Get
+                Return CType(Me(Me.tablestock_card.dtupdatedColumn),String)
+            End Get
+            Set
+                Me(Me.tablestock_card.dtupdatedColumn) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public Property stockstart() As Decimal
+            Get
+                Return CType(Me(Me.tablestock_card.stockstartColumn),Decimal)
+            End Get
+            Set
+                Me(Me.tablestock_card.stockstartColumn) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public Property noref() As String
+            Get
+                Return CType(Me(Me.tablestock_card.norefColumn),String)
+            End Get
+            Set
+                Me(Me.tablestock_card.norefColumn) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public Property rstockmdesc() As String
+            Get
+                Return CType(Me(Me.tablestock_card.rstockmdescColumn),String)
+            End Get
+            Set
+                Me(Me.tablestock_card.rstockmdescColumn) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public Property stockin() As Decimal
+            Get
+                Return CType(Me(Me.tablestock_card.stockinColumn),Decimal)
+            End Get
+            Set
+                Me(Me.tablestock_card.stockinColumn) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public Property stockout() As Decimal
+            Get
+                Return CType(Me(Me.tablestock_card.stockoutColumn),Decimal)
+            End Get
+            Set
+                Me(Me.tablestock_card.stockoutColumn) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public Property stockend() As Decimal
+            Get
+                Return CType(Me(Me.tablestock_card.stockendColumn),Decimal)
+            End Get
+            Set
+                Me(Me.tablestock_card.stockendColumn) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public Property bookvalue() As Decimal
+            Get
+                Return CType(Me(Me.tablestock_card.bookvalueColumn),Decimal)
+            End Get
+            Set
+                Me(Me.tablestock_card.bookvalueColumn) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public Function IsmmtrnameNull() As Boolean
+            Return Me.IsNull(Me.tablestock_card.mmtrnameColumn)
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public Sub SetmmtrnameNull()
+            Me(Me.tablestock_card.mmtrnameColumn) = Global.System.Convert.DBNull
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public Function IspolybagNull() As Boolean
+            Return Me.IsNull(Me.tablestock_card.polybagColumn)
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public Sub SetpolybagNull()
+            Me(Me.tablestock_card.polybagColumn) = Global.System.Convert.DBNull
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public Function IsmmtrpriceNull() As Boolean
+            Return Me.IsNull(Me.tablestock_card.mmtrpriceColumn)
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public Sub SetmmtrpriceNull()
+            Me(Me.tablestock_card.mmtrpriceColumn) = Global.System.Convert.DBNull
+        End Sub
+    End Class
+    
+    '''<summary>
     '''Row event argument class
     '''</summary>
     <Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
@@ -1064,9 +1750,45 @@ Partial Public Class RstockAll
             End Get
         End Property
     End Class
+    
+    '''<summary>
+    '''Row event argument class
+    '''</summary>
+    <Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+    Public Class stock_cardRowChangeEvent
+        Inherits Global.System.EventArgs
+        
+        Private eventRow As stock_cardRow
+        
+        Private eventAction As Global.System.Data.DataRowAction
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public Sub New(ByVal row As stock_cardRow, ByVal action As Global.System.Data.DataRowAction)
+            MyBase.New
+            Me.eventRow = row
+            Me.eventAction = action
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public ReadOnly Property Row() As stock_cardRow
+            Get
+                Return Me.eventRow
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public ReadOnly Property Action() As Global.System.Data.DataRowAction
+            Get
+                Return Me.eventAction
+            End Get
+        End Property
+    End Class
 End Class
 
-Namespace RstockAllTableAdapters
+Namespace simagroTableAdapters
     
     '''<summary>
     '''Represents the connection and commands used to retrieve and save data.
@@ -1204,13 +1926,11 @@ Namespace RstockAllTableAdapters
             tableMapping.ColumnMappings.Add("mmtrg", "mmtrg")
             tableMapping.ColumnMappings.Add("dtcreated", "dtcreated")
             tableMapping.ColumnMappings.Add("dtupdated", "dtupdated")
+            tableMapping.ColumnMappings.Add("hpp", "hpp")
             tableMapping.ColumnMappings.Add("stockstart", "stockstart")
-            tableMapping.ColumnMappings.Add("hpp_start", "hpp_start")
-            tableMapping.ColumnMappings.Add("bookvalue_start", "bookvalue_start")
             tableMapping.ColumnMappings.Add("stockin", "stockin")
             tableMapping.ColumnMappings.Add("stockout", "stockout")
             tableMapping.ColumnMappings.Add("stockend", "stockend")
-            tableMapping.ColumnMappings.Add("hpp", "hpp")
             tableMapping.ColumnMappings.Add("bookvalue", "bookvalue")
             Me._adapter.TableMappings.Add(tableMapping)
         End Sub
@@ -1236,7 +1956,7 @@ Namespace RstockAllTableAdapters
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0"),  _
          Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter"),  _
          Global.System.ComponentModel.DataObjectMethodAttribute(Global.System.ComponentModel.DataObjectMethodType.Fill, true)>  _
-        Public Overloads Overridable Function Fill(ByVal dataTable As RstockAll.stock_allDataTable) As Integer
+        Public Overloads Overridable Function Fill(ByVal dataTable As simagro.stock_allDataTable) As Integer
             Me.Adapter.SelectCommand = Me.CommandCollection(0)
             If (Me.ClearBeforeFill = true) Then
                 dataTable.Clear
@@ -1249,9 +1969,197 @@ Namespace RstockAllTableAdapters
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0"),  _
          Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter"),  _
          Global.System.ComponentModel.DataObjectMethodAttribute(Global.System.ComponentModel.DataObjectMethodType.[Select], true)>  _
-        Public Overloads Overridable Function GetData() As RstockAll.stock_allDataTable
+        Public Overloads Overridable Function GetData() As simagro.stock_allDataTable
             Me.Adapter.SelectCommand = Me.CommandCollection(0)
-            Dim dataTable As RstockAll.stock_allDataTable = New RstockAll.stock_allDataTable()
+            Dim dataTable As simagro.stock_allDataTable = New simagro.stock_allDataTable()
+            Me.Adapter.Fill(dataTable)
+            Return dataTable
+        End Function
+    End Class
+    
+    '''<summary>
+    '''Represents the connection and commands used to retrieve and save data.
+    '''</summary>
+    <Global.System.ComponentModel.DesignerCategoryAttribute("code"),  _
+     Global.System.ComponentModel.ToolboxItem(true),  _
+     Global.System.ComponentModel.DataObjectAttribute(true),  _
+     Global.System.ComponentModel.DesignerAttribute("Microsoft.VSDesigner.DataSource.Design.TableAdapterDesigner, Microsoft.VSDesigner"& _ 
+        ", Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a"),  _
+     Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")>  _
+    Partial Public Class stock_cardTableAdapter
+        Inherits Global.System.ComponentModel.Component
+        
+        Private WithEvents _adapter As Global.MySql.Data.MySqlClient.MySqlDataAdapter
+        
+        Private _connection As Global.MySql.Data.MySqlClient.MySqlConnection
+        
+        Private _transaction As Global.MySql.Data.MySqlClient.MySqlTransaction
+        
+        Private _commandCollection() As Global.MySql.Data.MySqlClient.MySqlCommand
+        
+        Private _clearBeforeFill As Boolean
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public Sub New()
+            MyBase.New
+            Me.ClearBeforeFill = true
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Protected Friend ReadOnly Property Adapter() As Global.MySql.Data.MySqlClient.MySqlDataAdapter
+            Get
+                If (Me._adapter Is Nothing) Then
+                    Me.InitAdapter
+                End If
+                Return Me._adapter
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Friend Property Connection() As Global.MySql.Data.MySqlClient.MySqlConnection
+            Get
+                If (Me._connection Is Nothing) Then
+                    Me.InitConnection
+                End If
+                Return Me._connection
+            End Get
+            Set
+                Me._connection = value
+                If (Not (Me.Adapter.InsertCommand) Is Nothing) Then
+                    Me.Adapter.InsertCommand.Connection = value
+                End If
+                If (Not (Me.Adapter.DeleteCommand) Is Nothing) Then
+                    Me.Adapter.DeleteCommand.Connection = value
+                End If
+                If (Not (Me.Adapter.UpdateCommand) Is Nothing) Then
+                    Me.Adapter.UpdateCommand.Connection = value
+                End If
+                Dim i As Integer = 0
+                Do While (i < Me.CommandCollection.Length)
+                    If (Not (Me.CommandCollection(i)) Is Nothing) Then
+                        CType(Me.CommandCollection(i),Global.MySql.Data.MySqlClient.MySqlCommand).Connection = value
+                    End If
+                    i = (i + 1)
+                Loop
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Friend Property Transaction() As Global.MySql.Data.MySqlClient.MySqlTransaction
+            Get
+                Return Me._transaction
+            End Get
+            Set
+                Me._transaction = value
+                Dim i As Integer = 0
+                Do While (i < Me.CommandCollection.Length)
+                    Me.CommandCollection(i).Transaction = Me._transaction
+                    i = (i + 1)
+                Loop
+                If ((Not (Me.Adapter) Is Nothing)  _
+                            AndAlso (Not (Me.Adapter.DeleteCommand) Is Nothing)) Then
+                    Me.Adapter.DeleteCommand.Transaction = Me._transaction
+                End If
+                If ((Not (Me.Adapter) Is Nothing)  _
+                            AndAlso (Not (Me.Adapter.InsertCommand) Is Nothing)) Then
+                    Me.Adapter.InsertCommand.Transaction = Me._transaction
+                End If
+                If ((Not (Me.Adapter) Is Nothing)  _
+                            AndAlso (Not (Me.Adapter.UpdateCommand) Is Nothing)) Then
+                    Me.Adapter.UpdateCommand.Transaction = Me._transaction
+                End If
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Protected ReadOnly Property CommandCollection() As Global.MySql.Data.MySqlClient.MySqlCommand()
+            Get
+                If (Me._commandCollection Is Nothing) Then
+                    Me.InitCommandCollection
+                End If
+                Return Me._commandCollection
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public Property ClearBeforeFill() As Boolean
+            Get
+                Return Me._clearBeforeFill
+            End Get
+            Set
+                Me._clearBeforeFill = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Private Sub InitAdapter()
+            Me._adapter = New Global.MySql.Data.MySqlClient.MySqlDataAdapter()
+            Dim tableMapping As Global.System.Data.Common.DataTableMapping = New Global.System.Data.Common.DataTableMapping()
+            tableMapping.SourceTable = "Table"
+            tableMapping.DataSetTable = "stock_card"
+            tableMapping.ColumnMappings.Add("mmtrhid", "mmtrhid")
+            tableMapping.ColumnMappings.Add("mmtrname", "mmtrname")
+            tableMapping.ColumnMappings.Add("mmtrid", "mmtrid")
+            tableMapping.ColumnMappings.Add("polybag", "polybag")
+            tableMapping.ColumnMappings.Add("mmtrunit", "mmtrunit")
+            tableMapping.ColumnMappings.Add("mmtrprice", "mmtrprice")
+            tableMapping.ColumnMappings.Add("mmtrg", "mmtrg")
+            tableMapping.ColumnMappings.Add("dtcreated", "dtcreated")
+            tableMapping.ColumnMappings.Add("dtupdated", "dtupdated")
+            tableMapping.ColumnMappings.Add("stockstart", "stockstart")
+            tableMapping.ColumnMappings.Add("noref", "noref")
+            tableMapping.ColumnMappings.Add("rstockmdesc", "rstockmdesc")
+            tableMapping.ColumnMappings.Add("stockin", "stockin")
+            tableMapping.ColumnMappings.Add("stockout", "stockout")
+            tableMapping.ColumnMappings.Add("stockend", "stockend")
+            tableMapping.ColumnMappings.Add("bookvalue", "bookvalue")
+            Me._adapter.TableMappings.Add(tableMapping)
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Private Sub InitConnection()
+            Me._connection = New Global.MySql.Data.MySqlClient.MySqlConnection()
+            Me._connection.ConnectionString = Global.SPA.My.MySettings.Default.simagroConnectionString
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Private Sub InitCommandCollection()
+            Me._commandCollection = New Global.MySql.Data.MySqlClient.MySqlCommand(0) {}
+            Me._commandCollection(0) = New Global.MySql.Data.MySqlClient.MySqlCommand()
+            Me._commandCollection(0).Connection = Me.Connection
+            Me._commandCollection(0).CommandText = "`simagro`.`stock_card`"
+            Me._commandCollection(0).CommandType = Global.System.Data.CommandType.StoredProcedure
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0"),  _
+         Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter"),  _
+         Global.System.ComponentModel.DataObjectMethodAttribute(Global.System.ComponentModel.DataObjectMethodType.Fill, true)>  _
+        Public Overloads Overridable Function Fill(ByVal dataTable As simagro.stock_cardDataTable) As Integer
+            Me.Adapter.SelectCommand = Me.CommandCollection(0)
+            If (Me.ClearBeforeFill = true) Then
+                dataTable.Clear
+            End If
+            Dim returnValue As Integer = Me.Adapter.Fill(dataTable)
+            Return returnValue
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0"),  _
+         Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter"),  _
+         Global.System.ComponentModel.DataObjectMethodAttribute(Global.System.ComponentModel.DataObjectMethodType.[Select], true)>  _
+        Public Overloads Overridable Function GetData() As simagro.stock_cardDataTable
+            Me.Adapter.SelectCommand = Me.CommandCollection(0)
+            Dim dataTable As simagro.stock_cardDataTable = New simagro.stock_cardDataTable()
             Me.Adapter.Fill(dataTable)
             Return dataTable
         End Function
@@ -1326,7 +2234,7 @@ Namespace RstockAllTableAdapters
         '''</summary>
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
-        Private Function UpdateUpdatedRows(ByVal dataSet As RstockAll, ByVal allChangedRows As Global.System.Collections.Generic.List(Of Global.System.Data.DataRow), ByVal allAddedRows As Global.System.Collections.Generic.List(Of Global.System.Data.DataRow)) As Integer
+        Private Function UpdateUpdatedRows(ByVal dataSet As simagro, ByVal allChangedRows As Global.System.Collections.Generic.List(Of Global.System.Data.DataRow), ByVal allAddedRows As Global.System.Collections.Generic.List(Of Global.System.Data.DataRow)) As Integer
             Dim result As Integer = 0
             Return result
         End Function
@@ -1336,7 +2244,7 @@ Namespace RstockAllTableAdapters
         '''</summary>
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
-        Private Function UpdateInsertedRows(ByVal dataSet As RstockAll, ByVal allAddedRows As Global.System.Collections.Generic.List(Of Global.System.Data.DataRow)) As Integer
+        Private Function UpdateInsertedRows(ByVal dataSet As simagro, ByVal allAddedRows As Global.System.Collections.Generic.List(Of Global.System.Data.DataRow)) As Integer
             Dim result As Integer = 0
             Return result
         End Function
@@ -1346,7 +2254,7 @@ Namespace RstockAllTableAdapters
         '''</summary>
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
-        Private Function UpdateDeletedRows(ByVal dataSet As RstockAll, ByVal allChangedRows As Global.System.Collections.Generic.List(Of Global.System.Data.DataRow)) As Integer
+        Private Function UpdateDeletedRows(ByVal dataSet As simagro, ByVal allChangedRows As Global.System.Collections.Generic.List(Of Global.System.Data.DataRow)) As Integer
             Dim result As Integer = 0
             Return result
         End Function
@@ -1382,7 +2290,7 @@ Namespace RstockAllTableAdapters
         '''</summary>
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
-        Public Overridable Function UpdateAll(ByVal dataSet As RstockAll) As Integer
+        Public Overridable Function UpdateAll(ByVal dataSet As simagro) As Integer
             If (dataSet Is Nothing) Then
                 Throw New Global.System.ArgumentNullException("dataSet")
             End If

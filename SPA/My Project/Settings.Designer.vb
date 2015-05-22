@@ -77,7 +77,7 @@ Namespace My
         
         <Global.System.Configuration.UserScopedSettingAttribute(),  _
          Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.Configuration.DefaultSettingValueAttribute("root")>  _
+         Global.System.Configuration.DefaultSettingValueAttribute("user")>  _
         Public Property uid() As String
             Get
                 Return CType(Me("uid"),String)
@@ -89,7 +89,7 @@ Namespace My
         
         <Global.System.Configuration.UserScopedSettingAttribute(),  _
          Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.Configuration.DefaultSettingValueAttribute("")>  _
+         Global.System.Configuration.DefaultSettingValueAttribute("password")>  _
         Public Property pwd() As String
             Get
                 Return CType(Me("pwd"),String)
@@ -101,7 +101,7 @@ Namespace My
         
         <Global.System.Configuration.UserScopedSettingAttribute(),  _
          Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.Configuration.DefaultSettingValueAttribute("simagro")>  _
+         Global.System.Configuration.DefaultSettingValueAttribute("database")>  _
         Public Property database() As String
             Get
                 Return CType(Me("database"),String)

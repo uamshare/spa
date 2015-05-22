@@ -15,48 +15,48 @@ Public Class FDataTanaman
         RetrieveData()
     End Sub
 #Region "Format DataGridView"
-    Private Sub InitializeDataGridView()
+    'Private Sub InitializeDataGridView()
 
-        ' Initialize basic DataGridView properties.
-        DataGridViewTanaman.Dock = DockStyle.Fill
-        DataGridViewTanaman.BackgroundColor = Color.LightGray
-        DataGridViewTanaman.BorderStyle = BorderStyle.Fixed3D
+    '    ' Initialize basic DataGridView properties.
+    '    DataGridViewTanaman.Dock = DockStyle.Fill
+    '    DataGridViewTanaman.BackgroundColor = Color.LightGray
+    '    DataGridViewTanaman.BorderStyle = BorderStyle.Fixed3D
 
-        ' Set property values appropriate for read-only display and  
-        ' limited interactivity. 
-        DataGridViewTanaman.AllowUserToAddRows = False
-        DataGridViewTanaman.AllowUserToDeleteRows = False
-        DataGridViewTanaman.AllowUserToOrderColumns = True
-        DataGridViewTanaman.ReadOnly = True
-        DataGridViewTanaman.SelectionMode = DataGridViewSelectionMode.CellSelect
-        DataGridViewTanaman.MultiSelect = False
-        DataGridViewTanaman.AutoSizeRowsMode = DataGridViewAutoSizeRowsMode.None
-        DataGridViewTanaman.AllowUserToResizeColumns = False
-        DataGridViewTanaman.ColumnHeadersHeightSizeMode = _
-            DataGridViewColumnHeadersHeightSizeMode.DisableResizing
-        DataGridViewTanaman.AllowUserToResizeRows = False
-        DataGridViewTanaman.RowHeadersWidthSizeMode = _
-            DataGridViewRowHeadersWidthSizeMode.DisableResizing
+    '    ' Set property values appropriate for read-only display and  
+    '    ' limited interactivity. 
+    '    DataGridViewTanaman.AllowUserToAddRows = False
+    '    DataGridViewTanaman.AllowUserToDeleteRows = False
+    '    DataGridViewTanaman.AllowUserToOrderColumns = True
+    '    DataGridViewTanaman.ReadOnly = True
+    '    DataGridViewTanaman.SelectionMode = DataGridViewSelectionMode.CellSelect
+    '    DataGridViewTanaman.MultiSelect = True
+    '    DataGridViewTanaman.AutoSizeRowsMode = DataGridViewAutoSizeRowsMode.None
+    '    DataGridViewTanaman.AllowUserToResizeColumns = False
+    '    DataGridViewTanaman.ColumnHeadersHeightSizeMode = _
+    '        DataGridViewColumnHeadersHeightSizeMode.DisableResizing
+    '    DataGridViewTanaman.AllowUserToResizeRows = False
+    '    DataGridViewTanaman.RowHeadersWidthSizeMode = _
+    '        DataGridViewRowHeadersWidthSizeMode.DisableResizing
 
-        ' Set the selection background color for all the cells.
-        DataGridViewTanaman.DefaultCellStyle.SelectionBackColor = Color.White
-        DataGridViewTanaman.DefaultCellStyle.SelectionForeColor = Color.Black
+    '    ' Set the selection background color for all the cells.
+    '    DataGridViewTanaman.DefaultCellStyle.SelectionBackColor = Color.White
+    '    DataGridViewTanaman.DefaultCellStyle.SelectionForeColor = Color.Black
 
-        ' Set RowHeadersDefaultCellStyle.SelectionBackColor so that its default 
-        ' value won't override DataGridView.DefaultCellStyle.SelectionBackColor.
-        DataGridViewTanaman.RowHeadersDefaultCellStyle.SelectionBackColor = Color.Empty
+    '    ' Set RowHeadersDefaultCellStyle.SelectionBackColor so that its default 
+    '    ' value won't override DataGridView.DefaultCellStyle.SelectionBackColor.
+    '    DataGridViewTanaman.RowHeadersDefaultCellStyle.SelectionBackColor = Color.Empty
 
-        ' Set the background color for all rows and for alternating rows.  
-        ' The value for alternating rows overrides the value for all rows. 
-        DataGridViewTanaman.RowsDefaultCellStyle.BackColor = Color.LightGray
-        DataGridViewTanaman.AlternatingRowsDefaultCellStyle.BackColor = Color.DarkGray
+    '    ' Set the background color for all rows and for alternating rows.  
+    '    ' The value for alternating rows overrides the value for all rows. 
+    '    DataGridViewTanaman.RowsDefaultCellStyle.BackColor = Color.LightGray
+    '    DataGridViewTanaman.AlternatingRowsDefaultCellStyle.BackColor = Color.DarkGray
 
-        ' Set the row and column header styles.
-        DataGridViewTanaman.ColumnHeadersDefaultCellStyle.ForeColor = Color.White
-        DataGridViewTanaman.ColumnHeadersDefaultCellStyle.BackColor = Color.Black
-        DataGridViewTanaman.RowHeadersDefaultCellStyle.BackColor = Color.Black
+    '    ' Set the row and column header styles.
+    '    DataGridViewTanaman.ColumnHeadersDefaultCellStyle.ForeColor = Color.White
+    '    DataGridViewTanaman.ColumnHeadersDefaultCellStyle.BackColor = Color.Black
+    '    DataGridViewTanaman.RowHeadersDefaultCellStyle.BackColor = Color.Black
 
-    End Sub
+    'End Sub
     Private Sub RetrieveData(Optional ByVal sSearch As String = "")
         Dim dt As DataTable
         Try
@@ -209,7 +209,7 @@ Public Class FDataTanaman
     Private Sub FDataTanaman_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         'MessageBox.Show("Form Load")
         MyApplication.ShowStatus(Me.Text & " Loaded")
-        InitializeDataGridView()
+        MyApplication.InitializeDataGridView(DataGridViewTanaman)
         init()
     End Sub
 

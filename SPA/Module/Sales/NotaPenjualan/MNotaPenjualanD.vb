@@ -1,42 +1,45 @@
-﻿Public Class MPenyesuaianStokD
-    Inherits MPenyesuaianStokH
+﻿Public Class MNotaPenjualanD
+    Inherits MNotaPenjualanH
 
-    Public tajsmdid As Integer
+    Public tinvdid As Integer
     Public mmtrid As String
-    Public tajsmdqty1 As String = "0"
-    Public tajsmdqty2 As String = "0"
-    Public tajsmdqty3 As String = "0"
+    Public tinvdqty As String = "0"
+    Public tinvdprice As String = "0"
+    Public tinvdtype As String = "0"
+
     Public dtcreatedforDeatil As String = ""
     Public bookvalue As String 'additional for posting to General Ledger
+    Public soldvalue As String 'additional for posting to General Ledger
 
-    Dim ModelHeader As New MPenyesuaianStokH
+    Dim ModelHeader As New MNotaPenjualanH
     Dim ModelStock As New Rstockm
     'Dim ModelHPP As New Mhpp
     Dim ModelGL As New GeneralLedger
 
     'Private dtcreated As String
+
     Sub New()
         MyBase.New()
-        BaseQuery = "SELECT * FROM tajsmd"
-        SelectQuery = "SELECT T1.`tajsmdid`,T1.`tajsmhno`,T1.`mmtrid`,T2.`mmtrname`,T2.`polybag`,T1.`tajsmdqty`,T1.`tajsmdprice`,(T1.`tajsmdqty` * T1.`tajsmdprice`) AS jumlah,T1.dtcreated " & _
-                      "FROM tajsmd T1 INNER JOIN mmtr T2 ON T1.`mmtrid` = T2.`mmtrid`"
-        TableName = "tajsmd"
-        PrimaryKey = "tajsmdid"
+        BaseQuery = "SELECT * FROM tinvd"
+        SelectQuery = "SELECT T1.`tinvdid`,T1.`tinvhno`,T1.`mmtrid`,T2.`mmtrname`,T2.`polybag`,T1.`tinvdqty`,T1.`tinvdprice`,(T1.`tinvdqty` * T1.`tinvdprice`) AS jumlah,T1.dtcreated " & _
+                      "FROM tinvd T1 INNER JOIN mmtr T2 ON T1.`mmtrid` = T2.`mmtrid`"
+        TableName = "tinvd"
+        PrimaryKey = "tinvdid"
     End Sub
     Function FindDataDetail(sSearch As String) As DataTable
         If Not String.IsNullOrEmpty(sSearch) Then
-            Me.WHERE = "WHERE tajsmdid like '%" & sSearch & "%' " & _
-                        "OR tajsmhno like '%" & sSearch & "%' " & _
+            Me.WHERE = "WHERE tinvdid like '%" & sSearch & "%' " & _
+                        "OR tinvhno like '%" & sSearch & "%' " & _
                         "OR mmtrname like '%" & sSearch & "%' " & _
                         "OR polybag like '%" & sSearch & "%' " & _
-                        "OR tajsmdqty like '%" & sSearch & "%' "
+                        "OR tinvdqty like '%" & sSearch & "%' "
         Else
             Me.WHERE = ""
         End If
         Return MyBase.GetData
     End Function
     Public Overloads Function GetDataList(Optional no As String = "") As List(Of Dictionary(Of String, Object))
-        Me.StringSQL = "SELECT * FROM tajsmd WHERE tajsmhno ='" & no & "'"
+        Me.StringSQL = "SELECT * FROM tinvd WHERE tinvhno ='" & no & "'"
         'MsgBox(Me.StringSQL)
         Return MyBase.GetDataList
     End Function
@@ -46,19 +49,26 @@
         dtcreated = IIf(String.IsNullOrEmpty(dtcreated), Format(Date.Now, "yyyy/MM/dd H:mm:ss"), dtcreated)
 
         Me.StringSQL = ""
-        ModelHeader.tajsmhno = Me.tajsmhno
-        ModelHeader.tajsmhdt = Me.tajsmhdt
+        ModelHeader.tinvhno = Me.tinvhno
+        ModelHeader.tinvhdt = Me.tinvhdt
+        ModelHeader.tinvhnote = Me.tinvhnote
+        ModelHeader.mcusid = Me.mcusid
+
+        ModelHeader.tinvhdisc1 = Me.tinvhdisc1
+        ModelHeader.tinvhdisc2 = Me.tinvhdisc2
+        'ModelHeader.tinvhbonus = Me.tinvhbonus
+        ModelHeader.tinvhongkir = Me.tinvhongkir
+        ModelHeader.tinvhongpack = Me.tinvhongpack
         ModelHeader.dtcreated = Me.dtcreated
         Me.StringSQL = ModelHeader.GetSqlInsertData()
 
         If Not String.IsNullOrEmpty(Me.StringSQL) Then 'Insert Header
-            values = "('" & MyBase.tajsmhno & "','" & _
+            values = "('" & MyBase.tinvhno & "','" & _
                       mmtrid & "','" & _
-                      tajsmdqty1 & "','" & _
-                      tajsmdqty2 & "','" & _
-                      tajsmdqty3 & "','" & _
+                      tinvdqty & "','" & _
+                      tinvdprice & "','" & _
                       dtcreated & "')"
-            Me.StringSQL = Me.StringSQL + "INSERT INTO " & TableName + "(`tajsmhno`,`mmtrid`,`tajsmdqty1`,`tajsmdqty2`,`tajsmdqty3`,`dtcreated`) VALUES " & values
+            Me.StringSQL = Me.StringSQL + "INSERT INTO " & TableName + "(`tinvhno`,`mmtrid`,`tinvdqty`,`tinvdprice`,`dtcreated`) VALUES " & values
             trans = MyBase.InsertData() 'MyBase.InsertData() ==> Insert Detail
         End If
         Return trans
@@ -67,39 +77,40 @@
         Dim trans As Integer = 0
 
         Me.StringSQL = ""
-        ModelHeader.tajsmhno = Me.tajsmhno
-        ModelHeader.tajsmhdt = Me.tajsmhdt
-        ModelHeader.tajsmhinf = Me.tajsmhinf
+        ModelHeader.tinvhno = Me.tinvhno
+        ModelHeader.tinvhdt = Me.tinvhdt
+        ModelHeader.tinvhnote = Me.tinvhnote
+        ModelHeader.mcusid = Me.mcusid
+
+        ModelHeader.tinvhdisc1 = Me.tinvhdisc1
+        ModelHeader.tinvhdisc2 = Me.tinvhdisc2
+        'ModelHeader.tinvhbonus = Me.tinvhbonus
+        ModelHeader.tinvhongkir = Me.tinvhongkir
+        ModelHeader.tinvhongpack = Me.tinvhongpack
+
         ModelHeader.dtcreated = Me.dtcreated
         Me.StringSQL = ModelHeader.GetSqlInsertData()
 
         If Not String.IsNullOrEmpty(Me.StringSQL) Then 'Insert Header
             'Do Posting to General Ledger
-            Dim ParamPosting As New Dictionary(Of String, Object)
-            ModelGL.rgldt = Me.tajsmhdt
-            ModelGL.noref = Me.tajsmhno
-            ModelGL.noref2 = Me.tajsmhno
+            ModelGL.rgldt = Me.tinvhdt
+            ModelGL.noref = Me.tinvhno
+            ModelGL.noref2 = Me.tinvhno
+            ModelGL.rgldesc = "Insert Data Nota Penjualan No " & Me.tinvhno
             ModelGL.dtcreated = Me.dtcreated
-            Select Case mmtrg
-                Case "1"
-                    ModelGL.rgldesc = "Insert Data Penyesuaian Stok Bibit Tanaman No " & Me.tajsmhno
-                    ParamPosting.Add("idtrrans", "AH")
-                Case "2"
-                    ModelGL.rgldesc = "Insert Data Penyesuaian Stok Bibit Tanaman dalam proses No " & Me.tajsmhno
-                    ParamPosting.Add("idtrrans", "AI")
-                Case "3"
-                    ModelGL.rgldesc = "Insert Data Penyesuaian Stok Tanaman No " & Me.tajsmhno
-                    ParamPosting.Add("idtrrans", "AJ")
-            End Select
+            Dim ParamPosting As New Dictionary(Of String, Object)
+            ParamPosting.Add("idtrrans", "NP")
             Dim accountlistvalue As New Dictionary(Of String, Object)
-            accountlistvalue.Add("acc_debit", Me.bookvalue)
-            accountlistvalue.Add("acc_credit", Me.bookvalue)
+            accountlistvalue.Add("acc_debit", Me.soldvalue)
+            accountlistvalue.Add("acc_credit", Me.soldvalue)
+            accountlistvalue.Add("acc_debit2", Me.bookvalue)
+            accountlistvalue.Add("acc_credit2", Me.bookvalue)
             ParamPosting.Add("accountlistvalue", accountlistvalue)
             Me.StringSQL = Me.StringSQL + ModelGL.doPosting(ParamPosting)
-            'MsgBox(Me.bookvalue)
+            'MsgBox(ModelGL.doPosting(ParamPosting))
 
             Me.StringSQL = Me.StringSQL + queryInsertDetail(datadetail)
-            'MsgBox(StringSQL)
+
             trans = MyBase.InsertData()
         End If
         Return trans
@@ -108,42 +119,43 @@
         Dim trans As Integer = 0
 
         Me.StringSQL = ""
-        ModelHeader.tajsmhno = Me.tajsmhno
-        ModelHeader.tajsmhdt = Me.tajsmhdt
-        ModelHeader.tajsmhinf = Me.tajsmhinf
-        ModelHeader.mmtrg = Me.mmtrg
+        ModelHeader.tinvhno = Me.tinvhno
+        ModelHeader.tinvhdt = Me.tinvhdt
+        ModelHeader.tinvhnote = Me.tinvhnote
+        ModelHeader.mcusid = Me.mcusid
+        ModelHeader.tinvhdisc1 = Me.tinvhdisc1
+        ModelHeader.tinvhdisc2 = Me.tinvhdisc2
+        'ModelHeader.tinvhbonus = Me.tinvhbonus
+        ModelHeader.tinvhongkir = Me.tinvhongkir
+        ModelHeader.tinvhongpack = Me.tinvhongpack
+
         'ModelHeader.dtcreated = Me.dtcreated
         Me.StringSQL = ModelHeader.GetSqlUpdateData() 'Update Header
 
         If Not String.IsNullOrEmpty(Me.StringSQL) Then 'Insert Header
-            Me.StringSQL = Me.StringSQL + ModelGL.DeleteByNo(Me.tajsmhno) 'Update Header
+            Me.StringSQL = Me.StringSQL + ModelGL.DeleteByNo(Me.tinvhno) 'Update Header
             'Do Posting to General Ledger
-            Dim ParamPosting As New Dictionary(Of String, Object)
-            ModelGL.rgldt = Me.tajsmhdt
-            ModelGL.noref = Me.tajsmhno
-            ModelGL.noref2 = Me.tajsmhno
+            ModelGL.rgldt = Me.tinvhdt
+            ModelGL.noref = Me.tinvhno
+            ModelGL.noref2 = Me.tinvhno
+            ModelGL.rgldesc = "Update Data Nota Penjualan No " & Me.tinvhno
             ModelGL.dtcreated = Me.dtcreated
-            Select Case mmtrg
-                Case "1"
-                    ModelGL.rgldesc = "Insert Data Penyesuaian Stok Bibit Tanaman No " & Me.tajsmhno
-                    ParamPosting.Add("idtrrans", "AH")
-                Case "2"
-                    ModelGL.rgldesc = "Insert Data Penyesuaian Stok Bibit Tanaman dalam proses No " & Me.tajsmhno
-                    ParamPosting.Add("idtrrans", "AI")
-                Case "3"
-                    ModelGL.rgldesc = "Insert Data Penyesuaian Stok Tanaman No " & Me.tajsmhno
-                    ParamPosting.Add("idtrrans", "AJ")
-            End Select
+            Dim ParamPosting As New Dictionary(Of String, Object)
+            ParamPosting.Add("idtrrans", "PB")
             Dim accountlistvalue As New Dictionary(Of String, Object)
-            accountlistvalue.Add("acc_debit", Me.bookvalue)
-            accountlistvalue.Add("acc_credit", Me.bookvalue)
+            accountlistvalue.Add("acc_debit", Me.soldvalue)
+            accountlistvalue.Add("acc_credit", Me.soldvalue)
+            accountlistvalue.Add("acc_debit2", Me.bookvalue)
+            accountlistvalue.Add("acc_credit2", Me.bookvalue)
             ParamPosting.Add("accountlistvalue", accountlistvalue)
             Me.StringSQL = Me.StringSQL + ModelGL.doPosting(ParamPosting)
 
-            Me.StringSQL = Me.StringSQL + DeleteByNo(Me.tajsmhno)
+            'MsgBox(Me.StringSQL)
+
+            Me.StringSQL = Me.StringSQL + DeleteByNo(Me.tinvhno)
             Me.StringSQL = Me.StringSQL + queryInsertDetail(datadetail)
-            'MsgBox(StringSQL)
             trans = MyBase.UpdateData()
+            Console.WriteLine(Me.StringSQL)
         End If
         Return trans
     End Function
@@ -163,19 +175,18 @@
                     dtcreatedforDeatil = Format(Date.Now, "yyyy/MM/dd H:mm:ss")
                 End If
 
-                multivalue = multivalue & "('" & tajsmhno & "','" & _
+                multivalue = multivalue & "('" & tinvhno & "','" & _
                                  dat("mmtrid").ToString & "','" & _
-                                 dat("tajsmdqty1").ToString & "','" & _
-                                 dat("tajsmdqty2").ToString & "','" & _
-                                 dat("tajsmdqty3").ToString & "','" & _
+                                 dat("tinvdqty").ToString & "','" & _
+                                 dat("tinvdprice").ToString & "','" & _
                                  dtcreatedforDeatil & "'),"
                 'Prepare data to Stock
                 Dim dict As New Dictionary(Of String, Object)
-                dict.Add("noref", tajsmhno)
+                dict.Add("noref", tinvhno)
                 dict.Add("mmtrid", dat("mmtrid"))
-                dict.Add("stockin", CDec(dat("tajsmdqty3")))
-                dict.Add("stockout", 0)
-                dict.Add("rstockmdesc", "Data Penyesuaian Stok Tanaman No " & tajsmhno)
+                dict.Add("stockin", 0)
+                dict.Add("stockout", CDec(dat("tinvdqty")))
+                dict.Add("rstockmdesc", "Data Nota Penjualan No " & tinvhno)
                 dict.Add("fk_id", "")
                 dict.Add("userid", userid)
                 dict.Add("dtcreated", dtcreatedforDeatil)
@@ -191,8 +202,8 @@
 
         If multivalue.Length > 1 Then 'MyBase.InsertData() ==> Insert Header
             multivalue = multivalue.Substring(0, multivalue.Length - 1)
-            DeleteByNo(tajsmhno)
-            strsql = "INSERT INTO " & TableName + "(`tajsmhno`,`mmtrid`,`tajsmdqty1`,`tajsmdqty2`,`tajsmdqty3`,`dtcreated`) VALUES " & multivalue & ";" & vbCrLf
+            DeleteByNo(tinvhno)
+            strsql = "INSERT INTO " & TableName + "(`tinvhno`,`mmtrid`,`tinvdqty`,`tinvdprice`,`dtcreated`) VALUES " & multivalue & ";" & vbCrLf
             strsql = strsql + ModelStock.InsertData(datatostock) 'Insert/Update New Stok
         End If
         Return strsql
@@ -200,8 +211,9 @@
     Public Function DeleteByNo(Optional ByVal NoHeader As String = "") As String
         Dim no As String
         Dim sqlstr = ""
-        no = IIf(String.IsNullOrEmpty(NoHeader), tajsmhno, NoHeader)
-        sqlstr = "DELETE FROM " & TableName + " WHERE tajsmhno='" & no & "';" & vbCrLf
+        no = IIf(String.IsNullOrEmpty(NoHeader), tinvhno, NoHeader)
+        sqlstr = "DELETE FROM " & TableName + " WHERE tinvhno='" & no & "';" & vbCrLf
+        'Dim res As Integer = MyBase.DeleteData
         If Not String.IsNullOrEmpty(sqlstr) Then
             sqlstr = sqlstr & ModelStock.DeleteByNo(no)
         End If

@@ -12,48 +12,48 @@
         RetrieveData()
     End Sub
 #Region "Format DataGridView"
-    Private Sub InitializeDataGridView()
+    'Private Sub InitializeDataGridView()
 
-        ' Initialize basic DataGridView properties.
-        DataGridView1.Dock = DockStyle.Fill
-        DataGridView1.BackgroundColor = Color.LightGray
-        DataGridView1.BorderStyle = BorderStyle.Fixed3D
+    '    ' Initialize basic DataGridView properties.
+    '    DataGridView1.Dock = DockStyle.Fill
+    '    DataGridView1.BackgroundColor = Color.LightGray
+    '    DataGridView1.BorderStyle = BorderStyle.Fixed3D
 
-        ' Set property values appropriate for read-only display and  
-        ' limited interactivity. 
-        DataGridView1.AllowUserToAddRows = False
-        DataGridView1.AllowUserToDeleteRows = False
-        DataGridView1.AllowUserToOrderColumns = True
-        DataGridView1.ReadOnly = True
-        DataGridView1.SelectionMode = DataGridViewSelectionMode.CellSelect
-        DataGridView1.MultiSelect = False
-        DataGridView1.AutoSizeRowsMode = DataGridViewAutoSizeRowsMode.None
-        DataGridView1.AllowUserToResizeColumns = False
-        DataGridView1.ColumnHeadersHeightSizeMode = _
-            DataGridViewColumnHeadersHeightSizeMode.DisableResizing
-        DataGridView1.AllowUserToResizeRows = False
-        DataGridView1.RowHeadersWidthSizeMode = _
-            DataGridViewRowHeadersWidthSizeMode.DisableResizing
+    '    ' Set property values appropriate for read-only display and  
+    '    ' limited interactivity. 
+    '    DataGridView1.AllowUserToAddRows = False
+    '    DataGridView1.AllowUserToDeleteRows = False
+    '    DataGridView1.AllowUserToOrderColumns = True
+    '    DataGridView1.ReadOnly = True
+    '    DataGridView1.SelectionMode = DataGridViewSelectionMode.CellSelect
+    '    DataGridView1.MultiSelect = False
+    '    DataGridView1.AutoSizeRowsMode = DataGridViewAutoSizeRowsMode.None
+    '    DataGridView1.AllowUserToResizeColumns = False
+    '    DataGridView1.ColumnHeadersHeightSizeMode = _
+    '        DataGridViewColumnHeadersHeightSizeMode.DisableResizing
+    '    DataGridView1.AllowUserToResizeRows = False
+    '    DataGridView1.RowHeadersWidthSizeMode = _
+    '        DataGridViewRowHeadersWidthSizeMode.DisableResizing
 
-        ' Set the selection background color for all the cells.
-        DataGridView1.DefaultCellStyle.SelectionBackColor = Color.White
-        DataGridView1.DefaultCellStyle.SelectionForeColor = Color.Black
+    '    ' Set the selection background color for all the cells.
+    '    DataGridView1.DefaultCellStyle.SelectionBackColor = Color.White
+    '    DataGridView1.DefaultCellStyle.SelectionForeColor = Color.Black
 
-        ' Set RowHeadersDefaultCellStyle.SelectionBackColor so that its default 
-        ' value won't override DataGridView.DefaultCellStyle.SelectionBackColor.
-        DataGridView1.RowHeadersDefaultCellStyle.SelectionBackColor = Color.Empty
+    '    ' Set RowHeadersDefaultCellStyle.SelectionBackColor so that its default 
+    '    ' value won't override DataGridView.DefaultCellStyle.SelectionBackColor.
+    '    DataGridView1.RowHeadersDefaultCellStyle.SelectionBackColor = Color.Empty
 
-        ' Set the background color for all rows and for alternating rows.  
-        ' The value for alternating rows overrides the value for all rows. 
-        DataGridView1.RowsDefaultCellStyle.BackColor = Color.LightGray
-        DataGridView1.AlternatingRowsDefaultCellStyle.BackColor = Color.DarkGray
+    '    ' Set the background color for all rows and for alternating rows.  
+    '    ' The value for alternating rows overrides the value for all rows. 
+    '    DataGridView1.RowsDefaultCellStyle.BackColor = Color.LightGray
+    '    DataGridView1.AlternatingRowsDefaultCellStyle.BackColor = Color.DarkGray
 
-        ' Set the row and column header styles.
-        DataGridView1.ColumnHeadersDefaultCellStyle.ForeColor = Color.White
-        DataGridView1.ColumnHeadersDefaultCellStyle.BackColor = Color.Black
-        DataGridView1.RowHeadersDefaultCellStyle.BackColor = Color.Black
+    '    ' Set the row and column header styles.
+    '    DataGridView1.ColumnHeadersDefaultCellStyle.ForeColor = Color.White
+    '    DataGridView1.ColumnHeadersDefaultCellStyle.BackColor = Color.Black
+    '    DataGridView1.RowHeadersDefaultCellStyle.BackColor = Color.Black
 
-    End Sub
+    'End Sub
     Private Sub RetrieveData(Optional ByVal sSearch As String = "")
         Dim dt As DataTable
         Try
@@ -82,17 +82,17 @@
                 .Columns("acc_debit4").HeaderText = "Debit 4"
                 .Columns("acc_credit4").HeaderText = "Kredit 4"
 
-                .RowHeadersWidth = 75
+                .RowHeadersWidth = 100
                 .Columns("mapoid").Width = 100
-                .Columns("maponame").Width = 260
-                .Columns("acc_debit").Width = 100
-                .Columns("acc_credit").Width = 100
-                .Columns("acc_debit2").Width = 100
-                .Columns("acc_credit2").Width = 100
-                .Columns("acc_debit3").Width = 100
-                .Columns("acc_credit3").Width = 100
-                .Columns("acc_debit4").Width = 100
-                .Columns("acc_credit4").Width = 100
+                .Columns("maponame").Width = 350
+                .Columns("acc_debit").Width = 75
+                .Columns("acc_credit").Width = 75
+                .Columns("acc_debit2").Width = 75
+                .Columns("acc_credit2").Width = 75
+                .Columns("acc_debit3").Width = 75
+                .Columns("acc_credit3").Width = 75
+                .Columns("acc_debit4").Width = 75
+                .Columns("acc_credit4").Width = 75
                 .Refresh()
                 If .RowCount > 0 Then
                     For i As Integer = 0 To .Rows.Count - 1
@@ -246,44 +246,51 @@
         FAkunPostingAdd.txtKode.Clear()
         FAkunPostingAdd.txtMapoID.Clear()
         FAkunPostingAdd.txtNama.Clear()
-        FAkunPostingAdd.cmbDebit1.SelectedIndex = -1
-        FAkunPostingAdd.cmbKredit1.SelectedIndex = -1
-        FAkunPostingAdd.cmbDebit2.SelectedIndex = -1
-        FAkunPostingAdd.cmbKredit2.SelectedIndex = -1
-        FAkunPostingAdd.cmbDebit3.SelectedIndex = -1
-        FAkunPostingAdd.cmbKredit3.SelectedIndex = -1
-        FAkunPostingAdd.cmbDebit4.SelectedIndex = -1
-        FAkunPostingAdd.cmbKredit4.SelectedIndex = -1
+        'FAkunPostingAdd.cmbDebit1.SelectedIndex = -1
+        'FAkunPostingAdd.cmbKredit1.SelectedIndex = -1
+        'FAkunPostingAdd.cmbDebit2.SelectedIndex = -1
+        'FAkunPostingAdd.cmbKredit2.SelectedIndex = -1
+        'FAkunPostingAdd.cmbDebit3.SelectedIndex = -1
+        'FAkunPostingAdd.cmbKredit3.SelectedIndex = -1
+        'FAkunPostingAdd.cmbDebit4.SelectedIndex = -1
+        'FAkunPostingAdd.cmbKredit4.SelectedIndex = -1
+        FAkunPostingAdd.ClearCombobox()
         FAkunPostingAdd.statmsg.Text = ""
         FAkunPostingAdd.ShowDialog()
     End Sub
     Private Sub ToolEdit_Click(sender As Object, e As EventArgs) Handles ToolEdit.Click
-        If getCountSelectedData() > 0 Then
-            FAkunPostingAdd.txtKode.Enabled = False
-            FAkunPostingAdd.cmbDebit1.SelectedIndex = -1
-            FAkunPostingAdd.cmbKredit1.SelectedIndex = -1
-            FAkunPostingAdd.cmbDebit2.SelectedIndex = -1
-            FAkunPostingAdd.cmbKredit2.SelectedIndex = -1
-            FAkunPostingAdd.cmbDebit3.SelectedIndex = -1
-            FAkunPostingAdd.cmbKredit3.SelectedIndex = -1
-            FAkunPostingAdd.cmbDebit4.SelectedIndex = -1
-            FAkunPostingAdd.cmbKredit4.SelectedIndex = -1
-            FAkunPostingAdd.txtKode.Text = CStr(DataGridView1.Rows(getRowIndexSelected()).Cells("mapoid").Value)
-            FAkunPostingAdd.txtMapoID.Text = CStr(DataGridView1.Rows(getRowIndexSelected()).Cells("mapoid").Value)
-            FAkunPostingAdd.txtNama.Text = CStr(DataGridView1.Rows(getRowIndexSelected()).Cells("maponame").Value)
-            FAkunPostingAdd.cmbDebit1.Text = CStr(DataGridView1.Rows(getRowIndexSelected()).Cells("acc_debit").Value)
-            FAkunPostingAdd.cmbKredit1.Text = CStr(DataGridView1.Rows(getRowIndexSelected()).Cells("acc_credit").Value)
-            FAkunPostingAdd.cmbDebit2.Text = CStr(DataGridView1.Rows(getRowIndexSelected()).Cells("acc_debit2").Value)
-            FAkunPostingAdd.cmbKredit2.Text = CStr(DataGridView1.Rows(getRowIndexSelected()).Cells("acc_credit2").Value)
-            FAkunPostingAdd.cmbDebit3.Text = CStr(DataGridView1.Rows(getRowIndexSelected()).Cells("acc_debit3").Value)
-            FAkunPostingAdd.cmbKredit3.Text = CStr(DataGridView1.Rows(getRowIndexSelected()).Cells("acc_credit3").Value)
-            FAkunPostingAdd.cmbDebit4.Text = CStr(DataGridView1.Rows(getRowIndexSelected()).Cells("acc_debit4").Value)
-            FAkunPostingAdd.cmbKredit4.Text = CStr(DataGridView1.Rows(getRowIndexSelected()).Cells("acc_credit4").Value)
-            FAkunPostingAdd.statmsg.Text = ""
-            FAkunPostingAdd.ShowDialog()
-        Else
-            MyApplication.ShowStatus("No data is selected", NOTICE_STAT)
-        End If
+        Try
+            If getCountSelectedData() > 0 Then
+                FAkunPostingAdd.txtKode.Enabled = False
+                FAkunPostingAdd.cmbDebit1.SelectedIndex = -1
+                FAkunPostingAdd.cmbKredit1.SelectedIndex = -1
+                FAkunPostingAdd.cmbDebit2.SelectedIndex = -1
+                FAkunPostingAdd.cmbKredit2.SelectedIndex = -1
+                FAkunPostingAdd.cmbDebit3.SelectedIndex = -1
+                FAkunPostingAdd.cmbKredit3.SelectedIndex = -1
+                FAkunPostingAdd.cmbDebit4.SelectedIndex = -1
+                FAkunPostingAdd.cmbKredit4.SelectedIndex = -1
+                FAkunPostingAdd.txtKode.Text = CStr(DataGridView1.Rows(getRowIndexSelected()).Cells("mapoid").Value)
+                FAkunPostingAdd.txtMapoID.Text = CStr(DataGridView1.Rows(getRowIndexSelected()).Cells("mapoid").Value)
+                FAkunPostingAdd.txtNama.Text = CStr(DataGridView1.Rows(getRowIndexSelected()).Cells("maponame").Value)
+                FAkunPostingAdd.cmbDebit1.Text = CStr(DataGridView1.Rows(getRowIndexSelected()).Cells("acc_debit").Value)
+                FAkunPostingAdd.cmbKredit1.Text = CStr(DataGridView1.Rows(getRowIndexSelected()).Cells("acc_credit").Value)
+                FAkunPostingAdd.cmbDebit2.Text = CStr(DataGridView1.Rows(getRowIndexSelected()).Cells("acc_debit2").Value)
+                FAkunPostingAdd.cmbKredit2.Text = CStr(DataGridView1.Rows(getRowIndexSelected()).Cells("acc_credit2").Value)
+                FAkunPostingAdd.cmbDebit3.Text = CStr(DataGridView1.Rows(getRowIndexSelected()).Cells("acc_debit3").Value)
+                FAkunPostingAdd.cmbKredit3.Text = CStr(DataGridView1.Rows(getRowIndexSelected()).Cells("acc_credit3").Value)
+                FAkunPostingAdd.cmbDebit4.Text = CStr(DataGridView1.Rows(getRowIndexSelected()).Cells("acc_debit4").Value)
+                FAkunPostingAdd.cmbKredit4.Text = CStr(DataGridView1.Rows(getRowIndexSelected()).Cells("acc_credit4").Value)
+                FAkunPostingAdd.statmsg.Text = ""
+                FAkunPostingAdd.ShowDialog()
+            Else
+                MyApplication.ShowStatus("No data is selected", NOTICE_STAT)
+            End If
+        Catch ex As Exception
+            MyApplication.ShowStatus(ex.Message, NOTICE_STAT)
+            ErrorLogger.WriteToErrorLog(ex.Message, ex.StackTrace, "Error", "2")
+        End Try
+        
 
     End Sub
     Private Sub ToolDelete_Click(sender As Object, e As EventArgs) Handles ToolDelete.Click
@@ -374,7 +381,8 @@
 
     Private Sub FAkunPosting_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         MyApplication.ShowStatus(Me.Text & " Loaded")
-        InitializeDataGridView()
+        'InitializeDataGridView()
+        MyApplication.InitializeDataGridView(DataGridView1)
         init()
     End Sub
 

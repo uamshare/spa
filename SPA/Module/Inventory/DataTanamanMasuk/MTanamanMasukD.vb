@@ -215,6 +215,7 @@
         Me.StringSQL = DeleteByNo(id)
         If Not String.IsNullOrEmpty(Me.StringSQL) Then 'Insert Header
             Me.StringSQL = Me.StringSQL + ModelHeader.GetSqlDeleteData(id)
+            Me.StringSQL = Me.StringSQL + ModelGL.DeleteByNo(id)
             trans = MyBase.DeleteData()
         End If
         Return trans

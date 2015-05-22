@@ -6,8 +6,8 @@
 
     Sub New()
         MyBase.New()
-        BaseQuery = "SELECT mapoid, maponame, acc_debit, acc_credit, acc_debit2, acc_credit2, acc_debit3, acc_credit3, acc_debit4, acc_credit4 FROM mapo "
-        SelectQuery = "SELECT mapoid, maponame, acc_debit, acc_credit, acc_debit2, acc_credit2, acc_debit3, acc_credit3, acc_debit4, acc_credit4 FROM mapo "
+        BaseQuery = "SELECT mapoid, maponame, IFNULL(acc_debit,'') acc_debit, IFNULL(acc_credit,'') acc_credit, IFNULL(acc_debit2,'') acc_debit2, IFNULL(acc_credit2,'') acc_credit2, IFNULL(acc_debit3,'') acc_debit3, IFNULL(acc_credit3,'') acc_credit3, IFNULL(acc_debit4,'') acc_debit4, IFNULL(acc_credit4,'') acc_credit4 FROM mapo "
+        SelectQuery = "SELECT mapoid, maponame, IFNULL(acc_debit,'') acc_debit, IFNULL(acc_credit,'') acc_credit, IFNULL(acc_debit2,'') acc_debit2, IFNULL(acc_credit2,'') acc_credit2, IFNULL(acc_debit3,'') acc_debit3, IFNULL(acc_credit3,'') acc_credit3, IFNULL(acc_debit4,'') acc_debit4, IFNULL(acc_credit4,'') acc_credit4 FROM mapo "
         TableName = "mapo"
         PrimaryKey = "mapoid"
     End Sub

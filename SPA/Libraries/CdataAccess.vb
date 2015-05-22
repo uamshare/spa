@@ -113,13 +113,14 @@ Public Class CDataAcces 'Name dari Class yang dibuat.
         If Trans.Connection.State <> ConnectionState.Closed Then
             Trans.Rollback() 'Rollback All Transaction
             mCONN.Close()
-            Me.StringSQL = ""
+
             'StopProgress()
         End If
 
-        Dim LogMsg As String = "Fails. " & message
+        Dim LogMsg As String = "RollbackTrans. " & message
         ErrorLogger.WriteToErrorLog(LogMsg & vbCrLf & Me.StringSQL, actlog, ERROR_STAT, actlog, "2")
         MyApplication.ShowStatus(LogMsg, WARNING_STAT, True, 10000)
+        Me.StringSQL = ""
         Cursor.Current = Cursors.Default
     End Sub
 

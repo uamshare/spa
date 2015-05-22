@@ -65,48 +65,48 @@
     End Sub
 
 #Region "Format DataGridView"
-    Private Sub InitializeDataGridView()
+    'Private Sub InitializeDataGridView()
 
-        ' Initialize basic DataGridView properties.
-        DataGridView1.Dock = DockStyle.Fill
-        DataGridView1.BackgroundColor = Color.LightGray
-        DataGridView1.BorderStyle = BorderStyle.Fixed3D
+    '    ' Initialize basic DataGridView properties.
+    '    DataGridView1.Dock = DockStyle.Fill
+    '    DataGridView1.BackgroundColor = Color.LightGray
+    '    DataGridView1.BorderStyle = BorderStyle.Fixed3D
 
-        ' Set property values appropriate for read-only display and  
-        ' limited interactivity. 
-        DataGridView1.AllowUserToAddRows = True
-        DataGridView1.AllowUserToDeleteRows = True
-        DataGridView1.AllowUserToOrderColumns = True
-        DataGridView1.ReadOnly = False
-        DataGridView1.SelectionMode = DataGridViewSelectionMode.RowHeaderSelect 'DataGridViewSelectionMode.CellSelect
-        DataGridView1.MultiSelect = False
-        DataGridView1.AutoSizeRowsMode = DataGridViewAutoSizeRowsMode.None
-        DataGridView1.AllowUserToResizeColumns = True
-        DataGridView1.ColumnHeadersHeightSizeMode = _
-            DataGridViewColumnHeadersHeightSizeMode.DisableResizing
-        DataGridView1.AllowUserToResizeRows = False
-        DataGridView1.RowHeadersWidthSizeMode = _
-            DataGridViewRowHeadersWidthSizeMode.DisableResizing
+    '    ' Set property values appropriate for read-only display and  
+    '    ' limited interactivity. 
+    '    DataGridView1.AllowUserToAddRows = True
+    '    DataGridView1.AllowUserToDeleteRows = True
+    '    DataGridView1.AllowUserToOrderColumns = True
+    '    DataGridView1.ReadOnly = False
+    '    DataGridView1.SelectionMode = DataGridViewSelectionMode.RowHeaderSelect 'DataGridViewSelectionMode.CellSelect
+    '    DataGridView1.MultiSelect = False
+    '    DataGridView1.AutoSizeRowsMode = DataGridViewAutoSizeRowsMode.None
+    '    DataGridView1.AllowUserToResizeColumns = True
+    '    DataGridView1.ColumnHeadersHeightSizeMode = _
+    '        DataGridViewColumnHeadersHeightSizeMode.DisableResizing
+    '    DataGridView1.AllowUserToResizeRows = False
+    '    DataGridView1.RowHeadersWidthSizeMode = _
+    '        DataGridViewRowHeadersWidthSizeMode.DisableResizing
 
-        ' Set the selection background color for all the cells.
-        DataGridView1.DefaultCellStyle.SelectionBackColor = Color.LightGray
-        DataGridView1.DefaultCellStyle.SelectionForeColor = Color.Black
+    '    ' Set the selection background color for all the cells.
+    '    DataGridView1.DefaultCellStyle.SelectionBackColor = Color.LightGray
+    '    DataGridView1.DefaultCellStyle.SelectionForeColor = Color.Black
 
-        ' Set RowHeadersDefaultCellStyle.SelectionBackColor so that its default 
-        ' value won't override DataGridView.DefaultCellStyle.SelectionBackColor.
-        DataGridView1.RowHeadersDefaultCellStyle.SelectionBackColor = Color.White
+    '    ' Set RowHeadersDefaultCellStyle.SelectionBackColor so that its default 
+    '    ' value won't override DataGridView.DefaultCellStyle.SelectionBackColor.
+    '    DataGridView1.RowHeadersDefaultCellStyle.SelectionBackColor = Color.White
 
-        ' Set the background color for all rows and for alternating rows.  
-        ' The value for alternating rows overrides the value for all rows. 
-        DataGridView1.RowsDefaultCellStyle.BackColor = Color.White 'Color.LightGray
-        DataGridView1.AlternatingRowsDefaultCellStyle.BackColor = Color.LightGray
+    '    ' Set the background color for all rows and for alternating rows.  
+    '    ' The value for alternating rows overrides the value for all rows. 
+    '    DataGridView1.RowsDefaultCellStyle.BackColor = Color.White 'Color.LightGray
+    '    DataGridView1.AlternatingRowsDefaultCellStyle.BackColor = Color.LightGray
 
-        ' Set the row and column header styles.
-        DataGridView1.ColumnHeadersDefaultCellStyle.ForeColor = Color.White
-        DataGridView1.ColumnHeadersDefaultCellStyle.BackColor = Color.Black
-        DataGridView1.RowHeadersDefaultCellStyle.BackColor = Color.Black
+    '    ' Set the row and column header styles.
+    '    DataGridView1.ColumnHeadersDefaultCellStyle.ForeColor = Color.White
+    '    DataGridView1.ColumnHeadersDefaultCellStyle.BackColor = Color.Black
+    '    DataGridView1.RowHeadersDefaultCellStyle.BackColor = Color.Black
 
-    End Sub
+    'End Sub
     Private Sub RetriveDataGrid()
         With DataGridView1
             .ColumnHeadersHeight = 35
@@ -243,6 +243,7 @@
                     SetSummaryField()
                 End If
                 If DataGridView1.Columns(e.ColumnIndex).Name = "mmtrid" Then
+                    If DataGridView1.Rows(e.RowIndex).Cells("mmtrid").Value = mmtridbefore Then Exit Sub
                     If CekDuplicateID(DataGridView1.Rows(e.RowIndex).Cells("mmtrid").Value, e.RowIndex) Then
                         For Each dat In ListDataTanaman
                             'col.Add(dat("mmtrid"))
@@ -363,13 +364,17 @@
     End Sub
 
     Private rowIndex As Integer = 0
+    Private mmtridbefore As String = ""
     Private Sub DataGridView1_CellMouseUp_1(ByVal sender As System.Object, ByVal e As System.Windows.Forms.DataGridViewCellMouseEventArgs) Handles DataGridView1.CellMouseUp
-        If e.Button = MouseButtons.Right Then
-            Me.DataGridView1.Rows(e.RowIndex).Selected = True
-            Me.rowIndex = e.RowIndex
-            Me.DataGridView1.CurrentCell = Me.DataGridView1.Rows(e.RowIndex).Cells(1)
-            Me.ContextMenuStrip1.Show(Me.DataGridView1, e.Location)
-            ContextMenuStrip1.Show(Cursor.Position)
+        If e.RowIndex > -1 And e.ColumnIndex > -1 Then
+            mmtridbefore = DataGridView1.Rows(e.RowIndex).Cells("mmtrid").Value
+            If e.Button = MouseButtons.Right Then
+                Me.DataGridView1.Rows(e.RowIndex).Selected = True
+                Me.rowIndex = e.RowIndex
+                Me.DataGridView1.CurrentCell = Me.DataGridView1.Rows(e.RowIndex).Cells(1)
+                Me.ContextMenuStrip1.Show(Me.DataGridView1, e.Location)
+                ContextMenuStrip1.Show(Cursor.Position)
+            End If
         End If
     End Sub
     Private Sub ContextMenuStrip1_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles ContextMenuStrip1.Click
@@ -431,7 +436,12 @@
     Private Sub FPenyesuaianStok_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         DateTimePicker1.Format = DateTimePickerFormat.Custom
         DateTimePicker1.CustomFormat = MyApplication.DefaultFormatDate
-        InitializeDataGridView()
+        InitializeDataGridView(DataGridView1)
+        DataGridView1.AllowUserToAddRows = True
+        DataGridView1.AllowUserToDeleteRows = True
+        DataGridView1.AllowUserToOrderColumns = True
+        DataGridView1.ReadOnly = False
+
         init()
         mmtrg.SelectedIndex = 2
         'MessageBox.Show(Format(Date.Now, "yyyy/MM/dd H:mm:ss"))

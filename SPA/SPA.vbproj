@@ -209,19 +209,19 @@
     <Compile Include="Module\FLogin.vb">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Module\Inventory\DataPelanggan\FDataPelanggan.Designer.vb">
+    <Compile Include="Module\Sales\DataPelanggan\FDataPelanggan.Designer.vb">
       <DependentUpon>FDataPelanggan.vb</DependentUpon>
     </Compile>
-    <Compile Include="Module\Inventory\DataPelanggan\FDataPelanggan.vb">
+    <Compile Include="Module\Sales\DataPelanggan\FDataPelanggan.vb">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Module\Inventory\DataPelanggan\FPelangganAdd.Designer.vb">
+    <Compile Include="Module\Sales\DataPelanggan\FPelangganAdd.Designer.vb">
       <DependentUpon>FPelangganAdd.vb</DependentUpon>
     </Compile>
-    <Compile Include="Module\Inventory\DataPelanggan\FPelangganAdd.vb">
+    <Compile Include="Module\Sales\DataPelanggan\FPelangganAdd.vb">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Module\Inventory\DataPelanggan\MDataPelanggan.vb" />
+    <Compile Include="Module\Sales\DataPelanggan\MDataPelanggan.vb" />
     <Compile Include="Module\Inventory\DataTanamanMasuk\FListTanamanMasuk.Designer.vb">
       <DependentUpon>FListTanamanMasuk.vb</DependentUpon>
     </Compile>
@@ -310,6 +310,12 @@
     <Compile Include="Module\Inventory\PenyesuaianStock\MPenyesuaianStokD.vb" />
     <Compile Include="Module\Inventory\PenyesuaianStock\MPenyesuaianStokH.vb" />
     <Compile Include="Module\Inventory\Rstockm.vb" />
+    <Compile Include="Module\Inventory\StokTanaman\FKartuStok.Designer.vb">
+      <DependentUpon>FKartuStok.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Module\Inventory\StokTanaman\FKartuStok.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="Module\Inventory\StokTanaman\FRekapStok.Designer.vb">
       <DependentUpon>FRekapStok.vb</DependentUpon>
     </Compile>
@@ -340,6 +346,26 @@
       <DependentUpon>MainForm.vb</DependentUpon>
     </Compile>
     <Compile Include="Module\MainForm.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Module\Sales\NotaPenjualan\FListNotaPenjualan.Designer.vb">
+      <DependentUpon>FListNotaPenjualan.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Module\Sales\NotaPenjualan\FListNotaPenjualan.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Module\Sales\NotaPenjualan\FNotaPenjualan.Designer.vb">
+      <DependentUpon>FNotaPenjualan.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Module\Sales\NotaPenjualan\FNotaPenjualan.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Module\Sales\NotaPenjualan\MNotaPenjualanD.vb" />
+    <Compile Include="Module\Sales\NotaPenjualan\MNotaPenjualanH.vb" />
+    <Compile Include="Module\SetServer.Designer.vb">
+      <DependentUpon>SetServer.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Module\SetServer.vb">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Module\Setting\DataPengguna\FDataPengguna.Designer.vb">
@@ -411,10 +437,13 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
-    <Compile Include="RstockAll.Designer.vb">
+    <Compile Include="simagro.Designer.vb">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>RstockAll.xsd</DependentUpon>
+      <DependentUpon>simagro.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="simagro.vb">
+      <DependentUpon>simagro.xsd</DependentUpon>
     </Compile>
   </ItemGroup>
   <ItemGroup>
@@ -454,11 +483,11 @@
     <EmbeddedResource Include="Module\FLogin.resx">
       <DependentUpon>FLogin.vb</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Module\Inventory\DataPelanggan\FDataPelanggan.resx">
+    <EmbeddedResource Include="Module\Sales\DataPelanggan\FDataPelanggan.resx">
       <DependentUpon>FDataPelanggan.vb</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Module\Inventory\DataPelanggan\FDataPelangganAdd.resx" />
-    <EmbeddedResource Include="Module\Inventory\DataPelanggan\FPelangganAdd.resx">
+    <EmbeddedResource Include="Module\Sales\DataPelanggan\FDataPelangganAdd.resx" />
+    <EmbeddedResource Include="Module\Sales\DataPelanggan\FPelangganAdd.resx">
       <DependentUpon>FPelangganAdd.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Module\Inventory\DataTanamanMasuk\FListTanamanMasuk.resx">
@@ -500,6 +529,9 @@
     <EmbeddedResource Include="Module\Inventory\PenyesuaianStock\FPenyesuaianStok.resx">
       <DependentUpon>FPenyesuaianStok.vb</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Module\Inventory\StokTanaman\FKartuStok.resx">
+      <DependentUpon>FKartuStok.vb</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Module\Inventory\StokTanaman\FRekapStok.resx">
       <DependentUpon>FRekapStok.vb</DependentUpon>
     </EmbeddedResource>
@@ -515,6 +547,15 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Module\MainForm.resx">
       <DependentUpon>MainForm.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Module\Sales\NotaPenjualan\FListNotaPenjualan.resx">
+      <DependentUpon>FListNotaPenjualan.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Module\Sales\NotaPenjualan\FNotaPenjualan.resx">
+      <DependentUpon>FNotaPenjualan.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Module\SetServer.resx">
+      <DependentUpon>SetServer.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Module\Setting\DataPengguna\FDataPengguna.resx">
       <DependentUpon>FDataPengguna.vb</DependentUpon>
@@ -543,6 +584,7 @@
       <SubType>Designer</SubType>
       <LastGenOutput>Resources1.Designer.vb</LastGenOutput>
     </EmbeddedResource>
+    <Content Include="Reports\DRKartuStok.rdlc" />
   </ItemGroup>
   <ItemGroup>
     <None Include="My Project\app.manifest" />
@@ -556,21 +598,20 @@
       <LastGenOutput>Settings.Designer.vb</LastGenOutput>
     </None>
     <None Include="App.config" />
-    <None Include="RstockAll.xsc">
-      <DependentUpon>RstockAll.xsd</DependentUpon>
+    <None Include="simagro.xsc">
+      <DependentUpon>simagro.xsd</DependentUpon>
     </None>
-    <None Include="RstockAll.xsd">
+    <None Include="simagro.xsd">
       <Generator>MSDataSetGenerator</Generator>
-      <LastGenOutput>RstockAll.Designer.vb</LastGenOutput>
+      <LastGenOutput>simagro.Designer.vb</LastGenOutput>
       <SubType>Designer</SubType>
     </None>
-    <None Include="RstockAll.xss">
-      <DependentUpon>RstockAll.xsd</DependentUpon>
+    <None Include="simagro.xss">
+      <DependentUpon>simagro.xsd</DependentUpon>
     </None>
     <None Include="SPA_TemporaryKey.pfx" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Module\Sales\" />
     <Folder Include="Module\ViewReport\" />
   </ItemGroup>
   <ItemGroup>

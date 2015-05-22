@@ -21,14 +21,65 @@
 
         userid = MUsers.UserInfo()("userid")
     End Sub
-    Public Overloads Function GetData(datestart As Date, dateend As Date,
-                                      Optional viewtable As String = "material_fig",
-                                      Optional noref1 As String = "",
-                                      Optional noref2 As String = "") As DataTable
-        Dim where As String = ""
+    'Public Overloads Function GetData(datestart As Date, dateend As Date,
+    '                                  Optional viewtable As String = "material_fig",
+    '                                  Optional noref1 As String = "",
+    '                                  Optional noref2 As String = "") As DataTable
+    '    'Dim where As String = ""
+
+    '    'If Not String.IsNullOrEmpty(noref1) And Not String.IsNullOrEmpty(noref2) Then
+    '    '    where = "WHERE T1.mmtrid BETWEEN '" & noref1 & "' AND '" & noref2 & "'"
+    '    'End If
+    '    'Me.StringSQL = "SELECT T1.* " & _
+    '    '                ",IFNULL(T3.stockstart,0) 	AS stockstart " & _
+    '    '                ",IFNULL(T2.stockin,0) 		AS stockin" & _
+    '    '                ",IFNULL(T2.stockout,0) 		AS stockout " & _
+    '    '                ",(IFNULL(T3.stockstart,0) + (IFNULL(T2.stockin,0)-IFNULL(T2.stockout,0))) AS stockend " & _
+    '    '                ",(IFNULL(T3.stockstart,0) + (IFNULL(T2.stockin,0)-IFNULL(T2.stockout,0))) * T1.hpp AS bookvalue " & _
+    '    '                "        FROM " & _
+    '    '                "(SELECT " & _
+    '    '                "	TA.* " & _
+    '    '                "	,IFNULL(TB.hpp,0) AS hpp " & _
+    '    '                "FROM `" & viewtable & "` TA " & _
+    '    '                "LEFT OUTER JOIN " & _
+    '    '                "(SELECT * FROM (SELECT mmtrid,hpp,price FROM mhpp WHERE DATE_FORMAT(`dtcreated`,'%Y-%m-%d') <= '" & Format(dateend, "yyyy-MM-dd") & "' ORDER BY 1 DESC) " & _
+    '    '                "			    T1 GROUP BY mmtrid) TB " & _
+    '    '                "	ON TA.mmtrid = TB.mmtrid) T1 " & _
+    '    '                "LEFT OUTER JOIN  " & _
+    '    '                "(SELECT mmtrid " & _
+    '    '                "            ,SUM(stockin) AS stockin " & _
+    '    '                "            ,SUM(stockout) AS stockout " & _
+    '    '                "    FROM `rstockm` WHERE DATE_FORMAT(`dtcreated`,'%Y-%m-%d') BETWEEN '" & Format(datestart, "yyyy-MM-dd") & "' AND '" & Format(dateend, "yyyy-MM-dd") & "' GROUP BY mmtrid) T2 " & _
+    '    '                "ON T1.mmtrid = T2.mmtrid " & _
+    '    '                "LEFT OUTER JOIN  " & _
+    '    '                "(SELECT mmtrid " & _
+    '    '                "            ,(SUM(stockin) - SUM(stockout)) AS stockstart " & _
+    '    '                "    FROM `rstockm` WHERE DATE_FORMAT(`dtcreated`,'%Y-%m-%d') < '" & Format(datestart, "yyyy-MM-dd") & "' GROUP BY mmtrid) T3 " & _
+    '    '                "ON T1.mmtrid = T3.mmtrid " & where
+    '    Return MyBase.GetData
+    'End Function
+    'Public Function ReportStockAll(datestart As Date, dateend As Date,
+    '                               Optional NameDataSet As String = "DataSet1",
+    '                               Optional viewtable As String = "material_fig",
+    '                               Optional noref1 As String = "",
+    '                               Optional noref2 As String = "") As DataSet
+    '    Dim ds As DataSet = New DataSet(NameDataSet)
+    '    Me.WHERE = ""
+    '    Me.limitrecord = -1
+    '    ds.Tables.Add(GetData(datestart, dateend, viewtable, noref1, noref2))
+    '    Return ds
+    'End Function
+    Public Function ReportStockAll(datestart As Date, dateend As Date,
+                                   Optional NameDataSet As String = "DataSet1",
+                                   Optional viewtable As String = "material_fig",
+                                   Optional noref1 As String = "",
+                                   Optional noref2 As String = "") As DataSet
+        Dim ds As DataSet = New DataSet(NameDataSet)
+        Me.WHERE = ""
+        Me.limitrecord = -1
 
         If Not String.IsNullOrEmpty(noref1) And Not String.IsNullOrEmpty(noref2) Then
-            where = "WHERE T1.mmtrid BETWEEN '" & noref1 & "' AND '" & noref2 & "'"
+            Me.WHERE = "WHERE T1.mmtrid BETWEEN '" & noref1 & "' AND '" & noref2 & "'"
         End If
         Me.StringSQL = "SELECT T1.* " & _
                         ",IFNULL(T3.stockstart,0) 	AS stockstart " & _
@@ -55,11 +106,12 @@
                         "(SELECT mmtrid " & _
                         "            ,(SUM(stockin) - SUM(stockout)) AS stockstart " & _
                         "    FROM `rstockm` WHERE DATE_FORMAT(`dtcreated`,'%Y-%m-%d') < '" & Format(datestart, "yyyy-MM-dd") & "' GROUP BY mmtrid) T3 " & _
-                        "ON T1.mmtrid = T3.mmtrid " & where
-        Return MyBase.GetData
+                        "ON T1.mmtrid = T3.mmtrid "
+        'ds.Tables.Add(GetData(datestart, dateend, viewtable, noref1, noref2))
+        ds.Tables.Add(MyBase.GetData)
+        Return ds
     End Function
-
-    Public Function ReportStockAll(datestart As Date, dateend As Date,
+    Public Function ReportStockCard(datestart As Date, dateend As Date,
                                    Optional NameDataSet As String = "DataSet1",
                                    Optional viewtable As String = "material_fig",
                                    Optional noref1 As String = "",
@@ -67,7 +119,51 @@
         Dim ds As DataSet = New DataSet(NameDataSet)
         Me.WHERE = ""
         Me.limitrecord = -1
-        ds.Tables.Add(GetData(datestart, dateend, viewtable, noref1, noref2))
+
+        If Not String.IsNullOrEmpty(noref1) And Not String.IsNullOrEmpty(noref2) Then
+            Me.WHERE = "WHERE T1.mmtrid BETWEEN '" & noref1 & "' AND '" & noref2 & "'"
+        End If
+        Me.StringSQL = "SELECT T1.mmtrhid " & _
+                        "	,T1.mmtrname " & _
+                        "	,T1.mmtrid " & _
+                        "	,T1.polybag " & _
+                        "	,T1.mmtrunit " & _
+                        "	,T1.mmtrprice " & _
+                        "	,T1.mmtrg " & _
+                        "	,IFNULL(T2.dtcreated,0) 	AS dtcreated " & _
+                        "	,IFNULL(T2.dtupdate,0) 		AS dtupdated " & _
+                        "	,IFNULL(T3.stockstart,0) 	AS stockstart " & _
+                        "	,IFNULL(T2.noref,0) 		AS noref " & _
+                        "	,IFNULL(T2.rstockmdesc,0) 	AS rstockmdesc " & _
+                        "	,IFNULL(T2.stockin,0) 		AS stockin " & _
+                        "	,IFNULL(T2.stockout,0) 		AS stockout " & _
+                        "	,(IFNULL(T3.stockstart,0) + (IFNULL(T2.stockin,0)-IFNULL(T2.stockout,0))) AS stockend " & _
+                        "	,(IFNULL(T3.stockstart,0) + (IFNULL(T2.stockin,0)-IFNULL(T2.stockout,0))) * T1.hpp AS bookvalue " & _
+                        "        FROM " & _
+                        "	(SELECT  " & _
+                        "		TA.*  " & _
+                        "		,IFNULL(TB.hpp,0) AS hpp  " & _
+                        "	FROM `" & viewtable & "` TA  " & _
+                        "	LEFT OUTER JOIN " & _
+                        "	(SELECT * FROM (SELECT mmtrid,hpp,price FROM mhpp WHERE DATE_FORMAT(`dtcreated`,'%Y-%m-%d') <= '" & Format(dateend, "yyyy-MM-dd") & "' ORDER BY 1 DESC) " & _
+                        "				    T1 GROUP BY mmtrid) TB " & _
+                        "		ON TA.mmtrid = TB.mmtrid) T1             " & _
+                        "LEFT OUTER JOIN   " & _
+                        "	(SELECT mmtrid  " & _
+                        "		    ,noref " & _
+                        "		    ,rstockmdesc " & _
+                        "		    ,stockin " & _
+                        "		    ,stockout " & _
+                        "		    ,dtcreated " & _
+                        "		    ,dtupdate " & _
+                        "	    FROM `rstockm` WHERE DATE_FORMAT(`dtcreated`,'%Y-%m-%d') BETWEEN '" & Format(datestart, "yyyy-MM-dd") & "' AND '" & Format(dateend, "yyyy-MM-dd") & "' ORDER BY mmtrid) T2 " & _
+                        "ON T1.mmtrid = T2.mmtrid  " & _
+                        "LEFT OUTER JOIN   " & _
+                        "	(SELECT mmtrid  " & _
+                        "		    ,(SUM(stockin) - SUM(stockout)) AS stockstart " & _
+                        "	    FROM `rstockm` WHERE DATE_FORMAT(`dtcreated`,'%Y-%m-%d') < '" & Format(datestart, "yyyy-MM-dd") & "' GROUP BY mmtrid) T3 " & _
+                        "ON T1.mmtrid = T3.mmtrid "
+        ds.Tables.Add(MyBase.GetData)
         Return ds
     End Function
     Public Overloads Function GetRowsCount(Optional viewtable As String = "material_fig") As Integer

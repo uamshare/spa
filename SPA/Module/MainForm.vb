@@ -131,4 +131,12 @@ Public Class MainForm
     Private Sub menu105_Click(sender As Object, e As EventArgs) Handles menu105.Click
         LoadMdiChildForm(FRekapStok, "menu105")
     End Sub
+
+    Private Sub menu106_Click(sender As Object, e As EventArgs) Handles menu106.Click
+        LoadMdiChildForm(FKartuStok, "menu106")
+    End Sub
+
+    Private Sub menu302_Click(sender As Object, e As EventArgs) Handles menu302.Click
+        LoadMdiChildForm(FNotaPenjualan, "menu302")
+    End Sub
 End Class

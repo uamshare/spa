@@ -13,7 +13,6 @@
         DuplicateData1 = "mcusname"
         DuplicateData2 = "mcustaxcode"
     End Sub
-
     Function FindData(sSearch As String) As DataTable
         If Not String.IsNullOrEmpty(sSearch) Then
             Me.WHERE = "WHERE mcusname like '%" & sSearch & "%'"

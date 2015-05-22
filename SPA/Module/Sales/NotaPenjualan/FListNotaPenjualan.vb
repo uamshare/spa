@@ -1,67 +1,26 @@
-﻿Public Class FListTanaman
+﻿Public Class FListNotaPenjualan
     Dim dt As New DataTable
     Dim DGVColumnCheckIndex As Integer
 
-    Private Model As New MTanaman
-    Public DatagridParent As DataGridView
-
+    Private Model As New MNotaPenjualanH
+    'Public DatagridParent As DataGridView
+    Private ModelRowCount As Integer = Model.GetRowsCount()
     Public Sub init()
         Model.limitrecord = 25
         RetrieveData()
-        DataGridView1.ClearSelection()
+        'DataGridView1.ClearSelection()
     End Sub
     Private Sub FListTanaman_Load(sender As Object, e As EventArgs) Handles MyBase.Load
-        Me.Width = 675
-        Me.Height = 630
+        Me.Width = 900
+        Me.Height = 500
         MyApplication.InitializeDataGridView(DataGridView1)
+
         init()
     End Sub
     Private Sub FListTanaman_Shown(sender As Object, e As EventArgs) Handles Me.Shown
         init()
     End Sub
 #Region "Format DataGridView"
-    'Private Sub InitializeDataGridView()
-
-    '    ' Initialize basic DataGridView properties.
-    '    DataGridView1.Dock = DockStyle.Fill
-    '    DataGridView1.BackgroundColor = Color.LightGray
-    '    DataGridView1.BorderStyle = BorderStyle.Fixed3D
-
-    '    ' Set property values appropriate for read-only display and  
-    '    ' limited interactivity. 
-    '    DataGridView1.AllowUserToAddRows = False
-    '    DataGridView1.AllowUserToDeleteRows = False
-    '    DataGridView1.AllowUserToOrderColumns = True
-    '    DataGridView1.ReadOnly = True
-    '    DataGridView1.SelectionMode = DataGridViewSelectionMode.FullRowSelect
-    '    DataGridView1.MultiSelect = False
-    '    DataGridView1.AutoSizeRowsMode = DataGridViewAutoSizeRowsMode.None
-    '    DataGridView1.AllowUserToResizeColumns = False
-    '    DataGridView1.ColumnHeadersHeightSizeMode = _
-    '        DataGridViewColumnHeadersHeightSizeMode.DisableResizing
-    '    DataGridView1.AllowUserToResizeRows = False
-    '    DataGridView1.RowHeadersWidthSizeMode = _
-    '        DataGridViewRowHeadersWidthSizeMode.DisableResizing
-
-    '    ' Set the selection background color for all the cells.
-    '    DataGridView1.DefaultCellStyle.SelectionBackColor = Color.White
-    '    DataGridView1.DefaultCellStyle.SelectionForeColor = Color.Black
-
-    '    ' Set RowHeadersDefaultCellStyle.SelectionBackColor so that its default 
-    '    ' value won't override DataGridView.DefaultCellStyle.SelectionBackColor.
-    '    DataGridView1.RowHeadersDefaultCellStyle.SelectionBackColor = Color.Empty
-
-    '    ' Set the background color for all rows and for alternating rows.  
-    '    ' The value for alternating rows overrides the value for all rows. 
-    '    DataGridView1.RowsDefaultCellStyle.BackColor = Color.LightGray
-    '    DataGridView1.AlternatingRowsDefaultCellStyle.BackColor = Color.DarkGray
-
-    '    ' Set the row and column header styles.
-    '    DataGridView1.ColumnHeadersDefaultCellStyle.ForeColor = Color.White
-    '    DataGridView1.ColumnHeadersDefaultCellStyle.BackColor = Color.Black
-    '    DataGridView1.RowHeadersDefaultCellStyle.BackColor = Color.Black
-
-    'End Sub
     Private Sub RetrieveData(Optional ByVal sSearch As String = "")
         Dim dt As DataTable
 
@@ -71,29 +30,57 @@
             Else
                 dt = Model.GetData()
             End If
-
+            ModelRowCount = Model.GetRowsCount()
             With DataGridView1
                 .Columns.Clear()
 
                 .DataSource = dt
-                .Columns("mmtrhid").Visible = False
-                .Columns("mmtrid").HeaderText = "Kode"
-                .Columns("mmtrname").HeaderText = "Jenis Tanaman"
-                .Columns("polybag").HeaderText = "Polybag"
-                .Columns("mmtrunit").HeaderText = "Satuan"
-                .Columns("mmtrprice").HeaderText = "Harga Jual"
-                .Columns("PrimaryKey").Visible = False
-                .Columns("mmtrg").Visible = False
+                .Columns("userid").Visible = False
+                .Columns("dtcreated").Visible = False
+                .Columns("tinvhno").HeaderText = "No Invoice"
+                .Columns("tinvhdt").HeaderText = "Tanggal"
+                .Columns("mcusid").HeaderText = "Customer ID"
+                .Columns("mcusid").Visible = False
+                .Columns("mcusname").HeaderText = "Customer"
+                .Columns("tinvhnote").HeaderText = "Keterangan"
+                .Columns("subtotal").HeaderText = "Subtotal"
+                .Columns("tinvhdisc1").HeaderText = "Disc%"
+                .Columns("tinvhdisc2").HeaderText = "Diskon"
+                '.Columns("tinvhbonus").HeaderText = "Bonus"
+                .Columns("tinvhongkir").HeaderText = "Kirim"
+                .Columns("tinvhongpack").HeaderText = "Pascking"
+                .Columns("total").HeaderText = "Bonus"
+                .Columns("tinvhdisc1").Visible = False
+                .Columns("tinvhnote").Visible = False
 
-                .RowHeadersWidth = 50
-                .Columns("mmtrid").Width = 100
-                .Columns("mmtrname").Width = 200
-                .Columns("polybag").Width = 75
-                .Columns("polybag").DefaultCellStyle().Alignment = DataGridViewContentAlignment.MiddleCenter
-                .Columns("mmtrunit").Width = 100
-                .Columns("mmtrprice").Width = 100
-                .Columns("mmtrprice").DefaultCellStyle().Format = "##,##0"
-                .Columns("mmtrprice").DefaultCellStyle().Alignment = DataGridViewContentAlignment.MiddleRight
+
+                .RowHeadersWidth = 75
+                .Columns("tinvhno").Width = 110
+                .Columns("tinvhdt").Width = 100
+                .Columns("tinvhdt").DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter
+                .Columns("tinvhdt").DefaultCellStyle.Format = MyApplication.DefaultFormatDate
+                .Columns("mcusname").Width = 200
+                .Columns("subtotal").Width = 100
+                .Columns("tinvhdisc1").Width = 50
+                .Columns("tinvhdisc2").Width = 80
+                '.Columns("tinvhbonus").Width = 80
+                .Columns("tinvhongkir").Width = 80
+                .Columns("tinvhongpack").Width = 80
+                .Columns("total").Width = 100
+                .Columns("subtotal").DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight
+                .Columns("subtotal").DefaultCellStyle.Format = "##,##0"
+                .Columns("tinvhdisc1").DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight
+                .Columns("tinvhdisc1").DefaultCellStyle.Format = "##,##0"
+                .Columns("tinvhdisc2").DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight
+                .Columns("tinvhdisc2").DefaultCellStyle.Format = "##,##0"
+                '.Columns("tinvhbonus").DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight
+                '.Columns("tinvhbonus").DefaultCellStyle.Format = "##,##0"
+                .Columns("tinvhongkir").DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight
+                .Columns("tinvhongkir").DefaultCellStyle.Format = "##,##0"
+                .Columns("tinvhongpack").DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight
+                .Columns("tinvhongpack").DefaultCellStyle.Format = "##,##0"
+                .Columns("total").DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight
+                .Columns("total").DefaultCellStyle.Format = "##,##0"
                 .Refresh()
 
                 If .RowCount > 0 Then
@@ -105,7 +92,7 @@
             End With
             setButtonPager()
         Catch ex As Exception
-            MyApplication.ShowStatus("Failed to RetrieveData = " & ex.Message, WARNING_STAT)
+            MyApplication.ShowStatus("Gagal menampilkan data = " & ex.Message, WARNING_STAT)
         End Try
 
     End Sub
@@ -133,33 +120,36 @@
     End Function
     Private Sub DataGridView1_CellContentDoubleClick(sender As Object, e As DataGridViewCellEventArgs) Handles DataGridView1.CellContentDoubleClick
         Try
-            If (DataGridView1.SelectedRows.Count > 0) Then
-                DatagridParent.CurrentRow.Cells("mmtrid").Value = DataGridView1.CurrentRow.Cells("mmtrid").Value()
-                DatagridParent.EndEdit()
+            If DataGridView1.SelectedRows.Count > 0 Then
+                FNotaPenjualan.TxtNo.Text = DataGridView1.CurrentRow.Cells("tinvhno").Value().ToString
+                FNotaPenjualan.DateTimePicker1.Value = DataGridView1.CurrentRow.Cells("tinvhdt").Value().ToString
+                FNotaPenjualan.TextBox1.Text = DataGridView1.CurrentRow.Cells("tinvhnote").Value().ToString
+                FNotaPenjualan.ComboBox1.Text = DataGridView1.CurrentRow.Cells("mcusname").Value().ToString
+
+                FNotaPenjualan.TextBox9.Text = CInt(DataGridView1.CurrentRow.Cells("tinvhdisc1").Value().ToString) & "%"
+                FNotaPenjualan.TextBox5.Text = Format(CDec(DataGridView1.CurrentRow.Cells("tinvhdisc2").Value().ToString), "##,##0")
+                'FNotaPenjualan.TextBox6.Text = Format(CDec(DataGridView1.CurrentRow.Cells("tinvhbonus").Value().ToString), "##,##0")
+                FNotaPenjualan.TextBox7.Text = Format(CDec(DataGridView1.CurrentRow.Cells("tinvhongkir").Value().ToString), "##,##0")
+                FNotaPenjualan.TextBox8.Text = Format(CDec(DataGridView1.CurrentRow.Cells("tinvhongpack").Value().ToString), "##,##0")
+
+                FNotaPenjualan.ButtonAdd.Enabled = False
+                FNotaPenjualan.ButtonSave.Enabled = True
+                FNotaPenjualan.ButtonDel.Enabled = True
+                FNotaPenjualan.ButtonPrint.Enabled = False
+                FNotaPenjualan.ButtonCancel.Enabled = True
+                FNotaPenjualan.ButtonH.Enabled = True
+
+                FNotaPenjualan.DataGridView1.Enabled = True
+                FNotaPenjualan.ToolDelete.Enabled = True
+                FNotaPenjualan.TextBox1.Focus()
                 Me.Close()
             Else
                 MyApplication.ShowStatus("Tidak ada data terpilih", NOTICE_STAT)
             End If
+
         Catch ex As Exception
             MyApplication.ShowStatus(ex.Message & vbCrLf & ex.StackTrace, WARNING_STAT)
         End Try
-    End Sub
-    Private Sub DataGridView1_KeyDown(sender As Object, e As KeyEventArgs) Handles DataGridView1.KeyDown
-
-        Dim dgrow As DataGridViewRow = DataGridView1.CurrentRow
-        If e.KeyCode = Keys.Enter Then
-            'MsgBox(dgrow.Cells("mmtrid").Value())
-            Try
-                If (DataGridView1.SelectedRows.Count > 0) Then
-                    DatagridParent.CurrentRow.Cells("mmtrid").Value = dgrow.Cells("mmtrid").Value()
-                    DatagridParent.EndEdit()
-                    Me.Close()
-                End If
-            Catch ex As Exception
-                MyApplication.ShowStatus(ex.Message & vbCrLf & ex.StackTrace, WARNING_STAT)
-            End Try
-            'e.Handled = False
-        End If
     End Sub
     Private Sub DataGridView1_Sorted(sender As Object, e As EventArgs) Handles DataGridView1.Sorted
         With DataGridView1
@@ -178,8 +168,8 @@
         Try
             Dim page, CurrentCountRows, endofpage As Integer
             If Model.limitrecord > 0 Then
-                endofpage = (Model.GetRowsCount() \ Model.limitrecord) '* Model.limitrecord
-                endofpage = IIf((endofpage * Model.limitrecord) < Model.GetRowsCount(), endofpage, endofpage - 1) + 1
+                endofpage = (ModelRowCount \ Model.limitrecord) '* Model.limitrecord
+                endofpage = IIf((endofpage * Model.limitrecord) < ModelRowCount, endofpage, endofpage - 1) + 1
                 page = IIf(Model.startRecord = 0, 0, Model.startRecord / Model.limitrecord) + 1
                 'Dim page As Integer = IIf(Model.startRecord = 0, 0, Model.startRecord / Model.limitrecord) + 1
 
@@ -201,8 +191,8 @@
                 End If
                 cmbperpage.Text = Model.limitrecord
                 'page = IIf(Model.startRecord = 0, 0, Model.startRecord / Model.limitrecord) + 1
-                CurrentCountRows = IIf((Model.startRecord + Model.limitrecord) > Model.GetRowsCount(), Model.GetRowsCount(), (Model.startRecord + Model.limitrecord))
-                'lpageinfo.Text = "Page " & page & " of " & (Model.GetRowsCount() \ Model.limitrecord) & " as " & Model.GetRowsCount() & " Records"
+                CurrentCountRows = IIf((Model.startRecord + Model.limitrecord) > ModelRowCount, ModelRowCount, (Model.startRecord + Model.limitrecord))
+                'lpageinfo.Text = "Page " & page & " of " & (ModelRowCount \ Model.limitrecord) & " as " & ModelRowCount & " Records"
 
             Else
                 ToolFisrt.Enabled = False
@@ -214,7 +204,7 @@
             End If
 
             'Navigator Info
-            lpageinfo.Text = (Model.startRecord + 1) & "-" & CurrentCountRows & " as " & Model.GetRowsCount() & " Rows"
+            lpageinfo.Text = (Model.startRecord + 1) & "-" & CurrentCountRows & " as " & ModelRowCount & " Rows"
             Me.lCountPage.Text = "of " & endofpage
             txtPageCurrent.Text = page
         Catch ex As Exception
@@ -232,14 +222,14 @@
         End If
     End Sub
     Sub RetrieveNext()
-        If Model.startRecord < Model.GetRowsCount() Then
+        If Model.startRecord < ModelRowCount Then
             Model.startRecord = Model.startRecord + Model.limitrecord
             RetrieveData()
         End If
     End Sub
     Sub RetrieveLast()
-        Dim totalpage = (Model.GetRowsCount() \ Model.limitrecord) * Model.limitrecord
-        If totalpage < Model.GetRowsCount() Then
+        Dim totalpage = (ModelRowCount \ Model.limitrecord) * Model.limitrecord
+        If totalpage < ModelRowCount Then
             Model.startRecord = totalpage
         Else
             Model.startRecord = totalpage - Model.limitrecord
@@ -267,7 +257,7 @@
             Dim countpage As Integer
             Dim pageto As Integer = Val(txtPageCurrent.Text)
             If Model.limitrecord > 0 Then
-                countpage = (Model.GetRowsCount() \ Model.limitrecord)
+                countpage = (ModelRowCount \ Model.limitrecord)
             Else
                 countpage = 1
             End If
@@ -283,12 +273,11 @@
                 e.KeyChar = Nothing
             End If
         End If
-        'MessageBox.Show(Asc(e.KeyChar))
     End Sub
 
     Private Sub cmbperPage_SelectedIndexChanged(sender As Object, e As EventArgs) Handles cmbperpage.SelectedIndexChanged
-        If IsNumeric(cmbperPage.Text) Then
-            Model.limitrecord = Int(cmbperPage.Text)
+        If IsNumeric(cmbperpage.Text) Then
+            Model.limitrecord = Int(cmbperpage.Text)
         Else
             Model.limitrecord = 0
         End If
@@ -300,17 +289,10 @@
     End Sub
     Private Sub ToolFind_Click(sender As Object, e As EventArgs) Handles ToolFind.Click
         Model.startRecord = 0
-        'If Not String.IsNullOrEmpty(ToolFind.Text) Then
         RetrieveData(ToolTextFind.Text)
-        'Else
-        '    RetrieveData()
-        'End If
     End Sub
 #End Region
-
     Private Sub ToolCheck_Click(sender As Object, e As EventArgs) Handles ToolCheck.Click
         DataGridView1_CellContentDoubleClick(sender, Nothing)
     End Sub
-
-    
 End Class

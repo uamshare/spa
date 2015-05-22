@@ -1,5 +1,5 @@
 ﻿<Global.Microsoft.VisualBasic.CompilerServices.DesignerGenerated()> _
-Partial Class FListTanaman
+Partial Class FListNotaPenjualan
     Inherits System.Windows.Forms.Form
 
     'Form overrides dispose to clean up the component list.
@@ -22,7 +22,7 @@ Partial Class FListTanaman
     'Do not modify it using the code editor.
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
-        Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(FListTanaman))
+        Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(FListNotaPenjualan))
         Me.Panel1 = New System.Windows.Forms.Panel()
         Me.DataGridView1 = New System.Windows.Forms.DataGridView()
         Me.ToolStrip1 = New System.Windows.Forms.ToolStrip()
@@ -56,22 +56,22 @@ Partial Class FListTanaman
         Me.Panel1.Controls.Add(Me.DataGridView1)
         Me.Panel1.Controls.Add(Me.ToolStrip1)
         Me.Panel1.Controls.Add(Me.Tool1)
-        Me.Panel1.Dock = System.Windows.Forms.DockStyle.Left
+        Me.Panel1.Dock = System.Windows.Forms.DockStyle.Fill
         Me.Panel1.Location = New System.Drawing.Point(0, 0)
-        Me.Panel1.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.Panel1.Margin = New System.Windows.Forms.Padding(5, 5, 5, 5)
         Me.Panel1.Name = "Panel1"
-        Me.Panel1.Size = New System.Drawing.Size(812, 452)
-        Me.Panel1.TabIndex = 8
+        Me.Panel1.Size = New System.Drawing.Size(531, 375)
+        Me.Panel1.TabIndex = 10
         '
         'DataGridView1
         '
         Me.DataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
         Me.DataGridView1.Cursor = System.Windows.Forms.Cursors.Default
-        Me.DataGridView1.Location = New System.Drawing.Point(4, 50)
-        Me.DataGridView1.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.DataGridView1.Location = New System.Drawing.Point(5, 62)
+        Me.DataGridView1.Margin = New System.Windows.Forms.Padding(5, 5, 5, 5)
         Me.DataGridView1.Name = "DataGridView1"
         Me.DataGridView1.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect
-        Me.DataGridView1.Size = New System.Drawing.Size(341, 257)
+        Me.DataGridView1.Size = New System.Drawing.Size(450, 241)
         Me.DataGridView1.TabIndex = 20
         '
         'ToolStrip1
@@ -80,10 +80,10 @@ Partial Class FListTanaman
         Me.ToolStrip1.Dock = System.Windows.Forms.DockStyle.Bottom
         Me.ToolStrip1.GripStyle = System.Windows.Forms.ToolStripGripStyle.Hidden
         Me.ToolStrip1.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.ToolStripLabel2, Me.cmbperpage, Me.ToolStripLabel1, Me.ToolStripSeparator3, Me.ToolFisrt, Me.ToolPrev, Me.ToolStripSeparator1, Me.txtPageCurrent, Me.lCountPage, Me.ToolStripSeparator2, Me.ToolNext, Me.ToolLast, Me.lpageinfo})
-        Me.ToolStrip1.Location = New System.Drawing.Point(0, 427)
+        Me.ToolStrip1.Location = New System.Drawing.Point(0, 350)
         Me.ToolStrip1.Name = "ToolStrip1"
         Me.ToolStrip1.RenderMode = System.Windows.Forms.ToolStripRenderMode.System
-        Me.ToolStrip1.Size = New System.Drawing.Size(812, 25)
+        Me.ToolStrip1.Size = New System.Drawing.Size(531, 25)
         Me.ToolStrip1.TabIndex = 19
         Me.ToolStrip1.Text = "ToolStrip1"
         '
@@ -97,7 +97,7 @@ Partial Class FListTanaman
         '
         Me.cmbperpage.Items.AddRange(New Object() {"5", "10", "15", "20", "25", "50", "75", "100", "All"})
         Me.cmbperpage.Name = "cmbperpage"
-        Me.cmbperpage.Size = New System.Drawing.Size(99, 25)
+        Me.cmbperpage.Size = New System.Drawing.Size(75, 25)
         '
         'ToolStripLabel1
         '
@@ -136,7 +136,7 @@ Partial Class FListTanaman
         'txtPageCurrent
         '
         Me.txtPageCurrent.Name = "txtPageCurrent"
-        Me.txtPageCurrent.Size = New System.Drawing.Size(65, 25)
+        Me.txtPageCurrent.Size = New System.Drawing.Size(50, 25)
         Me.txtPageCurrent.TextBoxTextAlign = System.Windows.Forms.HorizontalAlignment.Center
         '
         'lCountPage
@@ -184,7 +184,7 @@ Partial Class FListTanaman
         Me.Tool1.Location = New System.Drawing.Point(0, 0)
         Me.Tool1.Name = "Tool1"
         Me.Tool1.RenderMode = System.Windows.Forms.ToolStripRenderMode.System
-        Me.Tool1.Size = New System.Drawing.Size(812, 39)
+        Me.Tool1.Size = New System.Drawing.Size(531, 39)
         Me.Tool1.TabIndex = 9
         Me.Tool1.Text = "Tool1"
         '
@@ -212,33 +212,29 @@ Partial Class FListTanaman
         '
         Me.ToolTextFind.Alignment = System.Windows.Forms.ToolStripItemAlignment.Right
         Me.ToolTextFind.Name = "ToolTextFind"
-        Me.ToolTextFind.Size = New System.Drawing.Size(332, 39)
+        Me.ToolTextFind.Size = New System.Drawing.Size(250, 39)
         '
         'ToolCheck
         '
-        Me.ToolCheck.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image
         Me.ToolCheck.Image = Global.SPA.My.Resources.Resources.check
         Me.ToolCheck.ImageTransparentColor = System.Drawing.Color.Magenta
         Me.ToolCheck.Name = "ToolCheck"
-        Me.ToolCheck.Size = New System.Drawing.Size(36, 36)
-        Me.ToolCheck.Text = "ToolStripButton1"
+        Me.ToolCheck.Size = New System.Drawing.Size(93, 36)
+        Me.ToolCheck.Text = "Pilih Data"
         Me.ToolCheck.ToolTipText = "Pilih Data"
         '
-        'FListTanaman
+        'FListNotaPenjualan
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(8.0!, 16.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(813, 452)
+        Me.ClientSize = New System.Drawing.Size(531, 375)
         Me.Controls.Add(Me.Panel1)
-        Me.Cursor = System.Windows.Forms.Cursors.Default
         Me.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
-        Me.MaximizeBox = False
-        Me.MinimizeBox = False
-        Me.Name = "FListTanaman"
+        Me.Name = "FListNotaPenjualan"
         Me.ShowInTaskbar = False
-        Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
-        Me.Text = "Data Tanaman"
+        Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent
+        Me.Text = "FListNotaPenjualan"
         Me.Panel1.ResumeLayout(False)
         Me.Panel1.PerformLayout()
         CType(Me.DataGridView1, System.ComponentModel.ISupportInitialize).EndInit()

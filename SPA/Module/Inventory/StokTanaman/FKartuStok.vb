@@ -1,9 +1,10 @@
-﻿Public Class FRekapStok
+﻿Public Class FKartuStok
     Private Model As New Rstockm
+    'Private ModelM As New MTanaman
     Public ListDataTanaman As List(Of Dictionary(Of String, Object)) = New MTanaman().GetDataList
     Private Sub FReport_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         'TODO: This line of code loads data into the 'simagroDataSet1.stock_all' table. You can move, or remove it, as needed.
-        'Me.stock_allTableAdapter.Fill(Me.simagroDataSet1.stock_all)
+        'Me.Stock_cardTableAdapter.Fill(Me.simagro.stock_card)
 
         DateTimePicker1.Format = DateTimePickerFormat.Custom
         DateTimePicker1.CustomFormat = MyApplication.DefaultFormatDate
@@ -17,8 +18,10 @@
         DateTimePicker1.Value = Format(Today.Date.Date.AddDays(-(Today.Day - 1)))
         DateTimePicker2.Value = Format(Date.Now)
         ComboBox3.SelectedIndex = 2
+
         TextBoxAutoComplete(TextBox1)
         TextBoxAutoComplete(TextBox2)
+
         showReport(DateTimePicker1.Value, DateTimePicker2.Value)
         Me.ReportViewer1.RefreshReport()
     End Sub
@@ -27,17 +30,17 @@
                            Optional noref1 As String = "",
                            Optional noref2 As String = "")
         Try
-            Dim ds As DataSet = Model.ReportStockAll(datestart, dateend, "RstockAll", viewtable, noref1, noref2)
+            Dim ds As DataSet = Model.ReportStockCard(datestart, dateend, "StockCard", viewtable, noref1, noref2)
             Dim param(1) As Microsoft.Reporting.WinForms.ReportParameter
-            param(0) = New Microsoft.Reporting.WinForms.ReportParameter("paramtitle", ComboBox3.Text.Substring(4))
-            param(1) = New Microsoft.Reporting.WinForms.ReportParameter("paramuser", MUsers.UserInfo()("fullname"))
+            param(0) = New Microsoft.Reporting.WinForms.ReportParameter("title", ComboBox3.Text.Substring(4))
+            param(1) = New Microsoft.Reporting.WinForms.ReportParameter("users", MUsers.UserInfo()("fullname"))
 
             With ReportViewer1
                 .ProcessingMode = Microsoft.Reporting.WinForms.ProcessingMode.Local
-                .LocalReport.ReportPath = MyApplication.ReportPath() & "DRStokTanaman.rdlc"
+                .LocalReport.ReportPath = MyApplication.ReportPath() & "DRKartuStok.rdlc"
                 .LocalReport.SetParameters(param)
                 .LocalReport.DataSources.Clear()
-                .LocalReport.DataSources.Add(New Microsoft.Reporting.WinForms.ReportDataSource("RstockAll", ds.Tables(0)))
+                .LocalReport.DataSources.Add(New Microsoft.Reporting.WinForms.ReportDataSource("StockCard", ds.Tables(0)))
                 .DocumentMapCollapsed = True
                 .Dock = DockStyle.Fill
                 .RefreshReport()
@@ -46,7 +49,7 @@
         Catch ex As Exception
             MyApplication.ShowStatus(ex.Message & vbCrLf & ex.StackTrace, WARNING_STAT)
         End Try
-        
+
     End Sub
 
     Private Sub Button1_Click(sender As Object, e As EventArgs) Handles Button1.Click
@@ -75,16 +78,6 @@
             DateTimePicker1.Value = DateTimePicker2.Value.AddDays(-1)
         End If
     End Sub
-
-    Public Sub New()
-
-        ' This call is required by the designer.
-        InitializeComponent()
-
-        ' Add any initialization after the InitializeComponent() call.
-
-    End Sub
-
 #Region "TextBoxAutoComplete"
     Public Sub addItems(ByVal col As AutoCompleteStringCollection)
         Try

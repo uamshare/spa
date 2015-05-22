@@ -12,14 +12,12 @@ Module MyApplication
     'Public PUSERID As Integer = 1
     Sub Main()
         If IsNothing(BaseConnection.GetInstance()) Or BaseConnection.GetInstance().State <= 0 Then
-            ShowStatus("Database is not Connected", ERROR_STAT, False)
+            'ShowStatus("Database is not Connected", ERROR_STAT, False)
             MainForm.MenuStrip.Enabled = False
+            SetServer.ShowDialog()
         Else
-            'MsgBox(MUsers.UserListMenuPrivileges()("menu501")("menuname").ToString)
+            MainForm.MenuStrip.Enabled = True
             MainForm.LoadMdiChildForm(FLogin, "")
-            'MainForm.RestrictUserMenu()
-            'ShowStatus("Ready")
-            'MainForm.MenuStrip.Visible = True
         End If
         'MainForm.Show()
     End Sub
@@ -131,4 +129,52 @@ Module MyApplication
         End If
         Return path
     End Function
+
+    Sub InitializeDataGridView(DG As DataGridView)
+
+        With DG
+            ' Initialize basic DataGridView properties.
+            .Dock = DockStyle.Fill
+            .BackgroundColor = Color.LightGray
+            .BorderStyle = BorderStyle.Fixed3D
+
+            ' Set property values appropriate for read-only display and  
+            ' limited interactivity. 
+            .AllowUserToAddRows = False
+            .AllowUserToDeleteRows = False
+            .AllowUserToOrderColumns = True
+            .ReadOnly = True
+            .SelectionMode = DataGridViewSelectionMode.FullRowSelect
+            .MultiSelect = True
+            .AutoSizeRowsMode = DataGridViewAutoSizeRowsMode.None
+            .AllowUserToResizeColumns = False
+            .ColumnHeadersHeightSizeMode = _
+                DataGridViewColumnHeadersHeightSizeMode.DisableResizing
+            .AllowUserToResizeRows = False
+            .RowHeadersWidthSizeMode = _
+                DataGridViewRowHeadersWidthSizeMode.DisableResizing
+
+            ' Set the selection background color for all the cells.
+            .DefaultCellStyle.SelectionBackColor = Color.SteelBlue 'Color.CornflowerBlue
+            .DefaultCellStyle.SelectionForeColor = Color.AliceBlue
+            .DefaultCellStyle.WrapMode = DataGridViewTriState.True
+
+            ' Set RowHeadersDefaultCellStyle.SelectionBackColor so that its default 
+            ' value won't override DataGridView.DefaultCellStyle.SelectionBackColor.
+            .RowHeadersDefaultCellStyle.SelectionBackColor = Color.Empty
+            '.RowHeadersDefaultCellStyle.Font = New Font(.Font, FontStyle.Bold)
+            .RowHeadersWidth = 100
+            ' Set the background color for all rows and for alternating rows.  
+            ' The value for alternating rows overrides the value for all rows. 
+            .RowsDefaultCellStyle.BackColor = Color.LightGray
+            .AlternatingRowsDefaultCellStyle.BackColor = Color.DarkGray
+
+            ' Set the row and column header styles.
+            .ColumnHeadersDefaultCellStyle.ForeColor = Color.White
+            .ColumnHeadersDefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter
+            .ColumnHeadersHeight = 35
+            .ColumnHeadersDefaultCellStyle.BackColor = Color.Black
+            .RowHeadersDefaultCellStyle.BackColor = Color.Black
+        End With
+    End Sub
 End Module
