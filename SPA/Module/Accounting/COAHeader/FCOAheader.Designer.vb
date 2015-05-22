@@ -63,10 +63,11 @@ Partial Class FCOAheader
         Me.Panelbarang.Controls.Add(Me.DataGridView1)
         Me.Panelbarang.Controls.Add(Me.ToolStrip1)
         Me.Panelbarang.Controls.Add(Me.Toolbarang)
-        Me.Panelbarang.Dock = System.Windows.Forms.DockStyle.Left
+        Me.Panelbarang.Dock = System.Windows.Forms.DockStyle.Fill
+        Me.Panelbarang.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Panelbarang.Location = New System.Drawing.Point(0, 0)
         Me.Panelbarang.Name = "Panelbarang"
-        Me.Panelbarang.Size = New System.Drawing.Size(1243, 555)
+        Me.Panelbarang.Size = New System.Drawing.Size(747, 406)
         Me.Panelbarang.TabIndex = 12
         '
         'DataGridView1
@@ -74,7 +75,7 @@ Partial Class FCOAheader
         Me.DataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
         Me.DataGridView1.Location = New System.Drawing.Point(3, 39)
         Me.DataGridView1.Name = "DataGridView1"
-        Me.DataGridView1.Size = New System.Drawing.Size(1237, 488)
+        Me.DataGridView1.Size = New System.Drawing.Size(733, 338)
         Me.DataGridView1.TabIndex = 20
         '
         'ToolStrip1
@@ -83,10 +84,10 @@ Partial Class FCOAheader
         Me.ToolStrip1.Dock = System.Windows.Forms.DockStyle.Bottom
         Me.ToolStrip1.GripStyle = System.Windows.Forms.ToolStripGripStyle.Hidden
         Me.ToolStrip1.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.ToolStripLabelbarang, Me.cmbperPage, Me.ToolStripLabel1, Me.ToolStripSeparator3, Me.ToolFisrt, Me.ToolPrev, Me.ToolStripSeparator1, Me.txtPageCurrent, Me.lCountPage, Me.ToolStripSeparator2, Me.ToolNext, Me.ToolLast, Me.lpageInfo, Me.ToolStripButton1})
-        Me.ToolStrip1.Location = New System.Drawing.Point(0, 530)
+        Me.ToolStrip1.Location = New System.Drawing.Point(0, 381)
         Me.ToolStrip1.Name = "ToolStrip1"
         Me.ToolStrip1.RenderMode = System.Windows.Forms.ToolStripRenderMode.System
-        Me.ToolStrip1.Size = New System.Drawing.Size(1243, 25)
+        Me.ToolStrip1.Size = New System.Drawing.Size(747, 25)
         Me.ToolStrip1.TabIndex = 19
         Me.ToolStrip1.Text = "ToolStrip1"
         '
@@ -196,7 +197,7 @@ Partial Class FCOAheader
         Me.Toolbarang.Location = New System.Drawing.Point(0, 0)
         Me.Toolbarang.Name = "Toolbarang"
         Me.Toolbarang.RenderMode = System.Windows.Forms.ToolStripRenderMode.System
-        Me.Toolbarang.Size = New System.Drawing.Size(1243, 39)
+        Me.Toolbarang.Size = New System.Drawing.Size(747, 39)
         Me.Toolbarang.TabIndex = 9
         Me.Toolbarang.Text = "Tool1"
         '
@@ -279,9 +280,10 @@ Partial Class FCOAheader
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(1242, 555)
+        Me.ClientSize = New System.Drawing.Size(747, 406)
         Me.Controls.Add(Me.Panelbarang)
         Me.Name = "FCOAheader"
+        Me.ShowInTaskbar = False
         Me.Text = "COA Header"
         Me.TopMost = True
         Me.Panelbarang.ResumeLayout(False)

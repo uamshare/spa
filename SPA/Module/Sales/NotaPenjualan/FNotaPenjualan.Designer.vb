@@ -598,7 +598,7 @@ Partial Class FNotaPenjualan
         Me.Margin = New System.Windows.Forms.Padding(4)
         Me.Name = "FNotaPenjualan"
         Me.ShowInTaskbar = False
-        Me.Text = "FNotaPenjualan"
+        Me.Text = "Nota Penjualan"
         Me.ContextMenuStrip1.ResumeLayout(False)
         CType(Me.DataGridView1, System.ComponentModel.ISupportInitialize).EndInit()
         Me.Tool1.ResumeLayout(False)

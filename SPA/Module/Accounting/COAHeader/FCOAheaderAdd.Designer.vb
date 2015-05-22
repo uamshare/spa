@@ -191,8 +191,7 @@ Partial Class FCOAheaderAdd
         '
         Me.statmsg.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.statmsg.Name = "statmsg"
-        Me.statmsg.Size = New System.Drawing.Size(105, 17)
-        Me.statmsg.Text = "Status Message"
+        Me.statmsg.Size = New System.Drawing.Size(0, 17)
         '
         'KeyID
         '
@@ -226,6 +225,7 @@ Partial Class FCOAheaderAdd
         Me.MaximizeBox = False
         Me.MinimizeBox = False
         Me.Name = "FCOAheaderAdd"
+        Me.ShowInTaskbar = False
         Me.Text = "Master COA"
         Me.StatusStrip1.ResumeLayout(False)
         Me.StatusStrip1.PerformLayout()

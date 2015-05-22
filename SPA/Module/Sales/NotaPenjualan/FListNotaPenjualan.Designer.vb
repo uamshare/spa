@@ -58,7 +58,7 @@ Partial Class FListNotaPenjualan
         Me.Panel1.Controls.Add(Me.Tool1)
         Me.Panel1.Dock = System.Windows.Forms.DockStyle.Fill
         Me.Panel1.Location = New System.Drawing.Point(0, 0)
-        Me.Panel1.Margin = New System.Windows.Forms.Padding(5, 5, 5, 5)
+        Me.Panel1.Margin = New System.Windows.Forms.Padding(5)
         Me.Panel1.Name = "Panel1"
         Me.Panel1.Size = New System.Drawing.Size(531, 375)
         Me.Panel1.TabIndex = 10
@@ -68,7 +68,7 @@ Partial Class FListNotaPenjualan
         Me.DataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
         Me.DataGridView1.Cursor = System.Windows.Forms.Cursors.Default
         Me.DataGridView1.Location = New System.Drawing.Point(5, 62)
-        Me.DataGridView1.Margin = New System.Windows.Forms.Padding(5, 5, 5, 5)
+        Me.DataGridView1.Margin = New System.Windows.Forms.Padding(5)
         Me.DataGridView1.Name = "DataGridView1"
         Me.DataGridView1.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect
         Me.DataGridView1.Size = New System.Drawing.Size(450, 241)
@@ -230,11 +230,11 @@ Partial Class FListNotaPenjualan
         Me.ClientSize = New System.Drawing.Size(531, 375)
         Me.Controls.Add(Me.Panel1)
         Me.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.Margin = New System.Windows.Forms.Padding(4)
         Me.Name = "FListNotaPenjualan"
         Me.ShowInTaskbar = False
         Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent
-        Me.Text = "FListNotaPenjualan"
+        Me.Text = "Data Nota Penjualan"
         Me.Panel1.ResumeLayout(False)
         Me.Panel1.PerformLayout()
         CType(Me.DataGridView1, System.ComponentModel.ISupportInitialize).EndInit()

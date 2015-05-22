@@ -263,7 +263,7 @@ Partial Class FAkunPosting
         Me.Panelbarang.Controls.Add(Me.Toolbarang)
         Me.Panelbarang.Dock = System.Windows.Forms.DockStyle.Fill
         Me.Panelbarang.Location = New System.Drawing.Point(0, 0)
-        Me.Panelbarang.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.Panelbarang.Margin = New System.Windows.Forms.Padding(4)
         Me.Panelbarang.Name = "Panelbarang"
         Me.Panelbarang.Size = New System.Drawing.Size(692, 377)
         Me.Panelbarang.TabIndex = 14
@@ -272,7 +272,7 @@ Partial Class FAkunPosting
         '
         Me.DataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
         Me.DataGridView1.Location = New System.Drawing.Point(0, 47)
-        Me.DataGridView1.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.DataGridView1.Margin = New System.Windows.Forms.Padding(4)
         Me.DataGridView1.Name = "DataGridView1"
         Me.DataGridView1.Size = New System.Drawing.Size(691, 297)
         Me.DataGridView1.TabIndex = 20
@@ -284,8 +284,9 @@ Partial Class FAkunPosting
         Me.ClientSize = New System.Drawing.Size(692, 377)
         Me.Controls.Add(Me.Panelbarang)
         Me.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.Margin = New System.Windows.Forms.Padding(4)
         Me.Name = "FAkunPosting"
+        Me.ShowInTaskbar = False
         Me.Text = "Akun Posting Otomatis"
         Me.ToolStrip1.ResumeLayout(False)
         Me.ToolStrip1.PerformLayout()

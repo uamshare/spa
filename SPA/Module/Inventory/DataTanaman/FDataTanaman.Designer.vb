@@ -45,11 +45,11 @@ Partial Class FDataTanaman
         Me.ToolAdd = New System.Windows.Forms.ToolStripButton()
         Me.ToolEdit = New System.Windows.Forms.ToolStripButton()
         Me.ToolDelete = New System.Windows.Forms.ToolStripButton()
+        Me.toolPrint = New System.Windows.Forms.ToolStripButton()
         Me.ToolHelp = New System.Windows.Forms.ToolStripButton()
         Me.ToolRefresh = New System.Windows.Forms.ToolStripButton()
         Me.ToolFind = New System.Windows.Forms.ToolStripButton()
         Me.ToolTextFind = New System.Windows.Forms.ToolStripTextBox()
-        Me.toolPrint = New System.Windows.Forms.ToolStripButton()
         Me.PrintDocument1 = New System.Drawing.Printing.PrintDocument()
         Me.Panelbarang.SuspendLayout()
         CType(Me.DataGridViewTanaman, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -69,16 +69,18 @@ Partial Class FDataTanaman
         Me.Panelbarang.Controls.Add(Me.Toolbarang)
         Me.Panelbarang.Dock = System.Windows.Forms.DockStyle.Fill
         Me.Panelbarang.Location = New System.Drawing.Point(0, 0)
+        Me.Panelbarang.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
         Me.Panelbarang.Name = "Panelbarang"
-        Me.Panelbarang.Size = New System.Drawing.Size(825, 527)
+        Me.Panelbarang.Size = New System.Drawing.Size(1100, 649)
         Me.Panelbarang.TabIndex = 9
         '
         'DataGridViewTanaman
         '
         Me.DataGridViewTanaman.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
-        Me.DataGridViewTanaman.Location = New System.Drawing.Point(3, 41)
+        Me.DataGridViewTanaman.Location = New System.Drawing.Point(4, 50)
+        Me.DataGridViewTanaman.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
         Me.DataGridViewTanaman.Name = "DataGridViewTanaman"
-        Me.DataGridViewTanaman.Size = New System.Drawing.Size(707, 458)
+        Me.DataGridViewTanaman.Size = New System.Drawing.Size(943, 564)
         Me.DataGridViewTanaman.TabIndex = 20
         '
         'ToolStrip1
@@ -87,10 +89,10 @@ Partial Class FDataTanaman
         Me.ToolStrip1.Dock = System.Windows.Forms.DockStyle.Bottom
         Me.ToolStrip1.GripStyle = System.Windows.Forms.ToolStripGripStyle.Hidden
         Me.ToolStrip1.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.ToolStripLabelbarang, Me.cmbperPage, Me.ToolStripLabel1, Me.ToolStripSeparator3, Me.ToolFisrt, Me.ToolPrev, Me.ToolStripSeparator1, Me.txtPageCurrent, Me.lCountPage, Me.ToolStripSeparator2, Me.ToolNext, Me.ToolLast, Me.lpageInfo, Me.ToolStripButton1})
-        Me.ToolStrip1.Location = New System.Drawing.Point(0, 502)
+        Me.ToolStrip1.Location = New System.Drawing.Point(0, 624)
         Me.ToolStrip1.Name = "ToolStrip1"
         Me.ToolStrip1.RenderMode = System.Windows.Forms.ToolStripRenderMode.System
-        Me.ToolStrip1.Size = New System.Drawing.Size(825, 25)
+        Me.ToolStrip1.Size = New System.Drawing.Size(1100, 25)
         Me.ToolStrip1.TabIndex = 19
         Me.ToolStrip1.Text = "ToolStrip1"
         '
@@ -200,7 +202,7 @@ Partial Class FDataTanaman
         Me.Toolbarang.Location = New System.Drawing.Point(0, 0)
         Me.Toolbarang.Name = "Toolbarang"
         Me.Toolbarang.RenderMode = System.Windows.Forms.ToolStripRenderMode.System
-        Me.Toolbarang.Size = New System.Drawing.Size(825, 39)
+        Me.Toolbarang.Size = New System.Drawing.Size(1100, 39)
         Me.Toolbarang.TabIndex = 9
         Me.Toolbarang.Text = "Tool1"
         '
@@ -230,6 +232,15 @@ Partial Class FDataTanaman
         Me.ToolDelete.Name = "ToolDelete"
         Me.ToolDelete.Size = New System.Drawing.Size(36, 36)
         Me.ToolDelete.Text = "Del"
+        '
+        'toolPrint
+        '
+        Me.toolPrint.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image
+        Me.toolPrint.Image = Global.SPA.My.Resources.Resources.print2
+        Me.toolPrint.ImageTransparentColor = System.Drawing.Color.Magenta
+        Me.toolPrint.Name = "toolPrint"
+        Me.toolPrint.Size = New System.Drawing.Size(36, 36)
+        Me.toolPrint.ToolTipText = "Import to Excel"
         '
         'ToolHelp
         '
@@ -266,22 +277,16 @@ Partial Class FDataTanaman
         Me.ToolTextFind.Name = "ToolTextFind"
         Me.ToolTextFind.Size = New System.Drawing.Size(250, 39)
         '
-        'toolPrint
-        '
-        Me.toolPrint.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image
-        Me.toolPrint.Image = Global.SPA.My.Resources.Resources.print2
-        Me.toolPrint.ImageTransparentColor = System.Drawing.Color.Magenta
-        Me.toolPrint.Name = "toolPrint"
-        Me.toolPrint.Size = New System.Drawing.Size(36, 36)
-        Me.toolPrint.ToolTipText = "Import to Excel"
-        '
         'FDataTanaman
         '
-        Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
+        Me.AutoScaleDimensions = New System.Drawing.SizeF(8.0!, 16.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(825, 527)
+        Me.ClientSize = New System.Drawing.Size(1100, 649)
         Me.Controls.Add(Me.Panelbarang)
+        Me.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
         Me.Name = "FDataTanaman"
+        Me.ShowInTaskbar = False
         Me.Text = "Data Tanaman"
         Me.Panelbarang.ResumeLayout(False)
         Me.Panelbarang.PerformLayout()

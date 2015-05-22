@@ -122,7 +122,7 @@ Partial Class FjenisBibitTanaman
         Me.Toolbarang.Location = New System.Drawing.Point(0, 0)
         Me.Toolbarang.Name = "Toolbarang"
         Me.Toolbarang.RenderMode = System.Windows.Forms.ToolStripRenderMode.System
-        Me.Toolbarang.Size = New System.Drawing.Size(467, 39)
+        Me.Toolbarang.Size = New System.Drawing.Size(623, 39)
         Me.Toolbarang.TabIndex = 9
         Me.Toolbarang.Text = "Tool1"
         '
@@ -130,7 +130,7 @@ Partial Class FjenisBibitTanaman
         '
         Me.ToolTextFind.Alignment = System.Windows.Forms.ToolStripItemAlignment.Right
         Me.ToolTextFind.Name = "ToolTextFind"
-        Me.ToolTextFind.Size = New System.Drawing.Size(250, 39)
+        Me.ToolTextFind.Size = New System.Drawing.Size(332, 39)
         '
         'ToolPrint
         '
@@ -147,14 +147,14 @@ Partial Class FjenisBibitTanaman
         Me.ToolStripButton1.ImageAlign = System.Drawing.ContentAlignment.TopCenter
         Me.ToolStripButton1.ImageTransparentColor = System.Drawing.Color.Magenta
         Me.ToolStripButton1.Name = "ToolStripButton1"
-        Me.ToolStripButton1.Size = New System.Drawing.Size(23, 4)
+        Me.ToolStripButton1.Size = New System.Drawing.Size(23, 22)
         Me.ToolStripButton1.Text = "ToolStripButton1"
         '
         'lpageInfo
         '
         Me.lpageInfo.Alignment = System.Windows.Forms.ToolStripItemAlignment.Right
         Me.lpageInfo.Name = "lpageInfo"
-        Me.lpageInfo.Size = New System.Drawing.Size(102, 15)
+        Me.lpageInfo.Size = New System.Drawing.Size(102, 22)
         Me.lpageInfo.Text = "1 - 20 as 100 Rows"
         '
         'ToolLast
@@ -183,7 +183,7 @@ Partial Class FjenisBibitTanaman
         'txtPageCurrent
         '
         Me.txtPageCurrent.Name = "txtPageCurrent"
-        Me.txtPageCurrent.Size = New System.Drawing.Size(50, 25)
+        Me.txtPageCurrent.Size = New System.Drawing.Size(65, 25)
         Me.txtPageCurrent.TextBoxTextAlign = System.Windows.Forms.HorizontalAlignment.Center
         '
         'ToolStripSeparator1
@@ -224,7 +224,7 @@ Partial Class FjenisBibitTanaman
         '
         Me.cmbperPage.Items.AddRange(New Object() {"5", "10", "15", "20", "25", "50", "75", "100", "All"})
         Me.cmbperPage.Name = "cmbperPage"
-        Me.cmbperPage.Size = New System.Drawing.Size(75, 25)
+        Me.cmbperPage.Size = New System.Drawing.Size(99, 25)
         '
         'ToolStripLabelbarang
         '
@@ -238,10 +238,10 @@ Partial Class FjenisBibitTanaman
         Me.ToolStrip1.Dock = System.Windows.Forms.DockStyle.Bottom
         Me.ToolStrip1.GripStyle = System.Windows.Forms.ToolStripGripStyle.Hidden
         Me.ToolStrip1.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.ToolStripLabelbarang, Me.cmbperPage, Me.ToolStripLabel1, Me.ToolStripSeparator3, Me.ToolFisrt, Me.ToolPrev, Me.ToolStripSeparator1, Me.txtPageCurrent, Me.lCountPage, Me.ToolStripSeparator2, Me.ToolNext, Me.ToolLast, Me.lpageInfo, Me.ToolStripButton1})
-        Me.ToolStrip1.Location = New System.Drawing.Point(0, 566)
+        Me.ToolStrip1.Location = New System.Drawing.Point(0, 702)
         Me.ToolStrip1.Name = "ToolStrip1"
         Me.ToolStrip1.RenderMode = System.Windows.Forms.ToolStripRenderMode.System
-        Me.ToolStrip1.Size = New System.Drawing.Size(467, 25)
+        Me.ToolStrip1.Size = New System.Drawing.Size(623, 25)
         Me.ToolStrip1.TabIndex = 19
         Me.ToolStrip1.Text = "ToolStrip1"
         '
@@ -259,16 +259,18 @@ Partial Class FjenisBibitTanaman
         Me.Panelbarang.Controls.Add(Me.Toolbarang)
         Me.Panelbarang.Dock = System.Windows.Forms.DockStyle.Left
         Me.Panelbarang.Location = New System.Drawing.Point(0, 0)
+        Me.Panelbarang.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
         Me.Panelbarang.Name = "Panelbarang"
-        Me.Panelbarang.Size = New System.Drawing.Size(467, 591)
+        Me.Panelbarang.Size = New System.Drawing.Size(623, 727)
         Me.Panelbarang.TabIndex = 10
         '
         'DataGridView1
         '
         Me.DataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
-        Me.DataGridView1.Location = New System.Drawing.Point(3, 39)
+        Me.DataGridView1.Location = New System.Drawing.Point(4, 48)
+        Me.DataGridView1.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
         Me.DataGridView1.Name = "DataGridView1"
-        Me.DataGridView1.Size = New System.Drawing.Size(464, 524)
+        Me.DataGridView1.Size = New System.Drawing.Size(619, 645)
         Me.DataGridView1.TabIndex = 20
         '
         'PrintDialog1
@@ -277,10 +279,12 @@ Partial Class FjenisBibitTanaman
         '
         'FjenisBibitTanaman
         '
-        Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
+        Me.AutoScaleDimensions = New System.Drawing.SizeF(8.0!, 16.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(468, 591)
+        Me.ClientSize = New System.Drawing.Size(624, 727)
         Me.Controls.Add(Me.Panelbarang)
+        Me.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
         Me.Name = "FjenisBibitTanaman"
         Me.ShowInTaskbar = False
         Me.Text = "Jenis Biit Tanaman"

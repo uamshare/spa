@@ -49,8 +49,7 @@ Partial Class FKlasifikasiAdd
         'statmsg
         '
         Me.statmsg.Name = "statmsg"
-        Me.statmsg.Size = New System.Drawing.Size(100, 17)
-        Me.statmsg.Text = "Status Message"
+        Me.statmsg.Size = New System.Drawing.Size(0, 17)
         '
         'txtGroupName
         '
@@ -64,7 +63,7 @@ Partial Class FKlasifikasiAdd
         'txtKlasifikasiName
         '
         Me.txtKlasifikasiName.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.txtKlasifikasiName.Location = New System.Drawing.Point(109, 45)
+        Me.txtKlasifikasiName.Location = New System.Drawing.Point(109, 32)
         Me.txtKlasifikasiName.MaxLength = 100
         Me.txtKlasifikasiName.Name = "txtKlasifikasiName"
         Me.txtKlasifikasiName.Size = New System.Drawing.Size(235, 22)
@@ -84,7 +83,7 @@ Partial Class FKlasifikasiAdd
         '
         Me.Label2.AutoSize = True
         Me.Label2.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label2.Location = New System.Drawing.Point(9, 48)
+        Me.Label2.Location = New System.Drawing.Point(9, 35)
         Me.Label2.Name = "Label2"
         Me.Label2.Size = New System.Drawing.Size(99, 16)
         Me.Label2.TabIndex = 23
@@ -154,6 +153,7 @@ Partial Class FKlasifikasiAdd
         Me.MaximizeBox = False
         Me.MinimizeBox = False
         Me.Name = "FKlasifikasiAdd"
+        Me.ShowInTaskbar = False
         Me.Text = "FKlasifikasiAdd"
         Me.StatusStrip1.ResumeLayout(False)
         Me.StatusStrip1.PerformLayout()

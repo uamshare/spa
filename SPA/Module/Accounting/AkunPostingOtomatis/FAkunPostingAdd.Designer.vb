@@ -295,8 +295,7 @@ Partial Class FAkunPostingAdd
         '
         Me.statmsg.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.statmsg.Name = "statmsg"
-        Me.statmsg.Size = New System.Drawing.Size(105, 17)
-        Me.statmsg.Text = "Status Message"
+        Me.statmsg.Size = New System.Drawing.Size(0, 17)
         '
         'txtMapoID
         '
@@ -323,6 +322,7 @@ Partial Class FAkunPostingAdd
         Me.MaximizeBox = False
         Me.MinimizeBox = False
         Me.Name = "FAkunPostingAdd"
+        Me.ShowInTaskbar = False
         Me.Text = "Akun Posting Otomatis"
         Me.GroupBox1.ResumeLayout(False)
         Me.GroupBox1.PerformLayout()

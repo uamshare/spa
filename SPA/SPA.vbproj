@@ -362,6 +362,8 @@
     </Compile>
     <Compile Include="Module\Sales\NotaPenjualan\MNotaPenjualanD.vb" />
     <Compile Include="Module\Sales\NotaPenjualan\MNotaPenjualanH.vb" />
+    <Compile Include="Module\Sales\ReturPenjualan\MReturPenjualanD.vb" />
+    <Compile Include="Module\Sales\ReturPenjualan\MReturPenjualanH.vb" />
     <Compile Include="Module\SetServer.Designer.vb">
       <DependentUpon>SetServer.vb</DependentUpon>
     </Compile>

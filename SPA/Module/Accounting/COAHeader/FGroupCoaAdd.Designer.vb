@@ -45,8 +45,7 @@ Partial Class FGroupCoaAdd
         'statmsg
         '
         Me.statmsg.Name = "statmsg"
-        Me.statmsg.Size = New System.Drawing.Size(100, 17)
-        Me.statmsg.Text = "Status Message"
+        Me.statmsg.Size = New System.Drawing.Size(0, 17)
         '
         'txtGroupName
         '
@@ -110,6 +109,7 @@ Partial Class FGroupCoaAdd
         Me.MaximizeBox = False
         Me.MinimizeBox = False
         Me.Name = "FGroupCoaAdd"
+        Me.ShowInTaskbar = False
         Me.Text = "FGroupCoaAdd"
         Me.StatusStrip1.ResumeLayout(False)
         Me.StatusStrip1.PerformLayout()

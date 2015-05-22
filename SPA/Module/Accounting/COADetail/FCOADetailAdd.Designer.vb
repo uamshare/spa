@@ -60,7 +60,7 @@ Partial Class FCOADetailAdd
         '
         Me.Label1.AutoSize = True
         Me.Label1.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label1.Location = New System.Drawing.Point(25, 13)
+        Me.Label1.Location = New System.Drawing.Point(25, 12)
         Me.Label1.Name = "Label1"
         Me.Label1.Size = New System.Drawing.Size(85, 16)
         Me.Label1.TabIndex = 19
@@ -70,7 +70,7 @@ Partial Class FCOADetailAdd
         '
         Me.Label2.AutoSize = True
         Me.Label2.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label2.Location = New System.Drawing.Point(25, 45)
+        Me.Label2.Location = New System.Drawing.Point(25, 35)
         Me.Label2.Name = "Label2"
         Me.Label2.Size = New System.Drawing.Size(59, 16)
         Me.Label2.TabIndex = 20
@@ -80,7 +80,7 @@ Partial Class FCOADetailAdd
         '
         Me.Label3.AutoSize = True
         Me.Label3.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label3.Location = New System.Drawing.Point(25, 81)
+        Me.Label3.Location = New System.Drawing.Point(25, 61)
         Me.Label3.Name = "Label3"
         Me.Label3.Size = New System.Drawing.Size(78, 16)
         Me.Label3.TabIndex = 21
@@ -98,7 +98,7 @@ Partial Class FCOADetailAdd
         'txtCoaDetail
         '
         Me.txtCoaDetail.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.txtCoaDetail.Location = New System.Drawing.Point(127, 42)
+        Me.txtCoaDetail.Location = New System.Drawing.Point(127, 34)
         Me.txtCoaDetail.MaxLength = 6
         Me.txtCoaDetail.Name = "txtCoaDetail"
         Me.txtCoaDetail.Size = New System.Drawing.Size(100, 22)
@@ -107,7 +107,7 @@ Partial Class FCOADetailAdd
         'txtNamaAkun
         '
         Me.txtNamaAkun.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.txtNamaAkun.Location = New System.Drawing.Point(127, 78)
+        Me.txtNamaAkun.Location = New System.Drawing.Point(127, 58)
         Me.txtNamaAkun.MaxLength = 35
         Me.txtNamaAkun.Name = "txtNamaAkun"
         Me.txtNamaAkun.Size = New System.Drawing.Size(318, 22)
@@ -179,6 +179,7 @@ Partial Class FCOADetailAdd
         Me.MaximizeBox = False
         Me.MinimizeBox = False
         Me.Name = "FCOADetailAdd"
+        Me.ShowInTaskbar = False
         Me.Text = "COA Detail"
         Me.StatusStrip1.ResumeLayout(False)
         Me.StatusStrip1.PerformLayout()

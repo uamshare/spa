@@ -66,7 +66,7 @@ Partial Class FGroupCOA
         Me.Panelbarang.Dock = System.Windows.Forms.DockStyle.Left
         Me.Panelbarang.Location = New System.Drawing.Point(0, 0)
         Me.Panelbarang.Name = "Panelbarang"
-        Me.Panelbarang.Size = New System.Drawing.Size(502, 572)
+        Me.Panelbarang.Size = New System.Drawing.Size(526, 572)
         Me.Panelbarang.TabIndex = 12
         '
         'DataGridView1
@@ -74,7 +74,7 @@ Partial Class FGroupCOA
         Me.DataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
         Me.DataGridView1.Location = New System.Drawing.Point(0, 37)
         Me.DataGridView1.Name = "DataGridView1"
-        Me.DataGridView1.Size = New System.Drawing.Size(504, 507)
+        Me.DataGridView1.Size = New System.Drawing.Size(523, 507)
         Me.DataGridView1.TabIndex = 20
         '
         'ToolStrip1
@@ -86,7 +86,7 @@ Partial Class FGroupCOA
         Me.ToolStrip1.Location = New System.Drawing.Point(0, 547)
         Me.ToolStrip1.Name = "ToolStrip1"
         Me.ToolStrip1.RenderMode = System.Windows.Forms.ToolStripRenderMode.System
-        Me.ToolStrip1.Size = New System.Drawing.Size(502, 25)
+        Me.ToolStrip1.Size = New System.Drawing.Size(526, 25)
         Me.ToolStrip1.TabIndex = 19
         Me.ToolStrip1.Text = "ToolStrip1"
         '
@@ -196,7 +196,7 @@ Partial Class FGroupCOA
         Me.Toolbarang.Location = New System.Drawing.Point(0, 0)
         Me.Toolbarang.Name = "Toolbarang"
         Me.Toolbarang.RenderMode = System.Windows.Forms.ToolStripRenderMode.System
-        Me.Toolbarang.Size = New System.Drawing.Size(502, 39)
+        Me.Toolbarang.Size = New System.Drawing.Size(526, 39)
         Me.Toolbarang.TabIndex = 9
         Me.Toolbarang.Text = "Tool1"
         '
@@ -279,9 +279,10 @@ Partial Class FGroupCOA
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(503, 572)
+        Me.ClientSize = New System.Drawing.Size(527, 572)
         Me.Controls.Add(Me.Panelbarang)
         Me.Name = "FGroupCOA"
+        Me.ShowInTaskbar = False
         Me.Text = "Group COA"
         Me.Panelbarang.ResumeLayout(False)
         Me.Panelbarang.PerformLayout()

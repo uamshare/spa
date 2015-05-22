@@ -355,6 +355,7 @@ Partial Class FPelangganAdd
         Me.MaximizeBox = False
         Me.MinimizeBox = False
         Me.Name = "FPelangganAdd"
+        Me.ShowInTaskbar = False
         Me.Text = "Data Pelanggan"
         Me.GroupBox1.ResumeLayout(False)
         Me.GroupBox1.PerformLayout()

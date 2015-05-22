@@ -260,8 +260,7 @@ Partial Class FDataPenggunaAdd
         '
         Me.statmsg.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.statmsg.Name = "statmsg"
-        Me.statmsg.Size = New System.Drawing.Size(105, 17)
-        Me.statmsg.Text = "Status Message"
+        Me.statmsg.Size = New System.Drawing.Size(0, 17)
         '
         'txtKode
         '
@@ -310,6 +309,7 @@ Partial Class FDataPenggunaAdd
         Me.Controls.Add(Me.GroupBox2)
         Me.Controls.Add(Me.GroupBox1)
         Me.Name = "FDataPenggunaAdd"
+        Me.ShowInTaskbar = False
         Me.Text = "Data Pengguna"
         Me.GroupBox1.ResumeLayout(False)
         Me.GroupBox1.PerformLayout()

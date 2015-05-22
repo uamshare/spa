@@ -65,16 +65,18 @@ Partial Class FDataPengguna
         Me.Panelbarang.Controls.Add(Me.Toolbarang)
         Me.Panelbarang.Dock = System.Windows.Forms.DockStyle.Left
         Me.Panelbarang.Location = New System.Drawing.Point(0, 0)
+        Me.Panelbarang.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
         Me.Panelbarang.Name = "Panelbarang"
-        Me.Panelbarang.Size = New System.Drawing.Size(1006, 578)
+        Me.Panelbarang.Size = New System.Drawing.Size(1341, 711)
         Me.Panelbarang.TabIndex = 12
         '
         'DataGridView1
         '
         Me.DataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
-        Me.DataGridView1.Location = New System.Drawing.Point(3, 39)
+        Me.DataGridView1.Location = New System.Drawing.Point(4, 48)
+        Me.DataGridView1.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
         Me.DataGridView1.Name = "DataGridView1"
-        Me.DataGridView1.Size = New System.Drawing.Size(1001, 512)
+        Me.DataGridView1.Size = New System.Drawing.Size(1335, 630)
         Me.DataGridView1.TabIndex = 20
         '
         'ToolStrip1
@@ -83,10 +85,10 @@ Partial Class FDataPengguna
         Me.ToolStrip1.Dock = System.Windows.Forms.DockStyle.Bottom
         Me.ToolStrip1.GripStyle = System.Windows.Forms.ToolStripGripStyle.Hidden
         Me.ToolStrip1.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.ToolStripLabelbarang, Me.cmbperPage, Me.ToolStripLabel1, Me.ToolStripSeparator3, Me.ToolFisrt, Me.ToolPrev, Me.ToolStripSeparator1, Me.txtPageCurrent, Me.lCountPage, Me.ToolStripSeparator2, Me.ToolNext, Me.ToolLast, Me.lpageInfo, Me.ToolStripButton1})
-        Me.ToolStrip1.Location = New System.Drawing.Point(0, 553)
+        Me.ToolStrip1.Location = New System.Drawing.Point(0, 686)
         Me.ToolStrip1.Name = "ToolStrip1"
         Me.ToolStrip1.RenderMode = System.Windows.Forms.ToolStripRenderMode.System
-        Me.ToolStrip1.Size = New System.Drawing.Size(1006, 25)
+        Me.ToolStrip1.Size = New System.Drawing.Size(1341, 25)
         Me.ToolStrip1.TabIndex = 19
         Me.ToolStrip1.Text = "ToolStrip1"
         '
@@ -100,7 +102,7 @@ Partial Class FDataPengguna
         '
         Me.cmbperPage.Items.AddRange(New Object() {"5", "10", "15", "20", "25", "50", "75", "100", "All"})
         Me.cmbperPage.Name = "cmbperPage"
-        Me.cmbperPage.Size = New System.Drawing.Size(75, 25)
+        Me.cmbperPage.Size = New System.Drawing.Size(99, 25)
         '
         'ToolStripLabel1
         '
@@ -139,7 +141,7 @@ Partial Class FDataPengguna
         'txtPageCurrent
         '
         Me.txtPageCurrent.Name = "txtPageCurrent"
-        Me.txtPageCurrent.Size = New System.Drawing.Size(50, 25)
+        Me.txtPageCurrent.Size = New System.Drawing.Size(65, 25)
         Me.txtPageCurrent.TextBoxTextAlign = System.Windows.Forms.HorizontalAlignment.Center
         '
         'lCountPage
@@ -196,7 +198,7 @@ Partial Class FDataPengguna
         Me.Toolbarang.Location = New System.Drawing.Point(0, 0)
         Me.Toolbarang.Name = "Toolbarang"
         Me.Toolbarang.RenderMode = System.Windows.Forms.ToolStripRenderMode.System
-        Me.Toolbarang.Size = New System.Drawing.Size(1006, 39)
+        Me.Toolbarang.Size = New System.Drawing.Size(1341, 39)
         Me.Toolbarang.TabIndex = 9
         Me.Toolbarang.Text = "Tool1"
         '
@@ -269,7 +271,7 @@ Partial Class FDataPengguna
         '
         Me.ToolTextFind.Alignment = System.Windows.Forms.ToolStripItemAlignment.Right
         Me.ToolTextFind.Name = "ToolTextFind"
-        Me.ToolTextFind.Size = New System.Drawing.Size(250, 39)
+        Me.ToolTextFind.Size = New System.Drawing.Size(332, 39)
         '
         'PrintDialog1
         '
@@ -277,11 +279,14 @@ Partial Class FDataPengguna
         '
         'FDataPengguna
         '
-        Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
+        Me.AutoScaleDimensions = New System.Drawing.SizeF(8.0!, 16.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(1006, 578)
+        Me.ClientSize = New System.Drawing.Size(1341, 711)
         Me.Controls.Add(Me.Panelbarang)
+        Me.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
         Me.Name = "FDataPengguna"
+        Me.ShowInTaskbar = False
         Me.Text = "Data Pengguna"
         Me.Panelbarang.ResumeLayout(False)
         Me.Panelbarang.PerformLayout()
