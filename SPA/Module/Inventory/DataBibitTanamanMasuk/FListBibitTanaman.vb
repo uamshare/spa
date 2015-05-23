@@ -1,8 +1,8 @@
-﻿Public Class FListTanaman
+﻿Public Class FListBibitTanaman
     Dim dt As New DataTable
     Dim DGVColumnCheckIndex As Integer
 
-    Private Model As New MTanaman
+    Private Model As New MBibitTanaman
     Public DatagridParent As DataGridView
 
     Public Sub init()
@@ -292,5 +292,4 @@
     Private Sub ToolCheck_Click(sender As Object, e As EventArgs) Handles ToolCheck.Click
         DataGridView1_CellContentDoubleClick(sender, Nothing)
     End Sub
-
 End Class

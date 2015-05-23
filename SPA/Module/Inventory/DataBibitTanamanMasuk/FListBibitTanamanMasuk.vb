@@ -1,14 +1,14 @@
-﻿Public Class FListTanaman
+﻿Public Class FListBibitTanamanMasuk
     Dim dt As New DataTable
     Dim DGVColumnCheckIndex As Integer
 
-    Private Model As New MTanaman
-    Public DatagridParent As DataGridView
+    Private Model As New MDtBibitTanamanMasukH
+    'Public DatagridParent As DataGridView
 
     Public Sub init()
         Model.limitrecord = 25
         RetrieveData()
-        DataGridView1.ClearSelection()
+        'DataGridView1.ClearSelection()
     End Sub
     Private Sub FListTanaman_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         InitializeDataGridView()
@@ -74,24 +74,25 @@
                 .Columns.Clear()
 
                 .DataSource = dt
-                .Columns("mmtrhid").Visible = False
-                .Columns("mmtrid").HeaderText = "Kode"
-                .Columns("mmtrname").HeaderText = "Jenis Tanaman"
-                .Columns("polybag").HeaderText = "Polybag"
-                .Columns("mmtrunit").HeaderText = "Satuan"
-                .Columns("mmtrprice").HeaderText = "Harga Jual"
-                .Columns("PrimaryKey").Visible = False
-                .Columns("mmtrg").Visible = False
+                .Columns("userid").Visible = False
+                .Columns("dtcreated").Visible = False
+                .Columns("trcvmhno").HeaderText = "No Masuk"
+                .Columns("trcvmhdt").HeaderText = "Tanggal"
+                .Columns("pono").HeaderText = "No PO"
+                .Columns("podate").HeaderText = "Tgl PO"
+                .Columns("supplier").HeaderText = "Pemasok"
 
-                .RowHeadersWidth = 50
-                .Columns("mmtrid").Width = 100
-                .Columns("mmtrname").Width = 200
-                .Columns("polybag").Width = 75
-                .Columns("polybag").DefaultCellStyle().Alignment = DataGridViewContentAlignment.MiddleCenter
-                .Columns("mmtrunit").Width = 100
-                .Columns("mmtrprice").Width = 100
-                .Columns("mmtrprice").DefaultCellStyle().Format = "##,##0"
-                .Columns("mmtrprice").DefaultCellStyle().Alignment = DataGridViewContentAlignment.MiddleRight
+
+                .RowHeadersWidth = 75
+                .Columns("trcvmhno").Width = 130
+                .Columns("trcvmhdt").Width = 100
+                .Columns("trcvmhdt").DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter
+                .Columns("trcvmhdt").DefaultCellStyle.Format = MyApplication.DefaultFormatDate
+                .Columns("pono").Width = 100
+                .Columns("podate").Width = 100
+                .Columns("podate").DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter
+                .Columns("podate").DefaultCellStyle.Format = MyApplication.DefaultFormatDate
+                .Columns("supplier").Width = 300
                 .Refresh()
 
                 If .RowCount > 0 Then
@@ -131,13 +132,29 @@
     End Function
     Private Sub DataGridView1_CellContentDoubleClick(sender As Object, e As DataGridViewCellEventArgs) Handles DataGridView1.CellContentDoubleClick
         Try
-            If (DataGridView1.SelectedRows.Count > 0) Then
-                DatagridParent.CurrentRow.Cells("mmtrid").Value = DataGridView1.CurrentRow.Cells("mmtrid").Value()
-                DatagridParent.EndEdit()
+            If DataGridView1.SelectedRows.Count > 0 Then
+                FDataBibitTanamanMasuk.TxtNo.Text = DataGridView1.CurrentRow.Cells("trcvmhno").Value()
+                'FTanamanMasuk.txtdtcreated.Text = DataGridView1.CurrentRow.Cells("dtcreated").Value()
+                FDataBibitTanamanMasuk.DateTimePicker1.Value = DataGridView1.CurrentRow.Cells("trcvmhdt").Value()
+                FDataBibitTanamanMasuk.TextBox1.Text = DataGridView1.CurrentRow.Cells("pono").Value()
+                FDataBibitTanamanMasuk.DateTimePicker2.Value = DataGridView1.CurrentRow.Cells("trcvmhdt").Value()
+                FDataBibitTanamanMasuk.TextBox3.Text = DataGridView1.CurrentRow.Cells("supplier").Value()
+
+                FDataBibitTanamanMasuk.ButtonAdd.Enabled = False
+                FDataBibitTanamanMasuk.ButtonSave.Enabled = True
+                FDataBibitTanamanMasuk.ButtonDel.Enabled = True
+                FDataBibitTanamanMasuk.ButtonPrint.Enabled = False
+                FDataBibitTanamanMasuk.ButtonCancel.Enabled = True
+                FDataBibitTanamanMasuk.ButtonH.Enabled = True
+
+                FDataBibitTanamanMasuk.DataGridView1.Enabled = True
+                FDataBibitTanamanMasuk.ToolDelete.Enabled = True
+                FDataBibitTanamanMasuk.TextBox1.Focus()
                 Me.Close()
             Else
                 MyApplication.ShowStatus("Tidak ada data terpilih", NOTICE_STAT)
             End If
+
         Catch ex As Exception
             MyApplication.ShowStatus(ex.Message & vbCrLf & ex.StackTrace, WARNING_STAT)
         End Try
@@ -281,16 +298,11 @@
     End Sub
     Private Sub ToolFind_Click(sender As Object, e As EventArgs) Handles ToolFind.Click
         Model.startRecord = 0
-        'If Not String.IsNullOrEmpty(ToolFind.Text) Then
         RetrieveData(ToolTextFind.Text)
-        'Else
-        '    RetrieveData()
-        'End If
     End Sub
 #End Region
 
     Private Sub ToolCheck_Click(sender As Object, e As EventArgs) Handles ToolCheck.Click
         DataGridView1_CellContentDoubleClick(sender, Nothing)
     End Sub
-
 End Class

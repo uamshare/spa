@@ -1,9 +1,10 @@
-﻿Public Class FTanamanMasuk
-    Private ModelH As New MTanamanMasukH
-    Private ModelD As New MTanamanMasukD
-    Private ModelM As New MTanaman
+﻿Public Class FDataBibitTanamanMasuk
 
-    Public ListDataTanaman As List(Of Dictionary(Of String, Object)) '= ModelM.GetDataList
+    Private ModelH As New MDtBibitTanamanMasukH
+    Private ModelD As New MDataBibitTanamanMasukD
+    Private ModelM As New MBibitTanaman
+
+    Public ListDataBibitTanaman As List(Of Dictionary(Of String, Object)) '= ModelM.GetDataList
     Private isEdit As Boolean = False
     Public Sub init()
         Me.isEdit = False
@@ -218,14 +219,14 @@
                         DataGridView1.Rows.Add()
                         DataGridView1.CurrentCell = DataGridView1(e.ColumnIndex, e.RowIndex)
                     End If
-                    FListTanaman.DatagridParent = DataGridView1
-                    FListTanaman.ShowDialog(Me)
+                    FListBibitTanaman.DatagridParent = DataGridView1
+                    FListBibitTanaman.ShowDialog(Me)
                 End If
             End If
         Catch ex As Exception
             MyApplication.ShowStatus(ex.Message & vbCrLf & ex.StackTrace, WARNING_STAT)
         End Try
-        
+
     End Sub
     Private Sub DataGridView1_CellLeave(sender As Object, e As DataGridViewCellEventArgs) Handles DataGridView1.CellLeave
         DataGridView1_CellValueChanged(sender, e)
@@ -255,7 +256,7 @@
                 End If
                 If DataGridView1.Columns(e.ColumnIndex).Name = "mmtrid" Then
                     If CekDuplicateID(DataGridView1.Rows(e.RowIndex).Cells("mmtrid").Value, e.RowIndex) Then
-                        For Each dat In ListDataTanaman
+                        For Each dat In ListDataBibitTanaman
                             'col.Add(dat("mmtrid"))
                             If dat("mmtrid") = DataGridView1.Rows(e.RowIndex).Cells("mmtrid").Value Then
                                 DataGridView1.Rows(e.RowIndex).Cells("mmtrhname").Value = dat("mmtrname") 'ListDataTanaman(1)("mmtrname")
@@ -357,7 +358,7 @@
     End Sub
     Public Sub addItems(ByVal col As AutoCompleteStringCollection)
         Try
-            For Each dat In ListDataTanaman
+            For Each dat In ListDataBibitTanaman
                 col.Add(dat("mmtrid"))
             Next
         Catch ex As Exception
@@ -453,7 +454,7 @@
             Formvalid = False
         End If
         If DataGridView1.Rows.Count <= 1 Then
-            MyApplication.ShowStatus("Data Tanaman belum diisi", NOTICE_STAT)
+            MyApplication.ShowStatus("Data Bibit Tanaman belum diisi", NOTICE_STAT)
             DataGridView1.Select()
             DataGridView1.Focus()
             Formvalid = False
@@ -522,7 +523,7 @@
     End Sub
     Private Sub ButtonH_Click(sender As Object, e As EventArgs) Handles ButtonH.Click
         Me.isEdit = True
-        FListTanamanMasuk.ShowDialog()
+        FListBibitTanamanMasuk.ShowDialog()
     End Sub
 
     Private Sub TxtNo_TextChanged(sender As Object, e As EventArgs) Handles TxtNo.TextChanged
@@ -549,7 +550,7 @@
     End Sub
 
     Private Sub DateTimePicker1_ValueChanged(sender As Object, e As EventArgs) Handles DateTimePicker1.ValueChanged
-        ListDataTanaman = ModelM.GetDataList(CDate(DateTimePicker1.Value))
+        ListDataBibitTanaman = ModelM.GetDataList(CDate(DateTimePicker1.Value))
     End Sub
 
 End Class
