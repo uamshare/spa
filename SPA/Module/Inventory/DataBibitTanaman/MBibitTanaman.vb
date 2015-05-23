@@ -16,6 +16,7 @@ Public Class MBibitTanaman
     Private Key As String
 
     Private ViewTableName As String
+    Private ModelHpp As New Mhpp
 
     Sub New(Optional ViewTableName As String = "material_raw")
         MyBase.New()
@@ -101,33 +102,6 @@ Public Class MBibitTanaman
         End Try
         Return rowCountAffected
     End Function
-    'Function MultipleDeleteData2(ByVal ids2() As String) As Integer
-    '    Try
-    '        BeginTrans("attempting delete data, please wait ... ") 'begin transaction
-    '        cmd.Connection = PCONN
-    '        'cmd.Prepare()
-    '        If IsArray(ids2) And ids2.Length > 0 Then
-    '            For Each GetKey2 As String In ids2
-    '                If Not String.IsNullOrEmpty(GetKey2) Then
-    '                    Me.StringSQL = "DELETE FROM " & TableName + " WHERE CONCAT(mmtrid, CONVERT(mmtrg, CHAR)) = '" & GetKey2 & "'"
-    '                    cmd.CommandText = Me.StringSQL
-    '                    rowCountAffected += cmd.ExecuteNonQuery()
-    '                End If
-    '            Next
-    '        End If
-
-    '        CommitTrans("Data telah terhapus ", "delete") 'Commit All Transaction
-    '    Catch ex As MySql.Data.MySqlClient.MySqlException
-    '        RollbackTrans("Terjadi kesalahan saat menghapus data. No : " & ex.Number & " Pesan Kesalahan : " & ex.Message, "delete")
-    '        Return Nothing
-    '    Catch ex As Exception
-    '        RollbackTrans("Terjadi kesalahan saat menghapus data : " & ex.Message, "delete")
-    '        Return Nothing
-    '    End Try
-    '    Return rowCountAffected
-
-    'End Function
-
     Public Overloads Function GetRowsCount() As Integer
         Me.StringSQL = "SELECT COUNT(*) FROM " & ViewTableName & " " & mWHERE
         Return MyBase.GetRowsCount()
@@ -137,5 +111,13 @@ Public Class MBibitTanaman
             " WHERE (CONCAT(SUBSTRING(mmtrid,6), CONVERT(mmtrhid, CHAR)) ='" & keyvalue & "') " & _
             "OR " & PrimaryKey & "='" & keyvalue & "'"
         Return MyBase.IfKeyExist()
+    End Function
+    Public Function GetListData() As List(Of Dictionary(Of String, Object))
+        Me.StringSQL = "SELECT * FROM material_raw"
+        Return MyBase.GetDataList()
+    End Function
+    Public Overloads Function getDataList(Currdt As Date, Optional noref As String = "") As List(Of Dictionary(Of String, Object))
+        'MsgBox(Currdt.ToString)
+        Return ModelHpp.GetDataList(Currdt, "", "material_raw")
     End Function
 End Class

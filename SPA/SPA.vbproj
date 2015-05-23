@@ -203,6 +203,26 @@
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Module\Accounting\GeneralLedger.vb" />
+    <Compile Include="Module\Inventory\DataBibitTanamanMasuk\FDataBibitTanamanMasuk.Designer.vb">
+      <DependentUpon>FDataBibitTanamanMasuk.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Module\Inventory\DataBibitTanamanMasuk\FDataBibitTanamanMasuk.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Module\Inventory\DataBibitTanamanMasuk\FListBibitTanaman.Designer.vb">
+      <DependentUpon>FListBibitTanaman.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Module\Inventory\DataBibitTanamanMasuk\FListBibitTanaman.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Module\Inventory\DataBibitTanamanMasuk\FListBibitTanamanMasuk.Designer.vb">
+      <DependentUpon>FListBibitTanamanMasuk.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Module\Inventory\DataBibitTanamanMasuk\FListBibitTanamanMasuk.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Module\Inventory\DataBibitTanamanMasuk\MDataBibitTanamanMasukD.vb" />
+    <Compile Include="Module\Inventory\DataBibitTanamanMasuk\MDtBibitTanamanMasukH.vb" />
     <Compile Include="Module\FLogin.Designer.vb">
       <DependentUpon>FLogin.vb</DependentUpon>
     </Compile>
@@ -482,11 +502,11 @@
     <EmbeddedResource Include="Module\Accounting\COAHeader\FKlasifikasiCOA.resx">
       <DependentUpon>FKlasifikasiCOA.vb</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Module\FLogin.resx">
-      <DependentUpon>FLogin.vb</DependentUpon>
+    <EmbeddedResource Include="Module\Inventory\DataBibitTanamanMasuk\FListBibitTanaman.resx">
+      <DependentUpon>FListBibitTanaman.vb</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Module\Sales\DataPelanggan\FDataPelanggan.resx">
-      <DependentUpon>FDataPelanggan.vb</DependentUpon>
+    <EmbeddedResource Include="Module\Inventory\DataBibitTanamanMasuk\FListBibitTanamanMasuk.resx">
+      <DependentUpon>FListBibitTanamanMasuk.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Module\Sales\DataPelanggan\FDataPelangganAdd.resx" />
     <EmbeddedResource Include="Module\Sales\DataPelanggan\FPelangganAdd.resx">

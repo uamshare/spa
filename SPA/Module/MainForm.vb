@@ -139,4 +139,8 @@ Public Class MainForm
     Private Sub menu302_Click(sender As Object, e As EventArgs) Handles menu302.Click
         LoadMdiChildForm(FNotaPenjualan, "menu302")
     End Sub
+
+    Private Sub menu202_Click(sender As Object, e As EventArgs) Handles menu202.Click
+        LoadMdiChildForm(FDataBibitTanamanMasuk, "menu202")
+    End Sub
 End Class
