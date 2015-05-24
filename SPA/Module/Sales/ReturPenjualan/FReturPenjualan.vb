@@ -1,11 +1,11 @@
-﻿Public Class FNotaPenjualan
-    Private ModelH As New MNotaPenjualanH
-    Private ModelD As New MNotaPenjualanD
+﻿Public Class FReturPenjualan
+    Private ModelH As New MReturPenjualanH
+    Private ModelD As New MReturPenjualanD
     Private ModelM As New MTanaman
 
     Public ListDataTanaman As List(Of Dictionary(Of String, Object)) '= ModelM.GetDataList
     Private isEdit As Boolean = False
-    Private DtPelanggan As DataTable
+    Private NoInvoice As DataTable
     Public Sub init()
         Me.isEdit = False
         ClearControll()
@@ -20,12 +20,6 @@
             End If
         Next
         For Each ctrl As Control In PanelFooter.Controls
-            If (ctrl.GetType() Is GetType(TextBox)) Then
-                Dim txt As TextBox = CType(ctrl, TextBox)
-                txt.Enabled = False
-            End If
-        Next
-        For Each ctrl As Control In GroupBoxSum.Controls
             If (ctrl.GetType() Is GetType(TextBox)) Then
                 Dim txt As TextBox = CType(ctrl, TextBox)
                 txt.Enabled = False
@@ -58,12 +52,6 @@
                 txt.Enabled = True
             End If
         Next
-        For Each ctrl As Control In GroupBoxSum.Controls
-            If (ctrl.GetType() Is GetType(TextBox)) Then
-                Dim txt As TextBox = CType(ctrl, TextBox)
-                txt.Enabled = True
-            End If
-        Next
         DateTimePicker1.Enabled = True
         ComboBox1.Enabled = True
     End Sub
@@ -77,12 +65,7 @@
         TextBox1.Text = ""
         txtsum1.Text = "0"
         txtsum2.Text = "0"
-        TextBox4.Text = "0"
-        TextBox5.Text = "0"
-        TextBox6.Text = "0"
-        TextBox7.Text = "0"
-        TextBox8.Text = "0"
-        TextBox9.Text = "0"
+        TextBox4.Text = ""
         ComboBox1.SelectedIndex = -1
         DateTimePicker1.Value = Format(Date.Now)
     End Sub
@@ -114,6 +97,8 @@
             btn.UseColumnTextForButtonValue = True
             btn.Width = 35
             btn.ToolTipText = "Press F4"
+            .Columns(3).Name = "Press F4"
+            .Columns(3).Visible = False
 
             .Columns.Add(New DataGridViewTextBoxColumn())
             .Columns(4).Name = "mmtrhname"
@@ -132,7 +117,7 @@
             .Columns(7).HeaderText = "Jumlah"
 
             .Columns.Add(New DataGridViewCheckBoxColumn())
-            .Columns(8).Name = "tinvdtype"
+            .Columns(8).Name = "trtrdtype"
             .Columns(8).HeaderText = "Bonus"
             .Columns(8).Visible = True
             .Columns(8).Width = 50
@@ -155,6 +140,12 @@
             .Columns(12).Name = "pricebonus"
             .Columns(12).HeaderText = "Harga Bonus"
             .Columns("pricebonus").Visible = False
+
+            .Columns.Add(New DataGridViewTextBoxColumn())
+            .Columns(13).Name = "tinvdid"
+            .Columns(13).HeaderText = "FKID"
+            .Columns(13).Visible = False
+            .Columns(13).Width = 50
 
             With .Columns("dtcreated")
                 .Width = 120
@@ -211,10 +202,9 @@
             dgvc.ReadOnly = True
         Next
         DataGridView1.Columns("rowchecked").ReadOnly = False
-        DataGridView1.Columns("mmtrid").ReadOnly = False
+        'DataGridView1.Columns("mmtrid").ReadOnly = False
         DataGridView1.Columns("qty").ReadOnly = False
-        DataGridView1.Columns("price").ReadOnly = False
-        DataGridView1.Columns("tinvdtype").ReadOnly = False
+        'DataGridView1.Columns("price").ReadOnly = False
     End Sub
     Private Sub DataGridView1_CellClick(sender As Object, e As DataGridViewCellEventArgs) Handles DataGridView1.CellClick
         Try
@@ -267,45 +257,39 @@
                     DataGridView1.Rows(e.RowIndex).Cells(e.ColumnIndex).Value = cvalue
                     DataGridView1.Rows(e.RowIndex).Cells("subtotal").Value = Format(jml, "##,##0")
                     SetSummaryField()
-                ElseIf DataGridView1.Columns(e.ColumnIndex).Name = "mmtrid" Then
-                    If DataGridView1.Rows(e.RowIndex).Cells("mmtrid").Value = mmtridbefore Then Exit Sub
+                    'ElseIf DataGridView1.Columns(e.ColumnIndex).Name = "mmtrid" Then
+                    '    If DataGridView1.Rows(e.RowIndex).Cells("mmtrid").Value = mmtridbefore Then Exit Sub
 
-                    If CekDuplicateID(DataGridView1.Rows(e.RowIndex).Cells("mmtrid").Value, e.RowIndex) Then
-                        For Each dat In ListDataTanaman
-                            'col.Add(dat("mmtrid"))
-                            If dat("mmtrid") = DataGridView1.Rows(e.RowIndex).Cells("mmtrid").Value Then
-                                DataGridView1.Rows(e.RowIndex).Cells("mmtrhname").Value = dat("mmtrname") 'ListDataTanaman(1)("mmtrname")
-                                DataGridView1.Rows(e.RowIndex).Cells("polybag").Value = dat("polybag") 'ListDataTanaman(1)("mmtrname")
-                                If Not isEdit Then
-                                    If Not DataGridView1.Rows(e.RowIndex).Cells("tinvdtype").FormattedValue Then
-                                        DataGridView1.Rows(e.RowIndex).Cells("price").Value = CDec(dat("mmtrprice"))
-                                    Else
-                                        DataGridView1.Rows(e.RowIndex).Cells("price").Value = 0
-                                    End If
-                                End If
-                                If DataGridView1.Rows(e.RowIndex).Cells("pricebonus").Value = "0" Then
-                                    DataGridView1.Rows(e.RowIndex).Cells("pricebonus").Value = CDec(dat("mmtrprice"))
-                                End If
-                                DataGridView1.Rows(e.RowIndex).Cells("oldhpp").Value = CDec(dat("hpp"))
-                                DataGridView1.Rows(e.RowIndex).Cells("hpp").Value = CDec(dat("hpp"))
-                            End If
-                        Next
-                    Else
-                        DataGridView1.Rows(e.RowIndex).Cells("mmtrid").Value = ""
-                        DataGridView1.Rows(e.RowIndex).Cells("mmtrhname").Value = ""
-                        DataGridView1.Rows(e.RowIndex).Cells("polybag").Value = ""
-                        DataGridView1.Rows(e.RowIndex).Cells("price").Value = 0
-                        DataGridView1.Rows(e.RowIndex).Cells("qty").Value = 0
-                        DataGridView1.CurrentCell = DataGridView1("mmtrid", e.RowIndex)
-                        DataGridView1.CancelEdit()
-                    End If
-                ElseIf DataGridView1.Columns(e.ColumnIndex).Name = "tinvdtype" Then
-                    If DataGridView1.Rows(e.RowIndex).Cells("tinvdtype").FormattedValue Then
-                        DataGridView1.Rows(e.RowIndex).Cells("price").Value = 0
-                    Else
-                        Dim crmmtrid As String = DataGridView1.Rows(e.RowIndex).Cells("mmtrid").Value
-                        DataGridView1.Rows(e.RowIndex).Cells("price").Value = DataGridView1.Rows(e.RowIndex).Cells("pricebonus").Value
-                    End If
+                    '    If CekDuplicateID(DataGridView1.Rows(e.RowIndex).Cells("mmtrid").Value, e.RowIndex) Then
+                    '        For Each dat In ListDataTanaman
+                    '            'col.Add(dat("mmtrid"))
+                    '            If dat("mmtrid") = DataGridView1.Rows(e.RowIndex).Cells("mmtrid").Value Then
+                    '                DataGridView1.Rows(e.RowIndex).Cells("mmtrhname").Value = dat("mmtrname") 'ListDataTanaman(1)("mmtrname")
+                    '                DataGridView1.Rows(e.RowIndex).Cells("polybag").Value = dat("polybag") 'ListDataTanaman(1)("mmtrname")
+                    '                DataGridView1.Rows(e.RowIndex).Cells("price").Value = CDec(dat("mmtrprice"))
+                    '                DataGridView1.Rows(e.RowIndex).Cells("pricebonus").Value = CDec(dat("mmtrprice"))
+                    '                'DataGridView1.Rows(e.RowIndex).Cells("qty").Value = IIf(DataGridView1.Rows(e.RowIndex).Cells("qty").Value.ToString.Length > 0, CDec(DataGridView1.Rows(e.RowIndex).Cells("qty").Value), 0)
+                    '                'DataGridView1.Rows(e.RowIndex).Cells("price").Selected = True
+                    '                DataGridView1.Rows(e.RowIndex).Cells("oldhpp").Value = CDec(dat("hpp"))
+                    '                DataGridView1.Rows(e.RowIndex).Cells("hpp").Value = CDec(dat("hpp"))
+                    '            End If
+                    '        Next
+                    '    Else
+                    '        DataGridView1.Rows(e.RowIndex).Cells("mmtrid").Value = ""
+                    '        DataGridView1.Rows(e.RowIndex).Cells("mmtrhname").Value = ""
+                    '        DataGridView1.Rows(e.RowIndex).Cells("polybag").Value = ""
+                    '        DataGridView1.Rows(e.RowIndex).Cells("price").Value = 0
+                    '        DataGridView1.Rows(e.RowIndex).Cells("qty").Value = 0
+                    '        DataGridView1.CurrentCell = DataGridView1("mmtrid", e.RowIndex)
+                    '        DataGridView1.CancelEdit()
+                    '    End If
+                    'ElseIf DataGridView1.Columns(e.ColumnIndex).Name = "trtrdtype" Then
+                    '    If DataGridView1.Rows(e.RowIndex).Cells("trtrdtype").FormattedValue Then
+                    '        DataGridView1.Rows(e.RowIndex).Cells("price").Value = 0
+                    '    Else
+                    '        Dim crmmtrid As String = DataGridView1.Rows(e.RowIndex).Cells("mmtrid").Value
+                    '        DataGridView1.Rows(e.RowIndex).Cells("price").Value = DataGridView1.Rows(e.RowIndex).Cells("pricebonus").Value
+                    '    End If
                 End If
             End If
         Catch ex As Exception
@@ -325,18 +309,8 @@
                 nilhpp = nilhpp + jmlhpp
             End If
         Next
-        TextBox4.Text = Format(sumsubtotal, "##,##0")
+        txtsum1.Text = Format(sumsubtotal, "##,##0")
         txtsum2.Text = Format(nilhpp, "##,##0")
-    End Sub
-    Private Sub SetSummaryNetto()
-        Dim netto As Decimal = 0
-        'Dim nilhpp As Decimal = 0
-        netto = netto + CDec(IIf(String.IsNullOrEmpty(TextBox4.Text), 0, TextBox4.Text))
-        netto = netto - CDec(IIf(String.IsNullOrEmpty(TextBox5.Text), 0, TextBox5.Text))
-        netto = netto - CDec(IIf(String.IsNullOrEmpty(TextBox6.Text), 0, TextBox6.Text))
-        netto = netto + CDec(IIf(String.IsNullOrEmpty(TextBox7.Text), 0, TextBox7.Text))
-        netto = netto + CDec(IIf(String.IsNullOrEmpty(TextBox8.Text), 0, TextBox8.Text))
-        txtsum1.Text = Format(netto, "##,##0")
     End Sub
     Private Function CekDuplicateID(mmtrid As String, rowindex As Integer) As Boolean
         Try
@@ -419,11 +393,11 @@
                 Me.DataGridView1.Rows(e.RowIndex).Selected = True
                 Me.rowIndex = e.RowIndex
                 Me.DataGridView1.CurrentCell = Me.DataGridView1.Rows(e.RowIndex).Cells(1)
-                If DataGridView1.Rows(Me.rowIndex).Cells("tinvdtype").Value Then
-                    BonusToolStripMenuItem.Text = "Urungkan Bonus"
-                Else
-                    BonusToolStripMenuItem.Text = "Tandai Bonus"
-                End If
+                'If DataGridView1.Rows(Me.rowIndex).Cells("trtrdtype").Value Then
+                '    BonusToolStripMenuItem.Text = "Urungkan Bonus"
+                'Else
+                '    BonusToolStripMenuItem.Text = "Tandai Bonus"
+                'End If
 
                 Me.ContextMenuStrip1.Show(Me.DataGridView1, e.Location)
                 ContextMenuStrip1.Show(Cursor.Position)
@@ -431,7 +405,7 @@
         End If
     End Sub
     Private Sub BonusToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles BonusToolStripMenuItem.Click
-        DataGridView1.Rows(Me.rowIndex).Cells("tinvdtype").Value = Not DataGridView1.Rows(Me.rowIndex).Cells("tinvdtype").Value
+        DataGridView1.Rows(Me.rowIndex).Cells("trtrdtype").Value = Not DataGridView1.Rows(Me.rowIndex).Cells("trtrdtype").Value
     End Sub
     Private Sub HapusDataToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles HapusDataToolStripMenuItem.Click
         If Not Me.DataGridView1.Rows(Me.rowIndex).IsNewRow Then
@@ -451,7 +425,6 @@
                         indexrow = indexrow + 1
                     End If
                 End If
-
             Next
             SetSummaryField()
         Catch ex As Exception
@@ -471,7 +444,7 @@
         Next
     End Sub
 #End Region
-    Private Sub FNotaPenjualan_Load(sender As Object, e As EventArgs) Handles MyBase.Load
+    Private Sub FReturPenjualan_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         DateTimePicker1.Format = DateTimePickerFormat.Custom
         DateTimePicker1.CustomFormat = MyApplication.DefaultFormatDate
 
@@ -481,23 +454,25 @@
         DataGridView1.AllowUserToOrderColumns = True
         DataGridView1.ReadOnly = False
 
-        Dim ModelP As New MDataPelanggan
+        Dim ModelP As New MNotaPenjualanH
         ModelP.limitrecord = -1
-        DtPelanggan = ModelP.GetData
-        ComboBox1.DataSource = DtPelanggan
-        ComboBox1.ValueMember = "mcusid"
-        ComboBox1.DisplayMember = "mcusname"
+        Dim strsql As String = "SELECT T1.`tinvhno`,`tinvhdt`,`tinvhnote`,T1.`mcusid`,`mcusname`,mcusphone1,mcusaddr3,mcusaddr4,SUM(T2.`tinvdprice`) AS subtotal,`tinvhdisc1`,`tinvhdisc2`, " & _
+                            "`tinvhongkir`,`tinvhongpack`,(SUM(T2.`tinvdprice`) - tinvhdisc2 + tinvhongkir + tinvhongpack)  AS total, " & _
+                            "T1.`dtcreated`,`userid` FROM (SELECT * FROM tinvh WHERE tinvhno NOT IN (SELECT tinvhno FROM trtrh))  T1 " & _
+                            "INNER JOIN tinvd T2 ON T1.`tinvhno` = T2.`tinvhno` " & _
+                            "INNER JOIN mcus T3 ON T1.`mcusid`=T3.`mcusid` " & _
+                            "GROUP BY T1.`tinvhno` ORDER BY tinvhno DESC"
+        NoInvoice = ModelP.GetData(strsql)
         ComboBox1.SelectedIndex = -1
+        ComboBox1.DataSource = NoInvoice
+        ComboBox1.ValueMember = "tinvhno"
+        ComboBox1.DisplayMember = "tinvhno"
 
-        Dim discCollection As New AutoCompleteStringCollection()
-        For i As Integer = 5 To 50 Step 5
-            discCollection.Add(i)
-        Next
-        TextBox9.Text = ""
-        TextBox9.AutoCompleteMode = AutoCompleteMode.Suggest
-        TextBox9.AutoCompleteSource = AutoCompleteSource.CustomSource
-        TextBox9.AutoCompleteCustomSource = discCollection
 
+        'Dim discCollection As New AutoCompleteStringCollection()
+        'For i As Integer = 5 To 50 Step 5
+        '    discCollection.Add(i)
+        'Next
         init()
         'MessageBox.Show(Format(Date.Now, "yyyy/MM/dd H:mm:ss"))
     End Sub
@@ -541,18 +516,13 @@
             DataGridView1.Focus()
             Formvalid = False
         End If
-        
+
         If Formvalid Then
-            ModelD.tinvhno = ModelH.EscapeString(TxtNo.Text)
-            ModelD.tinvhdt = ModelH.EscapeString(Format(DateTimePicker1.Value, "yyyy/MM/dd"))
-            ModelD.mcusid = ModelH.EscapeString(ComboBox1.SelectedValue.ToString)
-            ModelD.tinvhnote = ModelH.EscapeString(TextBox1.Text)
-            Dim disc1 = TextBox9.Text.Replace("%", "")
-            ModelD.tinvhdisc1 = ModelH.EscapeString(CDec(disc1))
-            ModelD.tinvhdisc2 = ModelH.EscapeString(CDec(TextBox5.Text))
-            'ModelD.tinvhbonus = ModelH.EscapeString(CDec(TextBox6.Text))
-            ModelD.tinvhongkir = ModelH.EscapeString(CDec(TextBox7.Text))
-            ModelD.tinvhongpack = ModelH.EscapeString(CDec(TextBox8.Text))
+            ModelD.trtrhno = ModelH.EscapeString(TxtNo.Text)
+            ModelD.trtrhdt = ModelH.EscapeString(Format(DateTimePicker1.Value, "yyyy/MM/dd"))
+            ModelD.tinvhno = ModelH.EscapeString(ComboBox1.Text)
+            ModelD.trtrhnote = ModelH.EscapeString(TextBox1.Text)
+
             ModelD.soldvalue = ModelH.EscapeString(txtsum1.Text) 'for posting to General Ledger Sold Price
             ModelD.bookvalue = ModelH.EscapeString(txtsum2.Text) 'for posting to General Ledger bookValue
 
@@ -560,42 +530,28 @@
             For Each row In DataGridView1.Rows
                 Dim dict As New Dictionary(Of String, Object)
                 If Not row.IsNewRow Then
-                    Dim FormDvalid = True
-
                     If Not String.IsNullOrEmpty(row.Cells("mmtrid").Value.ToString) And _
-                        CDec(row.Cells("qty").Value) <= 0 Then
-                        FormDvalid = False
-                        MyApplication.ShowStatus("Qty tidak boleh '0'", NOTICE_STAT)
-                        Exit Sub
-                    End If
-                    If Not String.IsNullOrEmpty(row.Cells("mmtrid").Value.ToString) And _
-                        Not CBool(row.Cells("tinvdtype").FormattedValue) And _
-                        (CDec(row.Cells("price").Value) <= 0) Then
-                        FormDvalid = False
-                        MyApplication.ShowStatus("Harga tidak boleh '0'", NOTICE_STAT)
-                        Exit Sub
-                    End If
-
-                    If FormDvalid Then
-                        dict.Add("tinvhno", ModelH.tinvhno)
+                        (CDec(row.Cells("qty").Value) > 0 And CDec(row.Cells("price").Value) > 0) Then
+                        dict.Add("trtrhno", ModelH.trtrhno)
                         dict.Add("mmtrid", row.Cells("mmtrid").Value)
-                        dict.Add("tinvdqty", CDec(row.Cells("qty").Value))
-                        dict.Add("tinvdprice", CDec(row.Cells("price").Value))
-                        Dim tinvdtype As String = IIf(row.Cells("tinvdtype").FormattedValue, "1", "0")
-                        dict.Add("tinvdtype", tinvdtype)
+                        dict.Add("trtrdqty", CDec(row.Cells("qty").Value))
+                        dict.Add("trtrdprice", CDec(row.Cells("price").Value))
+                        dict.Add("tinvdid", CDec(row.Cells("tinvdid").Value))
                         dict.Add("dtcreated", row.Cells("dtcreated").FormattedValue)
 
                         dict.Add("hpp", CDec(row.Cells("hpp").Value)) 'for set HPP Value / unit
                         'MsgBox(row.Cells("dtcreated").FormattedValue)
                         ListDetail.Add(dict)
+                    Else
+                        MyApplication.ShowStatus("Qty / Harga tidak boleh '0'", NOTICE_STAT)
+                        Exit Sub
                     End If
-                    
                 End If
             Next
 
             If isEdit Then
                 ModelD.UpdateData(ListDetail)
-                'ModelD.DeleteByNo(ModelH.tinvhno)
+                'ModelD.DeleteByNo(ModelH.trtrhno)
             Else
                 'ModelH.InsertData()
                 ModelD.InsertData(ListDetail)
@@ -623,7 +579,7 @@
     End Sub
     Private Sub ButtonH_Click(sender As Object, e As EventArgs) Handles ButtonH.Click
         Me.isEdit = True
-        FListNotaPenjualan.ShowDialog()
+        FListReturPenjualan.ShowDialog()
     End Sub
     Private Sub TxtNo_TextChanged(sender As Object, e As EventArgs) Handles TxtNo.TextChanged
         If isEdit Then
@@ -635,15 +591,9 @@
                 Dim rowindex As Integer = DataGridView1.NewRowIndex
                 For Each dat In ListDetail
                     DataGridView1.Rows.Add()
-                    DataGridView1.Rows(rowindex).Cells("qty").Value = CDec(dat("tinvdqty"))
-                    DataGridView1.Rows(rowindex).Cells("price").Value = CDec(dat("tinvdprice"))
-                    DataGridView1.Rows(rowindex).Cells("pricebonus").Value = CDec(dat("tinvdprice"))
                     DataGridView1.Rows(rowindex).Cells("mmtrid").Value = dat("mmtrid")
-                    DataGridView1.Rows(rowindex).Cells("mmtrhname").Value = dat("mmtrname")
-                    DataGridView1.Rows(rowindex).Cells("polybag").Value = dat("polybag")
-                   
-
-                    DataGridView1.Rows(rowindex).Cells("tinvdtype").Value = CBool(dat("tinvdtype"))
+                    DataGridView1.Rows(rowindex).Cells("qty").Value = CDec(dat("trtrdqty"))
+                    DataGridView1.Rows(rowindex).Cells("price").Value = CDec(dat("trtrdprice"))
                     DataGridView1.Rows(rowindex).Cells("dtcreated").Value = dat("dtcreated")
                     'DataGridView1.EndEdit()
                     rowindex = rowindex + 1
@@ -658,87 +608,47 @@
     End Sub
 
     Private Sub ComboBox1_SelectedIndexChanged(sender As Object, e As EventArgs) Handles ComboBox1.SelectedIndexChanged
+        'MsgBox("ComboBox1 index =  " & ComboBox1.SelectedIndex)
         If ComboBox1.SelectedIndex > -1 Then
             'MsgBox(ComboBox1.SelectedValue.ToString)
             Dim alamat As String = ""
-            If Not String.IsNullOrEmpty(DtPelanggan.Rows(ComboBox1.SelectedIndex).Item("mcusaddr3").ToString) Then
-                alamat = DtPelanggan.Rows(ComboBox1.SelectedIndex).Item("mcusaddr3").ToString & ", " & DtPelanggan.Rows(ComboBox1.SelectedIndex).Item("mcusaddr4").ToString
+            If Not String.IsNullOrEmpty(NoInvoice.Rows(ComboBox1.SelectedIndex).Item("mcusaddr3").ToString) Then
+                alamat = NoInvoice.Rows(ComboBox1.SelectedIndex).Item("mcusaddr3").ToString & ", " & NoInvoice.Rows(ComboBox1.SelectedIndex).Item("mcusaddr4").ToString
             Else
-                alamat = DtPelanggan.Rows(ComboBox1.SelectedIndex).Item("mcusaddr4").ToString
+                alamat = NoInvoice.Rows(ComboBox1.SelectedIndex).Item("mcusaddr4").ToString
             End If
+            TextBox4.Text = NoInvoice.Rows(ComboBox1.SelectedIndex).Item("mcusname").ToString
             TextBox2.Text = alamat
-            TextBox3.Text = DtPelanggan.Rows(ComboBox1.SelectedIndex).Item("mcusphone1").ToString
+            TextBox3.Text = NoInvoice.Rows(ComboBox1.SelectedIndex).Item("mcusphone1").ToString
+            If Not isEdit Then
+                'ActiveControll()
+                Dim ModelPD As New MNotaPenjualanD
+                Dim ListDetail As List(Of Dictionary(Of String, Object)) = ModelPD.GetDataList(ComboBox1.Text)
+                DataGridView1.Rows.Clear()
+                'MsgBox(ListDetail.Count)
+                If ListDetail.Count > 0 And DataGridView1.Columns.Count > 0 Then
+                    Dim rowindex As Integer = DataGridView1.NewRowIndex
+                    For Each dat In ListDetail
+                        DataGridView1.Rows.Add()
+                        DataGridView1.Rows(rowindex).Cells("mmtrid").Value = dat("mmtrid")
+                        DataGridView1.Rows(rowindex).Cells("mmtrhname").Value = dat("mmtrname")
+                        DataGridView1.Rows(rowindex).Cells("polybag").Value = dat("polybag")
+                        DataGridView1.Rows(rowindex).Cells("qty").Value = CDec(dat("tinvdqty"))
+                        DataGridView1.Rows(rowindex).Cells("price").Value = CDec(dat("tinvdprice"))
+                        DataGridView1.Rows(rowindex).Cells("trtrdtype").Value = CBool(dat("tinvdtype"))
+                        DataGridView1.Rows(rowindex).Cells("tinvdid").Value = CInt(dat("tinvdid"))
+                        'DataGridView1.Rows(rowindex).Cells("dtcreated").Value = dat("dtcreated")
+                        'DataGridView1.EndEdit()
+                        rowindex = rowindex + 1
+                    Next
+                    DataGridView1.EndEdit()
+                    DataGridView1.Refresh()
+                End If
+            End If
         Else
             TextBox2.Text = ""
             TextBox3.Text = ""
         End If
 
     End Sub
-    Private Sub TextBox4_TextChanged(sender As Object, e As EventArgs) Handles TextBox4.TextChanged
-        SetSummaryNetto()
-    End Sub
-    Private Sub TextBox5_TextChanged(sender As Object, e As EventArgs) Handles TextBox5.TextChanged
-        SetSummaryNetto()
-    End Sub
-    Private Sub TextBox6_TextChanged(sender As Object, e As EventArgs) Handles TextBox6.TextChanged
-        SetSummaryNetto()
-    End Sub
-
-    Private Sub TextBox7_KeyDown1(sender As Object, e As KeyEventArgs) Handles TextBox7.KeyDown
-        If e.KeyCode.ToString = Keys.Enter.ToString Then
-            TextBox8.Focus()
-        End If
-    End Sub
-    Private Sub TextBox7_TextChanged(sender As Object, e As EventArgs) Handles TextBox7.TextChanged
-        SetSummaryNetto()
-    End Sub
-    Private Sub TextBox8_KeyDown(sender As Object, e As KeyEventArgs) Handles TextBox8.KeyDown
-        If e.KeyCode.ToString = Keys.Enter.ToString Then
-            ButtonSave.Focus()
-        End If
-    End Sub
-    Private Sub TextBox8_TextChanged(sender As Object, e As EventArgs) Handles TextBox8.TextChanged
-        SetSummaryNetto()
-    End Sub
-    Private Sub TextBox7_Validated(sender As Object, e As EventArgs) Handles TextBox7.Validated
-        TextBox7.Text = Format(CDec(TextBox7.Text), "##,##0")
-    End Sub
-    Private Sub TextBox8_Validated(sender As Object, e As EventArgs) Handles TextBox8.Validated
-        TextBox8.Text = Format(CDec(TextBox8.Text), "##,##0")
-    End Sub
-    Private Sub TextBox7_KeyPress(sender As Object, e As KeyPressEventArgs) Handles TextBox7.KeyPress
-        e.Handled = ValidNumber(e)
-    End Sub
-    Private Sub TextBox8_KeyPress(sender As Object, e As KeyPressEventArgs) Handles TextBox8.KeyPress
-        e.Handled = ValidNumber(e)
-    End Sub
-    Private Sub TextBox9_GotFocus(sender As Object, e As EventArgs) Handles TextBox9.GotFocus
-        TextBox9.Text = TextBox9.Text.Replace("%", "")
-    End Sub
-    Private Sub TextBox9_KeyDown(sender As Object, e As KeyEventArgs) Handles TextBox9.KeyDown
-        If e.KeyCode.ToString = Keys.Enter.ToString Then
-            TextBox7.Focus()
-        End If
-    End Sub
-    Private Sub TextBox9_KeyPress(sender As Object, e As KeyPressEventArgs) Handles TextBox9.KeyPress
-            e.Handled = ValidNumber(e)
-    End Sub
-    Private Sub TextBox9_Validated(sender As Object, e As EventArgs) Handles TextBox9.Validated
-        Try
-            If Not String.IsNullOrEmpty(TextBox9.Text) Then
-                Dim subtotal As Integer = CInt(TextBox4.Text)
-                Dim disc As Integer = CInt(TextBox9.Text)
-                disc = IIf(CInt(disc) > 50, 50, CInt(disc))
-                TextBox5.Text = Format(disc / 100 * subtotal, "##,##0")
-                TextBox9.Text = disc & "%"
-            Else
-                TextBox9.Text = 0 & "%"
-            End If
-        Catch ex As Exception
-            ShowStatus(ex.Message, WARNING_STAT)
-        End Try
-    End Sub
-
-    
-    
 End Class

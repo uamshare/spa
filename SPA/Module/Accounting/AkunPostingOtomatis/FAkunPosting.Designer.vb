@@ -188,6 +188,7 @@ Partial Class FAkunPosting
         Me.ToolAdd.Name = "ToolAdd"
         Me.ToolAdd.Size = New System.Drawing.Size(36, 36)
         Me.ToolAdd.Text = "Add"
+        Me.ToolAdd.Visible = False
         '
         'ToolEdit
         '

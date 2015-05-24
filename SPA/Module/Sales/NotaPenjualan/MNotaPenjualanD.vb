@@ -39,7 +39,8 @@
         Return MyBase.GetData
     End Function
     Public Overloads Function GetDataList(Optional no As String = "") As List(Of Dictionary(Of String, Object))
-        Me.StringSQL = "SELECT * FROM tinvd WHERE tinvhno ='" & no & "'"
+        Me.StringSQL = "SELECT T1.`tinvdid`,T1.`tinvhno`,T1.`mmtrid`,T2.`mmtrname`,T2.`polybag`,T2.`mmtrunit`,T1.`tinvdqty`,T1.`tinvdprice`,(T1.`tinvdqty` * T1.`tinvdprice`) AS jumlah,T1.tinvdtype,T1.dtcreated " & _
+                      "FROM tinvd T1 INNER JOIN material_fig T2 ON T1.`mmtrid` = T2.`mmtrid` WHERE tinvhno ='" & no & "'"
         'MsgBox(Me.StringSQL)
         Return MyBase.GetDataList
     End Function
@@ -67,8 +68,9 @@
                       mmtrid & "','" & _
                       tinvdqty & "','" & _
                       tinvdprice & "','" & _
+                      tinvdtype & "','" & _
                       dtcreated & "')"
-            Me.StringSQL = Me.StringSQL + "INSERT INTO " & TableName + "(`tinvhno`,`mmtrid`,`tinvdqty`,`tinvdprice`,`dtcreated`) VALUES " & values
+            Me.StringSQL = Me.StringSQL + "INSERT INTO " & TableName + "(`tinvhno`,`mmtrid`,`tinvdqty`,`tinvdprice`,`tinvdtype`,`dtcreated`) VALUES " & values
             trans = MyBase.InsertData() 'MyBase.InsertData() ==> Insert Detail
         End If
         Return trans
@@ -178,7 +180,8 @@
                 multivalue = multivalue & "('" & tinvhno & "','" & _
                                  dat("mmtrid").ToString & "','" & _
                                  dat("tinvdqty").ToString & "','" & _
-                                 dat("tinvdprice").ToString & "','" & _
+                                  dat("tinvdprice").ToString & "','" & _
+                                 dat("tinvdtype").ToString & "','" & _
                                  dtcreatedforDeatil & "'),"
                 'Prepare data to Stock
                 Dim dict As New Dictionary(Of String, Object)
@@ -203,7 +206,7 @@
         If multivalue.Length > 1 Then 'MyBase.InsertData() ==> Insert Header
             multivalue = multivalue.Substring(0, multivalue.Length - 1)
             DeleteByNo(tinvhno)
-            strsql = "INSERT INTO " & TableName + "(`tinvhno`,`mmtrid`,`tinvdqty`,`tinvdprice`,`dtcreated`) VALUES " & multivalue & ";" & vbCrLf
+            strsql = "INSERT INTO " & TableName + "(`tinvhno`,`mmtrid`,`tinvdqty`,`tinvdprice`,`tinvdtype`,`dtcreated`) VALUES " & multivalue & ";" & vbCrLf
             strsql = strsql + ModelStock.InsertData(datatostock) 'Insert/Update New Stok
         End If
         Return strsql

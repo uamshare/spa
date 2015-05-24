@@ -143,7 +143,7 @@ Public Class CDataAcces 'Name dari Class yang dibuat.
             End If
 
             SelectQuery = Me.SelectQuery & " " & mWHERE & " " & mLIMIT
-            'MsgBox(SelectQuery)
+            'Console.WriteLine(SelectQuery)
             Dim da As New MySqlDataAdapter(SelectQuery, Me.mCONN)
             da.Fill(dt)
             mLIMIT = ""

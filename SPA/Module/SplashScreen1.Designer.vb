@@ -79,7 +79,7 @@ Partial Class SplashScreen1
         Me.Version.Name = "Version"
         Me.Version.Size = New System.Drawing.Size(241, 20)
         Me.Version.TabIndex = 1
-        Me.Version.Text = "Version {0}.{1:00}"
+        Me.Version.Text = "Version {0}.{1:0}.{2:0}.{3:0}"
         '
         'Copyright
         '
@@ -91,6 +91,7 @@ Partial Class SplashScreen1
         Me.Copyright.Size = New System.Drawing.Size(241, 40)
         Me.Copyright.TabIndex = 2
         Me.Copyright.Text = "Copyright"
+        Me.Copyright.Visible = False
         '
         'ApplicationTitle
         '
@@ -108,6 +109,7 @@ Partial Class SplashScreen1
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
+        Me.BackgroundImage = Global.SPA.My.Resources.Resources.accounting77
         Me.ClientSize = New System.Drawing.Size(496, 303)
         Me.ControlBox = False
         Me.Controls.Add(Me.MainLayoutPanel)

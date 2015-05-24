@@ -2,7 +2,7 @@
 <xs:schema id="simagro" targetNamespace="http://tempuri.org/simagro.xsd" xmlns:mstns="http://tempuri.org/simagro.xsd" xmlns="http://tempuri.org/simagro.xsd" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" xmlns:msprop="urn:schemas-microsoft-com:xml-msprop" attributeFormDefault="qualified" elementFormDefault="qualified">
   <xs:annotation>
     <xs:appinfo source="urn:schemas-microsoft-com:xml-msdatasource">
-      <DataSource DefaultConnectionIndex="0" FunctionsComponentName="QueriesTableAdapter" Modifier="AutoLayout, AnsiClass, Class, Public" SchemaSerializationMode="IncludeSchema" xmlns="urn:schemas-microsoft-com:xml-msdatasource">
+      <DataSource DefaultConnectionIndex="0" FunctionsComponentName="QueriesTableAdapter" GeneratorFunctionsComponentClassName="QueriesTableAdapter" Modifier="AutoLayout, AnsiClass, Class, Public" SchemaSerializationMode="IncludeSchema" UserFunctionsComponentName="QueriesTableAdapter" xmlns="urn:schemas-microsoft-com:xml-msdatasource">
         <Connections>
           <Connection AppSettingsObjectName="MySettings" AppSettingsPropertyName="simagroConnectionString" ConnectionStringObject="" IsAppSettingsProperty="true" Modifier="Assembly" Name="simagroConnectionString (MySettings)" ParameterPrefix="@" PropertyReference="ApplicationSettings.SPA.My.MySettings.GlobalReference.Default.simagroConnectionString" Provider="MySql.Data.MySqlClient" />
         </Connections>
@@ -65,6 +65,208 @@
               <Mapping SourceColumn="stockout" DataSetColumn="stockout" />
               <Mapping SourceColumn="stockend" DataSetColumn="stockend" />
               <Mapping SourceColumn="bookvalue" DataSetColumn="bookvalue" />
+            </Mappings>
+            <Sources />
+          </TableAdapter>
+          <TableAdapter BaseClass="System.ComponentModel.Component" DataAccessorModifier="AutoLayout, AnsiClass, Class, Public" DataAccessorName="rinvoiceTableAdapter" GeneratorDataComponentClassName="rinvoiceTableAdapter" Name="rinvoice" UserDataComponentName="rinvoiceTableAdapter">
+            <MainSource>
+              <DbSource ConnectionRef="simagroConnectionString (MySettings)" DbObjectName="simagro.mcus" DbObjectType="Table" FillMethodModifier="Public" FillMethodName="Fill" GenerateMethods="Both" GenerateShortCommands="false" GeneratorGetMethodName="GetData" GeneratorSourceName="Fill" GetMethodModifier="Public" GetMethodName="GetData" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="false" UserGetMethodName="GetData" UserSourceName="Fill">
+                <SelectCommand>
+                  <DbCommand CommandType="Text" ModifiedByUser="true">
+                    <CommandText>SELECT T1.`mcusid`,
+  T1.`mcusname`,
+  T1.`mcusphone1`,
+  T1.`mcusphone2`,
+  T1.`mcusfax`,
+  T1.`mcusaddr1`,
+  T1.`mcusaddr2`,
+  T1.`mcusaddr3`,
+  T1.`mcusaddr4`,
+  T1.`mcusaddr5`,
+  T1.`mcusemail`,
+  T1.`mcustaxcode`,
+IFNULL(T2.`tinvhdt`,0) AS tinvhdt,
+IFNULL(T2.`tinvhnote`,0) AS tinvhnote,
+SUM(IFNULL(T2.subtotal,0)) AS subtotal,
+SUM(IFNULL(T2.`tinvhdisc1`,0)) AS tinvhdisc1,
+SUM(IFNULL(T2.`tinvhdisc2`,0)) AS tinvhdisc2,
+SUM(IFNULL(T2.`tinvhongkir`,0)) AS tinvhongkir,
+SUM(IFNULL(T2.`tinvhongpack`,0)) AS tinvhongpack,
+SUM(IFNULL(T2.total,0)) AS total
+FROM mcus T1
+LEFT JOIN (SELECT T1.`tinvhno`,`tinvhdt`,`tinvhnote`,T1.`mcusid`,SUM(T2.`tinvdqty` * T2.`tinvdprice`) AS subtotal,`tinvhdisc1`,`tinvhdisc2`, 
+`tinvhongkir`,`tinvhongpack`,(SUM(T2.`tinvdqty` * T2.`tinvdprice`) - tinvhdisc2 + tinvhongkir + tinvhongpack)  AS total, 
+T1.`dtcreated`,`userid` FROM tinvh  T1 
+INNER JOIN tinvd T2 ON T1.`tinvhno` = T2.`tinvhno` 
+GROUP BY T1.`tinvhno`)T2 ON T1.`mcusid` = T2.mcusid GROUP BY T1.`mcusid`
+</CommandText>
+                    <Parameters />
+                  </DbCommand>
+                </SelectCommand>
+              </DbSource>
+            </MainSource>
+            <Mappings>
+              <Mapping SourceColumn="tinvhnote" DataSetColumn="tinvhnote" />
+              <Mapping SourceColumn="mcusid" DataSetColumn="mcusid" />
+              <Mapping SourceColumn="mcusname" DataSetColumn="mcusname" />
+              <Mapping SourceColumn="mcusphone1" DataSetColumn="mcusphone1" />
+              <Mapping SourceColumn="mcusphone2" DataSetColumn="mcusphone2" />
+              <Mapping SourceColumn="mcusfax" DataSetColumn="mcusfax" />
+              <Mapping SourceColumn="mcusaddr1" DataSetColumn="mcusaddr1" />
+              <Mapping SourceColumn="mcusaddr2" DataSetColumn="mcusaddr2" />
+              <Mapping SourceColumn="mcusaddr3" DataSetColumn="mcusaddr3" />
+              <Mapping SourceColumn="mcusaddr4" DataSetColumn="mcusaddr4" />
+              <Mapping SourceColumn="mcusaddr5" DataSetColumn="mcusaddr5" />
+              <Mapping SourceColumn="mcusemail" DataSetColumn="mcusemail" />
+              <Mapping SourceColumn="mcustaxcode" DataSetColumn="mcustaxcode" />
+              <Mapping SourceColumn="tinvhdt" DataSetColumn="tinvhdt" />
+              <Mapping SourceColumn="subtotal" DataSetColumn="subtotal" />
+              <Mapping SourceColumn="tinvhdisc1" DataSetColumn="tinvhdisc1" />
+              <Mapping SourceColumn="tinvhdisc2" DataSetColumn="tinvhdisc2" />
+              <Mapping SourceColumn="tinvhongkir" DataSetColumn="tinvhongkir" />
+              <Mapping SourceColumn="tinvhongpack" DataSetColumn="tinvhongpack" />
+              <Mapping SourceColumn="total" DataSetColumn="total" />
+            </Mappings>
+            <Sources />
+          </TableAdapter>
+          <TableAdapter BaseClass="System.ComponentModel.Component" DataAccessorModifier="AutoLayout, AnsiClass, Class, Public" DataAccessorName="rdetailinvoiceTableAdapter" GeneratorDataComponentClassName="rdetailinvoiceTableAdapter" Name="rdetailinvoice" UserDataComponentName="rdetailinvoiceTableAdapter">
+            <MainSource>
+              <DbSource ConnectionRef="simagroConnectionString (MySettings)" DbObjectName="simagro.mcus" DbObjectType="Table" FillMethodModifier="Public" FillMethodName="Fill" GenerateMethods="Both" GenerateShortCommands="true" GeneratorGetMethodName="GetData" GeneratorSourceName="Fill" GetMethodModifier="Public" GetMethodName="GetData" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetData" UserSourceName="Fill">
+                <DeleteCommand>
+                  <DbCommand CommandType="Text" ModifiedByUser="false">
+                    <CommandText>DELETE FROM `mcus` WHERE ((`mcusid` = @p1) AND ((@p2 = 1 AND `mcusname` IS NULL) OR (`mcusname` = @p3)) AND ((@p4 = 1 AND `mcusphone1` IS NULL) OR (`mcusphone1` = @p5)) AND ((@p6 = 1 AND `mcusphone2` IS NULL) OR (`mcusphone2` = @p7)) AND ((@p8 = 1 AND `mcusfax` IS NULL) OR (`mcusfax` = @p9)) AND ((@p10 = 1 AND `mcusaddr1` IS NULL) OR (`mcusaddr1` = @p11)) AND ((@p12 = 1 AND `mcusaddr2` IS NULL) OR (`mcusaddr2` = @p13)) AND ((@p14 = 1 AND `mcusaddr3` IS NULL) OR (`mcusaddr3` = @p15)) AND ((@p16 = 1 AND `mcusaddr4` IS NULL) OR (`mcusaddr4` = @p17)) AND ((@p18 = 1 AND `mcusaddr5` IS NULL) OR (`mcusaddr5` = @p19)) AND ((@p20 = 1 AND `mcusemail` IS NULL) OR (`mcusemail` = @p21)) AND ((@p22 = 1 AND `mcustaxcode` IS NULL) OR (`mcustaxcode` = @p23)))</CommandText>
+                    <Parameters>
+                      <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@p1" Precision="0" ProviderType="Int32" Scale="0" Size="0" SourceColumn="mcusid" SourceColumnNullMapping="false" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@p2" Precision="0" ProviderType="Int32" Scale="0" Size="0" SourceColumn="mcusname" SourceColumnNullMapping="true" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="String" Direction="Input" ParameterName="@p3" Precision="0" ProviderType="VarChar" Scale="0" Size="0" SourceColumn="mcusname" SourceColumnNullMapping="false" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@p4" Precision="0" ProviderType="Int32" Scale="0" Size="0" SourceColumn="mcusphone1" SourceColumnNullMapping="true" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="String" Direction="Input" ParameterName="@p5" Precision="0" ProviderType="VarChar" Scale="0" Size="0" SourceColumn="mcusphone1" SourceColumnNullMapping="false" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@p6" Precision="0" ProviderType="Int32" Scale="0" Size="0" SourceColumn="mcusphone2" SourceColumnNullMapping="true" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="String" Direction="Input" ParameterName="@p7" Precision="0" ProviderType="VarChar" Scale="0" Size="0" SourceColumn="mcusphone2" SourceColumnNullMapping="false" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@p8" Precision="0" ProviderType="Int32" Scale="0" Size="0" SourceColumn="mcusfax" SourceColumnNullMapping="true" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="String" Direction="Input" ParameterName="@p9" Precision="0" ProviderType="VarChar" Scale="0" Size="0" SourceColumn="mcusfax" SourceColumnNullMapping="false" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@p10" Precision="0" ProviderType="Int32" Scale="0" Size="0" SourceColumn="mcusaddr1" SourceColumnNullMapping="true" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="String" Direction="Input" ParameterName="@p11" Precision="0" ProviderType="VarChar" Scale="0" Size="0" SourceColumn="mcusaddr1" SourceColumnNullMapping="false" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@p12" Precision="0" ProviderType="Int32" Scale="0" Size="0" SourceColumn="mcusaddr2" SourceColumnNullMapping="true" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="String" Direction="Input" ParameterName="@p13" Precision="0" ProviderType="VarChar" Scale="0" Size="0" SourceColumn="mcusaddr2" SourceColumnNullMapping="false" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@p14" Precision="0" ProviderType="Int32" Scale="0" Size="0" SourceColumn="mcusaddr3" SourceColumnNullMapping="true" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="String" Direction="Input" ParameterName="@p15" Precision="0" ProviderType="VarChar" Scale="0" Size="0" SourceColumn="mcusaddr3" SourceColumnNullMapping="false" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@p16" Precision="0" ProviderType="Int32" Scale="0" Size="0" SourceColumn="mcusaddr4" SourceColumnNullMapping="true" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="String" Direction="Input" ParameterName="@p17" Precision="0" ProviderType="VarChar" Scale="0" Size="0" SourceColumn="mcusaddr4" SourceColumnNullMapping="false" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@p18" Precision="0" ProviderType="Int32" Scale="0" Size="0" SourceColumn="mcusaddr5" SourceColumnNullMapping="true" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="String" Direction="Input" ParameterName="@p19" Precision="0" ProviderType="VarChar" Scale="0" Size="0" SourceColumn="mcusaddr5" SourceColumnNullMapping="false" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@p20" Precision="0" ProviderType="Int32" Scale="0" Size="0" SourceColumn="mcusemail" SourceColumnNullMapping="true" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="String" Direction="Input" ParameterName="@p21" Precision="0" ProviderType="VarChar" Scale="0" Size="0" SourceColumn="mcusemail" SourceColumnNullMapping="false" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@p22" Precision="0" ProviderType="Int32" Scale="0" Size="0" SourceColumn="mcustaxcode" SourceColumnNullMapping="true" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="String" Direction="Input" ParameterName="@p23" Precision="0" ProviderType="VarChar" Scale="0" Size="0" SourceColumn="mcustaxcode" SourceColumnNullMapping="false" SourceVersion="Original" />
+                    </Parameters>
+                  </DbCommand>
+                </DeleteCommand>
+                <SelectCommand>
+                  <DbCommand CommandType="Text" ModifiedByUser="true">
+                    <CommandText>SELECT T1.`mcusid`,
+  T1.`mcusname`,
+  T1.`mcusphone1`,
+  T1.`mcusphone2`,
+  T1.`mcusfax`,
+  T1.`mcusaddr1`,
+  T1.`mcusaddr2`,
+  T1.`mcusaddr3`,
+  T1.`mcusaddr4`,
+  T1.`mcusaddr5`,
+  T1.`mcusemail`,
+  T1.`mcustaxcode`,
+IFNULL(T2.`tinvhno`,'') AS tinvhno,
+IFNULL(T2.`tinvhdt`,0) AS tinvhdt,
+IFNULL(T2.`tinvhnote`,0) AS tinvhnote,
+IFNULL(T2.`tinvhdisc1`,0) AS tinvhdisc1,
+IFNULL(T2.`tinvhdisc2`,0) AS tinvhdisc2,
+IFNULL(T2.`tinvhongkir`,0) AS tinvhongkir,
+IFNULL(T2.`tinvhongpack`,0) AS tinvhongpack,
+IFNULL(T2.tinvdid   ,0) AS tinvdid,
+IFNULL(T2.mmtrid    ,'') AS mmtrid,
+IFNULL(CONCAT(T2.mmtrname,CONCAT(' ',T2.polybag)),'') AS mmtrname,
+IFNULL(T2.tinvdqty  ,0) AS tinvdqty,
+IFNULL(T2.tinvdprice,0) AS tinvdprice,
+IFNULL(T2.tinvdtype ,'0') AS tinvdtype
+FROM mcus T1
+LEFT JOIN (SELECT T1.`tinvhno`,`tinvhdt`,`tinvhnote`,T1.`mcusid`,`tinvhdisc1`,`tinvhdisc2`, 
+`tinvhongkir`,`tinvhongpack`,T1.`dtcreated`,`userid` ,T2.`tinvdid`,T2.`mmtrid`,T3.mmtrname,T3.polybag,T3.mmtrunit,T2.`tinvdqty`,
+T2.`tinvdprice`,T2.`tinvdtype` FROM tinvh  T1 INNER JOIN tinvd T2 ON T1.`tinvhno` = T2.`tinvhno` INNER JOIN material_fig T3 ON T3.`mmtrid`=T2.`mmtrid`)T2 
+ON T1.`mcusid` = T2.mcusid
+</CommandText>
+                    <Parameters />
+                  </DbCommand>
+                </SelectCommand>
+                <UpdateCommand>
+                  <DbCommand CommandType="Text" ModifiedByUser="false">
+                    <CommandText>UPDATE `mcus` SET `mcusname` = @p1, `mcusphone1` = @p2, `mcusphone2` = @p3, `mcusfax` = @p4, `mcusaddr1` = @p5, `mcusaddr2` = @p6, `mcusaddr3` = @p7, `mcusaddr4` = @p8, `mcusaddr5` = @p9, `mcusemail` = @p10, `mcustaxcode` = @p11 WHERE ((`mcusid` = @p12) AND ((@p13 = 1 AND `mcusname` IS NULL) OR (`mcusname` = @p14)) AND ((@p15 = 1 AND `mcusphone1` IS NULL) OR (`mcusphone1` = @p16)) AND ((@p17 = 1 AND `mcusphone2` IS NULL) OR (`mcusphone2` = @p18)) AND ((@p19 = 1 AND `mcusfax` IS NULL) OR (`mcusfax` = @p20)) AND ((@p21 = 1 AND `mcusaddr1` IS NULL) OR (`mcusaddr1` = @p22)) AND ((@p23 = 1 AND `mcusaddr2` IS NULL) OR (`mcusaddr2` = @p24)) AND ((@p25 = 1 AND `mcusaddr3` IS NULL) OR (`mcusaddr3` = @p26)) AND ((@p27 = 1 AND `mcusaddr4` IS NULL) OR (`mcusaddr4` = @p28)) AND ((@p29 = 1 AND `mcusaddr5` IS NULL) OR (`mcusaddr5` = @p30)) AND ((@p31 = 1 AND `mcusemail` IS NULL) OR (`mcusemail` = @p32)) AND ((@p33 = 1 AND `mcustaxcode` IS NULL) OR (`mcustaxcode` = @p34)))</CommandText>
+                    <Parameters>
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="String" Direction="Input" ParameterName="@p1" Precision="0" ProviderType="VarChar" Scale="0" Size="0" SourceColumn="mcusname" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="String" Direction="Input" ParameterName="@p2" Precision="0" ProviderType="VarChar" Scale="0" Size="0" SourceColumn="mcusphone1" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="String" Direction="Input" ParameterName="@p3" Precision="0" ProviderType="VarChar" Scale="0" Size="0" SourceColumn="mcusphone2" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="String" Direction="Input" ParameterName="@p4" Precision="0" ProviderType="VarChar" Scale="0" Size="0" SourceColumn="mcusfax" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="String" Direction="Input" ParameterName="@p5" Precision="0" ProviderType="VarChar" Scale="0" Size="0" SourceColumn="mcusaddr1" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="String" Direction="Input" ParameterName="@p6" Precision="0" ProviderType="VarChar" Scale="0" Size="0" SourceColumn="mcusaddr2" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="String" Direction="Input" ParameterName="@p7" Precision="0" ProviderType="VarChar" Scale="0" Size="0" SourceColumn="mcusaddr3" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="String" Direction="Input" ParameterName="@p8" Precision="0" ProviderType="VarChar" Scale="0" Size="0" SourceColumn="mcusaddr4" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="String" Direction="Input" ParameterName="@p9" Precision="0" ProviderType="VarChar" Scale="0" Size="0" SourceColumn="mcusaddr5" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="String" Direction="Input" ParameterName="@p10" Precision="0" ProviderType="VarChar" Scale="0" Size="0" SourceColumn="mcusemail" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="String" Direction="Input" ParameterName="@p11" Precision="0" ProviderType="VarChar" Scale="0" Size="0" SourceColumn="mcustaxcode" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@p12" Precision="0" ProviderType="Int32" Scale="0" Size="0" SourceColumn="mcusid" SourceColumnNullMapping="false" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@p13" Precision="0" ProviderType="Int32" Scale="0" Size="0" SourceColumn="mcusname" SourceColumnNullMapping="true" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="String" Direction="Input" ParameterName="@p14" Precision="0" ProviderType="VarChar" Scale="0" Size="0" SourceColumn="mcusname" SourceColumnNullMapping="false" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@p15" Precision="0" ProviderType="Int32" Scale="0" Size="0" SourceColumn="mcusphone1" SourceColumnNullMapping="true" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="String" Direction="Input" ParameterName="@p16" Precision="0" ProviderType="VarChar" Scale="0" Size="0" SourceColumn="mcusphone1" SourceColumnNullMapping="false" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@p17" Precision="0" ProviderType="Int32" Scale="0" Size="0" SourceColumn="mcusphone2" SourceColumnNullMapping="true" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="String" Direction="Input" ParameterName="@p18" Precision="0" ProviderType="VarChar" Scale="0" Size="0" SourceColumn="mcusphone2" SourceColumnNullMapping="false" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@p19" Precision="0" ProviderType="Int32" Scale="0" Size="0" SourceColumn="mcusfax" SourceColumnNullMapping="true" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="String" Direction="Input" ParameterName="@p20" Precision="0" ProviderType="VarChar" Scale="0" Size="0" SourceColumn="mcusfax" SourceColumnNullMapping="false" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@p21" Precision="0" ProviderType="Int32" Scale="0" Size="0" SourceColumn="mcusaddr1" SourceColumnNullMapping="true" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="String" Direction="Input" ParameterName="@p22" Precision="0" ProviderType="VarChar" Scale="0" Size="0" SourceColumn="mcusaddr1" SourceColumnNullMapping="false" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@p23" Precision="0" ProviderType="Int32" Scale="0" Size="0" SourceColumn="mcusaddr2" SourceColumnNullMapping="true" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="String" Direction="Input" ParameterName="@p24" Precision="0" ProviderType="VarChar" Scale="0" Size="0" SourceColumn="mcusaddr2" SourceColumnNullMapping="false" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@p25" Precision="0" ProviderType="Int32" Scale="0" Size="0" SourceColumn="mcusaddr3" SourceColumnNullMapping="true" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="String" Direction="Input" ParameterName="@p26" Precision="0" ProviderType="VarChar" Scale="0" Size="0" SourceColumn="mcusaddr3" SourceColumnNullMapping="false" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@p27" Precision="0" ProviderType="Int32" Scale="0" Size="0" SourceColumn="mcusaddr4" SourceColumnNullMapping="true" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="String" Direction="Input" ParameterName="@p28" Precision="0" ProviderType="VarChar" Scale="0" Size="0" SourceColumn="mcusaddr4" SourceColumnNullMapping="false" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@p29" Precision="0" ProviderType="Int32" Scale="0" Size="0" SourceColumn="mcusaddr5" SourceColumnNullMapping="true" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="String" Direction="Input" ParameterName="@p30" Precision="0" ProviderType="VarChar" Scale="0" Size="0" SourceColumn="mcusaddr5" SourceColumnNullMapping="false" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@p31" Precision="0" ProviderType="Int32" Scale="0" Size="0" SourceColumn="mcusemail" SourceColumnNullMapping="true" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="String" Direction="Input" ParameterName="@p32" Precision="0" ProviderType="VarChar" Scale="0" Size="0" SourceColumn="mcusemail" SourceColumnNullMapping="false" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@p33" Precision="0" ProviderType="Int32" Scale="0" Size="0" SourceColumn="mcustaxcode" SourceColumnNullMapping="true" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="String" Direction="Input" ParameterName="@p34" Precision="0" ProviderType="VarChar" Scale="0" Size="0" SourceColumn="mcustaxcode" SourceColumnNullMapping="false" SourceVersion="Original" />
+                    </Parameters>
+                  </DbCommand>
+                </UpdateCommand>
+              </DbSource>
+            </MainSource>
+            <Mappings>
+              <Mapping SourceColumn="mcusid" DataSetColumn="mcusid" />
+              <Mapping SourceColumn="mcusname" DataSetColumn="mcusname" />
+              <Mapping SourceColumn="mcusphone1" DataSetColumn="mcusphone1" />
+              <Mapping SourceColumn="mcusphone2" DataSetColumn="mcusphone2" />
+              <Mapping SourceColumn="mcusfax" DataSetColumn="mcusfax" />
+              <Mapping SourceColumn="mcusaddr1" DataSetColumn="mcusaddr1" />
+              <Mapping SourceColumn="mcusaddr2" DataSetColumn="mcusaddr2" />
+              <Mapping SourceColumn="mcusaddr3" DataSetColumn="mcusaddr3" />
+              <Mapping SourceColumn="mcusaddr4" DataSetColumn="mcusaddr4" />
+              <Mapping SourceColumn="mcusaddr5" DataSetColumn="mcusaddr5" />
+              <Mapping SourceColumn="mcusemail" DataSetColumn="mcusemail" />
+              <Mapping SourceColumn="mcustaxcode" DataSetColumn="mcustaxcode" />
+              <Mapping SourceColumn="tinvhdt" DataSetColumn="tinvhdt" />
+              <Mapping SourceColumn="tinvhnote" DataSetColumn="tinvhnote" />
+              <Mapping SourceColumn="tinvhdisc1" DataSetColumn="tinvhdisc1" />
+              <Mapping SourceColumn="tinvhdisc2" DataSetColumn="tinvhdisc2" />
+              <Mapping SourceColumn="tinvhongkir" DataSetColumn="tinvhongkir" />
+              <Mapping SourceColumn="tinvhongpack" DataSetColumn="tinvhongpack" />
+              <Mapping SourceColumn="tinvhno" DataSetColumn="tinvhno" />
+              <Mapping SourceColumn="mmtrid" DataSetColumn="mmtrid" />
+              <Mapping SourceColumn="tinvdtype" DataSetColumn="tinvdtype" />
+              <Mapping SourceColumn="tinvdid" DataSetColumn="tinvdid" />
+              <Mapping SourceColumn="tinvdqty" DataSetColumn="tinvdqty" />
+              <Mapping SourceColumn="tinvdprice" DataSetColumn="tinvdprice" />
+              <Mapping SourceColumn="mmtrname" DataSetColumn="mmtrname" />
             </Mappings>
             <Sources />
           </TableAdapter>
@@ -203,7 +405,252 @@
             </xs:sequence>
           </xs:complexType>
         </xs:element>
+        <xs:element name="rinvoice" msprop:Generator_TableClassName="rinvoiceDataTable" msprop:Generator_TableVarName="tablerinvoice" msprop:Generator_RowChangedName="rinvoiceRowChanged" msprop:Generator_TablePropName="rinvoice" msprop:Generator_RowDeletingName="rinvoiceRowDeleting" msprop:Generator_RowChangingName="rinvoiceRowChanging" msprop:Generator_RowEvHandlerName="rinvoiceRowChangeEventHandler" msprop:Generator_RowDeletedName="rinvoiceRowDeleted" msprop:Generator_RowClassName="rinvoiceRow" msprop:Generator_UserTableName="rinvoice" msprop:Generator_RowEvArgName="rinvoiceRowChangeEvent">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="tinvhnote" msprop:Generator_ColumnVarNameInTable="columntinvhnote" msprop:Generator_ColumnPropNameInRow="tinvhnote" msprop:Generator_ColumnPropNameInTable="tinvhnoteColumn" msprop:Generator_UserColumnName="tinvhnote">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="255" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="mcusid" msprop:Generator_ColumnVarNameInTable="columnmcusid" msprop:Generator_ColumnPropNameInRow="mcusid" msprop:Generator_ColumnPropNameInTable="mcusidColumn" msprop:Generator_UserColumnName="mcusid" type="xs:int" />
+              <xs:element name="mcusname" msprop:Generator_ColumnVarNameInTable="columnmcusname" msprop:Generator_ColumnPropNameInRow="mcusname" msprop:Generator_ColumnPropNameInTable="mcusnameColumn" msprop:Generator_UserColumnName="mcusname" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="35" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="mcusphone1" msprop:Generator_ColumnVarNameInTable="columnmcusphone1" msprop:Generator_ColumnPropNameInRow="mcusphone1" msprop:Generator_ColumnPropNameInTable="mcusphone1Column" msprop:Generator_UserColumnName="mcusphone1" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="15" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="mcusphone2" msprop:Generator_ColumnVarNameInTable="columnmcusphone2" msprop:Generator_ColumnPropNameInRow="mcusphone2" msprop:Generator_ColumnPropNameInTable="mcusphone2Column" msprop:Generator_UserColumnName="mcusphone2" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="15" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="mcusfax" msprop:Generator_ColumnVarNameInTable="columnmcusfax" msprop:Generator_ColumnPropNameInRow="mcusfax" msprop:Generator_ColumnPropNameInTable="mcusfaxColumn" msprop:Generator_UserColumnName="mcusfax" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="15" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="mcusaddr1" msprop:Generator_ColumnVarNameInTable="columnmcusaddr1" msprop:Generator_ColumnPropNameInRow="mcusaddr1" msprop:Generator_ColumnPropNameInTable="mcusaddr1Column" msprop:Generator_UserColumnName="mcusaddr1" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="255" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="mcusaddr2" msprop:Generator_ColumnVarNameInTable="columnmcusaddr2" msprop:Generator_ColumnPropNameInRow="mcusaddr2" msprop:Generator_ColumnPropNameInTable="mcusaddr2Column" msprop:Generator_UserColumnName="mcusaddr2" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="35" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="mcusaddr3" msprop:Generator_ColumnVarNameInTable="columnmcusaddr3" msprop:Generator_ColumnPropNameInRow="mcusaddr3" msprop:Generator_ColumnPropNameInTable="mcusaddr3Column" msprop:Generator_UserColumnName="mcusaddr3" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="35" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="mcusaddr4" msprop:Generator_ColumnVarNameInTable="columnmcusaddr4" msprop:Generator_ColumnPropNameInRow="mcusaddr4" msprop:Generator_ColumnPropNameInTable="mcusaddr4Column" msprop:Generator_UserColumnName="mcusaddr4" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="35" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="mcusaddr5" msprop:Generator_ColumnVarNameInTable="columnmcusaddr5" msprop:Generator_ColumnPropNameInRow="mcusaddr5" msprop:Generator_ColumnPropNameInTable="mcusaddr5Column" msprop:Generator_UserColumnName="mcusaddr5" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="35" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="mcusemail" msprop:Generator_ColumnVarNameInTable="columnmcusemail" msprop:Generator_ColumnPropNameInRow="mcusemail" msprop:Generator_ColumnPropNameInTable="mcusemailColumn" msprop:Generator_UserColumnName="mcusemail" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="25" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="mcustaxcode" msprop:Generator_ColumnVarNameInTable="columnmcustaxcode" msprop:Generator_ColumnPropNameInRow="mcustaxcode" msprop:Generator_ColumnPropNameInTable="mcustaxcodeColumn" msprop:Generator_UserColumnName="mcustaxcode" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="25" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="tinvhdt" msprop:Generator_ColumnVarNameInTable="columntinvhdt" msprop:Generator_ColumnPropNameInRow="tinvhdt" msprop:Generator_ColumnPropNameInTable="tinvhdtColumn" msprop:Generator_UserColumnName="tinvhdt">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="10" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="subtotal" msprop:Generator_ColumnVarNameInTable="columnsubtotal" msprop:Generator_ColumnPropNameInRow="subtotal" msprop:Generator_ColumnPropNameInTable="subtotalColumn" msprop:Generator_UserColumnName="subtotal" type="xs:decimal" minOccurs="0" />
+              <xs:element name="tinvhdisc1" msprop:Generator_ColumnVarNameInTable="columntinvhdisc1" msprop:Generator_ColumnPropNameInRow="tinvhdisc1" msprop:Generator_ColumnPropNameInTable="tinvhdisc1Column" msprop:Generator_UserColumnName="tinvhdisc1" type="xs:decimal" minOccurs="0" />
+              <xs:element name="tinvhdisc2" msprop:Generator_ColumnVarNameInTable="columntinvhdisc2" msprop:Generator_ColumnPropNameInRow="tinvhdisc2" msprop:Generator_ColumnPropNameInTable="tinvhdisc2Column" msprop:Generator_UserColumnName="tinvhdisc2" type="xs:decimal" minOccurs="0" />
+              <xs:element name="tinvhongkir" msprop:Generator_ColumnVarNameInTable="columntinvhongkir" msprop:Generator_ColumnPropNameInRow="tinvhongkir" msprop:Generator_ColumnPropNameInTable="tinvhongkirColumn" msprop:Generator_UserColumnName="tinvhongkir" type="xs:decimal" minOccurs="0" />
+              <xs:element name="tinvhongpack" msprop:Generator_ColumnVarNameInTable="columntinvhongpack" msprop:Generator_ColumnPropNameInRow="tinvhongpack" msprop:Generator_ColumnPropNameInTable="tinvhongpackColumn" msprop:Generator_UserColumnName="tinvhongpack" type="xs:decimal" minOccurs="0" />
+              <xs:element name="total" msprop:Generator_ColumnVarNameInTable="columntotal" msprop:Generator_ColumnPropNameInRow="total" msprop:Generator_ColumnPropNameInTable="totalColumn" msprop:Generator_UserColumnName="total" type="xs:decimal" minOccurs="0" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="rdetailinvoice" msprop:Generator_TableClassName="rdetailinvoiceDataTable" msprop:Generator_TableVarName="tablerdetailinvoice" msprop:Generator_RowChangedName="rdetailinvoiceRowChanged" msprop:Generator_TablePropName="rdetailinvoice" msprop:Generator_RowDeletingName="rdetailinvoiceRowDeleting" msprop:Generator_RowChangingName="rdetailinvoiceRowChanging" msprop:Generator_RowEvHandlerName="rdetailinvoiceRowChangeEventHandler" msprop:Generator_RowDeletedName="rdetailinvoiceRowDeleted" msprop:Generator_RowClassName="rdetailinvoiceRow" msprop:Generator_UserTableName="rdetailinvoice" msprop:Generator_RowEvArgName="rdetailinvoiceRowChangeEvent">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="mcusid" msdata:AutoIncrement="true" msdata:AutoIncrementSeed="-1" msdata:AutoIncrementStep="-1" msprop:Generator_ColumnVarNameInTable="columnmcusid" msprop:Generator_ColumnPropNameInRow="mcusid" msprop:Generator_ColumnPropNameInTable="mcusidColumn" msprop:Generator_UserColumnName="mcusid" type="xs:int" />
+              <xs:element name="mcusname" msprop:Generator_ColumnVarNameInTable="columnmcusname" msprop:Generator_ColumnPropNameInRow="mcusname" msprop:Generator_ColumnPropNameInTable="mcusnameColumn" msprop:Generator_UserColumnName="mcusname" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="35" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="mcusphone1" msprop:Generator_ColumnVarNameInTable="columnmcusphone1" msprop:Generator_ColumnPropNameInRow="mcusphone1" msprop:Generator_ColumnPropNameInTable="mcusphone1Column" msprop:Generator_UserColumnName="mcusphone1" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="15" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="mcusphone2" msprop:Generator_ColumnVarNameInTable="columnmcusphone2" msprop:Generator_ColumnPropNameInRow="mcusphone2" msprop:Generator_ColumnPropNameInTable="mcusphone2Column" msprop:Generator_UserColumnName="mcusphone2" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="15" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="mcusfax" msprop:Generator_ColumnVarNameInTable="columnmcusfax" msprop:Generator_ColumnPropNameInRow="mcusfax" msprop:Generator_ColumnPropNameInTable="mcusfaxColumn" msprop:Generator_UserColumnName="mcusfax" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="15" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="mcusaddr1" msprop:Generator_ColumnVarNameInTable="columnmcusaddr1" msprop:Generator_ColumnPropNameInRow="mcusaddr1" msprop:Generator_ColumnPropNameInTable="mcusaddr1Column" msprop:Generator_UserColumnName="mcusaddr1" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="255" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="mcusaddr2" msprop:Generator_ColumnVarNameInTable="columnmcusaddr2" msprop:Generator_ColumnPropNameInRow="mcusaddr2" msprop:Generator_ColumnPropNameInTable="mcusaddr2Column" msprop:Generator_UserColumnName="mcusaddr2" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="35" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="mcusaddr3" msprop:Generator_ColumnVarNameInTable="columnmcusaddr3" msprop:Generator_ColumnPropNameInRow="mcusaddr3" msprop:Generator_ColumnPropNameInTable="mcusaddr3Column" msprop:Generator_UserColumnName="mcusaddr3" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="35" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="mcusaddr4" msprop:Generator_ColumnVarNameInTable="columnmcusaddr4" msprop:Generator_ColumnPropNameInRow="mcusaddr4" msprop:Generator_ColumnPropNameInTable="mcusaddr4Column" msprop:Generator_UserColumnName="mcusaddr4" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="35" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="mcusaddr5" msprop:Generator_ColumnVarNameInTable="columnmcusaddr5" msprop:Generator_ColumnPropNameInRow="mcusaddr5" msprop:Generator_ColumnPropNameInTable="mcusaddr5Column" msprop:Generator_UserColumnName="mcusaddr5" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="35" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="mcusemail" msprop:Generator_ColumnVarNameInTable="columnmcusemail" msprop:Generator_ColumnPropNameInRow="mcusemail" msprop:Generator_ColumnPropNameInTable="mcusemailColumn" msprop:Generator_UserColumnName="mcusemail" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="25" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="mcustaxcode" msprop:Generator_ColumnVarNameInTable="columnmcustaxcode" msprop:Generator_ColumnPropNameInRow="mcustaxcode" msprop:Generator_ColumnPropNameInTable="mcustaxcodeColumn" msprop:Generator_UserColumnName="mcustaxcode" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="25" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="tinvhdt" msprop:Generator_ColumnVarNameInTable="columntinvhdt" msprop:Generator_ColumnPropNameInRow="tinvhdt" msprop:Generator_ColumnPropNameInTable="tinvhdtColumn" msprop:Generator_UserColumnName="tinvhdt">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="10" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="tinvhnote" msprop:Generator_ColumnVarNameInTable="columntinvhnote" msprop:Generator_ColumnPropNameInRow="tinvhnote" msprop:Generator_ColumnPropNameInTable="tinvhnoteColumn" msprop:Generator_UserColumnName="tinvhnote">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="255" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="tinvhdisc1" msprop:Generator_ColumnVarNameInTable="columntinvhdisc1" msprop:Generator_ColumnPropNameInRow="tinvhdisc1" msprop:Generator_ColumnPropNameInTable="tinvhdisc1Column" msprop:Generator_UserColumnName="tinvhdisc1" type="xs:decimal" />
+              <xs:element name="tinvhdisc2" msprop:Generator_ColumnVarNameInTable="columntinvhdisc2" msprop:Generator_ColumnPropNameInRow="tinvhdisc2" msprop:Generator_ColumnPropNameInTable="tinvhdisc2Column" msprop:Generator_UserColumnName="tinvhdisc2" type="xs:decimal" />
+              <xs:element name="tinvhongkir" msprop:Generator_ColumnVarNameInTable="columntinvhongkir" msprop:Generator_ColumnPropNameInRow="tinvhongkir" msprop:Generator_ColumnPropNameInTable="tinvhongkirColumn" msprop:Generator_UserColumnName="tinvhongkir" type="xs:decimal" />
+              <xs:element name="tinvhongpack" msprop:Generator_ColumnVarNameInTable="columntinvhongpack" msprop:Generator_ColumnPropNameInRow="tinvhongpack" msprop:Generator_ColumnPropNameInTable="tinvhongpackColumn" msprop:Generator_UserColumnName="tinvhongpack" type="xs:decimal" />
+              <xs:element name="tinvhno" msprop:Generator_ColumnVarNameInTable="columntinvhno" msprop:Generator_ColumnPropNameInRow="tinvhno" msprop:Generator_ColumnPropNameInTable="tinvhnoColumn" msprop:Generator_UserColumnName="tinvhno">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="13" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="mmtrid" msprop:Generator_ColumnVarNameInTable="columnmmtrid" msprop:Generator_ColumnPropNameInRow="mmtrid" msprop:Generator_ColumnPropNameInTable="mmtridColumn" msprop:Generator_UserColumnName="mmtrid">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="9" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="tinvdtype" msprop:Generator_ColumnVarNameInTable="columntinvdtype" msprop:Generator_ColumnPropNameInRow="tinvdtype" msprop:Generator_ColumnPropNameInTable="tinvdtypeColumn" msprop:Generator_UserColumnName="tinvdtype">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="1" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="tinvdid" msprop:Generator_ColumnVarNameInTable="columntinvdid" msprop:Generator_ColumnPropNameInRow="tinvdid" msprop:Generator_ColumnPropNameInTable="tinvdidColumn" msprop:Generator_UserColumnName="tinvdid" type="xs:long" />
+              <xs:element name="tinvdqty" msprop:Generator_ColumnVarNameInTable="columntinvdqty" msprop:Generator_ColumnPropNameInRow="tinvdqty" msprop:Generator_ColumnPropNameInTable="tinvdqtyColumn" msprop:Generator_UserColumnName="tinvdqty" type="xs:long" />
+              <xs:element name="tinvdprice" msprop:Generator_ColumnVarNameInTable="columntinvdprice" msprop:Generator_ColumnPropNameInRow="tinvdprice" msprop:Generator_ColumnPropNameInTable="tinvdpriceColumn" msprop:Generator_UserColumnName="tinvdprice" type="xs:decimal" />
+              <xs:element name="mmtrname" msprop:Generator_ColumnVarNameInTable="columnmmtrname" msprop:Generator_ColumnPropNameInRow="mmtrname" msprop:Generator_ColumnPropNameInTable="mmtrnameColumn" msprop:Generator_UserColumnName="mmtrname">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="31" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
       </xs:choice>
     </xs:complexType>
+    <xs:unique name="Constraint1" msdata:PrimaryKey="true">
+      <xs:selector xpath=".//mstns:rinvoice" />
+      <xs:field xpath="mstns:mcusid" />
+    </xs:unique>
+    <xs:unique name="rdetailinvoice_Constraint1" msdata:ConstraintName="Constraint1" msdata:PrimaryKey="true">
+      <xs:selector xpath=".//mstns:rdetailinvoice" />
+      <xs:field xpath="mstns:mcusid" />
+    </xs:unique>
   </xs:element>
 </xs:schema>

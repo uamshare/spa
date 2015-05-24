@@ -25,6 +25,7 @@ Partial Class SetServer
         Me.GroupBox1 = New System.Windows.Forms.GroupBox()
         Me.Label1 = New System.Windows.Forms.Label()
         Me.GroupBox2 = New System.Windows.Forms.GroupBox()
+        Me.TextBox5 = New System.Windows.Forms.TextBox()
         Me.TextBox4 = New System.Windows.Forms.TextBox()
         Me.Label5 = New System.Windows.Forms.Label()
         Me.TextBox3 = New System.Windows.Forms.TextBox()
@@ -34,7 +35,6 @@ Partial Class SetServer
         Me.Button1 = New System.Windows.Forms.Button()
         Me.TextBox1 = New System.Windows.Forms.TextBox()
         Me.Label2 = New System.Windows.Forms.Label()
-        Me.TextBox5 = New System.Windows.Forms.TextBox()
         Me.GroupBox1.SuspendLayout()
         Me.GroupBox2.SuspendLayout()
         Me.SuspendLayout()
@@ -81,12 +81,21 @@ Partial Class SetServer
         Me.GroupBox2.TabIndex = 1
         Me.GroupBox2.TabStop = False
         '
+        'TextBox5
+        '
+        Me.TextBox5.Location = New System.Drawing.Point(6, 143)
+        Me.TextBox5.Name = "TextBox5"
+        Me.TextBox5.PasswordChar = Global.Microsoft.VisualBasic.ChrW(42)
+        Me.TextBox5.Size = New System.Drawing.Size(237, 22)
+        Me.TextBox5.TabIndex = 9
+        Me.TextBox5.Visible = False
+        '
         'TextBox4
         '
         Me.TextBox4.Location = New System.Drawing.Point(90, 111)
         Me.TextBox4.Name = "TextBox4"
         Me.TextBox4.Size = New System.Drawing.Size(237, 22)
-        Me.TextBox4.TabIndex = 8
+        Me.TextBox4.TabIndex = 4
         '
         'Label5
         '
@@ -103,7 +112,7 @@ Partial Class SetServer
         Me.TextBox3.Name = "TextBox3"
         Me.TextBox3.PasswordChar = Global.Microsoft.VisualBasic.ChrW(42)
         Me.TextBox3.Size = New System.Drawing.Size(237, 22)
-        Me.TextBox3.TabIndex = 6
+        Me.TextBox3.TabIndex = 3
         '
         'Label4
         '
@@ -119,7 +128,7 @@ Partial Class SetServer
         Me.TextBox2.Location = New System.Drawing.Point(90, 55)
         Me.TextBox2.Name = "TextBox2"
         Me.TextBox2.Size = New System.Drawing.Size(237, 22)
-        Me.TextBox2.TabIndex = 4
+        Me.TextBox2.TabIndex = 2
         '
         'Label3
         '
@@ -135,7 +144,7 @@ Partial Class SetServer
         Me.Button1.Location = New System.Drawing.Point(252, 139)
         Me.Button1.Name = "Button1"
         Me.Button1.Size = New System.Drawing.Size(77, 31)
-        Me.Button1.TabIndex = 2
+        Me.Button1.TabIndex = 5
         Me.Button1.Text = "Connect"
         Me.Button1.UseVisualStyleBackColor = True
         '
@@ -154,15 +163,6 @@ Partial Class SetServer
         Me.Label2.Size = New System.Drawing.Size(48, 16)
         Me.Label2.TabIndex = 0
         Me.Label2.Text = "Server"
-        '
-        'TextBox5
-        '
-        Me.TextBox5.Location = New System.Drawing.Point(6, 143)
-        Me.TextBox5.Name = "TextBox5"
-        Me.TextBox5.PasswordChar = Global.Microsoft.VisualBasic.ChrW(42)
-        Me.TextBox5.Size = New System.Drawing.Size(237, 22)
-        Me.TextBox5.TabIndex = 9
-        Me.TextBox5.Visible = False
         '
         'SetServer
         '

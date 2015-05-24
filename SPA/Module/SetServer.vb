@@ -4,6 +4,7 @@
     Dim cpwd As String = My.Settings.pwd
     Dim cdatabase As String = My.Settings.database
     Private Sub Button1_Click(sender As Object, e As EventArgs) Handles Button1.Click
+        Cursor.Current = Cursors.WaitCursor
         My.Settings.server = TextBox1.Text
         My.Settings.uid = TextBox2.Text
         TextBox5.Text = TextBox3.Text
@@ -17,6 +18,7 @@
             Me.Close()
             Main()
         End If
+        Cursor.Current = Cursors.Default
     End Sub
 
     Private Sub SetServer_Load(sender As Object, e As EventArgs) Handles Me.Load

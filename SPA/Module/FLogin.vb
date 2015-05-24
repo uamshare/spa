@@ -2,6 +2,9 @@
     Dim Model As New MUsers
 
     Private Sub Button1_Click(sender As Object, e As EventArgs) Handles Button1.Click
+        Cursor.Current = Cursors.WaitCursor
+        ProgressBar1.Value = 30
+        ProgressBar1.Visible = True
         If TextBox1.Text = "" Then
             MyApplication.ShowStatus("Id Pengguna harus diisi!!!", WARNING_STAT)
             TextBox1.Focus()
@@ -13,8 +16,6 @@
             Exit Sub
         End If
         'Dim 
-
-
         If Model.DoLogin(Model.EscapeString(TextBox1.Text), Model.EscapeString(TextBox2.Text)) Then
             MainForm.RestrictUserMenu()
             ShowStatus("Ready")
@@ -33,10 +34,13 @@
                                         & "Login Info : " & vbCrLf _
                                         & "Username = " & TextBox1.Text & ", Password = " & TextBox2.Text, "Failed Login", "Login")
         End If
+        Cursor.Current = Cursors.Default
     End Sub
 
     Private Sub FLogin_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         'Panel1.Location.X = 200
+
+        ProgressBar1.Visible = False
         Panel1.Left = (Me.Width / 2) - (Panel1.Width / 2)
         Panel1.Top = (Me.Height / 2) - (Panel1.Height / 2)
         If Global.SPA.My.Settings.ENVIRONTMENT = "DEV" Then

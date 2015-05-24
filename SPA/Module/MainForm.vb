@@ -143,4 +143,15 @@ Public Class MainForm
     Private Sub menu202_Click(sender As Object, e As EventArgs) Handles menu202.Click
         LoadMdiChildForm(FDataBibitTanamanMasuk, "menu202")
     End Sub
+
+    Private Sub menu303_Click(sender As Object, e As EventArgs) Handles menu303.Click
+        LoadMdiChildForm(FReturPenjualan, "menu303")
+    End Sub
+    Private Sub menu304_Click(sender As Object, e As EventArgs) Handles menu304.Click
+        LoadMdiChildForm(RInvoice, "menu304")
+    End Sub
+
+    Private Sub menu305_Click(sender As Object, e As EventArgs) Handles menu305.Click
+        LoadMdiChildForm(RDetailInvoice, "menu305")
+    End Sub
 End Class

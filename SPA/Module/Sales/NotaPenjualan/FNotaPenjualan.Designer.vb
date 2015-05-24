@@ -121,6 +121,7 @@ Partial Class FNotaPenjualan
         Me.TextBox3.Margin = New System.Windows.Forms.Padding(5)
         Me.TextBox3.MaxLength = 40
         Me.TextBox3.Name = "TextBox3"
+        Me.TextBox3.ReadOnly = True
         Me.TextBox3.Size = New System.Drawing.Size(335, 22)
         Me.TextBox3.TabIndex = 5
         '
@@ -363,6 +364,7 @@ Partial Class FNotaPenjualan
         Me.TextBox2.MaxLength = 255
         Me.TextBox2.Multiline = True
         Me.TextBox2.Name = "TextBox2"
+        Me.TextBox2.ReadOnly = True
         Me.TextBox2.Size = New System.Drawing.Size(335, 22)
         Me.TextBox2.TabIndex = 4
         '

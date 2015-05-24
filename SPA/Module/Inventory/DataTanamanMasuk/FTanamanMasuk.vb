@@ -268,9 +268,8 @@
                             If dat("mmtrid") = DataGridView1.Rows(e.RowIndex).Cells("mmtrid").Value Then
                                 DataGridView1.Rows(e.RowIndex).Cells("mmtrhname").Value = dat("mmtrname") 'ListDataTanaman(1)("mmtrname")
                                 DataGridView1.Rows(e.RowIndex).Cells("polybag").Value = dat("polybag") 'ListDataTanaman(1)("mmtrname")
+
                                 DataGridView1.Rows(e.RowIndex).Cells("price").Value = CDec(dat("hpp"))
-                                'DataGridView1.Rows(e.RowIndex).Cells("qty").Value = IIf(DataGridView1.Rows(e.RowIndex).Cells("qty").Value.ToString.Length > 0, CDec(DataGridView1.Rows(e.RowIndex).Cells("qty").Value), 0)
-                                'DataGridView1.Rows(e.RowIndex).Cells("price").Selected = True
                                 DataGridView1.Rows(e.RowIndex).Cells("oldhpp").Value = CDec(dat("hpp"))
                                 DataGridView1.Rows(e.RowIndex).Cells("hpp").Value = CDec(dat("hpp"))
                             End If
@@ -411,8 +410,8 @@
                         indexrow = indexrow + 1
                     End If
                 End If
-
             Next
+            SetSummaryField()
         Catch ex As Exception
             MyApplication.ShowStatus(ex.Message & vbCrLf & ex.StackTrace, WARNING_STAT)
         End Try
@@ -566,5 +565,4 @@
     Private Sub DateTimePicker1_ValueChanged(sender As Object, e As EventArgs) Handles DateTimePicker1.ValueChanged
         ListDataTanaman = ModelM.GetDataList(CDate(DateTimePicker1.Value))
     End Sub
-
 End Class

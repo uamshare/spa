@@ -397,6 +397,7 @@
                 End If
 
             Next
+            SetSummaryField()
         Catch ex As Exception
             MyApplication.ShowStatus(ex.Message & vbCrLf & ex.StackTrace, WARNING_STAT)
         End Try

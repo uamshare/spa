@@ -406,7 +406,7 @@ Partial Class MainForm
         Me.IsMdiContainer = True
         Me.MainMenuStrip = Me.MenuStrip
         Me.Name = "MainForm"
-        Me.Text = "MainForm"
+        Me.Text = "SPA Aplikasi"
         Me.WindowState = System.Windows.Forms.FormWindowState.Maximized
         Me.MenuStrip.ResumeLayout(False)
         Me.MenuStrip.PerformLayout()

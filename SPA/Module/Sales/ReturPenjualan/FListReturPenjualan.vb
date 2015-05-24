@@ -1,8 +1,8 @@
-﻿Public Class FListNotaPenjualan
+﻿Public Class FListReturPenjualan
     Dim dt As New DataTable
     Dim DGVColumnCheckIndex As Integer
 
-    Private Model As New MNotaPenjualanH
+    Private Model As New MReturPenjualanH
     'Public DatagridParent As DataGridView
     Private ModelRowCount As Integer = Model.GetRowsCount()
     Public Sub init()
@@ -11,7 +11,7 @@
         'DataGridView1.ClearSelection()
     End Sub
     Private Sub FListTanaman_Load(sender As Object, e As EventArgs) Handles MyBase.Load
-        Me.Width = 950
+        Me.Width = 800
         Me.Height = 600
         MyApplication.InitializeDataGridView(DataGridView1)
 
@@ -37,52 +37,22 @@
                 .DataSource = dt
                 .Columns("userid").Visible = False
                 .Columns("dtcreated").Visible = False
+                .Columns("trtrhno").HeaderText = "No Retur"
+                .Columns("trtrhdt").HeaderText = "Tanggal"
                 .Columns("tinvhno").HeaderText = "No Invoice"
-                .Columns("tinvhdt").HeaderText = "Tanggal"
-                .Columns("mcusid").HeaderText = "Customer ID"
-                .Columns("mcusid").Visible = False
-                .Columns("mcusname").HeaderText = "Customer"
-                .Columns("tinvhnote").HeaderText = "Keterangan"
-                .Columns("subtotal").HeaderText = "Subtotal"
-                .Columns("tinvhdisc1").HeaderText = "Disc%"
-                .Columns("tinvhdisc2").HeaderText = "Diskon"
-                '.Columns("tinvhbonus").HeaderText = "Bonus"
-                .Columns("tinvhongkir").HeaderText = "Kirim"
-                .Columns("tinvhongpack").HeaderText = "Pascking"
-                .Columns("total").HeaderText = "Bonus"
-                .Columns("tinvhdisc1").Visible = False
-                .Columns("tinvhnote").Visible = False
+                .Columns("trtrhnote").HeaderText = "Keterangan"
+                .Columns("trtrhnote").Visible = True
 
 
                 .RowHeadersWidth = 75
+                .Columns("trtrhno").Width = 110
+                .Columns("trtrhdt").Width = 100
+                .Columns("trtrhdt").DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter
+                .Columns("trtrhdt").DefaultCellStyle.Format = MyApplication.DefaultFormatDate
                 .Columns("tinvhno").Width = 110
-                .Columns("tinvhdt").Width = 100
-                .Columns("tinvhdt").DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter
-                .Columns("tinvhdt").DefaultCellStyle.Format = MyApplication.DefaultFormatDate
-                .Columns("mcusname").Width = 200
-                .Columns("subtotal").Width = 100
-                .Columns("tinvhdisc1").Width = 50
-                .Columns("tinvhdisc2").Width = 80
-                '.Columns("tinvhbonus").Width = 80
-                .Columns("tinvhongkir").Width = 80
-                .Columns("tinvhongpack").Width = 80
-                .Columns("total").Width = 100
-                .Columns("subtotal").DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight
-                .Columns("subtotal").DefaultCellStyle.Format = "##,##0"
-                .Columns("tinvhdisc1").DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight
-                .Columns("tinvhdisc1").DefaultCellStyle.Format = "##,##0"
-                .Columns("tinvhdisc2").DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight
-                .Columns("tinvhdisc2").DefaultCellStyle.Format = "##,##0"
-                '.Columns("tinvhbonus").DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight
-                '.Columns("tinvhbonus").DefaultCellStyle.Format = "##,##0"
-                .Columns("tinvhongkir").DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight
-                .Columns("tinvhongkir").DefaultCellStyle.Format = "##,##0"
-                .Columns("tinvhongpack").DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight
-                .Columns("tinvhongpack").DefaultCellStyle.Format = "##,##0"
-                .Columns("total").DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight
-                .Columns("total").DefaultCellStyle.Format = "##,##0"
+                .Columns("trtrhnote").Width = 300
+                
                 .Refresh()
-
                 If .RowCount > 0 Then
                     For i As Integer = 0 To .Rows.Count - 1
                         Dim count As Integer = Model.startRecord
@@ -121,27 +91,21 @@
     Private Sub DataGridView1_CellContentDoubleClick(sender As Object, e As DataGridViewCellEventArgs) Handles DataGridView1.CellContentDoubleClick
         Try
             If DataGridView1.SelectedRows.Count > 0 Then
-                FNotaPenjualan.TxtNo.Text = DataGridView1.CurrentRow.Cells("tinvhno").Value().ToString
-                FNotaPenjualan.DateTimePicker1.Value = DataGridView1.CurrentRow.Cells("tinvhdt").Value().ToString
-                FNotaPenjualan.TextBox1.Text = DataGridView1.CurrentRow.Cells("tinvhnote").Value().ToString
-                FNotaPenjualan.ComboBox1.Text = DataGridView1.CurrentRow.Cells("mcusname").Value().ToString
+                FReturPenjualan.TxtNo.Text = DataGridView1.CurrentRow.Cells("trtrhno").Value().ToString
+                FReturPenjualan.DateTimePicker1.Value = DataGridView1.CurrentRow.Cells("trtrhdt").Value().ToString
+                FReturPenjualan.TextBox1.Text = DataGridView1.CurrentRow.Cells("trtrhnote").Value().ToString
+                FReturPenjualan.ComboBox1.Text = DataGridView1.CurrentRow.Cells("tinvhno").Value().ToString
 
-                FNotaPenjualan.TextBox9.Text = CInt(DataGridView1.CurrentRow.Cells("tinvhdisc1").Value().ToString) & "%"
-                FNotaPenjualan.TextBox5.Text = Format(CDec(DataGridView1.CurrentRow.Cells("tinvhdisc2").Value().ToString), "##,##0")
-                'FNotaPenjualan.TextBox6.Text = Format(CDec(DataGridView1.CurrentRow.Cells("tinvhbonus").Value().ToString), "##,##0")
-                FNotaPenjualan.TextBox7.Text = Format(CDec(DataGridView1.CurrentRow.Cells("tinvhongkir").Value().ToString), "##,##0")
-                FNotaPenjualan.TextBox8.Text = Format(CDec(DataGridView1.CurrentRow.Cells("tinvhongpack").Value().ToString), "##,##0")
+                FReturPenjualan.ButtonAdd.Enabled = False
+                FReturPenjualan.ButtonSave.Enabled = True
+                FReturPenjualan.ButtonDel.Enabled = True
+                FReturPenjualan.ButtonPrint.Enabled = False
+                FReturPenjualan.ButtonCancel.Enabled = True
+                FReturPenjualan.ButtonH.Enabled = True
 
-                FNotaPenjualan.ButtonAdd.Enabled = False
-                FNotaPenjualan.ButtonSave.Enabled = True
-                FNotaPenjualan.ButtonDel.Enabled = True
-                FNotaPenjualan.ButtonPrint.Enabled = False
-                FNotaPenjualan.ButtonCancel.Enabled = True
-                FNotaPenjualan.ButtonH.Enabled = True
-
-                FNotaPenjualan.DataGridView1.Enabled = True
-                FNotaPenjualan.ToolDelete.Enabled = True
-                FNotaPenjualan.TextBox1.Focus()
+                FReturPenjualan.DataGridView1.Enabled = True
+                FReturPenjualan.ToolDelete.Enabled = True
+                FReturPenjualan.TextBox1.Focus()
                 Me.Close()
             Else
                 MyApplication.ShowStatus("Tidak ada data terpilih", NOTICE_STAT)

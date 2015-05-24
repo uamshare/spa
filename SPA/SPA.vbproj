@@ -382,8 +382,32 @@
     </Compile>
     <Compile Include="Module\Sales\NotaPenjualan\MNotaPenjualanD.vb" />
     <Compile Include="Module\Sales\NotaPenjualan\MNotaPenjualanH.vb" />
+    <Compile Include="Module\Sales\ReturPenjualan\FListReturPenjualan.Designer.vb">
+      <DependentUpon>FListReturPenjualan.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Module\Sales\ReturPenjualan\FListReturPenjualan.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Module\Sales\ReturPenjualan\FReturPenjualan.Designer.vb">
+      <DependentUpon>FReturPenjualan.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Module\Sales\ReturPenjualan\FReturPenjualan.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="Module\Sales\ReturPenjualan\MReturPenjualanD.vb" />
     <Compile Include="Module\Sales\ReturPenjualan\MReturPenjualanH.vb" />
+    <Compile Include="Module\Sales\RPenjualan\RDetailInvoice.Designer.vb">
+      <DependentUpon>RDetailInvoice.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Module\Sales\RPenjualan\RDetailInvoice.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Module\Sales\RPenjualan\RInvoice.Designer.vb">
+      <DependentUpon>RInvoice.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Module\Sales\RPenjualan\RInvoice.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="Module\SetServer.Designer.vb">
       <DependentUpon>SetServer.vb</DependentUpon>
     </Compile>
@@ -502,11 +526,17 @@
     <EmbeddedResource Include="Module\Accounting\COAHeader\FKlasifikasiCOA.resx">
       <DependentUpon>FKlasifikasiCOA.vb</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Module\FLogin.resx">
+      <DependentUpon>FLogin.vb</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Module\Inventory\DataBibitTanamanMasuk\FListBibitTanaman.resx">
       <DependentUpon>FListBibitTanaman.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Module\Inventory\DataBibitTanamanMasuk\FListBibitTanamanMasuk.resx">
       <DependentUpon>FListBibitTanamanMasuk.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Module\Sales\DataPelanggan\FDataPelanggan.resx">
+      <DependentUpon>FDataPelanggan.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Module\Sales\DataPelanggan\FDataPelangganAdd.resx" />
     <EmbeddedResource Include="Module\Sales\DataPelanggan\FPelangganAdd.resx">
@@ -576,6 +606,18 @@
     <EmbeddedResource Include="Module\Sales\NotaPenjualan\FNotaPenjualan.resx">
       <DependentUpon>FNotaPenjualan.vb</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Module\Sales\ReturPenjualan\FListReturPenjualan.resx">
+      <DependentUpon>FListReturPenjualan.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Module\Sales\ReturPenjualan\FReturPenjualan.resx">
+      <DependentUpon>FReturPenjualan.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Module\Sales\RPenjualan\RDetailInvoice.resx">
+      <DependentUpon>RDetailInvoice.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Module\Sales\RPenjualan\RInvoice.resx">
+      <DependentUpon>RInvoice.vb</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Module\SetServer.resx">
       <DependentUpon>SetServer.vb</DependentUpon>
     </EmbeddedResource>
@@ -607,6 +649,8 @@
       <LastGenOutput>Resources1.Designer.vb</LastGenOutput>
     </EmbeddedResource>
     <Content Include="Reports\DRKartuStok.rdlc" />
+    <Content Include="Reports\DRPenjualan.rdlc" />
+    <EmbeddedResource Include="Reports\DRDetailPenjualan.rdlc" />
   </ItemGroup>
   <ItemGroup>
     <None Include="My Project\app.manifest" />
