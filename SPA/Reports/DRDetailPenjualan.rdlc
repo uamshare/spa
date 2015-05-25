@@ -2064,7 +2064,9 @@
               <TextRuns>
                 <TextRun>
                   <Value>="User : " &amp; Parameters!users.Value &amp; "   Waktu : " &amp; Now()</Value>
-                  <Style />
+                  <Style>
+                    <FontSize>8pt</FontSize>
+                  </Style>
                 </TextRun>
               </TextRuns>
               <Style />
@@ -2073,7 +2075,7 @@
           <Top>0.335cm</Top>
           <Left>0.28787cm</Left>
           <Height>0.6cm</Height>
-          <Width>10.86848cm</Width>
+          <Width>8.68094cm</Width>
           <Style>
             <Border>
               <Style>None</Style>

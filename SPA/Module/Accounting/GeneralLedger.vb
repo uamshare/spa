@@ -127,8 +127,107 @@
         'Return MyBase.InsertData
         Return strsqll
     End Function
-
     Public Function DeleteByNo(ByVal NoHeader As String) As String
         Return "DELETE FROM " & TableName + " WHERE noref='" & NoHeader & "';" & vbCrLf
+    End Function
+    Public Function FillRNeraca(dateend As Date,Optional NameDataSet As String = "DataSet1") As DataSet
+        Dim ds As DataSet = New DataSet(NameDataSet)
+        Me.limitrecord = -1
+        Me.WHERE = ""
+        Me.StringSQL = "SELECT " & _
+                        "  `coaall`.`classification`    AS `classification`, " & _
+                        "  `coaall`.`mcoahno` AS `mcoahno`, " & _
+                        "  `coaall`.`mcoahname`    AS `mcoahname`, " & _
+                        "  IF(ISNULL(IF((`coaall`.`postbalance` = 'D'),SUM((`bb`.`rglin` - `bb`.`rglout`)),SUM((`bb`.`rglout` - `bb`.`rglin`)))),0,IF((`coaall`.`postbalance` = 'D'),SUM((`bb`.`rglin` - `bb`.`rglout`)),SUM((`bb`.`rglout` - `bb`.`rglin`)))) AS `nilai`,IF((`coaall`.`postbalance` = 'D'),'AKTIVA','PASSIVA') AS `kelompok` " & _
+                        "FROM (`coaall` LEFT JOIN (SELECT * FROM gledger WHERE DATE_FORMAT(gledger.`rgldt`,'%Y-%m-%d') <='" & Format(dateend, "yyyy-MM-dd") & "') AS bb ON ((`bb`.`mcoadno` = `coaall`.`mcoadno`))) " & _
+                        "WHERE (`coaall`.`postgl` = 'NRC') AND `coaall`.`active`=1 GROUP BY `coaall`.`mcoahno` " & _
+                        "UNION " & _
+                        "SELECT " & _
+                        "                'LABA '    AS `classification`, " & _
+                        "                '330100' AS `mcoahno`, " & _
+                        "                'LABA " & Format(dateend, "dd MMM yyyy") & "' AS `mcoahname`, " & _
+                        "  IF(ISNULL(SUM((`bb`.`rglout` - `bb`.`rglin`))),0,SUM((`bb`.`rglout` - `bb`.`rglin`))) AS `nilai`, " & _
+                        "                    'PASSIVA'    AS `kelompok` " & _
+                        "FROM (`coaall` LEFT JOIN (SELECT * FROM gledger WHERE DATE_FORMAT(gledger.`rgldt`,'%Y-%m-%d') <='" & Format(dateend, "yyyy-MM-dd") & "') AS bb ON ((`bb`.`mcoadno` = `coaall`.`mcoadno`))) " & _
+                        "WHERE (`coaall`.`postgl` = 'LR') AND `coaall`.`active`=1 "
+        ds.Tables.Add(MyBase.GetData)
+        Return ds
+    End Function
+    Public Function FillRLNeraca(dateend As Date, Optional NameDataSet As String = "DataSet1") As DataSet
+        Dim ds As DataSet = New DataSet(NameDataSet)
+        Me.limitrecord = -1
+        Me.WHERE = ""
+        Me.StringSQL = "SELECT " & _
+                        "  `coaall`.`classification`    AS `classification`," & _
+                        "  `coaall`.`mcoahno` AS `mcoahno`," & _
+                        "  `coaall`.`mcoahname`    AS `mcoahname`," & _
+                        "  `coaall`.`mcoadno` AS `mcoadno`," & _
+                        "  `coaall`.`mcoadname`    AS `mcoadname`," & _
+                        "  IF(ISNULL(IF((`coaall`.`postbalance` = 'D'),SUM((`bb`.`rglin` - `bb`.`rglout`)),SUM((`bb`.`rglout` - `bb`.`rglin`)))),0,IF((`coaall`.`postbalance` = 'D'),SUM((`bb`.`rglin` - `bb`.`rglout`)),SUM((`bb`.`rglout` - `bb`.`rglin`)))) AS `nilai`,IF((`coaall`.`postbalance` = 'D'),'AKTIVA','PASSIVA') AS `kelompok` " & _
+                        "FROM (`coaall` LEFT JOIN (SELECT * FROM gledger WHERE DATE_FORMAT(gledger.`rgldt`,'%Y-%m-%d') <='" & Format(dateend, "yyyy-MM-dd") & "') AS bb ON ((`bb`.`mcoadno` = `coaall`.`mcoadno`))) WHERE (`coaall`.`postgl` = 'NRC') AND `coaall`.`active`=1 " & _
+                        "GROUP BY `coaall`.`mcoadno` " & _
+                        " UNION " & _
+                        "SELECT " & _
+                        "            'LABA'    AS `classification`," & _
+                        "            '330100' AS `mcoahno`," & _
+                        "            'LABA DITAHAN'    AS `mcoahname`," & _
+                        "            '330101' AS `mcoadno`," & _
+                        "            'LABA " & Format(dateend, "dd MMM yyyy") & "'    AS `mcoadname`," & _
+                        "  IF(ISNULL(SUM((`bb`.`rglout` - `bb`.`rglin`))),0,SUM((`bb`.`rglout` - `bb`.`rglin`))) AS `nilai`," & _
+                        "                'PASSIVA'    AS `kelompok` " & _
+                        "FROM (`coaall` LEFT JOIN (SELECT * FROM gledger WHERE DATE_FORMAT(gledger.`rgldt`,'%Y-%m-%d') <='" & Format(dateend, "yyyy-MM-dd") & "') AS bb ON ((`bb`.`mcoadno` = `coaall`.`mcoadno`))) WHERE (`coaall`.`postgl` = 'LR') AND `coaall`.`active`=1;"
+        ds.Tables.Add(MyBase.GetData)
+        Return ds
+    End Function
+    Public Function FillRRugiLaba(dateend As Date, Optional NameDataSet As String = "DataSet1") As DataSet
+        Dim ds As DataSet = New DataSet(NameDataSet)
+        Me.limitrecord = -1
+        Me.WHERE = ""
+        Dim filter As String = dateend.Month + (dateend.Year * 12)
+        Me.StringSQL = "SELECT " & _
+                        "  UPPER(`ytd`.`classification` )   AS `classification`," & _
+                        "  `ytd`.`mcoahno` AS `mcoahno`," & _
+                        "  `ytd`.`mcoahname`    AS `mcoahname`," & _
+                        "  `ytd`.`mcoadno` AS `mcoadno`," & _
+                        "  `ytd`.`mcoadname`    AS `mcoadname`," & _
+                        "  `lr`.`nilai`    AS `nilai_lr`," & _
+                        "  IF(ISNULL(`lr`.`laba`),0,`lr`.`laba`)    AS `laba_lr`," & _
+                        "  `ytd`.`nilai`    AS `nilai_ytd`," & _
+                        "  IF(ISNULL(`ytd`.`laba`),0,`ytd`.`laba`)    AS `laba_ytd` " & _
+                        "FROM " & _
+                        "(SELECT " & _
+                        "  `coaall`.`classification`    AS `classification`, " & _
+                        "  `coaall`.`mcoahno` AS `mcoahno`, " & _
+                        "  `coaall`.`mcoahname`    AS `mcoahname`, " & _
+                        "  `coaall`.`mcoadno` AS `mcoadno`, " & _
+                        "  `coaall`.`mcoadname`    AS `mcoadname`, " & _
+                        "  IF(ISNULL(IF((`coaall`.`postbalance` = 'D'),SUM((`bb`.`rglin` - `bb`.`rglout`)),SUM((`bb`.`rglout` - `bb`.`rglin`)))),0, " & _
+                        "  IF((`coaall`.`postbalance` = 'D'),SUM((`bb`.`rglin` - `bb`.`rglout`)),SUM((`bb`.`rglout` - `bb`.`rglin`)))) AS `nilai`, " & _
+                        "  SUM((`bb`.`rglout` - `bb`.`rglin`))    AS `laba`,  " & _
+                        "  `coaall`.`mcoagroup`    AS `mcoagroup` " & _
+                        "FROM (`coaall` " & _
+                        "   LEFT JOIN (SELECT * FROM gledger WHERE (MONTH(gledger.`rgldt`) + YEAR(gledger.`rgldt`)*12) <= " & filter & ") AS bb " & _
+                        "	 ON ((`bb`.`mcoadno` = `coaall`.`mcoadno`))) " & _
+                        "WHERE (`coaall`.`postgl` = 'LR') AND `coaall`.`active`=1 " & _
+                        "GROUP BY `coaall`.`mcoadno` ORDER BY mcoahno ASC) AS ytd " & _
+                        "LEFT JOIN " & _
+                        "(SELECT " & _
+                        "  `coaall`.`classification`    AS `classification`, " & _
+                        "  `coaall`.`mcoahno` AS `mcoahno`, " & _
+                        "  `coaall`.`mcoahname`    AS `mcoahname`, " & _
+                        "  `coaall`.`mcoadno` AS `mcoadno`, " & _
+                        "  `coaall`.`mcoadname`    AS `mcoadname`, " & _
+                        "  IF(ISNULL(IF((`coaall`.`postbalance` = 'D'),SUM((`bb`.`rglin` - `bb`.`rglout`)),SUM((`bb`.`rglout` - `bb`.`rglin`)))),0, " & _
+                        "  IF((`coaall`.`postbalance` = 'D'),SUM((`bb`.`rglin` - `bb`.`rglout`)),SUM((`bb`.`rglout` - `bb`.`rglin`)))) AS `nilai`, " & _
+                        "  SUM((`bb`.`rglout` - `bb`.`rglin`))    AS `laba`,  " & _
+                        "  `coaall`.`mcoagroup`    AS `mcoagroup` " & _
+                        "FROM (`coaall` " & _
+                        "   LEFT JOIN (SELECT * FROM gledger WHERE (MONTH(gledger.`rgldt`) + YEAR(gledger.`rgldt`)*12) = " & filter & ") AS bb " & _
+                        "	 ON ((`bb`.`mcoadno` = `coaall`.`mcoadno`))) " & _
+                        "WHERE (`coaall`.`postgl` = 'LR') AND `coaall`.`active`=1 " & _
+                        "GROUP BY `coaall`.`mcoadno` ORDER BY mcoahno ASC) AS lr " & _
+                        "ON ytd.mcoadno=lr.mcoadno;"
+        ds.Tables.Add(MyBase.GetData)
+        Return ds
     End Function
 End Class

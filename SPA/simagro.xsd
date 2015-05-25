@@ -270,6 +270,72 @@ ON T1.`mcusid` = T2.mcusid
             </Mappings>
             <Sources />
           </TableAdapter>
+          <TableAdapter BaseClass="System.ComponentModel.Component" DataAccessorModifier="AutoLayout, AnsiClass, Class, Public" DataAccessorName="neracaTableAdapter" GeneratorDataComponentClassName="neracaTableAdapter" Name="neraca" UserDataComponentName="neracaTableAdapter">
+            <MainSource>
+              <DbSource ConnectionRef="simagroConnectionString (MySettings)" DbObjectType="Unknown" FillMethodModifier="Public" FillMethodName="Fill" GenerateMethods="Both" GenerateShortCommands="false" GeneratorGetMethodName="GetData" GeneratorSourceName="Fill" GetMethodModifier="Public" GetMethodName="GetData" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetData" UserSourceName="Fill">
+                <SelectCommand>
+                  <DbCommand CommandType="StoredProcedure" ModifiedByUser="false">
+                    <CommandText>`simagro`.`neraca`</CommandText>
+                    <Parameters />
+                  </DbCommand>
+                </SelectCommand>
+              </DbSource>
+            </MainSource>
+            <Mappings>
+              <Mapping SourceColumn="classification" DataSetColumn="classification" />
+              <Mapping SourceColumn="mcoahno" DataSetColumn="mcoahno" />
+              <Mapping SourceColumn="mcoahname" DataSetColumn="mcoahname" />
+              <Mapping SourceColumn="nilai" DataSetColumn="nilai" />
+              <Mapping SourceColumn="kelompok" DataSetColumn="kelompok" />
+            </Mappings>
+            <Sources />
+          </TableAdapter>
+          <TableAdapter BaseClass="System.ComponentModel.Component" DataAccessorModifier="AutoLayout, AnsiClass, Class, Public" DataAccessorName="lneracaTableAdapter" GeneratorDataComponentClassName="lneracaTableAdapter" Name="lneraca" UserDataComponentName="lneracaTableAdapter">
+            <MainSource>
+              <DbSource ConnectionRef="simagroConnectionString (MySettings)" DbObjectType="Unknown" FillMethodModifier="Public" FillMethodName="Fill" GenerateMethods="Both" GenerateShortCommands="false" GeneratorGetMethodName="GetData" GeneratorSourceName="Fill" GetMethodModifier="Public" GetMethodName="GetData" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetData" UserSourceName="Fill">
+                <SelectCommand>
+                  <DbCommand CommandType="StoredProcedure" ModifiedByUser="false">
+                    <CommandText>`simagro`.`lneraca`</CommandText>
+                    <Parameters />
+                  </DbCommand>
+                </SelectCommand>
+              </DbSource>
+            </MainSource>
+            <Mappings>
+              <Mapping SourceColumn="classification" DataSetColumn="classification" />
+              <Mapping SourceColumn="mcoahno" DataSetColumn="mcoahno" />
+              <Mapping SourceColumn="mcoahname" DataSetColumn="mcoahname" />
+              <Mapping SourceColumn="mcoadno" DataSetColumn="mcoadno" />
+              <Mapping SourceColumn="mcoadname" DataSetColumn="mcoadname" />
+              <Mapping SourceColumn="nilai" DataSetColumn="nilai" />
+              <Mapping SourceColumn="kelompok" DataSetColumn="kelompok" />
+            </Mappings>
+            <Sources />
+          </TableAdapter>
+          <TableAdapter BaseClass="System.ComponentModel.Component" DataAccessorModifier="AutoLayout, AnsiClass, Class, Public" DataAccessorName="rugilabaTableAdapter" GeneratorDataComponentClassName="rugilabaTableAdapter" Name="rugilaba" UserDataComponentName="rugilabaTableAdapter">
+            <MainSource>
+              <DbSource ConnectionRef="simagroConnectionString (MySettings)" DbObjectType="Unknown" FillMethodModifier="Public" FillMethodName="Fill" GenerateMethods="Both" GenerateShortCommands="false" GeneratorGetMethodName="GetData" GeneratorSourceName="Fill" GetMethodModifier="Public" GetMethodName="GetData" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetData" UserSourceName="Fill">
+                <SelectCommand>
+                  <DbCommand CommandType="StoredProcedure" ModifiedByUser="false">
+                    <CommandText>`simagro`.`lrl`</CommandText>
+                    <Parameters />
+                  </DbCommand>
+                </SelectCommand>
+              </DbSource>
+            </MainSource>
+            <Mappings>
+              <Mapping SourceColumn="classification" DataSetColumn="classification" />
+              <Mapping SourceColumn="mcoahno" DataSetColumn="mcoahno" />
+              <Mapping SourceColumn="mcoahname" DataSetColumn="mcoahname" />
+              <Mapping SourceColumn="mcoadno" DataSetColumn="mcoadno" />
+              <Mapping SourceColumn="mcoadname" DataSetColumn="mcoadname" />
+              <Mapping SourceColumn="nilai_lr" DataSetColumn="nilai_lr" />
+              <Mapping SourceColumn="laba_lr" DataSetColumn="laba_lr" />
+              <Mapping SourceColumn="nilai_ytd" DataSetColumn="nilai_ytd" />
+              <Mapping SourceColumn="laba_ytd" DataSetColumn="laba_ytd" />
+            </Mappings>
+            <Sources />
+          </TableAdapter>
         </Tables>
         <Sources />
       </DataSource>
@@ -278,7 +344,7 @@ ON T1.`mcusid` = T2.mcusid
   <xs:element name="simagro" msdata:IsDataSet="true" msdata:UseCurrentLocale="true" msprop:EnableTableAdapterManager="True" msprop:Generator_DataSetName="simagro" msprop:Generator_UserDSName="simagro">
     <xs:complexType>
       <xs:choice minOccurs="0" maxOccurs="unbounded">
-        <xs:element name="stock_all" msprop:Generator_TableClassName="stock_allDataTable" msprop:Generator_TableVarName="tablestock_all" msprop:Generator_RowChangedName="stock_allRowChanged" msprop:Generator_TablePropName="stock_all" msprop:Generator_RowDeletingName="stock_allRowDeleting" msprop:Generator_RowChangingName="stock_allRowChanging" msprop:Generator_RowEvHandlerName="stock_allRowChangeEventHandler" msprop:Generator_RowDeletedName="stock_allRowDeleted" msprop:Generator_RowClassName="stock_allRow" msprop:Generator_UserTableName="stock_all" msprop:Generator_RowEvArgName="stock_allRowChangeEvent">
+        <xs:element name="stock_all" msprop:Generator_TableClassName="stock_allDataTable" msprop:Generator_TableVarName="tablestock_all" msprop:Generator_TablePropName="stock_all" msprop:Generator_RowDeletingName="stock_allRowDeleting" msprop:Generator_RowChangingName="stock_allRowChanging" msprop:Generator_RowEvHandlerName="stock_allRowChangeEventHandler" msprop:Generator_RowDeletedName="stock_allRowDeleted" msprop:Generator_UserTableName="stock_all" msprop:Generator_RowChangedName="stock_allRowChanged" msprop:Generator_RowEvArgName="stock_allRowChangeEvent" msprop:Generator_RowClassName="stock_allRow">
           <xs:complexType>
             <xs:sequence>
               <xs:element name="mmtrhid" msprop:Generator_ColumnVarNameInTable="columnmmtrhid" msprop:Generator_ColumnPropNameInRow="mmtrhid" msprop:Generator_ColumnPropNameInTable="mmtrhidColumn" msprop:Generator_UserColumnName="mmtrhid" type="xs:int" />
@@ -329,7 +395,7 @@ ON T1.`mcusid` = T2.mcusid
             </xs:sequence>
           </xs:complexType>
         </xs:element>
-        <xs:element name="stock_card" msprop:Generator_TableClassName="stock_cardDataTable" msprop:Generator_TableVarName="tablestock_card" msprop:Generator_TablePropName="stock_card" msprop:Generator_RowDeletingName="stock_cardRowDeleting" msprop:Generator_RowChangingName="stock_cardRowChanging" msprop:Generator_RowEvHandlerName="stock_cardRowChangeEventHandler" msprop:Generator_RowDeletedName="stock_cardRowDeleted" msprop:Generator_UserTableName="stock_card" msprop:Generator_RowChangedName="stock_cardRowChanged" msprop:Generator_RowEvArgName="stock_cardRowChangeEvent" msprop:Generator_RowClassName="stock_cardRow">
+        <xs:element name="stock_card" msprop:Generator_TableClassName="stock_cardDataTable" msprop:Generator_TableVarName="tablestock_card" msprop:Generator_RowChangedName="stock_cardRowChanged" msprop:Generator_TablePropName="stock_card" msprop:Generator_RowDeletingName="stock_cardRowDeleting" msprop:Generator_RowChangingName="stock_cardRowChanging" msprop:Generator_RowEvHandlerName="stock_cardRowChangeEventHandler" msprop:Generator_RowDeletedName="stock_cardRowDeleted" msprop:Generator_RowClassName="stock_cardRow" msprop:Generator_UserTableName="stock_card" msprop:Generator_RowEvArgName="stock_cardRowChangeEvent">
           <xs:complexType>
             <xs:sequence>
               <xs:element name="mmtrhid" msprop:Generator_ColumnVarNameInTable="columnmmtrhid" msprop:Generator_ColumnPropNameInRow="mmtrhid" msprop:Generator_ColumnPropNameInTable="mmtrhidColumn" msprop:Generator_UserColumnName="mmtrhid" type="xs:int" />
@@ -405,7 +471,7 @@ ON T1.`mcusid` = T2.mcusid
             </xs:sequence>
           </xs:complexType>
         </xs:element>
-        <xs:element name="rinvoice" msprop:Generator_TableClassName="rinvoiceDataTable" msprop:Generator_TableVarName="tablerinvoice" msprop:Generator_RowChangedName="rinvoiceRowChanged" msprop:Generator_TablePropName="rinvoice" msprop:Generator_RowDeletingName="rinvoiceRowDeleting" msprop:Generator_RowChangingName="rinvoiceRowChanging" msprop:Generator_RowEvHandlerName="rinvoiceRowChangeEventHandler" msprop:Generator_RowDeletedName="rinvoiceRowDeleted" msprop:Generator_RowClassName="rinvoiceRow" msprop:Generator_UserTableName="rinvoice" msprop:Generator_RowEvArgName="rinvoiceRowChangeEvent">
+        <xs:element name="rinvoice" msprop:Generator_TableClassName="rinvoiceDataTable" msprop:Generator_TableVarName="tablerinvoice" msprop:Generator_TablePropName="rinvoice" msprop:Generator_RowDeletingName="rinvoiceRowDeleting" msprop:Generator_RowChangingName="rinvoiceRowChanging" msprop:Generator_RowEvHandlerName="rinvoiceRowChangeEventHandler" msprop:Generator_RowDeletedName="rinvoiceRowDeleted" msprop:Generator_UserTableName="rinvoice" msprop:Generator_RowChangedName="rinvoiceRowChanged" msprop:Generator_RowEvArgName="rinvoiceRowChangeEvent" msprop:Generator_RowClassName="rinvoiceRow">
           <xs:complexType>
             <xs:sequence>
               <xs:element name="tinvhnote" msprop:Generator_ColumnVarNameInTable="columntinvhnote" msprop:Generator_ColumnPropNameInRow="tinvhnote" msprop:Generator_ColumnPropNameInTable="tinvhnoteColumn" msprop:Generator_UserColumnName="tinvhnote">
@@ -509,7 +575,7 @@ ON T1.`mcusid` = T2.mcusid
             </xs:sequence>
           </xs:complexType>
         </xs:element>
-        <xs:element name="rdetailinvoice" msprop:Generator_TableClassName="rdetailinvoiceDataTable" msprop:Generator_TableVarName="tablerdetailinvoice" msprop:Generator_RowChangedName="rdetailinvoiceRowChanged" msprop:Generator_TablePropName="rdetailinvoice" msprop:Generator_RowDeletingName="rdetailinvoiceRowDeleting" msprop:Generator_RowChangingName="rdetailinvoiceRowChanging" msprop:Generator_RowEvHandlerName="rdetailinvoiceRowChangeEventHandler" msprop:Generator_RowDeletedName="rdetailinvoiceRowDeleted" msprop:Generator_RowClassName="rdetailinvoiceRow" msprop:Generator_UserTableName="rdetailinvoice" msprop:Generator_RowEvArgName="rdetailinvoiceRowChangeEvent">
+        <xs:element name="rdetailinvoice" msprop:Generator_TableClassName="rdetailinvoiceDataTable" msprop:Generator_TableVarName="tablerdetailinvoice" msprop:Generator_TablePropName="rdetailinvoice" msprop:Generator_RowDeletingName="rdetailinvoiceRowDeleting" msprop:Generator_RowChangingName="rdetailinvoiceRowChanging" msprop:Generator_RowEvHandlerName="rdetailinvoiceRowChangeEventHandler" msprop:Generator_RowDeletedName="rdetailinvoiceRowDeleted" msprop:Generator_UserTableName="rdetailinvoice" msprop:Generator_RowChangedName="rdetailinvoiceRowChanged" msprop:Generator_RowEvArgName="rdetailinvoiceRowChangeEvent" msprop:Generator_RowClassName="rdetailinvoiceRow">
           <xs:complexType>
             <xs:sequence>
               <xs:element name="mcusid" msdata:AutoIncrement="true" msdata:AutoIncrementSeed="-1" msdata:AutoIncrementStep="-1" msprop:Generator_ColumnVarNameInTable="columnmcusid" msprop:Generator_ColumnPropNameInRow="mcusid" msprop:Generator_ColumnPropNameInTable="mcusidColumn" msprop:Generator_UserColumnName="mcusid" type="xs:int" />
@@ -639,6 +705,135 @@ ON T1.`mcusid` = T2.mcusid
                   </xs:restriction>
                 </xs:simpleType>
               </xs:element>
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="neraca" msprop:Generator_TableClassName="neracaDataTable" msprop:Generator_TableVarName="tableneraca" msprop:Generator_TablePropName="neraca" msprop:Generator_RowDeletingName="neracaRowDeleting" msprop:Generator_RowChangingName="neracaRowChanging" msprop:Generator_RowEvHandlerName="neracaRowChangeEventHandler" msprop:Generator_RowDeletedName="neracaRowDeleted" msprop:Generator_UserTableName="neraca" msprop:Generator_RowChangedName="neracaRowChanged" msprop:Generator_RowEvArgName="neracaRowChangeEvent" msprop:Generator_RowClassName="neracaRow">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="classification" msprop:Generator_ColumnVarNameInTable="columnclassification" msprop:Generator_ColumnPropNameInRow="classification" msprop:Generator_ColumnPropNameInTable="classificationColumn" msprop:Generator_UserColumnName="classification">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="100" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="mcoahno" msprop:Generator_ColumnVarNameInTable="columnmcoahno" msprop:Generator_ColumnPropNameInRow="mcoahno" msprop:Generator_ColumnPropNameInTable="mcoahnoColumn" msprop:Generator_UserColumnName="mcoahno">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="6" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="mcoahname" msprop:Generator_ColumnVarNameInTable="columnmcoahname" msprop:Generator_ColumnPropNameInRow="mcoahname" msprop:Generator_ColumnPropNameInTable="mcoahnameColumn" msprop:Generator_UserColumnName="mcoahname">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="100" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="nilai" msprop:Generator_ColumnVarNameInTable="columnnilai" msprop:Generator_ColumnPropNameInRow="nilai" msprop:Generator_ColumnPropNameInTable="nilaiColumn" msprop:Generator_UserColumnName="nilai" type="xs:decimal" minOccurs="0" />
+              <xs:element name="kelompok" msprop:Generator_ColumnVarNameInTable="columnkelompok" msprop:Generator_ColumnPropNameInRow="kelompok" msprop:Generator_ColumnPropNameInTable="kelompokColumn" msprop:Generator_UserColumnName="kelompok">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="7" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="lneraca" msprop:Generator_TableClassName="lneracaDataTable" msprop:Generator_TableVarName="tablelneraca" msprop:Generator_RowChangedName="lneracaRowChanged" msprop:Generator_TablePropName="lneraca" msprop:Generator_RowDeletingName="lneracaRowDeleting" msprop:Generator_RowChangingName="lneracaRowChanging" msprop:Generator_RowEvHandlerName="lneracaRowChangeEventHandler" msprop:Generator_RowDeletedName="lneracaRowDeleted" msprop:Generator_RowClassName="lneracaRow" msprop:Generator_UserTableName="lneraca" msprop:Generator_RowEvArgName="lneracaRowChangeEvent">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="classification" msprop:Generator_ColumnVarNameInTable="columnclassification" msprop:Generator_ColumnPropNameInRow="classification" msprop:Generator_ColumnPropNameInTable="classificationColumn" msprop:Generator_UserColumnName="classification">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="100" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="mcoahno" msprop:Generator_ColumnVarNameInTable="columnmcoahno" msprop:Generator_ColumnPropNameInRow="mcoahno" msprop:Generator_ColumnPropNameInTable="mcoahnoColumn" msprop:Generator_UserColumnName="mcoahno">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="6" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="mcoahname" msprop:Generator_ColumnVarNameInTable="columnmcoahname" msprop:Generator_ColumnPropNameInRow="mcoahname" msprop:Generator_ColumnPropNameInTable="mcoahnameColumn" msprop:Generator_UserColumnName="mcoahname">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="100" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="mcoadno" msprop:Generator_ColumnVarNameInTable="columnmcoadno" msprop:Generator_ColumnPropNameInRow="mcoadno" msprop:Generator_ColumnPropNameInTable="mcoadnoColumn" msprop:Generator_UserColumnName="mcoadno">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="6" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="mcoadname" msprop:Generator_ColumnVarNameInTable="columnmcoadname" msprop:Generator_ColumnPropNameInRow="mcoadname" msprop:Generator_ColumnPropNameInTable="mcoadnameColumn" msprop:Generator_UserColumnName="mcoadname">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="50" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="nilai" msprop:Generator_ColumnVarNameInTable="columnnilai" msprop:Generator_ColumnPropNameInRow="nilai" msprop:Generator_ColumnPropNameInTable="nilaiColumn" msprop:Generator_UserColumnName="nilai" type="xs:decimal" minOccurs="0" />
+              <xs:element name="kelompok" msprop:Generator_ColumnVarNameInTable="columnkelompok" msprop:Generator_ColumnPropNameInRow="kelompok" msprop:Generator_ColumnPropNameInTable="kelompokColumn" msprop:Generator_UserColumnName="kelompok">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="7" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="rugilaba" msprop:Generator_TableClassName="rugilabaDataTable" msprop:Generator_TableVarName="tablerugilaba" msprop:Generator_TablePropName="rugilaba" msprop:Generator_RowDeletingName="rugilabaRowDeleting" msprop:Generator_RowChangingName="rugilabaRowChanging" msprop:Generator_RowEvHandlerName="rugilabaRowChangeEventHandler" msprop:Generator_RowDeletedName="rugilabaRowDeleted" msprop:Generator_UserTableName="rugilaba" msprop:Generator_RowChangedName="rugilabaRowChanged" msprop:Generator_RowEvArgName="rugilabaRowChangeEvent" msprop:Generator_RowClassName="rugilabaRow">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="classification" msprop:Generator_ColumnVarNameInTable="columnclassification" msprop:Generator_ColumnPropNameInRow="classification" msprop:Generator_ColumnPropNameInTable="classificationColumn" msprop:Generator_UserColumnName="classification">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="100" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="mcoahno" msprop:Generator_ColumnVarNameInTable="columnmcoahno" msprop:Generator_ColumnPropNameInRow="mcoahno" msprop:Generator_ColumnPropNameInTable="mcoahnoColumn" msprop:Generator_UserColumnName="mcoahno">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="6" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="mcoahname" msprop:Generator_ColumnVarNameInTable="columnmcoahname" msprop:Generator_ColumnPropNameInRow="mcoahname" msprop:Generator_ColumnPropNameInTable="mcoahnameColumn" msprop:Generator_UserColumnName="mcoahname">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="100" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="mcoadno" msprop:Generator_ColumnVarNameInTable="columnmcoadno" msprop:Generator_ColumnPropNameInRow="mcoadno" msprop:Generator_ColumnPropNameInTable="mcoadnoColumn" msprop:Generator_UserColumnName="mcoadno">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="6" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="mcoadname" msprop:Generator_ColumnVarNameInTable="columnmcoadname" msprop:Generator_ColumnPropNameInRow="mcoadname" msprop:Generator_ColumnPropNameInTable="mcoadnameColumn" msprop:Generator_UserColumnName="mcoadname">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="50" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="nilai_lr" msprop:Generator_ColumnVarNameInTable="columnnilai_lr" msprop:Generator_ColumnPropNameInRow="nilai_lr" msprop:Generator_ColumnPropNameInTable="nilai_lrColumn" msprop:Generator_UserColumnName="nilai_lr" type="xs:decimal" minOccurs="0" />
+              <xs:element name="laba_lr" msprop:Generator_ColumnVarNameInTable="columnlaba_lr" msprop:Generator_ColumnPropNameInRow="laba_lr" msprop:Generator_ColumnPropNameInTable="laba_lrColumn" msprop:Generator_UserColumnName="laba_lr" type="xs:decimal" minOccurs="0" />
+              <xs:element name="nilai_ytd" msprop:Generator_ColumnVarNameInTable="columnnilai_ytd" msprop:Generator_ColumnPropNameInRow="nilai_ytd" msprop:Generator_ColumnPropNameInTable="nilai_ytdColumn" msprop:Generator_UserColumnName="nilai_ytd" type="xs:decimal" minOccurs="0" />
+              <xs:element name="laba_ytd" msprop:Generator_ColumnVarNameInTable="columnlaba_ytd" msprop:Generator_ColumnPropNameInRow="laba_ytd" msprop:Generator_ColumnPropNameInTable="laba_ytdColumn" msprop:Generator_UserColumnName="laba_ytd" type="xs:decimal" minOccurs="0" />
             </xs:sequence>
           </xs:complexType>
         </xs:element>

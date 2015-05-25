@@ -3,8 +3,8 @@
 
     Private Sub Button1_Click(sender As Object, e As EventArgs) Handles Button1.Click
         Cursor.Current = Cursors.WaitCursor
-        ProgressBar1.Value = 30
-        ProgressBar1.Visible = True
+        ProgressBar1.Value = 50
+        ProgressBar1.Style = ProgressBarStyle.Marquee
         If TextBox1.Text = "" Then
             MyApplication.ShowStatus("Id Pengguna harus diisi!!!", WARNING_STAT)
             TextBox1.Focus()
@@ -40,7 +40,7 @@
     Private Sub FLogin_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         'Panel1.Location.X = 200
 
-        ProgressBar1.Visible = False
+        'ProgressBar1.Visible = False
         Panel1.Left = (Me.Width / 2) - (Panel1.Width / 2)
         Panel1.Top = (Me.Height / 2) - (Panel1.Height / 2)
         If Global.SPA.My.Settings.ENVIRONTMENT = "DEV" Then

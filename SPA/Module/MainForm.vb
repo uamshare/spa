@@ -154,4 +154,16 @@ Public Class MainForm
     Private Sub menu305_Click(sender As Object, e As EventArgs) Handles menu305.Click
         LoadMdiChildForm(RDetailInvoice, "menu305")
     End Sub
+
+    Private Sub menu406_Click(sender As Object, e As EventArgs) Handles menu406.Click
+        LoadMdiChildForm(RNeraca, "menu406")
+    End Sub
+
+    Private Sub menu407_Click(sender As Object, e As EventArgs) Handles menu407.Click
+        LoadMdiChildForm(RLNeraca, "menu407")
+    End Sub
+
+    Private Sub menu408_Click(sender As Object, e As EventArgs) Handles menu408.Click
+        LoadMdiChildForm(RRugiLaba, "menu408")
+    End Sub
 End Class
