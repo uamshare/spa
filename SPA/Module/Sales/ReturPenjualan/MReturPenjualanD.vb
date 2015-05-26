@@ -87,7 +87,7 @@
             ModelGL.rgldt = Me.trtrhdt
             ModelGL.noref = Me.trtrhno
             ModelGL.noref2 = Me.tinvhno
-            ModelGL.rgldesc = "Insert Data Nota Penjualan No " & Me.trtrhno
+            ModelGL.rgldesc = "Insert Data Retur Penjualan No " & Me.trtrhno
             ModelGL.dtcreated = Me.dtcreated
             Dim ParamPosting As New Dictionary(Of String, Object)
             ParamPosting.Add("idtrrans", "RJ")
@@ -123,10 +123,10 @@
             ModelGL.rgldt = Me.trtrhdt
             ModelGL.noref = Me.trtrhno
             ModelGL.noref2 = Me.tinvhno
-            ModelGL.rgldesc = "Update Data Nota Penjualan No " & Me.trtrhno
+            ModelGL.rgldesc = "Update Data Retur Penjualan No " & Me.trtrhno
             ModelGL.dtcreated = Me.dtcreated
             Dim ParamPosting As New Dictionary(Of String, Object)
-            ParamPosting.Add("idtrrans", "PB")
+            ParamPosting.Add("idtrrans", "RJ")
             Dim accountlistvalue As New Dictionary(Of String, Object)
             accountlistvalue.Add("acc_debit", Me.soldvalue)
             accountlistvalue.Add("acc_credit", Me.soldvalue)

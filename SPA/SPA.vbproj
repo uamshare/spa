@@ -203,6 +203,18 @@
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Module\Accounting\GeneralLedger.vb" />
+    <Compile Include="Module\Accounting\Neraca\RArusKas.Designer.vb">
+      <DependentUpon>RArusKas.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Module\Accounting\Neraca\RArusKas.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Module\Accounting\Neraca\RBukuBesar.Designer.vb">
+      <DependentUpon>RBukuBesar.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Module\Accounting\Neraca\RBukuBesar.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="Module\Accounting\Neraca\RLNeraca.Designer.vb">
       <DependentUpon>RLNeraca.vb</DependentUpon>
     </Compile>
@@ -544,6 +556,12 @@
     <EmbeddedResource Include="Module\Accounting\COAHeader\FKlasifikasiCOA.resx">
       <DependentUpon>FKlasifikasiCOA.vb</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Module\Accounting\Neraca\RArusKas.resx">
+      <DependentUpon>RArusKas.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Module\Accounting\Neraca\RBukuBesar.resx">
+      <DependentUpon>RBukuBesar.vb</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Module\Accounting\Neraca\RLNeraca.resx">
       <DependentUpon>RLNeraca.vb</DependentUpon>
     </EmbeddedResource>
@@ -680,6 +698,8 @@
     <Content Include="Reports\DRDetailPenjualan.rdlc" />
     <Content Include="Reports\DRNeraca.rdlc" />
     <Content Include="Reports\DRLNeraca.rdlc" />
+    <Content Include="Reports\DRBukuBesar.rdlc" />
+    <EmbeddedResource Include="Reports\DRArusKas.rdlc" />
     <EmbeddedResource Include="Reports\DRRugiLaba.rdlc" />
   </ItemGroup>
   <ItemGroup>

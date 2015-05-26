@@ -309,7 +309,6 @@ Partial Class FReturPenjualan
         Me.txtsum2.Size = New System.Drawing.Size(188, 22)
         Me.txtsum2.TabIndex = 35
         Me.txtsum2.TextAlign = System.Windows.Forms.HorizontalAlignment.Right
-        Me.txtsum2.Visible = False
         '
         'Label6
         '
@@ -321,7 +320,6 @@ Partial Class FReturPenjualan
         Me.Label6.Size = New System.Drawing.Size(66, 16)
         Me.Label6.TabIndex = 36
         Me.Label6.Text = "Nilai HPP"
-        Me.Label6.Visible = False
         '
         'ButtonPrint
         '
@@ -438,26 +436,26 @@ Partial Class FReturPenjualan
         'HapusDataToolStripMenuItem
         '
         Me.HapusDataToolStripMenuItem.Name = "HapusDataToolStripMenuItem"
-        Me.HapusDataToolStripMenuItem.Size = New System.Drawing.Size(152, 22)
+        Me.HapusDataToolStripMenuItem.Size = New System.Drawing.Size(135, 22)
         Me.HapusDataToolStripMenuItem.Text = "Hapus Data"
         '
         'ContextMenuStrip1
         '
         Me.ContextMenuStrip1.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.BonusToolStripMenuItem, Me.ToolStripSeparator1, Me.HapusDataToolStripMenuItem})
         Me.ContextMenuStrip1.Name = "ContextMenuStrip1"
-        Me.ContextMenuStrip1.Size = New System.Drawing.Size(153, 76)
+        Me.ContextMenuStrip1.Size = New System.Drawing.Size(136, 54)
         '
         'BonusToolStripMenuItem
         '
         Me.BonusToolStripMenuItem.Name = "BonusToolStripMenuItem"
-        Me.BonusToolStripMenuItem.Size = New System.Drawing.Size(152, 22)
+        Me.BonusToolStripMenuItem.Size = New System.Drawing.Size(135, 22)
         Me.BonusToolStripMenuItem.Text = "Bonus"
         Me.BonusToolStripMenuItem.Visible = False
         '
         'ToolStripSeparator1
         '
         Me.ToolStripSeparator1.Name = "ToolStripSeparator1"
-        Me.ToolStripSeparator1.Size = New System.Drawing.Size(149, 6)
+        Me.ToolStripSeparator1.Size = New System.Drawing.Size(132, 6)
         '
         'FReturPenjualan
         '

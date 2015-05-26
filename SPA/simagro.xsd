@@ -336,6 +336,71 @@ ON T1.`mcusid` = T2.mcusid
             </Mappings>
             <Sources />
           </TableAdapter>
+          <TableAdapter BaseClass="System.ComponentModel.Component" DataAccessorModifier="AutoLayout, AnsiClass, Class, Public" DataAccessorName="cashflowTableAdapter" GeneratorDataComponentClassName="cashflowTableAdapter" Name="cashflow" UserDataComponentName="cashflowTableAdapter">
+            <MainSource>
+              <DbSource ConnectionRef="simagroConnectionString (MySettings)" DbObjectType="Unknown" FillMethodModifier="Public" FillMethodName="Fill" GenerateMethods="Both" GenerateShortCommands="false" GeneratorGetMethodName="GetData" GeneratorSourceName="Fill" GetMethodModifier="Public" GetMethodName="GetData" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetData" UserSourceName="Fill">
+                <SelectCommand>
+                  <DbCommand CommandType="StoredProcedure" ModifiedByUser="false">
+                    <CommandText>`simagro`.`getcashflow`</CommandText>
+                    <Parameters />
+                  </DbCommand>
+                </SelectCommand>
+              </DbSource>
+            </MainSource>
+            <Mappings>
+              <Mapping SourceColumn="mcoahno" DataSetColumn="mcoahno" />
+              <Mapping SourceColumn="mcoahname" DataSetColumn="mcoahname" />
+              <Mapping SourceColumn="mcoadno" DataSetColumn="mcoadno" />
+              <Mapping SourceColumn="mcoadname" DataSetColumn="mcoadname" />
+              <Mapping SourceColumn="classification" DataSetColumn="classification" />
+              <Mapping SourceColumn="id_aktivitas" DataSetColumn="id_aktivitas" />
+              <Mapping SourceColumn="aktivitas" DataSetColumn="aktivitas" />
+              <Mapping SourceColumn="debet" DataSetColumn="debet" />
+              <Mapping SourceColumn="kredit" DataSetColumn="kredit" />
+              <Mapping SourceColumn="nilai" DataSetColumn="nilai" />
+              <Mapping SourceColumn="tanggal" DataSetColumn="tanggal" />
+              <Mapping SourceColumn="awal" DataSetColumn="awal" />
+            </Mappings>
+            <Sources />
+          </TableAdapter>
+          <TableAdapter BaseClass="System.ComponentModel.Component" DataAccessorModifier="AutoLayout, AnsiClass, Class, Public" DataAccessorName="bukubesarTableAdapter" GeneratorDataComponentClassName="bukubesarTableAdapter" Name="bukubesar" UserDataComponentName="bukubesarTableAdapter">
+            <MainSource>
+              <DbSource ConnectionRef="simagroConnectionString (MySettings)" DbObjectName="simagro.coa" DbObjectType="View" FillMethodModifier="Public" FillMethodName="Fill" GenerateMethods="Both" GenerateShortCommands="false" GeneratorGetMethodName="GetData" GeneratorSourceName="Fill" GetMethodModifier="Public" GetMethodName="GetData" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetData" UserSourceName="Fill">
+                <SelectCommand>
+                  <DbCommand CommandType="Text" ModifiedByUser="true">
+                    <CommandText>SELECT 
+	c.mcoadno,
+	c.mcoadname,
+	IF(ISNULL(bb.rgldt),'',bb.rgldt) rgldt,
+	IF(ISNULL(bb.noref),'',bb.noref) noref,
+	IF(ISNULL(bb.rgldesc),'',bb.rgldesc) rgldesc,
+	IF(ISNULL(bb.noref2),'',bb.noref2) noref2,
+	IF(ISNULL(bb.rglin),0,bb.rglin) rglin,
+	IF(ISNULL(bb.rglout),0,bb.rglout) rglout,
+	IF(ISNULL(ss.saldo_awal),0,ss.saldo_awal) saldo_awal
+FROM coa c
+LEFT JOIN
+(SELECT * FROM gledger WHERE rgldt &gt;= '2015-05-01' AND rgldt &lt;= '2015-05-25') bb ON c.`mcoadno`=bb.`mcoadno`
+LEFT JOIN
+(SELECT mcoadno,mcoadname,SUM(rglin-rglout) AS saldo_awal FROM `gledger` WHERE rgldt &lt; '2015-05-01' GROUP BY mcoadno) ss ON c.`mcoadno`=ss.mcoadno</CommandText>
+                    <Parameters />
+                  </DbCommand>
+                </SelectCommand>
+              </DbSource>
+            </MainSource>
+            <Mappings>
+              <Mapping SourceColumn="mcoadno" DataSetColumn="mcoadno" />
+              <Mapping SourceColumn="mcoadname" DataSetColumn="mcoadname" />
+              <Mapping SourceColumn="rgldt" DataSetColumn="rgldt" />
+              <Mapping SourceColumn="noref" DataSetColumn="noref" />
+              <Mapping SourceColumn="rgldesc" DataSetColumn="rgldesc" />
+              <Mapping SourceColumn="noref2" DataSetColumn="noref2" />
+              <Mapping SourceColumn="rglin" DataSetColumn="rglin" />
+              <Mapping SourceColumn="rglout" DataSetColumn="rglout" />
+              <Mapping SourceColumn="saldo_awal" DataSetColumn="saldo_awal" />
+            </Mappings>
+            <Sources />
+          </TableAdapter>
         </Tables>
         <Sources />
       </DataSource>
@@ -837,6 +902,123 @@ ON T1.`mcusid` = T2.mcusid
             </xs:sequence>
           </xs:complexType>
         </xs:element>
+        <xs:element name="cashflow" msprop:Generator_TableClassName="cashflowDataTable" msprop:Generator_TableVarName="tablecashflow" msprop:Generator_RowChangedName="cashflowRowChanged" msprop:Generator_TablePropName="cashflow" msprop:Generator_RowDeletingName="cashflowRowDeleting" msprop:Generator_RowChangingName="cashflowRowChanging" msprop:Generator_RowEvHandlerName="cashflowRowChangeEventHandler" msprop:Generator_RowDeletedName="cashflowRowDeleted" msprop:Generator_RowClassName="cashflowRow" msprop:Generator_UserTableName="cashflow" msprop:Generator_RowEvArgName="cashflowRowChangeEvent">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="mcoahno" msprop:Generator_ColumnVarNameInTable="columnmcoahno" msprop:Generator_ColumnPropNameInRow="mcoahno" msprop:Generator_ColumnPropNameInTable="mcoahnoColumn" msprop:Generator_UserColumnName="mcoahno">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="6" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="mcoahname" msprop:Generator_ColumnVarNameInTable="columnmcoahname" msprop:Generator_ColumnPropNameInRow="mcoahname" msprop:Generator_ColumnPropNameInTable="mcoahnameColumn" msprop:Generator_UserColumnName="mcoahname">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="100" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="mcoadno" msprop:Generator_ColumnVarNameInTable="columnmcoadno" msprop:Generator_ColumnPropNameInRow="mcoadno" msprop:Generator_ColumnPropNameInTable="mcoadnoColumn" msprop:Generator_UserColumnName="mcoadno">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="6" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="mcoadname" msprop:Generator_ColumnVarNameInTable="columnmcoadname" msprop:Generator_ColumnPropNameInRow="mcoadname" msprop:Generator_ColumnPropNameInTable="mcoadnameColumn" msprop:Generator_UserColumnName="mcoadname">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="50" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="classification" msprop:Generator_ColumnVarNameInTable="columnclassification" msprop:Generator_ColumnPropNameInRow="classification" msprop:Generator_ColumnPropNameInTable="classificationColumn" msprop:Generator_UserColumnName="classification" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="100" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="id_aktivitas" msprop:Generator_ColumnVarNameInTable="columnid_aktivitas" msprop:Generator_ColumnPropNameInRow="id_aktivitas" msprop:Generator_ColumnPropNameInTable="id_aktivitasColumn" msprop:Generator_UserColumnName="id_aktivitas" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="1" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="aktivitas" msprop:Generator_ColumnVarNameInTable="columnaktivitas" msprop:Generator_ColumnPropNameInRow="aktivitas" msprop:Generator_ColumnPropNameInTable="aktivitasColumn" msprop:Generator_UserColumnName="aktivitas" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="19" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="debet" msprop:Generator_ColumnVarNameInTable="columndebet" msprop:Generator_ColumnPropNameInRow="debet" msprop:Generator_ColumnPropNameInTable="debetColumn" msprop:Generator_UserColumnName="debet" type="xs:decimal" minOccurs="0" />
+              <xs:element name="kredit" msprop:Generator_ColumnVarNameInTable="columnkredit" msprop:Generator_ColumnPropNameInRow="kredit" msprop:Generator_ColumnPropNameInTable="kreditColumn" msprop:Generator_UserColumnName="kredit" type="xs:decimal" minOccurs="0" />
+              <xs:element name="nilai" msprop:Generator_ColumnVarNameInTable="columnnilai" msprop:Generator_ColumnPropNameInRow="nilai" msprop:Generator_ColumnPropNameInTable="nilaiColumn" msprop:Generator_UserColumnName="nilai" type="xs:decimal" minOccurs="0" />
+              <xs:element name="tanggal" msprop:Generator_ColumnVarNameInTable="columntanggal" msprop:Generator_ColumnPropNameInRow="tanggal" msprop:Generator_ColumnPropNameInTable="tanggalColumn" msprop:Generator_UserColumnName="tanggal" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="10" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="awal" msprop:Generator_ColumnVarNameInTable="columnawal" msprop:Generator_ColumnPropNameInRow="awal" msprop:Generator_ColumnPropNameInTable="awalColumn" msprop:Generator_UserColumnName="awal" type="xs:decimal" minOccurs="0" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="bukubesar" msprop:Generator_TableClassName="bukubesarDataTable" msprop:Generator_TableVarName="tablebukubesar" msprop:Generator_TablePropName="bukubesar" msprop:Generator_RowDeletingName="bukubesarRowDeleting" msprop:Generator_RowChangingName="bukubesarRowChanging" msprop:Generator_RowEvHandlerName="bukubesarRowChangeEventHandler" msprop:Generator_RowDeletedName="bukubesarRowDeleted" msprop:Generator_UserTableName="bukubesar" msprop:Generator_RowChangedName="bukubesarRowChanged" msprop:Generator_RowEvArgName="bukubesarRowChangeEvent" msprop:Generator_RowClassName="bukubesarRow">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="mcoadno" msprop:Generator_ColumnVarNameInTable="columnmcoadno" msprop:Generator_ColumnPropNameInRow="mcoadno" msprop:Generator_ColumnPropNameInTable="mcoadnoColumn" msprop:Generator_UserColumnName="mcoadno">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="6" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="mcoadname" msprop:Generator_ColumnVarNameInTable="columnmcoadname" msprop:Generator_ColumnPropNameInRow="mcoadname" msprop:Generator_ColumnPropNameInTable="mcoadnameColumn" msprop:Generator_UserColumnName="mcoadname">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="50" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="rgldt" msprop:Generator_ColumnVarNameInTable="columnrgldt" msprop:Generator_ColumnPropNameInRow="rgldt" msprop:Generator_ColumnPropNameInTable="rgldtColumn" msprop:Generator_UserColumnName="rgldt" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="10" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="noref" msprop:Generator_ColumnVarNameInTable="columnnoref" msprop:Generator_ColumnPropNameInRow="noref" msprop:Generator_ColumnPropNameInTable="norefColumn" msprop:Generator_UserColumnName="noref" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="30" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="rgldesc" msprop:Generator_ColumnVarNameInTable="columnrgldesc" msprop:Generator_ColumnPropNameInRow="rgldesc" msprop:Generator_ColumnPropNameInTable="rgldescColumn" msprop:Generator_UserColumnName="rgldesc" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="65535" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="noref2" msprop:Generator_ColumnVarNameInTable="columnnoref2" msprop:Generator_ColumnPropNameInRow="noref2" msprop:Generator_ColumnPropNameInTable="noref2Column" msprop:Generator_UserColumnName="noref2" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="25" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="rglin" msprop:Generator_ColumnVarNameInTable="columnrglin" msprop:Generator_ColumnPropNameInRow="rglin" msprop:Generator_ColumnPropNameInTable="rglinColumn" msprop:Generator_UserColumnName="rglin" type="xs:decimal" minOccurs="0" />
+              <xs:element name="rglout" msprop:Generator_ColumnVarNameInTable="columnrglout" msprop:Generator_ColumnPropNameInRow="rglout" msprop:Generator_ColumnPropNameInTable="rgloutColumn" msprop:Generator_UserColumnName="rglout" type="xs:decimal" minOccurs="0" />
+              <xs:element name="saldo_awal" msprop:Generator_ColumnVarNameInTable="columnsaldo_awal" msprop:Generator_ColumnPropNameInRow="saldo_awal" msprop:Generator_ColumnPropNameInTable="saldo_awalColumn" msprop:Generator_UserColumnName="saldo_awal" type="xs:decimal" minOccurs="0" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
       </xs:choice>
     </xs:complexType>
     <xs:unique name="Constraint1" msdata:PrimaryKey="true">
@@ -846,6 +1028,10 @@ ON T1.`mcusid` = T2.mcusid
     <xs:unique name="rdetailinvoice_Constraint1" msdata:ConstraintName="Constraint1" msdata:PrimaryKey="true">
       <xs:selector xpath=".//mstns:rdetailinvoice" />
       <xs:field xpath="mstns:mcusid" />
+    </xs:unique>
+    <xs:unique name="bukubesar_Constraint1" msdata:ConstraintName="Constraint1" msdata:PrimaryKey="true">
+      <xs:selector xpath=".//mstns:bukubesar" />
+      <xs:field xpath="mstns:mcoadno" />
     </xs:unique>
   </xs:element>
 </xs:schema>

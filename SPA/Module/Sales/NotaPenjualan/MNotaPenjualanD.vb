@@ -143,7 +143,7 @@
             ModelGL.rgldesc = "Update Data Nota Penjualan No " & Me.tinvhno
             ModelGL.dtcreated = Me.dtcreated
             Dim ParamPosting As New Dictionary(Of String, Object)
-            ParamPosting.Add("idtrrans", "PB")
+            ParamPosting.Add("idtrrans", "NP")
             Dim accountlistvalue As New Dictionary(Of String, Object)
             accountlistvalue.Add("acc_debit", Me.soldvalue)
             accountlistvalue.Add("acc_credit", Me.soldvalue)

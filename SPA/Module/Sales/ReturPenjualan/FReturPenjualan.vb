@@ -257,32 +257,38 @@
                     DataGridView1.Rows(e.RowIndex).Cells(e.ColumnIndex).Value = cvalue
                     DataGridView1.Rows(e.RowIndex).Cells("subtotal").Value = Format(jml, "##,##0")
                     SetSummaryField()
-                    'ElseIf DataGridView1.Columns(e.ColumnIndex).Name = "mmtrid" Then
-                    '    If DataGridView1.Rows(e.RowIndex).Cells("mmtrid").Value = mmtridbefore Then Exit Sub
+                ElseIf DataGridView1.Columns(e.ColumnIndex).Name = "mmtrid" Then
+                    If DataGridView1.Rows(e.RowIndex).Cells("mmtrid").Value = mmtridbefore Then Exit Sub
 
-                    '    If CekDuplicateID(DataGridView1.Rows(e.RowIndex).Cells("mmtrid").Value, e.RowIndex) Then
-                    '        For Each dat In ListDataTanaman
-                    '            'col.Add(dat("mmtrid"))
-                    '            If dat("mmtrid") = DataGridView1.Rows(e.RowIndex).Cells("mmtrid").Value Then
-                    '                DataGridView1.Rows(e.RowIndex).Cells("mmtrhname").Value = dat("mmtrname") 'ListDataTanaman(1)("mmtrname")
-                    '                DataGridView1.Rows(e.RowIndex).Cells("polybag").Value = dat("polybag") 'ListDataTanaman(1)("mmtrname")
-                    '                DataGridView1.Rows(e.RowIndex).Cells("price").Value = CDec(dat("mmtrprice"))
-                    '                DataGridView1.Rows(e.RowIndex).Cells("pricebonus").Value = CDec(dat("mmtrprice"))
-                    '                'DataGridView1.Rows(e.RowIndex).Cells("qty").Value = IIf(DataGridView1.Rows(e.RowIndex).Cells("qty").Value.ToString.Length > 0, CDec(DataGridView1.Rows(e.RowIndex).Cells("qty").Value), 0)
-                    '                'DataGridView1.Rows(e.RowIndex).Cells("price").Selected = True
-                    '                DataGridView1.Rows(e.RowIndex).Cells("oldhpp").Value = CDec(dat("hpp"))
-                    '                DataGridView1.Rows(e.RowIndex).Cells("hpp").Value = CDec(dat("hpp"))
-                    '            End If
-                    '        Next
-                    '    Else
-                    '        DataGridView1.Rows(e.RowIndex).Cells("mmtrid").Value = ""
-                    '        DataGridView1.Rows(e.RowIndex).Cells("mmtrhname").Value = ""
-                    '        DataGridView1.Rows(e.RowIndex).Cells("polybag").Value = ""
-                    '        DataGridView1.Rows(e.RowIndex).Cells("price").Value = 0
-                    '        DataGridView1.Rows(e.RowIndex).Cells("qty").Value = 0
-                    '        DataGridView1.CurrentCell = DataGridView1("mmtrid", e.RowIndex)
-                    '        DataGridView1.CancelEdit()
-                    '    End If
+                    If CekDuplicateID(DataGridView1.Rows(e.RowIndex).Cells("mmtrid").Value, e.RowIndex) Then
+                        For Each dat In ListDataTanaman
+                            'col.Add(dat("mmtrid"))
+                            If dat("mmtrid") = DataGridView1.Rows(e.RowIndex).Cells("mmtrid").Value Then
+                                DataGridView1.Rows(e.RowIndex).Cells("mmtrhname").Value = dat("mmtrname") 'ListDataTanaman(1)("mmtrname")
+                                DataGridView1.Rows(e.RowIndex).Cells("polybag").Value = dat("polybag") 'ListDataTanaman(1)("mmtrname")
+                                If Not isEdit Then
+                                    If Not DataGridView1.Rows(e.RowIndex).Cells("tinvdtype").FormattedValue Then
+                                        DataGridView1.Rows(e.RowIndex).Cells("price").Value = CDec(dat("mmtrprice"))
+                                    Else
+                                        DataGridView1.Rows(e.RowIndex).Cells("price").Value = 0
+                                    End If
+                                End If
+                                DataGridView1.Rows(e.RowIndex).Cells("pricebonus").Value = CDec(dat("mmtrprice"))
+                                'DataGridView1.Rows(e.RowIndex).Cells("qty").Value = IIf(DataGridView1.Rows(e.RowIndex).Cells("qty").Value.ToString.Length > 0, CDec(DataGridView1.Rows(e.RowIndex).Cells("qty").Value), 0)
+                                'DataGridView1.Rows(e.RowIndex).Cells("price").Selected = True
+                                DataGridView1.Rows(e.RowIndex).Cells("oldhpp").Value = CDec(dat("hpp"))
+                                DataGridView1.Rows(e.RowIndex).Cells("hpp").Value = CDec(dat("hpp"))
+                            End If
+                        Next
+                    Else
+                        DataGridView1.Rows(e.RowIndex).Cells("mmtrid").Value = ""
+                        DataGridView1.Rows(e.RowIndex).Cells("mmtrhname").Value = ""
+                        DataGridView1.Rows(e.RowIndex).Cells("polybag").Value = ""
+                        DataGridView1.Rows(e.RowIndex).Cells("price").Value = 0
+                        DataGridView1.Rows(e.RowIndex).Cells("qty").Value = 0
+                        DataGridView1.CurrentCell = DataGridView1("mmtrid", e.RowIndex)
+                        DataGridView1.CancelEdit()
+                    End If
                     'ElseIf DataGridView1.Columns(e.ColumnIndex).Name = "trtrdtype" Then
                     '    If DataGridView1.Rows(e.RowIndex).Cells("trtrdtype").FormattedValue Then
                     '        DataGridView1.Rows(e.RowIndex).Cells("price").Value = 0

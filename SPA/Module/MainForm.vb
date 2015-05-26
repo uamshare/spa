@@ -166,4 +166,12 @@ Public Class MainForm
     Private Sub menu408_Click(sender As Object, e As EventArgs) Handles menu408.Click
         LoadMdiChildForm(RRugiLaba, "menu408")
     End Sub
+
+    Private Sub menu405_Click(sender As Object, e As EventArgs) Handles menu405.Click
+        LoadMdiChildForm(RBukuBesar, "menu405")
+    End Sub
+
+    Private Sub menu409_Click(sender As Object, e As EventArgs) Handles menu409.Click
+        LoadMdiChildForm(RArusKas, "menu409")
+    End Sub
 End Class
