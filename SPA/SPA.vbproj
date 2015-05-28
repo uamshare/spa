@@ -19,20 +19,22 @@
     <Install>true</Install>
     <InstallFrom>Disk</InstallFrom>
     <UpdateEnabled>true</UpdateEnabled>
-    <UpdateMode>Foreground</UpdateMode>
+    <UpdateMode>Background</UpdateMode>
     <UpdateInterval>7</UpdateInterval>
     <UpdateIntervalUnits>Days</UpdateIntervalUnits>
     <UpdatePeriodically>false</UpdatePeriodically>
-    <UpdateRequired>false</UpdateRequired>
+    <UpdateRequired>true</UpdateRequired>
     <MapFileExtensions>true</MapFileExtensions>
-    <UpdateUrl>http://localhost/SPA/</UpdateUrl>
+    <UpdateUrl>http://publish.uam.web.id/2015/spa/publish/</UpdateUrl>
+    <SupportUrl>http://publish.web.id/2015/spa/support</SupportUrl>
+    <ErrorReportUrl>http://publish.web.id/2015/spa/errors</ErrorReportUrl>
     <ProductName>SPA</ProductName>
     <PublisherName>UAM</PublisherName>
-    <SuiteName>-</SuiteName>
-    <ApplicationRevision>1</ApplicationRevision>
+    <SuiteName>uam.web.id</SuiteName>
+    <MinimumRequiredVersion>1.0.0.1</MinimumRequiredVersion>
+    <ApplicationRevision>3</ApplicationRevision>
     <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
     <UseApplicationTrust>true</UseApplicationTrust>
-    <CreateDesktopShortcut>true</CreateDesktopShortcut>
     <PublishWizardCompleted>true</PublishWizardCompleted>
     <BootstrapperEnabled>true</BootstrapperEnabled>
   </PropertyGroup>

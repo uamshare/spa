@@ -11,7 +11,7 @@ Imports System.Runtime.InteropServices
 ' Review the values of the assembly attributes
 
 <Assembly: AssemblyTitle("SPA Application")> 
-<Assembly: AssemblyDescription("Sistem Penjualan Argotama")> 
+<Assembly: AssemblyDescription("Sistem Penjualan Agrotama")> 
 <Assembly: AssemblyCompany("UAM")> 
 <Assembly: AssemblyProduct("SPA")> 
 <Assembly: AssemblyCopyright("Copyright ©  2015")> 
