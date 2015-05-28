@@ -1,59 +1,50 @@
-﻿Public Class FListTanaman
+﻿Public Class FListJurnalMemo
     Dim dt As New DataTable
     Dim DGVColumnCheckIndex As Integer
 
-    Private Model As New MTanaman
-    Public DatagridParent As DataGridView
+    Private Model As New MJurnalMemoH
+    'Public FJurnalMemo.DataGridView1 As DataGridView
+    Private ModelRowCount As Integer = Model.GetRowsCount()
 
     Public Sub init()
         Model.limitrecord = 25
         RetrieveData()
-        DataGridView1.ClearSelection()
-    End Sub
-    Private Sub FListTanaman_Load(sender As Object, e As EventArgs) Handles MyBase.Load
-        Me.Width = 675
-        Me.Height = 630
-        MyApplication.InitializeDataGridView(DataGridView1)
-        init()
-    End Sub
-    Private Sub FListTanaman_Shown(sender As Object, e As EventArgs) Handles Me.Shown
-        init()
     End Sub
 #Region "Format DataGridView"
     Private Sub RetrieveData(Optional ByVal sSearch As String = "")
         Dim dt As DataTable
-
         Try
             If Not String.IsNullOrEmpty(sSearch) Then
                 dt = Model.FindData(sSearch)
             Else
                 dt = Model.GetData()
             End If
-
+            ModelRowCount = Model.GetRowsCount()
             With DataGridView1
                 .Columns.Clear()
+                DGVColumnCheckIndex = .Columns.Add(New DataGridViewCheckBoxColumn)
+                .Columns(DGVColumnCheckIndex).Name = "rowchecked"
+                .Columns(DGVColumnCheckIndex).HeaderText = ".."
+                .Columns(DGVColumnCheckIndex).Width = 35
+                .Columns(DGVColumnCheckIndex).Visible = False
 
                 .DataSource = dt
-                .Columns("mmtrhid").Visible = False
-                .Columns("mmtrid").HeaderText = "Kode"
-                .Columns("mmtrname").HeaderText = "Jenis Tanaman"
-                .Columns("polybag").HeaderText = "Polybag"
-                .Columns("mmtrunit").HeaderText = "Satuan"
-                .Columns("mmtrprice").HeaderText = "Harga Jual"
-                .Columns("PrimaryKey").Visible = False
-                .Columns("mmtrg").Visible = False
+                .Columns("tjmhno").HeaderText = "No Jurnal"
+                .Columns("tjmhdt").HeaderText = "Tanggal"
+                .Columns("tjmhdesc").HeaderText = "Keterangan"
 
-                .RowHeadersWidth = 50
-                .Columns("mmtrid").Width = 100
-                .Columns("mmtrname").Width = 200
-                .Columns("polybag").Width = 75
-                .Columns("polybag").DefaultCellStyle().Alignment = DataGridViewContentAlignment.MiddleCenter
-                .Columns("mmtrunit").Width = 100
-                .Columns("mmtrprice").Width = 100
-                .Columns("mmtrprice").DefaultCellStyle().Format = "##,##0"
-                .Columns("mmtrprice").DefaultCellStyle().Alignment = DataGridViewContentAlignment.MiddleRight
+                .Columns("userid").Visible = False
+                .Columns("dtcreated").Visible = False
+                .Columns("dtupdated").Visible = False
+
+                .RowHeadersWidth = 75
+                .Columns("tjmhno").Width = 120
+                .Columns("tjmhdt").Width = 100
+                .Columns("tjmhdt").DefaultCellStyle().Alignment = DataGridViewContentAlignment.MiddleCenter
+                .Columns("tjmhdt").DefaultCellStyle().Format = MyApplication.DefaultFormatDate
+                .Columns("tjmhdesc").Width = 400
+
                 .Refresh()
-
                 If .RowCount > 0 Then
                     For i As Integer = 0 To .Rows.Count - 1
                         Dim count As Integer = Model.startRecord
@@ -63,7 +54,7 @@
             End With
             setButtonPager()
         Catch ex As Exception
-            MyApplication.ShowStatus("Failed to RetrieveData = " & ex.Message, WARNING_STAT)
+            MyApplication.ShowStatus(ex.Message, ERROR_STAT)
         End Try
 
     End Sub
@@ -92,8 +83,19 @@
     Private Sub DataGridView1_CellContentDoubleClick(sender As Object, e As DataGridViewCellEventArgs) Handles DataGridView1.CellContentDoubleClick
         Try
             If (DataGridView1.SelectedRows.Count > 0) Then
-                DatagridParent.CurrentRow.Cells("mmtrid").Value = DataGridView1.CurrentRow.Cells("mmtrid").Value()
-                DatagridParent.EndEdit()
+                FJurnalMemo.TxtNo.Text = DataGridView1.CurrentRow.Cells("tjmhno").Value()
+                FJurnalMemo.DateTimePicker1.Value = DataGridView1.CurrentRow.Cells("tjmhdt").Value().ToString
+                FJurnalMemo.TextBox1.Text = DataGridView1.CurrentRow.Cells("tjmhdesc").Value().ToString
+                FJurnalMemo.ButtonAdd.Enabled = False
+                FJurnalMemo.ButtonSave.Enabled = True
+                FJurnalMemo.ButtonDel.Enabled = True
+                FJurnalMemo.ButtonPrint.Enabled = False
+                FJurnalMemo.ButtonCancel.Enabled = True
+                FJurnalMemo.ButtonH.Enabled = True
+
+                FJurnalMemo.DataGridView1.Enabled = True
+                FJurnalMemo.ToolDelete.Enabled = True
+                FJurnalMemo.TextBox1.Focus()
                 Me.Close()
             Else
                 MyApplication.ShowStatus("Tidak ada data terpilih", NOTICE_STAT)
@@ -103,14 +105,13 @@
         End Try
     End Sub
     Private Sub DataGridView1_KeyDown(sender As Object, e As KeyEventArgs) Handles DataGridView1.KeyDown
-
         Dim dgrow As DataGridViewRow = DataGridView1.CurrentRow
         If e.KeyCode = Keys.Enter Then
-            'MsgBox(dgrow.Cells("mmtrid").Value())
+            'MsgBox(dgrow.Cells("tjmhno").Value())
             Try
                 If (DataGridView1.SelectedRows.Count > 0) Then
-                    DatagridParent.CurrentRow.Cells("mmtrid").Value = dgrow.Cells("mmtrid").Value()
-                    DatagridParent.EndEdit()
+                    FJurnalMemo.DataGridView1.CurrentRow.Cells("tjmhno").Value = dgrow.Cells("tjmhno").Value()
+                    FJurnalMemo.DataGridView1.EndEdit()
                     Me.Close()
                 End If
             Catch ex As Exception
@@ -129,6 +130,17 @@
             End If
         End With
     End Sub
+    Private Sub ToolFind_Click(sender As Object, e As EventArgs) Handles ToolFind.Click
+        Model.startRecord = 0
+        RetrieveData(ToolTextFind.Text)
+    End Sub
+    Private Sub ToolRefresh_Click(sender As Object, e As EventArgs) Handles ToolRefresh.Click
+        RetrieveData()
+        ToolTextFind.Text = ""
+    End Sub
+    Private Sub ToolCheck_Click(sender As Object, e As EventArgs) Handles ToolCheck.Click
+        DataGridView1_CellContentDoubleClick(Nothing, Nothing)
+    End Sub
 #End Region
 
 #Region "Pagination"
@@ -136,8 +148,8 @@
         Try
             Dim page, CurrentCountRows, endofpage As Integer
             If Model.limitrecord > 0 Then
-                endofpage = (Model.GetRowsCount() \ Model.limitrecord) '* Model.limitrecord
-                endofpage = IIf((endofpage * Model.limitrecord) < Model.GetRowsCount(), endofpage, endofpage - 1) + 1
+                endofpage = (ModelRowCount \ Model.limitrecord) '* Model.limitrecord
+                endofpage = IIf((endofpage * Model.limitrecord) < ModelRowCount, endofpage, endofpage - 1) + 1
                 page = IIf(Model.startRecord = 0, 0, Model.startRecord / Model.limitrecord) + 1
                 'Dim page As Integer = IIf(Model.startRecord = 0, 0, Model.startRecord / Model.limitrecord) + 1
 
@@ -157,10 +169,10 @@
                     ToolNext.Enabled = False
                     ToolLast.Enabled = False
                 End If
-                cmbperpage.Text = Model.limitrecord
+                cmbperPage.Text = Model.limitrecord
                 'page = IIf(Model.startRecord = 0, 0, Model.startRecord / Model.limitrecord) + 1
-                CurrentCountRows = IIf((Model.startRecord + Model.limitrecord) > Model.GetRowsCount(), Model.GetRowsCount(), (Model.startRecord + Model.limitrecord))
-                'lpageinfo.Text = "Page " & page & " of " & (Model.GetRowsCount() \ Model.limitrecord) & " as " & Model.GetRowsCount() & " Records"
+                CurrentCountRows = IIf((Model.startRecord + Model.limitrecord) > ModelRowCount, ModelRowCount, (Model.startRecord + Model.limitrecord))
+                'lpageinfo.Text = "Page " & page & " of " & (ModelRowCount \ Model.limitrecord) & " as " & ModelRowCount & " Records"
 
             Else
                 ToolFisrt.Enabled = False
@@ -168,15 +180,15 @@
                 ToolNext.Enabled = False
                 ToolLast.Enabled = False
                 page = 1
-                cmbperpage.Text = "All"
+                cmbperPage.Text = "All"
             End If
 
             'Navigator Info
-            lpageinfo.Text = (Model.startRecord + 1) & "-" & CurrentCountRows & " as " & Model.GetRowsCount() & " Rows"
+            lpageInfo.Text = (Model.startRecord + 1) & "-" & CurrentCountRows & " as " & ModelRowCount & " Rows"
             Me.lCountPage.Text = "of " & endofpage
             txtPageCurrent.Text = page
         Catch ex As Exception
-            MyApplication.ShowStatus(ex.Message, WARNING_STAT)
+            MyApplication.ShowStatus(ex.Message, ERROR_STAT)
         End Try
     End Sub
     Public Sub RetrieveFirst()
@@ -190,14 +202,14 @@
         End If
     End Sub
     Sub RetrieveNext()
-        If Model.startRecord < Model.GetRowsCount() Then
+        If Model.startRecord < ModelRowCount Then
             Model.startRecord = Model.startRecord + Model.limitrecord
             RetrieveData()
         End If
     End Sub
     Sub RetrieveLast()
-        Dim totalpage = (Model.GetRowsCount() \ Model.limitrecord) * Model.limitrecord
-        If totalpage < Model.GetRowsCount() Then
+        Dim totalpage = (ModelRowCount \ Model.limitrecord) * Model.limitrecord
+        If totalpage < ModelRowCount Then
             Model.startRecord = totalpage
         Else
             Model.startRecord = totalpage - Model.limitrecord
@@ -207,15 +219,12 @@
     Private Sub ToolFisrt_Click(sender As Object, e As EventArgs) Handles ToolFisrt.Click
         RetrieveFirst()
     End Sub
-
     Private Sub ToolPrev_Click(sender As Object, e As EventArgs) Handles ToolPrev.Click
         RetrievePrev()
     End Sub
-
     Private Sub ToolNext_Click(sender As Object, e As EventArgs) Handles ToolNext.Click
         RetrieveNext()
     End Sub
-
     Private Sub ToolLast_Click(sender As Object, e As EventArgs) Handles ToolLast.Click
         RetrieveLast()
     End Sub
@@ -225,7 +234,7 @@
             Dim countpage As Integer
             Dim pageto As Integer = Val(txtPageCurrent.Text)
             If Model.limitrecord > 0 Then
-                countpage = (Model.GetRowsCount() \ Model.limitrecord)
+                countpage = (ModelRowCount \ Model.limitrecord)
             Else
                 countpage = 1
             End If
@@ -243,8 +252,7 @@
         End If
         'MessageBox.Show(Asc(e.KeyChar))
     End Sub
-
-    Private Sub cmbperPage_SelectedIndexChanged(sender As Object, e As EventArgs) Handles cmbperpage.SelectedIndexChanged
+    Private Sub cmbperpage_SelectedIndexChanged(sender As Object, e As EventArgs) Handles cmbperPage.SelectedIndexChanged
         If IsNumeric(cmbperPage.Text) Then
             Model.limitrecord = Int(cmbperPage.Text)
         Else
@@ -252,22 +260,20 @@
         End If
         RetrieveData()
     End Sub
-    Private Sub ToolRefresh_Click(sender As Object, e As EventArgs) Handles ToolRefresh.Click
-        RetrieveData()
-        ToolTextFind.Text = ""
-    End Sub
-    Private Sub ToolFind_Click(sender As Object, e As EventArgs) Handles ToolFind.Click
-        Model.startRecord = 0
-        'If Not String.IsNullOrEmpty(ToolFind.Text) Then
-        RetrieveData(ToolTextFind.Text)
-        'Else
-        '    RetrieveData()
-        'End If
-    End Sub
 #End Region
 
-    Private Sub ToolCheck_Click(sender As Object, e As EventArgs) Handles ToolCheck.Click
-        DataGridView1_CellContentDoubleClick(sender, Nothing)
+    Private Sub FCOADetail_Load(sender As Object, e As EventArgs) Handles MyBase.Load
+        Me.Width = 800
+        Me.Height = 600
+        MyApplication.ShowStatus(Me.Text & " Loaded")
+        MyApplication.InitializeDataGridView(DataGridView1)
+        init()
+    End Sub
+    Private Sub FCOADetail_Shown(sender As Object, e As EventArgs) Handles MyBase.Shown
+        FCOADetail_Load(Nothing, Nothing)
     End Sub
 
+    
+
+    
 End Class

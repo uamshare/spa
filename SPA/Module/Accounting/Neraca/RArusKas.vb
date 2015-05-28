@@ -8,30 +8,12 @@
         DateTimePicker1.CustomFormat = MyApplication.DefaultFormatDate
         DateTimePicker2.Format = DateTimePickerFormat.Custom
         DateTimePicker2.CustomFormat = MyApplication.DefaultFormatDate
-
-        Dim Coa1, Coa2 As New MCOADetail
-        Coa1.limitrecord = -1
-        ComboBox1.DataSource = Coa1.GetData
-        ComboBox1.ValueMember = "mcoadno"
-        ComboBox1.DisplayMember = "mcoadname"
-        ComboBox1.SelectedIndex = -1
-
-        Coa2.limitrecord = -1
-        ComboBox2.DataSource = Coa2.GetData
-        ComboBox2.ValueMember = "mcoadno"
-        ComboBox2.DisplayMember = "mcoadname"
-        ComboBox2.SelectedIndex = -1
-
         init()
     End Sub
     Public Sub init()
         DateTimePicker1.Value = Format(Today.Date.Date.AddDays(-(Today.Day - 1)))
         DateTimePicker2.Value = Format(Date.Now)
         'ComboBox3.SelectedIndex = 2
-
-        TextAutoComplete(ComboBox1)
-        TextAutoComplete(ComboBox2)
-
         showReport(DateTimePicker1.Value, DateTimePicker2.Value)
         Me.ReportViewer1.RefreshReport()
     End Sub
@@ -64,7 +46,7 @@
 
     End Sub
     Private Sub Button1_Click(sender As Object, e As EventArgs) Handles Button1.Click
-        showReport(DateTimePicker1.Value, DateTimePicker2.Value, ComboBox1.SelectedValue, ComboBox2.SelectedValue)
+        showReport(DateTimePicker1.Value, DateTimePicker2.Value)
     End Sub
     Private Sub DateTimePicker1_ValueChanged(sender As Object, e As EventArgs) Handles DateTimePicker1.ValueChanged
         If DateTimePicker1.Value >= DateTimePicker2.Value Then

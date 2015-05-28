@@ -62,48 +62,94 @@
     End Sub
 
 #Region "Format DataGridView"
-    Private Sub InitializeDataGridView()
+    'Private Sub InitializeDataGridView()
 
-        ' Initialize basic DataGridView properties.
-        DataGridView1.Dock = DockStyle.Fill
-        DataGridView1.BackgroundColor = Color.LightGray
-        DataGridView1.BorderStyle = BorderStyle.Fixed3D
+    '    ' Initialize basic DataGridView properties.
+    '    DataGridView1.Dock = DockStyle.Fill
+    '    DataGridView1.BackgroundColor = Color.LightGray
+    '    DataGridView1.BorderStyle = BorderStyle.Fixed3D
 
-        ' Set property values appropriate for read-only display and  
-        ' limited interactivity. 
-        DataGridView1.AllowUserToAddRows = True
-        DataGridView1.AllowUserToDeleteRows = True
-        DataGridView1.AllowUserToOrderColumns = True
-        DataGridView1.ReadOnly = False
-        DataGridView1.SelectionMode = DataGridViewSelectionMode.RowHeaderSelect 'DataGridViewSelectionMode.CellSelect
-        DataGridView1.MultiSelect = False
-        DataGridView1.AutoSizeRowsMode = DataGridViewAutoSizeRowsMode.None
-        DataGridView1.AllowUserToResizeColumns = True
-        DataGridView1.ColumnHeadersHeightSizeMode = _
-            DataGridViewColumnHeadersHeightSizeMode.DisableResizing
-        DataGridView1.AllowUserToResizeRows = False
-        DataGridView1.RowHeadersWidthSizeMode = _
-            DataGridViewRowHeadersWidthSizeMode.DisableResizing
+    '    ' Set property values appropriate for read-only display and  
+    '    ' limited interactivity. 
+    '    DataGridView1.AllowUserToAddRows = True
+    '    DataGridView1.AllowUserToDeleteRows = True
+    '    DataGridView1.AllowUserToOrderColumns = True
+    '    DataGridView1.ReadOnly = False
+    '    DataGridView1.SelectionMode = DataGridViewSelectionMode.RowHeaderSelect 'DataGridViewSelectionMode.CellSelect
+    '    DataGridView1.MultiSelect = True
+    '    DataGridView1.AutoSizeRowsMode = DataGridViewAutoSizeRowsMode.None
+    '    DataGridView1.AllowUserToResizeColumns = True
+    '    DataGridView1.ColumnHeadersHeightSizeMode = _
+    '        DataGridViewColumnHeadersHeightSizeMode.DisableResizing
+    '    DataGridView1.AllowUserToResizeRows = False
+    '    DataGridView1.RowHeadersWidthSizeMode = _
+    '        DataGridViewRowHeadersWidthSizeMode.DisableResizing
 
-        ' Set the selection background color for all the cells.
-        DataGridView1.DefaultCellStyle.SelectionBackColor = Color.LightGray
-        DataGridView1.DefaultCellStyle.SelectionForeColor = Color.Black
+    '    ' Set the selection background color for all the cells.
+    '    DataGridView1.DefaultCellStyle.SelectionBackColor = Color.LightGray
+    '    DataGridView1.DefaultCellStyle.SelectionForeColor = Color.Black
+    '    'DataGridView1.DefaultCellStyle.WrapMode = DataGridViewTriState.True
 
-        ' Set RowHeadersDefaultCellStyle.SelectionBackColor so that its default 
-        ' value won't override DataGridView.DefaultCellStyle.SelectionBackColor.
-        DataGridView1.RowHeadersDefaultCellStyle.SelectionBackColor = Color.White
+    '    ' Set RowHeadersDefaultCellStyle.SelectionBackColor so that its default 
+    '    ' value won't override DataGridView.DefaultCellStyle.SelectionBackColor.
+    '    DataGridView1.RowHeadersDefaultCellStyle.SelectionBackColor = Color.White
 
-        ' Set the background color for all rows and for alternating rows.  
-        ' The value for alternating rows overrides the value for all rows. 
-        DataGridView1.RowsDefaultCellStyle.BackColor = Color.White 'Color.LightGray
-        DataGridView1.AlternatingRowsDefaultCellStyle.BackColor = Color.LightGray
+    '    ' Set the background color for all rows and for alternating rows.  
+    '    ' The value for alternating rows overrides the value for all rows. 
+    '    DataGridView1.RowsDefaultCellStyle.BackColor = Color.White 'Color.LightGray
+    '    DataGridView1.AlternatingRowsDefaultCellStyle.BackColor = Color.LightGray
 
-        ' Set the row and column header styles.
-        DataGridView1.ColumnHeadersDefaultCellStyle.ForeColor = Color.White
-        DataGridView1.ColumnHeadersDefaultCellStyle.BackColor = Color.Black
-        DataGridView1.RowHeadersDefaultCellStyle.BackColor = Color.Black
+    '    ' Set the row and column header styles.
+    '    DataGridView1.ColumnHeadersDefaultCellStyle.ForeColor = Color.White
+    '    DataGridView1.ColumnHeadersDefaultCellStyle.BackColor = Color.Black
+    '    DataGridView1.RowHeadersDefaultCellStyle.BackColor = Color.Black
 
-    End Sub
+    '    'With DataGridView1
+    '    '    ' Initialize basic DataGridView properties.
+    '    '    .Dock = DockStyle.Fill
+    '    '    .BackgroundColor = Color.LightGray
+    '    '    .BorderStyle = BorderStyle.Fixed3D
+
+    '    '    ' Set property values appropriate for read-only display and  
+    '    '    ' limited interactivity. 
+    '    '    .AllowUserToAddRows = True
+    '    '    .AllowUserToDeleteRows = True
+    '    '    .AllowUserToOrderColumns = True
+    '    '    .ReadOnly = False
+    '    '    .SelectionMode = DataGridViewSelectionMode.FullRowSelect
+    '    '    .MultiSelect = True
+    '    '    .AutoSizeRowsMode = DataGridViewAutoSizeRowsMode.None
+    '    '    .AllowUserToResizeColumns = False
+    '    '    .ColumnHeadersHeightSizeMode = _
+    '    '        DataGridViewColumnHeadersHeightSizeMode.DisableResizing
+    '    '    .AllowUserToResizeRows = False
+    '    '    .RowHeadersWidthSizeMode = _
+    '    '        DataGridViewRowHeadersWidthSizeMode.DisableResizing
+
+    '    '    ' Set the selection background color for all the cells.
+    '    '    .DefaultCellStyle.SelectionBackColor = Color.SteelBlue 'Color.CornflowerBlue
+    '    '    .DefaultCellStyle.SelectionForeColor = Color.AliceBlue
+    '    '    .DefaultCellStyle.WrapMode = DataGridViewTriState.True
+
+    '    '    ' Set RowHeadersDefaultCellStyle.SelectionBackColor so that its default 
+    '    '    ' value won't override DataGridView.DefaultCellStyle.SelectionBackColor.
+    '    '    .RowHeadersDefaultCellStyle.SelectionBackColor = Color.White
+    '    '    '.RowHeadersDefaultCellStyle.Font = New Font(.Font, FontStyle.Bold)
+    '    '    .RowHeadersWidth = 100
+    '    '    ' Set the background color for all rows and for alternating rows.  
+    '    '    ' The value for alternating rows overrides the value for all rows. 
+    '    '    .RowsDefaultCellStyle.BackColor = Color.LightGray
+    '    '    .AlternatingRowsDefaultCellStyle.BackColor = Color.DarkGray
+
+    '    '    ' Set the row and column header styles.
+    '    '    .ColumnHeadersDefaultCellStyle.ForeColor = Color.White
+    '    '    .ColumnHeadersDefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter
+    '    '    .ColumnHeadersHeight = 35
+    '    '    .ColumnHeadersDefaultCellStyle.BackColor = Color.Black
+    '    '    .RowHeadersDefaultCellStyle.BackColor = Color.Black
+    '    'End With
+
+    'End Sub
     Private Sub RetriveDataGrid()
         With DataGridView1
             .ColumnHeadersHeight = 35
@@ -425,7 +471,12 @@
         DateTimePicker2.Format = DateTimePickerFormat.Custom
         DateTimePicker2.CustomFormat = MyApplication.DefaultFormatDate
 
-        InitializeDataGridView()
+        'InitializeDataGridView()
+        InitializeDataGridView(DataGridView1)
+        DataGridView1.AllowUserToAddRows = True
+        DataGridView1.AllowUserToDeleteRows = True
+        DataGridView1.AllowUserToOrderColumns = True
+        DataGridView1.ReadOnly = False
         init()
         'MessageBox.Show(Format(Date.Now, "yyyy/MM/dd H:mm:ss"))
     End Sub

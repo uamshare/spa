@@ -174,4 +174,8 @@ Public Class MainForm
     Private Sub menu409_Click(sender As Object, e As EventArgs) Handles menu409.Click
         LoadMdiChildForm(RArusKas, "menu409")
     End Sub
+
+    Private Sub menu404_Click(sender As Object, e As EventArgs) Handles menu404.Click
+        LoadMdiChildForm(FJurnalMemo, "menu404")
+    End Sub
 End Class
