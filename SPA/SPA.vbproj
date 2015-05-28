@@ -202,7 +202,23 @@
     <Compile Include="Module\Accounting\COAHeader\FCOAheader.vb">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="Module\Accounting\FListCOA.Designer.vb">
+      <DependentUpon>FListCOA.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Module\Accounting\FListCOA.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="Module\Accounting\GeneralLedger.vb" />
+    <Compile Include="Module\Accounting\JurnalMemorial\FJurnalMemo.Designer.vb" />
+    <Compile Include="Module\Accounting\JurnalMemorial\FJurnalMemo.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Module\Accounting\JurnalMemorial\FListJurnalMemo.Designer.vb" />
+    <Compile Include="Module\Accounting\JurnalMemorial\FListJurnalMemo.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Module\Accounting\JurnalMemorial\MJurnalMemoD.vb" />
+    <Compile Include="Module\Accounting\JurnalMemorial\MJurnalMemoH.vb" />
     <Compile Include="Module\Accounting\Neraca\RArusKas.Designer.vb">
       <DependentUpon>RArusKas.vb</DependentUpon>
     </Compile>
@@ -556,6 +572,11 @@
     <EmbeddedResource Include="Module\Accounting\COAHeader\FKlasifikasiCOA.resx">
       <DependentUpon>FKlasifikasiCOA.vb</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Module\Accounting\FListCOA.resx">
+      <DependentUpon>FListCOA.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Module\Accounting\JurnalMemorial\FJurnalMemo.resx" />
+    <EmbeddedResource Include="Module\Accounting\JurnalMemorial\FListJurnalMemo.resx" />
     <EmbeddedResource Include="Module\Accounting\Neraca\RArusKas.resx">
       <DependentUpon>RArusKas.vb</DependentUpon>
     </EmbeddedResource>
@@ -699,8 +720,8 @@
     <Content Include="Reports\DRNeraca.rdlc" />
     <Content Include="Reports\DRLNeraca.rdlc" />
     <Content Include="Reports\DRBukuBesar.rdlc" />
-    <EmbeddedResource Include="Reports\DRArusKas.rdlc" />
-    <EmbeddedResource Include="Reports\DRRugiLaba.rdlc" />
+    <Content Include="Reports\DRArusKas.rdlc" />
+    <Content Include="Reports\DRRugiLaba.rdlc" />
   </ItemGroup>
   <ItemGroup>
     <None Include="My Project\app.manifest" />
