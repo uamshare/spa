@@ -7,7 +7,18 @@ Public Class FDataTanaman
 
     Private Model As New MTanaman
     Public KeyID As String
+    Public Sub SetPrivileges()
+        Try
+            ToolAdd.Visible = MUsers.UserListMenuPrivileges()(MainForm.MenuActive)("pcreate")
+            ToolEdit.Visible = MUsers.UserListMenuPrivileges()(MainForm.MenuActive)("pupdate")
+            'ToolSaveMenuAkses.Visible = MUsers.UserListMenuPrivileges()(MainForm.MenuActive)("pupdate")
+            ToolDelete.Visible = MUsers.UserListMenuPrivileges()(MainForm.MenuActive)("pdelete")
+        Catch ex As Exception
+            MsgBox(ex.Message)
+        End Try
+    End Sub
     Public Sub init()
+        SetPrivileges()
         ToolAdd.Enabled = True
         ToolEdit.Enabled = False
         ToolDelete.Enabled = False
@@ -379,41 +390,41 @@ Public Class FDataTanaman
     End Sub
 
     Private Sub toolImport_Click(sender As Object, e As EventArgs) Handles toolPrint.Click
-        Try
-            Dim xlApp As Microsoft.Office.Interop.Excel.Application
-            Dim xlWorkBook As Microsoft.Office.Interop.Excel.Workbook
-            Dim xlWorkSheet As Microsoft.Office.Interop.Excel.Worksheet
-            Dim misValue As Object = System.Reflection.Missing.Value
-            Dim i As Integer
-            Dim j As Integer
+        'Try
+        '    Dim xlApp As Microsoft.Office.Interop.Excel.Application
+        '    Dim xlWorkBook As Microsoft.Office.Interop.Excel.Workbook
+        '    Dim xlWorkSheet As Microsoft.Office.Interop.Excel.Worksheet
+        '    Dim misValue As Object = System.Reflection.Missing.Value
+        '    Dim i As Integer
+        '    Dim j As Integer
 
-            xlApp = New Microsoft.Office.Interop.Excel.Application
-            xlWorkBook = xlApp.Workbooks.Add(misValue)
-            xlWorkSheet = xlWorkBook.Sheets("sheet1")
+        '    xlApp = New Microsoft.Office.Interop.Excel.Application
+        '    xlWorkBook = xlApp.Workbooks.Add(misValue)
+        '    xlWorkSheet = xlWorkBook.Sheets("sheet1")
 
 
-            For i = 1 To DataGridViewTanaman.RowCount - 2
-                For j = 1 To DataGridViewTanaman.ColumnCount - 3
-                    For k As Integer = 1 To DataGridViewTanaman.Columns.Count - 3
-                        xlWorkSheet.Cells(2, k) = DataGridViewTanaman.Columns(k - 0).HeaderText
-                        xlWorkSheet.Cells(i + 2, j + 0) = DataGridViewTanaman(j, i).Value.ToString()
-                    Next
-                Next
-            Next
+        '    For i = 1 To DataGridViewTanaman.RowCount - 2
+        '        For j = 1 To DataGridViewTanaman.ColumnCount - 3
+        '            For k As Integer = 1 To DataGridViewTanaman.Columns.Count - 3
+        '                xlWorkSheet.Cells(2, k) = DataGridViewTanaman.Columns(k - 0).HeaderText
+        '                xlWorkSheet.Cells(i + 2, j + 0) = DataGridViewTanaman(j, i).Value.ToString()
+        '            Next
+        '        Next
+        '    Next
 
-            xlWorkSheet.SaveAs("D:\DataTanaman.xlsx")
-            xlWorkBook.Close()
-            'xlApp.Quit()
+        '    xlWorkSheet.SaveAs("D:\DataTanaman.xlsx")
+        '    xlWorkBook.Close()
+        '    'xlApp.Quit()
 
-            releaseObject(xlApp)
-            releaseObject(xlWorkBook)
-            releaseObject(xlWorkSheet)
+        '    releaseObject(xlApp)
+        '    releaseObject(xlWorkBook)
+        '    releaseObject(xlWorkSheet)
 
-            MsgBox("Hasil export tersimpan di D:\DataTanaman.xlsx")
-            Process.Start("D:\DataTanaman.xlsx")
-        Catch ex As Exception
+        '    MsgBox("Hasil export tersimpan di D:\DataTanaman.xlsx")
+        '    Process.Start("D:\DataTanaman.xlsx")
+        'Catch ex As Exception
 
-        End Try
+        'End Try
     End Sub
 
     Private Sub releaseObject(ByVal obj As Object)

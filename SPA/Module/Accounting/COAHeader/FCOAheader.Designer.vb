@@ -45,7 +45,6 @@ Partial Class FCOAheader
         Me.ToolEdit = New System.Windows.Forms.ToolStripButton()
         Me.ToolDelete = New System.Windows.Forms.ToolStripButton()
         Me.TollPrint = New System.Windows.Forms.ToolStripButton()
-        Me.ToolHelp = New System.Windows.Forms.ToolStripButton()
         Me.ToolRefresh = New System.Windows.Forms.ToolStripButton()
         Me.ToolFind = New System.Windows.Forms.ToolStripButton()
         Me.ToolTextFind = New System.Windows.Forms.ToolStripTextBox()
@@ -192,8 +191,8 @@ Partial Class FCOAheader
         '
         Me.Toolbarang.BackColor = System.Drawing.SystemColors.ActiveCaption
         Me.Toolbarang.GripStyle = System.Windows.Forms.ToolStripGripStyle.Hidden
-        Me.Toolbarang.ImageScalingSize = New System.Drawing.Size(32, 32)
-        Me.Toolbarang.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.ToolAdd, Me.ToolEdit, Me.ToolDelete, Me.TollPrint, Me.ToolHelp, Me.ToolRefresh, Me.ToolFind, Me.ToolTextFind})
+        Me.Toolbarang.ImageScalingSize = New System.Drawing.Size(24, 24)
+        Me.Toolbarang.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.ToolAdd, Me.ToolEdit, Me.ToolDelete, Me.TollPrint, Me.ToolRefresh, Me.ToolFind, Me.ToolTextFind})
         Me.Toolbarang.Location = New System.Drawing.Point(0, 0)
         Me.Toolbarang.Name = "Toolbarang"
         Me.Toolbarang.RenderMode = System.Windows.Forms.ToolStripRenderMode.System
@@ -204,47 +203,38 @@ Partial Class FCOAheader
         'ToolAdd
         '
         Me.ToolAdd.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image
-        Me.ToolAdd.Image = Global.SPA.My.Resources.Resources.add1
+        Me.ToolAdd.Image = Global.SPA.My.Resources.Resources.add3
         Me.ToolAdd.ImageTransparentColor = System.Drawing.Color.Magenta
         Me.ToolAdd.Name = "ToolAdd"
-        Me.ToolAdd.Size = New System.Drawing.Size(36, 36)
+        Me.ToolAdd.Size = New System.Drawing.Size(28, 36)
         Me.ToolAdd.Text = "Add"
         '
         'ToolEdit
         '
         Me.ToolEdit.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image
-        Me.ToolEdit.Image = Global.SPA.My.Resources.Resources.edit1
+        Me.ToolEdit.Image = Global.SPA.My.Resources.Resources.edit2
         Me.ToolEdit.ImageTransparentColor = System.Drawing.Color.Magenta
         Me.ToolEdit.Name = "ToolEdit"
-        Me.ToolEdit.Size = New System.Drawing.Size(36, 36)
+        Me.ToolEdit.Size = New System.Drawing.Size(28, 36)
         Me.ToolEdit.Text = "Edit"
         '
         'ToolDelete
         '
         Me.ToolDelete.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image
-        Me.ToolDelete.Image = Global.SPA.My.Resources.Resources.trush
+        Me.ToolDelete.Image = Global.SPA.My.Resources.Resources.delete1
         Me.ToolDelete.ImageTransparentColor = System.Drawing.Color.Magenta
         Me.ToolDelete.Name = "ToolDelete"
-        Me.ToolDelete.Size = New System.Drawing.Size(36, 36)
+        Me.ToolDelete.Size = New System.Drawing.Size(28, 36)
         Me.ToolDelete.Text = "Del"
         '
         'TollPrint
         '
         Me.TollPrint.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image
-        Me.TollPrint.Image = Global.SPA.My.Resources.Resources.print2
+        Me.TollPrint.Image = Global.SPA.My.Resources.Resources.printer
         Me.TollPrint.ImageTransparentColor = System.Drawing.Color.Magenta
         Me.TollPrint.Name = "TollPrint"
-        Me.TollPrint.Size = New System.Drawing.Size(36, 36)
+        Me.TollPrint.Size = New System.Drawing.Size(28, 36)
         Me.TollPrint.Text = "ToolStripButton2"
-        '
-        'ToolHelp
-        '
-        Me.ToolHelp.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image
-        Me.ToolHelp.Image = Global.SPA.My.Resources.Resources.help1
-        Me.ToolHelp.ImageTransparentColor = System.Drawing.Color.Magenta
-        Me.ToolHelp.Name = "ToolHelp"
-        Me.ToolHelp.Size = New System.Drawing.Size(36, 36)
-        Me.ToolHelp.Text = "Help"
         '
         'ToolRefresh
         '
@@ -318,7 +308,6 @@ Partial Class FCOAheader
     Friend WithEvents ToolEdit As System.Windows.Forms.ToolStripButton
     Friend WithEvents ToolDelete As System.Windows.Forms.ToolStripButton
     Friend WithEvents TollPrint As System.Windows.Forms.ToolStripButton
-    Friend WithEvents ToolHelp As System.Windows.Forms.ToolStripButton
     Friend WithEvents ToolRefresh As System.Windows.Forms.ToolStripButton
     Friend WithEvents ToolFind As System.Windows.Forms.ToolStripButton
     Friend WithEvents ToolTextFind As System.Windows.Forms.ToolStripTextBox

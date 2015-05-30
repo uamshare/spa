@@ -22,7 +22,6 @@ Partial Class FAkunPosting
     'Do not modify it using the code editor.
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
-        Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(FAkunPosting))
         Me.PrintDocument1 = New System.Drawing.Printing.PrintDocument()
         Me.ToolStrip1 = New System.Windows.Forms.ToolStrip()
         Me.ToolStripLabelbarang = New System.Windows.Forms.ToolStripLabel()
@@ -170,7 +169,7 @@ Partial Class FAkunPosting
         '
         Me.Toolbarang.BackColor = System.Drawing.SystemColors.ActiveCaption
         Me.Toolbarang.GripStyle = System.Windows.Forms.ToolStripGripStyle.Hidden
-        Me.Toolbarang.ImageScalingSize = New System.Drawing.Size(32, 32)
+        Me.Toolbarang.ImageScalingSize = New System.Drawing.Size(24, 24)
         Me.Toolbarang.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.ToolAdd, Me.ToolEdit, Me.ToolDelete, Me.TollPrint, Me.ToolRefresh, Me.ToolFind, Me.ToolTextFind})
         Me.Toolbarang.Location = New System.Drawing.Point(0, 0)
         Me.Toolbarang.Name = "Toolbarang"
@@ -182,7 +181,7 @@ Partial Class FAkunPosting
         'ToolAdd
         '
         Me.ToolAdd.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image
-        Me.ToolAdd.Image = Global.SPA.My.Resources.Resources.add1
+        Me.ToolAdd.Image = Global.SPA.My.Resources.Resources.add3
         Me.ToolAdd.ImageTransparentColor = System.Drawing.Color.Magenta
         Me.ToolAdd.Name = "ToolAdd"
         Me.ToolAdd.Size = New System.Drawing.Size(36, 36)
@@ -192,7 +191,7 @@ Partial Class FAkunPosting
         'ToolEdit
         '
         Me.ToolEdit.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image
-        Me.ToolEdit.Image = Global.SPA.My.Resources.Resources.edit1
+        Me.ToolEdit.Image = Global.SPA.My.Resources.Resources.edit2
         Me.ToolEdit.ImageTransparentColor = System.Drawing.Color.Magenta
         Me.ToolEdit.Name = "ToolEdit"
         Me.ToolEdit.Size = New System.Drawing.Size(36, 36)
@@ -201,7 +200,7 @@ Partial Class FAkunPosting
         'ToolDelete
         '
         Me.ToolDelete.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image
-        Me.ToolDelete.Image = Global.SPA.My.Resources.Resources.trush
+        Me.ToolDelete.Image = Global.SPA.My.Resources.Resources.delete1
         Me.ToolDelete.ImageTransparentColor = System.Drawing.Color.Magenta
         Me.ToolDelete.Name = "ToolDelete"
         Me.ToolDelete.Size = New System.Drawing.Size(36, 36)
@@ -210,7 +209,7 @@ Partial Class FAkunPosting
         'TollPrint
         '
         Me.TollPrint.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image
-        Me.TollPrint.Image = Global.SPA.My.Resources.Resources.print2
+        Me.TollPrint.Image = Global.SPA.My.Resources.Resources.printer
         Me.TollPrint.ImageTransparentColor = System.Drawing.Color.Magenta
         Me.TollPrint.Name = "TollPrint"
         Me.TollPrint.Size = New System.Drawing.Size(36, 36)
@@ -220,7 +219,7 @@ Partial Class FAkunPosting
         '
         Me.ToolRefresh.Alignment = System.Windows.Forms.ToolStripItemAlignment.Right
         Me.ToolRefresh.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image
-        Me.ToolRefresh.Image = Global.SPA.My.Resources.Resources.refresh1
+        Me.ToolRefresh.Image = Global.SPA.My.Resources.Resources.refresh2
         Me.ToolRefresh.ImageTransparentColor = System.Drawing.Color.Magenta
         Me.ToolRefresh.Name = "ToolRefresh"
         Me.ToolRefresh.Size = New System.Drawing.Size(36, 36)
@@ -230,7 +229,7 @@ Partial Class FAkunPosting
         '
         Me.ToolFind.Alignment = System.Windows.Forms.ToolStripItemAlignment.Right
         Me.ToolFind.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image
-        Me.ToolFind.Image = CType(resources.GetObject("ToolFind.Image"), System.Drawing.Image)
+        Me.ToolFind.Image = Global.SPA.My.Resources.Resources.find2
         Me.ToolFind.ImageTransparentColor = System.Drawing.Color.Magenta
         Me.ToolFind.Name = "ToolFind"
         Me.ToolFind.Size = New System.Drawing.Size(36, 36)

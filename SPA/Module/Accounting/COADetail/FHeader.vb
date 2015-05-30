@@ -4,7 +4,18 @@
 
     Private Model As New MCOAheader
     Private ModelRowCount As Integer = Model.GetRowsCount()
+    Public Sub SetPrivileges()
+        Try
+            ToolAdd.Visible = MUsers.UserListMenuPrivileges()(MainForm.MenuActive)("pcreate")
+            ToolEdit.Visible = MUsers.UserListMenuPrivileges()(MainForm.MenuActive)("pupdate")
+            'ToolSaveMenuAkses.Visible = MUsers.UserListMenuPrivileges()(MainForm.MenuActive)("pupdate")
+            ToolDelete.Visible = MUsers.UserListMenuPrivileges()(MainForm.MenuActive)("pdelete")
+        Catch ex As Exception
+            MsgBox(ex.Message)
+        End Try
+    End Sub
     Public Sub init()
+        SetPrivileges()
         ToolAdd.Enabled = True
         ToolEdit.Enabled = False
         ToolDelete.Enabled = False
@@ -347,7 +358,7 @@
     End Sub
 
     Private Sub FHeader_Load(sender As Object, e As EventArgs) Handles MyBase.Load
-        MyApplication.ShowStatus(Me.Text & " Loaded")
+        'MyApplication.ShowStatus(Me.Text & " Loaded")
         InitializeDataGridView(DataGridView1)
         init()
     End Sub

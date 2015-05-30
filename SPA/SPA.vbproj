@@ -553,6 +553,12 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
+    <None Include="Resource\48x48\refresh.png" />
+    <None Include="Resource\48x48\find.png" />
+    <None Include="Resource\48x48\printer.png" />
+    <None Include="Resource\48x48\delete.png" />
+    <None Include="Resource\48x48\edit.png" />
+    <None Include="Resource\48x48\add.png" />
     <EmbeddedResource Include="Module\Accounting\AkunPostingOtomatis\FAkunPosting.resx">
       <DependentUpon>FAkunPosting.vb</DependentUpon>
     </EmbeddedResource>
