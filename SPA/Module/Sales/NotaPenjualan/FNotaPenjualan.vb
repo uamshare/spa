@@ -613,7 +613,16 @@
         End If
     End Sub
     Private Sub ButtonPrint_Click(sender As Object, e As EventArgs) Handles ButtonPrint.Click
-
+        With FVReport
+            .reportname = "DRNotaPenjualan.rdlc"
+            .notrans = TxtNo.Text
+            .noteTrans = TextBox1.Text
+            '.WindowState = FormWindowState.Maximized
+            '.MdiParent = MainForm
+            .Width = 800
+            .Height = 600
+            .ShowDialog()
+        End With
     End Sub
     Private Sub ButtonCancel_Click(sender As Object, e As EventArgs) Handles ButtonCancel.Click
         init()

@@ -1356,7 +1356,9 @@
               <TextRuns>
                 <TextRun>
                   <Value>="di cetak oleh " &amp; Parameters!users.Value</Value>
-                  <Style />
+                  <Style>
+                    <FontSize>8pt</FontSize>
+                  </Style>
                 </TextRun>
               </TextRuns>
               <Style />

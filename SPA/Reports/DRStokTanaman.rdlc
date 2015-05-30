@@ -1446,7 +1446,7 @@
           </Style>
         </PageHeader>
         <PageFooter>
-          <Height>1.25209cm</Height>
+          <Height>1.04042cm</Height>
           <PrintOnFirstPage>true</PrintOnFirstPage>
           <PrintOnLastPage>true</PrintOnLastPage>
           <ReportItems>
@@ -1467,7 +1467,7 @@
                 </Paragraph>
               </Paragraphs>
               <rd:DefaultName>Textbox21</rd:DefaultName>
-              <Top>0.44042cm</Top>
+              <Top>0.17639cm</Top>
               <Left>20.21037cm</Left>
               <Height>0.6cm</Height>
               <Width>5.04cm</Width>
@@ -1489,16 +1489,18 @@
                   <TextRuns>
                     <TextRun>
                       <Value>="di cetak oleh " &amp; Parameters!paramuser.Value</Value>
-                      <Style />
+                      <Style>
+                        <FontSize>8pt</FontSize>
+                      </Style>
                     </TextRun>
                   </TextRuns>
                   <Style />
                 </Paragraph>
               </Paragraphs>
-              <Top>0.44042cm</Top>
+              <Top>0.17639cm</Top>
               <Left>0.34079cm</Left>
               <Height>0.6cm</Height>
-              <Width>10.86848cm</Width>
+              <Width>9.8366cm</Width>
               <ZIndex>1</ZIndex>
               <Style>
                 <Border>

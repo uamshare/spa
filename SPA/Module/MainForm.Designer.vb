@@ -320,9 +320,9 @@ Partial Class MainForm
         Me.ToolStrip.BackColor = System.Drawing.Color.Gainsboro
         Me.ToolStrip.Dock = System.Windows.Forms.DockStyle.Left
         Me.ToolStrip.GripStyle = System.Windows.Forms.ToolStripGripStyle.Hidden
-        Me.ToolStrip.Location = New System.Drawing.Point(0, 24)
+        Me.ToolStrip.Location = New System.Drawing.Point(0, 0)
         Me.ToolStrip.Name = "ToolStrip"
-        Me.ToolStrip.Size = New System.Drawing.Size(26, 367)
+        Me.ToolStrip.Size = New System.Drawing.Size(26, 391)
         Me.ToolStrip.TabIndex = 6
         Me.ToolStrip.Text = "ToolStrip"
         '

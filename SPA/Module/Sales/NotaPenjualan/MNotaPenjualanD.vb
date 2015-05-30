@@ -143,7 +143,7 @@
             ModelGL.rgldesc = "Update Data Nota Penjualan No " & Me.tinvhno
             ModelGL.dtcreated = Me.dtcreated
             Dim ParamPosting As New Dictionary(Of String, Object)
-            ParamPosting.Add("idtrrans", "PB")
+            ParamPosting.Add("idtrrans", "NP")
             Dim accountlistvalue As New Dictionary(Of String, Object)
             accountlistvalue.Add("acc_debit", Me.soldvalue)
             accountlistvalue.Add("acc_credit", Me.soldvalue)
@@ -232,5 +232,49 @@
             trans = MyBase.DeleteData()
         End If
         Return trans
+    End Function
+
+    Public Function FillNotaPenjualan(NoTrans As String,Optional NameDataSet As String = "DataSet1") As DataSet
+        Dim ds As DataSet = New DataSet(NameDataSet)
+
+        Me.limitrecord = -1
+        If Not String.IsNullOrEmpty(NoTrans) And Not String.IsNullOrEmpty(NoTrans) Then
+            Me.WHERE = "WHERE `tinvhno` = '" & NoTrans & "'"
+        Else
+            Me.WHERE = "ORDER BY `tinvhno`"
+        End If
+        Me.StringSQL = "SELECT " & _
+                        "  H.`tinvhno`, " & _
+                        "  H.`tinvhdt`, " & _
+                        "  H.`tinvhnote`, " & _
+                        "  H.`mcusid`, " & _
+                        "  P.`mcusname`, " & _
+                        "  P.`mcusaddr4`, " & _
+                        "  P.`mcusaddr5`, " & _
+                        "  P.`mcusphone1`, " & _
+                        "  P.`mcusphone2`, " & _
+                        "  H.`tinvhdisc1`, " & _
+                        "  H.`tinvhdisc2`, " & _
+                        "  H.`tinvhbonus`, " & _
+                        "  H.`tinvhongkir`, " & _
+                        "  H.`tinvhongpack`, " & _
+                        "  H.`userid`, " & _
+                        "  D.`tinvdid`, " & _
+                        "  D.`tinvhno`, " & _
+                        "  D.`mmtrid`, " & _
+                        "  M.`mmtrname`, " & _
+                        "  M.`polybag`, " & _
+                        "  M.`mmtrunit`, " & _
+                        "  D.`tinvdqty`, " & _
+                        "  D.`tinvdprice`, " & _
+                        "  D.`tinvdtype` " & _
+                        "FROM (SELECT * FROM `tinvh` " & Me.WHERE & ") H " & _
+                        "INNER JOIN mcus P ON P.`mcusid` = H.`mcusid` " & _
+                        "INNER JOIN `tinvd` D ON H.`tinvhno`=D.`tinvhno` " & _
+                        "INNER JOIN material_fig M ON M.mmtrid=D.`mmtrid` "
+        Me.WHERE = ""
+        'Console.WriteLine(Me.StringSQL)
+        ds.Tables.Add(MyBase.GetData)
+        Return ds
     End Function
 End Class

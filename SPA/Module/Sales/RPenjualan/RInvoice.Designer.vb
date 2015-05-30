@@ -66,7 +66,7 @@ Partial Class RInvoice
         Me.Panel2.Location = New System.Drawing.Point(262, 0)
         Me.Panel2.Margin = New System.Windows.Forms.Padding(5)
         Me.Panel2.Name = "Panel2"
-        Me.Panel2.Size = New System.Drawing.Size(901, 508)
+        Me.Panel2.Size = New System.Drawing.Size(514, 344)
         Me.Panel2.TabIndex = 6
         '
         'ReportViewer1
@@ -78,7 +78,7 @@ Partial Class RInvoice
         Me.ReportViewer1.Location = New System.Drawing.Point(9, 15)
         Me.ReportViewer1.Margin = New System.Windows.Forms.Padding(4)
         Me.ReportViewer1.Name = "ReportViewer1"
-        Me.ReportViewer1.Size = New System.Drawing.Size(801, 477)
+        Me.ReportViewer1.Size = New System.Drawing.Size(496, 316)
         Me.ReportViewer1.TabIndex = 0
         '
         'Panel1
@@ -91,7 +91,7 @@ Partial Class RInvoice
         Me.Panel1.Location = New System.Drawing.Point(0, 0)
         Me.Panel1.Margin = New System.Windows.Forms.Padding(5)
         Me.Panel1.Name = "Panel1"
-        Me.Panel1.Size = New System.Drawing.Size(262, 508)
+        Me.Panel1.Size = New System.Drawing.Size(262, 344)
         Me.Panel1.TabIndex = 5
         '
         'Button1
@@ -214,7 +214,7 @@ Partial Class RInvoice
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(8.0!, 16.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(1163, 508)
+        Me.ClientSize = New System.Drawing.Size(776, 344)
         Me.Controls.Add(Me.Panel2)
         Me.Controls.Add(Me.Panel1)
         Me.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))

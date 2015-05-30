@@ -74,9 +74,10 @@ Partial Class FLogin
         'ProgressBar1
         '
         Me.ProgressBar1.Location = New System.Drawing.Point(0, 45)
+        Me.ProgressBar1.MarqueeAnimationSpeed = 50
         Me.ProgressBar1.Name = "ProgressBar1"
         Me.ProgressBar1.Size = New System.Drawing.Size(316, 5)
-        Me.ProgressBar1.Style = System.Windows.Forms.ProgressBarStyle.Marquee
+        Me.ProgressBar1.Style = System.Windows.Forms.ProgressBarStyle.Continuous
         Me.ProgressBar1.TabIndex = 6
         '
         'Button1

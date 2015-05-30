@@ -44,7 +44,6 @@ Partial Class FAkunPosting
         Me.ToolEdit = New System.Windows.Forms.ToolStripButton()
         Me.ToolDelete = New System.Windows.Forms.ToolStripButton()
         Me.TollPrint = New System.Windows.Forms.ToolStripButton()
-        Me.ToolHelp = New System.Windows.Forms.ToolStripButton()
         Me.ToolRefresh = New System.Windows.Forms.ToolStripButton()
         Me.ToolFind = New System.Windows.Forms.ToolStripButton()
         Me.ToolTextFind = New System.Windows.Forms.ToolStripTextBox()
@@ -172,7 +171,7 @@ Partial Class FAkunPosting
         Me.Toolbarang.BackColor = System.Drawing.SystemColors.ActiveCaption
         Me.Toolbarang.GripStyle = System.Windows.Forms.ToolStripGripStyle.Hidden
         Me.Toolbarang.ImageScalingSize = New System.Drawing.Size(32, 32)
-        Me.Toolbarang.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.ToolAdd, Me.ToolEdit, Me.ToolDelete, Me.TollPrint, Me.ToolHelp, Me.ToolRefresh, Me.ToolFind, Me.ToolTextFind})
+        Me.Toolbarang.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.ToolAdd, Me.ToolEdit, Me.ToolDelete, Me.TollPrint, Me.ToolRefresh, Me.ToolFind, Me.ToolTextFind})
         Me.Toolbarang.Location = New System.Drawing.Point(0, 0)
         Me.Toolbarang.Name = "Toolbarang"
         Me.Toolbarang.RenderMode = System.Windows.Forms.ToolStripRenderMode.System
@@ -216,15 +215,6 @@ Partial Class FAkunPosting
         Me.TollPrint.Name = "TollPrint"
         Me.TollPrint.Size = New System.Drawing.Size(36, 36)
         Me.TollPrint.Text = "ToolStripButton2"
-        '
-        'ToolHelp
-        '
-        Me.ToolHelp.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image
-        Me.ToolHelp.Image = Global.SPA.My.Resources.Resources.help1
-        Me.ToolHelp.ImageTransparentColor = System.Drawing.Color.Magenta
-        Me.ToolHelp.Name = "ToolHelp"
-        Me.ToolHelp.Size = New System.Drawing.Size(36, 36)
-        Me.ToolHelp.Text = "Help"
         '
         'ToolRefresh
         '
@@ -320,7 +310,6 @@ Partial Class FAkunPosting
     Friend WithEvents ToolEdit As System.Windows.Forms.ToolStripButton
     Friend WithEvents ToolDelete As System.Windows.Forms.ToolStripButton
     Friend WithEvents TollPrint As System.Windows.Forms.ToolStripButton
-    Friend WithEvents ToolHelp As System.Windows.Forms.ToolStripButton
     Friend WithEvents ToolRefresh As System.Windows.Forms.ToolStripButton
     Friend WithEvents ToolFind As System.Windows.Forms.ToolStripButton
     Friend WithEvents ToolTextFind As System.Windows.Forms.ToolStripTextBox

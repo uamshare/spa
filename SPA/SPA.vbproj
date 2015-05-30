@@ -19,20 +19,22 @@
     <Install>true</Install>
     <InstallFrom>Disk</InstallFrom>
     <UpdateEnabled>true</UpdateEnabled>
-    <UpdateMode>Foreground</UpdateMode>
+    <UpdateMode>Background</UpdateMode>
     <UpdateInterval>7</UpdateInterval>
     <UpdateIntervalUnits>Days</UpdateIntervalUnits>
     <UpdatePeriodically>false</UpdatePeriodically>
-    <UpdateRequired>false</UpdateRequired>
+    <UpdateRequired>true</UpdateRequired>
     <MapFileExtensions>true</MapFileExtensions>
-    <UpdateUrl>http://localhost/SPA/</UpdateUrl>
+    <UpdateUrl>http://publish.uam.web.id/2015/spa/publish/</UpdateUrl>
+    <SupportUrl>http://publish.web.id/2015/spa/support</SupportUrl>
+    <ErrorReportUrl>http://publish.web.id/2015/spa/errors</ErrorReportUrl>
     <ProductName>SPA</ProductName>
     <PublisherName>UAM</PublisherName>
-    <SuiteName>-</SuiteName>
-    <ApplicationRevision>1</ApplicationRevision>
+    <SuiteName>uam.web.id</SuiteName>
+    <MinimumRequiredVersion>1.0.0.1</MinimumRequiredVersion>
+    <ApplicationRevision>3</ApplicationRevision>
     <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
     <UseApplicationTrust>true</UseApplicationTrust>
-    <CreateDesktopShortcut>true</CreateDesktopShortcut>
     <PublishWizardCompleted>true</PublishWizardCompleted>
     <BootstrapperEnabled>true</BootstrapperEnabled>
   </PropertyGroup>
@@ -202,7 +204,53 @@
     <Compile Include="Module\Accounting\COAHeader\FCOAheader.vb">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="Module\Accounting\FListCOA.Designer.vb">
+      <DependentUpon>FListCOA.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Module\Accounting\FListCOA.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="Module\Accounting\GeneralLedger.vb" />
+    <Compile Include="Module\Accounting\JurnalMemorial\FJurnalMemo.Designer.vb" />
+    <Compile Include="Module\Accounting\JurnalMemorial\FJurnalMemo.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Module\Accounting\JurnalMemorial\FListJurnalMemo.Designer.vb" />
+    <Compile Include="Module\Accounting\JurnalMemorial\FListJurnalMemo.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Module\Accounting\JurnalMemorial\MJurnalMemoD.vb" />
+    <Compile Include="Module\Accounting\JurnalMemorial\MJurnalMemoH.vb" />
+    <Compile Include="Module\Accounting\Neraca\RArusKas.Designer.vb">
+      <DependentUpon>RArusKas.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Module\Accounting\Neraca\RArusKas.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Module\Accounting\Neraca\RBukuBesar.Designer.vb">
+      <DependentUpon>RBukuBesar.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Module\Accounting\Neraca\RBukuBesar.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Module\Accounting\Neraca\RLNeraca.Designer.vb">
+      <DependentUpon>RLNeraca.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Module\Accounting\Neraca\RLNeraca.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Module\Accounting\Neraca\RNeraca.Designer.vb">
+      <DependentUpon>RNeraca.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Module\Accounting\Neraca\RNeraca.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Module\Accounting\RugiLaba\RRugiLaba.Designer.vb">
+      <DependentUpon>RRugiLaba.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Module\Accounting\RugiLaba\RRugiLaba.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="Module\Inventory\DataBibitTanamanMasuk\FDataBibitTanamanMasuk.Designer.vb">
       <DependentUpon>FDataBibitTanamanMasuk.vb</DependentUpon>
     </Compile>
@@ -463,6 +511,18 @@
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Module\version\version.vb" />
+    <Compile Include="Module\ViewReport\FViewReport.Designer.vb">
+      <DependentUpon>FViewReport.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Module\ViewReport\FViewReport.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Module\ViewReport\FVReport.Designer.vb">
+      <DependentUpon>FVReport.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Module\ViewReport\FVReport.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="My Project\AssemblyInfo.vb" />
     <Compile Include="My Project\Application.Designer.vb">
       <AutoGen>True</AutoGen>
@@ -525,6 +585,26 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Module\Accounting\COAHeader\FKlasifikasiCOA.resx">
       <DependentUpon>FKlasifikasiCOA.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Module\Accounting\FListCOA.resx">
+      <DependentUpon>FListCOA.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Module\Accounting\JurnalMemorial\FJurnalMemo.resx" />
+    <EmbeddedResource Include="Module\Accounting\JurnalMemorial\FListJurnalMemo.resx" />
+    <EmbeddedResource Include="Module\Accounting\Neraca\RArusKas.resx">
+      <DependentUpon>RArusKas.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Module\Accounting\Neraca\RBukuBesar.resx">
+      <DependentUpon>RBukuBesar.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Module\Accounting\Neraca\RLNeraca.resx">
+      <DependentUpon>RLNeraca.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Module\Accounting\Neraca\RNeraca.resx">
+      <DependentUpon>RNeraca.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Module\Accounting\RugiLaba\RRugiLaba.resx">
+      <DependentUpon>RRugiLaba.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Module\FLogin.resx">
       <DependentUpon>FLogin.vb</DependentUpon>
@@ -642,6 +722,12 @@
     <EmbeddedResource Include="Module\version\Dialog1.resx">
       <DependentUpon>Dialog1.vb</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Module\ViewReport\FViewReport.resx">
+      <DependentUpon>FViewReport.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Module\ViewReport\FVReport.resx">
+      <DependentUpon>FVReport.vb</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="My Project\Resources.resx">
       <Generator>VbMyResourcesResXFileCodeGenerator</Generator>
       <CustomToolNamespace>My.Resources</CustomToolNamespace>
@@ -650,7 +736,13 @@
     </EmbeddedResource>
     <Content Include="Reports\DRKartuStok.rdlc" />
     <Content Include="Reports\DRPenjualan.rdlc" />
-    <EmbeddedResource Include="Reports\DRDetailPenjualan.rdlc" />
+    <Content Include="Reports\DRDetailPenjualan.rdlc" />
+    <Content Include="Reports\DRNeraca.rdlc" />
+    <Content Include="Reports\DRLNeraca.rdlc" />
+    <Content Include="Reports\DRBukuBesar.rdlc" />
+    <Content Include="Reports\DRArusKas.rdlc" />
+    <Content Include="Reports\DRRugiLaba.rdlc" />
+    <EmbeddedResource Include="Reports\DRNotaPenjualan.rdlc" />
   </ItemGroup>
   <ItemGroup>
     <None Include="My Project\app.manifest" />
@@ -677,9 +769,7 @@
     </None>
     <None Include="SPA_TemporaryKey.pfx" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Module\ViewReport\" />
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <None Include="Resource\new-pro.bmp" />
   </ItemGroup>

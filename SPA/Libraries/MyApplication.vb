@@ -157,17 +157,17 @@ Module MyApplication
             ' Set the selection background color for all the cells.
             .DefaultCellStyle.SelectionBackColor = Color.SteelBlue 'Color.CornflowerBlue
             .DefaultCellStyle.SelectionForeColor = Color.AliceBlue
-            .DefaultCellStyle.WrapMode = DataGridViewTriState.True
+            '.DefaultCellStyle.WrapMode = DataGridViewTriState.True
 
             ' Set RowHeadersDefaultCellStyle.SelectionBackColor so that its default 
             ' value won't override DataGridView.DefaultCellStyle.SelectionBackColor.
-            .RowHeadersDefaultCellStyle.SelectionBackColor = Color.Empty
+            .RowHeadersDefaultCellStyle.SelectionBackColor = Color.White
             '.RowHeadersDefaultCellStyle.Font = New Font(.Font, FontStyle.Bold)
             .RowHeadersWidth = 100
             ' Set the background color for all rows and for alternating rows.  
             ' The value for alternating rows overrides the value for all rows. 
-            .RowsDefaultCellStyle.BackColor = Color.LightGray
-            .AlternatingRowsDefaultCellStyle.BackColor = Color.DarkGray
+            .RowsDefaultCellStyle.BackColor = Color.LightSteelBlue 'Color.LightGray
+            .AlternatingRowsDefaultCellStyle.BackColor = Color.White 'Color.DarkGray
 
             ' Set the row and column header styles.
             .ColumnHeadersDefaultCellStyle.ForeColor = Color.White
@@ -175,6 +175,8 @@ Module MyApplication
             .ColumnHeadersHeight = 35
             .ColumnHeadersDefaultCellStyle.BackColor = Color.Black
             .RowHeadersDefaultCellStyle.BackColor = Color.Black
+
+            .EditMode = DataGridViewEditMode.EditOnEnter
         End With
     End Sub
 End Module
