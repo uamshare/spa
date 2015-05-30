@@ -95,7 +95,7 @@
 
         Me.StringSQL = "SELECT IFNULL(MAX(SUBSTR(trcvmhno,7)),0) AS lasnumber FROM trcvmh"
         no = Me.GetDataScalar() + 1
-        autono = My.Settings.CabangID & "RC" & Format(Date.Now, "yy") & Format(no, "0000000")
+        autono = My.Settings.CabangID & "PC" & Format(Date.Now, "yy") & Format(no, "0000000")
         Return autono
     End Function
     Public Overloads Function DeleteData(Optional ByVal id = -1) As Integer
