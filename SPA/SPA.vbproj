@@ -211,11 +211,15 @@
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Module\Accounting\GeneralLedger.vb" />
-    <Compile Include="Module\Accounting\JurnalMemorial\FJurnalMemo.Designer.vb" />
+    <Compile Include="Module\Accounting\JurnalMemorial\FJurnalMemo.designer.vb">
+      <DependentUpon>FJurnalMemo.vb</DependentUpon>
+    </Compile>
     <Compile Include="Module\Accounting\JurnalMemorial\FJurnalMemo.vb">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Module\Accounting\JurnalMemorial\FListJurnalMemo.Designer.vb" />
+    <Compile Include="Module\Accounting\JurnalMemorial\FListJurnalMemo.designer.vb">
+      <DependentUpon>FListJurnalMemo.vb</DependentUpon>
+    </Compile>
     <Compile Include="Module\Accounting\JurnalMemorial\FListJurnalMemo.vb">
       <SubType>Form</SubType>
     </Compile>
@@ -595,8 +599,12 @@
     <EmbeddedResource Include="Module\Accounting\FListCOA.resx">
       <DependentUpon>FListCOA.vb</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Module\Accounting\JurnalMemorial\FJurnalMemo.resx" />
-    <EmbeddedResource Include="Module\Accounting\JurnalMemorial\FListJurnalMemo.resx" />
+    <EmbeddedResource Include="Module\Accounting\JurnalMemorial\FJurnalMemo.resx">
+      <DependentUpon>FJurnalMemo.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Module\Accounting\JurnalMemorial\FListJurnalMemo.resx">
+      <DependentUpon>FListJurnalMemo.vb</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Module\Accounting\Neraca\RArusKas.resx">
       <DependentUpon>RArusKas.vb</DependentUpon>
     </EmbeddedResource>
