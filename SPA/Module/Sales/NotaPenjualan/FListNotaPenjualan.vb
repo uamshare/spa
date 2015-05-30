@@ -135,7 +135,7 @@
                 FNotaPenjualan.ButtonAdd.Enabled = False
                 FNotaPenjualan.ButtonSave.Enabled = True
                 FNotaPenjualan.ButtonDel.Enabled = True
-                FNotaPenjualan.ButtonPrint.Enabled = False
+                FNotaPenjualan.ButtonPrint.Enabled = True
                 FNotaPenjualan.ButtonCancel.Enabled = True
                 FNotaPenjualan.ButtonH.Enabled = True
 

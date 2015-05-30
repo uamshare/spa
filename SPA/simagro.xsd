@@ -401,6 +401,74 @@ LEFT JOIN
             </Mappings>
             <Sources />
           </TableAdapter>
+          <TableAdapter BaseClass="System.ComponentModel.Component" DataAccessorModifier="AutoLayout, AnsiClass, Class, Public" DataAccessorName="NotaInvoiceTableAdapter" GeneratorDataComponentClassName="NotaInvoiceTableAdapter" Name="NotaInvoice" UserDataComponentName="NotaInvoiceTableAdapter">
+            <MainSource>
+              <DbSource ConnectionRef="simagroConnectionString (MySettings)" DbObjectType="Unknown" FillMethodModifier="Public" FillMethodName="Fill" GenerateMethods="Both" GenerateShortCommands="false" GeneratorGetMethodName="GetData" GeneratorSourceName="Fill" GetMethodModifier="Public" GetMethodName="GetData" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="false" UserGetMethodName="GetData" UserSourceName="Fill">
+                <SelectCommand>
+                  <DbCommand CommandType="Text" ModifiedByUser="true">
+                    <CommandText>SELECT
+  H.`tinvhno`,
+  H.`tinvhdt`,
+  H.`tinvhnote`,
+  H.`mcusid`,
+  P.`mcusname`,
+  P.`mcusaddr4`,
+  P.`mcusaddr5`,
+  P.mcusphone1,
+  P.mcusphone2,
+  H.`tinvhdisc1`,
+  H.`tinvhdisc2`,
+  H.`tinvhbonus`,
+  H.`tinvhongkir`,
+  H.`tinvhongpack`,
+  H.`userid`,
+  D.`tinvdid`,
+  D.`tinvhno`,
+  D.`mmtrid`,
+  M.`mmtrname`,
+  M.`polybag`,
+  M.`mmtrunit`,
+  D.`tinvdqty`,
+  D.`tinvdprice`,
+  D.`tinvdtype`
+FROM `tinvh` H 
+INNER JOIN mcus P ON P.`mcusid` = H.`mcusid`
+INNER JOIN `tinvd` D ON H.`tinvhno`=D.`tinvhno`
+INNER JOIN material_fig M ON M.mmtrid=D.`mmtrid`
+WHERE H.`tinvhno` = ''</CommandText>
+                    <Parameters />
+                  </DbCommand>
+                </SelectCommand>
+              </DbSource>
+            </MainSource>
+            <Mappings>
+              <Mapping SourceColumn="tinvhno" DataSetColumn="tinvhno" />
+              <Mapping SourceColumn="tinvhdt" DataSetColumn="tinvhdt" />
+              <Mapping SourceColumn="tinvhnote" DataSetColumn="tinvhnote" />
+              <Mapping SourceColumn="mcusid" DataSetColumn="mcusid" />
+              <Mapping SourceColumn="tinvhdisc1" DataSetColumn="tinvhdisc1" />
+              <Mapping SourceColumn="tinvhdisc2" DataSetColumn="tinvhdisc2" />
+              <Mapping SourceColumn="tinvhbonus" DataSetColumn="tinvhbonus" />
+              <Mapping SourceColumn="tinvhongkir" DataSetColumn="tinvhongkir" />
+              <Mapping SourceColumn="tinvhongpack" DataSetColumn="tinvhongpack" />
+              <Mapping SourceColumn="userid" DataSetColumn="userid" />
+              <Mapping SourceColumn="tinvdid" DataSetColumn="tinvdid" />
+              <Mapping SourceColumn="tinvhno1" DataSetColumn="tinvhno1" />
+              <Mapping SourceColumn="mmtrid" DataSetColumn="mmtrid" />
+              <Mapping SourceColumn="tinvdqty" DataSetColumn="tinvdqty" />
+              <Mapping SourceColumn="tinvdprice" DataSetColumn="tinvdprice" />
+              <Mapping SourceColumn="tinvdtype" DataSetColumn="tinvdtype" />
+              <Mapping SourceColumn="mmtrname" DataSetColumn="mmtrname" />
+              <Mapping SourceColumn="polybag" DataSetColumn="polybag" />
+              <Mapping SourceColumn="mmtrunit" DataSetColumn="mmtrunit" />
+              <Mapping SourceColumn="mcusname" DataSetColumn="mcusname" />
+              <Mapping SourceColumn="mcusaddr4" DataSetColumn="mcusaddr4" />
+              <Mapping SourceColumn="mcusaddr5" DataSetColumn="mcusaddr5" />
+              <Mapping SourceColumn="mcusphone1" DataSetColumn="mcusphone1" />
+              <Mapping SourceColumn="mcusphone2" DataSetColumn="mcusphone2" />
+            </Mappings>
+            <Sources />
+          </TableAdapter>
         </Tables>
         <Sources />
       </DataSource>
@@ -409,7 +477,7 @@ LEFT JOIN
   <xs:element name="simagro" msdata:IsDataSet="true" msdata:UseCurrentLocale="true" msprop:EnableTableAdapterManager="True" msprop:Generator_DataSetName="simagro" msprop:Generator_UserDSName="simagro">
     <xs:complexType>
       <xs:choice minOccurs="0" maxOccurs="unbounded">
-        <xs:element name="stock_all" msprop:Generator_TableClassName="stock_allDataTable" msprop:Generator_TableVarName="tablestock_all" msprop:Generator_TablePropName="stock_all" msprop:Generator_RowDeletingName="stock_allRowDeleting" msprop:Generator_RowChangingName="stock_allRowChanging" msprop:Generator_RowEvHandlerName="stock_allRowChangeEventHandler" msprop:Generator_RowDeletedName="stock_allRowDeleted" msprop:Generator_UserTableName="stock_all" msprop:Generator_RowChangedName="stock_allRowChanged" msprop:Generator_RowEvArgName="stock_allRowChangeEvent" msprop:Generator_RowClassName="stock_allRow">
+        <xs:element name="stock_all" msprop:Generator_TableClassName="stock_allDataTable" msprop:Generator_TableVarName="tablestock_all" msprop:Generator_RowChangedName="stock_allRowChanged" msprop:Generator_TablePropName="stock_all" msprop:Generator_RowDeletingName="stock_allRowDeleting" msprop:Generator_RowChangingName="stock_allRowChanging" msprop:Generator_RowEvHandlerName="stock_allRowChangeEventHandler" msprop:Generator_RowDeletedName="stock_allRowDeleted" msprop:Generator_RowClassName="stock_allRow" msprop:Generator_UserTableName="stock_all" msprop:Generator_RowEvArgName="stock_allRowChangeEvent">
           <xs:complexType>
             <xs:sequence>
               <xs:element name="mmtrhid" msprop:Generator_ColumnVarNameInTable="columnmmtrhid" msprop:Generator_ColumnPropNameInRow="mmtrhid" msprop:Generator_ColumnPropNameInTable="mmtrhidColumn" msprop:Generator_UserColumnName="mmtrhid" type="xs:int" />
@@ -460,7 +528,7 @@ LEFT JOIN
             </xs:sequence>
           </xs:complexType>
         </xs:element>
-        <xs:element name="stock_card" msprop:Generator_TableClassName="stock_cardDataTable" msprop:Generator_TableVarName="tablestock_card" msprop:Generator_RowChangedName="stock_cardRowChanged" msprop:Generator_TablePropName="stock_card" msprop:Generator_RowDeletingName="stock_cardRowDeleting" msprop:Generator_RowChangingName="stock_cardRowChanging" msprop:Generator_RowEvHandlerName="stock_cardRowChangeEventHandler" msprop:Generator_RowDeletedName="stock_cardRowDeleted" msprop:Generator_RowClassName="stock_cardRow" msprop:Generator_UserTableName="stock_card" msprop:Generator_RowEvArgName="stock_cardRowChangeEvent">
+        <xs:element name="stock_card" msprop:Generator_TableClassName="stock_cardDataTable" msprop:Generator_TableVarName="tablestock_card" msprop:Generator_TablePropName="stock_card" msprop:Generator_RowDeletingName="stock_cardRowDeleting" msprop:Generator_RowChangingName="stock_cardRowChanging" msprop:Generator_RowEvHandlerName="stock_cardRowChangeEventHandler" msprop:Generator_RowDeletedName="stock_cardRowDeleted" msprop:Generator_UserTableName="stock_card" msprop:Generator_RowChangedName="stock_cardRowChanged" msprop:Generator_RowEvArgName="stock_cardRowChangeEvent" msprop:Generator_RowClassName="stock_cardRow">
           <xs:complexType>
             <xs:sequence>
               <xs:element name="mmtrhid" msprop:Generator_ColumnVarNameInTable="columnmmtrhid" msprop:Generator_ColumnPropNameInRow="mmtrhid" msprop:Generator_ColumnPropNameInTable="mmtrhidColumn" msprop:Generator_UserColumnName="mmtrhid" type="xs:int" />
@@ -536,7 +604,7 @@ LEFT JOIN
             </xs:sequence>
           </xs:complexType>
         </xs:element>
-        <xs:element name="rinvoice" msprop:Generator_TableClassName="rinvoiceDataTable" msprop:Generator_TableVarName="tablerinvoice" msprop:Generator_TablePropName="rinvoice" msprop:Generator_RowDeletingName="rinvoiceRowDeleting" msprop:Generator_RowChangingName="rinvoiceRowChanging" msprop:Generator_RowEvHandlerName="rinvoiceRowChangeEventHandler" msprop:Generator_RowDeletedName="rinvoiceRowDeleted" msprop:Generator_UserTableName="rinvoice" msprop:Generator_RowChangedName="rinvoiceRowChanged" msprop:Generator_RowEvArgName="rinvoiceRowChangeEvent" msprop:Generator_RowClassName="rinvoiceRow">
+        <xs:element name="rinvoice" msprop:Generator_TableClassName="rinvoiceDataTable" msprop:Generator_TableVarName="tablerinvoice" msprop:Generator_RowChangedName="rinvoiceRowChanged" msprop:Generator_TablePropName="rinvoice" msprop:Generator_RowDeletingName="rinvoiceRowDeleting" msprop:Generator_RowChangingName="rinvoiceRowChanging" msprop:Generator_RowEvHandlerName="rinvoiceRowChangeEventHandler" msprop:Generator_RowDeletedName="rinvoiceRowDeleted" msprop:Generator_RowClassName="rinvoiceRow" msprop:Generator_UserTableName="rinvoice" msprop:Generator_RowEvArgName="rinvoiceRowChangeEvent">
           <xs:complexType>
             <xs:sequence>
               <xs:element name="tinvhnote" msprop:Generator_ColumnVarNameInTable="columntinvhnote" msprop:Generator_ColumnPropNameInRow="tinvhnote" msprop:Generator_ColumnPropNameInTable="tinvhnoteColumn" msprop:Generator_UserColumnName="tinvhnote">
@@ -640,7 +708,7 @@ LEFT JOIN
             </xs:sequence>
           </xs:complexType>
         </xs:element>
-        <xs:element name="rdetailinvoice" msprop:Generator_TableClassName="rdetailinvoiceDataTable" msprop:Generator_TableVarName="tablerdetailinvoice" msprop:Generator_TablePropName="rdetailinvoice" msprop:Generator_RowDeletingName="rdetailinvoiceRowDeleting" msprop:Generator_RowChangingName="rdetailinvoiceRowChanging" msprop:Generator_RowEvHandlerName="rdetailinvoiceRowChangeEventHandler" msprop:Generator_RowDeletedName="rdetailinvoiceRowDeleted" msprop:Generator_UserTableName="rdetailinvoice" msprop:Generator_RowChangedName="rdetailinvoiceRowChanged" msprop:Generator_RowEvArgName="rdetailinvoiceRowChangeEvent" msprop:Generator_RowClassName="rdetailinvoiceRow">
+        <xs:element name="rdetailinvoice" msprop:Generator_TableClassName="rdetailinvoiceDataTable" msprop:Generator_TableVarName="tablerdetailinvoice" msprop:Generator_RowChangedName="rdetailinvoiceRowChanged" msprop:Generator_TablePropName="rdetailinvoice" msprop:Generator_RowDeletingName="rdetailinvoiceRowDeleting" msprop:Generator_RowChangingName="rdetailinvoiceRowChanging" msprop:Generator_RowEvHandlerName="rdetailinvoiceRowChangeEventHandler" msprop:Generator_RowDeletedName="rdetailinvoiceRowDeleted" msprop:Generator_RowClassName="rdetailinvoiceRow" msprop:Generator_UserTableName="rdetailinvoice" msprop:Generator_RowEvArgName="rdetailinvoiceRowChangeEvent">
           <xs:complexType>
             <xs:sequence>
               <xs:element name="mcusid" msdata:AutoIncrement="true" msdata:AutoIncrementSeed="-1" msdata:AutoIncrementStep="-1" msprop:Generator_ColumnVarNameInTable="columnmcusid" msprop:Generator_ColumnPropNameInRow="mcusid" msprop:Generator_ColumnPropNameInTable="mcusidColumn" msprop:Generator_UserColumnName="mcusid" type="xs:int" />
@@ -773,7 +841,7 @@ LEFT JOIN
             </xs:sequence>
           </xs:complexType>
         </xs:element>
-        <xs:element name="neraca" msprop:Generator_TableClassName="neracaDataTable" msprop:Generator_TableVarName="tableneraca" msprop:Generator_TablePropName="neraca" msprop:Generator_RowDeletingName="neracaRowDeleting" msprop:Generator_RowChangingName="neracaRowChanging" msprop:Generator_RowEvHandlerName="neracaRowChangeEventHandler" msprop:Generator_RowDeletedName="neracaRowDeleted" msprop:Generator_UserTableName="neraca" msprop:Generator_RowChangedName="neracaRowChanged" msprop:Generator_RowEvArgName="neracaRowChangeEvent" msprop:Generator_RowClassName="neracaRow">
+        <xs:element name="neraca" msprop:Generator_TableClassName="neracaDataTable" msprop:Generator_TableVarName="tableneraca" msprop:Generator_RowChangedName="neracaRowChanged" msprop:Generator_TablePropName="neraca" msprop:Generator_RowDeletingName="neracaRowDeleting" msprop:Generator_RowChangingName="neracaRowChanging" msprop:Generator_RowEvHandlerName="neracaRowChangeEventHandler" msprop:Generator_RowDeletedName="neracaRowDeleted" msprop:Generator_RowClassName="neracaRow" msprop:Generator_UserTableName="neraca" msprop:Generator_RowEvArgName="neracaRowChangeEvent">
           <xs:complexType>
             <xs:sequence>
               <xs:element name="classification" msprop:Generator_ColumnVarNameInTable="columnclassification" msprop:Generator_ColumnPropNameInRow="classification" msprop:Generator_ColumnPropNameInTable="classificationColumn" msprop:Generator_UserColumnName="classification">
@@ -808,7 +876,7 @@ LEFT JOIN
             </xs:sequence>
           </xs:complexType>
         </xs:element>
-        <xs:element name="lneraca" msprop:Generator_TableClassName="lneracaDataTable" msprop:Generator_TableVarName="tablelneraca" msprop:Generator_RowChangedName="lneracaRowChanged" msprop:Generator_TablePropName="lneraca" msprop:Generator_RowDeletingName="lneracaRowDeleting" msprop:Generator_RowChangingName="lneracaRowChanging" msprop:Generator_RowEvHandlerName="lneracaRowChangeEventHandler" msprop:Generator_RowDeletedName="lneracaRowDeleted" msprop:Generator_RowClassName="lneracaRow" msprop:Generator_UserTableName="lneraca" msprop:Generator_RowEvArgName="lneracaRowChangeEvent">
+        <xs:element name="lneraca" msprop:Generator_TableClassName="lneracaDataTable" msprop:Generator_TableVarName="tablelneraca" msprop:Generator_TablePropName="lneraca" msprop:Generator_RowDeletingName="lneracaRowDeleting" msprop:Generator_RowChangingName="lneracaRowChanging" msprop:Generator_RowEvHandlerName="lneracaRowChangeEventHandler" msprop:Generator_RowDeletedName="lneracaRowDeleted" msprop:Generator_UserTableName="lneraca" msprop:Generator_RowChangedName="lneracaRowChanged" msprop:Generator_RowEvArgName="lneracaRowChangeEvent" msprop:Generator_RowClassName="lneracaRow">
           <xs:complexType>
             <xs:sequence>
               <xs:element name="classification" msprop:Generator_ColumnVarNameInTable="columnclassification" msprop:Generator_ColumnPropNameInRow="classification" msprop:Generator_ColumnPropNameInTable="classificationColumn" msprop:Generator_UserColumnName="classification">
@@ -857,7 +925,7 @@ LEFT JOIN
             </xs:sequence>
           </xs:complexType>
         </xs:element>
-        <xs:element name="rugilaba" msprop:Generator_TableClassName="rugilabaDataTable" msprop:Generator_TableVarName="tablerugilaba" msprop:Generator_TablePropName="rugilaba" msprop:Generator_RowDeletingName="rugilabaRowDeleting" msprop:Generator_RowChangingName="rugilabaRowChanging" msprop:Generator_RowEvHandlerName="rugilabaRowChangeEventHandler" msprop:Generator_RowDeletedName="rugilabaRowDeleted" msprop:Generator_UserTableName="rugilaba" msprop:Generator_RowChangedName="rugilabaRowChanged" msprop:Generator_RowEvArgName="rugilabaRowChangeEvent" msprop:Generator_RowClassName="rugilabaRow">
+        <xs:element name="rugilaba" msprop:Generator_TableClassName="rugilabaDataTable" msprop:Generator_TableVarName="tablerugilaba" msprop:Generator_RowChangedName="rugilabaRowChanged" msprop:Generator_TablePropName="rugilaba" msprop:Generator_RowDeletingName="rugilabaRowDeleting" msprop:Generator_RowChangingName="rugilabaRowChanging" msprop:Generator_RowEvHandlerName="rugilabaRowChangeEventHandler" msprop:Generator_RowDeletedName="rugilabaRowDeleted" msprop:Generator_RowClassName="rugilabaRow" msprop:Generator_UserTableName="rugilaba" msprop:Generator_RowEvArgName="rugilabaRowChangeEvent">
           <xs:complexType>
             <xs:sequence>
               <xs:element name="classification" msprop:Generator_ColumnVarNameInTable="columnclassification" msprop:Generator_ColumnPropNameInRow="classification" msprop:Generator_ColumnPropNameInTable="classificationColumn" msprop:Generator_UserColumnName="classification">
@@ -902,7 +970,7 @@ LEFT JOIN
             </xs:sequence>
           </xs:complexType>
         </xs:element>
-        <xs:element name="cashflow" msprop:Generator_TableClassName="cashflowDataTable" msprop:Generator_TableVarName="tablecashflow" msprop:Generator_RowChangedName="cashflowRowChanged" msprop:Generator_TablePropName="cashflow" msprop:Generator_RowDeletingName="cashflowRowDeleting" msprop:Generator_RowChangingName="cashflowRowChanging" msprop:Generator_RowEvHandlerName="cashflowRowChangeEventHandler" msprop:Generator_RowDeletedName="cashflowRowDeleted" msprop:Generator_RowClassName="cashflowRow" msprop:Generator_UserTableName="cashflow" msprop:Generator_RowEvArgName="cashflowRowChangeEvent">
+        <xs:element name="cashflow" msprop:Generator_TableClassName="cashflowDataTable" msprop:Generator_TableVarName="tablecashflow" msprop:Generator_TablePropName="cashflow" msprop:Generator_RowDeletingName="cashflowRowDeleting" msprop:Generator_RowChangingName="cashflowRowChanging" msprop:Generator_RowEvHandlerName="cashflowRowChangeEventHandler" msprop:Generator_RowDeletedName="cashflowRowDeleted" msprop:Generator_UserTableName="cashflow" msprop:Generator_RowChangedName="cashflowRowChanged" msprop:Generator_RowEvArgName="cashflowRowChangeEvent" msprop:Generator_RowClassName="cashflowRow">
           <xs:complexType>
             <xs:sequence>
               <xs:element name="mcoahno" msprop:Generator_ColumnVarNameInTable="columnmcoahno" msprop:Generator_ColumnPropNameInRow="mcoahno" msprop:Generator_ColumnPropNameInTable="mcoahnoColumn" msprop:Generator_UserColumnName="mcoahno">
@@ -968,7 +1036,7 @@ LEFT JOIN
             </xs:sequence>
           </xs:complexType>
         </xs:element>
-        <xs:element name="bukubesar" msprop:Generator_TableClassName="bukubesarDataTable" msprop:Generator_TableVarName="tablebukubesar" msprop:Generator_TablePropName="bukubesar" msprop:Generator_RowDeletingName="bukubesarRowDeleting" msprop:Generator_RowChangingName="bukubesarRowChanging" msprop:Generator_RowEvHandlerName="bukubesarRowChangeEventHandler" msprop:Generator_RowDeletedName="bukubesarRowDeleted" msprop:Generator_UserTableName="bukubesar" msprop:Generator_RowChangedName="bukubesarRowChanged" msprop:Generator_RowEvArgName="bukubesarRowChangeEvent" msprop:Generator_RowClassName="bukubesarRow">
+        <xs:element name="bukubesar" msprop:Generator_TableClassName="bukubesarDataTable" msprop:Generator_TableVarName="tablebukubesar" msprop:Generator_RowChangedName="bukubesarRowChanged" msprop:Generator_TablePropName="bukubesar" msprop:Generator_RowDeletingName="bukubesarRowDeleting" msprop:Generator_RowChangingName="bukubesarRowChanging" msprop:Generator_RowEvHandlerName="bukubesarRowChangeEventHandler" msprop:Generator_RowDeletedName="bukubesarRowDeleted" msprop:Generator_RowClassName="bukubesarRow" msprop:Generator_UserTableName="bukubesar" msprop:Generator_RowEvArgName="bukubesarRowChangeEvent">
           <xs:complexType>
             <xs:sequence>
               <xs:element name="mcoadno" msprop:Generator_ColumnVarNameInTable="columnmcoadno" msprop:Generator_ColumnPropNameInRow="mcoadno" msprop:Generator_ColumnPropNameInTable="mcoadnoColumn" msprop:Generator_UserColumnName="mcoadno">
@@ -1019,6 +1087,114 @@ LEFT JOIN
             </xs:sequence>
           </xs:complexType>
         </xs:element>
+        <xs:element name="NotaInvoice" msprop:Generator_TableClassName="NotaInvoiceDataTable" msprop:Generator_TableVarName="tableNotaInvoice" msprop:Generator_TablePropName="NotaInvoice" msprop:Generator_RowDeletingName="NotaInvoiceRowDeleting" msprop:Generator_RowChangingName="NotaInvoiceRowChanging" msprop:Generator_RowEvHandlerName="NotaInvoiceRowChangeEventHandler" msprop:Generator_RowDeletedName="NotaInvoiceRowDeleted" msprop:Generator_UserTableName="NotaInvoice" msprop:Generator_RowChangedName="NotaInvoiceRowChanged" msprop:Generator_RowEvArgName="NotaInvoiceRowChangeEvent" msprop:Generator_RowClassName="NotaInvoiceRow">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="tinvhno" msprop:Generator_ColumnVarNameInTable="columntinvhno" msprop:Generator_ColumnPropNameInRow="tinvhno" msprop:Generator_ColumnPropNameInTable="tinvhnoColumn" msprop:Generator_UserColumnName="tinvhno">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="13" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="tinvhdt" msprop:Generator_ColumnVarNameInTable="columntinvhdt" msprop:Generator_ColumnPropNameInRow="tinvhdt" msprop:Generator_ColumnPropNameInTable="tinvhdtColumn" msprop:Generator_UserColumnName="tinvhdt" type="xs:dateTime" />
+              <xs:element name="tinvhnote" msprop:Generator_ColumnVarNameInTable="columntinvhnote" msprop:Generator_ColumnPropNameInRow="tinvhnote" msprop:Generator_ColumnPropNameInTable="tinvhnoteColumn" msprop:Generator_UserColumnName="tinvhnote" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="255" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="mcusid" msprop:Generator_ColumnVarNameInTable="columnmcusid" msprop:Generator_ColumnPropNameInRow="mcusid" msprop:Generator_ColumnPropNameInTable="mcusidColumn" msprop:Generator_UserColumnName="mcusid" type="xs:int" />
+              <xs:element name="tinvhdisc1" msprop:Generator_ColumnVarNameInTable="columntinvhdisc1" msprop:Generator_ColumnPropNameInRow="tinvhdisc1" msprop:Generator_ColumnPropNameInTable="tinvhdisc1Column" msprop:Generator_UserColumnName="tinvhdisc1" type="xs:decimal" />
+              <xs:element name="tinvhdisc2" msprop:Generator_ColumnVarNameInTable="columntinvhdisc2" msprop:Generator_ColumnPropNameInRow="tinvhdisc2" msprop:Generator_ColumnPropNameInTable="tinvhdisc2Column" msprop:Generator_UserColumnName="tinvhdisc2" type="xs:decimal" />
+              <xs:element name="tinvhbonus" msprop:Generator_ColumnVarNameInTable="columntinvhbonus" msprop:Generator_ColumnPropNameInRow="tinvhbonus" msprop:Generator_ColumnPropNameInTable="tinvhbonusColumn" msprop:Generator_UserColumnName="tinvhbonus" type="xs:decimal" />
+              <xs:element name="tinvhongkir" msprop:Generator_ColumnVarNameInTable="columntinvhongkir" msprop:Generator_ColumnPropNameInRow="tinvhongkir" msprop:Generator_ColumnPropNameInTable="tinvhongkirColumn" msprop:Generator_UserColumnName="tinvhongkir" type="xs:decimal" />
+              <xs:element name="tinvhongpack" msprop:Generator_ColumnVarNameInTable="columntinvhongpack" msprop:Generator_ColumnPropNameInRow="tinvhongpack" msprop:Generator_ColumnPropNameInTable="tinvhongpackColumn" msprop:Generator_UserColumnName="tinvhongpack" type="xs:decimal" />
+              <xs:element name="userid" msprop:Generator_ColumnVarNameInTable="columnuserid" msprop:Generator_ColumnPropNameInRow="userid" msprop:Generator_ColumnPropNameInTable="useridColumn" msprop:Generator_UserColumnName="userid" type="xs:int" minOccurs="0" />
+              <xs:element name="tinvdid" msdata:AutoIncrement="true" msdata:AutoIncrementSeed="-1" msdata:AutoIncrementStep="-1" msprop:Generator_ColumnVarNameInTable="columntinvdid" msprop:Generator_ColumnPropNameInRow="tinvdid" msprop:Generator_ColumnPropNameInTable="tinvdidColumn" msprop:Generator_UserColumnName="tinvdid" type="xs:long" />
+              <xs:element name="tinvhno1" msprop:Generator_ColumnVarNameInTable="columntinvhno1" msprop:Generator_ColumnPropNameInRow="tinvhno1" msprop:Generator_ColumnPropNameInTable="tinvhno1Column" msprop:Generator_UserColumnName="tinvhno1">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="13" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="mmtrid" msprop:Generator_ColumnVarNameInTable="columnmmtrid" msprop:Generator_ColumnPropNameInRow="mmtrid" msprop:Generator_ColumnPropNameInTable="mmtridColumn" msprop:Generator_UserColumnName="mmtrid">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="9" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="tinvdqty" msprop:Generator_ColumnVarNameInTable="columntinvdqty" msprop:Generator_ColumnPropNameInRow="tinvdqty" msprop:Generator_ColumnPropNameInTable="tinvdqtyColumn" msprop:Generator_UserColumnName="tinvdqty" type="xs:int" />
+              <xs:element name="tinvdprice" msprop:Generator_ColumnVarNameInTable="columntinvdprice" msprop:Generator_ColumnPropNameInRow="tinvdprice" msprop:Generator_ColumnPropNameInTable="tinvdpriceColumn" msprop:Generator_UserColumnName="tinvdprice" type="xs:decimal" />
+              <xs:element name="tinvdtype" msprop:Generator_ColumnVarNameInTable="columntinvdtype" msprop:Generator_ColumnPropNameInRow="tinvdtype" msprop:Generator_ColumnPropNameInTable="tinvdtypeColumn" msprop:Generator_UserColumnName="tinvdtype">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="1" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="mmtrname" msprop:Generator_ColumnVarNameInTable="columnmmtrname" msprop:Generator_ColumnPropNameInRow="mmtrname" msprop:Generator_ColumnPropNameInTable="mmtrnameColumn" msprop:Generator_UserColumnName="mmtrname" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="25" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="polybag" msprop:Generator_ColumnVarNameInTable="columnpolybag" msprop:Generator_ColumnPropNameInRow="polybag" msprop:Generator_ColumnPropNameInTable="polybagColumn" msprop:Generator_UserColumnName="polybag" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="5" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="mmtrunit" msprop:Generator_ColumnVarNameInTable="columnmmtrunit" msprop:Generator_ColumnPropNameInRow="mmtrunit" msprop:Generator_ColumnPropNameInTable="mmtrunitColumn" msprop:Generator_UserColumnName="mmtrunit">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="10" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="mcusname" msprop:Generator_ColumnVarNameInTable="columnmcusname" msprop:Generator_ColumnPropNameInRow="mcusname" msprop:Generator_ColumnPropNameInTable="mcusnameColumn" msprop:Generator_UserColumnName="mcusname" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="35" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="mcusaddr4" msprop:Generator_ColumnVarNameInTable="columnmcusaddr4" msprop:Generator_ColumnPropNameInRow="mcusaddr4" msprop:Generator_ColumnPropNameInTable="mcusaddr4Column" msprop:Generator_UserColumnName="mcusaddr4" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="35" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="mcusaddr5" msprop:Generator_ColumnVarNameInTable="columnmcusaddr5" msprop:Generator_ColumnPropNameInRow="mcusaddr5" msprop:Generator_ColumnPropNameInTable="mcusaddr5Column" msprop:Generator_UserColumnName="mcusaddr5" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="35" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="mcusphone1" msprop:Generator_ColumnVarNameInTable="columnmcusphone1" msprop:Generator_ColumnPropNameInRow="mcusphone1" msprop:Generator_ColumnPropNameInTable="mcusphone1Column" msprop:Generator_UserColumnName="mcusphone1" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="15" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="mcusphone2" msprop:Generator_ColumnVarNameInTable="columnmcusphone2" msprop:Generator_ColumnPropNameInRow="mcusphone2" msprop:Generator_ColumnPropNameInTable="mcusphone2Column" msprop:Generator_UserColumnName="mcusphone2" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="15" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
       </xs:choice>
     </xs:complexType>
     <xs:unique name="Constraint1" msdata:PrimaryKey="true">
@@ -1032,6 +1208,11 @@ LEFT JOIN
     <xs:unique name="bukubesar_Constraint1" msdata:ConstraintName="Constraint1" msdata:PrimaryKey="true">
       <xs:selector xpath=".//mstns:bukubesar" />
       <xs:field xpath="mstns:mcoadno" />
+    </xs:unique>
+    <xs:unique name="NotaInvoice_Constraint1" msdata:ConstraintName="Constraint1" msdata:PrimaryKey="true">
+      <xs:selector xpath=".//mstns:NotaInvoice" />
+      <xs:field xpath="mstns:tinvhno" />
+      <xs:field xpath="mstns:tinvdid" />
     </xs:unique>
   </xs:element>
 </xs:schema>
