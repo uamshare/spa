@@ -20,8 +20,9 @@
         Return MyBase.GetData
     End Function
     Function FindData(sSearch As String) As DataTable
+        Me.StringSQL = "SELECT * FROM tjmh"
         If Not String.IsNullOrEmpty(sSearch) Then
-            Me.WHERE = "WHERE tjmhno like '%" & sSearch & "%' " & _
+            Me.WHERE = " WHERE tjmhno like '%" & sSearch & "%' " & _
                         "OR tjmhdt like '%" & sSearch & "%' " & _
                         "OR tjmhdesc like '%" & sSearch & "%' "
         Else

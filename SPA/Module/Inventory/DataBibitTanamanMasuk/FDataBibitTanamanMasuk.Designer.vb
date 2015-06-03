@@ -281,10 +281,10 @@ Partial Class FDataBibitTanamanMasuk
         'ToolDelete
         '
         Me.ToolDelete.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image
-        Me.ToolDelete.Image = Global.SPA.My.Resources.Resources.trush
+        Me.ToolDelete.Image = Global.SPA.My.Resources.Resources.delete1
         Me.ToolDelete.ImageTransparentColor = System.Drawing.Color.Magenta
         Me.ToolDelete.Name = "ToolDelete"
-        Me.ToolDelete.Size = New System.Drawing.Size(36, 36)
+        Me.ToolDelete.Size = New System.Drawing.Size(28, 28)
         Me.ToolDelete.Text = "Del"
         '
         'DataGridView1
@@ -300,12 +300,12 @@ Partial Class FDataBibitTanamanMasuk
         '
         Me.Tool1.BackColor = System.Drawing.SystemColors.ActiveCaption
         Me.Tool1.GripStyle = System.Windows.Forms.ToolStripGripStyle.Hidden
-        Me.Tool1.ImageScalingSize = New System.Drawing.Size(32, 32)
+        Me.Tool1.ImageScalingSize = New System.Drawing.Size(24, 24)
         Me.Tool1.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.ToolDelete})
         Me.Tool1.Location = New System.Drawing.Point(0, 0)
         Me.Tool1.Name = "Tool1"
         Me.Tool1.RenderMode = System.Windows.Forms.ToolStripRenderMode.System
-        Me.Tool1.Size = New System.Drawing.Size(886, 39)
+        Me.Tool1.Size = New System.Drawing.Size(886, 31)
         Me.Tool1.TabIndex = 24
         Me.Tool1.Text = "Tool1"
         '

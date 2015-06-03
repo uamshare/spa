@@ -178,7 +178,7 @@ Partial Class FListBibitTanamanMasuk
         '
         Me.Tool1.BackColor = System.Drawing.SystemColors.ActiveCaption
         Me.Tool1.GripStyle = System.Windows.Forms.ToolStripGripStyle.Hidden
-        Me.Tool1.ImageScalingSize = New System.Drawing.Size(32, 32)
+        Me.Tool1.ImageScalingSize = New System.Drawing.Size(24, 24)
         Me.Tool1.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.ToolRefresh, Me.ToolFind, Me.ToolTextFind, Me.ToolCheck})
         Me.Tool1.Location = New System.Drawing.Point(0, 0)
         Me.Tool1.Name = "Tool1"
@@ -215,12 +215,11 @@ Partial Class FListBibitTanamanMasuk
         '
         'ToolCheck
         '
-        Me.ToolCheck.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image
-        Me.ToolCheck.Image = Global.SPA.My.Resources.Resources.check
+        Me.ToolCheck.Image = Global.SPA.My.Resources.Resources.check1
         Me.ToolCheck.ImageTransparentColor = System.Drawing.Color.Magenta
         Me.ToolCheck.Name = "ToolCheck"
-        Me.ToolCheck.Size = New System.Drawing.Size(36, 36)
-        Me.ToolCheck.Text = "ToolStripButton1"
+        Me.ToolCheck.Size = New System.Drawing.Size(85, 36)
+        Me.ToolCheck.Text = "Pilih Data"
         Me.ToolCheck.ToolTipText = "Pilih Data"
         '
         'FListBibitTanamanMasuk

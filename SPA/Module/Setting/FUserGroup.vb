@@ -265,6 +265,7 @@
         End With
     End Sub
     Private Sub ToolAdd_Click(sender As Object, e As EventArgs) Handles ToolAdd.Click
+        FUserGroupAdd.TextBox1.Text = ""
         FUserGroupAdd.ShowDialog()
     End Sub
     Private Sub ToolEdit_Click(sender As Object, e As EventArgs) Handles ToolEdit.Click
@@ -588,4 +589,11 @@
     
     
     
+    'Private Sub Button1_Click(sender As Object, e As EventArgs) Handles Button1.Click
+    '    Model.InsertAll()
+    'End Sub
+
+    'Private Sub Button2_Click(sender As Object, e As EventArgs) Handles Button2.Click
+    '    Model.trunctaedata()
+    'End Sub
 End Class

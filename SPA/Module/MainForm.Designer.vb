@@ -71,6 +71,8 @@ Partial Class MainForm
         Me.ToolStrip1 = New System.Windows.Forms.ToolStrip()
         Me.StatusPengguna = New System.Windows.Forms.ToolStripLabel()
         Me.ToolStripLabel2 = New System.Windows.Forms.ToolStripLabel()
+        Me.ProgressBar1 = New System.Windows.Forms.ProgressBar()
+        Me.bw = New System.ComponentModel.BackgroundWorker()
         Me.MenuStrip.SuspendLayout()
         Me.StatusStrip.SuspendLayout()
         Me.ToolStrip1.SuspendLayout()
@@ -225,62 +227,62 @@ Partial Class MainForm
         'menu401
         '
         Me.menu401.Name = "menu401"
-        Me.menu401.Size = New System.Drawing.Size(239, 22)
+        Me.menu401.Size = New System.Drawing.Size(208, 22)
         Me.menu401.Text = "COA Header"
         '
         'menu402
         '
         Me.menu402.Name = "menu402"
-        Me.menu402.Size = New System.Drawing.Size(239, 22)
+        Me.menu402.Size = New System.Drawing.Size(208, 22)
         Me.menu402.Text = "COA Detail"
         '
         'menu403
         '
         Me.menu403.Name = "menu403"
-        Me.menu403.Size = New System.Drawing.Size(239, 22)
+        Me.menu403.Size = New System.Drawing.Size(208, 22)
         Me.menu403.Text = "Akun Posting Otomatis"
         '
         'menu404
         '
         Me.menu404.Name = "menu404"
-        Me.menu404.Size = New System.Drawing.Size(239, 22)
+        Me.menu404.Size = New System.Drawing.Size(208, 22)
         Me.menu404.Text = "Jurnal Memorial"
         '
         'menu405
         '
         Me.menu405.Name = "menu405"
-        Me.menu405.Size = New System.Drawing.Size(239, 22)
+        Me.menu405.Size = New System.Drawing.Size(208, 22)
         Me.menu405.Text = "Buku Besar"
         '
         'menu406
         '
         Me.menu406.Name = "menu406"
-        Me.menu406.Size = New System.Drawing.Size(239, 22)
+        Me.menu406.Size = New System.Drawing.Size(208, 22)
         Me.menu406.Text = "Neraca"
         '
         'menu407
         '
         Me.menu407.Name = "menu407"
-        Me.menu407.Size = New System.Drawing.Size(239, 22)
+        Me.menu407.Size = New System.Drawing.Size(208, 22)
         Me.menu407.Text = "Lampiran Neraca"
         '
         'menu408
         '
         Me.menu408.Name = "menu408"
-        Me.menu408.Size = New System.Drawing.Size(239, 22)
+        Me.menu408.Size = New System.Drawing.Size(208, 22)
         Me.menu408.Text = "Rugi Laba"
         '
         'menu409
         '
         Me.menu409.Name = "menu409"
-        Me.menu409.Size = New System.Drawing.Size(239, 22)
+        Me.menu409.Size = New System.Drawing.Size(208, 22)
         Me.menu409.Text = "Arus Kas dan Bank"
         '
         'menu410
         '
         Me.menu410.Name = "menu410"
-        Me.menu410.Size = New System.Drawing.Size(239, 22)
-        Me.menu410.Text = "Persedian Akhir Barang/Produk"
+        Me.menu410.Size = New System.Drawing.Size(208, 22)
+        Me.menu410.Text = "Persedian Akhir Tanaman"
         '
         'menu500
         '
@@ -348,7 +350,7 @@ Partial Class MainForm
         '
         Me.StatusMessage.Margin = New System.Windows.Forms.Padding(5, 3, 0, 2)
         Me.StatusMessage.Name = "StatusMessage"
-        Me.StatusMessage.Size = New System.Drawing.Size(837, 17)
+        Me.StatusMessage.Size = New System.Drawing.Size(645, 17)
         Me.StatusMessage.Spring = True
         Me.StatusMessage.Text = "Please Wait ..."
         Me.StatusMessage.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
@@ -393,20 +395,42 @@ Partial Class MainForm
         Me.ToolStripLabel2.Size = New System.Drawing.Size(70, 22)
         Me.ToolStripLabel2.Text = "Pengguna : "
         '
+        'ProgressBar1
+        '
+        Me.ProgressBar1.Dock = System.Windows.Forms.DockStyle.Top
+        Me.ProgressBar1.ForeColor = System.Drawing.Color.OrangeRed
+        Me.ProgressBar1.Location = New System.Drawing.Point(26, 0)
+        Me.ProgressBar1.MarqueeAnimationSpeed = 20
+        Me.ProgressBar1.Name = "ProgressBar1"
+        Me.ProgressBar1.Size = New System.Drawing.Size(847, 10)
+        Me.ProgressBar1.Style = System.Windows.Forms.ProgressBarStyle.Marquee
+        Me.ProgressBar1.TabIndex = 11
+        Me.ProgressBar1.Value = 10
+        Me.ProgressBar1.Visible = False
+        '
+        'bw
+        '
+        Me.bw.WorkerReportsProgress = True
+        Me.bw.WorkerSupportsCancellation = True
+        '
         'MainForm
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.BackColor = System.Drawing.SystemColors.ActiveCaption
+        Me.BackColor = System.Drawing.Color.CornflowerBlue
+        Me.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
         Me.ClientSize = New System.Drawing.Size(873, 413)
+        Me.Controls.Add(Me.ProgressBar1)
         Me.Controls.Add(Me.ToolStrip1)
         Me.Controls.Add(Me.ToolStrip)
         Me.Controls.Add(Me.MenuStrip)
         Me.Controls.Add(Me.StatusStrip)
+        Me.HelpButton = True
         Me.IsMdiContainer = True
         Me.MainMenuStrip = Me.MenuStrip
         Me.Name = "MainForm"
         Me.Text = "SPA Aplikasi"
+        Me.TransparencyKey = System.Drawing.Color.FromArgb(CType(CType(0, Byte), Integer), CType(CType(192, Byte), Integer), CType(CType(192, Byte), Integer))
         Me.WindowState = System.Windows.Forms.FormWindowState.Maximized
         Me.MenuStrip.ResumeLayout(False)
         Me.MenuStrip.PerformLayout()
@@ -465,5 +489,7 @@ Partial Class MainForm
     Friend WithEvents StatusPengguna As System.Windows.Forms.ToolStripLabel
     Friend WithEvents ToolStripLabel2 As System.Windows.Forms.ToolStripLabel
     Friend WithEvents StatusMessage As System.Windows.Forms.ToolStripStatusLabel
+    Friend WithEvents ProgressBar1 As System.Windows.Forms.ProgressBar
+    Friend WithEvents bw As System.ComponentModel.BackgroundWorker
 
 End Class

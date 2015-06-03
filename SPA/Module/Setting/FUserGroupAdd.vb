@@ -31,6 +31,7 @@
     End Sub
 
     Private Sub FUserGroupAdd_Load(sender As Object, e As EventArgs) Handles MyBase.Load
+        TextBox1.Focus()
         statmsg.Text = ""
     End Sub
 

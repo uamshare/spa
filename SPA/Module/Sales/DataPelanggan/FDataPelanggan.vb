@@ -4,8 +4,18 @@
     Dim DGVColumnCheckIndex As Integer
 
     Private Model As New MDataPelanggan
-
+    Public Sub SetPrivileges()
+        Try
+            ToolAdd.Visible = MUsers.UserListMenuPrivileges()(MainForm.MenuActive)("pcreate")
+            ToolEdit.Visible = MUsers.UserListMenuPrivileges()(MainForm.MenuActive)("pupdate")
+            'ToolSaveMenuAkses.Visible = MUsers.UserListMenuPrivileges()(MainForm.MenuActive)("pupdate")
+            ToolDelete.Visible = MUsers.UserListMenuPrivileges()(MainForm.MenuActive)("pdelete")
+        Catch ex As Exception
+            MsgBox(ex.Message)
+        End Try
+    End Sub
     Public Sub init()
+        SetPrivileges()
         ToolAdd.Enabled = True
         ToolEdit.Enabled = False
         ToolDelete.Enabled = False

@@ -74,11 +74,24 @@ Public Class CDataAcces 'Name dari Class yang dibuat.
         End Set
     End Property
 
-    Protected Sub BeginTrans(Optional message As String = "attempting process data, please wait ... ")
-        'StartProgress()
+    Protected Sub StartProgress()
         MainForm.ToolProgressBar1.Visible = True
         MainForm.ToolProgressBar1.Value = 0
         MainForm.ToolProgressBar1.Style = ProgressBarStyle.Marquee
+        MainForm.ProgressBar1.Visible = True
+        If Not MainForm.bw.IsBusy Then
+            MainForm.bw.RunWorkerAsync()
+        End If
+
+    End Sub
+    Protected Sub StopProgress()
+        MainForm.ToolProgressBar1.Value = 100
+        MainForm.ToolProgressBar1.Style = ProgressBarStyle.Blocks
+        MainForm.ToolProgressBar1.Visible = False
+        MainForm.bw.CancelAsync()
+    End Sub
+    Protected Sub BeginTrans(Optional message As String = "attempting process data, please wait ... ")
+        StartProgress()
         MyApplication.ShowStatus(message, INFO_STAT, False)
         Cursor.Current = Cursors.WaitCursor
         If mCONN.State <> ConnectionState.Closed Then mCONN.Close()
@@ -90,9 +103,6 @@ Public Class CDataAcces 'Name dari Class yang dibuat.
     Protected Sub CommitTrans(Optional message As String = " process have been completed", Optional actlog As String = "")
         Trans.Commit()
         mCONN.Close()
-        'MainForm.ToolProgressBar1.Visible = True
-        MainForm.ToolProgressBar1.Value = 100
-        MainForm.ToolProgressBar1.Style = ProgressBarStyle.Blocks
 
         If rowCountAffected > 0 And actlog <> "delete" Then
             'Dim LogMsg As String = "Done. " & rowCountAffected & message
@@ -105,22 +115,30 @@ Public Class CDataAcces 'Name dari Class yang dibuat.
             MyApplication.ShowStatus(LogMsg, INFO_STAT)
         End If
         Me.StringSQL = ""
+        'MainForm.bw.CancelAsync()
+        StopProgress()
         Cursor.Current = Cursors.Default
     End Sub
     Protected Sub RollbackTrans(Optional message As String = " process fails", Optional actlog As String = "")
-        MainForm.ToolProgressBar1.Value = 100
-        MainForm.ToolProgressBar1.Style = ProgressBarStyle.Blocks
-        If Trans.Connection.State <> ConnectionState.Closed Then
-            Trans.Rollback() 'Rollback All Transaction
-            mCONN.Close()
+        Try
+            MainForm.ToolProgressBar1.Value = 100
+            MainForm.ToolProgressBar1.Style = ProgressBarStyle.Blocks
+            If Trans.Connection.State <> ConnectionState.Closed Then
+                Trans.Rollback() 'Rollback All Transaction
+                mCONN.Close()
+            End If
 
-            'StopProgress()
-        End If
-
-        Dim LogMsg As String = "RollbackTrans. " & message
-        ErrorLogger.WriteToErrorLog(LogMsg & vbCrLf & Me.StringSQL, actlog, ERROR_STAT, actlog, "2")
-        MyApplication.ShowStatus(LogMsg, WARNING_STAT, True, 10000)
+            Dim LogMsg As String = "RollbackTrans. " & message
+            ErrorLogger.WriteToErrorLog(LogMsg & vbCrLf & Me.StringSQL, actlog, ERROR_STAT, actlog, "2")
+            MyApplication.ShowStatus(LogMsg, WARNING_STAT, True, 10000)
+            
+        Catch ex As Exception
+            Dim LogMsg As String = "RollbackTrans Error. " & message
+            ErrorLogger.WriteToErrorLog(LogMsg & vbCrLf & Me.StringSQL, actlog, ERROR_STAT, actlog, "2")
+            MyApplication.ShowStatus(LogMsg, WARNING_STAT, True, 10000)
+        End Try
         Me.StringSQL = ""
+        StopProgress()
         Cursor.Current = Cursors.Default
     End Sub
 

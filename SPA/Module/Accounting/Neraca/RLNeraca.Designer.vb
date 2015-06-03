@@ -23,7 +23,9 @@ Partial Class RLNeraca
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
         Me.components = New System.ComponentModel.Container()
-        Dim ReportDataSource2 As Microsoft.Reporting.WinForms.ReportDataSource = New Microsoft.Reporting.WinForms.ReportDataSource()
+        Dim ReportDataSource1 As Microsoft.Reporting.WinForms.ReportDataSource = New Microsoft.Reporting.WinForms.ReportDataSource()
+        Me.lneracaBindingSource = New System.Windows.Forms.BindingSource(Me.components)
+        Me.simagro = New SPA.simagro()
         Me.Panel2 = New System.Windows.Forms.Panel()
         Me.ReportViewer1 = New Microsoft.Reporting.WinForms.ReportViewer()
         Me.Panel1 = New System.Windows.Forms.Panel()
@@ -31,15 +33,23 @@ Partial Class RLNeraca
         Me.GroupBox1 = New System.Windows.Forms.GroupBox()
         Me.DateTimePicker2 = New System.Windows.Forms.DateTimePicker()
         Me.Label2 = New System.Windows.Forms.Label()
-        Me.simagro = New SPA.simagro()
-        Me.lneracaBindingSource = New System.Windows.Forms.BindingSource(Me.components)
         Me.lneracaTableAdapter = New SPA.simagroTableAdapters.lneracaTableAdapter()
+        CType(Me.lneracaBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.simagro, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.Panel2.SuspendLayout()
         Me.Panel1.SuspendLayout()
         Me.GroupBox1.SuspendLayout()
-        CType(Me.simagro, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.lneracaBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
+        '
+        'lneracaBindingSource
+        '
+        Me.lneracaBindingSource.DataMember = "lneraca"
+        Me.lneracaBindingSource.DataSource = Me.simagro
+        '
+        'simagro
+        '
+        Me.simagro.DataSetName = "simagro"
+        Me.simagro.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema
         '
         'Panel2
         '
@@ -53,9 +63,9 @@ Partial Class RLNeraca
         '
         'ReportViewer1
         '
-        ReportDataSource2.Name = "LNeraca"
-        ReportDataSource2.Value = Me.lneracaBindingSource
-        Me.ReportViewer1.LocalReport.DataSources.Add(ReportDataSource2)
+        ReportDataSource1.Name = "LNeraca"
+        ReportDataSource1.Value = Me.lneracaBindingSource
+        Me.ReportViewer1.LocalReport.DataSources.Add(ReportDataSource1)
         Me.ReportViewer1.LocalReport.ReportEmbeddedResource = "SPA.DRLNeraca.rdlc"
         Me.ReportViewer1.Location = New System.Drawing.Point(9, 13)
         Me.ReportViewer1.Margin = New System.Windows.Forms.Padding(4)
@@ -116,16 +126,6 @@ Partial Class RLNeraca
         Me.Label2.TabIndex = 6
         Me.Label2.Text = "s/d"
         '
-        'simagro
-        '
-        Me.simagro.DataSetName = "simagro"
-        Me.simagro.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema
-        '
-        'lneracaBindingSource
-        '
-        Me.lneracaBindingSource.DataMember = "lneraca"
-        Me.lneracaBindingSource.DataSource = Me.simagro
-        '
         'lneracaTableAdapter
         '
         Me.lneracaTableAdapter.ClearBeforeFill = True
@@ -138,16 +138,16 @@ Partial Class RLNeraca
         Me.Controls.Add(Me.Panel2)
         Me.Controls.Add(Me.Panel1)
         Me.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.Margin = New System.Windows.Forms.Padding(4)
         Me.Name = "RLNeraca"
         Me.ShowInTaskbar = False
-        Me.Text = "RLNeraca"
+        Me.Text = "Lampiran Neraca"
+        CType(Me.lneracaBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.simagro, System.ComponentModel.ISupportInitialize).EndInit()
         Me.Panel2.ResumeLayout(False)
         Me.Panel1.ResumeLayout(False)
         Me.GroupBox1.ResumeLayout(False)
         Me.GroupBox1.PerformLayout()
-        CType(Me.simagro, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.lneracaBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
 
     End Sub

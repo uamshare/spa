@@ -55,9 +55,14 @@ Partial Class FProfilPerusahaan
         Me.statmsg = New System.Windows.Forms.ToolStripStatusLabel()
         Me.kode = New System.Windows.Forms.TextBox()
         Me.nama = New System.Windows.Forms.TextBox()
+        Me.Panel1 = New System.Windows.Forms.Panel()
+        Me.Tool1 = New System.Windows.Forms.ToolStrip()
+        Me.ToolStripLabel1 = New System.Windows.Forms.ToolStripLabel()
         Me.GroupBox1.SuspendLayout()
         Me.GroupBox2.SuspendLayout()
         Me.StatusStrip1.SuspendLayout()
+        Me.Panel1.SuspendLayout()
+        Me.Tool1.SuspendLayout()
         Me.SuspendLayout()
         '
         'GroupBox1
@@ -78,12 +83,12 @@ Partial Class FProfilPerusahaan
         Me.GroupBox1.Controls.Add(Me.Label2)
         Me.GroupBox1.Controls.Add(Me.Label1)
         Me.GroupBox1.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.GroupBox1.Location = New System.Drawing.Point(12, 53)
+        Me.GroupBox1.Location = New System.Drawing.Point(20, 28)
         Me.GroupBox1.Name = "GroupBox1"
-        Me.GroupBox1.Size = New System.Drawing.Size(397, 268)
+        Me.GroupBox1.Size = New System.Drawing.Size(397, 285)
         Me.GroupBox1.TabIndex = 0
         Me.GroupBox1.TabStop = False
-        Me.GroupBox1.Text = "Data Pelanggan"
+        Me.GroupBox1.Text = "Data Perusahaan"
         '
         'Label12
         '
@@ -238,12 +243,12 @@ Partial Class FProfilPerusahaan
         Me.GroupBox2.Controls.Add(Me.Label8)
         Me.GroupBox2.Controls.Add(Me.Label7)
         Me.GroupBox2.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.GroupBox2.Location = New System.Drawing.Point(415, 53)
+        Me.GroupBox2.Location = New System.Drawing.Point(423, 28)
         Me.GroupBox2.Name = "GroupBox2"
-        Me.GroupBox2.Size = New System.Drawing.Size(386, 268)
+        Me.GroupBox2.Size = New System.Drawing.Size(386, 285)
         Me.GroupBox2.TabIndex = 1
         Me.GroupBox2.TabStop = False
-        Me.GroupBox2.Text = "Alamat Pelanggan"
+        Me.GroupBox2.Text = "Alamat Perusahaan"
         '
         'txtProfinsi
         '
@@ -344,7 +349,7 @@ Partial Class FProfilPerusahaan
         'btnSimpan
         '
         Me.btnSimpan.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.btnSimpan.Location = New System.Drawing.Point(635, 338)
+        Me.btnSimpan.Location = New System.Drawing.Point(646, 319)
         Me.btnSimpan.Name = "btnSimpan"
         Me.btnSimpan.Size = New System.Drawing.Size(77, 31)
         Me.btnSimpan.TabIndex = 2
@@ -354,7 +359,7 @@ Partial Class FProfilPerusahaan
         'btnBatal
         '
         Me.btnBatal.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.btnBatal.Location = New System.Drawing.Point(718, 338)
+        Me.btnBatal.Location = New System.Drawing.Point(729, 319)
         Me.btnBatal.Name = "btnBatal"
         Me.btnBatal.Size = New System.Drawing.Size(77, 31)
         Me.btnBatal.TabIndex = 3
@@ -365,10 +370,10 @@ Partial Class FProfilPerusahaan
         '
         Me.StatusStrip1.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.StatusStrip1.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.statmsg})
-        Me.StatusStrip1.Location = New System.Drawing.Point(0, 377)
+        Me.StatusStrip1.Location = New System.Drawing.Point(0, 355)
         Me.StatusStrip1.Name = "StatusStrip1"
         Me.StatusStrip1.Padding = New System.Windows.Forms.Padding(1, 0, 19, 0)
-        Me.StatusStrip1.Size = New System.Drawing.Size(811, 22)
+        Me.StatusStrip1.Size = New System.Drawing.Size(817, 22)
         Me.StatusStrip1.TabIndex = 17
         Me.StatusStrip1.Text = "StatusStrip1"
         '
@@ -381,7 +386,7 @@ Partial Class FProfilPerusahaan
         '
         'kode
         '
-        Me.kode.Location = New System.Drawing.Point(29, 347)
+        Me.kode.Location = New System.Drawing.Point(37, 313)
         Me.kode.Name = "kode"
         Me.kode.Size = New System.Drawing.Size(100, 20)
         Me.kode.TabIndex = 18
@@ -389,36 +394,69 @@ Partial Class FProfilPerusahaan
         '
         'nama
         '
-        Me.nama.Location = New System.Drawing.Point(159, 347)
+        Me.nama.Location = New System.Drawing.Point(167, 313)
         Me.nama.Name = "nama"
         Me.nama.Size = New System.Drawing.Size(100, 20)
         Me.nama.TabIndex = 19
         Me.nama.Visible = False
         '
+        'Panel1
+        '
+        Me.Panel1.Controls.Add(Me.nama)
+        Me.Panel1.Controls.Add(Me.GroupBox1)
+        Me.Panel1.Controls.Add(Me.kode)
+        Me.Panel1.Controls.Add(Me.GroupBox2)
+        Me.Panel1.Controls.Add(Me.btnSimpan)
+        Me.Panel1.Controls.Add(Me.btnBatal)
+        Me.Panel1.Dock = System.Windows.Forms.DockStyle.Fill
+        Me.Panel1.Location = New System.Drawing.Point(0, 0)
+        Me.Panel1.Name = "Panel1"
+        Me.Panel1.Size = New System.Drawing.Size(817, 377)
+        Me.Panel1.TabIndex = 20
+        '
+        'Tool1
+        '
+        Me.Tool1.BackColor = System.Drawing.SystemColors.ActiveCaption
+        Me.Tool1.GripStyle = System.Windows.Forms.ToolStripGripStyle.Hidden
+        Me.Tool1.ImageScalingSize = New System.Drawing.Size(24, 24)
+        Me.Tool1.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.ToolStripLabel1})
+        Me.Tool1.Location = New System.Drawing.Point(0, 0)
+        Me.Tool1.Name = "Tool1"
+        Me.Tool1.RenderMode = System.Windows.Forms.ToolStripRenderMode.System
+        Me.Tool1.Size = New System.Drawing.Size(817, 25)
+        Me.Tool1.TabIndex = 21
+        Me.Tool1.Text = "Tool1"
+        '
+        'ToolStripLabel1
+        '
+        Me.ToolStripLabel1.Name = "ToolStripLabel1"
+        Me.ToolStripLabel1.Size = New System.Drawing.Size(124, 22)
+        Me.ToolStripLabel1.Text = "PROFIL PERUSAHAAN"
+        '
         'FProfilPerusahaan
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(811, 399)
-        Me.Controls.Add(Me.nama)
-        Me.Controls.Add(Me.kode)
+        Me.ClientSize = New System.Drawing.Size(817, 377)
+        Me.Controls.Add(Me.Tool1)
         Me.Controls.Add(Me.StatusStrip1)
-        Me.Controls.Add(Me.btnBatal)
-        Me.Controls.Add(Me.btnSimpan)
-        Me.Controls.Add(Me.GroupBox2)
-        Me.Controls.Add(Me.GroupBox1)
+        Me.Controls.Add(Me.Panel1)
         Me.MaximizeBox = False
         Me.MinimizeBox = False
         Me.Name = "FProfilPerusahaan"
         Me.ShowInTaskbar = False
+        Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent
         Me.Text = "Profil Perusahaan"
-        Me.WindowState = System.Windows.Forms.FormWindowState.Minimized
         Me.GroupBox1.ResumeLayout(False)
         Me.GroupBox1.PerformLayout()
         Me.GroupBox2.ResumeLayout(False)
         Me.GroupBox2.PerformLayout()
         Me.StatusStrip1.ResumeLayout(False)
         Me.StatusStrip1.PerformLayout()
+        Me.Panel1.ResumeLayout(False)
+        Me.Panel1.PerformLayout()
+        Me.Tool1.ResumeLayout(False)
+        Me.Tool1.PerformLayout()
         Me.ResumeLayout(False)
         Me.PerformLayout()
 
@@ -456,4 +494,7 @@ Partial Class FProfilPerusahaan
     Friend WithEvents statmsg As System.Windows.Forms.ToolStripStatusLabel
     Friend WithEvents kode As System.Windows.Forms.TextBox
     Friend WithEvents nama As System.Windows.Forms.TextBox
+    Friend WithEvents Panel1 As System.Windows.Forms.Panel
+    Friend WithEvents Tool1 As System.Windows.Forms.ToolStrip
+    Friend WithEvents ToolStripLabel1 As System.Windows.Forms.ToolStripLabel
 End Class

@@ -6,7 +6,18 @@
     Public ListDataTanaman As List(Of Dictionary(Of String, Object)) '= ModelM.GetDataList
     Private isEdit As Boolean = False
     Private DtPelanggan As DataTable
+    Public Sub SetPrivileges()
+        Try
+            ButtonAdd.Visible = MUsers.UserListMenuPrivileges()(MainForm.MenuActive)("pcreate")
+            ButtonH.Visible = MUsers.UserListMenuPrivileges()(MainForm.MenuActive)("pupdate")
+            'ToolSaveMenuAkses.Visible = MUsers.UserListMenuPrivileges()(MainForm.MenuActive)("pupdate")
+            ButtonDel.Visible = MUsers.UserListMenuPrivileges()(MainForm.MenuActive)("pdelete")
+        Catch ex As Exception
+            MsgBox(ex.Message)
+        End Try
+    End Sub
     Public Sub init()
+        SetPrivileges()
         Me.isEdit = False
         ClearControll()
         NonActiveControll()

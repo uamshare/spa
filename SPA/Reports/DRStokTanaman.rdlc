@@ -99,7 +99,7 @@
                   <Width>0.27268in</Width>
                 </TablixColumn>
                 <TablixColumn>
-                  <Width>2.15232in</Width>
+                  <Width>2.32315in</Width>
                 </TablixColumn>
                 <TablixColumn>
                   <Width>0.91875in</Width>
@@ -1276,10 +1276,9 @@
               </TablixMembers>
             </TablixRowHierarchy>
             <DataSetName>RstockAll</DataSetName>
-            <Top>0.18625in</Top>
             <Left>0.13417in</Left>
             <Height>0.97917in</Height>
-            <Width>9.63609in</Width>
+            <Width>9.80692in</Width>
             <Style>
               <Border>
                 <Style>None</Style>
@@ -1288,17 +1287,17 @@
             </Style>
           </Tablix>
         </ReportItems>
-        <Height>3.12828cm</Height>
+        <Height>2.67849cm</Height>
         <Style>
           <Border>
-            <Style>Solid</Style>
+            <Style>None</Style>
           </Border>
         </Style>
       </Body>
-      <Width>25.67432cm</Width>
+      <Width>25.51557cm</Width>
       <Page>
         <PageHeader>
-          <Height>1.93146cm</Height>
+          <Height>2.16958cm</Height>
           <PrintOnFirstPage>true</PrintOnFirstPage>
           <PrintOnLastPage>true</PrintOnLastPage>
           <ReportItems>
@@ -1309,7 +1308,7 @@
                 <Paragraph>
                   <TextRuns>
                     <TextRun>
-                      <Value>= "Stok " &amp; Parameters!paramtitle.Value</Value>
+                      <Value>=Parameters!paramtitle.Value</Value>
                       <Style>
                         <FontSize>14pt</FontSize>
                         <FontWeight>Bold</FontWeight>
@@ -1443,10 +1442,15 @@
             <Border>
               <Style>None</Style>
             </Border>
+            <BottomBorder>
+              <Color>LightGrey</Color>
+              <Style>Solid</Style>
+              <Width>1pt</Width>
+            </BottomBorder>
           </Style>
         </PageHeader>
         <PageFooter>
-          <Height>1.04042cm</Height>
+          <Height>1.33146cm</Height>
           <PrintOnFirstPage>true</PrintOnFirstPage>
           <PrintOnLastPage>true</PrintOnLastPage>
           <ReportItems>
@@ -1458,7 +1462,9 @@
                   <TextRuns>
                     <TextRun>
                       <Value>="Hal " &amp; Globals!PageNumber &amp; " dari " &amp; Globals!TotalPages</Value>
-                      <Style />
+                      <Style>
+                        <FontSize>8pt</FontSize>
+                      </Style>
                     </TextRun>
                   </TextRuns>
                   <Style>
@@ -1488,7 +1494,7 @@
                 <Paragraph>
                   <TextRuns>
                     <TextRun>
-                      <Value>="di cetak oleh " &amp; Parameters!paramuser.Value</Value>
+                      <Value>="User : " &amp; Parameters!paramuser.Value &amp; "/Waktu : " &amp; Format(Microsoft.VisualBasic.DateAndTime.Now,"dd-MM-yyyy H:mm:ss")</Value>
                       <Style>
                         <FontSize>8pt</FontSize>
                       </Style>
@@ -1517,6 +1523,11 @@
             <Border>
               <Style>None</Style>
             </Border>
+            <TopBorder>
+              <Color>LightGrey</Color>
+              <Style>Solid</Style>
+              <Width>1pt</Width>
+            </TopBorder>
           </Style>
         </PageFooter>
         <PageHeight>21.59cm</PageHeight>

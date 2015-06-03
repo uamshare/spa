@@ -96,7 +96,7 @@ Partial Class FTransferStokTanaman
         Me.TabControl1.Controls.Add(Me.TabPage1)
         Me.TabControl1.Controls.Add(Me.TabPage2)
         Me.TabControl1.Location = New System.Drawing.Point(4, 2)
-        Me.TabControl1.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.TabControl1.Margin = New System.Windows.Forms.Padding(4)
         Me.TabControl1.Name = "TabControl1"
         Me.TabControl1.SelectedIndex = 0
         Me.TabControl1.Size = New System.Drawing.Size(882, 415)
@@ -108,9 +108,9 @@ Partial Class FTransferStokTanaman
         Me.TabPage1.Controls.Add(Me.PanelHeader)
         Me.TabPage1.Controls.Add(Me.PanelFooter)
         Me.TabPage1.Location = New System.Drawing.Point(4, 25)
-        Me.TabPage1.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.TabPage1.Margin = New System.Windows.Forms.Padding(4)
         Me.TabPage1.Name = "TabPage1"
-        Me.TabPage1.Padding = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.TabPage1.Padding = New System.Windows.Forms.Padding(4)
         Me.TabPage1.Size = New System.Drawing.Size(874, 386)
         Me.TabPage1.TabIndex = 0
         Me.TabPage1.Text = "Transfer Stok Masuk"
@@ -122,7 +122,7 @@ Partial Class FTransferStokTanaman
         Me.Panel2.Controls.Add(Me.Tool1)
         Me.Panel2.Dock = System.Windows.Forms.DockStyle.Fill
         Me.Panel2.Location = New System.Drawing.Point(4, 86)
-        Me.Panel2.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.Panel2.Margin = New System.Windows.Forms.Padding(4)
         Me.Panel2.Name = "Panel2"
         Me.Panel2.Size = New System.Drawing.Size(866, 193)
         Me.Panel2.TabIndex = 26
@@ -132,7 +132,7 @@ Partial Class FTransferStokTanaman
         Me.DataGridView1.BackgroundColor = System.Drawing.Color.Silver
         Me.DataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
         Me.DataGridView1.Location = New System.Drawing.Point(19, 43)
-        Me.DataGridView1.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.DataGridView1.Margin = New System.Windows.Forms.Padding(4)
         Me.DataGridView1.Name = "DataGridView1"
         Me.DataGridView1.Size = New System.Drawing.Size(783, 121)
         Me.DataGridView1.TabIndex = 6
@@ -141,22 +141,22 @@ Partial Class FTransferStokTanaman
         '
         Me.Tool1.BackColor = System.Drawing.SystemColors.ActiveCaption
         Me.Tool1.GripStyle = System.Windows.Forms.ToolStripGripStyle.Hidden
-        Me.Tool1.ImageScalingSize = New System.Drawing.Size(32, 32)
+        Me.Tool1.ImageScalingSize = New System.Drawing.Size(24, 24)
         Me.Tool1.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.ToolDelete})
         Me.Tool1.Location = New System.Drawing.Point(0, 0)
         Me.Tool1.Name = "Tool1"
         Me.Tool1.RenderMode = System.Windows.Forms.ToolStripRenderMode.System
-        Me.Tool1.Size = New System.Drawing.Size(866, 39)
+        Me.Tool1.Size = New System.Drawing.Size(866, 31)
         Me.Tool1.TabIndex = 24
         Me.Tool1.Text = "Tool1"
         '
         'ToolDelete
         '
         Me.ToolDelete.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image
-        Me.ToolDelete.Image = Global.SPA.My.Resources.Resources.trush
+        Me.ToolDelete.Image = Global.SPA.My.Resources.Resources.delete1
         Me.ToolDelete.ImageTransparentColor = System.Drawing.Color.Magenta
         Me.ToolDelete.Name = "ToolDelete"
-        Me.ToolDelete.Size = New System.Drawing.Size(36, 36)
+        Me.ToolDelete.Size = New System.Drawing.Size(28, 28)
         Me.ToolDelete.Text = "Del"
         '
         'PanelHeader
@@ -172,7 +172,7 @@ Partial Class FTransferStokTanaman
         Me.PanelHeader.Controls.Add(Me.lblName)
         Me.PanelHeader.Dock = System.Windows.Forms.DockStyle.Top
         Me.PanelHeader.Location = New System.Drawing.Point(4, 4)
-        Me.PanelHeader.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.PanelHeader.Margin = New System.Windows.Forms.Padding(4)
         Me.PanelHeader.Name = "PanelHeader"
         Me.PanelHeader.Size = New System.Drawing.Size(866, 82)
         Me.PanelHeader.TabIndex = 25
@@ -181,7 +181,7 @@ Partial Class FTransferStokTanaman
         '
         Me.ttrfmhdesc1.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.ttrfmhdesc1.Location = New System.Drawing.Point(498, 32)
-        Me.ttrfmhdesc1.Margin = New System.Windows.Forms.Padding(5, 5, 5, 5)
+        Me.ttrfmhdesc1.Margin = New System.Windows.Forms.Padding(5)
         Me.ttrfmhdesc1.MaxLength = 254
         Me.ttrfmhdesc1.Multiline = True
         Me.ttrfmhdesc1.Name = "ttrfmhdesc1"
@@ -202,7 +202,7 @@ Partial Class FTransferStokTanaman
         'ButtonH
         '
         Me.ButtonH.Location = New System.Drawing.Point(251, 32)
-        Me.ButtonH.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.ButtonH.Margin = New System.Windows.Forms.Padding(4)
         Me.ButtonH.Name = "ButtonH"
         Me.ButtonH.Size = New System.Drawing.Size(24, 24)
         Me.ButtonH.TabIndex = 19
@@ -225,7 +225,7 @@ Partial Class FTransferStokTanaman
         '
         Me.DateTimePicker1.Format = System.Windows.Forms.DateTimePickerFormat.Custom
         Me.DateTimePicker1.Location = New System.Drawing.Point(107, 10)
-        Me.DateTimePicker1.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.DateTimePicker1.Margin = New System.Windows.Forms.Padding(4)
         Me.DateTimePicker1.Name = "DateTimePicker1"
         Me.DateTimePicker1.Size = New System.Drawing.Size(167, 22)
         Me.DateTimePicker1.TabIndex = 1
@@ -234,7 +234,7 @@ Partial Class FTransferStokTanaman
         '
         Me.TxtNoMasuk.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.TxtNoMasuk.Location = New System.Drawing.Point(107, 33)
-        Me.TxtNoMasuk.Margin = New System.Windows.Forms.Padding(5, 5, 5, 5)
+        Me.TxtNoMasuk.Margin = New System.Windows.Forms.Padding(5)
         Me.TxtNoMasuk.MaxLength = 13
         Me.TxtNoMasuk.Name = "TxtNoMasuk"
         Me.TxtNoMasuk.Size = New System.Drawing.Size(145, 22)
@@ -266,7 +266,7 @@ Partial Class FTransferStokTanaman
         Me.PanelFooter.Controls.Add(Me.ButtonSave)
         Me.PanelFooter.Dock = System.Windows.Forms.DockStyle.Bottom
         Me.PanelFooter.Location = New System.Drawing.Point(4, 279)
-        Me.PanelFooter.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.PanelFooter.Margin = New System.Windows.Forms.Padding(4)
         Me.PanelFooter.Name = "PanelFooter"
         Me.PanelFooter.Size = New System.Drawing.Size(866, 103)
         Me.PanelFooter.TabIndex = 24
@@ -275,7 +275,7 @@ Partial Class FTransferStokTanaman
         '
         Me.txtsum2tab1.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.txtsum2tab1.Location = New System.Drawing.Point(675, 31)
-        Me.txtsum2tab1.Margin = New System.Windows.Forms.Padding(5, 5, 5, 5)
+        Me.txtsum2tab1.Margin = New System.Windows.Forms.Padding(5)
         Me.txtsum2tab1.MaxLength = 13
         Me.txtsum2tab1.Name = "txtsum2tab1"
         Me.txtsum2tab1.ReadOnly = True
@@ -298,7 +298,7 @@ Partial Class FTransferStokTanaman
         '
         Me.txtsum1tab1.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.txtsum1tab1.Location = New System.Drawing.Point(675, 7)
-        Me.txtsum1tab1.Margin = New System.Windows.Forms.Padding(5, 5, 5, 5)
+        Me.txtsum1tab1.Margin = New System.Windows.Forms.Padding(5)
         Me.txtsum1tab1.MaxLength = 13
         Me.txtsum1tab1.Name = "txtsum1tab1"
         Me.txtsum1tab1.ReadOnly = True
@@ -323,7 +323,7 @@ Partial Class FTransferStokTanaman
         '
         Me.ButtonPrint.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.ButtonPrint.Location = New System.Drawing.Point(260, 62)
-        Me.ButtonPrint.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.ButtonPrint.Margin = New System.Windows.Forms.Padding(4)
         Me.ButtonPrint.Name = "ButtonPrint"
         Me.ButtonPrint.Size = New System.Drawing.Size(77, 31)
         Me.ButtonPrint.TabIndex = 32
@@ -334,7 +334,7 @@ Partial Class FTransferStokTanaman
         '
         Me.ButtonDel.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.ButtonDel.Location = New System.Drawing.Point(175, 62)
-        Me.ButtonDel.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.ButtonDel.Margin = New System.Windows.Forms.Padding(4)
         Me.ButtonDel.Name = "ButtonDel"
         Me.ButtonDel.Size = New System.Drawing.Size(77, 31)
         Me.ButtonDel.TabIndex = 31
@@ -345,7 +345,7 @@ Partial Class FTransferStokTanaman
         '
         Me.ButtonAdd.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.ButtonAdd.Location = New System.Drawing.Point(8, 62)
-        Me.ButtonAdd.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.ButtonAdd.Margin = New System.Windows.Forms.Padding(4)
         Me.ButtonAdd.Name = "ButtonAdd"
         Me.ButtonAdd.Size = New System.Drawing.Size(77, 31)
         Me.ButtonAdd.TabIndex = 30
@@ -356,7 +356,7 @@ Partial Class FTransferStokTanaman
         '
         Me.ButtonCancel.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.ButtonCancel.Location = New System.Drawing.Point(786, 62)
-        Me.ButtonCancel.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.ButtonCancel.Margin = New System.Windows.Forms.Padding(4)
         Me.ButtonCancel.Name = "ButtonCancel"
         Me.ButtonCancel.Size = New System.Drawing.Size(77, 31)
         Me.ButtonCancel.TabIndex = 29
@@ -367,7 +367,7 @@ Partial Class FTransferStokTanaman
         '
         Me.ButtonSave.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.ButtonSave.Location = New System.Drawing.Point(93, 62)
-        Me.ButtonSave.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.ButtonSave.Margin = New System.Windows.Forms.Padding(4)
         Me.ButtonSave.Name = "ButtonSave"
         Me.ButtonSave.Size = New System.Drawing.Size(77, 31)
         Me.ButtonSave.TabIndex = 28
@@ -380,9 +380,9 @@ Partial Class FTransferStokTanaman
         Me.TabPage2.Controls.Add(Me.PanelHeader2)
         Me.TabPage2.Controls.Add(Me.PanelFooter2)
         Me.TabPage2.Location = New System.Drawing.Point(4, 25)
-        Me.TabPage2.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.TabPage2.Margin = New System.Windows.Forms.Padding(4)
         Me.TabPage2.Name = "TabPage2"
-        Me.TabPage2.Padding = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.TabPage2.Padding = New System.Windows.Forms.Padding(4)
         Me.TabPage2.Size = New System.Drawing.Size(874, 386)
         Me.TabPage2.TabIndex = 1
         Me.TabPage2.Text = "Transfer Stok Keluar"
@@ -394,7 +394,7 @@ Partial Class FTransferStokTanaman
         Me.Panel1.Controls.Add(Me.ToolStrip1)
         Me.Panel1.Dock = System.Windows.Forms.DockStyle.Fill
         Me.Panel1.Location = New System.Drawing.Point(4, 86)
-        Me.Panel1.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.Panel1.Margin = New System.Windows.Forms.Padding(4)
         Me.Panel1.Name = "Panel1"
         Me.Panel1.Size = New System.Drawing.Size(866, 196)
         Me.Panel1.TabIndex = 29
@@ -404,7 +404,7 @@ Partial Class FTransferStokTanaman
         Me.DataGridView2.BackgroundColor = System.Drawing.Color.Silver
         Me.DataGridView2.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
         Me.DataGridView2.Location = New System.Drawing.Point(26, 55)
-        Me.DataGridView2.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.DataGridView2.Margin = New System.Windows.Forms.Padding(4)
         Me.DataGridView2.Name = "DataGridView2"
         Me.DataGridView2.Size = New System.Drawing.Size(782, 114)
         Me.DataGridView2.TabIndex = 6
@@ -413,22 +413,22 @@ Partial Class FTransferStokTanaman
         '
         Me.ToolStrip1.BackColor = System.Drawing.SystemColors.ActiveCaption
         Me.ToolStrip1.GripStyle = System.Windows.Forms.ToolStripGripStyle.Hidden
-        Me.ToolStrip1.ImageScalingSize = New System.Drawing.Size(32, 32)
+        Me.ToolStrip1.ImageScalingSize = New System.Drawing.Size(24, 24)
         Me.ToolStrip1.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.ToolDelete2})
         Me.ToolStrip1.Location = New System.Drawing.Point(0, 0)
         Me.ToolStrip1.Name = "ToolStrip1"
         Me.ToolStrip1.RenderMode = System.Windows.Forms.ToolStripRenderMode.System
-        Me.ToolStrip1.Size = New System.Drawing.Size(866, 39)
+        Me.ToolStrip1.Size = New System.Drawing.Size(866, 31)
         Me.ToolStrip1.TabIndex = 24
         Me.ToolStrip1.Text = "ToolStrip1"
         '
         'ToolDelete2
         '
         Me.ToolDelete2.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image
-        Me.ToolDelete2.Image = Global.SPA.My.Resources.Resources.trush
+        Me.ToolDelete2.Image = Global.SPA.My.Resources.Resources.delete1
         Me.ToolDelete2.ImageTransparentColor = System.Drawing.Color.Magenta
         Me.ToolDelete2.Name = "ToolDelete2"
-        Me.ToolDelete2.Size = New System.Drawing.Size(36, 36)
+        Me.ToolDelete2.Size = New System.Drawing.Size(28, 28)
         Me.ToolDelete2.Text = "Del"
         '
         'PanelHeader2
@@ -444,7 +444,7 @@ Partial Class FTransferStokTanaman
         Me.PanelHeader2.Controls.Add(Me.Label7)
         Me.PanelHeader2.Dock = System.Windows.Forms.DockStyle.Top
         Me.PanelHeader2.Location = New System.Drawing.Point(4, 4)
-        Me.PanelHeader2.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.PanelHeader2.Margin = New System.Windows.Forms.Padding(4)
         Me.PanelHeader2.Name = "PanelHeader2"
         Me.PanelHeader2.Size = New System.Drawing.Size(866, 82)
         Me.PanelHeader2.TabIndex = 28
@@ -453,7 +453,7 @@ Partial Class FTransferStokTanaman
         '
         Me.ttrfmhdesc2.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.ttrfmhdesc2.Location = New System.Drawing.Point(498, 32)
-        Me.ttrfmhdesc2.Margin = New System.Windows.Forms.Padding(5, 5, 5, 5)
+        Me.ttrfmhdesc2.Margin = New System.Windows.Forms.Padding(5)
         Me.ttrfmhdesc2.MaxLength = 254
         Me.ttrfmhdesc2.Multiline = True
         Me.ttrfmhdesc2.Name = "ttrfmhdesc2"
@@ -474,7 +474,7 @@ Partial Class FTransferStokTanaman
         'ButtonH2
         '
         Me.ButtonH2.Location = New System.Drawing.Point(251, 32)
-        Me.ButtonH2.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.ButtonH2.Margin = New System.Windows.Forms.Padding(4)
         Me.ButtonH2.Name = "ButtonH2"
         Me.ButtonH2.Size = New System.Drawing.Size(24, 24)
         Me.ButtonH2.TabIndex = 19
@@ -497,7 +497,7 @@ Partial Class FTransferStokTanaman
         '
         Me.DateTimePicker2.Format = System.Windows.Forms.DateTimePickerFormat.Custom
         Me.DateTimePicker2.Location = New System.Drawing.Point(107, 10)
-        Me.DateTimePicker2.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.DateTimePicker2.Margin = New System.Windows.Forms.Padding(4)
         Me.DateTimePicker2.Name = "DateTimePicker2"
         Me.DateTimePicker2.Size = New System.Drawing.Size(167, 22)
         Me.DateTimePicker2.TabIndex = 1
@@ -506,7 +506,7 @@ Partial Class FTransferStokTanaman
         '
         Me.TxtNoKeluar.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.TxtNoKeluar.Location = New System.Drawing.Point(107, 33)
-        Me.TxtNoKeluar.Margin = New System.Windows.Forms.Padding(5, 5, 5, 5)
+        Me.TxtNoKeluar.Margin = New System.Windows.Forms.Padding(5)
         Me.TxtNoKeluar.MaxLength = 13
         Me.TxtNoKeluar.Name = "TxtNoKeluar"
         Me.TxtNoKeluar.Size = New System.Drawing.Size(145, 22)
@@ -538,7 +538,7 @@ Partial Class FTransferStokTanaman
         Me.PanelFooter2.Controls.Add(Me.ButtonSave2)
         Me.PanelFooter2.Dock = System.Windows.Forms.DockStyle.Bottom
         Me.PanelFooter2.Location = New System.Drawing.Point(4, 282)
-        Me.PanelFooter2.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.PanelFooter2.Margin = New System.Windows.Forms.Padding(4)
         Me.PanelFooter2.Name = "PanelFooter2"
         Me.PanelFooter2.Size = New System.Drawing.Size(866, 100)
         Me.PanelFooter2.TabIndex = 27
@@ -547,7 +547,7 @@ Partial Class FTransferStokTanaman
         '
         Me.txtsum2tab2.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.txtsum2tab2.Location = New System.Drawing.Point(676, 32)
-        Me.txtsum2tab2.Margin = New System.Windows.Forms.Padding(5, 5, 5, 5)
+        Me.txtsum2tab2.Margin = New System.Windows.Forms.Padding(5)
         Me.txtsum2tab2.MaxLength = 13
         Me.txtsum2tab2.Name = "txtsum2tab2"
         Me.txtsum2tab2.ReadOnly = True
@@ -570,7 +570,7 @@ Partial Class FTransferStokTanaman
         '
         Me.txtsum1tab2.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.txtsum1tab2.Location = New System.Drawing.Point(676, 7)
-        Me.txtsum1tab2.Margin = New System.Windows.Forms.Padding(5, 5, 5, 5)
+        Me.txtsum1tab2.Margin = New System.Windows.Forms.Padding(5)
         Me.txtsum1tab2.MaxLength = 13
         Me.txtsum1tab2.Name = "txtsum1tab2"
         Me.txtsum1tab2.ReadOnly = True
@@ -595,7 +595,7 @@ Partial Class FTransferStokTanaman
         '
         Me.ButtonPrint2.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.ButtonPrint2.Location = New System.Drawing.Point(260, 63)
-        Me.ButtonPrint2.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.ButtonPrint2.Margin = New System.Windows.Forms.Padding(4)
         Me.ButtonPrint2.Name = "ButtonPrint2"
         Me.ButtonPrint2.Size = New System.Drawing.Size(77, 31)
         Me.ButtonPrint2.TabIndex = 32
@@ -606,7 +606,7 @@ Partial Class FTransferStokTanaman
         '
         Me.ButtonDel2.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.ButtonDel2.Location = New System.Drawing.Point(175, 63)
-        Me.ButtonDel2.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.ButtonDel2.Margin = New System.Windows.Forms.Padding(4)
         Me.ButtonDel2.Name = "ButtonDel2"
         Me.ButtonDel2.Size = New System.Drawing.Size(77, 31)
         Me.ButtonDel2.TabIndex = 31
@@ -617,7 +617,7 @@ Partial Class FTransferStokTanaman
         '
         Me.ButtonAdd2.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.ButtonAdd2.Location = New System.Drawing.Point(8, 63)
-        Me.ButtonAdd2.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.ButtonAdd2.Margin = New System.Windows.Forms.Padding(4)
         Me.ButtonAdd2.Name = "ButtonAdd2"
         Me.ButtonAdd2.Size = New System.Drawing.Size(77, 31)
         Me.ButtonAdd2.TabIndex = 30
@@ -628,7 +628,7 @@ Partial Class FTransferStokTanaman
         '
         Me.ButtonCancel2.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.ButtonCancel2.Location = New System.Drawing.Point(787, 63)
-        Me.ButtonCancel2.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.ButtonCancel2.Margin = New System.Windows.Forms.Padding(4)
         Me.ButtonCancel2.Name = "ButtonCancel2"
         Me.ButtonCancel2.Size = New System.Drawing.Size(77, 31)
         Me.ButtonCancel2.TabIndex = 29
@@ -639,7 +639,7 @@ Partial Class FTransferStokTanaman
         '
         Me.ButtonSave2.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.ButtonSave2.Location = New System.Drawing.Point(93, 63)
-        Me.ButtonSave2.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.ButtonSave2.Margin = New System.Windows.Forms.Padding(4)
         Me.ButtonSave2.Name = "ButtonSave2"
         Me.ButtonSave2.Size = New System.Drawing.Size(77, 31)
         Me.ButtonSave2.TabIndex = 28
@@ -677,7 +677,7 @@ Partial Class FTransferStokTanaman
         Me.ClientSize = New System.Drawing.Size(884, 430)
         Me.Controls.Add(Me.TabControl1)
         Me.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.Margin = New System.Windows.Forms.Padding(4)
         Me.Name = "FTransferStokTanaman"
         Me.Text = "FTransferStokTanaman"
         Me.TabControl1.ResumeLayout(False)

@@ -7,7 +7,18 @@ Public Class FDataBibitTanaman
 
     Private Model As New MBibitTanaman
     Public KeyID As String
+    Public Sub SetPrivileges()
+        Try
+            ToolAdd.Visible = MUsers.UserListMenuPrivileges()(MainForm.MenuActive)("pcreate")
+            ToolEdit.Visible = MUsers.UserListMenuPrivileges()(MainForm.MenuActive)("pupdate")
+            'ToolSaveMenuAkses.Visible = MUsers.UserListMenuPrivileges()(MainForm.MenuActive)("pupdate")
+            ToolDelete.Visible = MUsers.UserListMenuPrivileges()(MainForm.MenuActive)("pdelete")
+        Catch ex As Exception
+            MsgBox(ex.Message)
+        End Try
+    End Sub
     Public Sub init()
+        SetPrivileges()
         ToolAdd.Enabled = True
         ToolEdit.Enabled = False
         ToolDelete.Enabled = False
@@ -362,7 +373,7 @@ Public Class FDataBibitTanaman
                 Next
             Next
 
-            xlWorkSheet.SaveAs("D:\DataTanaman.xlsx")
+            xlWorkSheet.SaveAs("D:\DataBibitTanaman.xlsx")
             xlWorkBook.Close()
             'xlApp.Quit()
 
@@ -370,8 +381,8 @@ Public Class FDataBibitTanaman
             releaseObject(xlWorkBook)
             releaseObject(xlWorkSheet)
 
-            MsgBox("Hasil export tersimpan di D:\DataTanaman.xlsx")
-            Process.Start("D:\DataTanaman.xlsx")
+            MsgBox("Hasil export tersimpan di D:\DataBibitTanaman.xlsx")
+            Process.Start("D:\DataBibitTanaman.xlsx")
         Catch ex As Exception
 
         End Try

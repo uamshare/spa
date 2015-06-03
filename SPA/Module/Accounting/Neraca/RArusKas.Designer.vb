@@ -163,7 +163,7 @@ Partial Class RArusKas
         Me.Margin = New System.Windows.Forms.Padding(4)
         Me.Name = "RArusKas"
         Me.ShowInTaskbar = False
-        Me.Text = "RArusKas"
+        Me.Text = "Arus Kas & Bank"
         CType(Me.cashflowBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.simagro, System.ComponentModel.ISupportInitialize).EndInit()
         Me.Panel2.ResumeLayout(False)

@@ -25,7 +25,9 @@
             Else
                 res = Model.InsertData()
             End If
-            Me.Close()
+            My.Settings.CabangID = txtKode.Text
+            My.Settings.Save()
+            'Me.Close()
         End If
     End Sub
 
@@ -118,39 +120,46 @@
     Private Sub FProfilPerusahaan_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         InitializeData()
         txtKode.Enabled = False
+        kode.Text = txtKode.Text
+        nama.Text = txtNama.Text
+        statmsg.Text = ""
     End Sub
     Private Function InitializeData() As Boolean
         Dim dt As DataTable
         Try
             dt = Model.GetData()
 
-            Dim mlctid As String = dt.Rows.Item(0).Item("mlctid")
-            Dim mlclname As String = dt.Rows.Item(0).Item("mlclname")
-            Dim mcpfname As String = dt.Rows.Item(0).Item("mcpfname")
-            Dim mcpfaddr1 As String = dt.Rows.Item(0).Item("mcpfaddr1")
-            Dim mcpfaddr2 As String = dt.Rows.Item(0).Item("mcpfaddr2")
-            Dim mcpfaddr3 As String = dt.Rows.Item(0).Item("mcpfaddr3")
-            Dim mcpfaddr4 As String = dt.Rows.Item(0).Item("mcpfaddr4")
-            Dim mcpfaddr5 As String = dt.Rows.Item(0).Item("mcpfaddr5")
-            Dim mcpfphone1 As String = dt.Rows.Item(0).Item("mcpfphone1")
-            Dim mcpfphone2 As String = dt.Rows.Item(0).Item("mcpfphone2")
-            Dim mcpfax As String = dt.Rows.Item(0).Item("mcpfax")
-            Dim mcptaxcode As String = dt.Rows.Item(0).Item("mcptaxcode")
-            Dim mcpfemail As String = dt.Rows.Item(0).Item("mcpfemail")
-            txtKode.Text = mlctid
-            txtLokasi.Text = mlclname
-            txtNama.Text = mcpfname
-            txtJalan.Text = mcpfaddr1
-            txtKelurahan.Text = mcpfaddr2
-            txtKecamatan.Text = mcpfaddr3
-            txtKota.Text = mcpfaddr4
-            txtProfinsi.Text = mcpfaddr5
-            txtPhone1.Text = mcpfphone1
-            txtPhone2.Text = mcpfphone2
-            txtFax.Text = mcpfax
-            txtNPWP.Text = mcptaxcode
-            txtEmail.Text = mcpfemail
+            If dt.Rows.Count > 0 Then
+                Dim mlctid As String = dt.Rows.Item(0).Item("mlctid")
+                Dim mlclname As String = dt.Rows.Item(0).Item("mlclname")
+                Dim mcpfname As String = dt.Rows.Item(0).Item("mcpfname")
+                Dim mcpfaddr1 As String = dt.Rows.Item(0).Item("mcpfaddr1")
+                Dim mcpfaddr2 As String = dt.Rows.Item(0).Item("mcpfaddr2")
+                Dim mcpfaddr3 As String = dt.Rows.Item(0).Item("mcpfaddr3")
+                Dim mcpfaddr4 As String = dt.Rows.Item(0).Item("mcpfaddr4")
+                Dim mcpfaddr5 As String = dt.Rows.Item(0).Item("mcpfaddr5")
+                Dim mcpfphone1 As String = dt.Rows.Item(0).Item("mcpfphone1")
+                Dim mcpfphone2 As String = dt.Rows.Item(0).Item("mcpfphone2")
+                Dim mcpfax As String = dt.Rows.Item(0).Item("mcpfax")
+                Dim mcptaxcode As String = dt.Rows.Item(0).Item("mcptaxcode")
+                Dim mcpfemail As String = dt.Rows.Item(0).Item("mcpfemail")
 
+                txtKode.Text = Format(CInt(mlctid), "00")
+                txtLokasi.Text = mlclname
+                txtNama.Text = mcpfname
+                txtJalan.Text = mcpfaddr1
+                txtKelurahan.Text = mcpfaddr2
+                txtKecamatan.Text = mcpfaddr3
+                txtKota.Text = mcpfaddr4
+                txtProfinsi.Text = mcpfaddr5
+                txtPhone1.Text = mcpfphone1
+                txtPhone2.Text = mcpfphone2
+                txtFax.Text = mcpfax
+                txtNPWP.Text = mcptaxcode
+                txtEmail.Text = mcpfemail
+            Else
+                txtKode.Text = My.Settings.CabangID
+            End If
         Catch ex As Exception
             ' tampilkan pesan error
             MessageBox.Show(ex.Message)

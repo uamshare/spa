@@ -249,6 +249,12 @@
     <Compile Include="Module\Accounting\Neraca\RNeraca.vb">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="Module\Accounting\Neraca\RPersedianAkhir.Designer.vb">
+      <DependentUpon>RPersedianAkhir.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Module\Accounting\Neraca\RPersedianAkhir.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="Module\Accounting\RugiLaba\RRugiLaba.Designer.vb">
       <DependentUpon>RRugiLaba.vb</DependentUpon>
     </Compile>
@@ -515,12 +521,6 @@
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Module\version\version.vb" />
-    <Compile Include="Module\ViewReport\FViewReport.Designer.vb">
-      <DependentUpon>FViewReport.vb</DependentUpon>
-    </Compile>
-    <Compile Include="Module\ViewReport\FViewReport.vb">
-      <SubType>Form</SubType>
-    </Compile>
     <Compile Include="Module\ViewReport\FVReport.Designer.vb">
       <DependentUpon>FVReport.vb</DependentUpon>
     </Compile>
@@ -557,6 +557,9 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
+    <None Include="Resource\48x48\key.png" />
+    <None Include="Resource\48x48\users.png" />
+    <None Include="Resource\48x48\check.png" />
     <None Include="Resource\48x48\refresh.png" />
     <None Include="Resource\48x48\find.png" />
     <None Include="Resource\48x48\printer.png" />
@@ -617,11 +620,17 @@
     <EmbeddedResource Include="Module\Accounting\Neraca\RNeraca.resx">
       <DependentUpon>RNeraca.vb</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Module\Accounting\Neraca\RPersedianAkhir.resx">
+      <DependentUpon>RPersedianAkhir.vb</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Module\Accounting\RugiLaba\RRugiLaba.resx">
       <DependentUpon>RRugiLaba.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Module\FLogin.resx">
       <DependentUpon>FLogin.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Module\Inventory\DataBibitTanamanMasuk\FDataBibitTanamanMasuk.resx">
+      <DependentUpon>FDataBibitTanamanMasuk.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Module\Inventory\DataBibitTanamanMasuk\FListBibitTanaman.resx">
       <DependentUpon>FListBibitTanaman.vb</DependentUpon>
@@ -735,9 +744,6 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Module\version\Dialog1.resx">
       <DependentUpon>Dialog1.vb</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Module\ViewReport\FViewReport.resx">
-      <DependentUpon>FViewReport.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Module\ViewReport\FVReport.resx">
       <DependentUpon>FVReport.vb</DependentUpon>
@@ -867,62 +873,62 @@
   <ItemGroup>
     <PublishFile Include="Microsoft.ReportViewer.Common">
       <Visible>False</Visible>
+      <PublishState>Include</PublishState>
+      <IncludeHash>True</IncludeHash>
       <Group>
       </Group>
       <TargetPath>
       </TargetPath>
-      <PublishState>Include</PublishState>
-      <IncludeHash>True</IncludeHash>
       <FileType>Assembly</FileType>
     </PublishFile>
     <PublishFile Include="Microsoft.ReportViewer.DataVisualization">
       <Visible>False</Visible>
+      <PublishState>Include</PublishState>
+      <IncludeHash>True</IncludeHash>
       <Group>
       </Group>
       <TargetPath>
       </TargetPath>
-      <PublishState>Include</PublishState>
-      <IncludeHash>True</IncludeHash>
       <FileType>Assembly</FileType>
     </PublishFile>
     <PublishFile Include="Microsoft.ReportViewer.ProcessingObjectModel">
       <Visible>False</Visible>
+      <PublishState>Include</PublishState>
+      <IncludeHash>True</IncludeHash>
       <Group>
       </Group>
       <TargetPath>
       </TargetPath>
-      <PublishState>Include</PublishState>
-      <IncludeHash>True</IncludeHash>
       <FileType>Assembly</FileType>
     </PublishFile>
     <PublishFile Include="Microsoft.ReportViewer.WinForms">
       <Visible>False</Visible>
+      <PublishState>Include</PublishState>
+      <IncludeHash>True</IncludeHash>
       <Group>
       </Group>
       <TargetPath>
       </TargetPath>
-      <PublishState>Include</PublishState>
-      <IncludeHash>True</IncludeHash>
       <FileType>Assembly</FileType>
     </PublishFile>
     <PublishFile Include="Microsoft.SqlServer.Types">
       <Visible>False</Visible>
+      <PublishState>Include</PublishState>
+      <IncludeHash>True</IncludeHash>
       <Group>
       </Group>
       <TargetPath>
       </TargetPath>
-      <PublishState>Include</PublishState>
-      <IncludeHash>True</IncludeHash>
       <FileType>Assembly</FileType>
     </PublishFile>
     <PublishFile Include="MySql.Data">
       <Visible>False</Visible>
+      <PublishState>Include</PublishState>
+      <IncludeHash>True</IncludeHash>
       <Group>
       </Group>
       <TargetPath>
       </TargetPath>
-      <PublishState>Include</PublishState>
-      <IncludeHash>True</IncludeHash>
       <FileType>Assembly</FileType>
     </PublishFile>
   </ItemGroup>

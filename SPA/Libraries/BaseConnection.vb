@@ -16,6 +16,8 @@ Public Class BaseConnection
         'Dim myConnectionString As String = "server=103.8.79.229;" _
         '        & "uid=tjeloacl;" _
         '        & "pwd=tjelocal123;" _
+        '        & "Persist Security Info=True;" _
+        '        & "Convert Zero Datetime=true;" _
         '        & "database=simagro;"
 
         'MsgBox(myConnectionString)

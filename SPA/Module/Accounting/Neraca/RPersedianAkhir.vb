@@ -1,4 +1,4 @@
-﻿Public Class FRekapStok
+﻿Public Class RPersedianAkhir
     Private Model As New Rstockm
     Public ListDataTanaman As List(Of Dictionary(Of String, Object)) = New MTanaman().GetDataList
     Private Sub FReport_Load(sender As Object, e As EventArgs) Handles MyBase.Load
@@ -29,7 +29,7 @@
         Try
             Dim ds As DataSet = Model.ReportStockAll(datestart, dateend, "RstockAll", viewtable, noref1, noref2)
             Dim param(1) As Microsoft.Reporting.WinForms.ReportParameter
-            param(0) = New Microsoft.Reporting.WinForms.ReportParameter("paramtitle", "Stok " & ComboBox3.Text.Substring(4))
+            param(0) = New Microsoft.Reporting.WinForms.ReportParameter("paramtitle", "Persedian Akhir " & ComboBox3.Text.Substring(4))
             param(1) = New Microsoft.Reporting.WinForms.ReportParameter("paramuser", MUsers.UserInfo()("fullname"))
 
             With ReportViewer1
@@ -46,7 +46,7 @@
         Catch ex As Exception
             MyApplication.ShowStatus(ex.Message & vbCrLf & ex.StackTrace, WARNING_STAT)
         End Try
-        
+
     End Sub
 
     Private Sub Button1_Click(sender As Object, e As EventArgs) Handles Button1.Click

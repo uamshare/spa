@@ -23,7 +23,9 @@ Partial Class RBukuBesar
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
         Me.components = New System.ComponentModel.Container()
-        Dim ReportDataSource2 As Microsoft.Reporting.WinForms.ReportDataSource = New Microsoft.Reporting.WinForms.ReportDataSource()
+        Dim ReportDataSource1 As Microsoft.Reporting.WinForms.ReportDataSource = New Microsoft.Reporting.WinForms.ReportDataSource()
+        Me.bukubesarBindingSource = New System.Windows.Forms.BindingSource(Me.components)
+        Me.simagro = New SPA.simagro()
         Me.Panel2 = New System.Windows.Forms.Panel()
         Me.ReportViewer1 = New Microsoft.Reporting.WinForms.ReportViewer()
         Me.Panel1 = New System.Windows.Forms.Panel()
@@ -38,16 +40,24 @@ Partial Class RBukuBesar
         Me.Label2 = New System.Windows.Forms.Label()
         Me.DateTimePicker1 = New System.Windows.Forms.DateTimePicker()
         Me.Label1 = New System.Windows.Forms.Label()
-        Me.simagro = New SPA.simagro()
-        Me.bukubesarBindingSource = New System.Windows.Forms.BindingSource(Me.components)
         Me.bukubesarTableAdapter = New SPA.simagroTableAdapters.bukubesarTableAdapter()
+        CType(Me.bukubesarBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.simagro, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.Panel2.SuspendLayout()
         Me.Panel1.SuspendLayout()
         Me.GroupBox2.SuspendLayout()
         Me.GroupBox1.SuspendLayout()
-        CType(Me.simagro, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.bukubesarBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
+        '
+        'bukubesarBindingSource
+        '
+        Me.bukubesarBindingSource.DataMember = "bukubesar"
+        Me.bukubesarBindingSource.DataSource = Me.simagro
+        '
+        'simagro
+        '
+        Me.simagro.DataSetName = "simagro"
+        Me.simagro.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema
         '
         'Panel2
         '
@@ -61,9 +71,9 @@ Partial Class RBukuBesar
         '
         'ReportViewer1
         '
-        ReportDataSource2.Name = "BukuBesar"
-        ReportDataSource2.Value = Me.bukubesarBindingSource
-        Me.ReportViewer1.LocalReport.DataSources.Add(ReportDataSource2)
+        ReportDataSource1.Name = "BukuBesar"
+        ReportDataSource1.Value = Me.bukubesarBindingSource
+        Me.ReportViewer1.LocalReport.DataSources.Add(ReportDataSource1)
         Me.ReportViewer1.LocalReport.ReportEmbeddedResource = "SPA.DRBukuBesar.rdlc"
         Me.ReportViewer1.Location = New System.Drawing.Point(9, 15)
         Me.ReportViewer1.Margin = New System.Windows.Forms.Padding(4)
@@ -196,16 +206,6 @@ Partial Class RBukuBesar
         Me.Label1.TabIndex = 4
         Me.Label1.Text = "dari"
         '
-        'simagro
-        '
-        Me.simagro.DataSetName = "simagro"
-        Me.simagro.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema
-        '
-        'bukubesarBindingSource
-        '
-        Me.bukubesarBindingSource.DataMember = "bukubesar"
-        Me.bukubesarBindingSource.DataSource = Me.simagro
-        '
         'bukubesarTableAdapter
         '
         Me.bukubesarTableAdapter.ClearBeforeFill = True
@@ -218,18 +218,18 @@ Partial Class RBukuBesar
         Me.Controls.Add(Me.Panel2)
         Me.Controls.Add(Me.Panel1)
         Me.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.Margin = New System.Windows.Forms.Padding(4)
         Me.Name = "RBukuBesar"
         Me.ShowInTaskbar = False
-        Me.Text = "RBukuBesar"
+        Me.Text = "Buku Besar"
+        CType(Me.bukubesarBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.simagro, System.ComponentModel.ISupportInitialize).EndInit()
         Me.Panel2.ResumeLayout(False)
         Me.Panel1.ResumeLayout(False)
         Me.GroupBox2.ResumeLayout(False)
         Me.GroupBox2.PerformLayout()
         Me.GroupBox1.ResumeLayout(False)
         Me.GroupBox1.PerformLayout()
-        CType(Me.simagro, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.bukubesarBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
 
     End Sub

@@ -31,7 +31,6 @@
     End Function
 
     Function MultipleDeleteData(ByVal ids() As String) As Integer
-
         Try
             BeginTrans("attempting delete data, please wait ... ") 'begin transaction
             cmd.Connection = PCONN
@@ -39,13 +38,12 @@
             If IsArray(ids) And ids.Length > 0 Then
                 For Each groupid As String In ids
                     If Not String.IsNullOrEmpty(groupid) Then
-                        Me.StringSQL = "DELETE FROM " & TableName + " WHERE " & PrimaryKey & " = '" & groupid & "'"
-                        cmd.CommandText = Me.StringSQL
-                        rowCountAffected += cmd.ExecuteNonQuery()
+                        Me.StringSQL = Me.StringSQL + "DELETE FROM " & TableName + " WHERE " & PrimaryKey & " = '" & groupid & "';" & vbCrLf
                     End If
                 Next
+                cmd.CommandText = Me.StringSQL
+                rowCountAffected = cmd.ExecuteNonQuery()
             End If
-
             CommitTrans("Data telah terhapus ", "delete") 'Commit All Transaction
         Catch ex As MySql.Data.MySqlClient.MySqlException
             RollbackTrans("Terjadi kesalahan saat menghapus data. No : " & ex.Number & " Pesan Kesalahan : " & ex.Message, "delete")
@@ -63,11 +61,11 @@
     '        cmd.Connection = PCONN
     '        Dim todata As Integer = 100000
     '        For i As Integer = 1 To todata
-    '            Me.StringSQL = "INSERT INTO " & TableName + "(groupname) VALUES('Group-" & i & "')"
-    '            cmd.CommandText = Me.StringSQL
-    '            rowCountAffected += cmd.ExecuteNonQuery() 'returns the number of rows affected. 
-    '            MainForm.ToolProgressBar1.Value += 100 / todata
+    '            Me.StringSQL = Me.StringSQL + "INSERT INTO " & TableName + "(groupname) VALUES('Group-" & i & "');" & vbCrLf
     '        Next
+    '        cmd.CommandText = Me.StringSQL
+    '        rowCountAffected = cmd.ExecuteNonQuery() 'returns the number of rows affected. 
+    '        'MainForm.ToolProgressBar1.Value += 100 / todata
     '        CommitTrans(" data have been saved ") 'Commit All Transaction
     '    Catch ex As MySql.Data.MySqlClient.MySqlException
     '        RollbackTrans("Error " & ex.Number & " has occurred: " & ex.Message)
@@ -81,9 +79,9 @@
     '    BeginTrans() 'begin transaction
     '    Try
     '        cmd.Connection = PCONN
-    '        Me.StringSQL = "TRUNCATE TABLE " & TableName
+    '        Me.StringSQL = "DELETE FROM " & TableName & " WHERE groupid NOT IN (1,2,3)"
     '        cmd.CommandText = Me.StringSQL
-    '        rowCountAffected += cmd.ExecuteNonQuery() 'returns the number of rows affected. 
+    '        rowCountAffected = cmd.ExecuteNonQuery() 'returns the number of rows affected. 
     '        MyApplication.ShowStatus("Done. Process have been completed")
     '    Catch ex As MySql.Data.MySqlClient.MySqlException
     '        RollbackTrans("Error " & ex.Number & " has occurred: " & ex.Message)

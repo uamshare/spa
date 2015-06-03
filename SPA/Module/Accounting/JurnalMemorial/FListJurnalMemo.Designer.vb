@@ -22,23 +22,15 @@ Partial Class FListJurnalMemo
     'Do not modify it using the code editor.
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
-        Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(FListJurnalMemo))
         Me.PrintDialog1 = New System.Windows.Forms.PrintDialog()
         Me.ToolTextFind = New System.Windows.Forms.ToolStripTextBox()
-        Me.ToolFind = New System.Windows.Forms.ToolStripButton()
-        Me.ToolRefresh = New System.Windows.Forms.ToolStripButton()
         Me.Toolbarang = New System.Windows.Forms.ToolStrip()
-        Me.ToolCheck = New System.Windows.Forms.ToolStripButton()
         Me.ToolStripButton1 = New System.Windows.Forms.ToolStripButton()
         Me.lpageInfo = New System.Windows.Forms.ToolStripLabel()
-        Me.ToolLast = New System.Windows.Forms.ToolStripButton()
-        Me.ToolNext = New System.Windows.Forms.ToolStripButton()
         Me.ToolStripSeparator2 = New System.Windows.Forms.ToolStripSeparator()
         Me.lCountPage = New System.Windows.Forms.ToolStripLabel()
         Me.txtPageCurrent = New System.Windows.Forms.ToolStripTextBox()
         Me.ToolStripSeparator1 = New System.Windows.Forms.ToolStripSeparator()
-        Me.ToolPrev = New System.Windows.Forms.ToolStripButton()
-        Me.ToolFisrt = New System.Windows.Forms.ToolStripButton()
         Me.ToolStripSeparator3 = New System.Windows.Forms.ToolStripSeparator()
         Me.ToolStripLabel1 = New System.Windows.Forms.ToolStripLabel()
         Me.cmbperPage = New System.Windows.Forms.ToolStripComboBox()
@@ -47,6 +39,13 @@ Partial Class FListJurnalMemo
         Me.ToolStrip1 = New System.Windows.Forms.ToolStrip()
         Me.PrintDocument1 = New System.Drawing.Printing.PrintDocument()
         Me.Panelbarang = New System.Windows.Forms.Panel()
+        Me.ToolFisrt = New System.Windows.Forms.ToolStripButton()
+        Me.ToolPrev = New System.Windows.Forms.ToolStripButton()
+        Me.ToolNext = New System.Windows.Forms.ToolStripButton()
+        Me.ToolLast = New System.Windows.Forms.ToolStripButton()
+        Me.ToolRefresh = New System.Windows.Forms.ToolStripButton()
+        Me.ToolFind = New System.Windows.Forms.ToolStripButton()
+        Me.ToolCheck = New System.Windows.Forms.ToolStripButton()
         Me.Toolbarang.SuspendLayout()
         CType(Me.DataGridView1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.ToolStrip1.SuspendLayout()
@@ -63,31 +62,11 @@ Partial Class FListJurnalMemo
         Me.ToolTextFind.Name = "ToolTextFind"
         Me.ToolTextFind.Size = New System.Drawing.Size(200, 39)
         '
-        'ToolFind
-        '
-        Me.ToolFind.Alignment = System.Windows.Forms.ToolStripItemAlignment.Right
-        Me.ToolFind.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image
-        Me.ToolFind.Image = CType(resources.GetObject("ToolFind.Image"), System.Drawing.Image)
-        Me.ToolFind.ImageTransparentColor = System.Drawing.Color.Magenta
-        Me.ToolFind.Name = "ToolFind"
-        Me.ToolFind.Size = New System.Drawing.Size(36, 36)
-        Me.ToolFind.Text = "Find"
-        '
-        'ToolRefresh
-        '
-        Me.ToolRefresh.Alignment = System.Windows.Forms.ToolStripItemAlignment.Right
-        Me.ToolRefresh.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image
-        Me.ToolRefresh.Image = Global.SPA.My.Resources.Resources.refresh1
-        Me.ToolRefresh.ImageTransparentColor = System.Drawing.Color.Magenta
-        Me.ToolRefresh.Name = "ToolRefresh"
-        Me.ToolRefresh.Size = New System.Drawing.Size(36, 36)
-        Me.ToolRefresh.Text = "Refresh"
-        '
         'Toolbarang
         '
         Me.Toolbarang.BackColor = System.Drawing.SystemColors.ActiveCaption
         Me.Toolbarang.GripStyle = System.Windows.Forms.ToolStripGripStyle.Hidden
-        Me.Toolbarang.ImageScalingSize = New System.Drawing.Size(32, 32)
+        Me.Toolbarang.ImageScalingSize = New System.Drawing.Size(24, 24)
         Me.Toolbarang.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.ToolRefresh, Me.ToolFind, Me.ToolTextFind, Me.ToolCheck})
         Me.Toolbarang.Location = New System.Drawing.Point(0, 0)
         Me.Toolbarang.Name = "Toolbarang"
@@ -95,14 +74,6 @@ Partial Class FListJurnalMemo
         Me.Toolbarang.Size = New System.Drawing.Size(519, 39)
         Me.Toolbarang.TabIndex = 9
         Me.Toolbarang.Text = "Tool1"
-        '
-        'ToolCheck
-        '
-        Me.ToolCheck.Image = Global.SPA.My.Resources.Resources.check
-        Me.ToolCheck.ImageTransparentColor = System.Drawing.Color.Magenta
-        Me.ToolCheck.Name = "ToolCheck"
-        Me.ToolCheck.Size = New System.Drawing.Size(93, 36)
-        Me.ToolCheck.Text = "Pilih Data"
         '
         'ToolStripButton1
         '
@@ -119,24 +90,6 @@ Partial Class FListJurnalMemo
         Me.lpageInfo.Name = "lpageInfo"
         Me.lpageInfo.Size = New System.Drawing.Size(102, 15)
         Me.lpageInfo.Text = "1 - 20 as 100 Rows"
-        '
-        'ToolLast
-        '
-        Me.ToolLast.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image
-        Me.ToolLast.Image = Global.SPA.My.Resources.Resources.resultset_last
-        Me.ToolLast.ImageTransparentColor = System.Drawing.Color.Magenta
-        Me.ToolLast.Name = "ToolLast"
-        Me.ToolLast.Size = New System.Drawing.Size(23, 22)
-        Me.ToolLast.Text = "Last"
-        '
-        'ToolNext
-        '
-        Me.ToolNext.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image
-        Me.ToolNext.Image = Global.SPA.My.Resources.Resources.resultset_next
-        Me.ToolNext.ImageTransparentColor = System.Drawing.Color.Magenta
-        Me.ToolNext.Name = "ToolNext"
-        Me.ToolNext.Size = New System.Drawing.Size(23, 22)
-        Me.ToolNext.Text = "Next"
         '
         'ToolStripSeparator2
         '
@@ -159,24 +112,6 @@ Partial Class FListJurnalMemo
         '
         Me.ToolStripSeparator1.Name = "ToolStripSeparator1"
         Me.ToolStripSeparator1.Size = New System.Drawing.Size(6, 25)
-        '
-        'ToolPrev
-        '
-        Me.ToolPrev.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image
-        Me.ToolPrev.Image = Global.SPA.My.Resources.Resources.resultset_previous
-        Me.ToolPrev.ImageTransparentColor = System.Drawing.Color.Magenta
-        Me.ToolPrev.Name = "ToolPrev"
-        Me.ToolPrev.Size = New System.Drawing.Size(23, 22)
-        Me.ToolPrev.Text = "Previous"
-        '
-        'ToolFisrt
-        '
-        Me.ToolFisrt.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image
-        Me.ToolFisrt.Image = Global.SPA.My.Resources.Resources.resultset_first
-        Me.ToolFisrt.ImageTransparentColor = System.Drawing.Color.Magenta
-        Me.ToolFisrt.Name = "ToolFisrt"
-        Me.ToolFisrt.Size = New System.Drawing.Size(23, 22)
-        Me.ToolFisrt.Text = "First"
         '
         'ToolStripSeparator3
         '
@@ -235,6 +170,70 @@ Partial Class FListJurnalMemo
         Me.Panelbarang.Name = "Panelbarang"
         Me.Panelbarang.Size = New System.Drawing.Size(519, 511)
         Me.Panelbarang.TabIndex = 15
+        '
+        'ToolFisrt
+        '
+        Me.ToolFisrt.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image
+        Me.ToolFisrt.Image = Global.SPA.My.Resources.Resources.resultset_first
+        Me.ToolFisrt.ImageTransparentColor = System.Drawing.Color.Magenta
+        Me.ToolFisrt.Name = "ToolFisrt"
+        Me.ToolFisrt.Size = New System.Drawing.Size(23, 22)
+        Me.ToolFisrt.Text = "First"
+        '
+        'ToolPrev
+        '
+        Me.ToolPrev.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image
+        Me.ToolPrev.Image = Global.SPA.My.Resources.Resources.resultset_previous
+        Me.ToolPrev.ImageTransparentColor = System.Drawing.Color.Magenta
+        Me.ToolPrev.Name = "ToolPrev"
+        Me.ToolPrev.Size = New System.Drawing.Size(23, 22)
+        Me.ToolPrev.Text = "Previous"
+        '
+        'ToolNext
+        '
+        Me.ToolNext.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image
+        Me.ToolNext.Image = Global.SPA.My.Resources.Resources.resultset_next
+        Me.ToolNext.ImageTransparentColor = System.Drawing.Color.Magenta
+        Me.ToolNext.Name = "ToolNext"
+        Me.ToolNext.Size = New System.Drawing.Size(23, 22)
+        Me.ToolNext.Text = "Next"
+        '
+        'ToolLast
+        '
+        Me.ToolLast.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image
+        Me.ToolLast.Image = Global.SPA.My.Resources.Resources.resultset_last
+        Me.ToolLast.ImageTransparentColor = System.Drawing.Color.Magenta
+        Me.ToolLast.Name = "ToolLast"
+        Me.ToolLast.Size = New System.Drawing.Size(23, 22)
+        Me.ToolLast.Text = "Last"
+        '
+        'ToolRefresh
+        '
+        Me.ToolRefresh.Alignment = System.Windows.Forms.ToolStripItemAlignment.Right
+        Me.ToolRefresh.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image
+        Me.ToolRefresh.Image = Global.SPA.My.Resources.Resources.refresh2
+        Me.ToolRefresh.ImageTransparentColor = System.Drawing.Color.Magenta
+        Me.ToolRefresh.Name = "ToolRefresh"
+        Me.ToolRefresh.Size = New System.Drawing.Size(28, 36)
+        Me.ToolRefresh.Text = "Refresh"
+        '
+        'ToolFind
+        '
+        Me.ToolFind.Alignment = System.Windows.Forms.ToolStripItemAlignment.Right
+        Me.ToolFind.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image
+        Me.ToolFind.Image = Global.SPA.My.Resources.Resources.find2
+        Me.ToolFind.ImageTransparentColor = System.Drawing.Color.Magenta
+        Me.ToolFind.Name = "ToolFind"
+        Me.ToolFind.Size = New System.Drawing.Size(28, 36)
+        Me.ToolFind.Text = "Find"
+        '
+        'ToolCheck
+        '
+        Me.ToolCheck.Image = Global.SPA.My.Resources.Resources.check1
+        Me.ToolCheck.ImageTransparentColor = System.Drawing.Color.Magenta
+        Me.ToolCheck.Name = "ToolCheck"
+        Me.ToolCheck.Size = New System.Drawing.Size(93, 36)
+        Me.ToolCheck.Text = "Pilih Data"
         '
         'FListJurnalMemo
         '

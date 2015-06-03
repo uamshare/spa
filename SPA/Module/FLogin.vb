@@ -34,6 +34,7 @@
                                         & "Login Info : " & vbCrLf _
                                         & "Username = " & TextBox1.Text & ", Password = " & TextBox2.Text, "Failed Login", "Login")
         End If
+        MainForm.bw.CancelAsync()
         Cursor.Current = Cursors.Default
     End Sub
 
@@ -47,5 +48,8 @@
             TextBox1.Text = "admin"
             TextBox2.Text = "admin"
         End If
+        Panel2.BackColor = Color.WhiteSmoke
+        Panel3.BackColor = Color.WhiteSmoke
+        Panel4.BackColor = Color.WhiteSmoke
     End Sub
 End Class
