@@ -19,7 +19,16 @@
     End Function
     Function FindData(sSearch As String) As DataTable
         If Not String.IsNullOrEmpty(sSearch) Then
-            Me.WHERE = "WHERE mcoadname like '%" & sSearch & "%' OR mcoadno like '%" & sSearch & "%'"
+            Me.WHERE = "WHERE mcoadno like '%" & sSearch & _
+                "%' OR mcoadno like '%" & sSearch & _
+                "%' OR mcoadname like '%" & sSearch & _
+                "%' OR mcoahno like '%" & sSearch & _
+                "%' OR mcoahname like '%" & sSearch & _
+                "%' OR classification like '%" & sSearch & _
+                "%' OR mcoagroup like '%" & sSearch & _
+                "%' OR postbalance like '%" & sSearch & _
+                "%' OR postgl like '%" & sSearch & _
+                "%' OR mcoadno like '%" & sSearch & "%'"
         Else
             Me.WHERE = ""
         End If
@@ -36,11 +45,12 @@
         Return MyBase.InsertData()
     End Function
 
-    Public Overloads Function UpdateData() As Integer
+    Public Overloads Function UpdateData(Optional id As String = "") As Integer
         Dim dtupdated As String
+        Dim pkey As String = IIf(Not String.IsNullOrEmpty(id), id, Me.mcoadno)
         dtupdated = Format(Date.Now, "yyyy/MM/dd hh:m:s")
 
-        Me.StringSQL = "UPDATE " & TableName + " SET mcoadname ='" & mcoadname & "',mcoahno ='" & mcoahno & "', dtupdated ='" & dtupdated & "' WHERE mcoadno='" & mcoadno & "'"
+        Me.StringSQL = "UPDATE " & TableName + " SET mcoadno='" & mcoadno & "',mcoadname ='" & mcoadname & "',mcoahno ='" & mcoahno & "', dtupdated ='" & dtupdated & "' WHERE mcoadno='" & pkey & "'"
         Return MyBase.UpdateData()
     End Function
 

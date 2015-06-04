@@ -35,7 +35,7 @@
 
                 .RowHeadersWidth = 75
                 .Columns("mcoaclassification").Width = 260
-                .Columns("mcoagroup").Width = 100
+                .Columns("mcoagroup").Width = 230
                 .Refresh()
                 If .RowCount > 0 Then
                     For i As Integer = 0 To .Rows.Count - 1

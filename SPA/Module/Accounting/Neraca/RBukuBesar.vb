@@ -41,7 +41,7 @@
         Try
             Dim ds As DataSet = Model.FillRBukuBesar(datestart, dateend, "BukuBesar", noref1, noref2)
             Dim param(2) As Microsoft.Reporting.WinForms.ReportParameter
-            param(0) = New Microsoft.Reporting.WinForms.ReportParameter("title", "Rekap Penjualan")
+            param(0) = New Microsoft.Reporting.WinForms.ReportParameter("title", "Buku Besar")
             param(1) = New Microsoft.Reporting.WinForms.ReportParameter("users", MUsers.UserInfo()("fullname"))
             param(2) = New Microsoft.Reporting.WinForms.ReportParameter("datereport",
                                                                         "dr tgl " & Format(datestart, "dd-MM-yyyy") & _

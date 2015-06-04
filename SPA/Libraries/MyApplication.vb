@@ -135,7 +135,7 @@ Module MyApplication
         With DG
             ' Initialize basic DataGridView properties.
             .Dock = DockStyle.Fill
-            .BackgroundColor = Color.LightGray
+            .BackgroundColor = Color.Lavender 'Color.LightGray
             .BorderStyle = BorderStyle.Fixed3D
 
             ' Set property values appropriate for read-only display and  
@@ -161,7 +161,7 @@ Module MyApplication
 
             ' Set RowHeadersDefaultCellStyle.SelectionBackColor so that its default 
             ' value won't override DataGridView.DefaultCellStyle.SelectionBackColor.
-            .RowHeadersDefaultCellStyle.SelectionBackColor = Color.White
+            .RowHeadersDefaultCellStyle.SelectionBackColor = Color.Empty
             '.RowHeadersDefaultCellStyle.Font = New Font(.Font, FontStyle.Bold)
             .RowHeadersWidth = 100
             ' Set the background color for all rows and for alternating rows.  
@@ -173,10 +173,11 @@ Module MyApplication
             .ColumnHeadersDefaultCellStyle.ForeColor = Color.White
             .ColumnHeadersDefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter
             .ColumnHeadersHeight = 35
-            .ColumnHeadersDefaultCellStyle.BackColor = Color.Black
-            .RowHeadersDefaultCellStyle.BackColor = Color.Black
-
+            .ColumnHeadersDefaultCellStyle.BackColor = Color.LightSteelBlue
+            .RowHeadersDefaultCellStyle.BackColor = Color.LightSteelBlue
+            .RowHeadersDefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter
             .EditMode = DataGridViewEditMode.EditOnEnter
+            .EnableHeadersVisualStyles = True
         End With
     End Sub
 End Module

@@ -97,6 +97,7 @@ Partial Class FCOAheaderAdd
         Me.txtKlasifikasi.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.txtKlasifikasi.Location = New System.Drawing.Point(153, 11)
         Me.txtKlasifikasi.Name = "txtKlasifikasi"
+        Me.txtKlasifikasi.ReadOnly = True
         Me.txtKlasifikasi.Size = New System.Drawing.Size(258, 22)
         Me.txtKlasifikasi.TabIndex = 1
         '

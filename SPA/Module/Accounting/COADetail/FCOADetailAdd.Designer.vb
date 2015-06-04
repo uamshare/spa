@@ -92,6 +92,7 @@ Partial Class FCOADetailAdd
         Me.txtCoaHeader.Location = New System.Drawing.Point(127, 10)
         Me.txtCoaHeader.MaxLength = 35
         Me.txtCoaHeader.Name = "txtCoaHeader"
+        Me.txtCoaHeader.ReadOnly = True
         Me.txtCoaHeader.Size = New System.Drawing.Size(287, 22)
         Me.txtCoaHeader.TabIndex = 1
         '
@@ -146,6 +147,7 @@ Partial Class FCOADetailAdd
         'txtDetail
         '
         Me.txtDetail.Location = New System.Drawing.Point(28, 113)
+        Me.txtDetail.MaxLength = 6
         Me.txtDetail.Name = "txtDetail"
         Me.txtDetail.Size = New System.Drawing.Size(75, 20)
         Me.txtDetail.TabIndex = 28

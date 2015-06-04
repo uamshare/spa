@@ -22,7 +22,6 @@ Partial Class FListTanaman
     'Do not modify it using the code editor.
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
-        Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(FListTanaman))
         Me.Panel1 = New System.Windows.Forms.Panel()
         Me.DataGridView1 = New System.Windows.Forms.DataGridView()
         Me.ToolStrip1 = New System.Windows.Forms.ToolStrip()
@@ -56,11 +55,11 @@ Partial Class FListTanaman
         Me.Panel1.Controls.Add(Me.DataGridView1)
         Me.Panel1.Controls.Add(Me.ToolStrip1)
         Me.Panel1.Controls.Add(Me.Tool1)
-        Me.Panel1.Dock = System.Windows.Forms.DockStyle.Left
+        Me.Panel1.Dock = System.Windows.Forms.DockStyle.Fill
         Me.Panel1.Location = New System.Drawing.Point(0, 0)
         Me.Panel1.Margin = New System.Windows.Forms.Padding(4)
         Me.Panel1.Name = "Panel1"
-        Me.Panel1.Size = New System.Drawing.Size(812, 452)
+        Me.Panel1.Size = New System.Drawing.Size(570, 452)
         Me.Panel1.TabIndex = 8
         '
         'DataGridView1
@@ -83,7 +82,7 @@ Partial Class FListTanaman
         Me.ToolStrip1.Location = New System.Drawing.Point(0, 427)
         Me.ToolStrip1.Name = "ToolStrip1"
         Me.ToolStrip1.RenderMode = System.Windows.Forms.ToolStripRenderMode.System
-        Me.ToolStrip1.Size = New System.Drawing.Size(812, 25)
+        Me.ToolStrip1.Size = New System.Drawing.Size(570, 25)
         Me.ToolStrip1.TabIndex = 19
         Me.ToolStrip1.Text = "ToolStrip1"
         '
@@ -184,7 +183,7 @@ Partial Class FListTanaman
         Me.Tool1.Location = New System.Drawing.Point(0, 0)
         Me.Tool1.Name = "Tool1"
         Me.Tool1.RenderMode = System.Windows.Forms.ToolStripRenderMode.System
-        Me.Tool1.Size = New System.Drawing.Size(812, 39)
+        Me.Tool1.Size = New System.Drawing.Size(570, 31)
         Me.Tool1.TabIndex = 9
         Me.Tool1.Text = "Tool1"
         '
@@ -192,34 +191,34 @@ Partial Class FListTanaman
         '
         Me.ToolRefresh.Alignment = System.Windows.Forms.ToolStripItemAlignment.Right
         Me.ToolRefresh.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image
-        Me.ToolRefresh.Image = Global.SPA.My.Resources.Resources.refresh1
+        Me.ToolRefresh.Image = Global.SPA.My.Resources.Resources.refresh2
         Me.ToolRefresh.ImageTransparentColor = System.Drawing.Color.Magenta
         Me.ToolRefresh.Name = "ToolRefresh"
-        Me.ToolRefresh.Size = New System.Drawing.Size(36, 36)
+        Me.ToolRefresh.Size = New System.Drawing.Size(28, 28)
         Me.ToolRefresh.Text = "Refresh"
         '
         'ToolFind
         '
         Me.ToolFind.Alignment = System.Windows.Forms.ToolStripItemAlignment.Right
         Me.ToolFind.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image
-        Me.ToolFind.Image = CType(resources.GetObject("ToolFind.Image"), System.Drawing.Image)
+        Me.ToolFind.Image = Global.SPA.My.Resources.Resources.find2
         Me.ToolFind.ImageTransparentColor = System.Drawing.Color.Magenta
         Me.ToolFind.Name = "ToolFind"
-        Me.ToolFind.Size = New System.Drawing.Size(36, 36)
+        Me.ToolFind.Size = New System.Drawing.Size(28, 28)
         Me.ToolFind.Text = "Find"
         '
         'ToolTextFind
         '
         Me.ToolTextFind.Alignment = System.Windows.Forms.ToolStripItemAlignment.Right
         Me.ToolTextFind.Name = "ToolTextFind"
-        Me.ToolTextFind.Size = New System.Drawing.Size(332, 39)
+        Me.ToolTextFind.Size = New System.Drawing.Size(332, 31)
         '
         'ToolCheck
         '
         Me.ToolCheck.Image = Global.SPA.My.Resources.Resources.check1
         Me.ToolCheck.ImageTransparentColor = System.Drawing.Color.Magenta
         Me.ToolCheck.Name = "ToolCheck"
-        Me.ToolCheck.Size = New System.Drawing.Size(85, 36)
+        Me.ToolCheck.Size = New System.Drawing.Size(85, 28)
         Me.ToolCheck.Text = "Pilih Data"
         Me.ToolCheck.ToolTipText = "Pilih Data"
         '
@@ -227,7 +226,7 @@ Partial Class FListTanaman
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(8.0!, 16.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(813, 452)
+        Me.ClientSize = New System.Drawing.Size(570, 452)
         Me.Controls.Add(Me.Panel1)
         Me.Cursor = System.Windows.Forms.Cursors.Default
         Me.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))

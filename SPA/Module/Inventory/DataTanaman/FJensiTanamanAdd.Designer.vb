@@ -38,7 +38,7 @@ Partial Class FJensiTanamanAdd
         Me.StatusStrip1.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.statmsg})
         Me.StatusStrip1.Location = New System.Drawing.Point(0, 85)
         Me.StatusStrip1.Name = "StatusStrip1"
-        Me.StatusStrip1.Size = New System.Drawing.Size(407, 22)
+        Me.StatusStrip1.Size = New System.Drawing.Size(401, 22)
         Me.StatusStrip1.TabIndex = 18
         Me.StatusStrip1.Text = "StatusStrip1"
         '
@@ -61,9 +61,9 @@ Partial Class FJensiTanamanAdd
         'Button1
         '
         Me.Button1.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Button1.Location = New System.Drawing.Point(220, 42)
+        Me.Button1.Location = New System.Drawing.Point(236, 44)
         Me.Button1.Name = "Button1"
-        Me.Button1.Size = New System.Drawing.Size(83, 40)
+        Me.Button1.Size = New System.Drawing.Size(77, 31)
         Me.Button1.TabIndex = 2
         Me.Button1.Text = "Simpan"
         Me.Button1.UseVisualStyleBackColor = True
@@ -90,9 +90,9 @@ Partial Class FJensiTanamanAdd
         'Button2
         '
         Me.Button2.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Button2.Location = New System.Drawing.Point(309, 42)
+        Me.Button2.Location = New System.Drawing.Point(319, 44)
         Me.Button2.Name = "Button2"
-        Me.Button2.Size = New System.Drawing.Size(87, 40)
+        Me.Button2.Size = New System.Drawing.Size(77, 31)
         Me.Button2.TabIndex = 3
         Me.Button2.Text = "Batal"
         Me.Button2.UseVisualStyleBackColor = True
@@ -101,7 +101,7 @@ Partial Class FJensiTanamanAdd
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(407, 107)
+        Me.ClientSize = New System.Drawing.Size(401, 107)
         Me.Controls.Add(Me.Button2)
         Me.Controls.Add(Me.StatusStrip1)
         Me.Controls.Add(Me.txtid)

@@ -31,6 +31,10 @@
         Me.StringSQL = "UPDATE " & TableName + " SET username ='" & username & "' WHERE " & PrimaryKey & "=" & userid
         Return MyBase.UpdateData()
     End Function
+    Public Overloads Function UpdatePassword() As Integer
+        Me.StringSQL = "UPDATE " & TableName + " SET userpassword =SHA1('" & userpassword & "') WHERE " & PrimaryKey & "=" & userid
+        Return MyBase.UpdateData()
+    End Function
 
     Function MultipleDeleteData(ByVal ids() As String) As Integer
         BeginTrans("attempting delete data, please wait ... ") 'begin transaction
@@ -57,7 +61,7 @@
         'Dim result As New List(Of Dictionary(Of String, Object)) 'for result function
 
         Dim result As New Dictionary(Of String, String) 'for result function
-        If MUsers._UserInfo Is Nothing Then
+        If Not MUsers._UserInfo.ContainsKey("userid") Then
             MUsers._UserInfo.Add("userid", "Empty")
             MUsers._UserInfo.Add("username", "Empty")
             MUsers._UserInfo.Add("groupid", "Empty")
@@ -122,6 +126,7 @@
 
         Try
             If ObjUsers.Count > 0 Then
+                MUsers._UserInfo.Clear()
                 For Each dat In ObjUsers
                     MUsers._UserInfo.Add("userid", dat("userid").ToString)
                     MUsers._UserInfo.Add("username", dat("username").ToString)
@@ -142,4 +147,7 @@
         
         Return IsValidUser
     End Function
+    Public Sub DoLogout()
+        MUsers._UserInfo.Clear()
+    End Sub
 End Class

@@ -675,9 +675,9 @@
                         <Paragraph>
                           <TextRuns>
                             <TextRun>
-                              <Value>=Fields!rgldt.Value</Value>
+                              <Value>=IIF(Fields!rgldt.Value="0","0",(Fields!rgldt.Value))</Value>
                               <Style>
-                                <Format>dd-MM-yyyy</Format>
+                                <Format>d-MM-yyyy</Format>
                               </Style>
                             </TextRun>
                           </TextRuns>
@@ -689,6 +689,9 @@
                         </Paragraph>
                       </Paragraphs>
                       <rd:DefaultName>rgldt</rd:DefaultName>
+                      <Visibility>
+                        <Hidden>=Cstr(Fields!rgldt.Value)="0"</Hidden>
+                      </Visibility>
                       <Style>
                         <Border>
                           <Color>LightGrey</Color>

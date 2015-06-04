@@ -40,9 +40,10 @@ Partial Class FKlasifikasiAdd
         '
         Me.StatusStrip1.Font = New System.Drawing.Font("Segoe UI", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.StatusStrip1.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.statmsg})
-        Me.StatusStrip1.Location = New System.Drawing.Point(0, 110)
+        Me.StatusStrip1.Location = New System.Drawing.Point(0, 100)
         Me.StatusStrip1.Name = "StatusStrip1"
-        Me.StatusStrip1.Size = New System.Drawing.Size(382, 22)
+        Me.StatusStrip1.Padding = New System.Windows.Forms.Padding(1, 0, 19, 0)
+        Me.StatusStrip1.Size = New System.Drawing.Size(457, 22)
         Me.StatusStrip1.TabIndex = 19
         Me.StatusStrip1.Text = "StatusStrip1"
         '
@@ -54,26 +55,29 @@ Partial Class FKlasifikasiAdd
         'txtGroupName
         '
         Me.txtGroupName.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.txtGroupName.Location = New System.Drawing.Point(109, 7)
+        Me.txtGroupName.Location = New System.Drawing.Point(145, 9)
+        Me.txtGroupName.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
         Me.txtGroupName.MaxLength = 30
         Me.txtGroupName.Name = "txtGroupName"
-        Me.txtGroupName.Size = New System.Drawing.Size(235, 22)
+        Me.txtGroupName.Size = New System.Drawing.Size(283, 22)
         Me.txtGroupName.TabIndex = 1
         '
         'txtKlasifikasiName
         '
         Me.txtKlasifikasiName.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.txtKlasifikasiName.Location = New System.Drawing.Point(109, 32)
+        Me.txtKlasifikasiName.Location = New System.Drawing.Point(145, 34)
+        Me.txtKlasifikasiName.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
         Me.txtKlasifikasiName.MaxLength = 100
         Me.txtKlasifikasiName.Name = "txtKlasifikasiName"
-        Me.txtKlasifikasiName.Size = New System.Drawing.Size(235, 22)
+        Me.txtKlasifikasiName.Size = New System.Drawing.Size(308, 22)
         Me.txtKlasifikasiName.TabIndex = 2
         '
         'Label1
         '
         Me.Label1.AutoSize = True
         Me.Label1.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label1.Location = New System.Drawing.Point(9, 13)
+        Me.Label1.Location = New System.Drawing.Point(14, 15)
+        Me.Label1.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.Label1.Name = "Label1"
         Me.Label1.Size = New System.Drawing.Size(76, 16)
         Me.Label1.TabIndex = 22
@@ -83,7 +87,8 @@ Partial Class FKlasifikasiAdd
         '
         Me.Label2.AutoSize = True
         Me.Label2.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label2.Location = New System.Drawing.Point(9, 35)
+        Me.Label2.Location = New System.Drawing.Point(13, 37)
+        Me.Label2.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.Label2.Name = "Label2"
         Me.Label2.Size = New System.Drawing.Size(99, 16)
         Me.Label2.TabIndex = 23
@@ -92,9 +97,10 @@ Partial Class FKlasifikasiAdd
         'btnPrompt
         '
         Me.btnPrompt.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.btnPrompt.Location = New System.Drawing.Point(344, 6)
+        Me.btnPrompt.Location = New System.Drawing.Point(429, 8)
+        Me.btnPrompt.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
         Me.btnPrompt.Name = "btnPrompt"
-        Me.btnPrompt.Size = New System.Drawing.Size(30, 23)
+        Me.btnPrompt.Size = New System.Drawing.Size(24, 24)
         Me.btnPrompt.TabIndex = 24
         Me.btnPrompt.Text = "..."
         Me.btnPrompt.UseVisualStyleBackColor = True
@@ -102,9 +108,10 @@ Partial Class FKlasifikasiAdd
         'btnSimpan
         '
         Me.btnSimpan.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.btnSimpan.Location = New System.Drawing.Point(202, 73)
+        Me.btnSimpan.Location = New System.Drawing.Point(297, 64)
+        Me.btnSimpan.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
         Me.btnSimpan.Name = "btnSimpan"
-        Me.btnSimpan.Size = New System.Drawing.Size(87, 34)
+        Me.btnSimpan.Size = New System.Drawing.Size(77, 31)
         Me.btnSimpan.TabIndex = 3
         Me.btnSimpan.Text = "Simpan"
         Me.btnSimpan.UseVisualStyleBackColor = True
@@ -112,34 +119,37 @@ Partial Class FKlasifikasiAdd
         'btnBatal
         '
         Me.btnBatal.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.btnBatal.Location = New System.Drawing.Point(289, 73)
+        Me.btnBatal.Location = New System.Drawing.Point(376, 64)
+        Me.btnBatal.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
         Me.btnBatal.Name = "btnBatal"
-        Me.btnBatal.Size = New System.Drawing.Size(85, 34)
+        Me.btnBatal.Size = New System.Drawing.Size(77, 31)
         Me.btnBatal.TabIndex = 4
         Me.btnBatal.Text = "Batal"
         Me.btnBatal.UseVisualStyleBackColor = True
         '
         'txtGroupID
         '
-        Me.txtGroupID.Location = New System.Drawing.Point(13, 75)
+        Me.txtGroupID.Location = New System.Drawing.Point(17, 92)
+        Me.txtGroupID.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
         Me.txtGroupID.Name = "txtGroupID"
-        Me.txtGroupID.Size = New System.Drawing.Size(74, 20)
+        Me.txtGroupID.Size = New System.Drawing.Size(97, 22)
         Me.txtGroupID.TabIndex = 27
         Me.txtGroupID.Visible = False
         '
         'txtKlasifikasiID
         '
-        Me.txtKlasifikasiID.Location = New System.Drawing.Point(96, 75)
+        Me.txtKlasifikasiID.Location = New System.Drawing.Point(128, 92)
+        Me.txtKlasifikasiID.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
         Me.txtKlasifikasiID.Name = "txtKlasifikasiID"
-        Me.txtKlasifikasiID.Size = New System.Drawing.Size(72, 20)
+        Me.txtKlasifikasiID.Size = New System.Drawing.Size(95, 22)
         Me.txtKlasifikasiID.TabIndex = 28
         Me.txtKlasifikasiID.Visible = False
         '
         'FKlasifikasiAdd
         '
-        Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
+        Me.AutoScaleDimensions = New System.Drawing.SizeF(8.0!, 16.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(382, 132)
+        Me.ClientSize = New System.Drawing.Size(457, 122)
         Me.Controls.Add(Me.txtKlasifikasiID)
         Me.Controls.Add(Me.txtGroupID)
         Me.Controls.Add(Me.btnBatal)
@@ -150,11 +160,13 @@ Partial Class FKlasifikasiAdd
         Me.Controls.Add(Me.txtKlasifikasiName)
         Me.Controls.Add(Me.txtGroupName)
         Me.Controls.Add(Me.StatusStrip1)
+        Me.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
         Me.MaximizeBox = False
         Me.MinimizeBox = False
         Me.Name = "FKlasifikasiAdd"
         Me.ShowInTaskbar = False
-        Me.Text = "FKlasifikasiAdd"
+        Me.Text = "Klasifikasi COA"
         Me.StatusStrip1.ResumeLayout(False)
         Me.StatusStrip1.PerformLayout()
         Me.ResumeLayout(False)

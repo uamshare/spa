@@ -49,6 +49,7 @@ Partial Class FDataPenggunaAdd
         Me.UserName = New System.Windows.Forms.TextBox()
         Me.txtUserID = New System.Windows.Forms.TextBox()
         Me.txtGroupID = New System.Windows.Forms.TextBox()
+        Me.txtpassold = New System.Windows.Forms.TextBox()
         Me.GroupBox1.SuspendLayout()
         Me.GroupBox2.SuspendLayout()
         Me.StatusStrip1.SuspendLayout()
@@ -288,17 +289,26 @@ Partial Class FDataPenggunaAdd
         '
         'txtGroupID
         '
-        Me.txtGroupID.Location = New System.Drawing.Point(166, 355)
+        Me.txtGroupID.Location = New System.Drawing.Point(134, 307)
         Me.txtGroupID.Name = "txtGroupID"
         Me.txtGroupID.Size = New System.Drawing.Size(79, 20)
         Me.txtGroupID.TabIndex = 22
         Me.txtGroupID.Visible = False
+        '
+        'txtpassold
+        '
+        Me.txtpassold.Location = New System.Drawing.Point(12, 313)
+        Me.txtpassold.Name = "txtpassold"
+        Me.txtpassold.Size = New System.Drawing.Size(79, 20)
+        Me.txtpassold.TabIndex = 23
+        Me.txtpassold.Visible = False
         '
         'FDataPenggunaAdd
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(422, 365)
+        Me.Controls.Add(Me.txtpassold)
         Me.Controls.Add(Me.txtGroupID)
         Me.Controls.Add(Me.txtUserID)
         Me.Controls.Add(Me.UserName)
@@ -347,4 +357,5 @@ Partial Class FDataPenggunaAdd
     Friend WithEvents txtGroupID As System.Windows.Forms.TextBox
     Friend WithEvents Label7 As System.Windows.Forms.Label
     Friend WithEvents cmbPosisi As System.Windows.Forms.ComboBox
+    Friend WithEvents txtpassold As System.Windows.Forms.TextBox
 End Class

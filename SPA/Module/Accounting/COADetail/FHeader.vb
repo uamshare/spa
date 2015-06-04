@@ -80,6 +80,7 @@
                 .Columns(DGVColumnCheckIndex).Name = "rowchecked"
                 .Columns(DGVColumnCheckIndex).HeaderText = ".."
                 .Columns(DGVColumnCheckIndex).Width = 35
+                .Columns(DGVColumnCheckIndex).Visible = False
 
                 .DataSource = dt
                 .Columns("mcoahno").HeaderText = "No Akun"
@@ -90,12 +91,16 @@
                 .Columns("postgl").HeaderText = "Posisi Laporan"
 
                 .RowHeadersWidth = 75
-                .Columns("mcoahno").Width = 100
+                .ColumnHeadersHeight = 50
+                .Columns("mcoahno").Width = 75
                 .Columns("mcoahname").Width = 360
                 .Columns("mcoaclassification").Width = 250
                 .Columns("mcoagroup").Width = 130
-                .Columns("postbalance").Width = 100
-                .Columns("postgl").Width = 100
+                .Columns("postbalance").Width = 75
+                .Columns("postbalance").DefaultCellStyle().Alignment = DataGridViewContentAlignment.MiddleCenter
+                .Columns("postgl").Width = 75
+                .Columns("postgl").DefaultCellStyle().Alignment = DataGridViewContentAlignment.MiddleCenter
+                .Columns("mcoacid").Visible = False
                 .Refresh()
                 If .RowCount > 0 Then
                     For i As Integer = 0 To .Rows.Count - 1
@@ -364,7 +369,7 @@
     End Sub
 
     Private Sub FHeader_Shown(sender As Object, e As EventArgs) Handles MyBase.Shown
-        MessageBox.Show("Event Show")
+        'MessageBox.Show("Event Show")
         FHeader_Load(Nothing, Nothing)
     End Sub
 

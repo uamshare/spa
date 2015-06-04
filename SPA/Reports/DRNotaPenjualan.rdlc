@@ -84,7 +84,9 @@
                           <TextRuns>
                             <TextRun>
                               <Value>=Fields!tinvhdt.Value</Value>
-                              <Style />
+                              <Style>
+                                <Format>d-MM-yyyy</Format>
+                              </Style>
                             </TextRun>
                           </TextRuns>
                           <LeftIndent>2pt</LeftIndent>
@@ -105,6 +107,7 @@
                         <PaddingBottom>2pt</PaddingBottom>
                       </Style>
                     </Textbox>
+                    <rd:Selected>true</rd:Selected>
                   </CellContents>
                 </TablixCell>
                 <TablixCell>

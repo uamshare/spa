@@ -132,6 +132,42 @@ Namespace My
                 Return CType(Me("simagroConnectionString"),String)
             End Get
         End Property
+        
+        <Global.System.Configuration.UserScopedSettingAttribute(),  _
+         Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.Configuration.DefaultSettingValueAttribute("False")>  _
+        Public Property rememberme() As Boolean
+            Get
+                Return CType(Me("rememberme"),Boolean)
+            End Get
+            Set
+                Me("rememberme") = value
+            End Set
+        End Property
+        
+        <Global.System.Configuration.UserScopedSettingAttribute(),  _
+         Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.Configuration.DefaultSettingValueAttribute("")>  _
+        Public Property rememberusername() As String
+            Get
+                Return CType(Me("rememberusername"),String)
+            End Get
+            Set
+                Me("rememberusername") = value
+            End Set
+        End Property
+        
+        <Global.System.Configuration.UserScopedSettingAttribute(),  _
+         Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.Configuration.DefaultSettingValueAttribute("")>  _
+        Public Property rememberpassword() As String
+            Get
+                Return CType(Me("rememberpassword"),String)
+            End Get
+            Set
+                Me("rememberpassword") = value
+            End Set
+        End Property
     End Class
 End Namespace
 

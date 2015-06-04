@@ -22,7 +22,6 @@ Partial Class FListPenyesuaianStok
     'Do not modify it using the code editor.
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
-        Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(FListPenyesuaianStok))
         Me.Panel1 = New System.Windows.Forms.Panel()
         Me.DataGridView1 = New System.Windows.Forms.DataGridView()
         Me.ToolStrip1 = New System.Windows.Forms.ToolStrip()
@@ -179,12 +178,12 @@ Partial Class FListPenyesuaianStok
         '
         Me.Tool1.BackColor = System.Drawing.SystemColors.ActiveCaption
         Me.Tool1.GripStyle = System.Windows.Forms.ToolStripGripStyle.Hidden
-        Me.Tool1.ImageScalingSize = New System.Drawing.Size(32, 32)
+        Me.Tool1.ImageScalingSize = New System.Drawing.Size(24, 24)
         Me.Tool1.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.ToolRefresh, Me.ToolFind, Me.ToolTextFind, Me.ToolCheck})
         Me.Tool1.Location = New System.Drawing.Point(0, 0)
         Me.Tool1.Name = "Tool1"
         Me.Tool1.RenderMode = System.Windows.Forms.ToolStripRenderMode.System
-        Me.Tool1.Size = New System.Drawing.Size(821, 39)
+        Me.Tool1.Size = New System.Drawing.Size(821, 31)
         Me.Tool1.TabIndex = 9
         Me.Tool1.Text = "Tool1"
         '
@@ -192,34 +191,34 @@ Partial Class FListPenyesuaianStok
         '
         Me.ToolRefresh.Alignment = System.Windows.Forms.ToolStripItemAlignment.Right
         Me.ToolRefresh.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image
-        Me.ToolRefresh.Image = Global.SPA.My.Resources.Resources.refresh1
+        Me.ToolRefresh.Image = Global.SPA.My.Resources.Resources.refresh2
         Me.ToolRefresh.ImageTransparentColor = System.Drawing.Color.Magenta
         Me.ToolRefresh.Name = "ToolRefresh"
-        Me.ToolRefresh.Size = New System.Drawing.Size(36, 36)
+        Me.ToolRefresh.Size = New System.Drawing.Size(28, 28)
         Me.ToolRefresh.Text = "Refresh"
         '
         'ToolFind
         '
         Me.ToolFind.Alignment = System.Windows.Forms.ToolStripItemAlignment.Right
         Me.ToolFind.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image
-        Me.ToolFind.Image = CType(resources.GetObject("ToolFind.Image"), System.Drawing.Image)
+        Me.ToolFind.Image = Global.SPA.My.Resources.Resources.find2
         Me.ToolFind.ImageTransparentColor = System.Drawing.Color.Magenta
         Me.ToolFind.Name = "ToolFind"
-        Me.ToolFind.Size = New System.Drawing.Size(36, 36)
+        Me.ToolFind.Size = New System.Drawing.Size(28, 28)
         Me.ToolFind.Text = "Find"
         '
         'ToolTextFind
         '
         Me.ToolTextFind.Alignment = System.Windows.Forms.ToolStripItemAlignment.Right
         Me.ToolTextFind.Name = "ToolTextFind"
-        Me.ToolTextFind.Size = New System.Drawing.Size(250, 39)
+        Me.ToolTextFind.Size = New System.Drawing.Size(250, 31)
         '
         'ToolCheck
         '
-        Me.ToolCheck.Image = Global.SPA.My.Resources.Resources.check
+        Me.ToolCheck.Image = Global.SPA.My.Resources.Resources.check1
         Me.ToolCheck.ImageTransparentColor = System.Drawing.Color.Magenta
         Me.ToolCheck.Name = "ToolCheck"
-        Me.ToolCheck.Size = New System.Drawing.Size(93, 36)
+        Me.ToolCheck.Size = New System.Drawing.Size(85, 28)
         Me.ToolCheck.Text = "Pilih Data"
         Me.ToolCheck.ToolTipText = "Pilih Data"
         '

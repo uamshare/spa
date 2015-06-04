@@ -6,8 +6,8 @@
 
     Sub New()
         MyBase.New()
-        BaseQuery = "SELECT a.mempid,a.mempname,a.mempaddr,a.memphone1,a.memphone2,a.mempemail,IFNULL(d.memposname,'') AS memposname,IFNULL(a.mlctid,'') mlctid,a.userid,b.username,b.userpassword, c.groupname FROM memp AS a LEFT JOIN mempos AS d ON a.memposid=d.memposid INNER JOIN muser AS b ON a.userid=b.userid INNER JOIN muserg AS c ON b.groupid=c.groupid"
-        SelectQuery = "SELECT a.mempid,a.mempname,a.mempaddr,a.memphone1,a.memphone2,a.mempemail,IFNULL(d.memposname,'') AS memposname,IFNULL(a.mlctid,'') mlctid,a.userid,b.username,b.userpassword, c.groupname FROM memp AS a LEFT JOIN mempos AS d ON a.memposid=d.memposid INNER JOIN muser AS b ON a.userid=b.userid INNER JOIN muserg AS c ON b.groupid=c.groupid"
+        BaseQuery = "SELECT a.mempid,a.mempname,a.mempaddr,a.memphone1,a.memphone2,a.mempemail,IFNULL(d.memposname,'') AS memposname,IFNULL(a.mlctid,'') mlctid,a.userid,b.username,b.userpassword, c.groupname,b.groupid FROM memp AS a LEFT JOIN mempos AS d ON a.memposid=d.memposid INNER JOIN muser AS b ON a.userid=b.userid INNER JOIN muserg AS c ON b.groupid=c.groupid"
+        SelectQuery = "SELECT a.mempid,a.mempname,a.mempaddr,a.memphone1,a.memphone2,a.mempemail,IFNULL(d.memposname,'') AS memposname,IFNULL(a.mlctid,'') mlctid,a.userid,b.username,b.userpassword, c.groupname,b.groupid FROM memp AS a LEFT JOIN mempos AS d ON a.memposid=d.memposid INNER JOIN muser AS b ON a.userid=b.userid INNER JOIN muserg AS c ON b.groupid=c.groupid"
         TableName = "memp"
         TableName2 = "muser"
         PrimaryKey = "mempid"
@@ -16,7 +16,14 @@
 
     Function FindData(sSearch As String) As DataTable
         If Not String.IsNullOrEmpty(sSearch) Then
-            Me.WHERE = "WHERE mempname like '%" & sSearch & "%' OR username like '%" & sSearch & "%'"
+            Me.WHERE = "WHERE mempname like '%" & sSearch & _
+                "%' OR username like '%" & sSearch & _
+                "%' OR mempaddr like '%" & sSearch & _
+                "%' OR memphone1 like '%" & sSearch & _
+                "%' OR memphone2 like '%" & sSearch & _
+                "%' OR mempemail like '%" & sSearch & _
+                "%' OR username like '%" & sSearch & _
+                "%' OR groupname like '%" & sSearch & "%'"
         Else
             Me.WHERE = ""
         End If
@@ -57,7 +64,11 @@
         Dim dtupdated As String
         dtupdated = Format(Date.Now, "yyyy/MM/dd hh:m:s")
 
-        Me.StringSQL = "UPDATE muser SET username ='" & username & "',userpassword ='" & password & "',groupid ='" & groupid & "', dtupdated ='" & dtupdated & "' WHERE userid =" & userid
+        Me.StringSQL = "UPDATE muser SET username ='" & username & "',groupid ='" & groupid & "', dtupdated ='" & dtupdated & "' "
+        If Not String.IsNullOrEmpty(Me.password) Then
+            Me.StringSQL = Me.StringSQL + ",userpassword = SHA1('" & password & "') "
+        End If
+        Me.StringSQL = Me.StringSQL + "WHERE userid = " & userid & " "
         Return MyBase.UpdateData()
     End Function
     Function MultipleDeleteData1(ByVal ids() As String) As Integer

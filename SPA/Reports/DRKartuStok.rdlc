@@ -481,7 +481,7 @@
                         <Paragraph>
                           <TextRuns>
                             <TextRun>
-                              <Value>=IIf(Fields!dtcreated.Value="0","",Format(CDate(Fields!dtcreated.Value),"d-MM-yyyy"))</Value>
+                              <Value>=IIF(Fields!dtcreated.Value="0","", Format(CDATE(Fields!dtcreated.Value),"d-MM-yyyy"))</Value>
                               <Style />
                             </TextRun>
                           </TextRuns>
@@ -493,6 +493,9 @@
                         </Paragraph>
                       </Paragraphs>
                       <rd:DefaultName>dtcreated</rd:DefaultName>
+                      <Visibility>
+                        <Hidden>=Fields!dtcreated.Value="0"</Hidden>
+                      </Visibility>
                       <Style>
                         <Border>
                           <Color>LightGrey</Color>

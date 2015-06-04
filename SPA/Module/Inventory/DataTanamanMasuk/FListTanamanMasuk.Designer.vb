@@ -22,7 +22,6 @@ Partial Class FListTanamanMasuk
     'Do not modify it using the code editor.
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
-        Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(FListTanamanMasuk))
         Me.ToolCheck = New System.Windows.Forms.ToolStripButton()
         Me.ToolFind = New System.Windows.Forms.ToolStripButton()
         Me.ToolRefresh = New System.Windows.Forms.ToolStripButton()
@@ -52,7 +51,7 @@ Partial Class FListTanamanMasuk
         '
         'ToolCheck
         '
-        Me.ToolCheck.Image = Global.SPA.My.Resources.Resources.check
+        Me.ToolCheck.Image = Global.SPA.My.Resources.Resources.check1
         Me.ToolCheck.ImageTransparentColor = System.Drawing.Color.Magenta
         Me.ToolCheck.Name = "ToolCheck"
         Me.ToolCheck.Size = New System.Drawing.Size(93, 36)
@@ -63,7 +62,7 @@ Partial Class FListTanamanMasuk
         '
         Me.ToolFind.Alignment = System.Windows.Forms.ToolStripItemAlignment.Right
         Me.ToolFind.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image
-        Me.ToolFind.Image = CType(resources.GetObject("ToolFind.Image"), System.Drawing.Image)
+        Me.ToolFind.Image = Global.SPA.My.Resources.Resources.find2
         Me.ToolFind.ImageTransparentColor = System.Drawing.Color.Magenta
         Me.ToolFind.Name = "ToolFind"
         Me.ToolFind.Size = New System.Drawing.Size(36, 36)
@@ -73,7 +72,7 @@ Partial Class FListTanamanMasuk
         '
         Me.ToolRefresh.Alignment = System.Windows.Forms.ToolStripItemAlignment.Right
         Me.ToolRefresh.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image
-        Me.ToolRefresh.Image = Global.SPA.My.Resources.Resources.refresh1
+        Me.ToolRefresh.Image = Global.SPA.My.Resources.Resources.refresh2
         Me.ToolRefresh.ImageTransparentColor = System.Drawing.Color.Magenta
         Me.ToolRefresh.Name = "ToolRefresh"
         Me.ToolRefresh.Size = New System.Drawing.Size(36, 36)

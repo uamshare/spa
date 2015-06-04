@@ -22,7 +22,6 @@ Partial Class FCOAheader
     'Do not modify it using the code editor.
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
-        Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(FCOAheader))
         Me.Panelbarang = New System.Windows.Forms.Panel()
         Me.DataGridView1 = New System.Windows.Forms.DataGridView()
         Me.ToolStrip1 = New System.Windows.Forms.ToolStrip()
@@ -196,7 +195,7 @@ Partial Class FCOAheader
         Me.Toolbarang.Location = New System.Drawing.Point(0, 0)
         Me.Toolbarang.Name = "Toolbarang"
         Me.Toolbarang.RenderMode = System.Windows.Forms.ToolStripRenderMode.System
-        Me.Toolbarang.Size = New System.Drawing.Size(747, 39)
+        Me.Toolbarang.Size = New System.Drawing.Size(747, 31)
         Me.Toolbarang.TabIndex = 9
         Me.Toolbarang.Text = "Tool1"
         '
@@ -206,7 +205,7 @@ Partial Class FCOAheader
         Me.ToolAdd.Image = Global.SPA.My.Resources.Resources.add3
         Me.ToolAdd.ImageTransparentColor = System.Drawing.Color.Magenta
         Me.ToolAdd.Name = "ToolAdd"
-        Me.ToolAdd.Size = New System.Drawing.Size(28, 36)
+        Me.ToolAdd.Size = New System.Drawing.Size(28, 28)
         Me.ToolAdd.Text = "Add"
         '
         'ToolEdit
@@ -215,7 +214,7 @@ Partial Class FCOAheader
         Me.ToolEdit.Image = Global.SPA.My.Resources.Resources.edit2
         Me.ToolEdit.ImageTransparentColor = System.Drawing.Color.Magenta
         Me.ToolEdit.Name = "ToolEdit"
-        Me.ToolEdit.Size = New System.Drawing.Size(28, 36)
+        Me.ToolEdit.Size = New System.Drawing.Size(28, 28)
         Me.ToolEdit.Text = "Edit"
         '
         'ToolDelete
@@ -224,7 +223,7 @@ Partial Class FCOAheader
         Me.ToolDelete.Image = Global.SPA.My.Resources.Resources.delete1
         Me.ToolDelete.ImageTransparentColor = System.Drawing.Color.Magenta
         Me.ToolDelete.Name = "ToolDelete"
-        Me.ToolDelete.Size = New System.Drawing.Size(28, 36)
+        Me.ToolDelete.Size = New System.Drawing.Size(28, 28)
         Me.ToolDelete.Text = "Del"
         '
         'TollPrint
@@ -233,34 +232,34 @@ Partial Class FCOAheader
         Me.TollPrint.Image = Global.SPA.My.Resources.Resources.printer
         Me.TollPrint.ImageTransparentColor = System.Drawing.Color.Magenta
         Me.TollPrint.Name = "TollPrint"
-        Me.TollPrint.Size = New System.Drawing.Size(28, 36)
+        Me.TollPrint.Size = New System.Drawing.Size(28, 28)
         Me.TollPrint.Text = "ToolStripButton2"
         '
         'ToolRefresh
         '
         Me.ToolRefresh.Alignment = System.Windows.Forms.ToolStripItemAlignment.Right
         Me.ToolRefresh.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image
-        Me.ToolRefresh.Image = Global.SPA.My.Resources.Resources.refresh1
+        Me.ToolRefresh.Image = Global.SPA.My.Resources.Resources.refresh2
         Me.ToolRefresh.ImageTransparentColor = System.Drawing.Color.Magenta
         Me.ToolRefresh.Name = "ToolRefresh"
-        Me.ToolRefresh.Size = New System.Drawing.Size(36, 36)
+        Me.ToolRefresh.Size = New System.Drawing.Size(28, 28)
         Me.ToolRefresh.Text = "Refresh"
         '
         'ToolFind
         '
         Me.ToolFind.Alignment = System.Windows.Forms.ToolStripItemAlignment.Right
         Me.ToolFind.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image
-        Me.ToolFind.Image = CType(resources.GetObject("ToolFind.Image"), System.Drawing.Image)
+        Me.ToolFind.Image = Global.SPA.My.Resources.Resources.find2
         Me.ToolFind.ImageTransparentColor = System.Drawing.Color.Magenta
         Me.ToolFind.Name = "ToolFind"
-        Me.ToolFind.Size = New System.Drawing.Size(36, 36)
+        Me.ToolFind.Size = New System.Drawing.Size(28, 28)
         Me.ToolFind.Text = "Find"
         '
         'ToolTextFind
         '
         Me.ToolTextFind.Alignment = System.Windows.Forms.ToolStripItemAlignment.Right
         Me.ToolTextFind.Name = "ToolTextFind"
-        Me.ToolTextFind.Size = New System.Drawing.Size(250, 39)
+        Me.ToolTextFind.Size = New System.Drawing.Size(250, 31)
         '
         'PrintDialog1
         '

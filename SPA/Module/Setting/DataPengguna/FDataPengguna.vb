@@ -79,6 +79,7 @@
                 .Columns("memposname").HeaderText = "Posisi"
                 .Columns("username").HeaderText = "Username"
                 .Columns("groupname").HeaderText = "Group Aksess"
+                .Columns("groupid").Visible = False
                 .Columns("userid").Visible = False
                 .Columns("mlctid").Visible = False
                 .Columns("userpassword").Visible = False
@@ -267,6 +268,7 @@
             FDataPenggunaAdd.UserName.Text = CStr(DataGridView1.Rows(getRowIndexSelected()).Cells("username").Value)
             FDataPenggunaAdd.txtUserID.Text = CStr(DataGridView1.Rows(getRowIndexSelected()).Cells("userid").Value)
             FDataPenggunaAdd.txtPass.Text = CStr(DataGridView1.Rows(getRowIndexSelected()).Cells("userpassword").Value)
+            FDataPenggunaAdd.txtGroupID.Text = CInt(DataGridView1.Rows(getRowIndexSelected()).Cells("groupid").Value)
             FPelangganAdd.statmsg.Text = ""
             FDataPenggunaAdd.ShowDialog()
         Else
@@ -289,15 +291,9 @@
             If getCountSelectedData() > 0 Then
                 Dim dr As DialogResult = MessageBox.Show("Delete " & getCountSelectedData() & " data ?", "Confirmation", MessageBoxButtons.YesNo, MessageBoxIcon.Question)
                 If dr = Windows.Forms.DialogResult.Yes Then
-                    'For Each groupid In groupids
-                    '    If Not String.IsNullOrEmpty(groupid) Then
-                    '        Model.DeleteData(groupid)
-                    '    End If
-                    'Next
                     Model.MultipleDeleteData1(mempid)
                     Model.MultipleDeleteData2(userid)
                 End If
-                'MyApplication.ShowStatus("Deleted " & getCountSelectedData() & " data")
                 init()
             Else
                 MyApplication.ShowStatus("No data is selected", NOTICE_STAT)

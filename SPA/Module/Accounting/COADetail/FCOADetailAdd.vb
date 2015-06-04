@@ -9,11 +9,11 @@
             Model.mcoadname = Model.EscapeString(txtNamaAkun.Text)
             Model.mcoahno = Model.EscapeString(txtHeader.Text)
             If txtDetail.Text <> "" Then
-                res = Model.UpdateData()
+                res = Model.UpdateData(txtDetail.Text)
             Else
                 res = Model.InsertData()
             End If
-            FCOAheader.init()
+            FCOADetail.init()
             Me.Close()
         End If
     End Sub
@@ -91,6 +91,6 @@
     End Sub
 
     Private Sub txtCoaDetail_KeyPress(sender As Object, e As KeyPressEventArgs) Handles txtCoaDetail.KeyPress
-        e.KeyChar = UCase(e.KeyChar)
+        e.Handled = ValidNumber(e)
     End Sub
 End Class

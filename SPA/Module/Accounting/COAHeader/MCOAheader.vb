@@ -6,15 +6,21 @@
 
     Sub New()
         MyBase.New()
-        BaseQuery = "SELECT h.mcoahno, h.mcoahname, c.mcoaclassification, g.mcoagroup, h.postbalance, h.postgl FROM mcoah AS h INNER JOIN mcoac AS c ON h.mcoacid=c.mcoacid INNER JOIN mcoag AS g ON c.mcoagid=g.mcoagid"
-        SelectQuery = "SELECT h.mcoahno, h.mcoahname, c.mcoaclassification, g.mcoagroup, h.postbalance, h.postgl FROM mcoah AS h INNER JOIN mcoac AS c ON h.mcoacid=c.mcoacid INNER JOIN mcoag AS g ON c.mcoagid=g.mcoagid"
+        active = "1"
+        BaseQuery = "SELECT h.mcoahno, h.mcoahname, c.mcoaclassification, g.mcoagroup, h.postbalance, h.postgl,h.mcoacid FROM mcoah AS h INNER JOIN mcoac AS c ON h.mcoacid=c.mcoacid INNER JOIN mcoag AS g ON c.mcoagid=g.mcoagid"
+        SelectQuery = "SELECT h.mcoahno, h.mcoahname, c.mcoaclassification, g.mcoagroup, h.postbalance, h.postgl,h.mcoacid FROM mcoah AS h INNER JOIN mcoac AS c ON h.mcoacid=c.mcoacid INNER JOIN mcoag AS g ON c.mcoagid=g.mcoagid"
         TableName = "mcoah"
         PrimaryKey = "mcoahno"
     End Sub
 
     Function FindData(sSearch As String) As DataTable
         If Not String.IsNullOrEmpty(sSearch) Then
-            Me.WHERE = "WHERE mcoahname like '%" & sSearch & "%' OR mcoahno like '%" & sSearch & "%'"
+            Me.WHERE = "WHERE mcoahno like '%" & sSearch & _
+                "%' OR mcoahname like '%" & sSearch & _
+                "%' OR mcoaclassification like '%" & sSearch & _
+                "%' OR mcoagroup like '%" & sSearch & _
+                "%' OR postbalance like '%" & sSearch & _
+                "%' OR postgl like '%" & sSearch & "%'"
         Else
             Me.WHERE = ""
         End If
@@ -31,11 +37,12 @@
         Return MyBase.InsertData()
     End Function
 
-    Public Overloads Function UpdateData() As Integer
+    Public Overloads Function UpdateData(Optional ByVal id = "") As Integer
         Dim dtupdated As String
+        Dim pkey As String = IIf(Not String.IsNullOrEmpty(id), id, Me.mcoahno)
         dtupdated = Format(Date.Now, "yyyy/MM/dd hh:m:s")
 
-        Me.StringSQL = "UPDATE " & TableName + " SET mcoahname ='" & mcoahname & "',mcoacid ='" & mcoacid & "',postbalance ='" & postbalance & "', postgl ='" & postgl & "', active ='" & active & "', dtupdated ='" & dtupdated & "' WHERE mcoahno='" & mcoahno & "'"
+        Me.StringSQL = "UPDATE " & TableName + " SET mcoahno = '" & mcoahno & "', mcoahname ='" & mcoahname & "',mcoacid ='" & mcoacid & "',postbalance ='" & postbalance & "', postgl ='" & postgl & "', active ='" & active & "', dtupdated ='" & dtupdated & "' WHERE mcoahno='" & pkey & "'"
         Return MyBase.UpdateData()
     End Function
 

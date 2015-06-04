@@ -36,9 +36,9 @@ Partial Class FGroupCoaAdd
         '
         Me.StatusStrip1.Font = New System.Drawing.Font("Segoe UI", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.StatusStrip1.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.statmsg})
-        Me.StatusStrip1.Location = New System.Drawing.Point(0, 82)
+        Me.StatusStrip1.Location = New System.Drawing.Point(0, 74)
         Me.StatusStrip1.Name = "StatusStrip1"
-        Me.StatusStrip1.Size = New System.Drawing.Size(385, 22)
+        Me.StatusStrip1.Size = New System.Drawing.Size(380, 22)
         Me.StatusStrip1.TabIndex = 20
         Me.StatusStrip1.Text = "StatusStrip1"
         '
@@ -69,9 +69,9 @@ Partial Class FGroupCoaAdd
         'btnSimpan
         '
         Me.btnSimpan.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.btnSimpan.Location = New System.Drawing.Point(190, 37)
+        Me.btnSimpan.Location = New System.Drawing.Point(217, 37)
         Me.btnSimpan.Name = "btnSimpan"
-        Me.btnSimpan.Size = New System.Drawing.Size(86, 34)
+        Me.btnSimpan.Size = New System.Drawing.Size(77, 31)
         Me.btnSimpan.TabIndex = 2
         Me.btnSimpan.Text = "Simpan"
         Me.btnSimpan.UseVisualStyleBackColor = True
@@ -79,9 +79,9 @@ Partial Class FGroupCoaAdd
         'btnBatal
         '
         Me.btnBatal.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.btnBatal.Location = New System.Drawing.Point(282, 37)
+        Me.btnBatal.Location = New System.Drawing.Point(300, 37)
         Me.btnBatal.Name = "btnBatal"
-        Me.btnBatal.Size = New System.Drawing.Size(95, 34)
+        Me.btnBatal.Size = New System.Drawing.Size(77, 31)
         Me.btnBatal.TabIndex = 3
         Me.btnBatal.Text = "Batal"
         Me.btnBatal.UseVisualStyleBackColor = True
@@ -99,7 +99,7 @@ Partial Class FGroupCoaAdd
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(385, 104)
+        Me.ClientSize = New System.Drawing.Size(380, 96)
         Me.Controls.Add(Me.txtGroupID)
         Me.Controls.Add(Me.btnBatal)
         Me.Controls.Add(Me.btnSimpan)
@@ -110,7 +110,7 @@ Partial Class FGroupCoaAdd
         Me.MinimizeBox = False
         Me.Name = "FGroupCoaAdd"
         Me.ShowInTaskbar = False
-        Me.Text = "FGroupCoaAdd"
+        Me.Text = "Grup COA"
         Me.StatusStrip1.ResumeLayout(False)
         Me.StatusStrip1.PerformLayout()
         Me.ResumeLayout(False)

@@ -50,7 +50,7 @@ Partial Class FDataTanamanAdd
         '
         Me.lblName.AutoSize = True
         Me.lblName.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.lblName.Location = New System.Drawing.Point(8, 10)
+        Me.lblName.Location = New System.Drawing.Point(13, 9)
         Me.lblName.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.lblName.Name = "lblName"
         Me.lblName.Size = New System.Drawing.Size(101, 16)
@@ -61,7 +61,7 @@ Partial Class FDataTanamanAdd
         '
         Me.Label2.AutoSize = True
         Me.Label2.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label2.Location = New System.Drawing.Point(8, 38)
+        Me.Label2.Location = New System.Drawing.Point(13, 33)
         Me.Label2.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.Label2.Name = "Label2"
         Me.Label2.Size = New System.Drawing.Size(59, 16)
@@ -72,7 +72,7 @@ Partial Class FDataTanamanAdd
         '
         Me.Label3.AutoSize = True
         Me.Label3.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label3.Location = New System.Drawing.Point(8, 69)
+        Me.Label3.Location = New System.Drawing.Point(13, 59)
         Me.Label3.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.Label3.Name = "Label3"
         Me.Label3.Size = New System.Drawing.Size(40, 16)
@@ -83,7 +83,7 @@ Partial Class FDataTanamanAdd
         '
         Me.Label4.AutoSize = True
         Me.Label4.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label4.Location = New System.Drawing.Point(8, 97)
+        Me.Label4.Location = New System.Drawing.Point(13, 83)
         Me.Label4.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.Label4.Name = "Label4"
         Me.Label4.Size = New System.Drawing.Size(50, 16)
@@ -94,7 +94,7 @@ Partial Class FDataTanamanAdd
         '
         Me.Label5.AutoSize = True
         Me.Label5.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label5.Location = New System.Drawing.Point(8, 126)
+        Me.Label5.Location = New System.Drawing.Point(13, 107)
         Me.Label5.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.Label5.Name = "Label5"
         Me.Label5.Size = New System.Drawing.Size(74, 16)
@@ -108,13 +108,13 @@ Partial Class FDataTanamanAdd
         Me.txtJnsTanaman.Margin = New System.Windows.Forms.Padding(4)
         Me.txtJnsTanaman.MaxLength = 25
         Me.txtJnsTanaman.Name = "txtJnsTanaman"
-        Me.txtJnsTanaman.Size = New System.Drawing.Size(321, 22)
+        Me.txtJnsTanaman.Size = New System.Drawing.Size(297, 22)
         Me.txtJnsTanaman.TabIndex = 1
         '
         'txtKode
         '
         Me.txtKode.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.txtKode.Location = New System.Drawing.Point(161, 69)
+        Me.txtKode.Location = New System.Drawing.Point(161, 59)
         Me.txtKode.Margin = New System.Windows.Forms.Padding(4)
         Me.txtKode.MaxLength = 5
         Me.txtKode.Name = "txtKode"
@@ -124,7 +124,7 @@ Partial Class FDataTanamanAdd
         'txtKode2
         '
         Me.txtKode2.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.txtKode2.Location = New System.Drawing.Point(296, 69)
+        Me.txtKode2.Location = New System.Drawing.Point(296, 59)
         Me.txtKode2.Margin = New System.Windows.Forms.Padding(4)
         Me.txtKode2.MaxLength = 1
         Me.txtKode2.Name = "txtKode2"
@@ -134,7 +134,7 @@ Partial Class FDataTanamanAdd
         'txtKode3
         '
         Me.txtKode3.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.txtKode3.Location = New System.Drawing.Point(341, 69)
+        Me.txtKode3.Location = New System.Drawing.Point(341, 59)
         Me.txtKode3.Margin = New System.Windows.Forms.Padding(4)
         Me.txtKode3.MaxLength = 3
         Me.txtKode3.Name = "txtKode3"
@@ -144,7 +144,7 @@ Partial Class FDataTanamanAdd
         'txtSatuan
         '
         Me.txtSatuan.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.txtSatuan.Location = New System.Drawing.Point(161, 97)
+        Me.txtSatuan.Location = New System.Drawing.Point(161, 83)
         Me.txtSatuan.Margin = New System.Windows.Forms.Padding(4)
         Me.txtSatuan.MaxLength = 10
         Me.txtSatuan.Name = "txtSatuan"
@@ -154,7 +154,7 @@ Partial Class FDataTanamanAdd
         'txtHarga
         '
         Me.txtHarga.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.txtHarga.Location = New System.Drawing.Point(161, 126)
+        Me.txtHarga.Location = New System.Drawing.Point(161, 107)
         Me.txtHarga.Margin = New System.Windows.Forms.Padding(4)
         Me.txtHarga.MaxLength = 15
         Me.txtHarga.Name = "txtHarga"
@@ -168,7 +168,7 @@ Partial Class FDataTanamanAdd
         Me.cmbPolybag.ForeColor = System.Drawing.SystemColors.WindowText
         Me.cmbPolybag.FormattingEnabled = True
         Me.cmbPolybag.Items.AddRange(New Object() {"P25", "P35", "P50", "P80", "P150"})
-        Me.cmbPolybag.Location = New System.Drawing.Point(161, 38)
+        Me.cmbPolybag.Location = New System.Drawing.Point(161, 33)
         Me.cmbPolybag.Margin = New System.Windows.Forms.Padding(4)
         Me.cmbPolybag.Name = "cmbPolybag"
         Me.cmbPolybag.Size = New System.Drawing.Size(99, 24)
@@ -177,22 +177,22 @@ Partial Class FDataTanamanAdd
         'Prompt
         '
         Me.Prompt.Font = New System.Drawing.Font("Microsoft Sans Serif", 10.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Prompt.Location = New System.Drawing.Point(482, 8)
+        Me.Prompt.Location = New System.Drawing.Point(458, 9)
         Me.Prompt.Margin = New System.Windows.Forms.Padding(4)
         Me.Prompt.Name = "Prompt"
-        Me.Prompt.Size = New System.Drawing.Size(35, 27)
+        Me.Prompt.Size = New System.Drawing.Size(24, 24)
         Me.Prompt.TabIndex = 12
-        Me.Prompt.Text = "..."
+        Me.Prompt.Text = ".."
         Me.Prompt.TextAlign = System.Drawing.ContentAlignment.TopCenter
         Me.Prompt.UseVisualStyleBackColor = True
         '
         'btnSimpan
         '
         Me.btnSimpan.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.btnSimpan.Location = New System.Drawing.Point(309, 180)
+        Me.btnSimpan.Location = New System.Drawing.Point(320, 137)
         Me.btnSimpan.Margin = New System.Windows.Forms.Padding(4)
         Me.btnSimpan.Name = "btnSimpan"
-        Me.btnSimpan.Size = New System.Drawing.Size(100, 39)
+        Me.btnSimpan.Size = New System.Drawing.Size(77, 31)
         Me.btnSimpan.TabIndex = 6
         Me.btnSimpan.Text = "Simpan"
         Me.btnSimpan.UseVisualStyleBackColor = True
@@ -201,10 +201,10 @@ Partial Class FDataTanamanAdd
         '
         Me.btnBatal.DialogResult = System.Windows.Forms.DialogResult.Cancel
         Me.btnBatal.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.btnBatal.Location = New System.Drawing.Point(417, 180)
+        Me.btnBatal.Location = New System.Drawing.Point(405, 137)
         Me.btnBatal.Margin = New System.Windows.Forms.Padding(4)
         Me.btnBatal.Name = "btnBatal"
-        Me.btnBatal.Size = New System.Drawing.Size(100, 39)
+        Me.btnBatal.Size = New System.Drawing.Size(77, 31)
         Me.btnBatal.TabIndex = 7
         Me.btnBatal.Text = "Batal"
         Me.btnBatal.UseVisualStyleBackColor = True
@@ -213,17 +213,16 @@ Partial Class FDataTanamanAdd
         '
         Me.statmsg.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.statmsg.Name = "statmsg"
-        Me.statmsg.Size = New System.Drawing.Size(105, 17)
-        Me.statmsg.Text = "Status Message"
+        Me.statmsg.Size = New System.Drawing.Size(0, 17)
         '
         'StatusStrip1
         '
         Me.StatusStrip1.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.StatusStrip1.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.statmsg})
-        Me.StatusStrip1.Location = New System.Drawing.Point(0, 227)
+        Me.StatusStrip1.Location = New System.Drawing.Point(0, 174)
         Me.StatusStrip1.Name = "StatusStrip1"
         Me.StatusStrip1.Padding = New System.Windows.Forms.Padding(1, 0, 19, 0)
-        Me.StatusStrip1.Size = New System.Drawing.Size(541, 22)
+        Me.StatusStrip1.Size = New System.Drawing.Size(487, 22)
         Me.StatusStrip1.TabIndex = 15
         Me.StatusStrip1.Text = "StatusStrip1"
         '
@@ -257,7 +256,7 @@ Partial Class FDataTanamanAdd
         '
         'Tunique
         '
-        Me.Tunique.Location = New System.Drawing.Point(382, 42)
+        Me.Tunique.Location = New System.Drawing.Point(382, 36)
         Me.Tunique.Name = "Tunique"
         Me.Tunique.Size = New System.Drawing.Size(100, 23)
         Me.Tunique.TabIndex = 21
@@ -268,7 +267,7 @@ Partial Class FDataTanamanAdd
         Me.AutoScaleDimensions = New System.Drawing.SizeF(8.0!, 16.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.CancelButton = Me.btnBatal
-        Me.ClientSize = New System.Drawing.Size(541, 249)
+        Me.ClientSize = New System.Drawing.Size(487, 196)
         Me.Controls.Add(Me.Tunique)
         Me.Controls.Add(Me.txtMmtrhid)
         Me.Controls.Add(Me.txtMmtrg)

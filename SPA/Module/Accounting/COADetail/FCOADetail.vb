@@ -93,14 +93,18 @@
                 .Columns("active").Visible = False
 
                 .RowHeadersWidth = 75
-                .Columns("mcoadno").Width = 100
+                .ColumnHeadersHeight = 50
+                .Columns("mcoadno").Width = 75
                 .Columns("mcoadname").Width = 260
-                .Columns("mcoahno").Width = 100
+                .Columns("mcoahno").Width = 75
                 .Columns("mcoahname").Width = 260
                 .Columns("classification").Width = 230
                 .Columns("mcoagroup").Width = 130
-                .Columns("postbalance").Width = 100
-                .Columns("postgl").Width = 90
+
+                .Columns("postbalance").Width = 75
+                .Columns("postbalance").DefaultCellStyle().Alignment = DataGridViewContentAlignment.MiddleCenter
+                .Columns("postgl").Width = 75
+                .Columns("postgl").DefaultCellStyle().Alignment = DataGridViewContentAlignment.MiddleCenter
                 .Refresh()
                 If .RowCount > 0 Then
                     For i As Integer = 0 To .Rows.Count - 1
@@ -263,8 +267,9 @@
         If getCountSelectedData() > 0 Then
             FCOADetailAdd.txtCoaDetail.Text = CStr(DataGridView1.Rows(getRowIndexSelected()).Cells("mcoadno").Value)
             FCOADetailAdd.txtDetail.Text = CStr(DataGridView1.Rows(getRowIndexSelected()).Cells("mcoadno").Value)
-            FCOADetailAdd.txtCoaHeader.Text = CStr(DataGridView1.Rows(getRowIndexSelected()).Cells("mcoahno").Value)
+            FCOADetailAdd.txtCoaHeader.Text = CStr(DataGridView1.Rows(getRowIndexSelected()).Cells("mcoahname").Value)
             FCOADetailAdd.txtHeader.Text = CStr(DataGridView1.Rows(getRowIndexSelected()).Cells("mcoahno").Value)
+            FCOADetailAdd.txtNamaAkun.Text = CStr(DataGridView1.Rows(getRowIndexSelected()).Cells("mcoadname").Value)
             FCOADetailAdd.txtNamaAkun.Text = CStr(DataGridView1.Rows(getRowIndexSelected()).Cells("mcoadname").Value)
             FCOADetailAdd.statmsg.Text = ""
             FCOADetailAdd.ShowDialog()

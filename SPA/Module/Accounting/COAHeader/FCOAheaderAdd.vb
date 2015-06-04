@@ -11,7 +11,7 @@
             Model.postbalance = Model.EscapeString(cmbSaldo.Text)
             Model.postgl = Model.EscapeString(cmbLaporan.Text)
             If KeyID.Text <> "" Then
-                res = Model.UpdateData()
+                res = Model.UpdateData(KeyID.Text)
             Else
                 res = Model.InsertData()
             End If
@@ -21,6 +21,14 @@
     End Sub
     Private Function DataIsValid() As Boolean
         DataIsValid = True
+        If txtKlasifikasi.Text = "" Then
+            statmsg.Text = "Klasifikasi tidak boleh kosong !"
+            statmsg.ForeColor = Color.DarkRed
+            txtKlasifikasi.Focus()
+            DataIsValid = False
+            Return DataIsValid
+        End If
+
         If KeyID.Text <> "" Then
             If txtNo.Text <> KeyID.Text Then
                 If Model.IfKeyExist(txtNo.Text) Then
@@ -28,10 +36,7 @@
                     statmsg.ForeColor = Color.DarkRed
                     txtNo.Focus()
                     DataIsValid = False
-                Else
-                    statmsg.Text = "No Akum Valid"
-                    statmsg.ForeColor = Color.Green
-                    DataIsValid = True
+                    Return DataIsValid
                 End If
             End If
         Else
@@ -40,17 +45,16 @@
                 statmsg.ForeColor = Color.DarkRed
                 txtNo.Focus()
                 DataIsValid = False
-            Else
-                statmsg.Text = "No Akun Valid"
-                statmsg.ForeColor = Color.Green
-                DataIsValid = True
+                Return DataIsValid
             End If
         End If
+
         If txtNo.Text = "" Then
             statmsg.Text = "No Akun tidak boleh kosong !"
             statmsg.ForeColor = Color.DarkRed
             txtNo.Focus()
             DataIsValid = False
+            Return DataIsValid
         Else
             If Len(txtNo.Text) < 6 Then
                 'MessageBox.Show("User group cannot be empty")
@@ -58,23 +62,42 @@
                 statmsg.ForeColor = Color.DarkRed
                 txtNo.Focus()
                 DataIsValid = False
+                Return DataIsValid
             ElseIf UBound(Split(txtNo.Text, " ")) > 0 Then
                 statmsg.Text = "No Akun tidak boleh menggunakan spasi !"
                 statmsg.ForeColor = Color.DarkRed
                 txtNo.Focus()
                 DataIsValid = False
+                Return DataIsValid
             ElseIf Strings.Right(txtNo.Text, 2) <> "00" Then
                 statmsg.Text = "No Akun harus diakhiri 00 !"
                 statmsg.ForeColor = Color.DarkRed
                 txtNo.Focus()
                 DataIsValid = False
+                Return DataIsValid
             End If
         End If
-        If txtKlasifikasi.Text = "" Then
-            statmsg.Text = "No Akun tidak boleh kosong !"
+        
+        If txtNama.Text = "" Then
+            statmsg.Text = "Nama Akun Header tidak boleh kosong !"
             statmsg.ForeColor = Color.DarkRed
-            txtKlasifikasi.Focus()
+            txtNama.Focus()
             DataIsValid = False
+            Return DataIsValid
+        End If
+        If cmbSaldo.Text = "" Then
+            statmsg.Text = "Posisi Saldo tidak boleh kosong !"
+            statmsg.ForeColor = Color.DarkRed
+            cmbSaldo.Focus()
+            DataIsValid = False
+            Return DataIsValid
+        End If
+        If cmbLaporan.Text = "" Then
+            statmsg.Text = "Posisi Laporan tidak boleh kosong !"
+            statmsg.ForeColor = Color.DarkRed
+            cmbLaporan.Focus()
+            DataIsValid = False
+            Return DataIsValid
         End If
 
         Return DataIsValid
@@ -99,5 +122,9 @@
 
     Private Sub FCOAheaderAdd_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         txtKlasifikasi.Focus()
+    End Sub
+
+    Private Sub txtNo_KeyPress(sender As Object, e As KeyPressEventArgs) Handles txtNo.KeyPress
+        e.Handled = MyApplication.ValidNumber(e)
     End Sub
 End Class

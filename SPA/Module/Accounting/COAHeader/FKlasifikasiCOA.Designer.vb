@@ -22,7 +22,6 @@ Partial Class FKlasifikasiCOA
     'Do not modify it using the code editor.
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
-        Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(FKlasifikasiCOA))
         Me.PrintDialog1 = New System.Windows.Forms.PrintDialog()
         Me.lCountPage = New System.Windows.Forms.ToolStripLabel()
         Me.ToolStrip1 = New System.Windows.Forms.ToolStrip()
@@ -45,7 +44,6 @@ Partial Class FKlasifikasiCOA
         Me.ToolAdd = New System.Windows.Forms.ToolStripButton()
         Me.ToolEdit = New System.Windows.Forms.ToolStripButton()
         Me.ToolDelete = New System.Windows.Forms.ToolStripButton()
-        Me.ToolHelp = New System.Windows.Forms.ToolStripButton()
         Me.ToolRefresh = New System.Windows.Forms.ToolStripButton()
         Me.ToolFind = New System.Windows.Forms.ToolStripButton()
         Me.PrintDocument1 = New System.Drawing.Printing.PrintDocument()
@@ -175,84 +173,75 @@ Partial Class FKlasifikasiCOA
         '
         Me.ToolTextFind.Alignment = System.Windows.Forms.ToolStripItemAlignment.Right
         Me.ToolTextFind.Name = "ToolTextFind"
-        Me.ToolTextFind.Size = New System.Drawing.Size(250, 39)
+        Me.ToolTextFind.Size = New System.Drawing.Size(250, 31)
         '
         'TollPrint
         '
         Me.TollPrint.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image
-        Me.TollPrint.Image = Global.SPA.My.Resources.Resources.print2
+        Me.TollPrint.Image = Global.SPA.My.Resources.Resources.printer
         Me.TollPrint.ImageTransparentColor = System.Drawing.Color.Magenta
         Me.TollPrint.Name = "TollPrint"
-        Me.TollPrint.Size = New System.Drawing.Size(36, 36)
+        Me.TollPrint.Size = New System.Drawing.Size(28, 28)
         Me.TollPrint.Text = "ToolStripButton2"
         '
         'Toolbarang
         '
         Me.Toolbarang.BackColor = System.Drawing.SystemColors.ActiveCaption
         Me.Toolbarang.GripStyle = System.Windows.Forms.ToolStripGripStyle.Hidden
-        Me.Toolbarang.ImageScalingSize = New System.Drawing.Size(32, 32)
-        Me.Toolbarang.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.ToolAdd, Me.ToolEdit, Me.ToolDelete, Me.TollPrint, Me.ToolHelp, Me.ToolRefresh, Me.ToolFind, Me.ToolTextFind})
+        Me.Toolbarang.ImageScalingSize = New System.Drawing.Size(24, 24)
+        Me.Toolbarang.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.ToolAdd, Me.ToolEdit, Me.ToolDelete, Me.TollPrint, Me.ToolRefresh, Me.ToolFind, Me.ToolTextFind})
         Me.Toolbarang.Location = New System.Drawing.Point(0, 0)
         Me.Toolbarang.Name = "Toolbarang"
         Me.Toolbarang.RenderMode = System.Windows.Forms.ToolStripRenderMode.System
-        Me.Toolbarang.Size = New System.Drawing.Size(587, 39)
+        Me.Toolbarang.Size = New System.Drawing.Size(587, 31)
         Me.Toolbarang.TabIndex = 9
         Me.Toolbarang.Text = "Tool1"
         '
         'ToolAdd
         '
         Me.ToolAdd.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image
-        Me.ToolAdd.Image = Global.SPA.My.Resources.Resources.add1
+        Me.ToolAdd.Image = Global.SPA.My.Resources.Resources.add3
         Me.ToolAdd.ImageTransparentColor = System.Drawing.Color.Magenta
         Me.ToolAdd.Name = "ToolAdd"
-        Me.ToolAdd.Size = New System.Drawing.Size(36, 36)
+        Me.ToolAdd.Size = New System.Drawing.Size(28, 28)
         Me.ToolAdd.Text = "Add"
         '
         'ToolEdit
         '
         Me.ToolEdit.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image
-        Me.ToolEdit.Image = Global.SPA.My.Resources.Resources.edit1
+        Me.ToolEdit.Image = Global.SPA.My.Resources.Resources.edit2
         Me.ToolEdit.ImageTransparentColor = System.Drawing.Color.Magenta
         Me.ToolEdit.Name = "ToolEdit"
-        Me.ToolEdit.Size = New System.Drawing.Size(36, 36)
+        Me.ToolEdit.Size = New System.Drawing.Size(28, 28)
         Me.ToolEdit.Text = "Edit"
         '
         'ToolDelete
         '
         Me.ToolDelete.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image
-        Me.ToolDelete.Image = Global.SPA.My.Resources.Resources.trush
+        Me.ToolDelete.Image = Global.SPA.My.Resources.Resources.delete1
         Me.ToolDelete.ImageTransparentColor = System.Drawing.Color.Magenta
         Me.ToolDelete.Name = "ToolDelete"
-        Me.ToolDelete.Size = New System.Drawing.Size(36, 36)
+        Me.ToolDelete.Size = New System.Drawing.Size(28, 28)
         Me.ToolDelete.Text = "Del"
-        '
-        'ToolHelp
-        '
-        Me.ToolHelp.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image
-        Me.ToolHelp.Image = Global.SPA.My.Resources.Resources.help1
-        Me.ToolHelp.ImageTransparentColor = System.Drawing.Color.Magenta
-        Me.ToolHelp.Name = "ToolHelp"
-        Me.ToolHelp.Size = New System.Drawing.Size(36, 36)
-        Me.ToolHelp.Text = "Help"
         '
         'ToolRefresh
         '
         Me.ToolRefresh.Alignment = System.Windows.Forms.ToolStripItemAlignment.Right
         Me.ToolRefresh.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image
-        Me.ToolRefresh.Image = Global.SPA.My.Resources.Resources.refresh1
+        Me.ToolRefresh.Image = Global.SPA.My.Resources.Resources.refresh2
         Me.ToolRefresh.ImageTransparentColor = System.Drawing.Color.Magenta
         Me.ToolRefresh.Name = "ToolRefresh"
-        Me.ToolRefresh.Size = New System.Drawing.Size(36, 36)
+        Me.ToolRefresh.Size = New System.Drawing.Size(28, 28)
         Me.ToolRefresh.Text = "Refresh"
         '
         'ToolFind
         '
         Me.ToolFind.Alignment = System.Windows.Forms.ToolStripItemAlignment.Right
         Me.ToolFind.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image
-        Me.ToolFind.Image = CType(resources.GetObject("ToolFind.Image"), System.Drawing.Image)
+        Me.ToolFind.Image = Global.SPA.My.Resources.Resources.find2
         Me.ToolFind.ImageTransparentColor = System.Drawing.Color.Magenta
         Me.ToolFind.Name = "ToolFind"
-        Me.ToolFind.Size = New System.Drawing.Size(36, 36)
+        Me.ToolFind.Size = New System.Drawing.Size(28, 28)
         Me.ToolFind.Text = "Find"
         '
         'Panelbarang
@@ -263,7 +252,7 @@ Partial Class FKlasifikasiCOA
         Me.Panelbarang.Controls.Add(Me.Toolbarang)
         Me.Panelbarang.Dock = System.Windows.Forms.DockStyle.Left
         Me.Panelbarang.Location = New System.Drawing.Point(0, 0)
-        Me.Panelbarang.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.Panelbarang.Margin = New System.Windows.Forms.Padding(4)
         Me.Panelbarang.Name = "Panelbarang"
         Me.Panelbarang.Size = New System.Drawing.Size(587, 447)
         Me.Panelbarang.TabIndex = 11
@@ -272,9 +261,9 @@ Partial Class FKlasifikasiCOA
         '
         Me.DataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
         Me.DataGridView1.Location = New System.Drawing.Point(54, 73)
-        Me.DataGridView1.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.DataGridView1.Margin = New System.Windows.Forms.Padding(4)
         Me.DataGridView1.Name = "DataGridView1"
-        Me.DataGridView1.Size = New System.Drawing.Size(287, 137)
+        Me.DataGridView1.Size = New System.Drawing.Size(478, 314)
         Me.DataGridView1.TabIndex = 20
         '
         'FKlasifikasiCOA
@@ -284,7 +273,7 @@ Partial Class FKlasifikasiCOA
         Me.ClientSize = New System.Drawing.Size(590, 447)
         Me.Controls.Add(Me.Panelbarang)
         Me.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.Margin = New System.Windows.Forms.Padding(4)
         Me.Name = "FKlasifikasiCOA"
         Me.ShowInTaskbar = False
         Me.Text = "Klasifikasi COA"
@@ -320,7 +309,6 @@ Partial Class FKlasifikasiCOA
     Friend WithEvents ToolAdd As System.Windows.Forms.ToolStripButton
     Friend WithEvents ToolEdit As System.Windows.Forms.ToolStripButton
     Friend WithEvents ToolDelete As System.Windows.Forms.ToolStripButton
-    Friend WithEvents ToolHelp As System.Windows.Forms.ToolStripButton
     Friend WithEvents ToolRefresh As System.Windows.Forms.ToolStripButton
     Friend WithEvents ToolFind As System.Windows.Forms.ToolStripButton
     Friend WithEvents PrintDocument1 As System.Drawing.Printing.PrintDocument

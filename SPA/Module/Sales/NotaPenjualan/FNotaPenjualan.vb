@@ -294,7 +294,8 @@
                                         DataGridView1.Rows(e.RowIndex).Cells("price").Value = 0
                                     End If
                                 End If
-                                If DataGridView1.Rows(e.RowIndex).Cells("pricebonus").Value = "0" Then
+                                If String.IsNullOrEmpty(DataGridView1.Rows(e.RowIndex).Cells("pricebonus").Value) Or _
+                                    DataGridView1.Rows(e.RowIndex).Cells("pricebonus").Value = "0" Then
                                     DataGridView1.Rows(e.RowIndex).Cells("pricebonus").Value = CDec(dat("mmtrprice"))
                                 End If
                                 DataGridView1.Rows(e.RowIndex).Cells("oldhpp").Value = CDec(dat("hpp"))

@@ -30,25 +30,25 @@ Partial Class FDataTanaman
         Me.cmbperPage = New System.Windows.Forms.ToolStripComboBox()
         Me.ToolStripLabel1 = New System.Windows.Forms.ToolStripLabel()
         Me.ToolStripSeparator3 = New System.Windows.Forms.ToolStripSeparator()
+        Me.ToolFisrt = New System.Windows.Forms.ToolStripButton()
+        Me.ToolPrev = New System.Windows.Forms.ToolStripButton()
         Me.ToolStripSeparator1 = New System.Windows.Forms.ToolStripSeparator()
         Me.txtPageCurrent = New System.Windows.Forms.ToolStripTextBox()
         Me.lCountPage = New System.Windows.Forms.ToolStripLabel()
         Me.ToolStripSeparator2 = New System.Windows.Forms.ToolStripSeparator()
+        Me.ToolNext = New System.Windows.Forms.ToolStripButton()
+        Me.ToolLast = New System.Windows.Forms.ToolStripButton()
         Me.lpageInfo = New System.Windows.Forms.ToolStripLabel()
         Me.ToolStripButton1 = New System.Windows.Forms.ToolStripButton()
         Me.Toolbarang = New System.Windows.Forms.ToolStrip()
-        Me.ToolTextFind = New System.Windows.Forms.ToolStripTextBox()
-        Me.PrintDocument1 = New System.Drawing.Printing.PrintDocument()
-        Me.ToolFisrt = New System.Windows.Forms.ToolStripButton()
-        Me.ToolPrev = New System.Windows.Forms.ToolStripButton()
-        Me.ToolNext = New System.Windows.Forms.ToolStripButton()
-        Me.ToolLast = New System.Windows.Forms.ToolStripButton()
         Me.ToolAdd = New System.Windows.Forms.ToolStripButton()
         Me.ToolEdit = New System.Windows.Forms.ToolStripButton()
         Me.ToolDelete = New System.Windows.Forms.ToolStripButton()
         Me.toolPrint = New System.Windows.Forms.ToolStripButton()
         Me.ToolRefresh = New System.Windows.Forms.ToolStripButton()
         Me.ToolFind = New System.Windows.Forms.ToolStripButton()
+        Me.ToolTextFind = New System.Windows.Forms.ToolStripTextBox()
+        Me.PrintDocument1 = New System.Drawing.Printing.PrintDocument()
         Me.Panelbarang.SuspendLayout()
         CType(Me.DataGridViewTanaman, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.ToolStrip1.SuspendLayout()
@@ -117,6 +117,24 @@ Partial Class FDataTanaman
         Me.ToolStripSeparator3.Name = "ToolStripSeparator3"
         Me.ToolStripSeparator3.Size = New System.Drawing.Size(6, 25)
         '
+        'ToolFisrt
+        '
+        Me.ToolFisrt.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image
+        Me.ToolFisrt.Image = Global.SPA.My.Resources.Resources.resultset_first
+        Me.ToolFisrt.ImageTransparentColor = System.Drawing.Color.Magenta
+        Me.ToolFisrt.Name = "ToolFisrt"
+        Me.ToolFisrt.Size = New System.Drawing.Size(23, 22)
+        Me.ToolFisrt.Text = "First"
+        '
+        'ToolPrev
+        '
+        Me.ToolPrev.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image
+        Me.ToolPrev.Image = Global.SPA.My.Resources.Resources.resultset_previous
+        Me.ToolPrev.ImageTransparentColor = System.Drawing.Color.Magenta
+        Me.ToolPrev.Name = "ToolPrev"
+        Me.ToolPrev.Size = New System.Drawing.Size(23, 22)
+        Me.ToolPrev.Text = "Previous"
+        '
         'ToolStripSeparator1
         '
         Me.ToolStripSeparator1.Name = "ToolStripSeparator1"
@@ -138,6 +156,24 @@ Partial Class FDataTanaman
         '
         Me.ToolStripSeparator2.Name = "ToolStripSeparator2"
         Me.ToolStripSeparator2.Size = New System.Drawing.Size(6, 25)
+        '
+        'ToolNext
+        '
+        Me.ToolNext.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image
+        Me.ToolNext.Image = Global.SPA.My.Resources.Resources.resultset_next
+        Me.ToolNext.ImageTransparentColor = System.Drawing.Color.Magenta
+        Me.ToolNext.Name = "ToolNext"
+        Me.ToolNext.Size = New System.Drawing.Size(23, 22)
+        Me.ToolNext.Text = "Next"
+        '
+        'ToolLast
+        '
+        Me.ToolLast.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image
+        Me.ToolLast.Image = Global.SPA.My.Resources.Resources.resultset_last
+        Me.ToolLast.ImageTransparentColor = System.Drawing.Color.Magenta
+        Me.ToolLast.Name = "ToolLast"
+        Me.ToolLast.Size = New System.Drawing.Size(23, 22)
+        Me.ToolLast.Text = "Last"
         '
         'lpageInfo
         '
@@ -167,48 +203,6 @@ Partial Class FDataTanaman
         Me.Toolbarang.Size = New System.Drawing.Size(887, 31)
         Me.Toolbarang.TabIndex = 9
         Me.Toolbarang.Text = "Tool1"
-        '
-        'ToolTextFind
-        '
-        Me.ToolTextFind.Alignment = System.Windows.Forms.ToolStripItemAlignment.Right
-        Me.ToolTextFind.Name = "ToolTextFind"
-        Me.ToolTextFind.Size = New System.Drawing.Size(250, 31)
-        '
-        'ToolFisrt
-        '
-        Me.ToolFisrt.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image
-        Me.ToolFisrt.Image = Global.SPA.My.Resources.Resources.resultset_first
-        Me.ToolFisrt.ImageTransparentColor = System.Drawing.Color.Magenta
-        Me.ToolFisrt.Name = "ToolFisrt"
-        Me.ToolFisrt.Size = New System.Drawing.Size(23, 22)
-        Me.ToolFisrt.Text = "First"
-        '
-        'ToolPrev
-        '
-        Me.ToolPrev.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image
-        Me.ToolPrev.Image = Global.SPA.My.Resources.Resources.resultset_previous
-        Me.ToolPrev.ImageTransparentColor = System.Drawing.Color.Magenta
-        Me.ToolPrev.Name = "ToolPrev"
-        Me.ToolPrev.Size = New System.Drawing.Size(23, 22)
-        Me.ToolPrev.Text = "Previous"
-        '
-        'ToolNext
-        '
-        Me.ToolNext.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image
-        Me.ToolNext.Image = Global.SPA.My.Resources.Resources.resultset_next
-        Me.ToolNext.ImageTransparentColor = System.Drawing.Color.Magenta
-        Me.ToolNext.Name = "ToolNext"
-        Me.ToolNext.Size = New System.Drawing.Size(23, 22)
-        Me.ToolNext.Text = "Next"
-        '
-        'ToolLast
-        '
-        Me.ToolLast.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image
-        Me.ToolLast.Image = Global.SPA.My.Resources.Resources.resultset_last
-        Me.ToolLast.ImageTransparentColor = System.Drawing.Color.Magenta
-        Me.ToolLast.Name = "ToolLast"
-        Me.ToolLast.Size = New System.Drawing.Size(23, 22)
-        Me.ToolLast.Text = "Last"
         '
         'ToolAdd
         '
@@ -265,6 +259,12 @@ Partial Class FDataTanaman
         Me.ToolFind.Name = "ToolFind"
         Me.ToolFind.Size = New System.Drawing.Size(28, 28)
         Me.ToolFind.Text = "Find"
+        '
+        'ToolTextFind
+        '
+        Me.ToolTextFind.Alignment = System.Windows.Forms.ToolStripItemAlignment.Right
+        Me.ToolTextFind.Name = "ToolTextFind"
+        Me.ToolTextFind.Size = New System.Drawing.Size(250, 31)
         '
         'FDataTanaman
         '

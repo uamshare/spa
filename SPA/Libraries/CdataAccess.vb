@@ -80,6 +80,7 @@ Public Class CDataAcces 'Name dari Class yang dibuat.
         MainForm.ToolProgressBar1.Style = ProgressBarStyle.Marquee
         MainForm.ProgressBar1.Visible = True
         If Not MainForm.bw.IsBusy Then
+            MainForm.ProgressBar1.Style = ProgressBarStyle.Marquee
             MainForm.bw.RunWorkerAsync()
         End If
 

@@ -15,7 +15,22 @@
             Model.mempemail = Model.EscapeString(txtEmail.Text)
             Model.groupid = Model.EscapeString(txtGroupID.Text)
             Model.username = Model.EscapeString(txtUser.Text)
-            Model.password = Model.EscapeString(txtPass.Text)
+            Model.password = ""
+            If txtPass.Text <> txtpassold.Text Then
+                Dim dr As DialogResult = MessageBox.Show("Apakah password pengguna akan dirubah ?  " & vbCrLf & _
+                                                         "[Yes] Simpan dan ubah password" & vbCrLf & _
+                                                         "[No] Simpan tanpa mengubah password" & vbCrLf & _
+                                                         "[Cancel] Batal menyimpan" & vbCrLf _
+                                                         , "Konfirmasi" _
+                                                         , MessageBoxButtons.YesNoCancel _
+                                                         , MessageBoxIcon.Question)
+                If dr = Windows.Forms.DialogResult.Yes Then
+                    Model.password = Model.EscapeString(txtPass.Text)
+                ElseIf dr = Windows.Forms.DialogResult.Cancel Then
+                    Exit Sub
+                End If
+            End If
+
             Model.userid = Model.EscapeString(txtUserID.Text)
             If txtKode.Text <> "" Then
                 res = Model.UpdateDataPengguna() And Model.UpdateDataUser()

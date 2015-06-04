@@ -49,12 +49,16 @@
                 .Columns("postgl").HeaderText = "Posisi Laporan"
 
                 .RowHeadersWidth = 75
+                .ColumnHeadersHeight = 50
                 .Columns("mcoahno").Width = 100
                 .Columns("mcoahname").Width = 360
                 .Columns("mcoaclassification").Width = 250
                 .Columns("mcoagroup").Width = 130
-                .Columns("postbalance").Width = 100
-                .Columns("postgl").Width = 100
+                .Columns("postbalance").Width = 75
+                .Columns("postbalance").DefaultCellStyle().Alignment = DataGridViewContentAlignment.MiddleCenter
+                .Columns("postgl").Width = 75
+                .Columns("postgl").DefaultCellStyle().Alignment = DataGridViewContentAlignment.MiddleCenter
+                .Columns("mcoacid").Visible = False
                 .Refresh()
                 If .RowCount > 0 Then
                     For i As Integer = 0 To .Rows.Count - 1
@@ -223,6 +227,7 @@
             FCOAheaderAdd.txtKlasifikasi.Text = CStr(DataGridView1.Rows(getRowIndexSelected()).Cells("mcoaclassification").Value)
             FCOAheaderAdd.cmbSaldo.Text = CStr(DataGridView1.Rows(getRowIndexSelected()).Cells("postbalance").Value)
             FCOAheaderAdd.cmbLaporan.Text = CStr(DataGridView1.Rows(getRowIndexSelected()).Cells("postgl").Value)
+            FCOAheaderAdd.txtCoaId.Text = CInt(DataGridView1.Rows(getRowIndexSelected()).Cells("mcoacid").Value)
             FCOAheaderAdd.statmsg.Text = ""
             FCOAheaderAdd.ShowDialog()
         Else
