@@ -77,6 +77,7 @@
                 .Columns("memphone2").Visible = False
                 .Columns("mempemail").HeaderText = "Email"
                 .Columns("memposname").HeaderText = "Posisi"
+                .Columns("memposname").Visible = False
                 .Columns("username").HeaderText = "Username"
                 .Columns("groupname").HeaderText = "Group Aksess"
                 .Columns("groupid").Visible = False
@@ -268,6 +269,7 @@
             FDataPenggunaAdd.UserName.Text = CStr(DataGridView1.Rows(getRowIndexSelected()).Cells("username").Value)
             FDataPenggunaAdd.txtUserID.Text = CStr(DataGridView1.Rows(getRowIndexSelected()).Cells("userid").Value)
             FDataPenggunaAdd.txtPass.Text = CStr(DataGridView1.Rows(getRowIndexSelected()).Cells("userpassword").Value)
+            FDataPenggunaAdd.txtpassold.Text = CStr(DataGridView1.Rows(getRowIndexSelected()).Cells("userpassword").Value)
             FDataPenggunaAdd.txtGroupID.Text = CInt(DataGridView1.Rows(getRowIndexSelected()).Cells("groupid").Value)
             FPelangganAdd.statmsg.Text = ""
             FDataPenggunaAdd.ShowDialog()

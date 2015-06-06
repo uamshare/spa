@@ -4,6 +4,7 @@
     Public rstockmid As Integer
     Public noref As String
     Public mmtrid As String
+    Public rstockmdt As String
     Public stockin As Decimal = 0
     Public stockout As Decimal = 0
     Public rstockmdesc As String = ""
@@ -93,19 +94,19 @@
                         "	,IFNULL(TB.hpp,0) AS hpp " & _
                         "FROM `" & viewtable & "` TA " & _
                         "LEFT OUTER JOIN " & _
-                        "(SELECT * FROM (SELECT mmtrid,hpp,price FROM mhpp WHERE DATE_FORMAT(`dtcreated`,'%Y-%m-%d') <= '" & Format(dateend, "yyyy-MM-dd") & "' ORDER BY 1 DESC) " & _
+                        "(SELECT * FROM (SELECT mmtrid,hpp,price FROM mhpp WHERE DATE_FORMAT(`mhppdt`,'%Y-%m-%d') <= '" & Format(dateend, "yyyy-MM-dd") & "' ORDER BY 1 DESC) " & _
                         "			    T1 GROUP BY mmtrid) TB " & _
                         "	ON TA.mmtrid = TB.mmtrid) T1 " & _
                         "LEFT OUTER JOIN  " & _
                         "(SELECT mmtrid " & _
                         "            ,SUM(stockin) AS stockin " & _
                         "            ,SUM(stockout) AS stockout " & _
-                        "    FROM `rstockm` WHERE DATE_FORMAT(`dtcreated`,'%Y-%m-%d') BETWEEN '" & Format(datestart, "yyyy-MM-dd") & "' AND '" & Format(dateend, "yyyy-MM-dd") & "' GROUP BY mmtrid) T2 " & _
+                        "    FROM `rstockm` WHERE DATE_FORMAT(`rstockmdt`,'%Y-%m-%d') BETWEEN '" & Format(datestart, "yyyy-MM-dd") & "' AND '" & Format(dateend, "yyyy-MM-dd") & "' GROUP BY mmtrid) T2 " & _
                         "ON T1.mmtrid = T2.mmtrid " & _
                         "LEFT OUTER JOIN  " & _
                         "(SELECT mmtrid " & _
                         "            ,(SUM(stockin) - SUM(stockout)) AS stockstart " & _
-                        "    FROM `rstockm` WHERE DATE_FORMAT(`dtcreated`,'%Y-%m-%d') < '" & Format(datestart, "yyyy-MM-dd") & "' GROUP BY mmtrid) T3 " & _
+                        "    FROM `rstockm` WHERE DATE_FORMAT(`rstockmdt`,'%Y-%m-%d') < '" & Format(datestart, "yyyy-MM-dd") & "' GROUP BY mmtrid) T3 " & _
                         "ON T1.mmtrid = T3.mmtrid "
         'ds.Tables.Add(GetData(datestart, dateend, viewtable, noref1, noref2))
         ds.Tables.Add(MyBase.GetData)
@@ -123,6 +124,7 @@
         If Not String.IsNullOrEmpty(noref1) And Not String.IsNullOrEmpty(noref2) Then
             Me.WHERE = "WHERE T1.mmtrid BETWEEN '" & noref1 & "' AND '" & noref2 & "'"
         End If
+        Me.WHERE = Me.WHERE & " ORDER BY T1.mmtrid,T2.rstockmdt "
         Me.StringSQL = "SELECT T1.mmtrhid " & _
                         "	,T1.mmtrname " & _
                         "	,T1.mmtrid " & _
@@ -130,6 +132,7 @@
                         "	,T1.mmtrunit " & _
                         "	,T1.mmtrprice " & _
                         "	,T1.mmtrg " & _
+                        "	,IFNULL(T2.rstockmdt,0) 	AS rstockmdt " & _
                         "	,IFNULL(T2.dtcreated,0) 	AS dtcreated " & _
                         "	,IFNULL(T2.dtupdate,0) 		AS dtupdated " & _
                         "	,IFNULL(T3.stockstart,0) 	AS stockstart " & _
@@ -145,7 +148,7 @@
                         "		,IFNULL(TB.hpp,0) AS hpp  " & _
                         "	FROM `" & viewtable & "` TA  " & _
                         "	LEFT OUTER JOIN " & _
-                        "	(SELECT * FROM (SELECT mmtrid,hpp,price FROM mhpp WHERE DATE_FORMAT(`dtcreated`,'%Y-%m-%d') <= '" & Format(dateend, "yyyy-MM-dd") & "' ORDER BY 1 DESC) " & _
+                        "	(SELECT * FROM (SELECT mmtrid,hpp,price FROM mhpp WHERE DATE_FORMAT(`mhppdt`,'%Y-%m-%d') <= '" & Format(dateend, "yyyy-MM-dd") & "' ORDER BY 1 DESC) " & _
                         "				    T1 GROUP BY mmtrid) TB " & _
                         "		ON TA.mmtrid = TB.mmtrid) T1             " & _
                         "LEFT OUTER JOIN   " & _
@@ -154,14 +157,15 @@
                         "		    ,rstockmdesc " & _
                         "		    ,stockin " & _
                         "		    ,stockout " & _
+                         "		    ,rstockmdt " & _
                         "		    ,dtcreated " & _
                         "		    ,dtupdate " & _
-                        "	    FROM `rstockm` WHERE DATE_FORMAT(`dtcreated`,'%Y-%m-%d') BETWEEN '" & Format(datestart, "yyyy-MM-dd") & "' AND '" & Format(dateend, "yyyy-MM-dd") & "' ORDER BY mmtrid) T2 " & _
+                        "	    FROM `rstockm` WHERE DATE_FORMAT(`rstockmdt`,'%Y-%m-%d') BETWEEN '" & Format(datestart, "yyyy-MM-dd") & "' AND '" & Format(dateend, "yyyy-MM-dd") & "' ORDER BY mmtrid) T2 " & _
                         "ON T1.mmtrid = T2.mmtrid  " & _
                         "LEFT OUTER JOIN   " & _
                         "	(SELECT mmtrid  " & _
                         "		    ,(SUM(stockin) - SUM(stockout)) AS stockstart " & _
-                        "	    FROM `rstockm` WHERE DATE_FORMAT(`dtcreated`,'%Y-%m-%d') < '" & Format(datestart, "yyyy-MM-dd") & "' GROUP BY mmtrid) T3 " & _
+                        "	    FROM `rstockm` WHERE DATE_FORMAT(`rstockmdt`,'%Y-%m-%d') < '" & Format(datestart, "yyyy-MM-dd") & "' GROUP BY mmtrid) T3 " & _
                         "ON T1.mmtrid = T3.mmtrid "
         ds.Tables.Add(MyBase.GetData)
         Return ds
@@ -210,6 +214,7 @@
         dtcreated = IIf(String.IsNullOrEmpty(dtcreated), Format(Date.Now, "yyyy/MM/dd H:mm:ss"), dtcreated)
         values = "('" & noref & "','" & _
                       mmtrid & "','" & _
+                      rstockmdt & "','" & _
                       stockin & "','" & _
                       stockout & "','" & _
                       rstockmdesc & "','" & _
@@ -217,7 +222,7 @@
                       userid & "','" & _
                       dtcreated & "')"
         Me.StringSQL = "INSERT INTO " & TableName & _
-                    "(`noref`,`mmtrid`,`stockin`,`stockout`,`rstockmdesc`,`fk_id`,`userid`,`dtcreated`) VALUES " & values
+                    "(`noref`,`mmtrid`,`rstockmdt`,`stockin`,`stockout`,`rstockmdesc`,`fk_id`,`userid`,`dtcreated`) VALUES " & values
         Return MyBase.InsertData()
     End Function
     Public Overloads Function InsertData(ByVal multidata As List(Of Dictionary(Of String, Object))) As String
@@ -230,6 +235,7 @@
                 multivalue = multivalue & _
                                 "('" & dat("noref").ToString & "','" & _
                                  dat("mmtrid").ToString & "','" & _
+                                 dat("rstockmdt").ToString & "','" & _
                                  dat("stockin").ToString & "','" & _
                                  dat("stockout").ToString & "','" & _
                                  dat("rstockmdesc").ToString & "','" & _
@@ -245,7 +251,7 @@
         If multivalue.Length > 1 Then
             multivalue = multivalue.Substring(0, multivalue.Length - 1)
             strsqll = "INSERT INTO " & TableName & _
-                   "(`noref`,`mmtrid`,`stockin`,`stockout`,`rstockmdesc`,`fk_id`,`userid`,`dtcreated`) VALUES " & multivalue & ";" & vbCrLf
+                   "(`noref`,`mmtrid`,`rstockmdt`,`stockin`,`stockout`,`rstockmdesc`,`fk_id`,`userid`,`dtcreated`) VALUES " & multivalue & ";" & vbCrLf
         End If
 
         'MsgBox(Me.StringSQL)
@@ -304,9 +310,9 @@
                         "               ,SUM(stockin) AS stockin " & _
                         "               ,SUM(stockout) AS stockout " & _
                         "               ,SUM(stockin) - SUM(stockout) AS stockend " & _
-                        "       FROM `rstockm` WHERE `dtcreated` <= '" & Format(Currdt, "yyyy-MM-dd") & "' GROUP BY mmtrid) stock " & _
+                        "       FROM `rstockm` WHERE `rstockmdt` <= '" & Format(Currdt, "yyyy-MM-dd") & "' GROUP BY mmtrid) stock " & _
                         "       INNER JOIN " & _
-                        "       (SELECT * FROM (SELECT mmtrid,hpp,price FROM mhpp WHERE `dtcreated` <= '" & Format(Currdt, "yyyy-MM-dd") & "' ORDER BY 1 DESC)  " & _
+                        "       (SELECT * FROM (SELECT mmtrid,hpp,price FROM mhpp WHERE `mhppdt` <= '" & Format(Currdt, "yyyy-MM-dd") & "' ORDER BY 1 DESC)  " & _
                         "                       T1 GROUP BY mmtrid) hpp ON stock.`mmtrid` = hpp.mmtrid) T2 " & _
                         "ON T1.mmtrid = T2.mmtrid " & where
         Return MyBase.GetDataList

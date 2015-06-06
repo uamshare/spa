@@ -101,7 +101,7 @@
                     FTransferStokTanaman.ToolDelete.Enabled = True
                     FTransferStokTanaman.ttrfmhdesc1.Focus()
                 ElseIf TransferType = "out" Then
-                    FTransferStokTanaman.DateTimePicker1.Value = DataGridView1.CurrentRow.Cells("ttrfmhdt").Value().ToString
+                    FTransferStokTanaman.DateTimePicker2.Value = DataGridView1.CurrentRow.Cells("ttrfmhdt").Value().ToString
                     FTransferStokTanaman.TxtNoKeluar.Text = DataGridView1.CurrentRow.Cells("ttrfmhno").Value().ToString
                     FTransferStokTanaman.ttrfmhdesc2.Text = DataGridView1.CurrentRow.Cells("ttrfmhdesc").Value().ToString
                     FTransferStokTanaman.ButtonAdd2.Enabled = False

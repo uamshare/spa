@@ -245,7 +245,7 @@ Partial Class FPenyesuaianStok
         Me.PanelHeader.Location = New System.Drawing.Point(0, 0)
         Me.PanelHeader.Margin = New System.Windows.Forms.Padding(4)
         Me.PanelHeader.Name = "PanelHeader"
-        Me.PanelHeader.Size = New System.Drawing.Size(882, 86)
+        Me.PanelHeader.Size = New System.Drawing.Size(904, 86)
         Me.PanelHeader.TabIndex = 12
         '
         'Label3
@@ -320,7 +320,7 @@ Partial Class FPenyesuaianStok
         Me.Tool1.Location = New System.Drawing.Point(0, 0)
         Me.Tool1.Name = "Tool1"
         Me.Tool1.RenderMode = System.Windows.Forms.ToolStripRenderMode.System
-        Me.Tool1.Size = New System.Drawing.Size(882, 31)
+        Me.Tool1.Size = New System.Drawing.Size(904, 31)
         Me.Tool1.TabIndex = 24
         Me.Tool1.Text = "Tool1"
         '
@@ -332,7 +332,7 @@ Partial Class FPenyesuaianStok
         Me.Panel2.Location = New System.Drawing.Point(0, 86)
         Me.Panel2.Margin = New System.Windows.Forms.Padding(4)
         Me.Panel2.Name = "Panel2"
-        Me.Panel2.Size = New System.Drawing.Size(882, 231)
+        Me.Panel2.Size = New System.Drawing.Size(904, 231)
         Me.Panel2.TabIndex = 23
         '
         'PanelFooter
@@ -352,7 +352,7 @@ Partial Class FPenyesuaianStok
         Me.PanelFooter.Location = New System.Drawing.Point(0, 317)
         Me.PanelFooter.Margin = New System.Windows.Forms.Padding(4)
         Me.PanelFooter.Name = "PanelFooter"
-        Me.PanelFooter.Size = New System.Drawing.Size(882, 104)
+        Me.PanelFooter.Size = New System.Drawing.Size(904, 104)
         Me.PanelFooter.TabIndex = 11
         '
         'Panel1
@@ -365,14 +365,14 @@ Partial Class FPenyesuaianStok
         Me.Panel1.Location = New System.Drawing.Point(0, 0)
         Me.Panel1.Margin = New System.Windows.Forms.Padding(4)
         Me.Panel1.Name = "Panel1"
-        Me.Panel1.Size = New System.Drawing.Size(882, 421)
+        Me.Panel1.Size = New System.Drawing.Size(904, 421)
         Me.Panel1.TabIndex = 9
         '
         'FPenyesuaianStok
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(8.0!, 16.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(885, 421)
+        Me.ClientSize = New System.Drawing.Size(905, 421)
         Me.Controls.Add(Me.Panel1)
         Me.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Margin = New System.Windows.Forms.Padding(4)

@@ -641,7 +641,7 @@
 
         If Formvalid Then
             ModelD.ttrfmhno = ModelH.EscapeString(TxtNoKeluar.Text)
-            ModelD.ttrfmhdt = ModelH.EscapeString(Format(DateTimePicker1.Value, "yyyy/MM/dd"))
+            ModelD.ttrfmhdt = ModelH.EscapeString(Format(DateTimePicker2.Value, "yyyy/MM/dd"))
             ModelD.ttrfmhdesc = ttrfmhdesc2.Text
             ModelD.ttrfmhtype = "out"
             ModelD.bookvalue = ModelH.EscapeString(txtsum2tab2.Text) 'for posting to General Ledger

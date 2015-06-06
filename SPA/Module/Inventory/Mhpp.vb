@@ -4,6 +4,7 @@
     Public noref As String
     Public mhppid As Integer
     Public mmtrid As String
+    Public mhppdt As String
     Public hpp As Decimal = 0
     Public price As Decimal = 0
 
@@ -21,10 +22,11 @@
         dtcreated = IIf(String.IsNullOrEmpty(dtcreated), Format(Date.Now, "yyyy/MM/dd H:mm:ss"), dtcreated)
         values = "('" & noref & "','" & _
                       mmtrid & "','" & _
+                      mhppdt & "','" & _
                       hpp & "','" & _
                       dtcreated & "')"
         Me.StringSQL = "INSERT INTO " & TableName & _
-                    "(`noref`,`mmtrid`,`hpp`,`dtcreated`) VALUES " & values
+                    "(`noref`,`mmtrid`,`mhppdt`,`hpp`,`dtcreated`) VALUES " & values
         Return MyBase.InsertData()
     End Function
     Public Overloads Function InsertData(ByVal multidata As List(Of Dictionary(Of String, Object))) As String
@@ -37,6 +39,7 @@
                 multivalue = multivalue & _
                                 "('" & dat("noref").ToString & "','" & _
                                  dat("mmtrid").ToString & "','" & _
+                                 dat("mhppdt").ToString & "','" & _
                                  dat("hpp").ToString & "','" & _
                                  dat("price").ToString & "','" & _
                                  dtcreated & "'),"
@@ -51,7 +54,7 @@
         If multivalue.Length > 1 Then
             multivalue = multivalue.Substring(0, multivalue.Length - 1)
             strsqll = "INSERT INTO " & TableName & _
-                   "(`noref`,`mmtrid`,`hpp`,`price`,`dtcreated`) VALUES " & multivalue & ";" & vbCrLf
+                   "(`noref`,`mmtrid`,`mhppdt`,`hpp`,`price`,`dtcreated`) VALUES " & multivalue & ";" & vbCrLf
         End If
 
         'MsgBox(Me.StringSQL)
@@ -67,7 +70,7 @@
         Me.StringSQL = "SELECT TA.*,IFNULL(TB.hpp,0) hpp FROM " & _
                        "(SELECT * FROM `" & viewtable & "` " & where & ") TA " & _
                        "LEFT JOIN " & _
-                       "(SELECT * FROM (SELECT * FROM mhpp WHERE `dtcreated` < '" & Format(Currdt, "yyyy-MM-dd") & "' ORDER BY 1 DESC) T1 " & _
+                       "(SELECT * FROM (SELECT * FROM mhpp WHERE `mhppdt` < '" & Format(Currdt, "yyyy-MM-dd") & "' ORDER BY 1 DESC) T1 " & _
                        "GROUP BY mmtrid) TB ON TA.mmtrid = TB.mmtrid"
         Return MyBase.GetDataList
     End Function

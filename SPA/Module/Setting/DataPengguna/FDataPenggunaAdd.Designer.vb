@@ -79,7 +79,7 @@ Partial Class FDataPenggunaAdd
         Me.cmbPosisi.FormattingEnabled = True
         Me.cmbPosisi.Location = New System.Drawing.Point(138, 123)
         Me.cmbPosisi.Name = "cmbPosisi"
-        Me.cmbPosisi.Size = New System.Drawing.Size(150, 24)
+        Me.cmbPosisi.Size = New System.Drawing.Size(258, 24)
         Me.cmbPosisi.TabIndex = 8
         Me.cmbPosisi.Visible = False
         '
@@ -98,7 +98,7 @@ Partial Class FDataPenggunaAdd
         Me.txtEmail.Location = New System.Drawing.Point(138, 100)
         Me.txtEmail.MaxLength = 25
         Me.txtEmail.Name = "txtEmail"
-        Me.txtEmail.Size = New System.Drawing.Size(183, 22)
+        Me.txtEmail.Size = New System.Drawing.Size(258, 22)
         Me.txtEmail.TabIndex = 6
         '
         'txtPhon2
@@ -187,7 +187,7 @@ Partial Class FDataPenggunaAdd
         Me.txtPass.Location = New System.Drawing.Point(138, 79)
         Me.txtPass.MaxLength = 60
         Me.txtPass.Name = "txtPass"
-        Me.txtPass.Size = New System.Drawing.Size(151, 22)
+        Me.txtPass.Size = New System.Drawing.Size(258, 22)
         Me.txtPass.TabIndex = 5
         Me.txtPass.UseSystemPasswordChar = True
         '
@@ -299,7 +299,7 @@ Partial Class FDataPenggunaAdd
         '
         Me.txtpassold.Location = New System.Drawing.Point(12, 313)
         Me.txtpassold.Name = "txtpassold"
-        Me.txtpassold.Size = New System.Drawing.Size(79, 20)
+        Me.txtpassold.Size = New System.Drawing.Size(219, 20)
         Me.txtpassold.TabIndex = 23
         Me.txtpassold.Visible = False
         '

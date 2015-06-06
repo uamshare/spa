@@ -64,6 +64,8 @@ Partial Class MainForm
         Me.ToolUsername = New System.Windows.Forms.ToolStripMenuItem()
         Me.ToolPassword = New System.Windows.Forms.ToolStripMenuItem()
         Me.ToolKeluar = New System.Windows.Forms.ToolStripMenuItem()
+        Me.AboutMenu = New System.Windows.Forms.ToolStripMenuItem()
+        Me.menuabout01 = New System.Windows.Forms.ToolStripMenuItem()
         Me.ToolStrip = New System.Windows.Forms.ToolStrip()
         Me.ToolStripNav = New System.Windows.Forms.ToolStripButton()
         Me.tsmenu102 = New System.Windows.Forms.ToolStripButton()
@@ -91,10 +93,10 @@ Partial Class MainForm
         'MenuStrip
         '
         Me.MenuStrip.BackColor = System.Drawing.SystemColors.ButtonHighlight
-        Me.MenuStrip.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.menu100, Me.menu200, Me.menu300, Me.menu400, Me.menu500, Me.ExitMenu, Me.ToolUsername})
+        Me.MenuStrip.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.menu100, Me.menu200, Me.menu300, Me.menu400, Me.menu500, Me.ExitMenu, Me.ToolUsername, Me.AboutMenu})
         Me.MenuStrip.Location = New System.Drawing.Point(0, 0)
         Me.MenuStrip.Name = "MenuStrip"
-        Me.MenuStrip.Size = New System.Drawing.Size(943, 24)
+        Me.MenuStrip.Size = New System.Drawing.Size(1076, 24)
         Me.MenuStrip.TabIndex = 5
         Me.MenuStrip.Text = "MenuStrip"
         Me.MenuStrip.Visible = False
@@ -225,7 +227,7 @@ Partial Class MainForm
         '
         Me.menu305.Name = "menu305"
         Me.menu305.Size = New System.Drawing.Size(204, 22)
-        Me.menu305.Text = "Rinician Penjualan"
+        Me.menu305.Text = "Rincian Penjualan"
         '
         'menu400
         '
@@ -323,7 +325,7 @@ Partial Class MainForm
         '
         'ExitMenu
         '
-        Me.ExitMenu.Image = Global.SPA.My.Resources.Resources.icon_error
+        Me.ExitMenu.Image = Global.SPA.My.Resources.Resources.remove
         Me.ExitMenu.Name = "ExitMenu"
         Me.ExitMenu.Size = New System.Drawing.Size(111, 20)
         Me.ExitMenu.Text = "Tutup Aplikasi"
@@ -352,6 +354,19 @@ Partial Class MainForm
         Me.ToolKeluar.Size = New System.Drawing.Size(124, 22)
         Me.ToolKeluar.Text = "Keluar"
         '
+        'AboutMenu
+        '
+        Me.AboutMenu.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.menuabout01})
+        Me.AboutMenu.Image = Global.SPA.My.Resources.Resources.help
+        Me.AboutMenu.Name = "AboutMenu"
+        Me.AboutMenu.Size = New System.Drawing.Size(28, 20)
+        '
+        'menuabout01
+        '
+        Me.menuabout01.Name = "menuabout01"
+        Me.menuabout01.Size = New System.Drawing.Size(161, 22)
+        Me.menuabout01.Text = "Tentang Aplikasi"
+        '
         'ToolStrip
         '
         Me.ToolStrip.BackColor = System.Drawing.Color.LightSteelBlue
@@ -374,7 +389,7 @@ Partial Class MainForm
         Me.ToolStripNav.ImageTransparentColor = System.Drawing.Color.Magenta
         Me.ToolStripNav.Name = "ToolStripNav"
         Me.ToolStripNav.Size = New System.Drawing.Size(123, 20)
-        Me.ToolStripNav.Text = "ToolStripButton6"
+        Me.ToolStripNav.Text = "Toolbar Navigasi"
         '
         'tsmenu102
         '
@@ -429,7 +444,7 @@ Partial Class MainForm
         Me.StatusStrip.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.statusmessageicon, Me.StatusMessage, Me.ToolProgressBar1})
         Me.StatusStrip.Location = New System.Drawing.Point(0, 617)
         Me.StatusStrip.Name = "StatusStrip"
-        Me.StatusStrip.Size = New System.Drawing.Size(943, 22)
+        Me.StatusStrip.Size = New System.Drawing.Size(1076, 22)
         Me.StatusStrip.TabIndex = 7
         Me.StatusStrip.Text = "StatusStrip"
         '
@@ -445,7 +460,7 @@ Partial Class MainForm
         '
         Me.StatusMessage.Margin = New System.Windows.Forms.Padding(5, 3, 0, 2)
         Me.StatusMessage.Name = "StatusMessage"
-        Me.StatusMessage.Size = New System.Drawing.Size(907, 17)
+        Me.StatusMessage.Size = New System.Drawing.Size(1040, 17)
         Me.StatusMessage.Spring = True
         Me.StatusMessage.Text = "Please Wait ..."
         Me.StatusMessage.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
@@ -498,7 +513,7 @@ Partial Class MainForm
         Me.ProgressBar1.Location = New System.Drawing.Point(126, 0)
         Me.ProgressBar1.MarqueeAnimationSpeed = 20
         Me.ProgressBar1.Name = "ProgressBar1"
-        Me.ProgressBar1.Size = New System.Drawing.Size(817, 3)
+        Me.ProgressBar1.Size = New System.Drawing.Size(950, 3)
         Me.ProgressBar1.TabIndex = 11
         '
         'bw
@@ -512,7 +527,7 @@ Partial Class MainForm
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.BackColor = System.Drawing.Color.SteelBlue
         Me.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
-        Me.ClientSize = New System.Drawing.Size(943, 639)
+        Me.ClientSize = New System.Drawing.Size(1076, 639)
         Me.Controls.Add(Me.ProgressBar1)
         Me.Controls.Add(Me.ToolStrip1)
         Me.Controls.Add(Me.ToolStrip)
@@ -595,5 +610,7 @@ Partial Class MainForm
     Friend WithEvents tsmenu302 As System.Windows.Forms.ToolStripButton
     Friend WithEvents tsmenu404 As System.Windows.Forms.ToolStripButton
     Friend WithEvents ToolStripNav As System.Windows.Forms.ToolStripButton
+    Friend WithEvents AboutMenu As System.Windows.Forms.ToolStripMenuItem
+    Friend WithEvents menuabout01 As System.Windows.Forms.ToolStripMenuItem
 
 End Class

@@ -278,7 +278,7 @@
                                 DataGridView1.Rows(e.RowIndex).Cells("mmtrhname").Value = dat("mmtrname") 'ListDataTanaman(1)("mmtrname")
                                 DataGridView1.Rows(e.RowIndex).Cells("polybag").Value = dat("polybag") 'ListDataTanaman(1)("mmtrname")
                                 If Not isEdit Then
-                                    If Not DataGridView1.Rows(e.RowIndex).Cells("tinvdtype").FormattedValue Then
+                                    If Not DataGridView1.Rows(e.RowIndex).Cells("trtrdtype").FormattedValue Then
                                         DataGridView1.Rows(e.RowIndex).Cells("price").Value = CDec(dat("mmtrprice"))
                                     Else
                                         DataGridView1.Rows(e.RowIndex).Cells("price").Value = 0

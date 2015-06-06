@@ -178,6 +178,8 @@ Module MyApplication
             .RowHeadersDefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter
             .EditMode = DataGridViewEditMode.EditOnEnter
             .EnableHeadersVisualStyles = True
+
+            .ClipboardCopyMode = DataGridViewClipboardCopyMode.EnableWithAutoHeaderText
         End With
     End Sub
 End Module

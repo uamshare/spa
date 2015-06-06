@@ -304,7 +304,7 @@ Partial Class FDataBibitTanamanAdd
         Me.MinimizeBox = False
         Me.Name = "FDataBibitTanamanAdd"
         Me.ShowInTaskbar = False
-        Me.Text = "Data Tanaman Masuk"
+        Me.Text = "Data Bibit Tanaman"
         Me.StatusStrip1.ResumeLayout(False)
         Me.StatusStrip1.PerformLayout()
         Me.ResumeLayout(False)

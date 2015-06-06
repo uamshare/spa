@@ -675,10 +675,8 @@
                         <Paragraph>
                           <TextRuns>
                             <TextRun>
-                              <Value>=IIF(Fields!rgldt.Value="0","0",(Fields!rgldt.Value))</Value>
-                              <Style>
-                                <Format>d-MM-yyyy</Format>
-                              </Style>
+                              <Value>=IIF(Fields!rgldt.Value="0","",FORMAT(CDATE(Fields!rgldt.Value),"dd-MM-yyyy"))</Value>
+                              <Style />
                             </TextRun>
                           </TextRuns>
                           <LeftIndent>2pt</LeftIndent>
@@ -690,7 +688,7 @@
                       </Paragraphs>
                       <rd:DefaultName>rgldt</rd:DefaultName>
                       <Visibility>
-                        <Hidden>=Cstr(Fields!rgldt.Value)="0"</Hidden>
+                        <Hidden>=Fields!rgldt.Value="0"</Hidden>
                       </Visibility>
                       <Style>
                         <Border>
@@ -704,6 +702,7 @@
                         <PaddingBottom>2pt</PaddingBottom>
                       </Style>
                     </Textbox>
+                    <rd:Selected>true</rd:Selected>
                   </CellContents>
                 </TablixCell>
                 <TablixCell>

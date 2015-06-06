@@ -23,7 +23,7 @@ Partial Class RBukuBesar
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
         Me.components = New System.ComponentModel.Container()
-        Dim ReportDataSource1 As Microsoft.Reporting.WinForms.ReportDataSource = New Microsoft.Reporting.WinForms.ReportDataSource()
+        Dim ReportDataSource4 As Microsoft.Reporting.WinForms.ReportDataSource = New Microsoft.Reporting.WinForms.ReportDataSource()
         Me.bukubesarBindingSource = New System.Windows.Forms.BindingSource(Me.components)
         Me.simagro = New SPA.simagro()
         Me.Panel2 = New System.Windows.Forms.Panel()
@@ -71,9 +71,9 @@ Partial Class RBukuBesar
         '
         'ReportViewer1
         '
-        ReportDataSource1.Name = "BukuBesar"
-        ReportDataSource1.Value = Me.bukubesarBindingSource
-        Me.ReportViewer1.LocalReport.DataSources.Add(ReportDataSource1)
+        ReportDataSource4.Name = "BukuBesar"
+        ReportDataSource4.Value = Me.bukubesarBindingSource
+        Me.ReportViewer1.LocalReport.DataSources.Add(ReportDataSource4)
         Me.ReportViewer1.LocalReport.ReportEmbeddedResource = "SPA.DRBukuBesar.rdlc"
         Me.ReportViewer1.Location = New System.Drawing.Point(9, 15)
         Me.ReportViewer1.Margin = New System.Windows.Forms.Padding(4)
@@ -117,10 +117,11 @@ Partial Class RBukuBesar
         Me.GroupBox2.Size = New System.Drawing.Size(246, 91)
         Me.GroupBox2.TabIndex = 5
         Me.GroupBox2.TabStop = False
-        Me.GroupBox2.Text = "Customer"
+        Me.GroupBox2.Text = "Akun"
         '
         'ComboBox2
         '
+        Me.ComboBox2.DropDownWidth = 500
         Me.ComboBox2.FormattingEnabled = True
         Me.ComboBox2.Location = New System.Drawing.Point(65, 51)
         Me.ComboBox2.Name = "ComboBox2"
@@ -129,6 +130,7 @@ Partial Class RBukuBesar
         '
         'ComboBox1
         '
+        Me.ComboBox1.DropDownWidth = 500
         Me.ComboBox1.FormattingEnabled = True
         Me.ComboBox1.Location = New System.Drawing.Point(65, 27)
         Me.ComboBox1.Name = "ComboBox1"

@@ -15,7 +15,7 @@
     <IsWebBootstrapper>false</IsWebBootstrapper>
     <TargetFrameworkProfile>
     </TargetFrameworkProfile>
-    <PublishUrl>E:\2015\PROJECT\SIM\01. SPA - PAK WILLIAM\20. Development\PUBLISH SPA\</PublishUrl>
+    <PublishUrl>ftp://uam.web.id/2015/spa/publish/</PublishUrl>
     <Install>true</Install>
     <InstallFrom>Disk</InstallFrom>
     <UpdateEnabled>true</UpdateEnabled>
@@ -29,8 +29,7 @@
     <SupportUrl>http://publish.web.id/2015/spa/support</SupportUrl>
     <ErrorReportUrl>http://publish.web.id/2015/spa/errors</ErrorReportUrl>
     <ProductName>SPA</ProductName>
-    <PublisherName>UAM</PublisherName>
-    <SuiteName>uam.web.id</SuiteName>
+    <PublisherName>SPA Application</PublisherName>
     <MinimumRequiredVersion>1.0.0.1</MinimumRequiredVersion>
     <ApplicationRevision>4</ApplicationRevision>
     <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
@@ -259,6 +258,12 @@
       <DependentUpon>RRugiLaba.vb</DependentUpon>
     </Compile>
     <Compile Include="Module\Accounting\RugiLaba\RRugiLaba.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Module\FAbout.Designer.vb">
+      <DependentUpon>FAbout.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Module\FAbout.vb">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Module\FPassword.Designer.vb">
@@ -563,6 +568,8 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
+    <None Include="Resource\48x48\help.png" />
+    <None Include="Resource\48x48\remove.png" />
     <None Include="Resource\48x48\logout.png" />
     <None Include="Resource\48x48\key.png" />
     <None Include="Resource\48x48\users.png" />
@@ -632,6 +639,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Module\Accounting\RugiLaba\RRugiLaba.resx">
       <DependentUpon>RRugiLaba.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Module\FAbout.resx">
+      <DependentUpon>FAbout.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Module\FLogin.resx">
       <DependentUpon>FLogin.vb</DependentUpon>

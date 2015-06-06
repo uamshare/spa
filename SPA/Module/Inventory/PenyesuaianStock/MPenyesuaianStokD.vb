@@ -6,12 +6,13 @@
     Public tajsmdqty1 As String = "0"
     Public tajsmdqty2 As String = "0"
     Public tajsmdqty3 As String = "0"
+    Public tajsmhpp As String = "0"
     Public dtcreatedforDeatil As String = ""
     Public bookvalue As String 'additional for posting to General Ledger
 
     Dim ModelHeader As New MPenyesuaianStokH
     Dim ModelStock As New Rstockm
-    'Dim ModelHPP As New Mhpp
+    Dim ModelHPP As New Mhpp
     Dim ModelGL As New GeneralLedger
 
     'Private dtcreated As String
@@ -48,6 +49,7 @@
         Me.StringSQL = ""
         ModelHeader.tajsmhno = Me.tajsmhno
         ModelHeader.tajsmhdt = Me.tajsmhdt
+        ModelHeader.mmtrg = Me.mmtrg
         ModelHeader.dtcreated = Me.dtcreated
         Me.StringSQL = ModelHeader.GetSqlInsertData()
 
@@ -57,8 +59,9 @@
                       tajsmdqty1 & "','" & _
                       tajsmdqty2 & "','" & _
                       tajsmdqty3 & "','" & _
+                      tajsmhpp & "','" & _
                       dtcreated & "')"
-            Me.StringSQL = Me.StringSQL + "INSERT INTO " & TableName + "(`tajsmhno`,`mmtrid`,`tajsmdqty1`,`tajsmdqty2`,`tajsmdqty3`,`dtcreated`) VALUES " & values
+            Me.StringSQL = Me.StringSQL + "INSERT INTO " & TableName + "(`tajsmhno`,`mmtrid`,`tajsmdqty1`,`tajsmdqty2`,`tajsmdqty3`,`tajsmhpp`,`dtcreated`) VALUES " & values
             trans = MyBase.InsertData() 'MyBase.InsertData() ==> Insert Detail
         End If
         Return trans
@@ -70,6 +73,7 @@
         ModelHeader.tajsmhno = Me.tajsmhno
         ModelHeader.tajsmhdt = Me.tajsmhdt
         ModelHeader.tajsmhinf = Me.tajsmhinf
+        ModelHeader.mmtrg = Me.mmtrg
         ModelHeader.dtcreated = Me.dtcreated
         Me.StringSQL = ModelHeader.GetSqlInsertData()
 
@@ -168,11 +172,13 @@
                                  dat("tajsmdqty1").ToString & "','" & _
                                  dat("tajsmdqty2").ToString & "','" & _
                                  dat("tajsmdqty3").ToString & "','" & _
+                                 dat("hpp").ToString & "','" & _
                                  dtcreatedforDeatil & "'),"
                 'Prepare data to Stock
                 Dim dict As New Dictionary(Of String, Object)
                 dict.Add("noref", tajsmhno)
                 dict.Add("mmtrid", dat("mmtrid"))
+                dict.Add("rstockmdt", Me.tajsmhdt)
                 dict.Add("stockin", CDec(dat("tajsmdqty3")))
                 dict.Add("stockout", 0)
                 dict.Add("rstockmdesc", "Data Penyesuaian Stok Tanaman No " & tajsmhno)
@@ -180,6 +186,17 @@
                 dict.Add("userid", userid)
                 dict.Add("dtcreated", dtcreatedforDeatil)
                 datatostock.Add(dict)
+
+                'prepare to hpp
+                Dim dicthpp As New Dictionary(Of String, Object)
+                dicthpp.Add("noref", tajsmhno)
+                dicthpp.Add("mmtrid", dat("mmtrid"))
+                dicthpp.Add("mhppdt", Me.tajsmhdt)
+                dicthpp.Add("hpp", dat("hpp"))
+                dicthpp.Add("price", dat("hpp"))
+                dicthpp.Add("dtcreated", dtcreatedforDeatil)
+                datahpp.Add(dicthpp)
+
             Next
 
         Catch ex As Exception
@@ -192,8 +209,9 @@
         If multivalue.Length > 1 Then 'MyBase.InsertData() ==> Insert Header
             multivalue = multivalue.Substring(0, multivalue.Length - 1)
             DeleteByNo(tajsmhno)
-            strsql = "INSERT INTO " & TableName + "(`tajsmhno`,`mmtrid`,`tajsmdqty1`,`tajsmdqty2`,`tajsmdqty3`,`dtcreated`) VALUES " & multivalue & ";" & vbCrLf
+            strsql = "INSERT INTO " & TableName + "(`tajsmhno`,`mmtrid`,`tajsmdqty1`,`tajsmdqty2`,`tajsmdqty3`,`tajsmhpp`,`dtcreated`) VALUES " & multivalue & ";" & vbCrLf
             strsql = strsql + ModelStock.InsertData(datatostock) 'Insert/Update New Stok
+            strsql = strsql + ModelHPP.InsertData(datahpp) 'Insert/Update New HPP
         End If
         Return strsql
     End Function
@@ -204,6 +222,7 @@
         sqlstr = "DELETE FROM " & TableName + " WHERE tajsmhno='" & no & "';" & vbCrLf
         If Not String.IsNullOrEmpty(sqlstr) Then
             sqlstr = sqlstr & ModelStock.DeleteByNo(no)
+            sqlstr = sqlstr & ModelHPP.DeleteByNo(no)
         End If
         Return sqlstr
     End Function

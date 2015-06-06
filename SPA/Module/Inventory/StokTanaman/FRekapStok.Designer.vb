@@ -26,7 +26,7 @@ Partial Class FRekapStok
         Dim ReportDataSource1 As Microsoft.Reporting.WinForms.ReportDataSource = New Microsoft.Reporting.WinForms.ReportDataSource()
         Me.stock_allBindingSource = New System.Windows.Forms.BindingSource(Me.components)
         Me.RstockAll = New SPA.simagro()
-        Me.stock_allTableAdapter = New SPA.simagroTableAdapters.stock_allTableAdapter
+        Me.stock_allTableAdapter = New SPA.simagroTableAdapters.stock_allTableAdapter()
         Me.Panel1 = New System.Windows.Forms.Panel()
         Me.Button1 = New System.Windows.Forms.Button()
         Me.ComboBox3 = New System.Windows.Forms.ComboBox()
@@ -80,7 +80,7 @@ Partial Class FRekapStok
         '
         'Button1
         '
-        Me.Button1.Location = New System.Drawing.Point(154, 252)
+        Me.Button1.Location = New System.Drawing.Point(154, 223)
         Me.Button1.Name = "Button1"
         Me.Button1.Size = New System.Drawing.Size(89, 31)
         Me.Button1.TabIndex = 7
@@ -102,7 +102,7 @@ Partial Class FRekapStok
         Me.GroupBox2.Controls.Add(Me.TextBox1)
         Me.GroupBox2.Controls.Add(Me.Label3)
         Me.GroupBox2.Controls.Add(Me.Label4)
-        Me.GroupBox2.Location = New System.Drawing.Point(3, 161)
+        Me.GroupBox2.Location = New System.Drawing.Point(3, 132)
         Me.GroupBox2.Name = "GroupBox2"
         Me.GroupBox2.Size = New System.Drawing.Size(239, 85)
         Me.GroupBox2.TabIndex = 5
@@ -126,7 +126,7 @@ Partial Class FRekapStok
         'Label3
         '
         Me.Label3.AutoSize = True
-        Me.Label3.Location = New System.Drawing.Point(6, 53)
+        Me.Label3.Location = New System.Drawing.Point(6, 51)
         Me.Label3.Name = "Label3"
         Me.Label3.Size = New System.Drawing.Size(27, 16)
         Me.Label3.TabIndex = 6
@@ -135,7 +135,7 @@ Partial Class FRekapStok
         'Label4
         '
         Me.Label4.AutoSize = True
-        Me.Label4.Location = New System.Drawing.Point(6, 29)
+        Me.Label4.Location = New System.Drawing.Point(6, 26)
         Me.Label4.Name = "Label4"
         Me.Label4.Size = New System.Drawing.Size(31, 16)
         Me.Label4.TabIndex = 4
@@ -149,14 +149,14 @@ Partial Class FRekapStok
         Me.GroupBox1.Controls.Add(Me.Label1)
         Me.GroupBox1.Location = New System.Drawing.Point(3, 52)
         Me.GroupBox1.Name = "GroupBox1"
-        Me.GroupBox1.Size = New System.Drawing.Size(239, 107)
+        Me.GroupBox1.Size = New System.Drawing.Size(239, 80)
         Me.GroupBox1.TabIndex = 4
         Me.GroupBox1.TabStop = False
         Me.GroupBox1.Text = "Tanggal"
         '
         'DateTimePicker2
         '
-        Me.DateTimePicker2.Location = New System.Drawing.Point(49, 56)
+        Me.DateTimePicker2.Location = New System.Drawing.Point(49, 48)
         Me.DateTimePicker2.Name = "DateTimePicker2"
         Me.DateTimePicker2.Size = New System.Drawing.Size(167, 22)
         Me.DateTimePicker2.TabIndex = 7
@@ -164,7 +164,7 @@ Partial Class FRekapStok
         'Label2
         '
         Me.Label2.AutoSize = True
-        Me.Label2.Location = New System.Drawing.Point(6, 58)
+        Me.Label2.Location = New System.Drawing.Point(6, 50)
         Me.Label2.Name = "Label2"
         Me.Label2.Size = New System.Drawing.Size(27, 16)
         Me.Label2.TabIndex = 6
@@ -172,7 +172,7 @@ Partial Class FRekapStok
         '
         'DateTimePicker1
         '
-        Me.DateTimePicker1.Location = New System.Drawing.Point(49, 33)
+        Me.DateTimePicker1.Location = New System.Drawing.Point(49, 25)
         Me.DateTimePicker1.Name = "DateTimePicker1"
         Me.DateTimePicker1.Size = New System.Drawing.Size(167, 22)
         Me.DateTimePicker1.TabIndex = 5
@@ -180,7 +180,7 @@ Partial Class FRekapStok
         'Label1
         '
         Me.Label1.AutoSize = True
-        Me.Label1.Location = New System.Drawing.Point(6, 33)
+        Me.Label1.Location = New System.Drawing.Point(6, 25)
         Me.Label1.Name = "Label1"
         Me.Label1.Size = New System.Drawing.Size(31, 16)
         Me.Label1.TabIndex = 4

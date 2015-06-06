@@ -166,12 +166,12 @@
             .Columns(9).Name = "hpp"
             With .Columns("hpp")
                 .HeaderText = "HPP"
-                .Visible = False
+                .Visible = True
                 .Width = 120
                 .DefaultCellStyle().Alignment = 64 'DataGridViewContentAlignment.MiddleRight
                 .HeaderCell.Style.Alignment = 64
                 .DefaultCellStyle().Format = "##,000"
-                .ValueType = GetType(Date)
+                .ValueType = GetType(Decimal)
             End With
 
             With .Columns("mmtrid")
@@ -184,7 +184,7 @@
             .Columns("polybag").DefaultCellStyle.Alignment = 32 'DataGridViewContentAlignment.MiddleCenter
 
             With .Columns("stockend")
-                .Width = 120
+                .Width = 75
                 .DefaultCellStyle().Alignment = 64 'DataGridViewContentAlignment.MiddleRight
                 .HeaderCell.Style.Alignment = 64
                 .DefaultCellStyle().Format = "##,000"
@@ -192,14 +192,14 @@
             End With
 
             With .Columns("newstock")
-                .Width = 100
+                .Width = 75
                 .DefaultCellStyle().Alignment = 64 'DataGridViewContentAlignment.MiddleRight
                 .HeaderCell.Style.Alignment = 64
                 .DefaultCellStyle().Format = "##,000"
                 .ValueType = GetType(Decimal)
             End With
             With .Columns("diff")
-                .Width = 100
+                .Width = 75
                 .DefaultCellStyle().Alignment = 64 'DataGridViewContentAlignment.MiddleRight
                 .HeaderCell.Style.Alignment = 64
                 .DefaultCellStyle().Format = "##,000"
@@ -208,12 +208,13 @@
             '.Rows.Clear()
         End With
         DataGridView1.ReadOnly = False
+        DataGridView1.ColumnHeadersHeight = 50
         For Each dgvc As DataGridViewColumn In DataGridView1.Columns
             dgvc.ReadOnly = True
         Next
         DataGridView1.Columns("rowchecked").ReadOnly = False
         DataGridView1.Columns("mmtrid").ReadOnly = False
-        'DataGridView1.Columns("hpp").ReadOnly = False
+        DataGridView1.Columns("hpp").ReadOnly = False
         DataGridView1.Columns("newstock").ReadOnly = False
     End Sub
     Private Sub DataGridView1_CellClick(sender As Object, e As DataGridViewCellEventArgs) Handles DataGridView1.CellClick
@@ -267,6 +268,7 @@
                                 DataGridView1.Rows(e.RowIndex).Cells("stockend").Value = CDec(dat("stockend"))
                                 DataGridView1.Rows(e.RowIndex).Cells("newstock").Value = CDec(dat("stockend"))
                                 DataGridView1.Rows(e.RowIndex).Cells("hpp").Value = CDec(dat("hpp"))
+
                             End If
                         Next
                     Else
@@ -317,7 +319,6 @@
         Catch ex As Exception
             MyApplication.ShowStatus(ex.Message & vbCrLf & ex.StackTrace, WARNING_STAT)
         End Try
-
         Return True
     End Function
     Private Sub DataGridView1_DataError(ByVal sender As System.Object, ByVal e As System.Windows.Forms.DataGridViewDataErrorEventArgs) Handles DataGridView1.DataError
@@ -340,9 +341,6 @@
         Catch ex As Exception
             MyApplication.ShowStatus(ex.Message & vbCrLf & ex.StackTrace, WARNING_STAT)
         End Try
-
-
-
     End Sub
     Private Sub DataGridView1_AutoComplete(ByVal sender As System.Object, ByVal e As System.Windows.Forms.DataGridViewEditingControlShowingEventArgs) Handles DataGridView1.EditingControlShowing
         Dim titleText As String = DataGridView1.Columns("mmtrid").HeaderText
@@ -495,6 +493,7 @@
             ModelD.mmtrg = mmtrg.SelectedIndex + 1
             ModelD.bookvalue = ModelH.EscapeString(txtsum2.Text) 'for posting to General Ledger
 
+            'MsgBox(ModelD.mmtrg)
             Dim ListDetail As New List(Of Dictionary(Of String, Object))
             Dim cekselisih As Integer = 0
             For Each row In DataGridView1.Rows
@@ -580,6 +579,7 @@
                     DataGridView1.Rows(rowindex).Cells("stockend").Value = CDec(dat("tajsmdqty1"))
                     DataGridView1.Rows(rowindex).Cells("newstock").Value = CDec(dat("tajsmdqty2"))
                     DataGridView1.Rows(rowindex).Cells("diff").Value = CDec(dat("tajsmdqty3"))
+                    DataGridView1.Rows(rowindex).Cells("hpp").Value = CDec(dat("tajsmhpp"))
                     DataGridView1.Rows(rowindex).Cells("dtcreated").Value = dat("dtcreated")
                     'DataGridView1.EndEdit()
                     rowindex = rowindex + 1
@@ -590,7 +590,17 @@
         End If
     End Sub
     Private Sub DateTimePicker1_ValueChanged(sender As Object, e As EventArgs) Handles DateTimePicker1.ValueChanged
-        ListDataTanaman = ModelM.getStockAll(CDate(DateTimePicker1.Value), "", "material_all")
+        Select Case mmtrg.SelectedIndex
+            Case 0
+                ListDataTanaman = ModelM.getStockAll(CDate(DateTimePicker1.Value), "", "material_raw")
+            Case 1
+                ListDataTanaman = ModelM.getStockAll(CDate(DateTimePicker1.Value), "", "material_gip")
+            Case 2
+                ListDataTanaman = ModelM.getStockAll(CDate(DateTimePicker1.Value), "", "material_fig")
+            Case Else
+                ListDataTanaman = ModelM.getStockAll(CDate(DateTimePicker1.Value), "", "material_all")
+        End Select
+        'ListDataTanaman = ModelM.getStockAll(CDate(DateTimePicker1.Value), "", "material_all")
     End Sub
     Private Sub mmtrg_SelectedIndexChanged(sender As Object, e As EventArgs) Handles mmtrg.SelectedIndexChanged
         ClearControll()

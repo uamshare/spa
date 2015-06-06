@@ -85,7 +85,7 @@
             ModelGL.rgldesc = "Insert Data Bibit Tanaman Masuk No " & Me.trcvmhno
             ModelGL.dtcreated = Me.dtcreated
             Dim ParamPosting As New Dictionary(Of String, Object)
-            ParamPosting.Add("idtrrans", "PB")
+            ParamPosting.Add("idtrrans", "PC")
             Dim accountlistvalue As New Dictionary(Of String, Object)
             accountlistvalue.Add("acc_debit", Me.bookvalue)
             accountlistvalue.Add("acc_credit", Me.bookvalue)
@@ -120,7 +120,7 @@
             ModelGL.rgldesc = "Update Data Bibit Tanaman Masuk No " & Me.trcvmhno
             ModelGL.dtcreated = Me.dtcreated
             Dim ParamPosting As New Dictionary(Of String, Object)
-            ParamPosting.Add("idtrrans", "PB")
+            ParamPosting.Add("idtrrans", "PC")
             Dim accountlistvalue As New Dictionary(Of String, Object)
             accountlistvalue.Add("acc_debit", Me.bookvalue)
             accountlistvalue.Add("acc_credit", Me.bookvalue)
@@ -160,6 +160,7 @@
                 Dim dict As New Dictionary(Of String, Object)
                 dict.Add("noref", trcvmhno)
                 dict.Add("mmtrid", dat("mmtrid"))
+                dict.Add("rstockmdt", Me.trcvmhdt)
                 dict.Add("stockin", CDec(dat("trcvmdqty")))
                 dict.Add("stockout", 0)
                 dict.Add("rstockmdesc", "Data Tanaman Masuk No " & trcvmhno)
@@ -172,6 +173,7 @@
                 Dim dicthpp As New Dictionary(Of String, Object)
                 dicthpp.Add("noref", trcvmhno)
                 dicthpp.Add("mmtrid", dat("mmtrid"))
+                dicthpp.Add("mhppdt", Me.trcvmhdt)
                 dicthpp.Add("hpp", dat("hpp"))
                 dicthpp.Add("price", dat("trcvmdprice"))
                 dicthpp.Add("dtcreated", dtcreatedforDeatil)

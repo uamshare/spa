@@ -279,9 +279,8 @@ Public Class MainForm
         ProgressBar1.Value = 0
         ProgressBar1.Style = ProgressBarStyle.Blocks
     End Sub
-
     
-    
-    
-    
+    Private Sub menuabout01_Click(sender As Object, e As EventArgs) Handles menuabout01.Click
+        LoadMdiChildForm(FAbout, "")
+    End Sub
 End Class

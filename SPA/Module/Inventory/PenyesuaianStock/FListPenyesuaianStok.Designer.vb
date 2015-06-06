@@ -55,11 +55,11 @@ Partial Class FListPenyesuaianStok
         Me.Panel1.Controls.Add(Me.DataGridView1)
         Me.Panel1.Controls.Add(Me.ToolStrip1)
         Me.Panel1.Controls.Add(Me.Tool1)
-        Me.Panel1.Dock = System.Windows.Forms.DockStyle.Left
+        Me.Panel1.Dock = System.Windows.Forms.DockStyle.Fill
         Me.Panel1.Location = New System.Drawing.Point(0, 0)
         Me.Panel1.Margin = New System.Windows.Forms.Padding(5)
         Me.Panel1.Name = "Panel1"
-        Me.Panel1.Size = New System.Drawing.Size(821, 601)
+        Me.Panel1.Size = New System.Drawing.Size(742, 601)
         Me.Panel1.TabIndex = 10
         '
         'DataGridView1
@@ -70,7 +70,7 @@ Partial Class FListPenyesuaianStok
         Me.DataGridView1.Margin = New System.Windows.Forms.Padding(5)
         Me.DataGridView1.Name = "DataGridView1"
         Me.DataGridView1.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect
-        Me.DataGridView1.Size = New System.Drawing.Size(515, 293)
+        Me.DataGridView1.Size = New System.Drawing.Size(643, 340)
         Me.DataGridView1.TabIndex = 20
         '
         'ToolStrip1
@@ -82,7 +82,7 @@ Partial Class FListPenyesuaianStok
         Me.ToolStrip1.Location = New System.Drawing.Point(0, 576)
         Me.ToolStrip1.Name = "ToolStrip1"
         Me.ToolStrip1.RenderMode = System.Windows.Forms.ToolStripRenderMode.System
-        Me.ToolStrip1.Size = New System.Drawing.Size(821, 25)
+        Me.ToolStrip1.Size = New System.Drawing.Size(742, 25)
         Me.ToolStrip1.TabIndex = 19
         Me.ToolStrip1.Text = "ToolStrip1"
         '
@@ -183,7 +183,7 @@ Partial Class FListPenyesuaianStok
         Me.Tool1.Location = New System.Drawing.Point(0, 0)
         Me.Tool1.Name = "Tool1"
         Me.Tool1.RenderMode = System.Windows.Forms.ToolStripRenderMode.System
-        Me.Tool1.Size = New System.Drawing.Size(821, 31)
+        Me.Tool1.Size = New System.Drawing.Size(742, 31)
         Me.Tool1.TabIndex = 9
         Me.Tool1.Text = "Tool1"
         '
@@ -226,7 +226,7 @@ Partial Class FListPenyesuaianStok
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(8.0!, 16.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(835, 601)
+        Me.ClientSize = New System.Drawing.Size(742, 601)
         Me.Controls.Add(Me.Panel1)
         Me.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Margin = New System.Windows.Forms.Padding(4)

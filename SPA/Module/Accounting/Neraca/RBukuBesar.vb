@@ -10,16 +10,22 @@
         DateTimePicker2.CustomFormat = MyApplication.DefaultFormatDate
 
         Dim Coa1, Coa2 As New MCOADetail
+        Dim CoaDT1, CoaDT2 As DataTable
+
         Coa1.limitrecord = -1
-        ComboBox1.DataSource = Coa1.GetData
+        CoaDT1 = Coa1.GetData
+        CoaDT1.Columns.Add("displaymember", GetType(String), "mcoadno + ' - ' + mcoadname")
+        ComboBox1.DataSource = CoaDT1 'Coa1.GetData
         ComboBox1.ValueMember = "mcoadno"
-        ComboBox1.DisplayMember = "mcoadname"
+        ComboBox1.DisplayMember = "displaymember"
         ComboBox1.SelectedIndex = -1
 
         Coa2.limitrecord = -1
-        ComboBox2.DataSource = Coa2.GetData
+        CoaDT2 = Coa2.GetData
+        CoaDT2.Columns.Add("displaymember", GetType(String), "mcoadno + ' - ' + mcoadname")
+        ComboBox2.DataSource = CoaDT2 'Coa2.GetData
         ComboBox2.ValueMember = "mcoadno"
-        ComboBox2.DisplayMember = "mcoadname"
+        ComboBox2.DisplayMember = "displaymember"
         ComboBox2.SelectedIndex = -1
 
         init()
@@ -94,7 +100,7 @@
     End Sub
     Private Sub TextAutoComplete(cmb As ComboBox)
         Try
-            cmb.AutoCompleteMode = AutoCompleteMode.Suggest
+            cmb.AutoCompleteMode = AutoCompleteMode.SuggestAppend
             cmb.AutoCompleteSource = AutoCompleteSource.ListItems
         Catch ex As Exception
             MyApplication.ShowStatus(ex.Message, WARNING_STAT)

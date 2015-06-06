@@ -266,8 +266,40 @@
     End Sub
 #End Region
 
+    'Private Sub ToolCheck_Click(sender As Object, e As EventArgs) Handles ToolCheck.Click
+    '    DataGridView1_CellContentDoubleClick(sender, Nothing)
+    'End Sub
     Private Sub ToolCheck_Click(sender As Object, e As EventArgs) Handles ToolCheck.Click
-        DataGridView1_CellContentDoubleClick(sender, Nothing)
+        Dim rowindex As Integer = DatagridParent.CurrentRow.Index
+        Dim startindex As Integer = DatagridParent.CurrentRow.Index
+        For Each rowsdg As DataGridViewRow In DataGridView1.SelectedRows
+            With DatagridParent
+                If Not IsDuplicateItem(rowsdg.Cells("mmtrid").Value, rowindex) Then
+                    If rowindex > startindex Then
+                        .Rows.Add()
+                    End If
+                    .Rows(rowindex).Cells("mmtrid").Value = rowsdg.Cells("mmtrid").Value
+                    .EndEdit()
+                End If
+            End With
+            rowindex = rowindex + 1
+        Next
+        Me.Close()
     End Sub
-
+    Public Function IsDuplicateItem(mmtrid As String, rowindex As Integer) As Boolean
+        Try
+            For Each row As DataGridViewRow In DatagridParent.Rows
+                If row.Cells("mmtrid").Value = mmtrid _
+                    And Not String.IsNullOrEmpty(mmtrid) _
+                    And row.Index <> rowindex _
+                    And Not row.IsNewRow Then
+                    'MyApplication.ShowStatus("Kode sudah ada, silahkan pilih kode yang lain.", NOTICE_STAT)
+                    Return True
+                End If
+            Next
+        Catch ex As Exception
+            MyApplication.ShowStatus(ex.Message & vbCrLf & ex.StackTrace, WARNING_STAT)
+        End Try
+        Return False
+    End Function
 End Class

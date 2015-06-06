@@ -180,6 +180,7 @@
                 Dim dict As New Dictionary(Of String, Object)
                 dict.Add("noref", ttrfmhno)
                 dict.Add("mmtrid", dat("mmtrid"))
+                dict.Add("rstockmdt", Me.ttrfmhdt)
                 If Me.ttrfmhtype = "in" Then
                     dict.Add("stockin", CDec(dat("ttrfmdqty")))
                     dict.Add("stockout", 0)

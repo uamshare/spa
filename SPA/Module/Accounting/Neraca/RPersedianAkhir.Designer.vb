@@ -23,7 +23,7 @@ Partial Class RPersedianAkhir
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
         Me.components = New System.ComponentModel.Container()
-        Dim ReportDataSource1 As Microsoft.Reporting.WinForms.ReportDataSource = New Microsoft.Reporting.WinForms.ReportDataSource()
+        Dim ReportDataSource7 As Microsoft.Reporting.WinForms.ReportDataSource = New Microsoft.Reporting.WinForms.ReportDataSource()
         Me.stock_allBindingSource = New System.Windows.Forms.BindingSource(Me.components)
         Me.RstockAll = New SPA.simagro()
         Me.DateTimePicker2 = New System.Windows.Forms.DateTimePicker()
@@ -62,25 +62,28 @@ Partial Class RPersedianAkhir
         '
         'DateTimePicker2
         '
-        Me.DateTimePicker2.Location = New System.Drawing.Point(49, 56)
+        Me.DateTimePicker2.Location = New System.Drawing.Point(65, 45)
+        Me.DateTimePicker2.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
         Me.DateTimePicker2.Name = "DateTimePicker2"
-        Me.DateTimePicker2.Size = New System.Drawing.Size(167, 20)
+        Me.DateTimePicker2.Size = New System.Drawing.Size(167, 22)
         Me.DateTimePicker2.TabIndex = 7
         '
         'Label2
         '
         Me.Label2.AutoSize = True
-        Me.Label2.Location = New System.Drawing.Point(6, 58)
+        Me.Label2.Location = New System.Drawing.Point(8, 47)
+        Me.Label2.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.Label2.Name = "Label2"
-        Me.Label2.Size = New System.Drawing.Size(23, 13)
+        Me.Label2.Size = New System.Drawing.Size(27, 16)
         Me.Label2.TabIndex = 6
         Me.Label2.Text = "s/d"
         '
         'DateTimePicker1
         '
-        Me.DateTimePicker1.Location = New System.Drawing.Point(49, 33)
+        Me.DateTimePicker1.Location = New System.Drawing.Point(65, 22)
+        Me.DateTimePicker1.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
         Me.DateTimePicker1.Name = "DateTimePicker1"
-        Me.DateTimePicker1.Size = New System.Drawing.Size(167, 20)
+        Me.DateTimePicker1.Size = New System.Drawing.Size(167, 22)
         Me.DateTimePicker1.TabIndex = 5
         '
         'GroupBox1
@@ -89,9 +92,11 @@ Partial Class RPersedianAkhir
         Me.GroupBox1.Controls.Add(Me.Label2)
         Me.GroupBox1.Controls.Add(Me.DateTimePicker1)
         Me.GroupBox1.Controls.Add(Me.Label1)
-        Me.GroupBox1.Location = New System.Drawing.Point(3, 52)
+        Me.GroupBox1.Location = New System.Drawing.Point(4, 49)
+        Me.GroupBox1.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
         Me.GroupBox1.Name = "GroupBox1"
-        Me.GroupBox1.Size = New System.Drawing.Size(239, 107)
+        Me.GroupBox1.Padding = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.GroupBox1.Size = New System.Drawing.Size(239, 75)
         Me.GroupBox1.TabIndex = 4
         Me.GroupBox1.TabStop = False
         Me.GroupBox1.Text = "Tanggal"
@@ -99,9 +104,10 @@ Partial Class RPersedianAkhir
         'Label1
         '
         Me.Label1.AutoSize = True
-        Me.Label1.Location = New System.Drawing.Point(6, 33)
+        Me.Label1.Location = New System.Drawing.Point(8, 22)
+        Me.Label1.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.Label1.Name = "Label1"
-        Me.Label1.Size = New System.Drawing.Size(24, 13)
+        Me.Label1.Size = New System.Drawing.Size(31, 16)
         Me.Label1.TabIndex = 4
         Me.Label1.Text = "dari"
         '
@@ -111,50 +117,57 @@ Partial Class RPersedianAkhir
         Me.GroupBox2.Controls.Add(Me.TextBox1)
         Me.GroupBox2.Controls.Add(Me.Label3)
         Me.GroupBox2.Controls.Add(Me.Label4)
-        Me.GroupBox2.Location = New System.Drawing.Point(3, 161)
+        Me.GroupBox2.Location = New System.Drawing.Point(5, 126)
+        Me.GroupBox2.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
         Me.GroupBox2.Name = "GroupBox2"
-        Me.GroupBox2.Size = New System.Drawing.Size(239, 85)
+        Me.GroupBox2.Padding = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.GroupBox2.Size = New System.Drawing.Size(239, 80)
         Me.GroupBox2.TabIndex = 5
         Me.GroupBox2.TabStop = False
         Me.GroupBox2.Text = "Kode Tanaman"
         '
         'TextBox2
         '
-        Me.TextBox2.Location = New System.Drawing.Point(49, 51)
+        Me.TextBox2.Location = New System.Drawing.Point(65, 49)
+        Me.TextBox2.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
         Me.TextBox2.Name = "TextBox2"
-        Me.TextBox2.Size = New System.Drawing.Size(167, 20)
+        Me.TextBox2.Size = New System.Drawing.Size(167, 22)
         Me.TextBox2.TabIndex = 8
         '
         'TextBox1
         '
-        Me.TextBox1.Location = New System.Drawing.Point(49, 28)
+        Me.TextBox1.Location = New System.Drawing.Point(65, 25)
+        Me.TextBox1.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
         Me.TextBox1.Name = "TextBox1"
-        Me.TextBox1.Size = New System.Drawing.Size(167, 20)
+        Me.TextBox1.Size = New System.Drawing.Size(167, 22)
         Me.TextBox1.TabIndex = 7
         '
         'Label3
         '
         Me.Label3.AutoSize = True
-        Me.Label3.Location = New System.Drawing.Point(6, 53)
+        Me.Label3.Location = New System.Drawing.Point(8, 51)
+        Me.Label3.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.Label3.Name = "Label3"
-        Me.Label3.Size = New System.Drawing.Size(23, 13)
+        Me.Label3.Size = New System.Drawing.Size(27, 16)
         Me.Label3.TabIndex = 6
         Me.Label3.Text = "s/d"
         '
         'Label4
         '
         Me.Label4.AutoSize = True
-        Me.Label4.Location = New System.Drawing.Point(6, 29)
+        Me.Label4.Location = New System.Drawing.Point(8, 27)
+        Me.Label4.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.Label4.Name = "Label4"
-        Me.Label4.Size = New System.Drawing.Size(24, 13)
+        Me.Label4.Size = New System.Drawing.Size(31, 16)
         Me.Label4.TabIndex = 4
         Me.Label4.Text = "dari"
         '
         'Button1
         '
-        Me.Button1.Location = New System.Drawing.Point(154, 252)
+        Me.Button1.Location = New System.Drawing.Point(162, 214)
+        Me.Button1.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
         Me.Button1.Name = "Button1"
-        Me.Button1.Size = New System.Drawing.Size(89, 31)
+        Me.Button1.Size = New System.Drawing.Size(83, 31)
         Me.Button1.TabIndex = 7
         Me.Button1.Text = "Tampilkan"
         Me.Button1.UseVisualStyleBackColor = True
@@ -172,49 +185,52 @@ Partial Class RPersedianAkhir
         Me.Panel1.Controls.Add(Me.GroupBox1)
         Me.Panel1.Dock = System.Windows.Forms.DockStyle.Left
         Me.Panel1.Location = New System.Drawing.Point(0, 0)
-        Me.Panel1.Margin = New System.Windows.Forms.Padding(4)
+        Me.Panel1.Margin = New System.Windows.Forms.Padding(5, 5, 5, 5)
         Me.Panel1.Name = "Panel1"
-        Me.Panel1.Size = New System.Drawing.Size(248, 406)
+        Me.Panel1.Size = New System.Drawing.Size(255, 500)
         Me.Panel1.TabIndex = 3
         '
         'ComboBox3
         '
         Me.ComboBox3.FormattingEnabled = True
         Me.ComboBox3.Items.AddRange(New Object() {"1 - Bibit Tanaman", "2 - Bibit Tanaman dalam Proses", "3 - Data Tanaman"})
-        Me.ComboBox3.Location = New System.Drawing.Point(12, 17)
+        Me.ComboBox3.Location = New System.Drawing.Point(6, 13)
+        Me.ComboBox3.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
         Me.ComboBox3.Name = "ComboBox3"
-        Me.ComboBox3.Size = New System.Drawing.Size(230, 21)
+        Me.ComboBox3.Size = New System.Drawing.Size(237, 24)
         Me.ComboBox3.TabIndex = 6
         '
         'Panel2
         '
         Me.Panel2.Controls.Add(Me.ReportViewer1)
         Me.Panel2.Dock = System.Windows.Forms.DockStyle.Fill
-        Me.Panel2.Location = New System.Drawing.Point(248, 0)
-        Me.Panel2.Margin = New System.Windows.Forms.Padding(4)
+        Me.Panel2.Location = New System.Drawing.Point(255, 0)
+        Me.Panel2.Margin = New System.Windows.Forms.Padding(5, 5, 5, 5)
         Me.Panel2.Name = "Panel2"
-        Me.Panel2.Size = New System.Drawing.Size(469, 406)
+        Me.Panel2.Size = New System.Drawing.Size(701, 500)
         Me.Panel2.TabIndex = 5
         '
         'ReportViewer1
         '
-        ReportDataSource1.Name = "DataSet1"
-        ReportDataSource1.Value = Me.stock_allBindingSource
-        Me.ReportViewer1.LocalReport.DataSources.Add(ReportDataSource1)
+        ReportDataSource7.Name = "DataSet1"
+        ReportDataSource7.Value = Me.stock_allBindingSource
+        Me.ReportViewer1.LocalReport.DataSources.Add(ReportDataSource7)
         Me.ReportViewer1.LocalReport.ReportEmbeddedResource = "SPA.DRStokTanaman.rdlc"
-        Me.ReportViewer1.Location = New System.Drawing.Point(17, 17)
-        Me.ReportViewer1.Margin = New System.Windows.Forms.Padding(4)
+        Me.ReportViewer1.Location = New System.Drawing.Point(23, 21)
+        Me.ReportViewer1.Margin = New System.Windows.Forms.Padding(5, 5, 5, 5)
         Me.ReportViewer1.Name = "ReportViewer1"
-        Me.ReportViewer1.Size = New System.Drawing.Size(439, 380)
+        Me.ReportViewer1.Size = New System.Drawing.Size(585, 467)
         Me.ReportViewer1.TabIndex = 1
         '
         'RPersedianAkhir
         '
-        Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
+        Me.AutoScaleDimensions = New System.Drawing.SizeF(8.0!, 16.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(717, 406)
+        Me.ClientSize = New System.Drawing.Size(956, 500)
         Me.Controls.Add(Me.Panel2)
         Me.Controls.Add(Me.Panel1)
+        Me.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
         Me.Name = "RPersedianAkhir"
         Me.Text = "Persediaan Akhir Tanaman"
         CType(Me.stock_allBindingSource, System.ComponentModel.ISupportInitialize).EndInit()

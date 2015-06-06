@@ -170,6 +170,7 @@
                 Dim dict As New Dictionary(Of String, Object)
                 dict.Add("noref", trtrhno)
                 dict.Add("mmtrid", dat("mmtrid"))
+                dict.Add("rstockmdt", Me.trtrhdt)
                 dict.Add("stockin", CDec(dat("trtrdqty")))
                 dict.Add("stockout", 0)
                 dict.Add("rstockmdesc", "Data Nota Penjualan No " & trtrhno)

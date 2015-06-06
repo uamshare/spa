@@ -311,14 +311,14 @@
 
         Me.limitrecord = -1
         If Not String.IsNullOrEmpty(accno1) And Not String.IsNullOrEmpty(accno2) Then
-            Me.WHERE = "WHERE c.`mcoadno` BETWEEN '" & accno1 & "' AND '" & accno2 & "' ORDER BY c.`mcoadno`"
+            Me.WHERE = "WHERE c.`mcoadno` BETWEEN '" & accno1 & "' AND '" & accno2 & "' ORDER BY c.`mcoadno`,bb.rgldt"
         Else
-            Me.WHERE = ""
+            Me.WHERE = "ORDER BY c.`mcoadno`,bb.rgldt"
         End If
         Me.StringSQL = "SELECT " & _
                         "	c.mcoadno," & _
                         "	c.mcoadname," & _
-                        "	IF(ISNULL(bb.rgldt),'',bb.rgldt) rgldt," & _
+                        "	IF(ISNULL(bb.rgldt),'0',bb.rgldt) rgldt," & _
                         "	IF(ISNULL(bb.noref),'',bb.noref) noref," & _
                         "	IF(ISNULL(bb.rgldesc),'',bb.rgldesc) rgldesc," & _
                         "	IF(ISNULL(bb.noref2),'',bb.noref2) noref2," & _
@@ -329,7 +329,7 @@
                         "Left Join " & _
                         "(SELECT * FROM gledger WHERE DATE_FORMAT(`rgldt`,'%Y-%m-%d') BETWEEN '" & Format(datestart, "yyyy-MM-dd") & "' AND '" & Format(dateend, "yyyy-MM-dd") & "' ORDER BY `mcoadno`) bb ON c.`mcoadno`=bb.`mcoadno` " & _
                         "Left Join " & _
-                        "(SELECT mcoadno,mcoadname,SUM(rglin-rglout) AS saldo_awal FROM `gledger` WHERE rgldt < '2015-05-01' GROUP BY mcoadno) ss ON c.`mcoadno`=ss.mcoadno "
+                        "(SELECT mcoadno,mcoadname,SUM(rglin-rglout) AS saldo_awal FROM `gledger` WHERE rgldt < '" & Format(datestart, "yyyy-MM-dd") & "' GROUP BY mcoadno) ss ON c.`mcoadno`=ss.mcoadno "
         ds.Tables.Add(MyBase.GetData)
         Return ds
     End Function

@@ -136,14 +136,14 @@ Partial Class FjenisBibitTanaman
         Me.ToolStripButton1.ImageAlign = System.Drawing.ContentAlignment.TopCenter
         Me.ToolStripButton1.ImageTransparentColor = System.Drawing.Color.Magenta
         Me.ToolStripButton1.Name = "ToolStripButton1"
-        Me.ToolStripButton1.Size = New System.Drawing.Size(23, 22)
+        Me.ToolStripButton1.Size = New System.Drawing.Size(23, 4)
         Me.ToolStripButton1.Text = "ToolStripButton1"
         '
         'lpageInfo
         '
         Me.lpageInfo.Alignment = System.Windows.Forms.ToolStripItemAlignment.Right
         Me.lpageInfo.Name = "lpageInfo"
-        Me.lpageInfo.Size = New System.Drawing.Size(102, 22)
+        Me.lpageInfo.Size = New System.Drawing.Size(102, 15)
         Me.lpageInfo.Text = "1 - 20 as 100 Rows"
         '
         'ToolLast
@@ -276,7 +276,7 @@ Partial Class FjenisBibitTanaman
         Me.Margin = New System.Windows.Forms.Padding(4)
         Me.Name = "FjenisBibitTanaman"
         Me.ShowInTaskbar = False
-        Me.Text = "Jenis Biit Tanaman"
+        Me.Text = "Jenis Tanaman"
         Me.Toolbarang.ResumeLayout(False)
         Me.Toolbarang.PerformLayout()
         Me.ToolStrip1.ResumeLayout(False)

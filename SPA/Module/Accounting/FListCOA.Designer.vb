@@ -22,7 +22,6 @@ Partial Class FListCOA
     'Do not modify it using the code editor.
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
-        Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(FListCOA))
         Me.PrintDocument1 = New System.Drawing.Printing.PrintDocument()
         Me.Panelbarang = New System.Windows.Forms.Panel()
         Me.DataGridView1 = New System.Windows.Forms.DataGridView()
@@ -45,8 +44,8 @@ Partial Class FListCOA
         Me.ToolRefresh = New System.Windows.Forms.ToolStripButton()
         Me.ToolFind = New System.Windows.Forms.ToolStripButton()
         Me.ToolTextFind = New System.Windows.Forms.ToolStripTextBox()
-        Me.PrintDialog1 = New System.Windows.Forms.PrintDialog()
         Me.ToolCheck = New System.Windows.Forms.ToolStripButton()
+        Me.PrintDialog1 = New System.Windows.Forms.PrintDialog()
         Me.Panelbarang.SuspendLayout()
         CType(Me.DataGridView1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.ToolStrip1.SuspendLayout()
@@ -61,7 +60,7 @@ Partial Class FListCOA
         Me.Panelbarang.Controls.Add(Me.Toolbarang)
         Me.Panelbarang.Dock = System.Windows.Forms.DockStyle.Fill
         Me.Panelbarang.Location = New System.Drawing.Point(0, 0)
-        Me.Panelbarang.Margin = New System.Windows.Forms.Padding(5, 5, 5, 5)
+        Me.Panelbarang.Margin = New System.Windows.Forms.Padding(5)
         Me.Panelbarang.Name = "Panelbarang"
         Me.Panelbarang.Size = New System.Drawing.Size(979, 625)
         Me.Panelbarang.TabIndex = 14
@@ -70,7 +69,7 @@ Partial Class FListCOA
         '
         Me.DataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
         Me.DataGridView1.Location = New System.Drawing.Point(0, 58)
-        Me.DataGridView1.Margin = New System.Windows.Forms.Padding(5, 5, 5, 5)
+        Me.DataGridView1.Margin = New System.Windows.Forms.Padding(5)
         Me.DataGridView1.Name = "DataGridView1"
         Me.DataGridView1.Size = New System.Drawing.Size(667, 464)
         Me.DataGridView1.TabIndex = 20
@@ -189,12 +188,12 @@ Partial Class FListCOA
         '
         Me.Toolbarang.BackColor = System.Drawing.SystemColors.ActiveCaption
         Me.Toolbarang.GripStyle = System.Windows.Forms.ToolStripGripStyle.Hidden
-        Me.Toolbarang.ImageScalingSize = New System.Drawing.Size(32, 32)
+        Me.Toolbarang.ImageScalingSize = New System.Drawing.Size(24, 24)
         Me.Toolbarang.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.ToolRefresh, Me.ToolFind, Me.ToolTextFind, Me.ToolCheck})
         Me.Toolbarang.Location = New System.Drawing.Point(0, 0)
         Me.Toolbarang.Name = "Toolbarang"
         Me.Toolbarang.RenderMode = System.Windows.Forms.ToolStripRenderMode.System
-        Me.Toolbarang.Size = New System.Drawing.Size(979, 39)
+        Me.Toolbarang.Size = New System.Drawing.Size(979, 31)
         Me.Toolbarang.TabIndex = 9
         Me.Toolbarang.Text = "Tool1"
         '
@@ -202,39 +201,39 @@ Partial Class FListCOA
         '
         Me.ToolRefresh.Alignment = System.Windows.Forms.ToolStripItemAlignment.Right
         Me.ToolRefresh.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image
-        Me.ToolRefresh.Image = Global.SPA.My.Resources.Resources.refresh1
+        Me.ToolRefresh.Image = Global.SPA.My.Resources.Resources.refresh2
         Me.ToolRefresh.ImageTransparentColor = System.Drawing.Color.Magenta
         Me.ToolRefresh.Name = "ToolRefresh"
-        Me.ToolRefresh.Size = New System.Drawing.Size(36, 36)
+        Me.ToolRefresh.Size = New System.Drawing.Size(28, 28)
         Me.ToolRefresh.Text = "Refresh"
         '
         'ToolFind
         '
         Me.ToolFind.Alignment = System.Windows.Forms.ToolStripItemAlignment.Right
         Me.ToolFind.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image
-        Me.ToolFind.Image = CType(resources.GetObject("ToolFind.Image"), System.Drawing.Image)
+        Me.ToolFind.Image = Global.SPA.My.Resources.Resources.find2
         Me.ToolFind.ImageTransparentColor = System.Drawing.Color.Magenta
         Me.ToolFind.Name = "ToolFind"
-        Me.ToolFind.Size = New System.Drawing.Size(36, 36)
+        Me.ToolFind.Size = New System.Drawing.Size(28, 28)
         Me.ToolFind.Text = "Find"
         '
         'ToolTextFind
         '
         Me.ToolTextFind.Alignment = System.Windows.Forms.ToolStripItemAlignment.Right
         Me.ToolTextFind.Name = "ToolTextFind"
-        Me.ToolTextFind.Size = New System.Drawing.Size(441, 39)
+        Me.ToolTextFind.Size = New System.Drawing.Size(250, 31)
+        '
+        'ToolCheck
+        '
+        Me.ToolCheck.Image = Global.SPA.My.Resources.Resources.check1
+        Me.ToolCheck.ImageTransparentColor = System.Drawing.Color.Magenta
+        Me.ToolCheck.Name = "ToolCheck"
+        Me.ToolCheck.Size = New System.Drawing.Size(85, 28)
+        Me.ToolCheck.Text = "Pilih Data"
         '
         'PrintDialog1
         '
         Me.PrintDialog1.UseEXDialog = True
-        '
-        'ToolCheck
-        '
-        Me.ToolCheck.Image = Global.SPA.My.Resources.Resources.check
-        Me.ToolCheck.ImageTransparentColor = System.Drawing.Color.Magenta
-        Me.ToolCheck.Name = "ToolCheck"
-        Me.ToolCheck.Size = New System.Drawing.Size(93, 36)
-        Me.ToolCheck.Text = "Pilih Data"
         '
         'FListCOA
         '
@@ -243,10 +242,10 @@ Partial Class FListCOA
         Me.ClientSize = New System.Drawing.Size(979, 625)
         Me.Controls.Add(Me.Panelbarang)
         Me.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.Margin = New System.Windows.Forms.Padding(4)
         Me.Name = "FListCOA"
         Me.ShowInTaskbar = False
-        Me.Text = "FListCOA"
+        Me.Text = "COA"
         Me.Panelbarang.ResumeLayout(False)
         Me.Panelbarang.PerformLayout()
         CType(Me.DataGridView1, System.ComponentModel.ISupportInitialize).EndInit()
