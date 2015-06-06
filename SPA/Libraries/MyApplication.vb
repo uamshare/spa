@@ -8,8 +8,6 @@ Module MyApplication
     Public Const INFO_STAT As String = "Information"
 
     Public Const DefaultFormatDate = "dd-MM-yyyy"
-
-    'Public PUSERID As Integer = 1
     Sub Main()
         If IsNothing(BaseConnection.GetInstance()) Or BaseConnection.GetInstance().State <= 0 Then
             'ShowStatus("Database is not Connected", ERROR_STAT, False)
@@ -21,23 +19,6 @@ Module MyApplication
         End If
         'MainForm.Show()
     End Sub
-    'Public Sub ShowStatus(ByVal Message As String,
-    '                      Optional refresh As Boolean = True,
-    '                      Optional TimeStatus As Integer = 1000)
-    '    Try
-    '        MainForm.TimeStat.Stop()
-    '        MainForm.StatusMessage.Text = Message
-    '        'MainForm.StatusMessage.BackColor = Color.White
-    '        If refresh Then
-    '            StatusMessageRefresh(TimeStatus)
-    '        End If
-    '    Catch ex As Exception
-    '        ErrorLogger.WriteToErrorLog(ex.Message, ex.StackTrace, "Error Connection Database")
-    '        MessageBox.Show("Error : " & ex.Message)
-    '    End Try
-
-    'End Sub
-
     Public Sub ShowStatus(ByVal Message As String,
                           Optional ByVal StatusType As String = INFO_STAT,
                           Optional refresh As Boolean = True,
@@ -83,7 +64,6 @@ Module MyApplication
         End Try
 
     End Sub
-
     Private Sub StatusMessageRefresh(TimeStatus As Integer)
         Try
             MainForm.TimeStat.Interval = TimeStatus 'ms
@@ -97,7 +77,6 @@ Module MyApplication
         'MainForm.StatusStrip.BackColor = Color.DodgerBlue
         'MainForm.StatusMessage.Text = "Application Ready"
     End Sub
-
     Public Function ValidNumber(e As KeyPressEventArgs) As Boolean
         Dim res As Boolean
         'Dim chr As Char
@@ -129,7 +108,6 @@ Module MyApplication
         End If
         Return path
     End Function
-
     Sub InitializeDataGridView(DG As DataGridView)
 
         With DG
